@@ -18,6 +18,10 @@ public class MusicSolr {
 
     private SolrManager<Music> solrManager;
 
+    {
+        solrManager = SolrManager.getInstance(Music.class,client);
+    }
+
     /**
      * 查询新歌   按照播放量排序
      * @param className 歌曲语种
@@ -25,7 +29,6 @@ public class MusicSolr {
      * @return  查询的结果集
      */
     public SolrBean<Music> selectNewMusicByClassName(String className, int n) {
-        solrManager = SolrManager.getInstance(Music.class,client);
         SolrBean<Music> solrBean = solrManager.find(className,null,MusicTool.MUSIC_LISTENER_COUNT_Field,SolrManager.SORT_RULE_DESC,0,n,
                 new String[]{MusicTool.MUSIC_CLASS_NAME_Field},MusicTool.POINT_FIELDS_ALL,null);
         return solrBean;

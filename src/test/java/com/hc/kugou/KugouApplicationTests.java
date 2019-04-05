@@ -206,16 +206,13 @@ public class KugouApplicationTests {
         SolrQuery solrQuery = new SolrQuery();
         //关键词
         solrQuery.setQuery("出山");
-        //过滤条件
-        solrQuery.setFilterQueries("author_name:出山");
-        solrQuery.setFilterQueries("filesize:[* TO 4000000]");
         //排序
-        solrQuery.addSort("audio_id", SolrQuery.ORDER.desc);
+        solrQuery.addSort("music_listener_count", SolrQuery.ORDER.desc);
         //分页
         solrQuery.setStart(0);
         solrQuery.setRows(100);
         //默认域
-        solrQuery.set("df","audio_name");
+        solrQuery.set("df","music_audio_name");
         //只查询指定域
         solrQuery.set("fl","id,audio_name");
         //高亮

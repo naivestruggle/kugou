@@ -1,6 +1,7 @@
 package com.hc.kugou.config;
 
 import com.hc.kugou.solr.MusicSolr;
+import com.hc.kugou.solr.MvSolr;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -52,5 +53,10 @@ public class MyMvcConfig{
     @Bean
     public MusicSolr musicSolr(){
         return new MusicSolr();
+    }
+
+    @Bean
+    public MvSolr mvSolr(){
+        return new MvSolr();
     }
 }

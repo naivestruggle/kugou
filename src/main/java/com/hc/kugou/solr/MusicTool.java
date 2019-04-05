@@ -23,6 +23,7 @@ public class MusicTool {
      * 查询指定域
      */
     public static final String[] POINT_FIELDS_ALL = {
+            "id",
             "music_id",
             "music_author_id",
             "music_author_name",
