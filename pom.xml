@@ -19,6 +19,13 @@
     </properties>
 
     <dependencies>
+
+        <!--引入solr-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-solr</artifactId>
+        </dependency>
+
         <!-- 引入自定义数据源 -->
         <dependency>
             <groupId>com.alibaba</groupId>

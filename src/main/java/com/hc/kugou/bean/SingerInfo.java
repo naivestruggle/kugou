@@ -15,35 +15,35 @@ public class SingerInfo implements Serializable {
     /**
      * ID
      */
-    Long id;
+    Long singerInfoId;
     /**
      * 歌手姓名
      */
-    String singername;
+    String singerInfoSingername;
 
     /**
      * 歌手ID
      */
-    Long singerid;
+    Long singerInfoSingerid;
 
     /**
      * 唱片数
      */
-    Integer albumcount;
+    Integer singerInfoAlbumcount;
 
     /**
      * 歌曲数
      */
-    Integer musiccount;
+    Integer singerInfoMusiccount;
 
     /**
      * MV数
      */
-    Integer mvcount;
+    Integer singerInfoMvcount;
 
     /**
      * 歌手介绍
      */
-    String introduction;
+    String singerInfoIntroduction;
 
 }

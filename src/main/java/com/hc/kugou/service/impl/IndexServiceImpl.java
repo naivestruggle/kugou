@@ -1,20 +1,16 @@
 package com.hc.kugou.service.impl;
 
-import com.hc.kugou.bean.IndexViewBean;
-import com.hc.kugou.bean.Music;
-import com.hc.kugou.bean.Mv;
-import com.hc.kugou.bean.Singer;
+import com.hc.kugou.bean.*;
+import com.hc.kugou.solr.SolrBean;
 import com.hc.kugou.mapper.MusicMapper;
 import com.hc.kugou.mapper.MvMapper;
 import com.hc.kugou.mapper.SingerMapper;
 import com.hc.kugou.service.IndexService;
-import com.hc.kugou.service.MvService;
+import com.hc.kugou.solr.MusicSolr;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +31,7 @@ public class IndexServiceImpl implements IndexService {
     /**
      * 欧美
      */
-    private static final String MAA_EAA = "eaa";
+    private static final String MAP_EAA = "eaa";
     /**
      * 日本
      */
@@ -57,10 +53,10 @@ public class IndexServiceImpl implements IndexService {
     private SingerMapper singerMapper;
 
     @Autowired
-    private MvService mvService;
+    private MvMapper mvMapper;
 
     @Autowired
-    private MvMapper mvMapper;
+    private MusicSolr musicSolr;
     /**
      * 得到所有的主页要显示的信息
      *
@@ -101,7 +97,7 @@ public class IndexServiceImpl implements IndexService {
         List<Singer> japanSingerList = singerMapper.selectSingerByClassName("日",15);
         List<Singer> koreaSingerList = singerMapper.selectSingerByClassName("韩",15);
         popSingerCollect.put(MAP_CHINA,chinaSingerList);
-        popSingerCollect.put(MAA_EAA,eaaSingerList);
+        popSingerCollect.put(MAP_EAA,eaaSingerList);
         popSingerCollect.put(MAP_JAPAN,japanSingerList);
         popSingerCollect.put(MAP_KOREA,koreaSingerList);
         indexViewBean.setPopSingerCollect(popSingerCollect);
@@ -112,15 +108,15 @@ public class IndexServiceImpl implements IndexService {
      * @param indexViewBean 信息对象
      */
     private void addNewMusic(IndexViewBean indexViewBean) {
-        Map<String, List<Music>> newMusicCollect = new HashMap<String,List<Music>>();
-        List<Music> chinaMusicList = musicMapper.selectNewMusicByClassName("华",24);
-        List<Music> eaaMusicList = musicMapper.selectNewMusicByClassName("欧美",24);
-        List<Music> japanMusicList = musicMapper.selectNewMusicByClassName("日",24);
-        List<Music> koreaMusicList = musicMapper.selectNewMusicByClassName("韩",24);
-        newMusicCollect.put(MAP_CHINA,chinaMusicList);
-        newMusicCollect.put(MAA_EAA,eaaMusicList);
-        newMusicCollect.put(MAP_JAPAN,japanMusicList);
-        newMusicCollect.put(MAP_KOREA,koreaMusicList);
+        Map<String, SolrBean<Music>> newMusicCollect = new HashMap<String,SolrBean<Music>>();
+        SolrBean<Music> chinaMusicSolrBean = musicSolr.selectNewMusicByClassName("华语",24);
+        SolrBean<Music> eaaMusicSolrBean = musicSolr.selectNewMusicByClassName("欧美",24);
+        SolrBean<Music> japanMusicSolrBean = musicSolr.selectNewMusicByClassName("日",24);
+        SolrBean<Music> koreaMusicSolrBean = musicSolr.selectNewMusicByClassName("韩",24);
+        newMusicCollect.put(MAP_CHINA,chinaMusicSolrBean);
+        newMusicCollect.put(MAP_EAA,eaaMusicSolrBean);
+        newMusicCollect.put(MAP_JAPAN,japanMusicSolrBean);
+        newMusicCollect.put(MAP_KOREA,koreaMusicSolrBean);
         indexViewBean.setNewMusicCollect(newMusicCollect);
     }
 
@@ -135,7 +131,7 @@ public class IndexServiceImpl implements IndexService {
         List<Mv> japanMvList = mvMapper.selectPopMvByClassName("日",24);
         List<Mv> koreaMvList = mvMapper.selectPopMvByClassName("韩",24);
         recommendMvCollect.put(MAP_CHINA,chinaMvList);
-        recommendMvCollect.put(MAA_EAA,eaaMvList);
+        recommendMvCollect.put(MAP_EAA,eaaMvList);
         recommendMvCollect.put(MAP_JAPAN,japanMvList);
         recommendMvCollect.put(MAP_KOREA,koreaMvList);
         indexViewBean.setRecommendMvCollect(recommendMvCollect);

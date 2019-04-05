@@ -1,6 +1,8 @@
 package com.hc.kugou.mapper;
 
-import com.hc.kugou.bean.Mv;import org.apache.ibatis.annotations.Param;
+import com.hc.kugou.bean.Mv;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.sql.Date;
 import java.util.List;
@@ -42,4 +44,15 @@ public interface MvMapper {
      * @return  Mv集合
      */
     List<Mv> selectPopMvByClassName(@Param("className")String className, @Param("n")int n);
+
+    Mv selectById(@Param("id")long id);
+
+    /**
+     * 查询
+     *
+     * @param start 从第几条开始
+     * @param end   查多少条
+     * @return 结果集
+     */
+    List<Mv> selectCopy(@Param("start")int start, @Param("end")int end);
 }

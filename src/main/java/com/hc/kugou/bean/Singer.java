@@ -15,30 +15,34 @@ public class Singer implements Serializable {
     /**
      * ID
      */
-    private Long id;
+    private Long singerId;
     /**
      * 语种类型
      */
-    private String className;
+    private String singerClassName;
     /**
      * A-Z类型
      */
-    private String sindex;
+    private String singerSindex;
     /**
      * 歌手姓名
      */
-    private String singername;
+    private String singerSingername;
     /**
      * 歌手ID
      */
-    private Long singerid;
+    private Long singerSingerid;
     /**
      * 歌手照片路径
      */
-    private String imgurl;
+    private String singerImgurl;
 
+    /**
+     * 标记
+     */
+    private Integer singerFlag;
     /**
      * 听他的歌的次数
      */
-    private Long listenerCount;
+    private Long singerListenerCount;
 }

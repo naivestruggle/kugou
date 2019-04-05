@@ -1,5 +1,7 @@
 package com.hc.kugou.controller;
 
+import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.hc.commons.MvUtils;
 import com.hc.kugou.bean.Music;
 import com.hc.kugou.bean.Mv;
@@ -8,12 +10,22 @@ import com.hc.kugou.mapper.MusicMapper;
 import com.hc.kugou.mapper.MvMapper;
 import com.hc.kugou.mapper.SingerMapper;
 import com.hc.kugou.service.IndexService;
+import org.apache.solr.client.solrj.SolrClient;
+import org.apache.solr.client.solrj.SolrQuery;
+import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.common.SolrDocument;
+import org.apache.solr.common.SolrDocumentList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author:
@@ -21,63 +33,64 @@ import java.util.List;
  * @Description:com.hc.kugou.controller
  * @Version:1.0
  */
-@Controller
+@RestController
 public class HelloController {
-
     @Autowired
-    private IndexService indexService;
+    private SolrClient client;
 
-    @Autowired
-    private MvMapper mvMapper;
+    @PostMapping("find_music")
+    public List<Music> findMusic(String queryStr)throws Exception{
 
-    @Autowired
-    private MusicMapper musicMapper;
-    @Autowired
-    private SingerMapper singerMapper;
+        Long startTime = System.currentTimeMillis();
 
-    @RequestMapping("updateMv")
-    public String hello(){
-        //78143
-        Long id = 67131L;
-        while(id < 78144) {
-            Music music = musicMapper.selectMusicById(id);
-            //获取作者ID
-            Long authorId = music.getAuthorId();
-            //查询作者是哪个语种
-            String language = null;
-            List<Singer> singerList = singerMapper.findBySingerId(authorId);
-            if (singerList == null || singerList.size()==0) {
-                language = "未知语种";
-            } else {
-                language = "";
-                for(Singer singer:singerList){
-                    language += singer.getClassName()+"、";
-                }
-            }
-            String mvName = music.getAudioName();
-            //用歌曲名去调用python查询是否有MV
-            Mv mv = MvUtils.getMv(mvName);
-            System.out.println("id:" + id +"线程1"+ "  歌曲名：" + mvName);
-            //如果没有mv  就直接都设置为0
-            if (mv == null) {
-                musicMapper.updateHasMv(id, 0l, 0, language);
-            } else {
-                //如果有网上有Mv   先查询数据库中是否已经有了这个数据
-                List<Mv> mvList = mvMapper.findMvByName(mv.getMvName());
-                if (mvList == null || mvList.size() == 0) {
-                    //如果没有  就将网上的数据存入数据库
-                    mv.setClassName(language);
-                    mvMapper.insert(mv);
-                    musicMapper.updateHasMv(id, mv.getId(), 1, language);
-                } else {
-                    //如果已经有了   那么将Mv的id存入music  同时修改更新日期
-                    Mv mv1 = mvList.get(0);
-                    musicMapper.updateHasMv(id, mv1.getId(), 1, language);
-                    mvMapper.updateTime(mv1.getId(), new Date(System.currentTimeMillis()));
-                }
-            }
-            id++;
+        //查询
+        SolrQuery solrQuery = new SolrQuery();
+        //关键词
+        solrQuery.setQuery(queryStr);
+        //过滤条件
+//        solrQuery.setFilterQueries("author_name:出山");
+//        solrQuery.setFilterQueries("filesize:[* TO 4000000]");
+        //排序
+        solrQuery.addSort("listener_count", SolrQuery.ORDER.desc);
+        //分页
+//        solrQuery.setStart(0);
+//        solrQuery.setRows(100);
+        //默认域
+        solrQuery.set("df","audio_name");
+        //只查询指定域
+        solrQuery.set("fl","id,audio_id,audio_name,listener_count");
+        //高亮
+        //打开开关
+        solrQuery.setHighlight(true);
+        //指定高亮域
+        solrQuery.addHighlightField("audio_name");
+        //前缀
+        solrQuery.setHighlightSimplePre("<font style='color:red;'>");
+        //后缀
+        solrQuery.setHighlightSimplePost("</font>");
+
+        //执行查询
+        QueryResponse response = client.query(solrQuery);
+        //文档结果集
+        SolrDocumentList docs = response.getResults();
+
+        Map<String, Map<String, List<String>>> highlighting = response.getHighlighting();
+        //Map K id  :  V Map
+        //Map K 域名 ：V List
+        //List  List.get(0)
+        Long numFound = docs.getNumFound();
+        Long endTime = System.currentTimeMillis();
+        Long times = endTime - startTime;
+        System.out.println("查到了："+numFound+",用时："+times+" ms");
+        List<Music> musicList = new ArrayList<Music>();
+        for(SolrDocument doc:docs){
+            Map<String, List<String>> map = highlighting.get(doc.get("id"));
+            List<String> list = map.get("audio_name");
+            Music music = new Music();
+            music.setMusicAudioName(list.get(0));
+            musicList.add(music);
         }
-        return "index";
+
+        return musicList;
     }
 }

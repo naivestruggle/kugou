@@ -27,4 +27,13 @@ public interface SingerMapper {
      * @return 歌手对象
      */
     List<Singer> findBySingerId(@Param("authorId")Long authorId);
+
+    /**
+     * 查询
+     *
+     * @param start 从第几条开始
+     * @param end   查多少条
+     * @return 结果集
+     */
+    List<Singer> selectCopy(@Param("start")int start, @Param("end")int end);
 }

@@ -1,5 +1,6 @@
 package com.hc.kugou.config;
 
+import com.hc.kugou.solr.MusicSolr;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -40,8 +41,16 @@ public class MyMvcConfig{
                 registry.addViewController("/songsheet.html").setViewName("songsheet");
                 registry.addViewController("/txsinger.html").setViewName("txsinger");
                 registry.addViewController("/vip.html").setViewName("vip");
+                registry.addViewController("/queryMusic.html").setViewName("queryMusic");
+                registry.addViewController("/queryMv.html").setViewName("queryMv");
+                registry.addViewController("/musicTest.html").setViewName("musicTest");
             }
         };
         return webMvcConfigurer;
+    }
+
+    @Bean
+    public MusicSolr musicSolr(){
+        return new MusicSolr();
     }
 }

@@ -27,6 +27,10 @@ spring:
       enabled: false
   redis:
     host: 47.110.156.54
+  data:
+    solr:
+      host: http://47.110.156.54:8080/solr
+
 server:
   servlet:
     context-path: /kugou
