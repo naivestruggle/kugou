@@ -3,6 +3,7 @@ package com.hc.kugou.mapper;
 import com.hc.kugou.bean.Mv;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.sql.Date;
 import java.util.List;
@@ -55,4 +56,11 @@ public interface MvMapper {
      * @return 结果集
      */
     List<Mv> selectCopy(@Param("start")int start, @Param("end")int end);
+
+    /**
+     * 查询记录数
+     * @return  记录数
+     */
+    @Select("select count(1) from kugou_mv")
+    Long selectMvCount();
 }

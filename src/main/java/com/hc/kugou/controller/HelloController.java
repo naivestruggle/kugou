@@ -1,28 +1,15 @@
 package com.hc.kugou.controller;
 
-import com.alibaba.fastjson.JSONObject;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.hc.commons.MvUtils;
 import com.hc.kugou.bean.Music;
-import com.hc.kugou.bean.Mv;
-import com.hc.kugou.bean.Singer;
-import com.hc.kugou.mapper.MusicMapper;
-import com.hc.kugou.mapper.MvMapper;
-import com.hc.kugou.mapper.SingerMapper;
-import com.hc.kugou.service.IndexService;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

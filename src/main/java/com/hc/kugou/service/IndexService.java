@@ -1,11 +1,11 @@
 package com.hc.kugou.service;
 
-import com.hc.kugou.bean.IndexViewBean;
+import com.hc.kugou.bean.custombean.IndexViewBean;
 
 /**
  * @Author:
  * @Date:2019/4/30
- * @Description:com.hc.kugou.service
+ * @Description:com.hc.kugou.service    主页业务类
  * @Version:1.0
  */
 public interface IndexService {

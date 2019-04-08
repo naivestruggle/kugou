@@ -2,10 +2,19 @@ package com.hc.kugou.config;
 
 import com.hc.kugou.solr.MusicSolr;
 import com.hc.kugou.solr.MvSolr;
+import com.hc.kugou.solr.SingerSolr;
+import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.lang.reflect.Method;
+import java.rmi.UnknownHostException;
+import java.util.Arrays;
 
 /**
  * @Author:杨鑫虎
@@ -20,9 +29,9 @@ public class MyMvcConfig{
         WebMvcConfigurer webMvcConfigurer = new WebMvcConfigurer(){
             @Override
             public void addViewControllers(ViewControllerRegistry registry) {
-                registry.addViewController("/").setViewName("index");
+                registry.addViewController("/").setViewName("index.html");
                 registry.addViewController("/anchor.html").setViewName("anchor");
-                registry.addViewController("/index.html").setViewName("index");
+//                registry.addViewController("/index.html").setViewName("index");
                 registry.addViewController("/download.html").setViewName("download");
                 registry.addViewController("/friendLink.html").setViewName("friendLink");
                 registry.addViewController("/hello.html").setViewName("hello");
@@ -58,5 +67,10 @@ public class MyMvcConfig{
     @Bean
     public MvSolr mvSolr(){
         return new MvSolr();
+    }
+
+    @Bean
+    public SingerSolr singerSolr(){
+        return new SingerSolr();
     }
 }

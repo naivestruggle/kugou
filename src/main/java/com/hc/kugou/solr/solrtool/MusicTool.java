@@ -1,4 +1,4 @@
-package com.hc.kugou.solr;
+package com.hc.kugou.solr.solrtool;
 
 /**
  * @Author:
@@ -7,22 +7,25 @@ package com.hc.kugou.solr;
  * @Version:1.0
  */
 public class MusicTool {
+    public static String MUSIC_AUDIO_ID_FIELD = "music_audio_id";
+    public static String MUSIC_ID_FIELD = "music_id";
+
     private MusicTool(){}
 
     /**
      * 域  music_listener_count
      */
-    public static final String MUSIC_LISTENER_COUNT_Field = "music_listener_count";
+    public static final String MUSIC_LISTENER_COUNT_FIELD = "music_listener_count";
 
     /**
      * 域  music_class_name
      */
-    public static final String MUSIC_CLASS_NAME_Field = "music_class_name";
+    public static final String MUSIC_CLASS_NAME_FIELD = "music_class_name";
 
     /**
      * 查询指定域
      */
-    public static final String[] POINT_FIELDS_ALL = {
+    public static final String[] MUSIC_POINT_FIELDS_ALL = {
             "id",
             "music_id",
             "music_author_id",

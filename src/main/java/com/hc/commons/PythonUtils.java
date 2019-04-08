@@ -1,11 +1,7 @@
 package com.hc.commons;
 
-import com.alibaba.druid.support.json.JSONUtils;
 import com.alibaba.fastjson.JSONObject;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.hc.kugou.bean.Mv;
-import com.sun.javafx.collections.MappingChange;
-import org.springframework.boot.json.GsonJsonParser;
 import org.thymeleaf.util.StringUtils;
 
 import java.io.IOException;
@@ -18,12 +14,49 @@ import java.util.UUID;
 
 /**
  * @Author:
- * @Date:2019/4/30
+ * @Date:2019/4/7
  * @Description:com.hc.commons
  * @Version:1.0
  */
-public class MvUtils {
-    private MvUtils(){}
+public class PythonUtils {
+    private PythonUtils(){}
+
+    /**
+     * 根据歌曲hashcode获取播放地址
+     * @param musicHashCode 哈希值
+     * @return  播放地址
+     */
+    public static String getMusicPlayUrl(String musicHashCode){
+        String exe = "python";
+        String command = PythonUtils.class.getResource("/python/playUrl.py").toString().replace("file:/","");
+        String[] cmdArr = new String[] { exe, command,musicHashCode };
+        StringBuffer sb = new StringBuffer();
+        Process process = null;
+        InputStream inputStream = null;
+        String result = "";
+        try {
+            process = Runtime.getRuntime().exec(cmdArr);
+            inputStream = process.getInputStream();
+            byte[] buff = new byte[1024*1024];
+            int len = 0;
+            while( ( len = inputStream.read(buff) ) != -1 ) {
+                sb.append(new String(buff,0,len,"gbk"));
+            }
+            result = sb.toString();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            if(inputStream != null){
+                try {
+                    inputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return result;
+    }
 
     /**
      * 通过传入的音频名称查询Mv
@@ -34,7 +67,7 @@ public class MvUtils {
         Mv mv = new Mv();
         mv.setMvHash(UUID.randomUUID().toString().replace("-",""));
         String exe = "python";
-        String command = MvUtils.class.getResource("/python/mvSpider.py").toString().replace("file:/","").replace("/","\\");
+        String command = PythonUtils.class.getResource("/python/mvSpider.py").toString().replace("file:/","").replace("/","\\");
         String[] cmdArr = new String[] { exe, command,audioName };
         StringBuffer sb = new StringBuffer();
         Process process = null;
@@ -51,8 +84,8 @@ public class MvUtils {
                 System.out.println(audioName+"：这首音乐没有mv");
                 return null;
             }
-            Map<String,Map<String,Object>> map = (Map<String, Map<String, Object>>) JSONObject.parse(result);
-            for(Iterator<Map.Entry<String,Map<String,Object>>> it = map.entrySet().iterator();it.hasNext();){
+            Map<String, Map<String,Object>> map = (Map<String, Map<String, Object>>) JSONObject.parse(result);
+            for(Iterator<Map.Entry<String,Map<String,Object>>> it = map.entrySet().iterator(); it.hasNext();){
                 Map.Entry<String,Map<String,Object>> me = it.next();
                 String key = me.getKey();
                 Map<String,Object> value = me.getValue();

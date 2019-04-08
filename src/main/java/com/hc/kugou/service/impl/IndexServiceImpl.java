@@ -1,20 +1,22 @@
 package com.hc.kugou.service.impl;
 
 import com.hc.kugou.bean.*;
+import com.hc.kugou.bean.custombean.CustomMusic;
+import com.hc.kugou.bean.custombean.CustomMv;
+import com.hc.kugou.bean.custombean.IndexViewBean;
 import com.hc.kugou.solr.MvSolr;
+import com.hc.kugou.solr.SingerSolr;
 import com.hc.kugou.solr.SolrBean;
 import com.hc.kugou.mapper.MusicMapper;
 import com.hc.kugou.mapper.MvMapper;
 import com.hc.kugou.mapper.SingerMapper;
 import com.hc.kugou.service.IndexService;
 import com.hc.kugou.solr.MusicSolr;
-import org.omg.CORBA.PRIVATE_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -62,13 +64,15 @@ public class IndexServiceImpl implements IndexService {
 
     @Autowired
     private MvSolr mvSolr;
+
+    @Autowired
+    private SingerSolr singerSolr;
     /**
      * 得到所有的主页要显示的信息
      *
      * @return
      */
     @Override
-//    @Cacheable(cacheNames = "indexViewBean")
     public IndexViewBean showService() {
         IndexViewBean indexViewBean = new IndexViewBean();
 
@@ -96,15 +100,13 @@ public class IndexServiceImpl implements IndexService {
      * @param indexViewBean 信息对象
      */
     private void addPopSinger(IndexViewBean indexViewBean) {
-        Map<String, List<Singer>> popSingerCollect = new HashMap<String,List<Singer>>();
-        List<Singer> chinaSingerList = singerMapper.selectSingerByClassName("华",15);
-        List<Singer> eaaSingerList = singerMapper.selectSingerByClassName("欧美",15);
-        List<Singer> japanSingerList = singerMapper.selectSingerByClassName("日",15);
-        List<Singer> koreaSingerList = singerMapper.selectSingerByClassName("韩",15);
-        popSingerCollect.put(MAP_CHINA,chinaSingerList);
-        popSingerCollect.put(MAP_EAA,eaaSingerList);
-        popSingerCollect.put(MAP_JAPAN,japanSingerList);
-        popSingerCollect.put(MAP_KOREA,koreaSingerList);
+        Map<String, SolrBean<Singer>> popSingerCollect = new HashMap<String,SolrBean<Singer>>();
+        SolrBean<Singer> chinaSingerSolrBean = singerSolr.selectSingerByClassName("华语",5);
+        SolrBean<Singer> eaaSingerSolrBean = singerSolr.selectSingerByClassName("欧美",5);
+        SolrBean<Singer> japanKoreaSingerSolrBean = singerSolr.selectSingerByClassName("日韩",5);
+        popSingerCollect.put(MAP_CHINA,chinaSingerSolrBean);
+        popSingerCollect.put(MAP_EAA,eaaSingerSolrBean);
+        popSingerCollect.put(MAP_JAPAN_KOREA,japanKoreaSingerSolrBean);
         indexViewBean.setPopSingerCollect(popSingerCollect);
     }
 
@@ -113,11 +115,11 @@ public class IndexServiceImpl implements IndexService {
      * @param indexViewBean 信息对象
      */
     private void addNewMusic(IndexViewBean indexViewBean) {
-        Map<String, SolrBean<Music>> newMusicCollect = new HashMap<String,SolrBean<Music>>();
-        SolrBean<Music> chinaMusicSolrBean = musicSolr.selectNewMusicByClassName("华语",24);
-        SolrBean<Music> eaaMusicSolrBean = musicSolr.selectNewMusicByClassName("欧美",24);
-        SolrBean<Music> japanMusicSolrBean = musicSolr.selectNewMusicByClassName("日",24);
-        SolrBean<Music> koreaMusicSolrBean = musicSolr.selectNewMusicByClassName("韩",24);
+        Map<String, SolrBean<CustomMusic>> newMusicCollect = new HashMap<String,SolrBean<CustomMusic>>();
+        SolrBean<CustomMusic> chinaMusicSolrBean = musicSolr.selectNewMusicByClassName("华语",24);
+        SolrBean<CustomMusic> eaaMusicSolrBean = musicSolr.selectNewMusicByClassName("欧美",24);
+        SolrBean<CustomMusic> japanMusicSolrBean = musicSolr.selectNewMusicByClassName("日本",24);
+        SolrBean<CustomMusic> koreaMusicSolrBean = musicSolr.selectNewMusicByClassName("韩国",24);
         newMusicCollect.put(MAP_CHINA,chinaMusicSolrBean);
         newMusicCollect.put(MAP_EAA,eaaMusicSolrBean);
         newMusicCollect.put(MAP_JAPAN,japanMusicSolrBean);
@@ -130,15 +132,7 @@ public class IndexServiceImpl implements IndexService {
      * @param indexViewBean 信息对象
      */
     private void addRecommendMv(IndexViewBean indexViewBean) {
-        Map<String,SolrBean<Mv>> recommendMvCollect = new HashMap<String,SolrBean<Mv>>();
-        SolrBean<Mv> chinaMvSolrBean = mvSolr.selectPopMvByClassName("华语",24);
-        SolrBean<Mv> eaaMvSolrBean = mvSolr.selectPopMvByClassName("欧美",24);
-        SolrBean<Mv> japanMvSolrBean = mvSolr.selectPopMvByClassName("日",24);
-        SolrBean<Mv> koreaMvSolrBean = mvSolr.selectPopMvByClassName("韩",24);
-        recommendMvCollect.put(MAP_CHINA,chinaMvSolrBean);
-        recommendMvCollect.put(MAP_EAA,eaaMvSolrBean);
-        recommendMvCollect.put(MAP_JAPAN,japanMvSolrBean);
-        recommendMvCollect.put(MAP_KOREA,koreaMvSolrBean);
+        SolrBean<CustomMv> recommendMvCollect = mvSolr.selectPopMv(3);
         indexViewBean.setRecommendMvCollect(recommendMvCollect);
     }
 }
