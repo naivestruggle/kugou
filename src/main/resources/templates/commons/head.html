@@ -7,6 +7,7 @@
 <body>
     <div th:fragment="headbar">
         <link href="" rel="stylesheet" th:href="@{/css/headbar.css}"/>
+
         <div id="head">
             <h1 class="logo">
                 <a href="#"><img src="../public/img/index/logo.png" th:src="@{/img/index/logo.png}"/></a>
@@ -26,7 +27,7 @@
                     <li><a href="vip.html" target="_blank">会员中心</a></li>
                 </ul>
                 <div class="loading">
-                    <a href="javascript:void(0)" style="color:white;"><div class="login">登录</div></a>
+                    <a href="javascript:void(0);" style="color:white;"><div class="login">登录</div></a>
                     <a href="register.html"><div class="regin">注册</div></a>
                 </div>
             </div>
@@ -58,6 +59,59 @@
                 </ul>
             </div>
         </div>
+
+
+        <div id="cover"></div>
+        <div id="load">
+            <div class="load_content">
+                <a class="load_close" id="closebtn"><i></i></a>
+                <div style="margin-bottom: 10px;"><h4>登录酷狗音乐</h4></div>
+                <div class="zhanghao">
+                    <form class="login_form">
+                        <div class="kg_popup_txt_area">
+                            <div class="kg_popup_txt_box kg_popup_txt_box_username">
+                                <label class="kg_popup_txt_tl" for="KgPopupUserName">帐号：</label><input id="KgPopupUserName" name="UserName" type="text" class="kg_popup_txt_ipt" placeholder="用户名/手机/邮箱">
+                            </div>
+                        </div>
+                        <div class="kg_popup_txt_area">
+                            <div class="kg_popup_txt_box kg_popup_txt_box_password">
+                                <label class="kg_popup_txt_tl" for="KgPopupUserPwd">密码：</label><input id="KgPopupUserPwd" name="UserPwd" type="password" placeholder="请输入密码" class="kg_popup_txt_ipt">
+                                <a href="" class="kg_popup_forget_pwd" target="_blank">忘记密码</a></div>
+                        </div>
+                        <div class="kg_popup_tool_area kg_popup_bottom10">
+                            <div class="kg_popup_tool_lt">
+                                <input class="kg_popup_checkbox" type="checkbox" name="autoLogin" id="autoLogin" checked="">
+                                <label for="autoLogin">下次自动登录</label></div>
+                            <div class="kg_popup_tool_rt">
+                                <a href="http://www.kugou.com/reg/web/" class="kg_popup_now_reg" target="_blank">立即注册</a>
+                            </div>
+                        </div>
+                        <div class="kg_popup_txt_area">
+                            <div class="kg_popup_login_box" id="kg_popup_login_btn_box">
+                                <p class="empty_box" id="empty_box"></p>
+                                <input type="button" class="kg_popup_login_btn" id="KgPopupLoginBtn" value="登录">
+                            </div>
+                        </div>
+                        <div class="kg_popup_tool_area position_absole">
+                            <div class="kg_popup_tool_lt">
+                                <div class="kg_popup_thirdpart">其他方式登录：
+                                    <a href="javascript:connectLogin('Qzone')" class="kg_popup_thirdpart_icon kg_popup_thirdpart_qq" title="使用QQ号登录"></a>
+                                    <a href="javascript:connectLogin('WeiXin');" class="kg_popup_thirdpart_icon kg_popup_thirdpart_weixin" title="使用微信扫描二维码登录"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kg_popup_tool_area kg_popup_user_info">
+                            <a class="userProtocol" href="">用户协议</a>
+                            <a class="userPrivacy" href="">隐私政策</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+
         <script type="text/javascript" th:src="@{/js/headbar.js}"></script>
     </div>
 </body>

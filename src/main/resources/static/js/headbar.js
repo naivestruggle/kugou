@@ -32,3 +32,43 @@ function abc(num){
         }
     }
 }
+
+// //
+// $(".more").mouseenter(function(){
+//     $("#secondMenu").css("display","block");
+// })
+// $(".more").mouseleave(function(){
+//     $("#secondMenu").css("display","none");
+// })
+//
+// var timer=setTimeout(function(){
+//     $("#secondMenu").mouseenter(function(){
+//         $(".more").css("background","#0c8ed9");
+//         $(this).css("display","block");
+//     });
+// },500);
+//
+// $("#secondMenu").mouseleave(function(){
+//     clearTimeout(timer);
+//     $(".more").css("background","");
+//     $(this).css("display","none");
+// });
+//
+// $(".homeNav>li").click(function(){
+//     $(this).addClass("active");
+//     $(this).siblings(".homeNav>li").removeClass("active");
+// });
+console.log($("#secondMenu"))
+
+// $(".login_btn").click(function(){
+//
+// });
+//
+// $("#closebtn").click(function(){
+//     $("#load").css("display","none");
+//     $("#cover").css("display","none");
+// });
+// $("#fmLoginBtn").click(function(){
+//     $("#load").css("display","block");
+//     $("#cover").css("display","block");
+// })

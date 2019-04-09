@@ -1,0 +1,72 @@
+/*一键到顶*/
+#scollTop{
+    width: 50px;
+    height:50px;
+    display: block;
+    right: 100px;
+    margin-right: 0px;
+    bottom: 369px;
+    position:fixed;
+    cursor: pointer;
+    z-index: 999;
+}
+#scollTop a{
+    background: url(../img/index/scrollTop1.png) no-repeat left top;
+    display: block;
+    height: 50px;
+}
+#scollTop a:hover{
+    background: url(../img/index/scrollTop2.png) no-repeat left top;
+    display: block;
+    height: 50px;
+}
+
+#bottom .footer{
+    padding-bottom: 50px;
+}
+.footer .links{
+    position: relative;
+    border-bottom: 1px solid #3d424a;
+    padding: 15px 0;
+    font-size: 12px;
+    color: #b1b3b9;
+    text-align: center;
+    height: 20px;
+}
+.footer .links a{
+    color: #b1b3b9;
+    padding: 10px;
+}
+.footer .links a:hover{
+    color:#009af3;
+
+}
+.footer .copyright{
+    width: 1000px;
+    height: 180px;
+    margin: 40px auto 0;
+}
+
+
+
+.copyright .footerIcon{
+    width: 16px;
+    height: 16px;
+    margin-left: 5px;
+    margin-top: -2px;
+    background: url(../img/index/footer_icon.png) no-repeat 0 0;
+}
+.copyright .office-verification{
+    margin-left: 5px;
+    padding: 5px 10px;
+    background: url(../img/index/logo_down.png) no-repeat 0 0;
+}
+.copyright p{
+    line-height: 30px;
+    text-align: center;
+    color: #b1b3b9;
+    font-size: 14px;
+}
+.copyright a{
+    color: #999;
+}

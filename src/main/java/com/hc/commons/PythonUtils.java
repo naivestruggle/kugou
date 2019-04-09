@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.hc.kugou.bean.Mv;
 import org.thymeleaf.util.StringUtils;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Date;
@@ -28,7 +29,7 @@ public class PythonUtils {
      */
     public static String getMusicPlayUrl(String musicHashCode){
         String exe = "python";
-        String command = PythonUtils.class.getResource("/python/playUrl.py").toString().replace("file:/","");
+        String command = PythonUtils.class.getResource("/python/playUrl.py").toString().replace("file:/","").replace("/", File.separator);
         String[] cmdArr = new String[] { exe, command,musicHashCode };
         StringBuffer sb = new StringBuffer();
         Process process = null;
