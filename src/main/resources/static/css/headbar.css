@@ -307,3 +307,183 @@ li{
     color: #14a9ff;
     background: url(../img/radio/sprite.png);
 }
+
+
+/***登录框**/
+#cover{
+    display:none;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 999;
+    background-color: rgb(0, 0, 0);
+    opacity: 0.5;
+    height: 2130px;
+    width: 1349px;
+
+
+}
+#load{
+    display:none;
+    z-index: 101;
+    margin-top: 0px;
+    top:50px;
+    left: 40%;
+    position: fixed;
+    width: 440px;
+    font-size: 12px;
+    color:black;
+    box-shadow: 0 0 5px #666;
+    text-align: left;
+    z-index: 1000;
+}
+#load .load_content{
+    position: relative;
+    z-index: 2;
+    border: 1px solid #ccc;
+    background: #fff;
+    padding: 30px 35px;
+    height: 316px;
+}
+.load_close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 37px;
+    height: 37px;
+}
+.load_close i{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 14px;
+    height: 13px;
+    margin-left: -7px;
+    margin-top: -6px;
+    overflow: hidden;
+    text-indent: -999em;
+    background-position: -175px -100px;
+    opacity: 0.6;
+    transition: 0.2s;
+    cursor: pointer;
+    background-image: url(../img/index/kg_popup_splice01.png?201409201440);
+    background-repeat: no-repeat;
+}
+.load_content h4{
+    width: 140px;
+    overflow: hidden;
+    font-size: 22px;
+    color: #333;
+    font-family: "Microsoft YaHei";
+    float: left;
+    display: inline;
+    height: 30px;
+    font-weight: normal;
+
+}
+.zhanghao{
+    width: 368px;
+    height: 308px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+a{
+    text-decoration: none;
+    color:#7b7b7b;
+}
+.login_form{
+    margin-top: 18px;
+}
+.kg_popup_txt_area {
+    margin-bottom: 11px;
+}
+.kg_popup_txt_box {
+    height: 22px;
+    border: 1px solid #ccc;
+    background: #f6f6f6;
+    padding: 7px 10px;
+    transition: 0.2s;
+}
+.kg_popup_txt_tl {
+    float: left;
+    height: 22px;
+    line-height: 22px;
+    margin-right: -3px;
+    color: #7b7b7b;
+}
+.kg_popup_txt_ipt {
+    border: 0;
+    height: 22px;
+    line-height: 22px;
+    width: 260px;
+    padding: 0;
+    background: transparent;
+    color: #a1a1a1;
+    outline: none;
+}
+.kg_popup_tool_lt {
+    float: left;
+}
+.kg_popup_tool_rt {
+    float: right;
+}
+.kg_popup_login_btn {
+    display: block;
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: #2299ed;
+    margin-top: 30px;
+}
+.position_absole {
+    position: absolute;
+    bottom: 30px;
+}
+.kg_popup_user_info {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 120px;
+    height: 20px;
+    line-height: 20px;
+    color: #7b7b7b;
+    text-align: right;
+}
+.kg_popup_user_info a{
+    text-decoration: underline;
+}
+.kg_popup_forget_pwd{
+    color: #7b7b7b;
+    text-decoration: none;
+}
+.empty_box {
+    height: 24px;
+    background: #fff;
+}
+.kg_popup_thirdpart_icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 16px;
+    padding-left: 16px;
+    margin-right: 5px;
+    font-size: 0;
+    overflow: hidden;
+    opacity: 0.6;
+    background-image: url(../img/index/kg_popup_splice01.png?201409201440);
+    background-repeat: no-repeat;
+
+}
+.kg_popup_thirdpart_weixin{
+    background-position: -125px -125px;
+}
+.kg_popup_thirdpart_qq{
+    background-position: -25px -125px;
+}
+
+

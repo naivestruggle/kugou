@@ -14,6 +14,10 @@ import java.sql.Date;
 @Data
 public class User implements Serializable {
     /**
+     * hashcode
+     */
+    private String hashCode;
+    /**
      * id
      */
     private Integer userId;

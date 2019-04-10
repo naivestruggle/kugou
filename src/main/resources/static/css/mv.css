@@ -9,7 +9,7 @@ li{
 	list-style: none;
 }
 section{
-	width: 53%;
+	width: 80%;
 	height: 350px;
 	margin: auto;
 }
@@ -233,6 +233,9 @@ h3{
 	line-height: 29px;
 	position: absolute;
 	top: 0px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 /*鼠标移入伪类*/
 .queue li:hover .play{

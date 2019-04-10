@@ -70,3 +70,11 @@
 .copyright a{
     color: #999;
 }
+/*底部*/
+#bottom{
+    width: 100%;
+    height: 319px;
+    background: #2c323b;
+    margin-top: -60px;
+
+}

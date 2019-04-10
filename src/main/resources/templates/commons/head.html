@@ -6,8 +6,8 @@
 </head>
 <body>
     <div th:fragment="headbar">
+        <script type="text/javascript" th:src="@{/webjars/jquery/3.3.1/jquery.js}"></script>
         <link href="" rel="stylesheet" th:href="@{/css/headbar.css}"/>
-
         <div id="head">
             <h1 class="logo">
                 <a href="#"><img src="../public/img/index/logo.png" th:src="@{/img/index/logo.png}"/></a>
@@ -108,9 +108,6 @@
                 </div>
             </div>
         </div>
-
-
-
 
         <script type="text/javascript" th:src="@{/js/headbar.js}"></script>
     </div>

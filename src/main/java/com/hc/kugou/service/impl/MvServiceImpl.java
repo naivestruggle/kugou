@@ -1,12 +1,17 @@
 package com.hc.kugou.service.impl;
 
 import com.hc.kugou.bean.Mv;
+import com.hc.kugou.bean.custombean.CustomMv;
+import com.hc.kugou.bean.custombean.MvViewBean;
 import com.hc.kugou.mapper.MvMapper;
 import com.hc.kugou.service.MvService;
+import com.hc.kugou.solr.MvSolr;
+import com.hc.kugou.solr.SolrBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import javax.annotation.Resource;
+import java.util.*;
 
 /**
  * @Author:
@@ -16,8 +21,35 @@ import java.util.List;
  */
 @Service("mvService")
 public class MvServiceImpl implements MvService {
+    /**
+     * 新歌
+     */
+    private static final String MAP_NEWMV = "newMv";
+    private static final Integer MAP_NEWMV_NUM = 1;
+    /**
+     * 华语
+     */
+    private static final String MAP_CHINA = "china";
+    private static final Integer MAP_CHINA_NUM = 2;
+    /**
+     * 欧美
+     */
+    private static final String MAP_EAA = "eaa";
+    private static final Integer MAP_EAA_NUM = 3;
+
+    /**
+     * 日韩
+     */
+    private static final String MAP_JAPAN_KOREA = "japanKorea";
+    private static final Integer MAP_JAPAN_NUM = 4;
+
+
     @Autowired
     private MvMapper mvMapper;
+
+    @Autowired
+    private MvSolr mvSolr;
+
     /**
      * 根据名字模糊查找mv
      * 先在数据库查询  如果没有就调用python脚本查询
@@ -42,4 +74,180 @@ public class MvServiceImpl implements MvService {
 //        return mv;
         return null;
     }
+
+    /**
+     * 根据id查询指定mv
+     *
+     * @param mvId mvid
+     * @return
+     */
+    @Override
+    public SolrBean<CustomMv> selectMvById(Integer mvId) {
+        SolrBean<CustomMv> customMvSolrBean = mvSolr.selectMvById(mvId);
+        return customMvSolrBean;
+    }
+
+    /**
+     * 根据当前播放的mv推荐相应的mv
+     *
+     * @param customMvSolrBean 当前播放的mv信息
+     * @return
+     */
+    @Override
+    public SolrBean<CustomMv> recommendMv(SolrBean<CustomMv> customMvSolrBean) {
+        SolrBean<CustomMv> solrBean = new SolrBean<CustomMv>();
+        //1.得到歌手名
+        Map<String, CustomMv> solrBeanMap = customMvSolrBean.getSolrBeanMap();
+        Mv mv = null;
+        for (Map.Entry<String, CustomMv> entry : solrBeanMap.entrySet()) {
+            mv = entry.getValue();
+        }
+        String mvName = mv.getMvName();
+        mvName = mvName.split(" - ")[0];
+        //得到该MV的所有歌手
+        String[] singers = mvName.split(",");
+
+        //将所有歌手的mv排序，取前10首，再存入solrBean中
+        for (int i = 0; i < singers.length; i++) {
+            SolrBean<CustomMv> customMvSolrBean1 = mvSolr.selectMvBySingerName(singers[i]);
+            if (i == 0) {
+                solrBean.setSolrBeanMap(customMvSolrBean1.getSolrBeanMap());
+            } else {
+                solrBean.getSolrBeanMap().putAll(customMvSolrBean1.getSolrBeanMap());
+            }
+        }
+
+        //2.遍历所有歌手mv，再随机获取6首mv
+        Random r = new Random();
+        List randomNum = new ArrayList();
+        while (randomNum.size() != 6) {
+            int num = r.nextInt(solrBean.getSolrBeanMap().size());
+            if (!randomNum.contains(num)) {
+                randomNum.add(num);
+            }
+        }
+
+        //最终的结果集
+        SolrBean<CustomMv> solrBeanMv = new SolrBean<CustomMv>();
+
+        int count = 0;
+        boolean flag = false;
+        for (Map.Entry<String, CustomMv> entry : solrBean.getSolrBeanMap().entrySet()) {
+            Map<String, CustomMv> customMvMap = new HashMap<String, CustomMv>();
+            customMvMap.put(entry.getKey(), entry.getValue());
+            for (int i = 0; i < randomNum.size(); i++) {
+                if (count == Integer.parseInt(randomNum.get(i).toString()) && !flag) {
+                    solrBeanMv.setSolrBeanMap(customMvMap);
+                    flag = true;
+                } else if (count == Integer.parseInt(randomNum.get(i).toString()) && flag) {
+                    solrBeanMv.getSolrBeanMap().putAll(customMvMap);
+                }
+            }
+            count++;
+        }
+
+
+        return solrBeanMv;
+    }
+
+
+    /**
+     * 查询展示mv页面的所有内容所需要的数据
+     *
+     * @param mvClassName
+     * @param page
+     * @return
+     */
+    @Override
+    public MvViewBean showService(int mvClassName, int page) {
+        MvViewBean mvViewBean = new MvViewBean();
+
+        //轮播图模块
+        //addSlideGraph(mvViewBean);
+
+        //top10模块
+        addTopTenMv(mvViewBean);
+
+        //热门mv
+        addHotMv(mvViewBean, mvClassName, page);
+
+        return mvViewBean;
+    }
+
+
+    /**
+     * 添加top集合
+     *
+     * @param mvViewBean
+     */
+    private void addTopTenMv(MvViewBean mvViewBean) {
+        SolrBean<CustomMv> customMvSolrBean = mvSolr.selectPopMv(10);
+        mvViewBean.setTopTenMvCollect(customMvSolrBean);
+    }
+
+    /**
+     * 添加mv
+     *
+     * @param mvViewBean
+     */
+    private void addHotMv(MvViewBean mvViewBean, int mvClassName, int page) {
+        Map<String,SolrBean<CustomMv>> hotMv = new HashMap<String,SolrBean<CustomMv>>();
+        //计算起始行
+        page = (page - 1) * 20;
+
+        if (mvClassName == 1) {
+            SolrBean<CustomMv> customMvSolrBean = mvSolr.selectNewMv(page);
+            hotMv.put(MAP_NEWMV,customMvSolrBean);
+
+        } else {
+            //得到查询语种
+            String languages = getLanguages(mvClassName);
+
+            SolrBean<CustomMv> customMvSolrBean = mvSolr.selectHotMvByClassName(languages, page);
+            if(mvClassName == 2){
+                hotMv.put(MAP_CHINA,customMvSolrBean);
+            }else if(mvClassName == 3){
+                hotMv.put(MAP_EAA,customMvSolrBean);
+            }else if(mvClassName == 4){
+                hotMv.put(MAP_JAPAN_KOREA,customMvSolrBean);
+            }
+        }
+        mvViewBean.setHotMvCollect(hotMv);
+    }
+
+
+    /**
+     * 判断语种
+     *
+     * @param mvClassName
+     * @return
+     */
+    private String getLanguages(int mvClassName) {
+        String languages = null;
+        switch (mvClassName) {
+            case 2:
+                languages = "华语";
+                break;
+            case 3:
+                languages = "欧美";
+                break;
+            case 4:
+                languages = "日韩";
+                break;
+            default:
+                languages = "未知";
+        }
+        return languages;
+    }
+
+
+    //    /**
+//     * 添加轮播图集合
+//     * @param mvViewBean
+//     */
+//    private void addSlideGraph(MvViewBean mvViewBean) {
+//
+//    }
+
+
 }

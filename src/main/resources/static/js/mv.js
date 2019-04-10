@@ -64,7 +64,7 @@ setInterval(function(){
 
 //内容 菜单部分
 var dds=document.getElementsByTagName("dd");
-for(let i=1;i<dds.length;i++){
+for(var i=1;i<dds.length;i++){
 	dds[i].onmouseover=function(){
 		var as=this.getElementsByTagName("a")[0];
 		this.style.background="#85d4f3";

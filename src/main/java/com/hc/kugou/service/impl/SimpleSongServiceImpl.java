@@ -50,12 +50,13 @@ public class SimpleSongServiceImpl implements SimpleSongService {
 
         //【添加要播放的音乐对象】
         SolrBean<CustomMusic> solrBean =  musicSolr.selectMusicById(musicId);
-        for(java.util.Map.Entry<String,CustomMusic> me : solrBean.getSolrBeanMap().entrySet()){
-            CustomMusic music = me.getValue();
+//        for(java.util.Map.Entry<String,CustomMusic> me : solrBean.getSolrBeanMap().entrySet()){
+        for(CustomMusic music : solrBean.getSolrBeanList()) {
             //获取到music的播放路径
-            music.setMusicPlayUrl(PythonUtils.getMusicPlayUrl(music.getMusicHashCode()));
+            music.setMusicPlayUrl(PythonUtils.getMusicPlayUrl(music.getHashCode()));
             simpleSongBean.setOneMusic(music);
         }
+//        }
         return simpleSongBean;
     }
 

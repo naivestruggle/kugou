@@ -39,7 +39,6 @@ public class IndexController {
         IndexViewBean indexViewBean = indexService.showService();
         Long end = System.currentTimeMillis();
 
-        System.out.println(indexViewBean.getNewMusicCollect().get("china").getSolrBeanMap());
         model.addAttribute("indexViewBean",indexViewBean);
 
 

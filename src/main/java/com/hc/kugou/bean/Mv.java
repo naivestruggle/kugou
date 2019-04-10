@@ -14,6 +14,10 @@ import java.sql.Date;
 @Data
 public class Mv implements Serializable {
     /**
+     * hashcode
+     */
+    private String hashCode;
+    /**
      * ID
      */
     private Long mvId;
@@ -61,5 +65,10 @@ public class Mv implements Serializable {
      * 播放量
      */
     private Long mvListenerCount;
+
+    /**
+     * 发行时间
+     */
+    private Date mvCreateTime;
 
 }

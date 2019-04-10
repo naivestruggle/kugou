@@ -13,6 +13,10 @@ import java.io.Serializable;
 @Data
 public class SingerInfo implements Serializable {
     /**
+     * hashcode
+     */
+    private String hashCode;
+    /**
      * ID
      */
     Long singerInfoId;

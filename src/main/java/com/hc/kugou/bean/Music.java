@@ -13,6 +13,11 @@ import java.sql.Date;
 @Data
 public class Music implements Serializable {
     /**
+     * hashcode
+     */
+    private String hashCode;
+    private String musicHashCode;
+    /**
      * ID
      */
     private Integer musicId;
@@ -41,11 +46,6 @@ public class Music implements Serializable {
      * 歌曲名
      */
     private String musicSongName;
-
-    /**
-     * 哈希值
-     */
-    private String musicHashCode;
 
     /**
      * 歌曲文件大小
