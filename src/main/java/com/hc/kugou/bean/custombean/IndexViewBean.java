@@ -25,7 +25,7 @@ public class IndexViewBean implements Serializable {
     /**
      * 热门歌手 4种  华语China 欧美EAA 韩国Korea  日本japan   每种15人
      */
-    private Map<String,SolrBean<Singer>> popSingerCollect;
+    private Map<String,SolrBean<CustomSinger>> popSingerCollect;
 
     /**
      * 推荐Mv

@@ -21,7 +21,7 @@ public class SingerServiceImpl implements SingerService {
     /**
      * 全部歌手
      */
-    private static final String MAP_ALL = "all";
+    private static final String MAP_ALL = "ALL";
     private static final int MAP_ALL_NUM = 1;
 
     /**
@@ -111,30 +111,84 @@ public class SingerServiceImpl implements SingerService {
     private void addSingers(SingerViewBean singerViewBean, int singerClassName, String singerSindex, int page) {
         Map<String, SolrBean<CustomSinger>> singerCollect = new HashMap<String, SolrBean<CustomSinger>>();
 
+        //设置当前页
+        singerViewBean.setPage(page);
+        //设置语种
+        singerViewBean.setSingerClassName(singerClassName);
         //计算起始行
-        if(page == 1){
-            page = 0;
-        }else{
-            page = 51 + (page - 2) * 63;
-        }
-
-
+        page = (page - 1) * 36;
+        //将a-z 或 A-Z全转换成大写
+        singerSindex = singerSindex.toUpperCase();
+        //设置A-Z
+        singerViewBean.setSingerSindex(singerSindex);
         if(singerClassName == MAP_ALL_NUM){
             //查全部歌手
+            SolrBean<CustomSinger> singerSolrBean = singerSolr.queryAllSinger(singerSindex, page);
+            singerCollect.put(MAP_ALL,singerSolrBean);
+            //计算总页数
+            int i = new Double(Math.ceil(singerSolrBean.getFoundNum() / 36.0)).intValue();
+            if(i > 5){
+                i = 5;
+            }
+            singerViewBean.setTotalPage(i);
         }else {
             //得到查询语种
             String languages = getLanguages(singerClassName);
 
-            //solr查询
-            singerSolr.singer(singerClassName,singerSindex,page);
-            //放入map
-//            singerSolr.singer();
-//            addMap(singerClassName,singerCollect,)
-//            if(singerClassName == MAP_CHINA_MALE_SINGER_NUM){
-//                singerCollect.put(MAP_CHINA_MALE_SINGER,);
-//            }else if(singerClassName == )
+            //solr查询,并放入
+            SolrBean<CustomSinger> singerSolrBean = singerSolr.singer(singerClassName, singerSindex, page);
+
+            //计算总页数
+            int i = new Double(Math.ceil(singerSolrBean.getFoundNum() / 36.0)).intValue();
+            if(i > 5){
+                i = 5;
+            }
+            singerViewBean.setTotalPage(i);
+
+            addMap(singerCollect,singerSolrBean,singerClassName);
         }
+
         singerViewBean.setSingerCollect(singerCollect);
+    }
+
+    /**
+     * 将查询出的singer集合添加到singerCollect
+     * @param singerCollect
+     * @param singerSolrBean
+     * @param singerClassName
+     */
+    private void addMap(Map<String, SolrBean<CustomSinger>> singerCollect, SolrBean<CustomSinger> singerSolrBean, int singerClassName) {
+        switch (singerClassName){
+            case MAP_CHINA_MALE_SINGER_NUM:
+                singerCollect.put(MAP_CHINA_MALE_SINGER,singerSolrBean);
+                break;
+            case MAP_CHINA_FEMALE_SINGER_NUM:
+                singerCollect.put(MAP_CHINA_FEMALE_SINGER,singerSolrBean);
+                break;
+            case MAP_CHINA_GROUP_SINGER_NUM:
+                singerCollect.put(MAP_CHINA_GROUP_SINGER,singerSolrBean);
+                break;
+            case MAP_JAPANKOREA_MALE_SINGER_NUM:
+                singerCollect.put(MAP_JAPANKOREA_MALE_SINGER,singerSolrBean);
+                break;
+            case MAP_JAPANKOREA_FEMALE_SINGER_NUM:
+                singerCollect.put(MAP_JAPANKOREA_FEMALE_SINGER,singerSolrBean);
+                break;
+            case MAP_JAPANKOREA_GROUP_SINGER_NUM:
+                singerCollect.put(MAP_JAPANKOREA_GROUP_SINGER,singerSolrBean);
+                break;
+            case MAP_EUROPEAMERICA_MALE_SINGER_NUM:
+                singerCollect.put(MAP_EUROPEAMERICA_MALE_SINGER,singerSolrBean);
+                break;
+            case MAP_EUROPEAMERICA_FEMALE_SINGER_NUM:
+                singerCollect.put(MAP_EUROPEAMERICA_FEMALE_SINGER,singerSolrBean);
+                break;
+            case MAP_EUROPEAMERICA_GROUP_SINGER_NUM:
+                singerCollect.put(MAP_EUROPEAMERICA_GROUP_SINGER,singerSolrBean);
+                break;
+        }
+
+
     }
 
 

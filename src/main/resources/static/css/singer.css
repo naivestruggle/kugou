@@ -82,6 +82,11 @@ a{font-size:14px;}
 	color:#fff;
 	font-size: 15px;
 }
+
+.lib_Menubox li.hover a{
+	color:#fff;
+}
+
 .lib_Contentbox{
 	clear:both;
 	height: 100%;
@@ -195,12 +200,20 @@ a{font-size:14px;}
 	bottom: 0;
 	cursor: default;
 }
-.pagination i{
+#pagination i a{
 	color: #424242;
 	font-style: italic;
 	padding: 0 5px;
 	margin: 0 3px;
+	cursor: pointer;
+	text-decoration: none;
 }
+
+#pagination i:hover{
+	font-weight: 700;
+}
+
+
 .current{
 	font-weight: 700;
 	font-style: italic;
@@ -219,4 +232,8 @@ a{font-size:14px;}
 .btnPage:hover{
 	color: #000;
 	text-decoration: none;
+}
+
+.lib_Menubox ul li a{
+	color: #000000;
 }
