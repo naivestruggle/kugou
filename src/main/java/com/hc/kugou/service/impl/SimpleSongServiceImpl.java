@@ -3,7 +3,7 @@ package com.hc.kugou.service.impl;
 import com.hc.commons.PythonUtils;
 import com.hc.commons.StringUtils;
 import com.hc.kugou.bean.custombean.CustomMusic;
-import com.hc.kugou.bean.custombean.CustomMusicPlayList;
+import com.hc.kugou.bean.custombean.MusicPlayList;
 import com.hc.kugou.bean.custombean.CustomUser;
 import com.hc.kugou.bean.custombean.SimpleSongBean;
 import com.hc.kugou.service.SimpleSongService;
@@ -43,20 +43,19 @@ public class SimpleSongServiceImpl implements SimpleSongService {
      * @return 播放对象
      */
     @Override
-    public SimpleSongBean play(Integer musicId, CustomUser loginedUser,CustomMusicPlayList sessionMusicPlayList) {
+    public SimpleSongBean play(Integer musicId, CustomUser loginedUser,MusicPlayList sessionMusicPlayList) {
         SimpleSongBean simpleSongBean = new SimpleSongBean();
         //【添加播放列表对象】
         addMusicPlayList(loginedUser, sessionMusicPlayList, simpleSongBean);
 
         //【添加要播放的音乐对象】
         SolrBean<CustomMusic> solrBean =  musicSolr.selectMusicById(musicId);
-//        for(java.util.Map.Entry<String,CustomMusic> me : solrBean.getSolrBeanMap().entrySet()){
         for(CustomMusic music : solrBean.getSolrBeanList()) {
             //获取到music的播放路径
+            System.out.println("hashcode:"+music.getHashCode()+":::=="+PythonUtils.getMusicPlayUrl(music.getHashCode()));
             music.setMusicPlayUrl(PythonUtils.getMusicPlayUrl(music.getHashCode()));
             simpleSongBean.setOneMusic(music);
         }
-//        }
         return simpleSongBean;
     }
 
@@ -67,12 +66,12 @@ public class SimpleSongServiceImpl implements SimpleSongService {
      * @param sessionMusicPlayList  session中的播放列表对象
      * @param simpleSongBean    单曲页面对象
      */
-    private void addMusicPlayList(CustomUser loginedUser, CustomMusicPlayList sessionMusicPlayList, SimpleSongBean simpleSongBean) {
+    private void addMusicPlayList(CustomUser loginedUser, MusicPlayList sessionMusicPlayList, SimpleSongBean simpleSongBean) {
         if(loginedUser == null){
             //如果没有登录用户  播放列表对象就从session中获取
             if(sessionMusicPlayList == null){
                 //如果播放列表对象为null
-                sessionMusicPlayList = new CustomMusicPlayList();
+                sessionMusicPlayList = new MusicPlayList();
                 //没有歌曲
                 sessionMusicPlayList.setHasMusicList(0);
                 //没有用户
@@ -84,10 +83,10 @@ public class SimpleSongServiceImpl implements SimpleSongService {
             //取出用户id
             Integer userId = loginedUser.getUserId();
             //取出redis中的播放列表对象
-            CustomMusicPlayList musicPlayList = (CustomMusicPlayList) objectRedisTemplate.opsForValue().get(StringUtils.PLAT_SONG_LIST_PRE+userId);
+            MusicPlayList musicPlayList = (MusicPlayList) objectRedisTemplate.opsForValue().get(StringUtils.PLAT_SONG_LIST_PRE+userId);
             if(musicPlayList == null){
                 //如果播放列表对象为null
-                musicPlayList = new CustomMusicPlayList();
+                musicPlayList = new MusicPlayList();
                 //没有歌曲
                 musicPlayList.setHasMusicList(0);
                 //有用户

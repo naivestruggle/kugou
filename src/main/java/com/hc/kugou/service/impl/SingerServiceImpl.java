@@ -2,10 +2,10 @@ package com.hc.kugou.service.impl;
 
 import com.hc.kugou.bean.custombean.CustomSinger;
 import com.hc.kugou.bean.custombean.SingerViewBean;
+import com.hc.kugou.service.SingerService;
 import com.hc.kugou.solr.SingerSolr;
 import com.hc.kugou.solr.SolrBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -79,7 +79,7 @@ public class SingerServiceImpl implements SingerService {
     private static final int MAP_EUROPEAMERICA_GROUP_SINGER_NUM = 10;
 
     @Autowired
-    SingerSolr singerSolr;
+    private SingerSolr singerSolr;
 
     /**
      * 查询展示Singer页面所需要的数据

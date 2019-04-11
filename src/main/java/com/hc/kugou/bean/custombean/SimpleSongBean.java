@@ -21,7 +21,7 @@ public class SimpleSongBean implements Serializable {
     /**
      * 播放列表对象
      */
-    private CustomMusicPlayList musicPlayList;
+    private MusicPlayList musicPlayList;
 
 
 }

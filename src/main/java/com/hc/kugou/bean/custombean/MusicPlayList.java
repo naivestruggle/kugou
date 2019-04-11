@@ -3,6 +3,7 @@ package com.hc.kugou.bean.custombean;
 import com.hc.kugou.bean.Music;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
  * @Version:1.0
  */
 @Data
-public class CustomMusicPlayList {
+public class MusicPlayList implements Serializable {
     /**
      * 歌曲集合
      */

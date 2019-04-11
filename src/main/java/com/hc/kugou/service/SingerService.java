@@ -1,4 +1,4 @@
-package com.hc.kugou.service.impl;
+package com.hc.kugou.service;
 
 import com.hc.kugou.bean.custombean.SingerViewBean;
 

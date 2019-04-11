@@ -1,8 +1,7 @@
 package com.hc.kugou.controller;
 
 import com.hc.kugou.bean.custombean.SingerViewBean;
-import com.hc.kugou.service.impl.SingerService;
-import com.hc.kugou.solr.SingerSolr;
+import com.hc.kugou.service.SingerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

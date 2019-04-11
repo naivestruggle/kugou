@@ -1,7 +1,7 @@
 package com.hc.kugou.controller;
 
 import com.hc.commons.StringUtils;
-import com.hc.kugou.bean.custombean.CustomMusicPlayList;
+import com.hc.kugou.bean.custombean.MusicPlayList;
 import com.hc.kugou.bean.custombean.CustomUser;
 import com.hc.kugou.bean.custombean.IndexViewBean;
 import com.hc.kugou.bean.custombean.SimpleSongBean;
@@ -29,10 +29,6 @@ public class IndexController {
     @Autowired
     private IndexService indexService;
 
-    @Autowired
-    private SimpleSongService simpleSongService;
-
-
     @GetMapping("index.html")
     public String fun1(Model model){
         Long start = System.currentTimeMillis();
@@ -47,18 +43,4 @@ public class IndexController {
         return "index";
     }
 
-    @GetMapping("simpleSong.html/{musicId}")
-    public String fun2(@PathVariable("musicId") Integer musicId, Model model, HttpSession session){
-        //得到当前登录对象
-        CustomUser loginedUser = (CustomUser)session.getAttribute(StringUtils.LOGINED_USER);
-        System.out.println("获取到的歌曲id："+musicId);
-        System.out.println("当前登录用户对象："+loginedUser);
-
-        //取出当前session中的播放列表对象
-        CustomMusicPlayList sessionMusicPlayList = (CustomMusicPlayList)session.getAttribute(StringUtils.PLAT_SONG_LIST_PRE);
-        //得到单曲播放页面对象
-        SimpleSongBean simpleSongBean = simpleSongService.play(musicId,loginedUser,sessionMusicPlayList);
-        model.addAttribute("simpleSongBean",simpleSongBean);
-        return "playsong";
-    }
 }

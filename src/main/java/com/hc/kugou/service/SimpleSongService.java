@@ -1,6 +1,6 @@
 package com.hc.kugou.service;
 
-import com.hc.kugou.bean.custombean.CustomMusicPlayList;
+import com.hc.kugou.bean.custombean.MusicPlayList;
 import com.hc.kugou.bean.custombean.CustomUser;
 import com.hc.kugou.bean.custombean.SimpleSongBean;
 
@@ -18,5 +18,5 @@ public interface SimpleSongService {
      * @param loginedUser   登录对象
      * @return  播放对象
      */
-    SimpleSongBean play(Integer musicId, CustomUser loginedUser, CustomMusicPlayList sessionMusicPlayList);
+    SimpleSongBean play(Integer musicId, CustomUser loginedUser, MusicPlayList sessionMusicPlayList);
 }

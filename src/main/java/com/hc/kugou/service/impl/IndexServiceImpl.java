@@ -31,24 +31,24 @@ public class IndexServiceImpl implements IndexService {
     /**
      * 华语
      */
-    private static final String CHINA = "1";
+    private static final String CHINA = "china";
     /**
      * 欧美
      */
-    private static final String EAA = "2";
+    private static final String EAA = "eaa";
     /**
      * 日本
      */
-    private static final String JAPAN = "3";
+    private static final String JAPAN = "japan";
     /**
      * 韩国
      */
-    private static final String KOREA = "4";
+    private static final String KOREA = "korea";
 
     /**
      * 日韩
      */
-    private static final String JAPAN_KOREA = "5";
+    private static final String JAPAN_KOREA = "japanKorea";
 
 
 

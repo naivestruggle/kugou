@@ -3,6 +3,7 @@ package com.hc.kugou.bean.custombean;
 import com.hc.kugou.solr.SolrBean;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Map;
  * @create 2019-05-08 17:07
  */
 @Data
-public class MvViewBean {
+public class MvViewBean implements Serializable {
 
     /**
      * 5首轮播图mv

@@ -77,15 +77,4 @@ public class KugouApplicationTests {
     }
 
 
-    @Test
-    public void addHashCode(){
-        SolrManager<Music> solrManager = SolrManager.getInstance(Music.class,client);
-        for(int i=1;i<=78142;i++){
-            SolrBean<Music> solrBean = solrManager.find(i+"",null,null,null,0,1,new String[]{"music_id"},new String[]{"music_hash_code"},null);
-            Integer id = i;
-            String hashCode = solrBean.getSolrBeanList().get(0).getMusicHashCode();
-            musicMapper.updateHashCode(id,hashCode);
-            System.out.println(i+"......"+hashCode);
-        }
-    }
 }

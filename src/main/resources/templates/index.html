@@ -229,8 +229,9 @@
       		</div>
       		<div class="song_name">
       			<div class="song_tab">
-					<!-- 新歌首发  四种语言 -->
-					<ul id="tabT1" th:id="tabT+${i}" th:each="i:${#numbers.sequence(1,4)}"  th:with="solrBeanList=${indexViewBean.newMusicCollect.get(i).solrBeanList}">
+
+					<!-- 新歌首发  华语 -->
+					<ul id="tabT1" th:with="solrBeanList=${indexViewBean.newMusicCollect.get('china').solrBeanList}">
 						<ul class="m1" style="display: block;" >
 							<li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 7}">
 								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
@@ -266,154 +267,116 @@
 						</ul>
 					</ul>
 
+					<!-- 新歌首发  韩国 -->
+					<ul id="tabT2" th:with="solrBeanList=${indexViewBean.newMusicCollect.get('korea').solrBeanList}">
+						<ul class="m1" style="display: block;" >
+							<li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 7}">
+								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+									<span class="songName" th:text="${bean.musicAudioName}">李宇春 - 动物世界【动物世界电影主题曲】</span>
+									<span class="songTips"></span>
+									<span class="songTime" th:text="${bean.musicTimes}">03:43</span>
+									<span class="icon-play"></span>
+									<span class="icon-download"></span>
+								</a>
+							</li>
+						</ul>
+						<ul class="m2" style="display: none;" >
+							<li  th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 8 &&  beanStat.index le 15}">
+								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+									<span class="songName" th:text="${bean.musicAudioName}">印子月 - 可以的话</span>
+									<span class="songTips"></span>
+									<span class="songTime" th:text="${bean.musicTimes}">03:56</span>
+									<span class="icon-play"></span>
+									<span class="icon-download"></span>
+								</a>
+							</li>
+						</ul>
+						<ul class="m3" style="display: none;">
+							<li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 16}">
+								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+									<span class="songName" th:text="${bean.musicAudioName}">薛明媛 - 格林童话</span>
+									<span class="songTips"></span>
+									<span class="songTime" th:text="${bean.musicTimes}">03:56</span>
+									<span class="icon-play"></span>
+									<span class="icon-download"></span>
+								</a>
+							</li>
+						</ul>
+					</ul>
 
-<!--					&lt;!&ndash; 新歌首发  华语 &ndash;&gt;-->
-<!--					<ul id="tabT1" th:with="solrBeanList=${indexViewBean.newMusicCollect.get('china').solrBeanList}">-->
-<!--						<ul class="m1" style="display: block;" >-->
-<!--							<li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 7}">-->
-<!--								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">-->
-<!--									<span class="songName" th:text="${bean.musicAudioName}">李宇春 - 动物世界【动物世界电影主题曲】</span>-->
-<!--									<span class="songTips"></span>-->
-<!--									<span class="songTime" th:text="${bean.musicTimes}">03:43</span>-->
-<!--									<span class="icon-play"></span>-->
-<!--									<span class="icon-download"></span>-->
-<!--								</a>-->
-<!--							</li>-->
-<!--						</ul>-->
-<!--						<ul class="m2" style="display: none;" >-->
-<!--							<li  th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 8 &&  beanStat.index le 15}">-->
-<!--								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">-->
-<!--									<span class="songName" th:text="${bean.musicAudioName}">印子月 - 可以的话</span>-->
-<!--									<span class="songTips"></span>-->
-<!--									<span class="songTime" th:text="${bean.musicTimes}">03:56</span>-->
-<!--									<span class="icon-play"></span>-->
-<!--									<span class="icon-download"></span>-->
-<!--								</a>-->
-<!--							</li>-->
-<!--						</ul>-->
-<!--						<ul class="m3" style="display: none;">-->
-<!--							<li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 16}">-->
-<!--								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">-->
-<!--									<span class="songName" th:text="${bean.musicAudioName}">薛明媛 - 格林童话</span>-->
-<!--									<span class="songTips"></span>-->
-<!--									<span class="songTime" th:text="${bean.musicTimes}">03:56</span>-->
-<!--									<span class="icon-play"></span>-->
-<!--									<span class="icon-download"></span>-->
-<!--								</a>-->
-<!--							</li>-->
-<!--						</ul>-->
-<!--					</ul>-->
+					<!-- 新歌首发  欧美 -->
+					<ul id="tabT3" th:with="solrBeanList=${indexViewBean.newMusicCollect.get('eaa').solrBeanList}">
+						<ul class="m1" style="display: block;" >
+							<li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 7}">
+								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+									<span class="songName" th:text="${bean.musicAudioName}">李宇春 - 动物世界【动物世界电影主题曲】</span>
+									<span class="songTips"></span>
+									<span class="songTime" th:text="${bean.musicTimes}">03:43</span>
+									<span class="icon-play"></span>
+									<span class="icon-download"></span>
+								</a>
+							</li>
+						</ul>
+						<ul class="m2" style="display: none;" >
+							<li  th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 8 &&  beanStat.index le 15}">
+								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+									<span class="songName" th:text="${bean.musicAudioName}">印子月 - 可以的话</span>
+									<span class="songTips"></span>
+									<span class="songTime" th:text="${bean.musicTimes}">03:56</span>
+									<span class="icon-play"></span>
+									<span class="icon-download"></span>
+								</a>
+							</li>
+						</ul>
+						<ul class="m3" style="display: none;">
+							<li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 16}">
+								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+									<span class="songName" th:text="${bean.musicAudioName}">薛明媛 - 格林童话</span>
+									<span class="songTips"></span>
+									<span class="songTime" th:text="${bean.musicTimes}">03:56</span>
+									<span class="icon-play"></span>
+									<span class="icon-download"></span>
+								</a>
+							</li>
+						</ul>
+					</ul>
 
-<!--					&lt;!&ndash; 新歌首发  韩国 &ndash;&gt;-->
-<!--					<ul id="tabT2" th:with="solrBeanList=${indexViewBean.newMusicCollect.get('korea').solrBeanList}">-->
-<!--						<ul class="m1" style="display: block;" >-->
-<!--							<li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 7}">-->
-<!--								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">-->
-<!--									<span class="songName" th:text="${bean.musicAudioName}">李宇春 - 动物世界【动物世界电影主题曲】</span>-->
-<!--									<span class="songTips"></span>-->
-<!--									<span class="songTime" th:text="${bean.musicTimes}">03:43</span>-->
-<!--									<span class="icon-play"></span>-->
-<!--									<span class="icon-download"></span>-->
-<!--								</a>-->
-<!--							</li>-->
-<!--						</ul>-->
-<!--						<ul class="m2" style="display: none;" >-->
-<!--							<li  th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 8 &&  beanStat.index le 15}">-->
-<!--								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">-->
-<!--									<span class="songName" th:text="${bean.musicAudioName}">印子月 - 可以的话</span>-->
-<!--									<span class="songTips"></span>-->
-<!--									<span class="songTime" th:text="${bean.musicTimes}">03:56</span>-->
-<!--									<span class="icon-play"></span>-->
-<!--									<span class="icon-download"></span>-->
-<!--								</a>-->
-<!--							</li>-->
-<!--						</ul>-->
-<!--						<ul class="m3" style="display: none;">-->
-<!--							<li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 16}">-->
-<!--								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">-->
-<!--									<span class="songName" th:text="${bean.musicAudioName}">薛明媛 - 格林童话</span>-->
-<!--									<span class="songTips"></span>-->
-<!--									<span class="songTime" th:text="${bean.musicTimes}">03:56</span>-->
-<!--									<span class="icon-play"></span>-->
-<!--									<span class="icon-download"></span>-->
-<!--								</a>-->
-<!--							</li>-->
-<!--						</ul>-->
-<!--					</ul>-->
-
-<!--					&lt;!&ndash; 新歌首发  欧美 &ndash;&gt;-->
-<!--					<ul id="tabT3" th:with="solrBeanList=${indexViewBean.newMusicCollect.get('eaa').solrBeanList}">-->
-<!--						<ul class="m1" style="display: block;" >-->
-<!--							<li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 7}">-->
-<!--								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">-->
-<!--									<span class="songName" th:text="${bean.musicAudioName}">李宇春 - 动物世界【动物世界电影主题曲】</span>-->
-<!--									<span class="songTips"></span>-->
-<!--									<span class="songTime" th:text="${bean.musicTimes}">03:43</span>-->
-<!--									<span class="icon-play"></span>-->
-<!--									<span class="icon-download"></span>-->
-<!--								</a>-->
-<!--							</li>-->
-<!--						</ul>-->
-<!--						<ul class="m2" style="display: none;" >-->
-<!--							<li  th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 8 &&  beanStat.index le 15}">-->
-<!--								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">-->
-<!--									<span class="songName" th:text="${bean.musicAudioName}">印子月 - 可以的话</span>-->
-<!--									<span class="songTips"></span>-->
-<!--									<span class="songTime" th:text="${bean.musicTimes}">03:56</span>-->
-<!--									<span class="icon-play"></span>-->
-<!--									<span class="icon-download"></span>-->
-<!--								</a>-->
-<!--							</li>-->
-<!--						</ul>-->
-<!--						<ul class="m3" style="display: none;">-->
-<!--							<li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 16}">-->
-<!--								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">-->
-<!--									<span class="songName" th:text="${bean.musicAudioName}">薛明媛 - 格林童话</span>-->
-<!--									<span class="songTips"></span>-->
-<!--									<span class="songTime" th:text="${bean.musicTimes}">03:56</span>-->
-<!--									<span class="icon-play"></span>-->
-<!--									<span class="icon-download"></span>-->
-<!--								</a>-->
-<!--							</li>-->
-<!--						</ul>-->
-<!--					</ul>-->
-
-<!--					&lt;!&ndash; 新歌首发 日本 &ndash;&gt;-->
-<!--					<ul id="tabT4" th:with="solrBeanList=${indexViewBean.newMusicCollect.get('japan').solrBeanList}">-->
-<!--						<ul class="m1" style="display: block;" >-->
-<!--							<li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 7}">-->
-<!--								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">-->
-<!--									<span class="songName" th:text="${bean.musicAudioName}">李宇春 - 动物世界【动物世界电影主题曲】</span>-->
-<!--									<span class="songTips"></span>-->
-<!--									<span class="songTime" th:text="${bean.musicTimes}">03:43</span>-->
-<!--									<span class="icon-play"></span>-->
-<!--									<span class="icon-download"></span>-->
-<!--								</a>-->
-<!--							</li>-->
-<!--						</ul>-->
-<!--						<ul class="m2" style="display: none;" >-->
-<!--							<li  th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 8 &&  beanStat.index le 15}">-->
-<!--								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">-->
-<!--									<span class="songName" th:text="${bean.musicAudioName}">印子月 - 可以的话</span>-->
-<!--									<span class="songTips"></span>-->
-<!--									<span class="songTime" th:text="${bean.musicTimes}">03:56</span>-->
-<!--									<span class="icon-play"></span>-->
-<!--									<span class="icon-download"></span>-->
-<!--								</a>-->
-<!--							</li>-->
-<!--						</ul>-->
-<!--						<ul class="m3" style="display: none;">-->
-<!--							<li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 16}">-->
-<!--								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">-->
-<!--									<span class="songName" th:text="${bean.musicAudioName}">薛明媛 - 格林童话</span>-->
-<!--									<span class="songTips"></span>-->
-<!--									<span class="songTime" th:text="${bean.musicTimes}">03:56</span>-->
-<!--									<span class="icon-play"></span>-->
-<!--									<span class="icon-download"></span>-->
-<!--								</a>-->
-<!--							</li>-->
-<!--						</ul>-->
-<!--					</ul>-->
+					<!-- 新歌首发 日本 -->
+					<ul id="tabT4" th:with="solrBeanList=${indexViewBean.newMusicCollect.get('japan').solrBeanList}">
+						<ul class="m1" style="display: block;" >
+							<li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 7}">
+								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+									<span class="songName" th:text="${bean.musicAudioName}">李宇春 - 动物世界【动物世界电影主题曲】</span>
+									<span class="songTips"></span>
+									<span class="songTime" th:text="${bean.musicTimes}">03:43</span>
+									<span class="icon-play"></span>
+									<span class="icon-download"></span>
+								</a>
+							</li>
+						</ul>
+						<ul class="m2" style="display: none;" >
+							<li  th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 8 &&  beanStat.index le 15}">
+								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+									<span class="songName" th:text="${bean.musicAudioName}">印子月 - 可以的话</span>
+									<span class="songTips"></span>
+									<span class="songTime" th:text="${bean.musicTimes}">03:56</span>
+									<span class="icon-play"></span>
+									<span class="icon-download"></span>
+								</a>
+							</li>
+						</ul>
+						<ul class="m3" style="display: none;">
+							<li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 16}">
+								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+									<span class="songName" th:text="${bean.musicAudioName}">薛明媛 - 格林童话</span>
+									<span class="songTips"></span>
+									<span class="songTime" th:text="${bean.musicTimes}">03:56</span>
+									<span class="icon-play"></span>
+									<span class="icon-download"></span>
+								</a>
+							</li>
+						</ul>
+					</ul>
       			</div>
       		</div>
 
@@ -626,7 +589,7 @@
     			<div class="itemContent">
 
 					<!-- 热门歌手  华语 -->
-    				<div class="singers" id="singers1" th:with="solrBeanList=${indexViewBean.popSingerCollect.get('1').solrBeanList}" style="width: 330px;height: 270px;position: relative;">
+    				<div class="singers" id="singers1" th:with="solrBeanList=${indexViewBean.popSingerCollect.get('china').solrBeanList}" style="width: 330px;height: 270px;position: relative;">
 						<!-- 热门歌手  大图 -->
     					<div class="cptMid1" th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 1}">
     						<a href="singer.html"><img th:src="${bean.singerImgurl}"/>
@@ -649,7 +612,7 @@
 
 
 					<!-- 热门歌手  欧美 -->
-    				<div class="singers" id="singers2" th:with="solrBeanList=${indexViewBean.popSingerCollect.get('2').solrBeanList}"  style="width: 330px;height: 270px;position: relative;display: none;">
+    				<div class="singers" id="singers2" th:with="solrBeanList=${indexViewBean.popSingerCollect.get('eaa').solrBeanList}"  style="width: 330px;height: 270px;position: relative;display: none;">
 						<!-- 热门歌手  大图 -->
 						<div class="cptMid1" th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 1}">
 							<a href="singer.html"><img th:src="${bean.singerImgurl}"/>
@@ -671,7 +634,7 @@
     				</div>
 
 					<!-- 热门歌手  日韩 -->
-					<div class="singers" id="singers3" th:with="solrBeanList=${indexViewBean.popSingerCollect.get('5').solrBeanList}"  style="width: 330px;height: 270px;position: relative;display: none;">
+					<div class="singers" id="singers3" th:with="solrBeanList=${indexViewBean.popSingerCollect.get('japanKorea').solrBeanList}"  style="width: 330px;height: 270px;position: relative;display: none;">
 						<!-- 热门歌手  大图 -->
 						<div class="cptMid1" th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 1}">
 							<a href="singer.html"><img th:src="${bean.singerImgurl}"/>
