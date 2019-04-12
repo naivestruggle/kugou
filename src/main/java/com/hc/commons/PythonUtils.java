@@ -29,7 +29,8 @@ public class PythonUtils {
      */
     public static String getMusicPlayUrl(String musicHashCode){
         String exe = "python";
-        String command = PythonUtils.class.getResource("/python/playUrl.py").toString().replace("file:/","").replace("/", File.separator);
+        String command = PythonUtils.class.getResource("/python/download_songUrl.py").toString().replace("file:/","").replace("/", File.separator);
+
         String[] cmdArr = new String[] { exe, command,musicHashCode };
         StringBuffer sb = new StringBuffer();
         Process process = null;

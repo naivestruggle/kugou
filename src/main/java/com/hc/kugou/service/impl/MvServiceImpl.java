@@ -168,6 +168,15 @@ public class MvServiceImpl implements MvService {
     }
 
     /**
+     * 添加轮播
+     * @param mvViewBean
+     */
+    private void addSlideGraph(MvViewBean mvViewBean) {
+        SolrBean<CustomMv> slideGraphCollect = mvSolr.selectHotFiveMv();
+        mvViewBean.setSlideGraphCollect(slideGraphCollect);
+    }
+
+    /**
      * 根据mv的id更新访问量  mv访问量+1  mv对应的歌手访问量+1
      *
      * @param id mvID
@@ -195,18 +204,35 @@ public class MvServiceImpl implements MvService {
      */
     private void addHotMv(MvViewBean mvViewBean, int mvClassName, int page) {
         Map<String,SolrBean<CustomMv>> hotMv = new HashMap<String,SolrBean<CustomMv>>();
+        //设置分类
+        mvViewBean.setMvClassName(mvClassName);
+        //设置当前页
+        mvViewBean.setPage(page);
         //计算起始行
         page = (page - 1) * 20;
 
         if (mvClassName == MAP_NEWMV_NUM) {
             SolrBean<CustomMv> customMvSolrBean = mvSolr.selectNewMv(page);
             hotMv.put(MAP_NEWMV,customMvSolrBean);
+            Long foundNum = customMvSolrBean.getFoundNum();
+            //设置总条数
+            mvViewBean.setTotalMv(foundNum);
+            //设置总页数
+            mvViewBean.setTotalPage(new Double(Math.ceil(foundNum/20.0)).intValue());
 
         } else {
             //得到查询语种
             String languages = getLanguages(mvClassName);
 
             SolrBean<CustomMv> customMvSolrBean = mvSolr.selectHotMvByClassName(languages, page);
+
+
+            Long foundNum = customMvSolrBean.getFoundNum();
+            //设置总条数
+            mvViewBean.setTotalMv(foundNum);
+            //设置总页数
+            mvViewBean.setTotalPage(new Double(Math.ceil(foundNum/20.0)).intValue());
+
             if(mvClassName == MAP_CHINA_NUM){
                 hotMv.put(MAP_CHINA,customMvSolrBean);
             }else if(mvClassName == MAP_EAA_NUM){

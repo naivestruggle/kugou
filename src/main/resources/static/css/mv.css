@@ -100,7 +100,8 @@ section{
 	height: 29px;
 	position: absolute;
 	right: 15px;
-	bottom: 5px;
+	bottom: -13px;
+	z-index: 998;
 }
 .dot li{
 	width: 12px;
@@ -298,7 +299,7 @@ a{font-size:14px;}
 .tab-pane ul{
 	padding:0;
 	width: 101%;
-	height: 200px;
+	height: auto;
 }
 .tab-pane li{
 	width: 140px;
@@ -334,3 +335,46 @@ a{font-size:14px;}
 	font-size: 14px;
 	cursor: default;
 }
+
+/*分页*/
+#pagination{
+	float: left;
+	width: 100%;
+	text-align: center;
+}
+
+#pagination i a{
+	color: #424242;
+	font-style: italic;
+	padding: 0 5px;
+	margin: 0 3px;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+#pagination i:hover{
+	font-weight: 700;
+}
+
+
+.current{
+	font-weight: 700;
+	font-style: italic;
+	border-bottom: 1px solid #c5c5c5;
+	margin: 0 8px;
+}
+.btnPage{
+	color: #424242;
+	font-style: normal;
+	font-size: 12px;
+	font-family: '微软雅黑';
+	padding: 0 5px;
+	border-bottom: 1px solid snow;
+	margin: 0 3px;
+	cursor: pointer;
+}
+.btnPage:hover{
+	color: #000;
+	text-decoration: none;
+}
+

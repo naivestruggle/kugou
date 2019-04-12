@@ -16,7 +16,7 @@ public class MvViewBean implements Serializable {
     /**
      * 5首轮播图mv
      */
-    //private SolrBean<CustomMv> slideGraphCollect;
+    private SolrBean<CustomMv> slideGraphCollect;
 
     /**
      * 热播mv 10首
@@ -28,5 +28,28 @@ public class MvViewBean implements Serializable {
      * 热门mv  20首
      */
     private Map<String,SolrBean<CustomMv>> hotMvCollect;
+
+
+    /**
+     * 热门mv的总条数
+     */
+    private Long totalMv;
+
+
+    /**
+     * 当前页
+     */
+    private Integer page;
+
+
+    /**
+     * 总页数
+     */
+    private Integer totalPage;
+
+    /**
+     * 分类
+     */
+    private Integer mvClassName;
 
 }

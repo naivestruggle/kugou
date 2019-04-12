@@ -48,7 +48,15 @@ public class MvController {
 
     @GetMapping({"mv.html/{mvClassName}/{page}"})
     public String mvHtml(@PathVariable("mvClassName") int mvClassName,@PathVariable("page") int page, Model model){
+
+        //如果页数超出范围
+        if(page < 1){
+            page = 1;
+        }
+
+
         MvViewBean mvViewBean =  mvService.showService(mvClassName,page);
+
 
         model.addAttribute("mvViewBean",mvViewBean);
 

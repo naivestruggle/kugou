@@ -29,7 +29,7 @@ public class MvSolr {
      */
     public SolrBean<CustomMv> selectPopMv(int n) {
         if(this.solrManager == null) {
-            this.solrManager = solrManager = SolrManager.getInstance(CustomMv.class, client);
+            this.solrManager = SolrManager.getInstance(CustomMv.class, client);
         }
         SolrBean<CustomMv> solrBean = solrManager.find("mv_class_name:*",null,new String[]{MvTool.MV_LISTENER_COUNT_FIELD},SolrManager.SORT_RULE_DESC,0,n,
                 new String[]{MvTool.MV_CLASS_NAME_FIELD},MvTool.MV_POINT_FIELDS_ALL,null);
@@ -43,7 +43,7 @@ public class MvSolr {
      */
     public SolrBean<CustomMv> selectMvById(Integer mvId) {
         if(this.solrManager == null) {
-            this.solrManager = solrManager = SolrManager.getInstance(CustomMv.class, client);
+            this.solrManager = SolrManager.getInstance(CustomMv.class, client);
         }
         SolrBean<CustomMv> solrBean = solrManager.find(mvId+"",null,null,null,0,1,
                 new String[]{MvTool.MV_ID_FIELD},MvTool.MV_POINT_FIELDS_ALL,null);
@@ -57,7 +57,7 @@ public class MvSolr {
      */
     public SolrBean<CustomMv> selectMvBySingerName(String singerName){
         if(this.solrManager == null) {
-            this.solrManager = solrManager = SolrManager.getInstance(CustomMv.class, client);
+            this.solrManager = SolrManager.getInstance(CustomMv.class, client);
         }
         SolrBean<CustomMv> solrBean = solrManager.find(singerName,null,new String[]{MvTool.MV_LISTENER_COUNT_FIELD},1,0,10,
                 new String[]{MvTool.MV_NAME_FIELD},MvTool.MV_POINT_FIELDS_ALL,null);
@@ -73,7 +73,7 @@ public class MvSolr {
      */
     public SolrBean<CustomMv> selectHotMvByClassName(String className, int n){
         if(this.solrManager == null) {
-            this.solrManager = solrManager = SolrManager.getInstance(CustomMv.class, client);
+            this.solrManager = SolrManager.getInstance(CustomMv.class, client);
         }
         SolrBean<CustomMv> solrBean = solrManager.find(className, null, new String[]{MvTool.MV_LISTENER_COUNT_FIELD}, 1, n, 20,
                 new String[]{MvTool.MV_CLASS_NAME_FIELD}, MvTool.MV_POINT_FIELDS_ALL, null);
@@ -87,9 +87,23 @@ public class MvSolr {
      */
     public SolrBean<CustomMv> selectNewMv(int n) {
         if(this.solrManager == null) {
-            this.solrManager = solrManager = SolrManager.getInstance(CustomMv.class, client);
+            this.solrManager = SolrManager.getInstance(CustomMv.class, client);
         }
         SolrBean<CustomMv> solrBean = solrManager.find("mv_class_name:*", null, new String[]{MvTool.MV_LISTENER_COUNT_FIELD}, 1, n, 20,
+                new String[]{MvTool.MV_NAME_FIELD}, MvTool.MV_POINT_FIELDS_ALL, null);
+        return solrBean;
+    }
+
+
+    /**
+     * 5首轮播图上的mv
+     * @return
+     */
+    public SolrBean<CustomMv> selectHotFiveMv() {
+        if(this.solrManager == null) {
+            this.solrManager = SolrManager.getInstance(CustomMv.class, client);
+        }
+        SolrBean<CustomMv> solrBean = solrManager.find("mv_class_name:*", null, new String[]{MvTool.MV_LISTENER_COUNT_FIELD}, 1, 0, 5,
                 new String[]{MvTool.MV_NAME_FIELD}, MvTool.MV_POINT_FIELDS_ALL, null);
         return solrBean;
     }
