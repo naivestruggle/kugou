@@ -138,6 +138,9 @@ public class SolrManager<T>{
         SolrInputDocument doc = new SolrInputDocument();
         for (Field field:fields){
             String fieldName = field.getName();
+            if(fieldName.contains("ashCode")){
+                continue;
+            }
             //得到数据库字段   也是域名
             String sqlString = StringUtils.humpToLine(fieldName);
 

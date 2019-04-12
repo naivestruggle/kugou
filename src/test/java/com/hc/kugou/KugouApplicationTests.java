@@ -1,6 +1,7 @@
 package com.hc.kugou;
 
 import com.hc.kugou.bean.Music;
+import com.hc.kugou.bean.User;
 import com.hc.kugou.bean.custombean.CustomMusic;
 import com.hc.kugou.bean.custombean.CustomUser;
 import com.hc.kugou.bean.custombean.IndexViewBean;
@@ -76,5 +77,14 @@ public class KugouApplicationTests {
         }
     }
 
+    @Test
+    public void fun2(){
+        Long id = 78143l;
+        for(int i=0;i<10;i++) {
+            Music music = musicMapper.selectMusicById(id++);
+            SolrManager<Music> solrManager = SolrManager.getInstance(Music.class,client);
+            solrManager.add(music.getMusicHashCode(),music);
+        }
+    }
 
 }

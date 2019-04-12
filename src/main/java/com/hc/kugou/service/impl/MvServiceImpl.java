@@ -156,7 +156,7 @@ public class MvServiceImpl implements MvService {
         MvViewBean mvViewBean = new MvViewBean();
 
         //轮播图模块
-        //addSlideGraph(mvViewBean);
+        addSlideGraph(mvViewBean);
 
         //top10模块
         addTopTenMv(mvViewBean);
