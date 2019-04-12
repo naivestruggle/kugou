@@ -20,12 +20,7 @@ public class MusicSolr {
 
     private SolrManager<CustomMusic> solrManager;
 
-    @Autowired
-    private MvSolr mvSolr;
 
-    public MusicSolr(){
-
-    }
 
     /**
      * 查询新歌   按照播放量排序
@@ -53,17 +48,15 @@ public class MusicSolr {
         }
         SolrBean<CustomMusic> solrBean = solrManager.find(musicId+"",null,null,null,0,1,
                 new String[]{MusicTool.MUSIC_ID_FIELD},MusicTool.MUSIC_POINT_FIELDS_ALL,null);
-//        for(java.util.Map.Entry<String,CustomMusic> me:solrBean.getSolrBeanMap().entrySet()){
-//            CustomMusic music = me.getValue();
-//            if(music.getMusicHaveMv() == 1){
-//                //如果有mv  就将mv存入
-//                SolrBean<CustomMv> mvSolrBean = mvSolr.selectMvById(music.getMusicVideoId());
-//                for(java.util.Map.Entry<String,CustomMv> me1:mvSolrBean.getSolrBeanMap().entrySet()){
-//                    CustomMv customMv = me1.getValue();
-//                    music.setMv(customMv);
-//                }
-//            }
-//        }
         return solrBean;
+    }
+
+    /**
+     * 根据传入的musicId查询music集合
+     * @param musicId   id  多值以英文逗号分割
+     * @return  SolrBean
+     */
+    public SolrBean<CustomMusic> selectMusicByMusicPlayListMusicId(String musicId){
+        return null;
     }
 }

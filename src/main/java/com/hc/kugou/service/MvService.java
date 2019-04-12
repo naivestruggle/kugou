@@ -42,4 +42,10 @@ public interface MvService {
      * @return
      */
     MvViewBean showService(int mvClassName, int page);
+
+    /**
+     * 根据mv的id更新访问量  mv访问量+1  mv对应的歌手访问量+1
+     * @param id    mvID
+     */
+    void updateMvListenerCount(Integer id);
 }

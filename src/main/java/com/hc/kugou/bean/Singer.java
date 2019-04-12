@@ -13,9 +13,13 @@ import java.io.Serializable;
 @Data
 public class Singer implements Serializable {
     /**
-     * hashcode
+     * hashcode     solr中的
      */
     private String hashCode;
+    /**
+     * hashcode  mysql中的
+     */
+    private String singerHashCode;
     /**
      * ID
      */

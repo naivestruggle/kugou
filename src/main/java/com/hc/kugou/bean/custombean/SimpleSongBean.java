@@ -1,5 +1,6 @@
 package com.hc.kugou.bean.custombean;
 
+import com.hc.kugou.bean.MusicPlayList;
 import com.hc.kugou.bean.custombean.CustomMusic;
 import lombok.Data;
 

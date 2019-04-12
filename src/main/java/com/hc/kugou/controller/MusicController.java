@@ -1,8 +1,9 @@
 package com.hc.kugou.controller;
 
 import com.hc.commons.StringUtils;
+import com.hc.kugou.bean.MusicPlayList;
+import com.hc.kugou.bean.custombean.CustomMusicPlayList;
 import com.hc.kugou.bean.custombean.CustomUser;
-import com.hc.kugou.bean.custombean.MusicPlayList;
 import com.hc.kugou.bean.custombean.SimpleSongBean;
 import com.hc.kugou.service.SimpleSongService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class MusicController {
         System.out.println("当前登录用户对象："+loginedUser);
 
         //取出当前session中的播放列表对象
-        MusicPlayList sessionMusicPlayList = (MusicPlayList)session.getAttribute(StringUtils.PLAT_SONG_LIST_PRE);
+        CustomMusicPlayList sessionMusicPlayList = (CustomMusicPlayList)session.getAttribute(StringUtils.PLAT_SONG_LIST_PRE);
         //得到单曲播放页面对象
         SimpleSongBean simpleSongBean = simpleSongService.play(musicId,loginedUser,sessionMusicPlayList);
         model.addAttribute("simpleSongBean",simpleSongBean);

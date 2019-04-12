@@ -1,19 +1,11 @@
 package com.hc.kugou.controller;
 
-import com.hc.commons.StringUtils;
-import com.hc.kugou.bean.custombean.MusicPlayList;
-import com.hc.kugou.bean.custombean.CustomUser;
 import com.hc.kugou.bean.custombean.IndexViewBean;
-import com.hc.kugou.bean.custombean.SimpleSongBean;
 import com.hc.kugou.service.IndexService;
-import com.hc.kugou.service.SimpleSongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-
-import javax.servlet.http.HttpSession;
 
 /**
  * @Author:

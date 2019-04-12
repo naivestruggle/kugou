@@ -13,9 +13,13 @@ import java.sql.Date;
 @Data
 public class Music implements Serializable {
     /**
-     * hashcode
+     * hashcode     solr中的
      */
     private String hashCode;
+    /**
+     * hashcode   mysql中的
+     */
+    private String musicHashCode;
     /**
      * ID
      */

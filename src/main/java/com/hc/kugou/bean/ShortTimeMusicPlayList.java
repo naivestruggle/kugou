@@ -8,10 +8,10 @@ import java.util.List;
 /**
  * @Author:
  * @Date:2019/4/11
- * @Description:com.hc.kugou.bean
+ * @Description:com.hc.kugou.bean   临时播放列表
  * @Version:1.0
  */
-public class ShortTimeMusicList implements Serializable {
+public class ShortTimeMusicPlayList implements Serializable {
     /**
      * hashcode
      */

@@ -2,8 +2,9 @@ package com.hc.kugou.service.impl;
 
 import com.hc.commons.PythonUtils;
 import com.hc.commons.StringUtils;
+import com.hc.kugou.bean.MusicPlayList;
 import com.hc.kugou.bean.custombean.CustomMusic;
-import com.hc.kugou.bean.custombean.MusicPlayList;
+import com.hc.kugou.bean.custombean.CustomMusicPlayList;
 import com.hc.kugou.bean.custombean.CustomUser;
 import com.hc.kugou.bean.custombean.SimpleSongBean;
 import com.hc.kugou.service.SimpleSongService;
@@ -12,9 +13,6 @@ import com.hc.kugou.solr.SolrBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @Author:
@@ -43,7 +41,7 @@ public class SimpleSongServiceImpl implements SimpleSongService {
      * @return 播放对象
      */
     @Override
-    public SimpleSongBean play(Integer musicId, CustomUser loginedUser,MusicPlayList sessionMusicPlayList) {
+    public SimpleSongBean play(Integer musicId, CustomUser loginedUser, CustomMusicPlayList sessionMusicPlayList) {
         SimpleSongBean simpleSongBean = new SimpleSongBean();
         //【添加播放列表对象】
         addMusicPlayList(loginedUser, sessionMusicPlayList, simpleSongBean);
@@ -59,6 +57,16 @@ public class SimpleSongServiceImpl implements SimpleSongService {
         return simpleSongBean;
     }
 
+    /**
+     * 更新music的访问量   music访问量+1  对应歌手访问量+1  对应专辑访问量+1
+     *
+     * @param id 要更新的musicid对象
+     */
+    @Override
+    public void updateLentenerCount(Integer id) {
+
+    }
+
 
     /**
      * 添加播放列表对象
@@ -66,16 +74,16 @@ public class SimpleSongServiceImpl implements SimpleSongService {
      * @param sessionMusicPlayList  session中的播放列表对象
      * @param simpleSongBean    单曲页面对象
      */
-    private void addMusicPlayList(CustomUser loginedUser, MusicPlayList sessionMusicPlayList, SimpleSongBean simpleSongBean) {
+    private void addMusicPlayList(CustomUser loginedUser, CustomMusicPlayList sessionMusicPlayList, SimpleSongBean simpleSongBean) {
         if(loginedUser == null){
             //如果没有登录用户  播放列表对象就从session中获取
             if(sessionMusicPlayList == null){
                 //如果播放列表对象为null
-                sessionMusicPlayList = new MusicPlayList();
+                sessionMusicPlayList = new CustomMusicPlayList();
                 //没有歌曲
-                sessionMusicPlayList.setHasMusicList(0);
+                sessionMusicPlayList.setMusicPlayListHasMusic(0);
                 //没有用户
-                sessionMusicPlayList.setHasUser(0);
+                sessionMusicPlayList.setMusicPlayListHasLoginedUser(0);
             }
             simpleSongBean.setMusicPlayList(sessionMusicPlayList);
         }else {
@@ -88,13 +96,14 @@ public class SimpleSongServiceImpl implements SimpleSongService {
                 //如果播放列表对象为null
                 musicPlayList = new MusicPlayList();
                 //没有歌曲
-                musicPlayList.setHasMusicList(0);
+                sessionMusicPlayList.setMusicPlayListHasMusic(0);
                 //有用户
-                musicPlayList.setHasUser(1);
+                sessionMusicPlayList.setMusicPlayListHasLoginedUser(1);
                 //设置用户id
-                musicPlayList.setUserId(userId);
+                musicPlayList.setMusicPlayListUserId(userId);
             }
             simpleSongBean.setMusicPlayList(musicPlayList);
         }
     }
+
 }

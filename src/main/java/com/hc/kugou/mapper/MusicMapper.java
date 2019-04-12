@@ -1,6 +1,8 @@
 package com.hc.kugou.mapper;
 
-import com.hc.kugou.bean.Music;import org.apache.ibatis.annotations.Param;
+import com.hc.kugou.bean.Music;
+import com.hc.kugou.bean.custombean.CustomMusicPlayList;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -72,4 +74,12 @@ public interface MusicMapper {
 
     @Update("update kugou_music set music_hash_code=#{hashCode} where music_id=#{id}")
     void updateHashCode(@Param("id")Integer id, @Param("hashCode")String hashCode);
+
+
+    /**
+     * 根据用户id查询出用户的播放列表对象
+     * @param id    用户id
+     * @return  播放列表对象
+     */
+    CustomMusicPlayList selectMusicPlayListByUserId(@Param("id")Integer id);
 }

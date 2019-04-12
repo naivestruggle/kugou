@@ -8,15 +8,19 @@ import java.sql.Date;
 /**
  * @Author:
  * @Date:2019/4/30
- * @Description:com.hc.kugou.bean
+ * @Description:com.hc.kugou.bean   mv
  * @Version:1.0
  */
 @Data
 public class Mv implements Serializable {
     /**
-     * hashcode
+     * hashcode     solr中的
      */
     private String hashCode;
+    /**
+     * hashcode  mysql中的
+     */
+    private String mvHashCode;
     /**
      * ID
      */

@@ -93,4 +93,5 @@ public class MvSolr {
                 new String[]{MvTool.MV_NAME_FIELD}, MvTool.MV_POINT_FIELDS_ALL, null);
         return solrBean;
     }
+
 }
