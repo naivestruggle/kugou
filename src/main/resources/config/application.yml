@@ -33,7 +33,7 @@ spring:
 
 server:
   servlet:
-    context-path: /kugou
+    context-path: /yinmeng
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/mapper/*.xml

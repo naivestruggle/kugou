@@ -224,7 +224,7 @@ li{
     width: 113px;
     height: 146px;
     background-color: #252a32;
-    z-index: 99;
+    z-index: 9999;
 
 }
 .secondMenu li{
@@ -401,6 +401,7 @@ a{
     background: #f6f6f6;
     padding: 7px 10px;
     transition: 0.2s;
+    /*position:absolute;*/
 }
 .kg_popup_txt_tl {
     float: left;
@@ -484,4 +485,25 @@ a{
     background-position: -25px -125px;
 }
 
-
+/************关于登录的样式开始***********/
+/*登录按钮的不可点击样式*/
+.not_allow_login{
+    pointer-events:none;
+    background-color: #accaed;
+}
+/*用户名输入的错误提示框*/
+.loginInputErrorMsg{
+    background-color: #ffd1a7;
+    color: red;
+    padding: 10px;
+    /*margin-top: -20px;*/
+    /*position: relative;*/
+    /*left:100px;*/
+    /*top:100px;*/
+}
+#KgPopupUserNameErrorMsg{
+    margin-left: 357px;
+}
+#KgPopupUserPwdErrorMsg{
+    margin-left: 368px;
+}

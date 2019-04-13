@@ -82,3 +82,39 @@ $(".login").click(function () {
     $("#load").css("display","block");
     $("#cover").css("display","block");
 });
+
+//用户名框输入事件
+$("#KgPopupUserName").on("input",function (){
+    loginInputInfoAjax($("#KgPopupUserNameErrorMsg"))
+});
+//用户名框失焦事件
+$("#KgPopupUserName").on("blur",function (){
+    loginInputInfoAjax($("#KgPopupUserName"))
+});
+//密码框输入事件
+$("#KgPopupUserPwd").on("input",function (){
+    loginInputInfoAjax($("#KgPopupUserPwd"))
+});
+//密码框失焦事件
+$("#KgPopupUserPwd").on("blur",function (){
+    loginInputInfoAjax($("#KgPopupUserPwd"))
+});
+
+
+//登录信息输入校验
+function loginInputInfoAjax(obj){
+    var userAccount = $("#KgPopupUserName").val();
+    var userPassword = $("#KgPopupUserPwd").val();
+    var autoLogin = $("#autoLogin").attr("checked");
+
+    console.log("obj:"+obj)
+    console.log("userAccount:"+userAccount)
+    console.log("userPassword:"+userPassword)
+    console.log("autoLogin:"+autoLogin)
+    console.log("----------------------------------")
+}
+
+//登录
+function login(){
+
+}

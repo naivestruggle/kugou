@@ -10,7 +10,7 @@
         <link href="" rel="stylesheet" th:href="@{/css/headbar.css}"/>
         <div id="head">
             <h1 class="logo">
-                <a href="#"><img src="../public/img/index/logo.png" th:src="@{/img/index/logo.png}"/></a>
+                <a href="#"><img style="width:150px;margin-top: -20px;" th:src="@{/img/index/logo.png}"/></a>
             </h1>
             <div class="search">
                 <div class="search_input">
@@ -52,7 +52,7 @@
                 </ul>
                 <ul class="subNav">
                     <li><a target="_blank" href="LiveMusic.html" class="icon-nav1">音乐直播</a></li>
-                    <li><a target="_blank" href="live.html" class="icon-nav2">酷狗LIVE</a></li>
+                    <li><a target="_blank" href="live.html" class="icon-nav2">音梦LIVE</a></li>
                     <li><a target="_blank" href="musicMan.html" class="icon-nav3">音乐人</a></li>
                     <li><a target="_blank" href="anchor.html" class="icon-nav4">游戏</a></li>
                     <li><a target="_blank" href="mall.html" class="icon-nav5">商城</a></li>
@@ -65,31 +65,35 @@
         <div id="load">
             <div class="load_content">
                 <a class="load_close" id="closebtn"><i></i></a>
-                <div style="margin-bottom: 10px;"><h4>登录酷狗音乐</h4></div>
+                <div style="margin-bottom: 10px;"><h4>登录音梦音乐</h4></div>
                 <div class="zhanghao">
                     <form class="login_form">
                         <div class="kg_popup_txt_area">
                             <div class="kg_popup_txt_box kg_popup_txt_box_username">
-                                <label class="kg_popup_txt_tl" for="KgPopupUserName">帐号：</label><input id="KgPopupUserName" name="UserName" type="text" class="kg_popup_txt_ipt" placeholder="用户名/手机/邮箱">
+                                <label class="kg_popup_txt_tl" for="KgPopupUserName">帐号：</label>
+                                <input id="KgPopupUserName" name="UserName" type="text" class="kg_popup_txt_ipt" placeholder="用户名/手机/邮箱">
+                                <em id="KgPopupUserNameErrorMsg" class="loginInputErrorMsg">123123123</em>
                             </div>
                         </div>
                         <div class="kg_popup_txt_area">
                             <div class="kg_popup_txt_box kg_popup_txt_box_password">
-                                <label class="kg_popup_txt_tl" for="KgPopupUserPwd">密码：</label><input id="KgPopupUserPwd" name="UserPwd" type="password" placeholder="请输入密码" class="kg_popup_txt_ipt">
+                                <label class="kg_popup_txt_tl" for="KgPopupUserPwd">密码：</label>
+                                <input id="KgPopupUserPwd" name="UserPwd" type="password" placeholder="请输入密码" class="kg_popup_txt_ipt">
                                 <a href="" class="kg_popup_forget_pwd" target="_blank">忘记密码</a></div>
+                                <em id="KgPopupUserPwdErrorMsg" class="loginInputErrorMsg">123123123</em>
                         </div>
                         <div class="kg_popup_tool_area kg_popup_bottom10">
                             <div class="kg_popup_tool_lt">
                                 <input class="kg_popup_checkbox" type="checkbox" name="autoLogin" id="autoLogin" checked="">
                                 <label for="autoLogin">下次自动登录</label></div>
                             <div class="kg_popup_tool_rt">
-                                <a href="http://www.kugou.com/reg/web/" class="kg_popup_now_reg" target="_blank">立即注册</a>
+                                <a href="register.html" class="kg_popup_now_reg" target="_blank">立即注册</a>
                             </div>
                         </div>
                         <div class="kg_popup_txt_area">
                             <div class="kg_popup_login_box" id="kg_popup_login_btn_box">
                                 <p class="empty_box" id="empty_box"></p>
-                                <input type="button" class="kg_popup_login_btn" id="KgPopupLoginBtn" value="登录">
+                                <input type="button" onclick="login()" class="kg_popup_login_btn not_allow_login" id="KgPopupLoginBtn" value="登录">
                             </div>
                         </div>
                         <div class="kg_popup_tool_area position_absole">

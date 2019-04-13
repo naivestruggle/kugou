@@ -69,4 +69,17 @@ public class CustomMusic extends Music implements Serializable {
         }
         return list;
     }
+
+
+    @Override
+    public String getMusicAuthorName(){
+        String str = super.getMusicAuthorName();
+        return str.substring(0,str.length()-1);
+    }
+
+    @Override
+    public String getMusicAlbumName(){
+        String str = super.getMusicAlbumName();
+        return str.substring(0,str.length()-1);
+    }
 }

@@ -21,6 +21,9 @@ public class MusicSolr {
     private SolrManager<CustomMusic> solrManager;
 
 
+    public MusicSolr(){
+
+    }
 
     /**
      * 查询新歌   按照播放量排序

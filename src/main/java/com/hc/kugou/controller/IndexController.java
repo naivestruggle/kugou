@@ -21,6 +21,11 @@ public class IndexController {
     @Autowired
     private IndexService indexService;
 
+    @GetMapping(path = {"/","index"})
+    public String fun3(Model model){
+        return fun1(model);
+    }
+
     @GetMapping("index.html")
     public String fun1(Model model){
         Long start = System.currentTimeMillis();

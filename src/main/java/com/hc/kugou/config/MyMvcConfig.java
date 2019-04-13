@@ -29,7 +29,7 @@ public class MyMvcConfig{
         WebMvcConfigurer webMvcConfigurer = new WebMvcConfigurer(){
             @Override
             public void addViewControllers(ViewControllerRegistry registry) {
-                registry.addViewController("/").setViewName("index.html");
+//                registry.addViewController("/").setViewName("index");
                 registry.addViewController("/anchor.html").setViewName("anchor");
 //                registry.addViewController("/index.html").setViewName("index");
                 registry.addViewController("/download.html").setViewName("download");

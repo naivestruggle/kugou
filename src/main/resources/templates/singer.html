@@ -9,6 +9,9 @@
 </head>
 <body>
 <!-- 头 -->
+<!-- 引入头部 -->
+<div th:replace="commons/head::headbar(activeUri='index')"></div>
+<div>
 <section>
     <ul class="nav nav-pills">
         <li class="nav-item"><a th:class="${singerViewBean.singerCollect.get('ALL')}!=null?'nav-link active':'nav-link'"
@@ -207,7 +210,11 @@
         </div>
     </div>
 </section>
+</div>
+
 <!-- 尾巴 -->
+<!-- 引入底部 -->
+<div th:replace="commons/foot::footbar"></div>
 
 <script src="../js/jquery.js" type="text/javascript" th:src="@{/js/jquery-3.2.1.js}" charset="utf-8"></script>
 <script src="../js/bootstrap.min.js" type="text/javascript" th:src="@{/js/bootstrap.min.js}" charset="utf-8"></script>

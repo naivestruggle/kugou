@@ -22,8 +22,8 @@
                                                                                style="width: 663px;height: 325px"
                                                                                id="picc"/></a>
                 <span class="tag1" th:class="tag+${beanStat.count}">
-  						<a href="mv.html" class="name" th:href="@{/mvPlay.html/}+${bean.mvId}" th:text="${bean.mvName}">吴亦凡 - Like That<em></em></a>
-  					</span>
+                        <a href="mv.html" class="name" th:href="@{/mvPlay.html/}+${bean.mvId}" th:text="${bean.mvName}">吴亦凡 - Like That<em></em></a>
+                    </span>
             </li>
         </ul>
         <ul class="dot">
@@ -139,7 +139,8 @@
     </div>
 </section>
 
-
+<!-- 引入底部 -->
+<div th:replace="commons/foot::footbar"></div>
 
 <!-- 尾巴 -->
 <script src="../public/js/jquery.min.js" th:src="@{/js/jquery.min.js}" type="text/javascript" charset="utf-8"></script>

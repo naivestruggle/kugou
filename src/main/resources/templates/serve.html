@@ -7,106 +7,109 @@
     <link rel="stylesheet" href="../public/css/serve.css" th:href="@{/css/serve.css}">
     <link rel="stylesheet" href="../public/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
   </head>
-  <body>
-<!-- 头 -->
+  <div>
 
-    <section>
-      <ul class="nav nav-pills row">
-        <li class="nav-item col"><a class="nav-link active" href="#NO1" data-toggle="pill">酷狗软件客服中心</a></li>
-        <li class="nav-item col"><a href="#NO2" class="nav-link" data-toggle="pill">酷狗商城客服中心</a></li>
-        <li class="nav-item col"><a href="#NO3" class="nav-link" data-toggle="pill">酷狗直播客服中心</a></li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane active" id="NO1">
-          <div class="contents_checked">
-            <div class="formident">
-              <b>您的身份：</b>            <!--加粗标签-->
-              <input name="ident" type="radio" value="normal" style="width: 20px;border: 0;height: 13px;line-height: 13px;vertical-align: top;margin-top: 2px !important;"/>普通用户
-              <input name="ident" type="radio" value="VIP"/>VIP用户(尊享绿色通道服务)
-            </div>
-            <div class="choseplat">
-              <b>选择平台：</b>
-              <span id="a1" class="a1">电脑版</span>
-              <span id="a2" class="a2">安卓手机</span>
-              <span id="a3" class="a3">iPhone手机</span>
-              <span id="a4" class="a4">Mac版</span>
-            </div>
-            <div class="extra1">
-              <img src="../public/img/serve/tipsIcon.jpg" th:src="@{/img/serve/tipsIcon.jpg}"/>
-              如果乐库打不开，请检查是否安装运行了广告助手
-              <img src="../public/img/serve/adHelp.jpg" th:src="@{/img/serve/adHelp.jpg}"/>，
-              如果是请卸载，
-              <a href="" class="showlog">查看卸载方法>></a>
-              <div class="hidepic" ></div>
-            </div>
-            <div class="feedback">
-              <b style="margin-top: 0;">反馈内容：</b>
-              <textarea  id="contentt" name="content" style="color:rgb(0,0,0);font-size: 12px;width: 600px;overflow: hidden;border:1px solid rgb(102,102,102);padding: 5px;margin-top: 0px;margin-bottom: 0px;height: 158px;outline: none;"></textarea>
-            </div>
-            <div class="upload">
-              <b style="margin-top:0px;">上传截图：</b>
-              <a href="javascript" hidefocus="true" class="btn_file">浏览</a>
-              <span style="color:silver;font-size: 12px;">不超过2M</span>
-            </div>
-            <div class="account">
-              <b>酷狗账号：</b>
-              <input type="text" name="accountname" id="kugouaccount">
-            </div>
-            <div class="contact">
-              <b>联系方式：</b>
-              <input name="qq" type="text" id="inputqq" style="font-size: 12px;font-family: 宋体，Arial,Verdana;padding-left: 3px;" placeholder="输入联系QQ" onfocus="setvalue(this,1)"onblur="setValue(this,2)" maxlength="16" write="false">
-              <span style="color: silver;font-size: 13px;">仅酷狗工作人员可见，请暂时取消好友时的验证限制</span>
-            </div>
-            <div class="send">
-              <a hidefocus="true" id="send"  href="javascript" style="margin-left: 100px;">发送</a>
-              <span style="font-size: 13px; line-height: 35px;color: red;font-weight: normal;display: none;" class="macqq">欢迎加入酷狗Mac版反馈QQ群（552745790），反馈更迅速！</span>
-            </div>
+<!-- 引入头部 -->
+<div th:replace="commons/head::headbar(activeUri='index')"></div>
+  <section>
+    <ul class="nav nav-pills row">
+      <li class="nav-item col"><a class="nav-link active" href="#NO1" data-toggle="pill">酷狗软件客服中心</a></li>
+      <li class="nav-item col"><a href="#NO2" class="nav-link" data-toggle="pill">酷狗商城客服中心</a></li>
+      <li class="nav-item col"><a href="#NO3" class="nav-link" data-toggle="pill">酷狗直播客服中心</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="NO1">
+        <div class="contents_checked">
+          <div class="formident">
+            <b>您的身份：</b>            <!--加粗标签-->
+            <input name="ident" type="radio" value="normal" style="width: 20px;border: 0;height: 13px;line-height: 13px;vertical-align: top;margin-top: 2px !important;"/>普通用户
+            <input name="ident" type="radio" value="VIP"/>VIP用户(尊享绿色通道服务)
+          </div>
+          <div class="choseplat">
+            <b>选择平台：</b>
+            <span id="a1" class="a1">电脑版</span>
+            <span id="a2" class="a2">安卓手机</span>
+            <span id="a3" class="a3">iPhone手机</span>
+            <span id="a4" class="a4">Mac版</span>
+          </div>
+          <div class="extra1">
+            <img src="../public/img/serve/tipsIcon.jpg" th:src="@{/img/serve/tipsIcon.jpg}"/>
+            如果乐库打不开，请检查是否安装运行了广告助手
+            <img src="../public/img/serve/adHelp.jpg" th:src="@{/img/serve/adHelp.jpg}"/>，
+            如果是请卸载，
+            <a href="" class="showlog">查看卸载方法>></a>
+            <div class="hidepic" ></div>
+          </div>
+          <div class="feedback">
+            <b style="margin-top: 0;">反馈内容：</b>
+            <textarea  id="contentt" name="content" style="color:rgb(0,0,0);font-size: 12px;width: 600px;overflow: hidden;border:1px solid rgb(102,102,102);padding: 5px;margin-top: 0px;margin-bottom: 0px;height: 158px;outline: none;"></textarea>
+          </div>
+          <div class="upload">
+            <b style="margin-top:0px;">上传截图：</b>
+            <a href="javascript" hidefocus="true" class="btn_file">浏览</a>
+            <span style="color:silver;font-size: 12px;">不超过2M</span>
+          </div>
+          <div class="account">
+            <b>酷狗账号：</b>
+            <input type="text" name="accountname" id="kugouaccount">
+          </div>
+          <div class="contact">
+            <b>联系方式：</b>
+            <input name="qq" type="text" id="inputqq" style="font-size: 12px;font-family: 宋体，Arial,Verdana;padding-left: 3px;" placeholder="输入联系QQ" onfocus="setvalue(this,1)"onblur="setValue(this,2)" maxlength="16" write="false">
+            <span style="color: silver;font-size: 13px;">仅酷狗工作人员可见，请暂时取消好友时的验证限制</span>
+          </div>
+          <div class="send">
+            <a hidefocus="true" id="send"  href="javascript" style="margin-left: 100px;">发送</a>
+            <span style="font-size: 13px; line-height: 35px;color: red;font-weight: normal;display: none;" class="macqq">欢迎加入酷狗Mac版反馈QQ群（552745790），反馈更迅速！</span>
           </div>
         </div>
-        <div class="tab-pane" id="NO2">
-          <div class="contents">
-            <table border="0" cellspacing="0" cellpadding="0" class="table">
-              <tbody>
-                <tr class="tr1">
-                  <td colspan="4">自助服务</td>
-                </tr>
-                <tr class="tr2">
-                  <td>
-                    <div class="tablepic"><img src="../public/img/serve/s_icon_01.jpg" th:src="@{/img/serve/s_icon_01.jpg}" style="margin: 0 auto;"/></div>
-                    <div class="onlinekf">
-                      <span><a href="" style="color: #fff;">在线客服</a></span>
-                    </div>
-                    <div class="server">
-                      <p>周一至周五 9:30-18:30</p>
-                      <p>（仅受理订单相关咨询）</p>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="tablepic"><img src="../public/img/serve/s_icon_02.jpg" th:src="@{/img/serve/s_icon_02.jpg}"/></div>
-                    <h2>400-626-0878</h2>
-                    <div class="server">
-                      <p>周一至周五 9:30-18:30</p>
-                      <p>（仅受理订单相关咨询）</p>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="tablepic"><img src="../public/img/serve/s_icon_03.jpg" th:src="@{/img/serve/s_icon_03.jpg}"/></div>
-                    <h2 style="font-weight: normal;">投诉建议</h2>
-                    <p>Service@kugou.com</p>
-                  </td>
-                  <td>
-                    <div class="tablepic"><img src="../public/img/serve/s_icon_04.jpg" th:src="@{/img/serve/s_icon_04.jpg}"/></div>
-                    <h2 style="font-weight: normal;">真伪查询</h2>
-                    <p>请刮开产品上的防伪标签获取防伪码</p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="tab-pane" id="NO3">跳转界面</div>
       </div>
-    </section>
+      <div class="tab-pane" id="NO2">
+        <div class="contents">
+          <table border="0" cellspacing="0" cellpadding="0" class="table">
+            <tbody>
+              <tr class="tr1">
+                <td colspan="4">自助服务</td>
+              </tr>
+              <tr class="tr2">
+                <td>
+                  <div class="tablepic"><img src="../public/img/serve/s_icon_01.jpg" th:src="@{/img/serve/s_icon_01.jpg}" style="margin: 0 auto;"/></div>
+                  <div class="onlinekf">
+                    <span><a href="" style="color: #fff;">在线客服</a></span>
+                  </div>
+                  <div class="server">
+                    <p>周一至周五 9:30-18:30</p>
+                    <p>（仅受理订单相关咨询）</p>
+                  </div>
+                </td>
+                <td>
+                  <div class="tablepic"><img src="../public/img/serve/s_icon_02.jpg" th:src="@{/img/serve/s_icon_02.jpg}"/></div>
+                  <h2>400-626-0878</h2>
+                  <div class="server">
+                    <p>周一至周五 9:30-18:30</p>
+                    <p>（仅受理订单相关咨询）</p>
+                  </div>
+                </td>
+                <td>
+                  <div class="tablepic"><img src="../public/img/serve/s_icon_03.jpg" th:src="@{/img/serve/s_icon_03.jpg}"/></div>
+                  <h2 style="font-weight: normal;">投诉建议</h2>
+                  <p>Service@kugou.com</p>
+                </td>
+                <td>
+                  <div class="tablepic"><img src="../public/img/serve/s_icon_04.jpg" th:src="@{/img/serve/s_icon_04.jpg}"/></div>
+                  <h2 style="font-weight: normal;">真伪查询</h2>
+                  <p>请刮开产品上的防伪标签获取防伪码</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="tab-pane" id="NO3">跳转界面</div>
+    </div>
+  </section>
+<!-- 引入底部 -->
+<div th:replace="commons/foot::footbar"></div>
 
 <!-- 尾巴 -->
 

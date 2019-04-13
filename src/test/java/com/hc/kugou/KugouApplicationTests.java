@@ -39,12 +39,12 @@ public class KugouApplicationTests {
     private SingerMapper singerMapper;
     @Test
     public void contextLoads() {
-        Long time1 = System.currentTimeMillis();
-        IndexViewBean indexViewBean = indexService.showService();
-        Long time2 = System.currentTimeMillis();
-        Long time = time2-time1;
-        System.out.println(indexViewBean);
-        System.out.println("执行时间："+time+"ms");
+//        Long time1 = System.currentTimeMillis();
+//        IndexViewBean indexViewBean = indexService.showService();
+//        Long time2 = System.currentTimeMillis();
+//        Long time = time2-time1;
+//        System.out.println(indexViewBean);
+//        System.out.println("执行时间："+time+"ms");
     }
 
     @Autowired
@@ -52,7 +52,6 @@ public class KugouApplicationTests {
 
     @Autowired
     private MusicSolr musicSolr;
-
 
     /**
      * 得到UUID
@@ -65,26 +64,29 @@ public class KugouApplicationTests {
 
     @Test
     public void updateMusicSongName(){
-        //78142
-        for(long i=1;i<=78142;i++){
-            Music music = musicMapper.selectMusicById(i);
-            if(StringUtils.isEmpty(music.getMusicSongName())){
-                String name = music.getMusicAudioName();
-                name = name.split("-")[1].trim();
-                musicMapper.updateMusicSongName(i,name);
-            }
-            System.out.println(i);
-        }
+//        //78142
+//        for(long i=1;i<=78142;i++){
+//            Music music = musicMapper.selectMusicById(i);
+//            if(StringUtils.isEmpty(music.getMusicSongName())){
+//                String name = music.getMusicAudioName();
+//                name = name.split("-")[1].trim();
+//                musicMapper.updateMusicSongName(i,name);
+//            }
+//            System.out.println(i);
+//        }
     }
 
     @Test
     public void fun2(){
-        Long id = 78143l;
-        for(int i=0;i<10;i++) {
-            Music music = musicMapper.selectMusicById(id++);
-            SolrManager<Music> solrManager = SolrManager.getInstance(Music.class,client);
-            solrManager.add(music.getMusicHashCode(),music);
-        }
+//        Long id = 78143l;
+//        for(int i=0;i<10;i++) {
+//            Music music = musicMapper.selectMusicById(id++);
+//            SolrManager<Music> solrManager = SolrManager.getInstance(Music.class,client);
+//            solrManager.add(music.getMusicHashCode(),music);
+//        }
     }
+
+
+
 
 }

@@ -1,7 +1,15 @@
 index.html
 download.html
 list.html
-
+mv.html
+mvPlay.html
+playsong.html
+register.html
+serve.html
+singer.html
+songsheet.html
+songsheetInfo.html
+specialColumn.html
 
 no
 live.html
@@ -10,3 +18,7 @@ anchor.html
 mall.html
 LiveMusic.html
 musicMan.html
+radio.html
+recruit_sages.html
+txsinger.html
+vip.html

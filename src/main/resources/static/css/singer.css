@@ -9,7 +9,9 @@ li{
 	list-style: none;
 }
 section{
-	width: 53%;
+	width: 75%;
+	height: 655px;
+	margin-top: 30px;
 	margin: auto;
 }
 
@@ -89,7 +91,7 @@ a{font-size:14px;}
 
 .lib_Contentbox{
 	clear:both;
-	height: 100%;
+	height: 93%;
 	padding-top: 12px;
 	margin-left:10px;
 	position: relative;
@@ -107,7 +109,7 @@ a{font-size:14px;}
 .singer_pic .pic{
 	display: block;
 	height: 80px;
-	background: url("../img/other.png") -82px -152px no-repeat;
+	background: url("../img/images/other.png") -82px -152px no-repeat;
 	padding: 3px 0px 0px 4px;
 	position: relative;
 }

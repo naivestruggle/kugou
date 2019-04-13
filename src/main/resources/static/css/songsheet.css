@@ -1,0 +1,195 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-size: 14px;
+}
+a, a:hover,a:focus {
+    text-decoration: none;
+}
+
+ul {
+    padding: 0;
+}
+
+.wrap {
+    width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    height: auto;
+}
+
+.fl {
+    width: 210px;
+}
+
+.tab {
+    list-style: none;
+    padding: 0;
+}
+
+.tab li {
+    width: 210px;
+    height: 36px;
+    line-height: 36px;
+    margin-bottom: 18px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.active {
+    background: #169af3;
+    color: #fff;
+}
+
+.main {
+    display: none;
+}
+
+.selected {
+    display: block;
+}
+
+.fr {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+#info {
+    list-style: none;
+}
+
+.fr #info li {
+    width: 770px;
+    height: 124px;
+    margin-bottom: 16px;
+    position: relative;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+#info li .pic {
+    display: block;
+    float: left;
+    width: 108px;
+    background: url(../img/songsheet/other.png) no-repeat -119px -407px;
+    padding: 4px 0 0 4px;
+    margin-right: 5px;
+    height: 119px;
+}
+
+#info li .pic:hover {
+    background-position: -2px -408px;
+}
+
+.pic img {
+    width: 100px;
+    height: 100px;
+}
+
+.detail {
+    float: left;
+    width: 650px;
+}
+
+.top {
+    color: #333;
+    font-weight: 400;
+    font-style: normal;
+    height: 25px;
+}
+
+.top em {
+    color: #333;
+    font-style: normal;
+    display: inline;
+    padding: 0;
+    float: right;
+    width: 150px;
+    height: 20px;
+    text-align: right;
+}
+
+.top strong {
+    color: #323232;
+    font-size: 14px;
+    height: 18px;
+    padding: 0 0 7px;
+    font-weight: 400;
+}
+
+.top strong a {
+    color: #333;
+}
+
+.text {
+    color: #999;
+    margin: 5px 13px 6px 0;
+    height: 40px;
+    margin-top: 0;
+    clear: both;
+    line-height: 22px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    -moz-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+}
+
+.btn {
+    margin-top:13px;
+    outline: 0;
+    border:0;
+}
+.btn a{
+    display: inline-block;
+    vertical-align: middle;
+    zoom: 1;
+    border: 0 solid #dbdbdb;
+    font-size: 12px;
+}
+.btn a,.btn span{
+    border-color: #169af3;
+}
+
+.btn i {
+    width: 14px;
+    height: 14px;
+    background: url(../img/songsheet/icon_splice.png) no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    padding-left: 9px;
+    position: absolute;
+    top: 50%;
+    margin-top: -8px;
+}
+
+.playall .t2 {
+    background-position: -570px -90px;
+    left: 22px;
+}
+
+.share .t2 {
+    background-position: -300px -90px;
+    left: 15px;
+}
+
+.btn span {
+    padding: 7px 20px 7px 35px;
+    background: #169af3;
+    color: #fff;
+    border-color: #169af3;
+    position: relative;
+    float: left;
+    display: inline;
+    border: 1px solid #dbdbdb;
+    line-height: 100%;
+    overflow: hidden;
+    zoom: 1;
+    cursor: pointer;
+    border-radius: 2px;
+}
