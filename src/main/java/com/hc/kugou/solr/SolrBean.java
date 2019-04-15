@@ -23,9 +23,4 @@ public class SolrBean<T> implements Serializable {
      * 查询结果条数
      */
     private Long foundNum;
-
-    /**
-     * 高亮显示
-     */
-    private String highlight;
 }

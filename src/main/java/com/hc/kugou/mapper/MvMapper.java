@@ -1,7 +1,6 @@
 package com.hc.kugou.mapper;
 
 import com.hc.kugou.bean.Mv;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 

@@ -10,8 +10,6 @@ import com.hc.kugou.solr.SolrBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -184,6 +182,18 @@ public class MvServiceImpl implements MvService {
     @Override
     public void updateMvListenerCount(Integer id) {
 
+    }
+
+    /**
+     * 根据查询关键字查询mv
+     *
+     * @param searchKey 查询关键字
+     * @return solrbean
+     */
+    @Override
+    public SolrBean<CustomMv> selectMvBySearchKey(String searchKey) {
+        SolrBean<CustomMv> customMvSolrBean = mvSolr.selectMvBySearchKey(searchKey,50);
+        return customMvSolrBean;
     }
 
 

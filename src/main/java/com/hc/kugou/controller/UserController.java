@@ -2,12 +2,17 @@ package com.hc.kugou.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.hc.commons.ResponseUtils;
 import com.hc.kugou.bean.custombean.CustomUser;
 import com.hc.kugou.service.UserService;
+import com.hc.kugou.service.exception.CustomException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpSession;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author:
@@ -17,11 +22,29 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class UserController {
-    private JSONObject jsonObject;
+
+    /**
+     * 登录验证码key值字符串
+     */
+    private static final String LONG_VERFIY_CODE_STRING = "sessionLoginVerifyCode";
+    /**
+     * 注册验证码key值字符串
+     */
+    private static final String REGIST_VERFIY_CODE_STRING = "sessionRegistVerifyCode";
+    /**
+     * 修改密码验证码key值字符串
+     */
+    private static final String ALTER_PWD_VERFIY_CODE_STRING = "sessionAlterPwdVerifyCode";
+
+    /**
+     * 绑定邮箱的验证码
+     */
+    private static final String Bind_Email_VerifyCode = "sessionBindEmailVerifyCode";
 
     @Autowired
     private UserService userService;
 
+    private JSONObject jsonObject;
     /**
      * 校验用户在登录框输入的信息
      * @param user  输入的信息
@@ -67,15 +90,105 @@ public class UserController {
     @ResponseBody
     @PostMapping("user.regxRegistInputInfo.ajax")
     public JSONObject regxRegistInputInfo(CustomUser user){
+        jsonObject = new JSONObject();
         //验证业务
-        userService.regxRegistInputInfo(user);
-        return null;
+        try {
+            userService.regxRegistInputInfo(user);
+
+            jsonObject.put("code",1);
+        } catch (Exception e) {
+            jsonObject.put("code",0);
+            jsonObject.put("msg",e.getMessage());
+        }
+        return jsonObject;
     }
 
+    /**
+     * 注册
+     * @param user
+     * @return
+     */
     @ResponseBody
     @PostMapping("user.regist.ajax")
-    public JSONObject registAjax(CustomUser user){
-        userService.registService(user);
-        return null;
+    public JSONObject registAjax(CustomUser user,HttpSession session){
+        jsonObject = new JSONObject();
+
+        //得到session中的验证码
+        String sessionVerifyCode = (String) session.getAttribute(user.getUserTel() + REGIST_VERFIY_CODE_STRING);
+
+        //注册
+        try {
+            userService.registService(user,sessionVerifyCode);
+
+            //清除session中的验证码
+            session.removeAttribute(user.getUserTel() + REGIST_VERFIY_CODE_STRING);
+        } catch (Exception e) {
+            if(e instanceof CustomException){
+                jsonObject.put("code",0);
+                jsonObject.put("msg",e.getMessage());
+            }else{
+                jsonObject.put("code",-1);
+            }
+        }
+        return jsonObject;
     }
+
+
+    /**
+     * 发送验证码
+     *
+     * @param account 账号
+     * @param type    验证码类型
+     * @return 响应对象
+     */
+    @ResponseBody
+    @PostMapping("user.sendVerifyCode.ajax")
+    public JSONObject sendVerifyCode(String account, String type, HttpSession session) {
+        //创建一个响应对象
+        jsonObject = new JSONObject();
+        //
+        String verifyCodeValue = null;
+        String verifyCodeKey = null;
+        try {
+            switch (type) {
+                case "1":
+                    //发送登录验证码
+                    verifyCodeValue = userService.sendLoginVerifyCodeService(account);
+                    verifyCodeKey = account + LONG_VERFIY_CODE_STRING;
+                    break;
+                case "2":
+                    //发送注册验证码
+                    verifyCodeValue = userService.sendRegistVerifyCodeService(account);
+                    verifyCodeKey = account + REGIST_VERFIY_CODE_STRING;
+                    break;
+                case "3":
+                    //发送修改密码验证码
+                    verifyCodeValue = userService.sendAlterPwdVerifyCodeService(account);
+                    verifyCodeKey = account + ALTER_PWD_VERFIY_CODE_STRING;
+                    break;
+                case "4":
+                    verifyCodeValue = userService.sendBindEmailCodeService(account);
+                    verifyCodeKey = account + Bind_Email_VerifyCode;
+                    break;
+                default:
+                    //出现错误
+                    jsonObject.put("code", -1);
+                    jsonObject.put("errorMsg", "hello 程序员 404 type(验证码类型) 传入值有误 ");
+                    return jsonObject;
+            }
+            //将验证码保存在session中
+            session.setAttribute(verifyCodeKey,verifyCodeValue);
+            jsonObject.put("code",1);
+        } catch (Exception e) {
+            if( e instanceof CustomException){
+                jsonObject.put("code",0);
+                jsonObject.put("msg",e.getMessage());
+            }else {
+                jsonObject.put("code",-1);
+            }
+        }
+
+        return jsonObject;
+    }
+
 }

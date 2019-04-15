@@ -1,4 +1,7 @@
-// var secondMenu=document.getElementById("secondMenu");
+//全局的项目根路径
+var rootPath = $("#absoPath").val();
+
+
 ////二级菜单  更多
 var secondMenu = $("#secondMenu");
 var more = $(".more");
@@ -114,7 +117,57 @@ function loginInputInfoAjax(obj){
     console.log("----------------------------------")
 }
 
-//登录
-function login(){
 
+////////////////////////搜索框开始////////////////////////////
+$(function () {
+    addHeadSearchBoxKeypress();
+    addHeadSeachButtonSubmit();
+    addHeadSearchBoxDefaultValue();
+});
+
+//每次刷新页面时判断头部的搜索框是否为空  如果为空，设为默认
+function addHeadSearchBoxDefaultValue(){
+    var inp = $("#searchAllBox1");
+    if($.trim(inp.val()) == "" && $.trim(inp.attr("placeholder")) == ""){
+        $.post(rootPath+"index.searchBox.ajax",null,function (data) {
+            if(data.code == 1){
+                inp.attr("placeholder",data.searchString);
+            }
+        });
+    }
 }
+
+//给头部的输入框绑定回车事件
+function addHeadSearchBoxKeypress(){
+    $("#searchAllBox1").bind("keypress",function (event) {
+        if(event.keyCode == '13'){
+            onHeadSearchBoxSubmit();
+        }
+    });
+}
+//给头部的搜索按钮添加点击事件
+function addHeadSeachButtonSubmit(){
+    $("#searchAllBox1SubmitButton").bind("click",function () {
+        onHeadSearchBoxSubmit();
+    });
+}
+
+//头部搜索框的提交事件
+function onHeadSearchBoxSubmit(){
+    var searchKey = "";
+    var form = $("#searchForm1");
+    var inp = $("#searchAllBox1");
+    if($.trim(inp.val()) != ""){
+        searchKey = $.trim(inp.val());
+    }else if($.trim(inp.attr("placeholder")) != ''){
+        searchKey = $.trim(inp.attr("placeholder"));
+    }else{
+        alert("请输入搜索关键字");
+        return;
+    }
+    console.log(form.attr("rel")+"/search/"+searchKey);
+    form.attr("action",rootPath+"search/"+searchKey);
+    form.submit();
+}
+
+/////////////////////////////搜索框结束///////////////////////////////

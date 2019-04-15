@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+    <link rel="stylesheet" href="../public/css/songsheetlist.css" th:href="@{/css/songsheetlist.css}">
+
+</head>
+<body>
+<!-- 引入头部 -->
+<div th:replace="commons/head::headbar(activeUri='index')"></div>
+<div class="wrap">
+    <div class="mysite">我的位置 &gt;
+        <a title="乐库" href="index.html">首页</a> &gt; <a title="精选辑" href="">精选辑</a> &gt;
+        <span>虐心：爱过你，却终究错过了你</span>
+    </div>
+    <!-- 左边的分享 -->
+    <div class="left">
+        <div class="pic">
+            <img alt="" src="" height="148" width="148">
+        </div>
+        <a href="javascript:void(0)" class="share" title="分享">
+            <span><i class="t2"></i>分享</span>
+        </a>
+        <p class="detail">
+            <span>名称：</span>虐心：爱过你，却终究错过了你<br>
+            <span>创建人：</span>暖心相随<br>
+            <span>心情：</span><br>
+            <span>更新时间：</span>2019-05-12<br>
+        </p>
+        <div class="intro" style="overflow: hidden; padding: 0px; width: 160px;">
+            <div class="content" style="width: 160px; height: 300px;">
+                <div class="jspPane" style="padding: 0px; top: 0px; left: 0px; width: 160px;">
+                    <p><span>简介：</span>我们都在结尾走失，多理智……</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 右边的歌曲 -->
+    <div class="right">
+        <div id="songs" class="list">
+            <strong>&lt;虐心：爱过你，却终究错过了你&gt; - 歌曲列表</strong>
+            <h4 class="dq">
+                <a href="javascript:void(0)" class="play" title="播放">
+                    <span><i class="t2"></i>播放</span>
+                </a>
+                <input type="checkbox" id="selAll" checked="checked">全选
+            </h4>
+            <!-- 歌曲 -->
+            <ul>
+                <li>
+                    <a title="" href="javascript:;">
+                        <input type="checkbox" class="checkItem" checked="true">
+                        <span class="share" title="分享"></span>
+                        <span class="listen" title="播放"></span>
+                        <span class="num">01</span>
+                        <span class="text">
+      							<i>叶洛洛 - 爱过你这件事</i>
+      						</span>
+                    </a>
+                </li>
+                <li>
+                    <a title="" href="javascript:;">
+                        <input type="checkbox" class="checkItem" checked="true">
+                        <span class="share" title="分享"></span>
+                        <span class="listen" title="播放"></span>
+                        <span class="num">02</span>
+                        <span class="text">
+      							<i>叶洛洛 - 爱过你这件事</i>
+      						</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="dialog">
+    <div class="dialog_head">
+        <button i="close" class="close" title="cancel">×</button>
+        <div i="title" class="title" id="title:1557709599352">分享歌曲</div>
+    </div>
+    <div class="dialog_body">
+        <div class="content">
+            <div class="share_list">
+                <dl>
+                    <dt class="share_weixin"></dt>
+                    <dd class="qrcode" style="display: none;">
+                        <img src="../public/img/songsheetlist/6a83c03d2086f24d66cf07253cf710b6.png" th:src="@{/img/songsheetlist/6a83c03d2086f24d66cf07253cf710b6.png}">
+                    </dd>
+                    <dd>微信</dd>
+                </dl>
+                <dl>
+                    <dt class="share_friend"></dt>
+                    <dd>QQ好友</dd>
+                </dl>
+                <dl>
+                    <dt class="share_qzone"></dt>
+                    <dd>QQ空间</dd>
+                </dl>
+                <dl>
+                    <dt class="share_weibo"></dt>
+                    <dd>新浪微博</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<!-- 引入底部 -->
+<div th:replace="commons/foot::footbar"></div>
+
+<script src="../public/js/jquery-3.2.1.js" th:src="@{/js/jquery-3.2.1.js}"></script>
+<script src="../public/js/songsheetlist.js" th:src="@{/js/songsheetlist.js}"></script>
+</html>

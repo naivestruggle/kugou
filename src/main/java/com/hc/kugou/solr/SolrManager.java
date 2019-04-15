@@ -224,7 +224,7 @@ public class SolrManager<T>{
      * @param highlightSimpleLast   高亮后缀
      * @return  查询结果集
      */
-    private SolrBean<T> find(String queryStr,String[] filterQueries,String[] sortFieldName,Integer sortRule,int start,int rows,
+    public SolrBean<T> find(String queryStr,String[] filterQueries,String[] sortFieldName,Integer sortRule,int start,int rows,
                              String defaultFields[],String[] pointFields,String highlightField,
                              String highlightSimplePre,String highlightSimpleLast){
         //查询
@@ -298,6 +298,7 @@ public class SolrManager<T>{
         Map<String, Map<String, List<String>>> highlighting = response.getHighlighting();
         Long numFound = docs.getNumFound();
         solrBean.setFoundNum(numFound);
+        List<String> highlightList = new ArrayList<String>();
         List<T> objectList = new ArrayList<T>();
         //遍历每个document对象   也就是对应着每一条数据库记录
         for(SolrDocument doc:docs){
@@ -315,7 +316,18 @@ public class SolrManager<T>{
                 Map<String, List<String>> map1 = highlighting.get(doc.get("id"));
                 List<String> list = map1.get(highlightField);
                 if(list != null) {
-                    solrBean.setHighlight(list.get(0));
+                    //将高亮信息映射到bean中  前提是bean中有highlight这个属性
+                    try {
+                        Method methodName = ReflectUtils.getMethod(clazz,"setHighlight",String.class);
+                        methodName.invoke(taget,String.valueOf(list.get(0)));
+                    } catch (NoSuchMethodException e) {
+                        e.printStackTrace();
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    } catch (InvocationTargetException e) {
+                        e.printStackTrace();
+                    }
+
                 }
             }
             //得到id
@@ -388,7 +400,7 @@ public class SolrManager<T>{
      */
     private void mapping(T object, Class type, Method method, Object val) {
         if(val != null) {
-            String value  = String.valueOf(val);
+            String value  = String.valueOf(val).trim();
             //调用对象方法 设置值
             try {
                 //得到类型名

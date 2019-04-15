@@ -15,10 +15,10 @@
 	<div class="search_header">
     	<div class="search_wrapper">
 	        <div class="search_input">
-	        	<input type="text" placeholder="">
-	            <div class="searh_btn">
+				<form id="searchForm2" method="post"></form>
+	        	<input type="text" th:value="${searchKey}" class="searchAllBox" id="searchAllBox2" />
+	            <div class="searh_btn" id="searchAllBox1SubmitButton2">
 	            	<i class="search_icon"></i>
-	            	
 	            </div>
 	        </div>
 	     <!-- 搜索字推荐 -->
@@ -53,7 +53,7 @@
     		<div class="main selected">
 	    		<div class="song_list_header clearfix">
 		            <div class="result_title">
-		                <p class="search_key_word">搜索到<i>“雷龙&nbsp;你是我心中最美的花”</i></p>
+		                <p class="search_key_word">搜索到<i th:text="${searchKey}">“雷龙&nbsp;你是我心中最美的花”</i></p>
 		                <p class="search_tips">相关的歌曲</p>
 		                <a class="play_all" href="javascript:;"><span><i class="search_icon"></i>播放</span></a>
 		            </div>
@@ -70,48 +70,36 @@
 		                    时长
 		                </li>
 		            </ul>
+					<!-- 单曲显示开始 -->
 		            <ul class="list_content clearfix">
-		            	<li class="clearfix">
-		            		<div class="left clearfix">
-		            			<span class="search_icon checkbox"></span>
-		            			<a class="song_name" title="雷龙 - 你是我心中最美的花" href="javascript:;">
-		            				<em>雷龙</em> - <em>你是我心中最美的花</em>
-		            			</a>
-		            		</div>
-		            		<div class="middle">
-		            			<a class="album_name" title="《你是我心中最美的花》" target="_blank" href="https://www.kugou.com/yy/album/single/19485892.html">《你是我心中最美的花》</a>&nbsp;
-		            		</div>
-		            		<div class="right">04:11</div>
-		            		<div class="play-item">
-		            			<span class="common_icon icon_play"></span>
-		            			<span class="common_icon icon_download" onclick="_hmt.push(['_trackEvent', 'hidedown', 'hidecilick', 'hidepc']);">
-		            			</span>
-		            			<span class="common_icon icon_share"></span>
-		            		</div>
-		            	</li>
-		            	<li class="clearfix">
-		            		<div class="left clearfix">
-		            			<span class="search_icon checkbox"></span>
-		            			<a class="song_name" title="雷龙 - 你是我心中最美的花 (伴奏)" href="javascript:;">
-		            				<em>雷龙</em> - <em>你是我心中最美的花</em> (伴奏)
-		            			</a>
-		            		</div>
-		            		<div class="middle"><a class="album_name" title="《你是我心中最美的花》" target="_blank" href="https://www.kugou.com/yy/album/single/19485892.html">《你是我心中最美的花》</a>&nbsp;</div>
-		            		<div class="right">04:11</div>
-		            		<div class="play-item">
-		            			<span class="common_icon icon_play"></span>
-		            			<span class="common_icon icon_download" onclick="_hmt.push(['_trackEvent', 'hidedown', 'hidecilick', 'hidepc']);"></span>
-		            			<span class="common_icon icon_share"></span>
-		            		</div>
-		            	</li>
+						<a th:href="@{simpleSong.html/}+${bean.musicId}" th:each="bean,beanStat:${solrMusicList.solrBeanList}">
+							<li class="clearfix">
+								<div class="left clearfix">
+									<span class="search_icon checkbox"></span>
+									<a class="song_name" th:title="${bean.musicAudioName}" th:href="@{/simpleSong.html/}+${bean.musicId}" th:utext="${bean.highlight}">
+									</a>
+								</div>
+								<div class="middle">
+									<a class="album_name" th:title="${bean.musicAlbumName}" th:text="${bean.musicAlbumName}" target="_blank" href="https://www.kugou.com/yy/album/single/19485892.html">《你是我心中最美的花》</a>&nbsp;
+								</div>
+								<div class="right" th:text="${bean.musicTimes}">04:11</div>
+								<div class="play-item">
+									<span class="common_icon icon_play"></span>
+									<span class="common_icon icon_download" onclick="_hmt.push(['_trackEvent', 'hidedown', 'hidecilick', 'hidepc']);">
+									</span>
+									<span class="common_icon icon_share"></span>
+								</div>
+							</li>
+						</a>
 		            </ul>
+					<!-- 单曲显示结束 -->
 	        	</div>
 	        	
     		</div>
 	    	<div class="main songsheet">
 	    		<div class="song_list_header clearfix">
 		            <div class="result_title">
-		                <p class="search_key_word">搜索到<i>“雷龙&nbsp;你是我心中最美的花”</i></p>
+		                <p class="search_key_word">搜索到<i th:text="${searchKey}">“雷龙&nbsp;你是我心中最美的花”</i></p>
 		                <p class="search_tips">相关的歌单</p>
 		        	</div>
 	        	</div>
@@ -131,7 +119,7 @@
 		            	<li>
 		            		<div class="left clearfix">
 		            			<a class="songsheet_link" target="_blank" title="" href="">
-		            				<img class="songsheet_img" src="../public/img/search/20190505105024343581.jpg">
+		            				<img class="songsheet_img" th:src="@{/img/search/20190505105024343581.jpg}">
 		            			</a>
 		            			<a target="_blank" class="songsheet_name songsheet_link" title="" href="">华语新歌 2019年4月刊【完结】
 		            			</a>
@@ -153,7 +141,7 @@
 	    	<div class="main">
 	    		<div class="song_list_header clearfix">
 		            <div class="result_title">
-		                <p class="search_key_word">搜索到<i>“雷龙&nbsp;你是我心中最美的花”</i></p>
+		                <p class="search_key_word">搜索到<i th:text="${searchKey}">“雷龙&nbsp;你是我心中最美的花”</i></p>
 		                <p class="search_tips">相关的MV</p>
 		        	</div>
 	        	</div>
@@ -161,23 +149,22 @@
 	        	<div class="search_mv">没有搜索到相关的MV</div>
 	        	<!-- 如果有mv就显示这个div -->
 	        	<div class="mv_list clearfix">
-	        		<ul>
-	        			<li>
-	        				<div class="mv_container">
-	        					<a class="mv_cover" target="_blank" href="" hidefocus="true" title="恋人心"> 
-	        						<span class="mv_img">
-	        							<img width="100%" height="100%" src="../public/img/search/20150910152743682334.jpg" alt="" class="">
-	        						</span>
-	        						<span class="mv_play">
-	        							<i class="search_icon"></i>
-	        						</span>
-	        						<span class="mv_shadow"></span>
-	        					</a>
-	        					<a class="mv_name" target="_blank" href="" hidefocus="true" title=""><em>恋人心</em></a> 
-	        					<span class="mv_singer" title="">魏新雨</span>
-	        				</div>
-	        			</li>
-
+	        		<ul id="mvUlList">
+<!--	        			<li>-->
+<!--	        				<div class="mv_container">-->
+<!--	        					<a class="mv_cover" target="_blank" href="" hidefocus="true" title="恋人心">-->
+<!--	        						<span class="mv_img">-->
+<!--	        							<img width="100%" height="100%" th:src="@{/img/search/20150910152743682334.jpg}" alt="" class="">-->
+<!--	        						</span>-->
+<!--	        						<span class="mv_play">-->
+<!--	        							<i class="search_icon"></i>-->
+<!--	        						</span>-->
+<!--	        						<span class="mv_shadow"></span>-->
+<!--	        					</a>-->
+<!--	        					<a class="mv_name" target="_blank" href="" hidefocus="true" title=""><em>恋人心</em></a>-->
+<!--	        					<span class="mv_singer" title="">魏新雨</span>-->
+<!--	        				</div>-->
+<!--	        			</li>-->
 	        		</ul>
 	        	</div>
 	    	</div>

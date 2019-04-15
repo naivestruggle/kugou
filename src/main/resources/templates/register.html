@@ -41,7 +41,7 @@
 								<div style="width: 136px;height: 38px;float: left;">
 									<input maxlength="6" type="text" class="ipt1" id="mou2">
 								</div>
-								<a href="" class="message"><span>获取短信</span></a>
+								<a href="javascript:;" class="message"><span>获取短信</span></a>
 							</div>
 						</td>
 					</tr>
@@ -77,7 +77,7 @@
 							<div style="width: 558px;height: 38px;">
 								<div class="textBox" style="width: 291px;height: 38px;">
 								<div>
-									<input maxlength="30" type="text" class="ipt" id="mou4">
+									<input maxlength="30" type="password" class="ipt" id="mou4">
 								</div>
 								<span id="mimax">请再次确认密码</span>
 							</div>
@@ -87,14 +87,14 @@
 					</tr>
 					<tr>
 						<td style="width:300px;height:38px;text-align:right;padding-bottom: 15px;padding-right:8px;">
-							*&nbsp;性别:
+							性别:
 						</td>
 						<td style="width: 558px;height: 38px;padding-bottom: 15px;">
 							<div style="width: 558px;height: 38px;">
 								<div class="textBox" style="width: 291px;height: 38px;">
 								<div class="sex">
-									<input type="radio" name="sex">男
-									<input type="radio" name="sex">女
+									<input type="radio" name="sex" checked value="0">男
+									<input type="radio" name="sex" value="1">女
 									<!--name相同，则只能选择一个-->
 								</div>
 							</div>
@@ -129,59 +129,9 @@
 <!-- 引入底部 -->
 <div th:replace="commons/foot::footbar"></div>
 
-<script>
-	/*手机号*/
-	var mou1=document.getElementById("mou1");
-	var phonenumber=document.getElementById("phonenumber");
-	mou1.onclick=function(){
-		phonenumber.style.display="block";
-	}
-	mou1.onblur=function(){
-		phonenumber.style.display="none";
-	}
 
-	/*密码*/
-	var mou3=document.getElementById("mou3");
-	var mima=document.getElementById("mima");
-	mou3.onclick=function(){
-		mima.style.display="block";
-	}
-	mou3.onblur=function(){
-		mima.style.display="none";
-	}
-	var bg=document.getElementById("bg");
-	var line1=document.getElementById("line1");
-	var line2=document.getElementById("line2");
-	mou3.onchange=function(){
-		bg.style.background="#a9d6f3";
-	}
-
-
-	/*确认密码*/
-	var mou4=document.getElementById("mou4");
-	var mimax=document.getElementById("mimax");
-	mou4.onclick=function(){
-		mimax.style.display="block";
-	}
-	mou4.onblur=function(){
-		mimax.style.display="none";
-	}
-
-	/*注册*/
-	var zc=document.getElementsByClassName("zc")[0];
-	var mou5=document.getElementById("mou5");
-	mou5.onclick=function(){
-		if(this.checked == true){
-			zc.style.background="#3db9ec";
-		}else{
-			zc.style.background="#bbb";
-		}
-
-
-	}
-
-</script>
-
+<script th:src="@{/js/jquery-3.2.1.js}"></script>
+<script th:src="@{/js/register.js}"></script>
 
 </body>
 </html>

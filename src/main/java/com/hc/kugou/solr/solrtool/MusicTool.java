@@ -7,8 +7,9 @@ package com.hc.kugou.solr.solrtool;
  * @Version:1.0
  */
 public class MusicTool {
-    public static String MUSIC_AUDIO_ID_FIELD = "music_audio_id";
-    public static String MUSIC_ID_FIELD = "music_id";
+    public static final String MUSIC_AUDIO_NAME = "music_audio_name";
+    public static final String MUSIC_AUDIO_ID_FIELD = "music_audio_id";
+    public static final String MUSIC_ID_FIELD = "music_id";
 
     private MusicTool(){}
 

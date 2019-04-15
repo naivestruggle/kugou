@@ -213,7 +213,7 @@
     </div>
     <!--广告1-->
     <div style="width: 1000px;height: 100px;margin-top: 30px;">
-        <a href="#"><img src="/kugou/img/index/ad1.jpg"/></a>
+        <a href="#"><img src="/kugou/img/index/ad1.jpg" th:src="@{/img/index/ad1.jpg}"/></a>
     </div>
     <!--新歌首发 推荐mv-->
     <div style="width: 1000px;height: 375px;margin-top: 40px;">
@@ -428,7 +428,6 @@
                     <div th:if="${beanStat.index eq 0}">
                         <div class="mv_pic1 mvDiv">
                             <a href="mvPlay.html" th:href="@{mvPlay.html/}+${bean.mvId}" target="_blank"><img
-                                    src="../public/img/index/20180601201046687656.jpg"
                                     th:src="${bean.mvHeadImage}" style="width: 320px;height: 175px;"/></a>
                             <div class="cover_mv" style="width:320px;height: 175px;">
                                 <a href="mvPlay.html" th:href="@{mvPlay.html/}+${bean.mvId}" target="_blank"

@@ -1,6 +1,8 @@
 function audioStopStart(){
-    // console.log(document.getElementById("btn_play"));
-    // console.log($("#btn_play"))
+    if($.trim($("#myAudio").attr("src")) == ""){
+        alert("这首歌因为版权原因，不能播放！");
+        return;
+    }
     $("#btn_play").toggle();
     $("#btn_stop").toggle();
     var player = $("#myAudio")[0]; /*jquery对象转换成js对象*/
