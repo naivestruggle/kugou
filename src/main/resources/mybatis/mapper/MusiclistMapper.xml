@@ -19,7 +19,21 @@
         ml.music_list_collect_count
     </sql>
 
-    <sql id="allValuesKeysMusicList">
+    <sql id="allKeys">
+        music_list_id,
+        music_list_name,
+        music_list_user_id,
+        music_list_user_username,
+        music_list_mood,
+        music_list_update_time,
+        music_list_describe,
+        music_list_head_image,
+        music_list_music_count,
+        music_list_listener_count,
+        music_list_hash_code
+    </sql>
+
+    <sql id="allValues">
      #{musicListId},#{musicListName},#{musicListUserId},#{musicListUserUsername},#{musicListMood},#{musicListUpdateTime},
      #{musicListDescribe},#{musicListHeadImage},#{musicListMusicCount},#{musicListListenerCount},#{musicListHashCode},#{musicListCollectCount}
     </sql>
@@ -37,5 +51,27 @@
         on ml.music_list_id = mlm.music_list_id join kugou_music m
         on m.music_id = mlm.music_id where ml.music_list_id = #{musicListId}
     </select>
+
+
+    <insert id="addSongSheet" useGeneratedKeys="true" keyProperty="musicListId">
+        insert into kugou_musiclist(<include refid="allKeys"></include>) values (<include refid="allValues"></include>)
+    </insert>
+
+    <update id="updateSongSheet">
+        update kugou_musiclist set
+        <trim suffixOverrides=",">
+            <if test="musicListName != null">
+                music_list_name = #{musicListName}
+            </if>
+            <if test="musicListMood != null">
+                music_list_mood = #{musicListMood}
+            </if>
+            <if test="musicListDescribe != null">
+                music_list_describe = #{musicListDescribe}
+            </if>
+        </trim>
+        where music_list_id = #{musicListId}
+    </update>
+
 
 </mapper>
