@@ -357,3 +357,6 @@ a{
     cursor: pointer;
     position: fixed
 }
+.not_register{
+    pointer-events: none;
+}

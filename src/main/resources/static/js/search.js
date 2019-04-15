@@ -92,7 +92,32 @@ function getMusicList(){
 		searchKey : inp.val()
 	}
 	$.post(rootPath+"musiclist.search.ajax",data,function (data) {
-
+		var list = data.lists.solrBeanList;
+		console.log(data)
+		if(list.length == 0){
+			//没搜到
+			return;
+		}
+		for(var i=0;i<list.length;i++){
+			var bean = list[i];
+			var str = "<li>\n" +
+				"\t\t            \t\t<div class=\"left clearfix\">\n" +
+				"\t\t            \t\t\t<a class=\"songsheet_link\" target=\"_blank\" title=\"\" href=\"\">\n" +
+				"\t\t            \t\t\t\t<img class=\"songsheet_img\" src='"+bean.musicListHeadImage+"'/>\n" +
+				"\t\t            \t\t\t</a>\n" +
+				"\t\t            \t\t\t<a target=\"_blank\" class=\"songsheet_name songsheet_link\" title=\"\" href=\"\">"+bean.musicListName+"\n" +
+				"\t\t            \t\t\t</a>\n" +
+				"\t\t            \t\t</div>\n" +
+				"\t\t            \t\t<div class=\"middle\">\n" +
+				"\t\t            \t\t\t"+bean.musicListUserUsername+"\n" +
+				"\t\t            \t\t</div>\n" +
+				"\t\t            \t\t<div class=\"right\">"+bean.musicListCollectCount+"</div>\n" +
+				"\t\t            \t\t<div class=\"play-item\">\n" +
+				"\t\t            \t\t\t<span class=\"icon_play\"></span>\n" +
+				"\t\t            \t\t</div>\n" +
+				"\t\t            \t</li>\n";
+			$("#music_list_show_list").append(str);
+		}
 	});
 }
 

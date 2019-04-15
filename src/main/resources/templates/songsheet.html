@@ -1,245 +1,235 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8"/>
-  <title>Document</title>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
     <link rel="shortcut icon" href="../static/favicon.ico" th:href="@{/favicon.ico}"/>
-  <script src="../js/jquery-3.2.1.js" th:src="@{/js/jquery-3.2.1.js}"></script>
-  <script src="../js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+    <script src="../js/jquery-3.2.1.js" th:src="@{/js/jquery-3.2.1.js}"></script>
+    <script src="../js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
     <link href="" rel="stylesheet" th:href="@{/css/songsheet.css}"/>
-  <style>
-  </style>
-
-
+    <style>
+    </style>
 </head>
 <body>
-    <!-- 引入头部 -->
-    <div th:replace="commons/head::headbar(activeUri='index')"></div>
-  <div class="wrap">
+<!-- 引入头部 -->
+<div th:replace="commons/head::headbar(activeUri='index')"></div>
+<div class="wrap">
     <div class="fl">
-      <ul class="tab">
-        <li class="tab-item active">推荐</li>
-        <li class="tab-item">最热</li>
-        <li class="tab-item">热藏</li>
-        <li class="tab-item">飙升</li>
-      </ul>
+        <ul class="tab">
+            <li class="tab-item active">推荐</li>
+            <li class="tab-item">最热</li>
+            <li class="tab-item">热藏</li>
+            <li class="tab-item">飙升</li>
+        </ul>
     </div>
 
     <div class="fr">
-      <div class="main selected">
-           <ul id="info">
-             <li>
-               <div class="pic">
-                  <a hidefocus="ture" title="" href="" onclick="">
-                    <img alt="" src="../img/songsheet/1.jpg" th:src="@{/img/songsheet/1.jpg}"/>
-                  </a>
-               </div>
-               <div class="detail">
-                  <div class="top">
-                    <em>制作人：Aiden</em>
-                    <strong>
-                      <a title="我们相爱这么久​，你却选择了别人" href="">我们相爱这么久​，你却选择了别人</a>
-                    </strong>
-                  </div>
-                  <div class="text">
-                    曾经，我们相爱，别人突然闯进你的生活，你却将我遗忘。
+        <div class="main selected">
+            <ul id="info">
+                <li>
+                    <div class="pic">
+                        <a hidefocus="ture" title="" href="songsheetlist/1" onclick="">
+                            <img alt="" src="../img/songsheet/1.jpg" th:src="@{/img/songsheet/1.jpg}"/>
+                        </a>
+                    </div>
+                    <div class="detail">
+                        <div class="top">
+                            <em>制作人：Aiden</em>
+                            <strong>
+                                <a title="我们相爱这么久​，你却选择了别人" href="songsheetlist/1">我们相爱这么久​，你却选择了别人</a>
+                            </strong>
+                        </div>
+                        <div class="text">
+                            曾经，我们相爱，别人突然闯进你的生活，你却将我遗忘。
 
-我们之间或许是话题不同，又或许我的吸引力没有别人强，既然如此，我们，就此别过，忘掉彼此，是你我最好的选择。
-                  </div>
-                  <div class="btn">
-                    <a href="javascript:void(0)" title="播放全部" class="playall">
-                      <span><i class="t2"></i>播放全部</span>
-                    </a>
-                    <a href="javascript:void(0)" class="share" title="分享">
-                      <span><i class="t2"></i>分享</span>
-                    </a>
-                </div>
-               </div>
-             </li>
-           </ul>
-      </div>
-      <!-- 最热 -->
-      <div class="main">
-        <ul id="info">
-             <li>
-               <div class="pic">
-                  <a title="" href="" onclick="">
-                      <img alt="" src=""/>
-                  </a>
-               </div>
-               <div class="detail">
-                  <div class="top">
-                    <em></em>
-                    <strong>
-                       <a title="" href=""></a>
-                    </strong>
-                  </div>
-                  <div class="text">
-                  </div>
-                  <div class="btn">
-                    <a href="javascript:void(0)" title="播放全部" class="playall">
-                      <span><i class="t2"></i>播放全部</span>
-                    </a>
-                    <a href="javascript:void(0)" class="share" title="分享">
-                      <span><i class="t2"></i>分享</span>
-                    </a>
-                </div>
-               </div>
-             </li>
-        </ul>
-      </div>
-       <!-- 热藏-->
-      <div class="main">
-          <ul id="info">
-             <li>
-               <div class="pic">
-                  <a title="" href="" onclick="">
-                      <img alt="" src=""/>
-                  </a>
-               </div>
+                            我们之间或许是话题不同，又或许我的吸引力没有别人强，既然如此，我们，就此别过，忘掉彼此，是你我最好的选择。
+                        </div>
+                        <div class="btn">
+                            <a href="javascript:void(0)" title="播放全部" class="playall">
+                                <span><i class="t2"></i>播放全部</span>
+                            </a>
+                            <a href="javascript:void(0)" class="share" title="分享">
+                                <span><i class="t2"></i>分享</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- 最热 -->
+        <div class="main">
+            <ul id="info">
+                <li>
+                    <div class="pic">
+                        <a title="" href="" onclick="">
+                            <img alt="" src=""/>
+                        </a>
+                    </div>
+                    <div class="detail">
+                        <div class="top">
+                            <em></em>
+                            <strong>
+                                <a title="" href=""></a>
+                            </strong>
+                        </div>
+                        <div class="text">
+                        </div>
+                        <div class="btn">
+                            <a href="javascript:void(0)" title="播放全部" class="playall">
+                                <span><i class="t2"></i>播放全部</span>
+                            </a>
+                            <a href="javascript:void(0)" class="share" title="分享">
+                                <span><i class="t2"></i>分享</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- 热藏-->
+        <div class="main">
+            <ul id="info">
+                <li>
+                    <div class="pic">
+                        <a title="" href="" onclick="">
+                            <img alt="" src=""/>
+                        </a>
+                    </div>
 
-               <div class="detail">
-                  <div class="top">
-                    <em></em>
-                    <strong>
-                       <a title="" href=""></a>
-                    </strong>
-                  </div>
-                  <div class="text">
-                  </div>
-                  <div class="btn">
-                    <a href="javascript:void(0)" title="播放全部" class="playall">
-                      <span><i class="t2"></i>播放全部</span>
-                    </a>
-                    <a href="javascript:void(0)" class="share" title="分享">
-                      <span><i class="t2"></i>分享</span>
-                    </a>
-                </div>
-               </div>
-             </li>
-              <li>
-                  <div class="pic">
-                      <a title="" href="" onclick="">
-                          <img alt="" src=""/>
-                      </a>
-                  </div>
+                    <div class="detail">
+                        <div class="top">
+                            <em></em>
+                            <strong>
+                                <a title="" href=""></a>
+                            </strong>
+                        </div>
+                        <div class="text">
+                        </div>
+                        <div class="btn">
+                            <a href="javascript:void(0)" title="播放全部" class="playall">
+                                <span><i class="t2"></i>播放全部</span>
+                            </a>
+                            <a href="javascript:void(0)" class="share" title="分享">
+                                <span><i class="t2"></i>分享</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="pic">
+                        <a title="" href="" onclick="">
+                            <img alt="" src=""/>
+                        </a>
+                    </div>
 
-                  <div class="detail">
-                      <div class="top">
-                          <em></em>
-                          <strong>
-                              <a title="" href=""></a>
-                          </strong>
-                      </div>
-                      <div class="text">
-                      </div>
-                      <div class="btn">
-                          <a href="javascript:void(0)" title="播放全部" class="playall">
-                              <span><i class="t2"></i>播放全部</span>
-                          </a>
-                          <a href="javascript:void(0)" class="share" title="分享">
-                              <span><i class="t2"></i>分享</span>
-                          </a>
-                      </div>
-                  </div>
-              </li>
-              <li>
-                  <div class="pic">
-                      <a title="" href="" onclick="">
-                          <img alt="" src=""/>
-                      </a>
-                  </div>
+                    <div class="detail">
+                        <div class="top">
+                            <em></em>
+                            <strong>
+                                <a title="" href=""></a>
+                            </strong>
+                        </div>
+                        <div class="text">
+                        </div>
+                        <div class="btn">
+                            <a href="javascript:void(0)" title="播放全部" class="playall">
+                                <span><i class="t2"></i>播放全部</span>
+                            </a>
+                            <a href="javascript:void(0)" class="share" title="分享">
+                                <span><i class="t2"></i>分享</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="pic">
+                        <a title="" href="" onclick="">
+                            <img alt="" src=""/>
+                        </a>
+                    </div>
 
-                  <div class="detail">
-                      <div class="top">
-                          <em></em>
-                          <strong>
-                              <a title="" href=""></a>
-                          </strong>
-                      </div>
-                      <div class="text">
-                      </div>
-                      <div class="btn">
-                          <a href="javascript:void(0)" title="播放全部" class="playall">
-                              <span><i class="t2"></i>播放全部</span>
-                          </a>
-                          <a href="javascript:void(0)" class="share" title="分享">
-                              <span><i class="t2"></i>分享</span>
-                          </a>
-                      </div>
-                  </div>
-              </li>
-              <li>
-                  <div class="pic">
-                      <a title="" href="" onclick="">
-                          <img alt="" src=""/>
-                      </a>
-                  </div>
+                    <div class="detail">
+                        <div class="top">
+                            <em></em>
+                            <strong>
+                                <a title="" href=""></a>
+                            </strong>
+                        </div>
+                        <div class="text">
+                        </div>
+                        <div class="btn">
+                            <a href="javascript:void(0)" title="播放全部" class="playall">
+                                <span><i class="t2"></i>播放全部</span>
+                            </a>
+                            <a href="javascript:void(0)" class="share" title="分享">
+                                <span><i class="t2"></i>分享</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="pic">
+                        <a title="" href="" onclick="">
+                            <img alt="" src=""/>
+                        </a>
+                    </div>
 
-                  <div class="detail">
-                      <div class="top">
-                          <em></em>
-                          <strong>
-                              <a title="" href=""></a>
-                          </strong>
-                      </div>
-                      <div class="text">
-                      </div>
-                      <div class="btn">
-                          <a href="javascript:void(0)" title="播放全部" class="playall">
-                              <span><i class="t2"></i>播放全部</span>
-                          </a>
-                          <a href="javascript:void(0)" class="share" title="分享">
-                              <span><i class="t2"></i>分享</span>
-                          </a>
-                      </div>
-                  </div>
-              </li>
-          </ul>
-      </div>
-       <!-- 飙升-->
-      <div class="main">
-         <ul id="info">
-             <li>
-               <div class="pic">
-                  <a title="" href="" onclick="">
-                      <img alt="" src=""/>
-                  </a>
-               </div>
-               <div class="detail">
-                  <div class="top">
-                    <em></em>
-                    <strong>
-                       <a title="" href=""></a>
-                    </strong>
-                  </div>
-                  <div class="text">
-                  </div>
-                  <div class="btn">
-                    <a href="javascript:void(0)" title="播放全部" class="playall">
-                      <span><i class="t2"></i>播放全部</span>
-                    </a>
-                    <a href="javascript:void(0)" class="share" title="分享">
-                      <span><i class="t2"></i>分享</span>
-                    </a>
-                </div>
-               </div>
-             </li>
-         </ul>
-      </div>
+                    <div class="detail">
+                        <div class="top">
+                            <em></em>
+                            <strong>
+                                <a title="" href=""></a>
+                            </strong>
+                        </div>
+                        <div class="text">
+                        </div>
+                        <div class="btn">
+                            <a href="javascript:void(0)" title="播放全部" class="playall">
+                                <span><i class="t2"></i>播放全部</span>
+                            </a>
+                            <a href="javascript:void(0)" class="share" title="分享">
+                                <span><i class="t2"></i>分享</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- 飙升-->
+        <div class="main">
+            <ul id="info">
+                <li>
+                    <div class="pic">
+                        <a title="" href="" onclick="">
+                            <img alt="" src=""/>
+                        </a>
+                    </div>
+                    <div class="detail">
+                        <div class="top">
+                            <em></em>
+                            <strong>
+                                <a title="" href=""></a>
+                            </strong>
+                        </div>
+                        <div class="text">
+                        </div>
+                        <div class="btn">
+                            <a href="javascript:void(0)" title="播放全部" class="playall">
+                                <span><i class="t2"></i>播放全部</span>
+                            </a>
+                            <a href="javascript:void(0)" class="share" title="分享">
+                                <span><i class="t2"></i>分享</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
+</div>
 
-    <!-- 引入底部 -->
-    <div th:replace="commons/foot::footbar"></div>
-<script>
-    $(function () {
-        $(".tab>li").click(function () {
-            $(this).addClass("active").siblings("li").removeClass("active");
-            var index=$(this).index();
-            $(".fr>div:eq("+index+")").addClass("selected").siblings("div").removeClass("selected");
-        })
-    })
-  </script>
+<!-- 引入底部 -->
+<div th:replace="commons/foot::footbar"></div>
+<script th:src="@{/js/songsheet.js}"></script>
 </body>
 </html>

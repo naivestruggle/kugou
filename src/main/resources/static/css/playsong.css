@@ -93,6 +93,9 @@
     cursor: pointer;
     background: url(../img/playsing/btn.png);
     background-repeat: no-repeat;
+    background-position: 0px -213px;
+    width: 26px;
+    height: 14px;
 }
 .songDetail {
     padding-top: 9px;

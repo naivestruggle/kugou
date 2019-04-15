@@ -28,9 +28,24 @@
                     <li><a href="recruit_sages.html" target="_blank">招纳贤士</a></li>
                     <li><a href="vip.html" target="_blank">会员中心</a></li>
                 </ul>
-                <div class="loading">
+                <div class="loading" th:if="${session.loginedUser} == null">
                     <a href="javascript:void(0);" style="color:white;"><div class="login">登录</div></a>
                     <a href="register.html"><div class="regin">注册</div></a>
+                </div>
+                <div class="logined_area">
+                <div class="logined" th:if="${session.loginedUser} != null">
+                    <img th:src="${session.loginedUser.userImgpath}!=null?${session.loginedUser.userImgpath}:@{/img/images/defaultHead.jpg}">
+                    <span class="userName" th:text="${session.loginedUser.userUsername}" th:title="${session.loginedUser.userUsername}">音梦用户</span>
+                </div>
+                <div style="width: 127px;height: 21px;float: right;margin-top: -11px;"></div>
+                <div class="user_menus" style="display:none;">
+                    <ul>
+                        <li><a target="_blank" href="">
+                            <span class="user_icon1"></span>个人帐号</a></li>
+                        <li><a href="user.loginOut.ajax">
+                            <span class="user_icon2"></span>退出登录</a></li>
+                    </ul>
+                </div>
                 </div>
             </div>
         </div>
@@ -68,13 +83,14 @@
             <div class="load_content">
                 <a class="load_close" id="closebtn"><i></i></a>
                 <div style="margin-bottom: 10px;"><h4>登录音梦音乐</h4></div>
+                <span id="errorMsg"></span>
                 <div class="zhanghao">
                     <form class="login_form">
                         <div class="kg_popup_txt_area">
                             <div class="kg_popup_txt_box kg_popup_txt_box_username">
                                 <label class="kg_popup_txt_tl" for="KgPopupUserName">帐号：</label>
                                 <input id="KgPopupUserName" name="UserName" type="text" class="kg_popup_txt_ipt" placeholder="用户名/手机/邮箱">
-                                <em id="KgPopupUserNameErrorMsg" class="loginInputErrorMsg">123123123</em>
+                                <em id="KgPopupUserNameErrorMsg" class="loginInputErrorMsg" style="display: none">123123123</em>
                             </div>
                         </div>
                         <div class="kg_popup_txt_area">
@@ -82,7 +98,7 @@
                                 <label class="kg_popup_txt_tl" for="KgPopupUserPwd">密码：</label>
                                 <input id="KgPopupUserPwd" name="UserPwd" type="password" placeholder="请输入密码" class="kg_popup_txt_ipt">
                                 <a href="" class="kg_popup_forget_pwd" target="_blank">忘记密码</a></div>
-                                <em id="KgPopupUserPwdErrorMsg" class="loginInputErrorMsg">123123123</em>
+                                <em id="KgPopupUserPwdErrorMsg" class="loginInputErrorMsg" style="display: none;">123123123</em>
                         </div>
                         <div class="kg_popup_tool_area kg_popup_bottom10">
                             <div class="kg_popup_tool_lt">

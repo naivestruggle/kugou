@@ -21,7 +21,7 @@
                     </a>
                 </div>
                 <div class="btnArea2 clearfix">
-                    <a class="btnDownloadClient" onclick=""></a>
+                    <a target="_blank" class="btnDownloadClient" onclick="" download th:href="${simpleSongBean.oneMusic.musicPlayUrl}"></a>
                 </div>
 
             </div>
@@ -31,7 +31,7 @@
             		<span class="audioName" title="一秒钟" th:title="${simpleSongBean.oneMusic.musicAlbumName}" th:text="${simpleSongBean.oneMusic.musicAlbumName}">一秒钟</span>
             		<!-- 如果歌曲有mv的话，这个按钮就显示 -->
 					<div th:if="${simpleSongBean.oneMusic.musicHaveMv eq 1}">
-                     	<a target="_blank" href="#" class="icon btnMv" th:href="@{SimpleMv.html/}+${simpleSongBean.oneMusic.musicVideoId}"></a>
+                     	<a target="_blank" href="#" class="icon btnMv" th:href="@{/mvPlay.html/}+${simpleSongBean.oneMusic.musicVideoId}"></a>
 					</div>
                 </div>
                 <!-- 专辑  歌手 -->

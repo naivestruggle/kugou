@@ -14,6 +14,10 @@ import java.sql.Date;
 @Data
 public class MusicList implements Serializable {
     /**
+     * 高亮
+     */
+    private String highlight;
+    /**
      * hashcode  solr中的
      */
     private String hashCode;
@@ -61,4 +65,8 @@ public class MusicList implements Serializable {
      * 歌单访问量
      */
     private Long musicListListenerCount;
+    /**
+     * 歌单收藏量
+     */
+    private Long musicListCollectCount;
 }

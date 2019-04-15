@@ -7,6 +7,9 @@ import com.hc.commons.Tel;
 import com.hc.kugou.bean.custombean.CustomUser;
 import com.hc.kugou.mapper.UserMapper;
 import com.hc.kugou.service.UserService;
+import com.hc.kugou.service.exception.email.EmailException;
+import com.hc.kugou.service.exception.email.UnknownEmailException;
+import com.hc.kugou.service.exception.login.LoginException;
 import com.hc.kugou.service.exception.password.PasswordException;
 import com.hc.kugou.service.exception.password.UnknownPasswordException;
 import com.hc.kugou.service.exception.register.RegisterErrorException;
@@ -32,35 +35,58 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service("userService")
 @Transactional(rollbackFor = {UserException.class, TelException.class, SexException.class, VerifyException.class,
-        RegisterException.class,PasswordException.class})
+        RegisterException.class,PasswordException.class, EmailException.class})
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
     /**
      * 验证用户输入的登录信息
      *
-     * @param user 存储登录信息的用户对象
+     * @param account 账号
+     * @param password 密码
      */
     @Override
-    public void regxLoginInputInfo(CustomUser user) {
+    public void regxLoginInputInfo(String account,String password) throws Exception {
         //登录支持QQ 微信 手机号 酷狗号 + 密码   验证格式
+        if(account == null || "".equals(account)){
+            throw new UnknownUserException("账号不能为空");
+        }else if(password == null || "".equals(password)){
+            throw new UnknownPasswordException("密码不能为空");
+        }
     }
 
     /**
      * 登录
      *
-     * @param user 用户输入的登录信息
+     * @param account 账号
+     * @param password 密码
      */
     @Override
-    public void loginService(CustomUser user) {
-        //查询数据库  看用户是否存在
+    public CustomUser loginService(String account,String password) throws Exception {
         //登录支持QQ 微信 手机号 酷狗号 + 密码
         CustomUser keyUser = new CustomUser();
-        try {
-            CustomUser resultUser = userMapper.selectByNotNullFields(keyUser);
-        } catch (Exception e) {
-            e.printStackTrace();
+        //查询数据库  看用户是否存在
+        if(Regx.regxTelphone(account)){
+            //如果是电话
+            keyUser.setUserTel(account);
+        }else if(Regx.regxEmail(account)){
+            //如果是邮箱
+            keyUser.setUserEmail(account);
+        }else{
+            //酷狗号
+            keyUser.setUserAccount(account);
         }
+
+        //两次加密密码
+        keyUser.setUserPassword(MD5.parseMD5(MD5.parseMD5(password)));
+
+        CustomUser resultUser = userMapper.selectByNotNullFields(keyUser);
+
+        if(resultUser == null){
+            throw new LoginException("账号或密码错误");
+        }
+
+        return resultUser;
     }
 
     /**
@@ -118,7 +144,7 @@ public class UserServiceImpl implements UserService {
         //密码加密两次
         user.setUserPassword(MD5.parseMD5(MD5.parseMD5(user.getUserPassword())));
         //设置用户名
-        user.setUserUsername(Code.createUserName("音梦人",null));
+        user.setUserUsername(Code.createUserName("音梦人",""));
         //设置用户账号
         user.setUserAccount(Code.createUserAccount());
         userMapper.insertUser(user);
@@ -157,7 +183,7 @@ public class UserServiceImpl implements UserService {
         }
         //去数据库查是否已存在此用户
         Integer count = userMapper.selectByTelToCount(account);
-        if(count != null && count > 1){
+        if(count != null && count >= 1){
             throw new TelExistsException("手机号已注册");
         }
 

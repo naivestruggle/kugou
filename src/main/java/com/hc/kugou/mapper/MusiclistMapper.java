@@ -1,5 +1,9 @@
 package com.hc.kugou.mapper;
 
+import com.hc.kugou.bean.custombean.CustomMusicList;import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
 /**
  * @Author:
  * @Date:2019/4/5
@@ -13,4 +17,12 @@ public interface MusiclistMapper {
      * @return  记录条数
      */
     Long selectMusiclistCount();
+
+    /**
+     * 根据歌单id查询歌曲集合
+     * @param musicListId 歌曲id
+     * @return 歌曲集合
+     */
+    CustomMusicList selectMusicListById(Integer musicListId);
+
 }

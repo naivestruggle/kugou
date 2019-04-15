@@ -2,6 +2,7 @@ package com.hc.kugou.bean.custombean;
 
 import com.hc.kugou.bean.Music;
 import com.hc.kugou.bean.MusicList;
+import lombok.Data;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * @Description:com.hc.kugou.bean.custombean    歌单
  * @Version:1.0
  */
+@Data
 public class CustomMusicList extends MusicList {
     /**
      * 歌曲集合
