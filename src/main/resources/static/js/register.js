@@ -23,15 +23,11 @@ function regxRegistInputInfo() {
                 $("#phonenumber").css({
                     "display": "block"
                 }).html(data.msg);
-                $(".message").css({
-                    "background": "#bbb"
-                });
+                $(".message").addClass("not_allow_send_code");
                 regxTel = false;
             } else if (data.code == 1) {
                 $("#phonenumber").html("请输入手机号");
-                $(".message").css({
-                    "background": "#2085e5"
-                });
+                $(".message").removeClass("not_allow_send_code");
                 regxTel = true;
             }
             if(regxTel && regxCode && regxPassword && regxPassword2){
@@ -57,7 +53,25 @@ function regxRegistInputInfo() {
             $("#register").addClass("not_register");
         }
     });
-
+    //密码输入事件
+    $("#mou3").on("input",function () {
+        var str = $("#mou3").val();
+        var patrn1 = /^(?![a-zA-z]+$)(?!\d+$)(?![!@#$%^&*]+$)(?![a-zA-z\d]+$)(?![a-zA-z!@#$%^&*]+$)(?![\d!@#$%^&*]+$)[a-zA-Z\d!@#$%^&*]+$/;
+        var patrn2 = /^(?![a-zA-z]+$)(?!\d+$)(?![!@#$%^&*]+$)[a-zA-Z\d!@#$%^&*]+$/;
+        var patrn3 = /^(?:\d+|[a-zA-Z]+|[!@#$%^&*]+)$/;
+        if(patrn1.exec(str)){
+            //强
+            $(".bg").css("left","0px");
+        }else if(patrn2.exec(str)){
+            //中
+            $(".bg").css("left","-55px");
+        }else if(patrn3.exec(str)){
+            //弱
+            $(".bg").css("left","-115px");
+        }else{
+            $(".bg").css("left","-169px");
+        }
+    });
     //验证密码
     $("#mou3").blur(function () {
         var data = {
@@ -151,6 +165,9 @@ function sendVerifyCode() {
                 console.log(data)
                data = eval(data);
                if(data.code == 1){
+                   var msg = $(".message");
+                   in60ms(60,msg);
+                   msg.addClass("not_allow_send_code");
                    alert("验证码发送成功");
                } else if(data.code == 0){
                    alert(data.msg);
@@ -162,6 +179,19 @@ function sendVerifyCode() {
     });
 }
 
+//定时
+function in60ms(i,msg){
+    var set = setInterval(function () {
+        if(i<0){
+            msg.removeClass("not_allow_send_code");
+            msg.find("span").html("发送短信");
+            clearTimeout(set);
+            return;
+        }
+        msg.find("span").html("   "+i+" s");
+        i--;
+    },1000);
+}
 
 /**
  * 点击注册按钮
