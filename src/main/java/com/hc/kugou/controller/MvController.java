@@ -1,6 +1,7 @@
 package com.hc.kugou.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.hc.commons.StringUtils;
 import com.hc.kugou.bean.Mv;
 import com.hc.kugou.bean.custombean.CustomMv;
 import com.hc.kugou.bean.custombean.MvViewBean;
@@ -76,7 +77,7 @@ public class MvController {
     @ResponseBody
     public JSONObject fun1(String searchKey){
         JSONObject jsonObject = new JSONObject();
-        SolrBean<CustomMv> solrBean = mvService.selectMvBySearchKey(searchKey);
+        SolrBean<CustomMv> solrBean = mvService.selectMvBySearchKey(searchKey,50);
         jsonObject.put("mvSolrBean",solrBean);
         return jsonObject;
     }

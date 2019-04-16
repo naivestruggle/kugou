@@ -191,8 +191,8 @@ public class MvServiceImpl implements MvService {
      * @return solrbean
      */
     @Override
-    public SolrBean<CustomMv> selectMvBySearchKey(String searchKey) {
-        SolrBean<CustomMv> customMvSolrBean = mvSolr.selectMvBySearchKey(searchKey,50);
+    public SolrBean<CustomMv> selectMvBySearchKey(String searchKey,Integer n) {
+        SolrBean<CustomMv> customMvSolrBean = mvSolr.selectMvBySearchKey(searchKey,n);
         return customMvSolrBean;
     }
 

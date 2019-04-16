@@ -16,5 +16,5 @@ public interface MusicService {
      * @param searchKey 查询关键词
      * @return  返回solrbean
      */
-    SolrBean<CustomMusic> selectMusicBySearchKey(String searchKey);
+    SolrBean<CustomMusic> selectMusicBySearchKey(String searchKey,Integer n);
 }
