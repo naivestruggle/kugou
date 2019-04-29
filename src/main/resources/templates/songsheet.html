@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8"/>
   <title>Document</title>
-  <link rel="shortcut icon" href="../static/favicon.ico"/>
-   <link rel="stylesheet" href="../public/css/head.css">
-  <script src="../public/js/jquery-3.2.1.js"></script>
-  <script src="../public/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="../static/favicon.ico" th:href="@{/favicon.ico}"/>
+   <link rel="stylesheet" href="../css/head.css" th:href="@{/css/head.css}">
+  <script src="../js/jquery-3.2.1.js" th:src="@{/js/jquery-3.2.1.js}"></script>
+  <script src="../js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 
   <style>
     *{
@@ -83,7 +83,7 @@ ul {
   display: block;
   float: left;
   width: 108px;
-  background: url(../public/img/songsheet/other.png) no-repeat -119px -407px;
+  background: url(../img/songsheet/other.png) no-repeat -119px -407px;
   padding: 4px 0 0 4px;
   margin-right: 5px;
   height: 119px;
@@ -168,7 +168,7 @@ ul {
 .btn i {
   width: 14px;
   height: 14px;
-  background: url(../public/img/songsheet/icon_splice.png) no-repeat;
+  background: url(../img/songsheet/icon_splice.png) no-repeat;
   display: inline-block;
   vertical-align: middle;
   overflow: hidden;
@@ -212,7 +212,7 @@ ul {
     <div class="header">
         <h1 class="logo">
             <a href="index.html">
-              <img src="../public/img/head/logo.png" alt="">
+              <img src="../img/head/logo.png" th:src="@{/img/head/logo.png}" alt="">
             </a>
         </h1>
         <div class="search_wrapper">
@@ -308,7 +308,7 @@ ul {
              <li>
                <div class="pic">
                   <a hidefocus="ture" title="" href="" onclick="">
-                    <img alt="" src="../public/img/songsheet/1.jpg"/>
+                    <img alt="" src="../img/songsheet/1.jpg" th:src="@{/img/songsheet/1.jpg}"/>
                   </a>
                </div>
                <div class="detail">

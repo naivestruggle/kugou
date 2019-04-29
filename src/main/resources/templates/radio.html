@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <title>电台频道-酷狗网</title>
-<link rel="shortcut icon" href="../static/favicon.ico"/>
+	<link rel="shortcut icon"  href="../static/favicon.ico" th:href="@{/favicon.ico}"/>
 <style>
 	a{
 		text-decoration: none;
@@ -67,7 +67,7 @@
 	}
 
 	#head .search_icon{
-		background: url(../public/img/radio/search.png);
+		background: url(../img/radio/search.png);
 		background-position: -40px -56px;
 		display: block;
 		margin: 9px 0 0 9px;
@@ -78,7 +78,7 @@
 	}
  /*  有问题为什么只在head下面才有效果*/
 	#head .search_icon:hover{
-		background: url(../public/img/radio/search.png);
+		background: url(../img/radio/search.png);
 		background-position: -40px -86px;
 
 	}
@@ -209,7 +209,7 @@
 
 
 	.homeNav .more a{
-		background:url(../public/img/radio/arrowMored.png) no-repeat;
+		background:url(../img/radio/arrowMored.png) no-repeat;
 	    margin-left: 5px;
     	padding: 0 30px;
 		margin-right: 5px;
@@ -217,7 +217,7 @@
 		display: inline;
 	}
 	.homeNav .more:hover a{
-		background:url(../public/img/radio/arrowMoreu.png)no-repeat;
+		background:url(../img/radio/arrowMoreu.png)no-repeat;
 	    background-position: 70px 8px;
         background-color: #0c8ed9;
 
@@ -304,14 +304,14 @@
 		background-position:0 -245px;
 	}
 	.subNav a{
-		background: url(../public/img/radio/sprite.png);
+		background: url(../img/radio/sprite.png);
 		padding-left: 20px;
 		color: #bbb;
     	font-size: 13px;
 	}
 	.subNav a:hover{
 		color: #14a9ff;
-		background: url(../public/img/radio/sprite.png);
+		background: url(../img/radio/sprite.png);
 	}
 	#frame{
 		width: 1000px;
@@ -400,7 +400,7 @@
 		font-family: Microsoft YaHei;
 	}
 	.radio_list .allRadio{
-		background: url(../public/img/radio/bg.png) no-repeat;
+		background: url(../img/radio/bg.png) no-repeat;
 		background-position: 0 -854px;
     	color: #FFF;
 	}
@@ -412,7 +412,7 @@
 		font-size: 14px;
 	}
 	.radio_list dd a:hover{
-		background: url(../public/img/radio/bg.png) no-repeat;
+		background: url(../img/radio/bg.png) no-repeat;
 		background-position: 0 -854px;
     	color: #FFF;
 	}
@@ -453,11 +453,11 @@
 		height: 40px;
 		float: left;
 		margin: 0 10px 0 0;
-		background: url(../public/img/radio/bg.png) -55px -501px no-repeat;
+		background: url(../img/radio/bg.png) -55px -501px no-repeat;
 		position: relative;
 	}
 	.radioBox dd a:hover i{
-		background: url(../public/img/radio/bg.png) -5px -501px no-repeat;
+		background: url(../img/radio/bg.png) -5px -501px no-repeat;
 	}
 	.radioBox dd em{
 		color: #555;
@@ -472,7 +472,7 @@
 		color:#009bd8;
 	}
 	.radioBox dd b{
-		background: url(../public/img/radio/bg.png) -8px -302px no-repeat;
+		background: url(../img/radio/bg.png) -8px -302px no-repeat;
 		width: 18px;
 		height: 19px;
 		display: inline-block;
@@ -535,12 +535,12 @@
 		height: 16px;
 		margin-left: 5px;
 		margin-top: -2px;
-		background: url(../public/img/radio/footer_icon.png) no-repeat 0 0;
+		background: url(../img/radio/footer_icon.png) no-repeat 0 0;
 	}
 	.copyright .office-verification{
 		margin-left: 5px;
 		padding: 5px 10px;
-		background: url(../public/img/radio/logo_down.png) no-repeat 0 0;
+		background: url(../img/radio/logo_down.png) no-repeat 0 0;
 	}
 	.copyright p{
 		line-height: 30px;
@@ -557,7 +557,7 @@
 <body>
 <div id="head">
 	<h1 class="logo">
-		<img src="../public/img/radio/logo.png"/>
+		<img src="../public/img/radio/logo.png" th:src="@{/img/radio/logo.png}"/>
 	</h1>
 	<div class="search">
 	    <div class="search_input">
@@ -650,7 +650,7 @@
 				<dl id="rightRadioList_1">
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20130128102453881885.jpg"/></i>
+							<i><img src="../public/img/radio/20130128102453881885.jpg" th:src="@{/img/radio/20130128102453881885.jpg}"/></i>
 							<em title="点击收听KTV必点曲电台" class="popu">KTV必点曲
 							<b class=""></b></em>
 							<div class="songs">
@@ -664,7 +664,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20180424175222981215.jpg"/></i>
+							<i><img src="../public/img/radio/20180424175222981215.jpg" th:src="@{/img/radio/20180424175222981215.jpg}"/></i>
 							<em title="点击收听创造101电台" class="popu">创造101
 							<b class=""></b></em>
 							<div class="songs">
@@ -678,7 +678,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<i><img src="../public/img/radio/20180423165937989890.jpg" th:src="@{/img/radio/20180423165937989890.jpg}" /></i>
 							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
 							<b class=""></b></em>
 							<div class="songs">
@@ -692,7 +692,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20180111165926961760.jpg"/></i>
+							<i><img src="../public/img/radio/20180111165926961760.jpg" th:src="@{/img/radio/20180111165926961760.jpg}"/></i>
 							<em title="点击收听嗨，唱起来电台" class="popu">嗨，唱起来
 							<b class=""></b></em>
 							<div class="songs">
@@ -706,7 +706,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20180507181913561334.jpg"/></i>
+							<i><img src="../public/img/radio/20180507181913561334.jpg" th:src="@{/img/radio/20180507181913561334.jpg}"/></i>
 							<em title="点击收听2018跨界歌王电台" class="popu">2018跨界歌王
 							<b class=""></b></em>
 							<div class="songs">
@@ -720,7 +720,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20180425110408680160.jpg"/></i>
+							<i><img src="../public/img/radio/20180425110408680160.jpg" th:src="@{/img/radio/20180425110408680160.jpg}"/></i>
 							<em title="点击歌手电台" class="popu">歌手
 							<b class=""></b></em>
 							<div class="songs">
@@ -734,7 +734,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<i><img src="../public/img/radio/20180423165937989890.jpg" th:src="@{/img/radio/20180423165937989890.jpg}"/></i>
 							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
 							<b class=""></b></em>
 							<div class="songs">
@@ -748,7 +748,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<i><img src="../public/img/radio/20180423165937989890.jpg" th:src="@{/img/radio/20180423165937989890.jpg}"/></i>
 							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
 							<b class=""></b></em>
 							<div class="songs">
@@ -762,7 +762,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<i><img src="../public/img/radio/20180423165937989890.jpg" th:src="@{/img/radio/20180423165937989890.jpg}"/></i>
 							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
 							<b class=""></b></em>
 							<div class="songs">
@@ -776,7 +776,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<i><img src="../public/img/radio/20180423165937989890.jpg" th:src="@{/img/radio/20180423165937989890.jpg}"/></i>
 							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
 							<b class=""></b></em>
 							<div class="songs">
@@ -790,7 +790,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<i><img src="../public/img/radio/20180423165937989890.jpg" th:src="@{/img/radio/20180423165937989890.jpg}"/></i>
 							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
 							<b class=""></b></em>
 							<div class="songs">
@@ -804,7 +804,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<i><img src="../public/img/radio/20180423165937989890.jpg" th:src="@{/img/radio/20180423165937989890.jpg}"/></i>
 							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
 							<b class=""></b></em>
 							<div class="songs">
@@ -818,7 +818,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<i><img src="../public/img/radio/20180423165937989890.jpg" th:src="@{/img/radio/20180423165937989890.jpg}"/></i>
 							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
 							<b class=""></b></em>
 							<div class="songs">
@@ -832,7 +832,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<i><img src="../public/img/radio/20180423165937989890.jpg" th:src="@{/img/radio/20180423165937989890.jpg}"/></i>
 							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
 							<b class=""></b></em>
 							<div class="songs">
@@ -846,7 +846,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<i><img src="../public/img/radio/20180423165937989890.jpg" th:src="@{/img/radio/20180423165937989890.jpg}"/></i>
 							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
 							<b class=""></b></em>
 							<div class="songs">
@@ -860,7 +860,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<i><img src="../public/img/radio/20180423165937989890.jpg" th:src="@{/img/radio/20180423165937989890.jpg}"/></i>
 							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
 							<b class=""></b></em>
 							<div class="songs">
@@ -874,7 +874,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<i><img src="../public/img/radio/20180423165937989890.jpg" th:src="@{/img/radio/20180423165937989890.jpg}"/></i>
 							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
 							<b class=""></b></em>
 							<div class="songs">
@@ -888,7 +888,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<i><img src="../public/img/radio/20180423165937989890.jpg" th:src="@{/img/radio/20180423165937989890.jpg}"/></i>
 							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
 							<b class=""></b></em>
 							<div class="songs">
@@ -902,7 +902,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150716170806448394.jpg"/></i>
+							<i><img src="../public/img/radio/20150716170806448394.jpg" th:src="@{/img/radio/20150716170806448394.jpg}"/></i>
 							<em title="点击收听我想和你唱第三季电台" class="popu">蒙面歌王
 							<b class=""></b></em>
 							<div class="songs">
@@ -916,7 +916,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150716170806448394.jpg"/></i>
+							<i><img src="../public/img/radio/20150716170806448394.jpg" th:src="@{/img/radio/20150716170806448394.jpg}"/></i>
 							<em title="点击收听我想和你唱第三季电台" class="popu">蒙面歌王
 							<b class=""></b></em>
 							<div class="songs">
@@ -930,7 +930,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150716170806448394.jpg"/></i>
+							<i><img src="../public/img/radio/20150716170806448394.jpg" th:src="@{/img/radio/20150716170806448394.jpg}"/></i>
 							<em title="点击收听我想和你唱第三季电台" class="popu">蒙面歌王
 							<b class=""></b></em>
 							<div class="songs">
@@ -944,7 +944,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150716170806448394.jpg"/></i>
+							<i><img src="../public/img/radio/20150716170806448394.jpg" th:src="@{/img/radio/20150716170806448394.jpg}"/></i>
 							<em title="点击收听我想和你唱第三季电台" class="popu">蒙面歌王
 							<b class=""></b></em>
 							<div class="songs">
@@ -958,7 +958,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150716170806448394.jpg"/></i>
+							<i><img src="../public/img/radio/20150716170806448394.jpg" th:src="@{/img/radio/20150716170806448394.jpg}"/></i>
 							<em title="点击收听我想和你唱第三季电台" class="popu">蒙面歌王
 							<b class=""></b></em>
 							<div class="songs">
@@ -972,7 +972,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150716170806448394.jpg"/></i>
+							<i><img src="../public/img/radio/20150716170806448394.jpg" th:src="@{/img/radio/20150716170806448394.jpg}"/></i>
 							<em title="点击收听我想和你唱第三季电台" class="popu">蒙面歌王
 							<b class=""></b></em>
 							<div class="songs">
@@ -986,7 +986,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150716170806448394.jpg"/></i>
+							<i><img src="../public/img/radio/20150716170806448394.jpg" th:src="@{/img/radio/20150716170806448394.jpg}"/></i>
 							<em title="点击收听我想和你唱第三季电台" class="popu">蒙面歌王
 							<b class=""></b></em>
 							<div class="songs">
@@ -1000,7 +1000,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150716170806448394.jpg"/></i>
+							<i><img src="../public/img/radio/20150716170806448394.jpg" th:src="@{/img/radio/20150716170806448394.jpg}"/></i>
 							<em title="点击收听我想和你唱第三季电台" class="popu">蒙面歌王
 							<b class=""></b></em>
 							<div class="songs">
@@ -1014,7 +1014,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150716170806448394.jpg"/></i>
+							<i><img src="../public/img/radio/20150716170806448394.jpg" th:src="@{/img/radio/20150716170806448394.jpg}"/></i>
 							<em title="点击收听我想和你唱第三季电台" class="popu">蒙面歌王
 							<b class=""></b></em>
 							<div class="songs">
@@ -1030,7 +1030,7 @@
 				<dl id="rightRadioList_2" style="display: none;">
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20160530152019588931.jpg"/></i>
+							<i><img src="../public/img/radio/20160530152019588931.jpg" th:src="@{/img/radio/20160530152019588931.jpg}"/></i>
 							<em title="点击收听百听不厌英文歌" class="popu">百听不厌英文歌
 							<b class=""></b></em>
 							<div class="songs">
@@ -1040,7 +1040,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150409163539212076.jpg"/></i>
+							<i><img src="../public/img/radio/20150409163539212076.jpg" th:src="@{/img/radio/20150409163539212076.jpg}"/></i>
 							<em title="点击收听怀旧粤语" class="popu">怀旧粤语
 							<b class=""></b></em>
 							<div class="songs">
@@ -1050,7 +1050,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150409162708193455.jpg"/></i>
+							<i><img src="../public/img/radio/20150409162708193455.jpg" th:src="@{/img/radio/20150409162708193455.jpg}"/></i>
 							<em title="点击收听粤语" class="popu">粤语
 							<b class=""></b></em>
 							<div class="songs">
@@ -1060,7 +1060,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20111012160836586512.jpg"/></i>
+							<i><img src="../public/img/radio/20111012160836586512.jpg" th:src="@{/img/radio/20111012160836586512.jpg}"/></i>
 							<em title="点击收听闽南语" class="popu">闽南语
 							<b class=""></b></em>
 							<div class="songs">
@@ -1070,7 +1070,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150123181217959323.jpg"/></i>
+							<i><img src="../public/img/radio/20150123181217959323.jpg" th:src="@{/img/radio/20150123181217959323.jpg}"/></i>
 							<em title="点击收听欧美" class="popu">欧美
 							<b class=""></b></em>
 							<div class="songs">
@@ -1080,7 +1080,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20120814165648282939.jpg"/></i>
+							<i><img src="../public/img/radio/20120814165648282939.jpg" th:src="@{/img/radio/20120814165648282939.jpg}"/></i>
 							<em title="点击收听怀旧华语" class="popu">怀旧华语"
 							<b class=""></b></em>
 							<div class="songs">
@@ -1090,7 +1090,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150123181658490560.jpg"/></i>
+							<i><img src="../public/img/radio/20150123181658490560.jpg" th:src="@{/img/radio/20150123181658490560.jpg}"/></i>
 							<em title="点击收听韩语" class="popu">韩语
 							<b class=""></b></em>
 							<div class="songs">
@@ -1100,7 +1100,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20140930193630745558.jpg"/></i>
+							<i><img src="../public/img/radio/20140930193630745558.jpg" th:src="@{/img/radio/20140930193630745558.jpg}"/></i>
 							<em title="点击收听国语" class="popu">国语
 							<b class=""></b></em>
 							<div class="songs">
@@ -1110,7 +1110,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20130411165902227344.jpg"/></i>
+							<i><img src="../public/img/radio/20130411165902227344.jpg" th:src="@{/img/radio/20130411165902227344.jpg}"/></i>
 							<em title="点击收听日语" class="popu">日语
 							<b class=""></b></em>
 							<div class="songs">
@@ -1120,7 +1120,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150122145701333244.jpg"/></i>
+							<i><img src="../public/img/radio/20150122145701333244.jpg" th:src="@{/img/radio/20150122145701333244.jpg}"/></i>
 							<em title="点击收听傣语" class="popu">傣语
 							<b class=""></b></em>
 							<div class="songs">
@@ -1130,7 +1130,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150123181959700623.jpg"/></i>
+							<i><img src="../public/img/radio/20150123181959700623.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听法语" class="popu">法语
 							<b class=""></b></em>
 							<div class="songs">
@@ -1142,7 +1142,7 @@
 				<dl id="rightRadioList_3" style="display: none;">
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150409163247127617.jpg"/></i>
+							<i><img src="../public/img/radio/20150409163247127617.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听90后" class="popu">90后
 							<b class=""></b></em>
 							<div class="songs">
@@ -1152,7 +1152,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150409163152947915.jpg"/></i>
+							<i><img src="../public/img/radio/20150409163152947915.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听80后" class="popu">80后
 							<b class=""></b></em>
 							<div class="songs">
@@ -1162,7 +1162,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20130411165947427627.jpg"/></i>
+							<i><img src="../public/img/radio/20130411165947427627.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听70后" class="popu">70后
 							<b class=""></b></em>
 							<div class="songs">
@@ -1172,7 +1172,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20140826192759776329.jpg"/></i>
+							<i><img src="../public/img/radio/20140826192759776329.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听00后" class="popu">00后
 							<b class=""></b></em>
 							<div class="songs">
@@ -1182,7 +1182,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20160513141520269584.jpg"/></i>
+							<i><img src="../public/img/radio/20160513141520269584.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听舒缓音乐" class="popu">舒缓音乐
 							<b class=""></b></em>
 							<div class="songs">
@@ -1192,7 +1192,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20160513141831457301.jpg"/></i>
+							<i><img src="../public/img/radio/20160513141831457301.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听轻快节奏" class="popu">轻快节奏
 							<b class=""></b></em>
 							<div class="songs">
@@ -1202,7 +1202,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20160513142046835992.jpg"/></i>
+							<i><img src="../public/img/radio/20160513142046835992.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听解乏电音" class="popu">解乏电音
 							<b class=""></b></em>
 							<div class="songs">
@@ -1214,7 +1214,7 @@
 				<dl id="rightRadioList_4" style="display: none;">
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20160530152019588931.jpg"/></i>
+							<i><img src="../public/img/radio/20160530152019588931.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听百听不厌英文歌" class="popu">百听不厌英文歌
 							<b class=""></b></em>
 							<div class="songs">
@@ -1224,7 +1224,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150409163539212076.jpg"/></i>
+							<i><img src="../public/img/radio/20150409163539212076.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听怀旧粤语" class="popu">怀旧粤语
 							<b class=""></b></em>
 							<div class="songs">
@@ -1234,7 +1234,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150409162708193455.jpg"/></i>
+							<i><img src="../public/img/radio/20150409162708193455.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听粤语" class="popu">粤语
 							<b class=""></b></em>
 							<div class="songs">
@@ -1244,7 +1244,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20111012160836586512.jpg"/></i>
+							<i><img src="../public/img/radio/20111012160836586512.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听闽南语" class="popu">闽南语
 							<b class=""></b></em>
 							<div class="songs">
@@ -1254,7 +1254,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150123181217959323.jpg"/></i>
+							<i><img src="../public/img/radio/20150123181217959323.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听欧美" class="popu">欧美
 							<b class=""></b></em>
 							<div class="songs">
@@ -1264,7 +1264,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20120814165648282939.jpg"/></i>
+							<i><img src="../public/img/radio/20120814165648282939.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听怀旧华语" class="popu">怀旧华语"
 							<b class=""></b></em>
 							<div class="songs">
@@ -1274,7 +1274,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150123181658490560.jpg"/></i>
+							<i><img src="../public/img/radio/20150123181658490560.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听韩语" class="popu">韩语
 							<b class=""></b></em>
 							<div class="songs">
@@ -1284,7 +1284,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20140930193630745558.jpg"/></i>
+							<i><img src="../public/img/radio/20140930193630745558.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听国语" class="popu">国语
 							<b class=""></b></em>
 							<div class="songs">
@@ -1294,7 +1294,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20130411165902227344.jpg"/></i>
+							<i><img src="../public/img/radio/20130411165902227344.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听日语" class="popu">日语
 							<b class=""></b></em>
 							<div class="songs">
@@ -1304,7 +1304,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150122145701333244.jpg"/></i>
+							<i><img src="../public/img/radio/20150122145701333244.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听傣语" class="popu">傣语
 							<b class=""></b></em>
 							<div class="songs">
@@ -1314,7 +1314,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150123181959700623.jpg"/></i>
+							<i><img src="../public/img/radio/20150123181959700623.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听法语" class="popu">法语
 							<b class=""></b></em>
 							<div class="songs">
@@ -1326,7 +1326,7 @@
 				<dl id="rightRadioList_5" style="display: none;">
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150409163247127617.jpg"/></i>
+							<i><img src="../public/img/radio/20150409163247127617.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听90后" class="popu">90后
 							<b class=""></b></em>
 							<div class="songs">
@@ -1336,7 +1336,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150409163152947915.jpg"/></i>
+							<i><img src="../public/img/radio/20150409163152947915.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听80后" class="popu">80后
 							<b class=""></b></em>
 							<div class="songs">
@@ -1346,7 +1346,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20130411165947427627.jpg"/></i>
+							<i><img src="../public/img/radio/20130411165947427627.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听70后" class="popu">70后
 							<b class=""></b></em>
 							<div class="songs">
@@ -1356,7 +1356,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20140826192759776329.jpg"/></i>
+							<i><img src="../public/img/radio/20140826192759776329.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听00后" class="popu">00后
 							<b class=""></b></em>
 							<div class="songs">
@@ -1366,7 +1366,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20160513141520269584.jpg"/></i>
+							<i><img src="../public/img/radio/20160513141520269584.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听舒缓音乐" class="popu">舒缓音乐
 							<b class=""></b></em>
 							<div class="songs">
@@ -1376,7 +1376,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20160513141831457301.jpg"/></i>
+							<i><img src="../public/img/radio/20160513141831457301.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听轻快节奏" class="popu">轻快节奏
 							<b class=""></b></em>
 							<div class="songs">
@@ -1386,7 +1386,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20160513142046835992.jpg"/></i>
+							<i><img src="../public/img/radio/20160513142046835992.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听解乏电音" class="popu">解乏电音
 							<b class=""></b></em>
 							<div class="songs">
@@ -1398,7 +1398,7 @@
 				<dl id="rightRadioList_6" style="display: none;">
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20160530152019588931.jpg"/></i>
+							<i><img src="../public/img/radio/20160530152019588931.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听百听不厌英文歌" class="popu">百听不厌英文歌
 							<b class=""></b></em>
 							<div class="songs">
@@ -1408,7 +1408,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150409163539212076.jpg"/></i>
+							<i><img src="../public/img/radio/20150409163539212076.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听怀旧粤语" class="popu">怀旧粤语
 							<b class=""></b></em>
 							<div class="songs">
@@ -1418,7 +1418,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150409162708193455.jpg"/></i>
+							<i><img src="../public/img/radio/20150409162708193455.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听粤语" class="popu">粤语
 							<b class=""></b></em>
 							<div class="songs">
@@ -1428,7 +1428,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20111012160836586512.jpg"/></i>
+							<i><img src="../public/img/radio/20111012160836586512.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听闽南语" class="popu">闽南语
 							<b class=""></b></em>
 							<div class="songs">
@@ -1438,7 +1438,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150123181217959323.jpg"/></i>
+							<i><img src="../public/img/radio/20150123181217959323.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听欧美" class="popu">欧美
 							<b class=""></b></em>
 							<div class="songs">
@@ -1448,7 +1448,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20120814165648282939.jpg"/></i>
+							<i><img src="../public/img/radio/20120814165648282939.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听怀旧华语" class="popu">怀旧华语"
 							<b class=""></b></em>
 							<div class="songs">
@@ -1458,7 +1458,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150123181658490560.jpg"/></i>
+							<i><img src="../public/img/radio/20150123181658490560.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听韩语" class="popu">韩语
 							<b class=""></b></em>
 							<div class="songs">
@@ -1468,7 +1468,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20140930193630745558.jpg"/></i>
+							<i><img src="../public/img/radio/20140930193630745558.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听国语" class="popu">国语
 							<b class=""></b></em>
 							<div class="songs">
@@ -1478,7 +1478,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20130411165902227344.jpg"/></i>
+							<i><img src="../public/img/radio/20130411165902227344.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听日语" class="popu">日语
 							<b class=""></b></em>
 							<div class="songs">
@@ -1488,7 +1488,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150122145701333244.jpg"/></i>
+							<i><img src="../public/img/radio/20150122145701333244.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听傣语" class="popu">傣语
 							<b class=""></b></em>
 							<div class="songs">
@@ -1498,7 +1498,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150123181959700623.jpg"/></i>
+							<i><img src="../public/img/radio/20150123181959700623.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听法语" class="popu">法语
 							<b class=""></b></em>
 							<div class="songs">
@@ -1510,7 +1510,7 @@
 				<dl id="rightRadioList_7" style="display: none;">
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150409163247127617.jpg"/></i>
+							<i><img src="../public/img/radio/20150409163247127617.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听90后" class="popu">90后
 							<b class=""></b></em>
 							<div class="songs">
@@ -1520,7 +1520,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20150409163152947915.jpg"/></i>
+							<i><img src="../public/img/radio/20150409163152947915.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听80后" class="popu">80后
 							<b class=""></b></em>
 							<div class="songs">
@@ -1530,7 +1530,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20130411165947427627.jpg"/></i>
+							<i><img src="../public/img/radio/20130411165947427627.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听70后" class="popu">70后
 							<b class=""></b></em>
 							<div class="songs">
@@ -1540,7 +1540,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20140826192759776329.jpg"/></i>
+							<i><img src="../public/img/radio/20140826192759776329.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听00后" class="popu">00后
 							<b class=""></b></em>
 							<div class="songs">
@@ -1550,7 +1550,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20160513141520269584.jpg"/></i>
+							<i><img src="../public/img/radio/20160513141520269584.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听舒缓音乐" class="popu">舒缓音乐
 							<b class=""></b></em>
 							<div class="songs">
@@ -1560,7 +1560,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20160513141831457301.jpg"/></i>
+							<i><img src="../public/img/radio/20160513141831457301.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听轻快节奏" class="popu">轻快节奏
 							<b class=""></b></em>
 							<div class="songs">
@@ -1570,7 +1570,7 @@
 					</dd>
 					<dd>
 						<a href="">
-							<i><img src="../public/img/radio/20160513142046835992.jpg"/></i>
+							<i><img src="../public/img/radio/20160513142046835992.jpg" th:src="@{/img/radio/20150123181959700623.jpg}"/></i>
 							<em title="点击收听解乏电音" class="popu">解乏电音
 							<b class=""></b></em>
 							<div class="songs">
@@ -1606,7 +1606,7 @@
 			<span class="footerIcon"><a target="_blank" href="">&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
 			</p>
 			<p>广播电视节目制作经营许可证（粤）字第01270号&nbsp;&nbsp;&nbsp;&nbsp;营业性演出许可证穗天演440106026</p>
-			<p>穗公网监备案证第44010650010167&nbsp;&nbsp;&nbsp;&nbsp;互联网药品信息服务资格证编号（粤）-非经营性-2012-0018<a  href="">&nbsp;&nbsp;&nbsp;<span>粤公网安备 44010602000141号</span><img src="../public/img/radio/icon_yuewangga1.png" width="16" height="16"></a></p>
+			<p>穗公网监备案证第44010650010167&nbsp;&nbsp;&nbsp;&nbsp;互联网药品信息服务资格证编号（粤）-非经营性-2012-0018<a  href="">&nbsp;&nbsp;&nbsp;<span>粤公网安备 44010602000141号</span><img src="../public/img/radio/icon_yuewangga1.png" th:src="/img/radio/icon_yuewangga1.png" width="16" height="16"></a></p>
 			<p>不良信息举报邮箱：jubao_music@kugou.net&nbsp;&nbsp;&nbsp;&nbsp;客服邮箱：cs@kugou.com</p>
 			<p>Copyright&nbsp;&nbsp;©&nbsp;&nbsp;2004-2018 KuGou-Inc.All Rights Reserved
                 <a class="office-verification" href="" target="_blank"></a>

@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8"/>
     <title></title>
-    <link rel="shortcut icon" href="../static/favicon.ico"/>
-    <link rel="stylesheet" href="../public/css/serve.css">
-    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <link rel="shortcut icon"  href="../static/favicon.ico" th:href="@{/favicon.ico}"/>
+    <link rel="stylesheet" href="../public/css/serve.css" th:href="@{/css/serve.css}">
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
   </head>
   <body>
 <!-- 头 -->
@@ -32,9 +32,9 @@
               <span id="a4" class="a4">Mac版</span>
             </div>
             <div class="extra1">
-              <img src="../public/img/serve/tipsIcon.jpg"/>
+              <img src="../public/img/serve/tipsIcon.jpg" th:src="@{/img/serve/tipsIcon.jpg}"/>
               如果乐库打不开，请检查是否安装运行了广告助手
-              <img src="../public/img/serve/adHelp.jpg"/>，
+              <img src="../public/img/serve/adHelp.jpg" th:src="@{/img/serve/adHelp.jpg}"/>，
               如果是请卸载，
               <a href="" class="showlog">查看卸载方法>></a>
               <div class="hidepic" ></div>
@@ -72,7 +72,7 @@
                 </tr>
                 <tr class="tr2">
                   <td>
-                    <div class="tablepic"><img src="../public/img/serve/s_icon_01.jpg" style="margin: 0 auto;"/></div>
+                    <div class="tablepic"><img src="../public/img/serve/s_icon_01.jpg" th:src="@{/img/serve/s_icon_01.jpg}" style="margin: 0 auto;"/></div>
                     <div class="onlinekf">
                       <span><a href="" style="color: #fff;">在线客服</a></span>
                     </div>
@@ -82,7 +82,7 @@
                     </div>
                   </td>
                   <td>
-                    <div class="tablepic"><img src="../public/img/serve/s_icon_02.jpg"/></div>
+                    <div class="tablepic"><img src="../public/img/serve/s_icon_02.jpg" th:src="@{/img/serve/s_icon_02.jpg}"/></div>
                     <h2>400-626-0878</h2>
                     <div class="server">
                       <p>周一至周五 9:30-18:30</p>
@@ -90,12 +90,12 @@
                     </div>
                   </td>
                   <td>
-                    <div class="tablepic"><img src="../public/img/serve/s_icon_03.jpg"/></div>
+                    <div class="tablepic"><img src="../public/img/serve/s_icon_03.jpg" th:src="@{/img/serve/s_icon_03.jpg}"/></div>
                     <h2 style="font-weight: normal;">投诉建议</h2>
                     <p>Service@kugou.com</p>
                   </td>
                   <td>
-                    <div class="tablepic"><img src="../public/img/serve/s_icon_04.jpg"/></div>
+                    <div class="tablepic"><img src="../public/img/serve/s_icon_04.jpg" th:src="@{/img/serve/s_icon_04.jpg}"/></div>
                     <h2 style="font-weight: normal;">真伪查询</h2>
                     <p>请刮开产品上的防伪标签获取防伪码</p>
                   </td>
@@ -110,7 +110,7 @@
 
 <!-- 尾巴 -->
 
-    <script src="../public/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../public/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../public/js/jquery.min.js" th:src="@{/js/jquery.min.js}" type="text/javascript" charset="utf-8"></script>
+    <script src="../public/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}" type="text/javascript" charset="utf-8"></script>
   </body>
 </html>

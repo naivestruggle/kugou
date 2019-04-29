@@ -3,9 +3,9 @@
 <head>
 	<meta charset="UTF-8"/>
 	<title>Document</title>
-	<link rel="shortcut icon" href="../static/favicon.ico"/>
-	<link rel="stylesheet" href="../public/css/head.css">
-	<script src="../public/js/jquery-3.2.1.js"></script>
+	<link rel="shortcut icon"  href="../static/favicon.ico" th:href="@{/favicon.ico}"/>
+	<link rel="stylesheet" href="../public/css/head.css" th:href="@{/css/head.css}">
+	<script src="../public/js/jquery-3.2.1.js" th:src="@{/js/jquery-3.2.1.js}"></script>
 	<style>
 		.content{
 			position: relative;
@@ -35,7 +35,7 @@
     width: 262px;
     height: 262px;
     margin-bottom: 25px;
-    background: url(../public/img/playsing/default.jpg) no-repeat left top;
+    background: url(../img/playsing/default.jpg) no-repeat left top;
 }
 .content .albumImg img {
     border: none;
@@ -64,7 +64,7 @@
     display: block;
     width: 230px;
     height: 50px;
-    background: url(../public/img/playsing/downlaod_bg.png) no-repeat;
+    background: url(../img/playsing/downlaod_bg.png) no-repeat;
     cursor: pointer;
 }
 
@@ -100,7 +100,7 @@
 .icon {
     display: block;
     cursor: pointer;
-    background: url(../public/img/playsing/btn.png);
+    background: url(../img/playsing/btn.png);
     background-repeat: no-repeat;
 }
 .songDetail {
@@ -194,7 +194,7 @@
 	display: block;
 	width: 36px;
 	height: 36px;
-	background: url(../public/img/playsing/btn.png);
+	background: url(../img/playsing/btn.png);
 	background-position: 0 -143px;
 	position: absolute;
 	margin-left: -7px;
@@ -204,7 +204,7 @@
 	display: block;
 	width: 60px;
 	height: 60px;
-	background: url(../public/img/playsing/btn.png);
+	background: url(../img/playsing/btn.png);
 	position: absolute;
 	margin-left: 43px;
 	margin-top: 10px;
@@ -213,7 +213,7 @@
 	display: none;
 	width: 60px;
 	height: 60px;
-	background: url(../public/img/playsing/btn.png);
+	background: url(../img/playsing/btn.png);
 	position: absolute;
 	margin-left: 43px;
 	margin-top: 10px;
@@ -222,7 +222,7 @@
 	display: block;
 	width: 36px;
 	height: 36px;
-	background: url(../public/img/playsing/btn.png);
+	background: url(../img/playsing/btn.png);
 	background-position: 0 -143px;
 	position: absolute;
 	margin-left: 117px;
@@ -272,7 +272,7 @@
 	display: block;
 	width: 2px;
 	height: 3px;
-	background: url(../public/img/playsing/btn.png) -217px -200px;
+	background: url(../img/playsing/btn.png) -217px -200px;
 }
 .progress_bg .bg_middle{
 	display: block;
@@ -280,7 +280,7 @@
 	height: 3px;
 	margin-left: 2px;
 	margin-top: -3px;
-	background: url(../public/img/playsing/progress_bg_middle.png) repeat-x top left;
+	background: url(../img/playsing/progress_bg_middle.png) repeat-x top left;
 }
 .progress_bg .bg_right{
 	display: block;
@@ -288,7 +288,7 @@
 	height: 3px;
 	margin-left: 371px;
 	margin-top: -3px;
-	background: url(../public/img/playsing/btn.png) -237px -200px;
+	background: url(../img/playsing/btn.png) -237px -200px;
 }
 .progress_bar{
 	height: 3px;
@@ -299,7 +299,7 @@
 	width: 2px;
 	height: 3px;
 	margin-top: -3px;
-	background: url(../public/img/playsing/btn.png) -527px -387px;
+	background: url(../img/playsing/btn.png) -527px -387px;
 }
 .progress_bar .bar_mid{
 	display: block;
@@ -308,7 +308,7 @@
 	height: 3px;
 	overflow: hidden;
 	margin-top: -3px;
-	background: url(../public/img/playsing/progress_bar_middle.png)repeat-x top left;
+	background: url(../img/playsing/progress_bar_middle.png)repeat-x top left;
 }
 .drag_playhead{
 	position: absolute;
@@ -321,7 +321,7 @@
 	margin-left: 0.32%;
 	width: 12px;
 	height: 12px;
-	background:url(../public/img/playsing/btn.png) -217px -181px;
+	background:url(../img/playsing/btn.png) -217px -181px;
 }
 /*右边功能块*/
 .bot_right{
@@ -336,12 +336,12 @@
 	width: 16px;
 	height: 16px;
 	margin-top: 34px;
-	background: url(../public/img/playsing/btn.png) -64px -195px;
+	background: url(../img/playsing/btn.png) -64px -195px;
 	cursor: pointer;
 	float: left;
 }
 .volume:hover{
-	background: url(../public/img/playsing/btn.png) -80px -195px;
+	background: url(../img/playsing/btn.png) -80px -195px;
 }
 /*音量控制面板 隐藏部分*/
 .bot_right .volume_panel{
@@ -350,7 +350,7 @@
 	margin-top: -115px;
 	width: 29px;
 	height: 114px;
-	background: url(../public/img/playsing/volume-panel.png) no-repeat;
+	background: url(../img/playsing/volume-panel.png) no-repeat;
 	z-index: 100;
 	position: absolute;
 }
@@ -367,7 +367,7 @@
 	height: 2px;
 	display: block;
 	cursor: pointer;
-    background:url(../public/img/playsing/btn.png) -584px -425px;
+    background:url(../img/playsing/btn.png) -584px -425px;
 	position: absolute;
 	left: 1px;
 	top: 78px;
@@ -387,7 +387,7 @@
 	top: 41px;
 	width: 3px;
 	height: 86px;
-	background: url(../public/img/playsing/volume_middle.png);
+	background: url(../img/playsing/volume_middle.png);
 	overflow: hidden;
 }
 .vol_head{
@@ -404,7 +404,7 @@
 	width: 9px;
 	height: 9px;
 	top: 42.5375px;
-	background: url(../public/img/playsing/btn.png) -242px -130px;
+	background: url(../img/playsing/btn.png) -242px -130px;
 }
 /*添加播放提示 隐藏部分*/
 .play_tips{
@@ -417,7 +417,7 @@
 	right: 100px;
 	color: #fff;
 	text-align: center;
-	background: url(../public/img/playsing/paly_add.png) no-repeat left top;
+	background: url(../img/playsing/paly_add.png) no-repeat left top;
 }
 /*播放模式*/
 .play_mode{
@@ -426,12 +426,12 @@
 	float: left;
 	width: 16px;
 	height: 16px;
-	background: url(../public/img/playsing/btn.png) no-repeat -64px -179px;
+	background: url(../img/playsing/btn.png) no-repeat -64px -179px;
 	margin-left: 30px;
 	margin-top: 34px;
 }
 .play_mode:hover{
-	background: url(../public/img/playsing/btn.png) no-repeat -80px -179px;
+	background: url(../img/playsing/btn.png) no-repeat -80px -179px;
 }
 /*播放模式 隐藏部分*/
 .mode_panel{
@@ -442,7 +442,7 @@
 	padding: 10px;
 	height: 95px;
 	z-index: 100;
-	background: url(../public/img/playsing/play_style.png) no-repeat left top;
+	background: url(../img/playsing/play_style.png) no-repeat left top;
 }
 .mode_panel li{
 	height: 30px;
@@ -457,7 +457,7 @@
 	line-height: 16px;
 	margin: 7px 8px;
 	vertical-align: middle;
-	background: url(../public/img/playsing/btn.png) no-repeat -96px -179px;
+	background: url(../img/playsing/btn.png) no-repeat -96px -179px;
 }
 .mode_panel li .mode_img2{
 	display: block;
@@ -467,7 +467,7 @@
 	line-height: 16px;
 	margin: 7px 8px;
 	vertical-align: middle;
-	background: url(../public/img/playsing/btn.png) no-repeat 0 -179px;
+	background: url(../img/playsing/btn.png) no-repeat 0 -179px;
 }
 .mode_panel li .mode_img3{
 	display: block;
@@ -477,7 +477,7 @@
 	line-height: 16px;
 	margin: 7px 8px;
 	vertical-align: middle;
-	background: url(../public/img/playsing/btn.png) no-repeat -128px -179px;
+	background: url(../img/playsing/btn.png) no-repeat -128px -179px;
 }
 .mode_panel li .mode_word{
 	color: #19b5f0;
@@ -494,28 +494,28 @@
 	display: block;
 	width: 15px;
 	height: 15px;
-	background:  url(../public/img/playsing/btn.png) no-repeat -240px -32px;
+	background:  url(../img/playsing/btn.png) no-repeat -240px -32px;
 	cursor: pointer;
 	position: absolute;
 	margin-left: 92px;
 	margin-top: 32.5px;
 }
 .pb_download:hover{
-	background:  url(../public/img/playsing/btn.png) no-repeat -256px -32px;
+	background:  url(../img/playsing/btn.png) no-repeat -256px -32px;
 }
 /*分享*/
 .pb_share{
 	display: block;
 	width: 15px;
 	height: 15px;
-	background:  url(../public/img/playsing/btn.png) no-repeat -240px 0;
+	background:  url(../img/playsing/btn.png) no-repeat -240px 0;
 	cursor: pointer;
 	position: absolute;
 	margin-left: 136px;
 	margin-top: 32.5px;
 }
 .pb_share:hover{
-	background:  url(../public/img/playsing/btn.png) no-repeat -256px 0;
+	background:  url(../img/playsing/btn.png) no-repeat -256px 0;
 }
 .list{
 	position: absolute;
@@ -525,7 +525,7 @@
 	width: 60px;
 	height: 23px;
 	cursor: pointer;
-	background: url(../public/img/playsing/btn.png) no-repeat 0 -120px;
+	background: url(../img/playsing/btn.png) no-repeat 0 -120px;
 }
 .list_count{
 	margin-left: 30px;
@@ -533,7 +533,7 @@
 	font-size: 13px;
 }
 .list:hover{
-	background: url(../public/img/playsing/btn.png) no-repeat -61px -120px;
+	background: url(../img/playsing/btn.png) no-repeat -61px -120px;
 }
 .list:hover .list_count{
 	color: #19b5f0;
@@ -562,7 +562,7 @@
 	position: absolute;
 	width: 26px;
 	height: 16px;
-	background: url(../public/img/playsing/shbar.png) no-repeat;
+	background: url(../img/playsing/shbar.png) no-repeat;
 	opacity: 0.3;
 }
 .bot_bot .bot2{
@@ -572,10 +572,10 @@
 	margin-left: 5px;
 	display: block;
 	cursor: pointer;
-	background: url(../public/img/playsing/btn.png) no-repeat -140px -211px;
+	background: url(../img/playsing/btn.png) no-repeat -140px -211px;
 }
 .bot_bot .bot2:hover{
-	background: url(../public/img/playsing/btn.png) no-repeat -230px -211px;
+	background: url(../img/playsing/btn.png) no-repeat -230px -211px;
 }
 
 
@@ -587,7 +587,7 @@
 	  <div class="header">
         <h1 class="logo">
             <a href="index.html">
-              <img src="../public/img/head/logo.png" alt="">
+              <img src="../public/img/head/logo.png" th:src="@{/img/head/logo.png}" alt="">
             </a>
         </h1>
         <div class="search_wrapper">
@@ -672,7 +672,7 @@
     		<div class="album fl">
                 <div class="albumImg">
                     <a class="fl" target="_blank" href="" title="">
-                    	<img src="">
+                    	<img src="" th:src="@{/img/playsing/20150716004147248755.jpg}">
                     </a>
                 </div>
                 <div class="btnArea2 clearfix">
@@ -733,7 +733,7 @@
 				<a href="" class="next" id="btn-next"></a>
 			</div>
 			<a href="" class="playImg">
-				<img src="../public/img/playsing/20150716004147248755.jpg" alt="">
+				<img src="../public/img/playsing/20150716004147248755.jpg" th:src="@{/img/playsing/20150716004147248755.jpg}" alt="">
 			</a>
 			<div class="bot_mid">
 				<div class="mid_up">
