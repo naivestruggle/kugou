@@ -1,0 +1,629 @@
+ul{
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+	}
+	li{
+		list-style: none;
+	}
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	#head{
+		width: 1000px;
+		height: 78px;
+		margin: 0 auto;
+		position: relative;
+
+	}
+	#head .logo{
+		width: 153px;
+		height: 37px;
+		float: left;
+		margin-top: 20px;
+	}
+	#head .search{
+		width: 300px;
+   		height: 36px;
+    	margin-left: 193px;
+    	padding-top: 20px;
+
+	}
+	#head .search_input{
+		width: 298px;
+    	height: 34px;
+    	border: 1px solid #ccc;
+    	line-height: 34px;
+		position: relative;
+		z-index: 100;
+	}
+
+	.search_input input{
+		width: 249px;
+    	height: 24px;
+    	line-height: 24px;
+		margin-left: 14px;
+    	padding: 5px 0;
+   	 	color: #666;
+		border: none;
+		font-size: 13px;
+		position: absolute;
+    	left: 0;
+    	top: 0;
+		outline: none; /*边框按下去没有颜色*/
+
+	}
+	#head .search_btn{
+		width: 34px;
+		height: 34px;
+		float: right;
+		right: 10px;
+    	top:10px;
+	}
+	#head .search_icon{
+		background: url(../img/musicMan/search.png);
+		background-position: -40px -56px;
+		width: 16px;
+		height: 16px;
+		right: 10px;
+    	top:10px;
+		position: absolute;
+		cursor: pointer;
+	}
+	#head .search_icon:hover{
+		background: url(../img/musicMan/search.png);
+		background-position: -40px -86px;
+		width: 16px;
+		height: 16px;
+		right: 10px;
+    	top:10px;
+		position: absolute;
+	}
+	#head .head_right{
+		width: 402px;
+		float: right;
+		height: 25px;
+		margin-top: -25px;
+
+	}
+	.head_right ul{
+		width: 240px;
+		border-right: 1px solid #e6e6e6;
+		padding-right: 11px;
+        text-align: right;
+		float: left;
+
+	}
+	.head_right ul li{
+		list-style: none;
+		float: left;
+		padding-left: 20px;
+	}
+	.head_right ul li a{
+		text-decoration: none;
+		color: #777;
+		font-size: 13px;
+	}
+	.head_right ul li a:hover{
+		color: #169af3;
+	}
+	#head .loading{
+		width: 110px;
+		height: 30px;
+		position: absolute;
+		right: 0;
+		top:25px;
+	}
+	.loading .login {
+		width: 48px;
+		height: 28px;
+		line-height: 28px;
+		border: 1px solid #169af3;
+		border-radius: 2px;
+		text-align: center;
+		background-color: #169af3;
+		float: left;
+
+	}
+
+	.loading .regin{
+		width: 48px;
+		height: 28px;
+		line-height: 28px;
+		border: 1px solid #dbdbdb;
+		border-radius: 2px;
+		text-align: center;
+		color: black;
+		text-decoration: none;
+		float:right;
+	}
+	.loading .login:hover{
+		background-color: #158fe1;
+		text-decoration: underline;
+	}
+	.loading .regin:hover{
+		border: 1px solid #169af3;
+
+		}
+	.loading .regin a{
+		color:black;
+	}
+	.loading .regin:hover{
+		color: #169af3;
+		text-decoration: underline;
+	}
+	.loading a{
+		text-decoration: none;
+		font-size: 13px;
+	}
+
+	/*首页榜单*/
+	#navWrap{
+		width: 100%;
+		height: 55px;
+		background:#2c323b;
+		position: relative;
+	}
+	#navWrap .nav{
+		width: 1000px;
+		margin: 0 auto;
+
+
+	}
+	#navWrap li{
+		float: left;
+		list-style: none;
+	}
+	#navWrap a{
+		text-decoration: none;
+	}
+	.nav .homeNav{
+		width: 437px;
+		height: 55px;
+		float: left;
+		position: relative;
+	}
+	.homeNav .normal active{
+		background-color: #0c8ed9;
+        color: #fff;
+	}
+	.homeNav a{
+		font-size: 16px;
+    	color: #ddd;
+		display:block;
+
+	}
+	.homeNav  li:hover a{
+		color: white;
+	}
+	.homeNav li{
+		text-align: center;
+		line-height: 55px;
+		display:inline-block;
+	}
+	.homeNav li:hover{
+
+        background-color: #0c8ed9;
+	}
+
+	/*更多以及下拉列表*/
+	.homeNav .more a{
+		background:url(../img/musicMan/arrowMored.png) no-repeat;
+	    margin-left: 5px;
+    	padding: 0 30px;
+		margin-right: 5px;
+		background-position: 72px 8px;
+		display: inline;
+	}
+	.homeNav .more:hover a{
+		background:url(../img/musicMan/arrowMoreu.png)no-repeat;
+	    background-position: 70px 8px;
+        background-color: #0c8ed9;
+
+	}
+	 .secondMenu{
+		position: absolute;
+		left: 500px;
+		top: 55px;
+		display: none;
+		width: 113px;
+		height: 146px;
+		background-color: #252a32;
+		z-index: 99;
+		}
+	.secondMenu li{
+		display:block;
+		padding: 0;
+		height: 36px;
+		line-height: 36px;
+		float: none;
+		margin: 0;
+		width: 113px;
+		text-align: center;
+		cursor: pointer;
+	}
+	.secondMenu li:hover{
+		background-color: #2d343d;
+		border-top: 1px solid #383d44;
+
+	}
+		.secondMenu a{
+		text-align: center;
+		font-size: 15px;
+		color: #bbb;
+		background: 0 0;
+		background-color: #252b34;
+		display: block;
+	}
+	.secondMenu li:hover a{
+		color: #fff;
+		background-color: #2d343d;
+	}
+	.subNav {
+		width: 445.44px;
+		float:right;
+		margin-top: 16px;
+    	height: 35px;
+
+	}
+	.subNav li{
+		margin-left: 30px;
+		list-style: none;
+	}
+	.subNav a.icon-nav1{
+		background-position: 0 -119px;
+	}
+	.subNav a.icon-nav1:hover{
+		background-position: 0 -101px;
+	}
+	.subNav a.icon-nav2{
+		background-position:0 -155px;
+	}
+	.subNav a.icon-nav2:hover{
+		background-position:0 -137px;
+	}
+	.subNav a.icon-nav3{
+		background-position:0 -191px;
+	}
+	.subNav a.icon-nav3:hover{
+		background-position:0 -173px;
+	}
+	.subNav a.icon-nav4{
+		background-position:0 -226px;
+	}
+	.subNav a.icon-nav4:hover{
+		background-position:0 -208px;
+	}
+	.subNav a.icon-nav5{
+		background-position:0 -281px;
+	}
+	.subNav a.icon-nav5:hover{
+		background-position:0 -245px;
+	}
+	.subNav a{
+		background: url(../img/musicMan/sprite.png);
+		padding-left: 20px;
+		color: #bbb;
+    	font-size: 13px;
+	}
+	.subNav a:hover{
+		color: #14a9ff;
+		background: url(../img/musicMan/sprite.png);
+	}
+	#wrap{
+		width: 960px;
+		margin: 0  auto;
+		height: 1647px;
+		margin-top: 12px;
+	}
+	#wrap .music_top{
+		width: 960px;
+		height: 292px;
+	}
+	#wrap .music_pic{
+		background: url(../img/musicMan/20171012102331668995.jpg);
+		background-size: cover;
+		width: 700px;
+		height: 250px;
+		float: left;
+		display: inline-block;
+	}
+	#wrap .music_login{
+		width: 250px;
+		height: 292px;
+		margin-left: 10px;
+		float: left;
+	}
+	.music_login .no_login{
+		width: 250px;
+		height: 292px;
+		background:url(../img/musicMan/loginstate.png) no-repeat -6px -5px;
+		position: relative;
+		}
+	.no_login .duli{
+		display: inline-block;
+		width: 180px;
+		height: 42px;
+		position: absolute;
+		left: 35px;
+		top: 175px;
+	}
+	.no_login .chuangzuo{
+		display: inline-block;
+		width: 180px;
+		height: 42px;
+		position: absolute;
+		left: 35px;
+		top: 225px;
+	}
+	/*了解酷狗音乐人*/
+	#wrap .music_content{
+		margin-top: 40px;
+    	border-top: 2px solid #e5e5e5;
+	}
+	.music_content h2{
+		border-left: 6px solid #48beee;
+		padding-left: 15px;
+		font-size: 24px;
+		color: #333;
+		margin: 40px 0;
+		font-weight: normal;
+		height: 36px;
+		line-height: 36px;
+	}
+	.music_content .music_find{
+		width: 960px;
+		height: 53px;
+
+	}
+	.music_find h3{
+		font-size: 16px;
+		color: #666;
+		margin: 35px 0 10px;
+		font-weight:normal;
+	}
+	.music_find p{
+		font-size: 14px;
+	}
+	.music_content .music_process{
+		width: 960px;
+		height: 76px;
+		margin-top: 20px;
+	}
+	.music_process span{
+		width: 220px;
+		height: 76px;
+		background: url(../img/musicMan/icon_bg.png) no-repeat;
+		display: block;
+		float: left;
+		margin-right: 18px;
+	}
+	.music_process .music_process1{
+		background-position: -1px -299px;
+	}
+	.music_process .music_process2{
+		background-position: -235px -299px;
+	}
+	.music_process .music_process3{
+		background-position: -1px -379px;
+	}
+	.music_process .music_process4{
+		background-position: -235px -379px;
+	}
+	.music_content .music_supply{
+		width: 960px;
+		height: 638px;
+		margin-top: 40px;
+		border-top: 2px solid #e5e5e5;
+	}
+	.music_service li{
+		width: 280px;
+		text-align: center;
+		float: left;
+		padding: 0 20px 60px;
+		line-height: none;
+	}
+	.music_service span{
+		width: 100px;
+		height: 105px;
+		background: url(../img/musicMan/icon_bg.png) no-repeat;
+		display: block;
+		margin: 0 auto 15px;
+	}
+	.music_service .music_service1{
+		background-position: -1px -84px;
+	}
+	.music_service .music_service2{
+		background-position: -106px -84px;
+	}
+	.music_service .music_service3{
+		background-position: -210px -84px;
+	}
+	.music_service .music_service4{
+		background-position: -1px -189px;
+	}
+	.music_service .music_service5{
+		background-position: -110px -189px;
+	}
+	.music_service .music_service6{
+		background-position: -214px -189px;
+	}
+	.music_service h4{
+		font-size: 18px;
+		color: #333;
+		margin-bottom: 15px;
+	}
+	.music_service{
+		color: #888;
+		font-size: 14px;
+	}
+	.music_service .toBeSinger{
+		display: inline-block;
+		width: 14px;
+		height: 14px;
+		margin-left: 5px;
+		background: url(../img/musicMan/icon_question.jpg) no-repeat left center;
+		text-decoration: none;
+	}
+	.music_content .download{
+		width: 960px;
+		height: 242px;
+		margin-top: 40px;
+		border-top: 2px solid #e5e5e5;
+	}
+	.download .warrant{
+		width: 960px;
+		height: 124px;
+	}
+	.warrant .download_btn{
+		width: 200px;
+		height: 124px;
+		float: left;
+		margin-right: 85px;
+	}
+	.download_btn a{
+		width: 200px;
+		height: 42px;
+		background: url(../img/musicMan/icon_bg.png) no-repeat;
+		display: block;
+		margin-bottom: 20px;
+	}
+	.download_btn .download_btn1{
+		background-position: -200px -42px;
+	}
+	.download_btn .download_btn2{
+		background-position: -200px 0px;
+	}
+	.warrant .download_text{
+		width: 518px;
+		height: 118px;
+		float: left;
+		font-size: 14px;
+	}
+	.download_text .doc{
+		font-size: 14px;
+		color: #333;
+		margin-bottom: 25px;
+	}
+	.download_text .download_address{
+		width: 518px;
+		height: 67px;
+		color: #888;
+	}
+	.download_address p{
+		margin-bottom: 5px;
+	}
+	.download_address .kg_left{
+		float: left;
+		width: 60px;
+		text-align: right;
+		margin-right: 10px;
+		font-size: 14px;
+	}
+	.download_address span{
+		font-size: 13px;
+	}
+/*	底部*/
+	#bottom{
+		width: 100%;
+		height: 319px;
+		background: #2c323b;
+		margin-top: 20px;
+	}
+	#bottom .footer{
+		padding-bottom: 50px;
+	}
+	.footer .links{
+		position: relative;
+		border-bottom: 1px solid #3d424a;
+		padding: 15px 0;
+		font-size: 12px;
+		color: #b1b3b9;
+		text-align: center;
+		height: 20px;
+	}
+	.footer .links a{
+		color: #b1b3b9;
+    	padding: 10px;
+	}
+	.footer .links a:hover{
+		color:#009af3;
+		text-decoration: underline;
+
+	}
+	.footer .copyright{
+		width: 1000px;
+		height: 180px;
+		margin: 40px auto 0;
+	}
+	.copyright .footerIcon{
+		width: 16px;
+		height: 16px;
+		margin-left: 5px;
+		margin-top: -2px;
+		background: url(../img/musicMan/footer_icon.png) no-repeat 0 0;
+	}
+	.copyright .office-verification{
+		margin-left: 5px;
+		padding: 5px 10px;
+		background: url(../img/musicMan/logo_down.png) no-repeat 0 0;
+	}
+	.copyright p{
+		line-height: 30px;
+		text-align: center;
+		color: #b1b3b9;
+		font-size: 14px;
+	}
+	.copyright a{
+		color: #999;
+	}
+	.copyright a:hover{
+		text-decoration: underline;
+	}
+	#cover{
+		display:none;
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		z-index: 999;
+		background-color: rgb(0, 0, 0);
+		opacity: 0.5;
+		height: 2130px;
+		width: 1349px;
+		z-index: 10000 !important;
+	}
+	#notice{
+		display: none;
+		z-index: 10001 !important;
+		position: fixed;
+		left: 50%;
+		top: 50%;
+		margin-top: -133px;
+		margin-left: -220px;
+		width: 440px;
+		height: 266px;
+		background: #fff;
+		border-radius: 5px;
+		background: url(../img/musicMan/notice.png) no-repeat;
+	}
+	#notice .close{
+		display: block;
+		float: right;
+		padding: 0;
+		margin: 5px 12px 0px 0px;
+		width: 30px;
+		height: 30px;
+		text-decoration: none;
+		outline: none;
+	}
+	#notice .notice_ok{
+		position: absolute;
+		padding: 0;
+		margin: 0;
+		width: 180px;
+		height: 42px;
+		margin-left: 130px;
+		margin-top: 184px;
+	}

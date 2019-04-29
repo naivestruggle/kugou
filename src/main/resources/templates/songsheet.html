@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Document</title>
+  <link rel="shortcut icon" href="favicon.ico"/>
+   <link rel="stylesheet" href="../public/css/head.css">
+  <script src="../public/js/jquery-3.2.1.js"></script>
+  <script src="../public/js/bootstrap.min.js"></script>
+
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      font-size: 14px;
+    }
+a, a:hover,a:focus {
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+}
+
+.wrap {
+  width: 1000px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.fl {
+  width: 210px;
+}
+
+.tab {
+  list-style: none;
+  padding: 0;
+}
+
+.tab li {
+  width: 210px;
+  height: 36px;
+  line-height: 36px;
+  margin-bottom: 18px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.active {
+  background: #169af3;
+  color: #fff;
+}
+
+.main {
+  display: none;
+}
+
+.selected {
+  display: block;
+}
+
+.fr {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+#info {
+  list-style: none;
+}
+
+.fr #info li {
+  width: 770px;
+  height: 124px;
+  margin-bottom: 16px;
+  position: relative;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+#info li .pic {
+  display: block;
+  float: left;
+  width: 108px;
+  background: url(../public/img/songsheet/other.png) no-repeat -119px -407px;
+  padding: 4px 0 0 4px;
+  margin-right: 5px;
+  height: 119px;
+}
+
+#info li .pic:hover {
+  background-position: -2px -408px;
+}
+
+.pic img {
+  width: 100px;
+  height: 100px;
+}
+
+.detail {
+  float: left;
+  width: 650px;
+}
+
+.top {
+  color: #333;
+  font-weight: 400;
+  font-style: normal;
+  height: 25px;
+}
+
+.top em {
+  color: #333;
+  font-style: normal;
+  display: inline;
+  padding: 0;
+  float: right;
+  width: 150px;
+  height: 20px;
+  text-align: right;
+}
+
+.top strong {
+  color: #323232;
+  font-size: 14px;
+  height: 18px;
+  padding: 0 0 7px;
+  font-weight: 400;
+}
+
+.top strong a {
+  color: #333;
+}
+
+.text {
+  color: #999;
+  margin: 5px 13px 6px 0;
+  height: 40px;
+  margin-top: 0;
+  clear: both;
+  line-height: 22px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  -moz-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+.btn {
+  margin-top:13px;
+  outline: 0;
+  border:0;
+}
+.btn a{
+  display: inline-block;
+    vertical-align: middle;
+    zoom: 1;
+    border: 0 solid #dbdbdb;
+    font-size: 12px;
+}
+.btn a,.btn span{
+  border-color: #169af3;
+}
+
+.btn i {
+  width: 14px;
+  height: 14px;
+  background: url(../public/img/songsheet/icon_splice.png) no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+  padding-left: 9px;
+  position: absolute;
+  top: 50%;
+  margin-top: -8px;
+}
+
+.playall .t2 {
+  background-position: -570px -90px;
+  left: 22px;
+}
+
+.share .t2 {
+  background-position: -300px -90px;
+  left: 15px;
+}
+
+.btn span {
+  padding: 7px 20px 7px 35px;
+  background: #169af3;
+  color: #fff;
+  border-color: #169af3;
+  position: relative;
+    float: left;
+    display: inline;
+    border: 1px solid #dbdbdb;
+    line-height: 100%;
+    overflow: hidden;
+    zoom: 1;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+  </style>
+
+
+</head>
+<body>
+    <div class="header">
+        <h1 class="logo">
+            <a href="index.html">
+              <img src="../public/img/head/logo.png" alt="">
+            </a>
+        </h1>
+        <div class="search_wrapper">
+            <div class="search_input">
+                <input type="text" placeholder="阿离 微笑">
+                <div class="search_btn">
+                  <i class="search_icon"></i>
+                </div>
+            </div>
+        </div>
+        <div class="topNav fr">
+            <ul>
+                <li>
+                  <a target="_blank" href="serve.html">客服中心</a>
+                </li>
+                <li>
+                  <a target="_blank" href="recruit_sages.html">招贤纳士</a>
+                </li>
+                <li>
+                  <a target="_blank" href="vip.html">会员中心 </a>
+                </li>
+            </ul>
+            <div class="login_area">
+                <div id="login_in" class="clearfix">
+                  <a class="login_btn" id="login_btn">登录</a>
+                  <a target="_blank" href="register.html" class="regin_btn" id="regin_btn">注册</a>
+                </div>
+                <!-- 登录之后显示的 -->
+                <div id="user_menu" class="user_menu">
+                    <div class="topArrow1"></div>
+                    <div class="topArrow2"></div>
+                    <ul>
+                        <li>
+                          <a target="_blank" href="">
+                            <span class="user_icon1"></span>个人帐号
+                          </a>
+                        </li>
+                        <li>
+                          <a href="">
+                              <span class="user_icon2"></span>退出登录
+                          </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="navWrap">
+      <div class="nav">
+        <ul class="homeNav">
+            <li style="width: 92px;height: 55px;" class="active">
+                <a class="normal" href="index.html">首页</a>
+            </li>
+            <li style="width: 92px;height: 55px;">
+                <a class="normal" href="list.html">榜单</a>
+            </li>
+            <li style="width: 140px;height: 55px;">
+                <a class="normal" id="productCenter" href="download.html">下载客户端</a>
+            </li>
+            <li class="more"style="width: 113px;height: 55px;">
+                <a href="javascript:void(0);"id="showMore">更多</a>
+
+            </li>
+        </ul>
+        <ul class="secondMenu" id="secondMenu"style="display: none;">
+            <li><a href="radio.html">电台</a></li>
+            <li><a href="mv.html">MV</a></li>
+            <li><a href="songsheet.html">歌单</a></li>
+            <li><a href="singer.html">歌手</a></li>
+        </ul>
+        <ul class="subNav">
+            <li><a target="_blank" href="LiveMusic.html" class="icon-nav1">音乐直播</a></li>
+            <li><a target="_blank" href="live.html" class="icon-nav2">酷狗LIVE</a></li>
+            <li><a target="_blank" href="musicMan.html" class="icon-nav3">音乐人</a></li>
+            <li><a target="_blank" href="anchor.html" class="icon-nav4">成为主播</a></li>
+            <li><a target="_blank" href="mall.html" class="icon-nav5">商城</a></li>
+        </ul>
+      </div>
+  </div>
+  <div class="wrap">
+    <div class="fl">
+      <ul class="tab">
+        <li class="tab-item active">推荐</li>
+        <li class="tab-item">最热</li>
+        <li class="tab-item">热藏</li>
+        <li class="tab-item">飙升</li>
+      </ul>
+    </div>
+
+    <div class="fr">
+      <div class="main selected">
+           <ul id="info">
+             <li>
+               <div class="pic">
+                  <a hidefocus="ture" title="" href="" onclick="">
+                    <img alt="" src="../public/img/songsheet/1.jpg"/>
+                  </a>
+               </div>
+               <div class="detail">
+                  <div class="top">
+                    <em>制作人：Aiden</em>
+                    <strong>
+                      <a title="我们相爱这么久​，你却选择了别人" href="">我们相爱这么久​，你却选择了别人</a>
+                    </strong>
+                  </div>
+                  <div class="text">
+                    曾经，我们相爱，别人突然闯进你的生活，你却将我遗忘。
+
+我们之间或许是话题不同，又或许我的吸引力没有别人强，既然如此，我们，就此别过，忘掉彼此，是你我最好的选择。
+                  </div>
+                  <div class="btn">
+                    <a href="javascript:void(0)" title="播放全部" class="playall">
+                      <span><i class="t2"></i>播放全部</span>
+                    </a>
+                    <a href="javascript:void(0)" class="share" title="分享">
+                      <span><i class="t2"></i>分享</span>
+                    </a>
+                </div>
+               </div>
+             </li>
+           </ul>
+      </div>
+      <!-- 最热 -->
+      <div class="main">
+        <ul id="info">
+             <li>
+               <div class="pic">
+                  <a title="" href="" onclick="">
+                      <img alt="" src=""/>
+                  </a>
+               </div>
+               <div class="detail">
+                  <div class="top">
+                    <em></em>
+                    <strong>
+                       <a title="" href=""></a>
+                    </strong>
+                  </div>
+                  <div class="text">
+                  </div>
+                  <div class="btn">
+                    <a href="javascript:void(0)" title="播放全部" class="playall">
+                      <span><i class="t2"></i>播放全部</span>
+                    </a>
+                    <a href="javascript:void(0)" class="share" title="分享">
+                      <span><i class="t2"></i>分享</span>
+                    </a>
+                </div>
+               </div>
+             </li>
+        </ul>
+      </div>
+       <!-- 热藏-->
+      <div class="main">
+          <ul id="info">
+             <li>
+               <div class="pic">
+                  <a title="" href="" onclick="">
+                      <img alt="" src=""/>
+                  </a>
+               </div>
+               <div class="detail">
+                  <div class="top">
+                    <em></em>
+                    <strong>
+                       <a title="" href=""></a>
+                    </strong>
+                  </div>
+                  <div class="text">
+                  </div>
+                  <div class="btn">
+                    <a href="javascript:void(0)" title="播放全部" class="playall">
+                      <span><i class="t2"></i>播放全部</span>
+                    </a>
+                    <a href="javascript:void(0)" class="share" title="分享">
+                      <span><i class="t2"></i>分享</span>
+                    </a>
+                </div>
+               </div>
+             </li>
+          </ul>
+      </div>
+       <!-- 飙升-->
+      <div class="main">
+         <ul id="info">
+             <li>
+               <div class="pic">
+                  <a title="" href="" onclick="">
+                      <img alt="" src=""/>
+                  </a>
+               </div>
+               <div class="detail">
+                  <div class="top">
+                    <em></em>
+                    <strong>
+                       <a title="" href=""></a>
+                    </strong>
+                  </div>
+                  <div class="text">
+                  </div>
+                  <div class="btn">
+                    <a href="javascript:void(0)" title="播放全部" class="playall">
+                      <span><i class="t2"></i>播放全部</span>
+                    </a>
+                    <a href="javascript:void(0)" class="share" title="分享">
+                      <span><i class="t2"></i>分享</span>
+                    </a>
+                </div>
+               </div>
+             </li>
+         </ul>
+      </div>
+    </div>
+  </div>
+<script>
+    $(function () {
+        $(".tab>li").click(function () {
+            $(this).addClass("active").siblings("li").removeClass("active");
+            var index=$(this).index();
+            $(".fr>div:eq("+index+")").addClass("selected").siblings("div").removeClass("selected");
+        })
+    })
+  </script>
+</body>
+</html>

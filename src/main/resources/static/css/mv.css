@@ -1,0 +1,333 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+a{
+	text-decoration: none;
+}
+li{
+	list-style: none;
+}
+section{
+	width: 53%;
+	height: 350px;
+	margin: auto;
+}
+.BigImg{
+	width: 663px;
+	height: 325px;
+	margin: 0;
+	position: relative;
+	float: left;
+	overflow: hidden;    /*超出部分隐藏*/
+}
+.BigImg .BigImgs{
+	width: 4000px;
+	height: 344px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+.BigImg .tag1{
+	width: 663px;
+	height: 40px;
+	position: absolute;
+	bottom: 18px;
+	left: 0;
+	background:#000000;
+	opacity: 0.7;
+	z-index: 1;
+}
+.BigImg .tag2{
+	width: 663px;
+	height: 40px;
+	position: absolute;
+	bottom: 18px;
+	left: 667px;
+	background:#000000;
+	opacity: 0.7;
+	z-index: 1;
+}
+.BigImg .tag3{
+	width: 663px;
+	height: 40px;
+	position: absolute;
+	bottom: 18px;
+	left: 1335px;
+	background:#000000;
+	opacity: 0.7;
+	z-index: 1;
+}
+.BigImg .tag4{
+	width: 663px;
+	height: 40px;
+	position: absolute;
+	bottom: 18px;
+	left: 2003px;
+	background:#000000;
+	opacity: 0.7;
+	z-index: 1;
+}
+.BigImg .tag5{
+	width: 663px;
+	height: 40px;
+	position: absolute;
+	bottom: 18px;
+	left: 2670px;
+	background:#000000;
+	opacity: 0.7;
+	z-index: 1;
+}
+.BigImgs .name{/*字*/
+	color: #fff;
+	font-weight: bold;
+	font-size: 13px;
+	line-height: 40px;
+	margin-left: 20px;
+	z-index: 2;
+}
+.BigImgs em{
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	background: url(../MVIMg/play.png);
+	position: absolute;
+	top: 12px;
+	margin-left: 10px;
+}
+.dot{
+	width: 120px;
+	height: 29px;
+	position: absolute;
+	right: 15px;
+	bottom: 5px;
+}
+.dot li{
+	width: 12px;
+	height: 11px;
+	float: left;
+	background: url(../MVIMg/doc.png);
+	margin-top: 9px;
+	margin-left: 8px;
+}
+
+
+/*myhot*/
+#mvhot{
+	width: 30%;
+	height: 325px;
+	margin: 0 0 0 24px;
+	float: left;
+}
+h3{
+	margin-bottom:0 !important;
+}
+#mvhot h3 span{
+	display: inline-block;
+	height: 30px;
+	width: 80%;
+	float: left;
+	background: #deb200;
+	color: #FFF;
+	line-height: 30px;
+	font-size: 14px;
+}
+#mvhot h3 a{
+	display: inline-block;
+	height: 30px;
+	width: 20%;
+	float: left;
+	font-weight: normal;
+	background-color: #363636;
+	line-height: 30px;
+	text-align: center;
+	color: #fff;
+	font-size: 14px;
+}
+.queue{
+	height: 293px;
+	background: #363636;
+	margin-top: 2px;
+	cursor: pointer;
+}
+.queue li{
+	height: 29px;
+	line-height: 29px;
+	color: #fff;
+	padding-left: 3px;
+	font-size: 14px;
+	position: relative;;
+}
+.queue .Qnum{
+	display: inline-block;
+	height: 29px;
+	width: 37px;
+	background: url(../MVIMg/bg.png);
+}
+.queue #Q1 {
+	background-position: -336px -218px;
+}
+.queue li:hover span#Q1 {
+	background-position: -296px -218px;
+}
+.queue #Q2{
+	background-position:  -336px -247px;
+}
+.queue li:hover span#Q2 {
+	background-position: -296px -247px;
+}
+.queue #Q3 {
+	background-position: -336px -276px;
+}
+.queue li:hover span#Q3 {
+	background-position: -296px -276px;
+}
+.queue #Q4 {
+	background-position: -336px -305px;
+}
+.queue li:hover span#Q4 {
+	background-position: -296px -305px;
+}
+.queue #Q5 {
+	background-position: -336px -334px;
+}
+.queue li:hover span#Q5 {
+	background-position: -296px -334px;
+}
+.queue #Q6 {
+	background-position: -336px -363px;
+}
+.queue li:hover span#Q6 {
+	background-position: -296px -363px;
+}
+.queue #Q7 {
+	background-position: -336px -392px;
+}
+.queue li:hover span#Q7 {
+	background-position: -296px -392px;
+}
+.queue #Q8 {
+	background-position:  -336px -421px;
+}
+.queue li:hover span#Q8 {
+	background-position: -296px -421px;
+}
+.queue #Q9 {
+	background-position: -336px -450px;
+}
+.queue li:hover span#Q9 {
+	background-position: -296px -450px;
+}
+.queue #Q10 {
+	background-position: -336px -479px;
+}
+.queue li:hover span#Q10 {
+	background-position: -296px -479px;
+}
+.queue .Qname{
+	color: #fff;
+	font-size: 13px;
+	display: inline-block;
+	width: 220px;
+	height: 29px;
+	line-height: 29px;
+	position: absolute;
+	top: 0px;
+}
+/*鼠标移入伪类*/
+.queue li:hover .play{
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	background-image: url(../MVIMg/play.png);
+	position: absolute;
+	right: 35px;
+	top: 6px;
+}
+.queue li:hover{
+	background: #959595;
+}
+
+
+
+/*详细分类*/
+h3{
+	height: 30px;
+	width: 100%;
+	text-align: center;
+	line-height: 30px !important;
+	background-color: #cfcfcf;
+	font-size: 16px !important;
+	color: #fff !important;
+	font-weight: normal;
+}
+.nav-pills{
+	width:20%;
+	margin-right: 5px;
+	padding: 2px;
+	float:left;
+}
+a{font-size:14px;}
+.nav-item{
+	width:100%;
+}
+.nav-link{
+	color: #000;
+	border-radius: 0px !important;
+	text-align:center;
+	margin: 4px 0;
+}
+.nav-link:hover, .active{
+	color: #fff !important;
+	background-color: #85d4f3 !important;
+}
+/*要切换的内容*/
+.tab-content{
+	width:78%;
+	padding: 2px;
+	float: left;
+}
+.tab-pane{
+	margin: 4px;
+	background:#fff !important;
+	color:#000 !important;
+}
+.tab-pane ul{
+	padding:0;
+	width: 101%;
+	height: 200px;
+}
+.tab-pane li{
+	width: 140px;
+	height: 110px;
+	display: inline-block;
+	margin: 0px 15px 10px 0px;
+	position: relative;
+}
+.tab-pane ul li:nth-of-type(5n){
+	margin: 0;
+}
+.tab-pane img{
+	width: 140px;
+	height: 78px;
+	color: #000 !important;
+}
+.tab-pane em{
+	position: absolute;
+	z-index: 99;
+	right: 12px;
+	top: 45px;
+	background: url(../public/img/mv/play_icon.png) no-repeat;
+	width: 22px;
+	height: 22px;
+}
+.tab-pane p{
+	color: #555;
+	height: 20px;
+	overflow: hidden;
+	width: 124px;
+	margin: 5px 0 0 3px;
+	font-family: '微软雅黑', Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	cursor: default;
+}

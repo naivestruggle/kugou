@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Document</title>
+	<link rel="shortcut icon" href="favicon.ico"/>
+	<link rel="stylesheet" href="../public/css/head.css">
+	<script src="../public/js/jquery-3.2.1.js"></script>
+	<style>
+		.content{
+			position: relative;
+		    width: 100%;
+		    height:430px;
+		    background: #000;
+		    background-size: cover;
+		    background-position: 100% 100%;
+		    background-repeat: no-repeat;
+		}
+		.content .sing_content{
+			z-index: 100;
+		    position: absolute;
+		    left: 50%;
+		    width: 840px;
+		    margin: 100px 0 0 -390px;
+		    margin-top: 10px;
+		    zoom: 1;
+		}
+		.fl{
+			float: left;
+		}
+		.content .album {
+    width: 262px;
+}
+.content .albumImg {
+    width: 262px;
+    height: 262px;
+    margin-bottom: 25px;
+    background: url(../public/img/playsing/default.jpg) no-repeat left top;
+}
+.content .albumImg img {
+    border: none;
+}
+.content .albumImg a, .content .albumImg img {
+    width: 260px;
+    height: 260px;
+}
+.content .btnArea2 {
+    margin-top: 40px;
+    padding-left: 16px;
+}
+.clearfix{
+	zoom: 1;
+	}
+	.clearfix:after{
+		display: block;
+    clear: both;
+    content: ".";
+    visibility: hidden;
+    height: 0;
+    font-size: 0;
+	}
+
+.btnDownloadClient {
+    display: block;
+    width: 230px;
+    height: 50px;
+    background: url(../public/img/playsing/downlaod_bg.png) no-repeat;
+    cursor: pointer;
+}
+
+.sing_content .song_info{
+
+    width: 460px;
+    min-height: 500px;
+    margin-top: -7px;
+    margin-left: 116px;
+    float: left;
+}
+.song_info .songName{
+	font-size: 24px;
+    font-style: normal;
+    color: #fff;
+    width: 460px;
+}
+.songName .audioName{
+	float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 420px;
+}
+.btnMv {
+    float: left;
+    display: inline-block;
+    width: 25px;
+    height: 13px;
+    margin: 15px 0 0 10px;
+    background-position: 0 -214px;
+}
+.icon {
+    display: block;
+    cursor: pointer;
+    background: url(../public/img/playsing/btn.png);
+    background-repeat: no-repeat;
+}
+.songDetail {
+    padding-top: 9px;
+}
+.songDetail .albumName,.singerName{
+    margin-right: 10px;
+    display: block;
+    width: 220px;
+    height: 24px;
+    line-height: 24px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 15px;
+    color: #fff;
+}
+
+.songDetail .fontColor {
+    opacity: 0.6;
+}
+.songDetail a{
+	float: none;
+    color: #fff;
+    padding-right: 5px;
+
+}
+.songWordContent {
+    outline: 0;
+    height: 410px;
+    margin-top: 17px;
+    overflow: hidden;
+    font-size: 15px;
+    color: #fff;
+    line-height: 30px;
+}
+.jspContainer {
+    overflow: hidden;
+    position: relative;
+}
+.jspPane, .jspVerticalBar {
+    position: absolute;
+}
+.songWordContent p {
+    width: 420px;
+    height: 34px;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    opacity: 0.6;
+}
+.jspVerticalBar {
+    top: 0;
+    right: 0;
+    width: 8px;
+    height: 100%;
+}
+.jspDrag, .jspTrack {
+    position: relative;
+}
+.jspDrag {
+   /* background: #fff;*/
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    border-radius: 8px;
+}
+#bot{
+	width: 100%;
+	height: 80px;
+	background-color:#000;
+	box-shadow: 0 0 20px #403f3f;
+	position: fixed;
+	bottom: 0;
+	z-index: 1000;
+}
+.bmid{
+	width: 960px;
+	height: 80px;
+	margin: auto;
+}
+.bot_left{
+	width: 160px;
+	height: 80px;
+	float: left;
+}
+.prev{
+	display: block;
+	width: 36px;
+	height: 36px;
+	background: url(../public/img/playsing/btn.png);
+	background-position: 0 -143px;
+	position: absolute;
+	margin-left: -7px;
+	margin-top: 22px;
+}
+.play{
+	display: block;
+	width: 60px;
+	height: 60px;
+	background: url(../public/img/playsing/btn.png);
+	position: absolute;
+	margin-left: 43px;
+	margin-top: 10px;
+}
+.stop{
+	display: none;
+	width: 60px;
+	height: 60px;
+	background: url(../public/img/playsing/btn.png);
+	position: absolute;
+	margin-left: 43px;
+	margin-top: 10px;
+}
+.next{
+	display: block;
+	width: 36px;
+	height: 36px;
+	background: url(../public/img/playsing/btn.png);
+	background-position: 0 -143px;
+	position: absolute;
+	margin-left: 117px;
+	margin-top: 22px;
+}
+.playImg,.playImg img{
+	display: block;
+	width: 60px;
+	height: 60px;
+	margin-top: 5px;
+	float: left;
+	margin-left: 20px;
+}
+.bot_mid{
+	margin-left: 40px;
+	width: 370px;
+	height: 80px;
+	float: left;
+	cursor: default;   /*鼠标显示箭头*/
+}
+.mid_up{
+	width: 370px;
+	height: 24px;
+	padding-top: 18px;
+}
+.songName{
+	color: #c4c3c3;
+	font-size: 13px;
+}
+.change-time, .all-time{
+	color: #fff;
+	font-size: 12px;
+	font-style: normal;
+}
+/*播放进度*/
+.mid_down{
+	width: 370px;
+	height: 5px;
+	margin-top: 11px;
+	cursor: pointer;
+}
+.progress_bg{
+	cursor: pointer;
+	height: 3px;
+}
+.progress_bg .bg_left{
+	display: block;
+	width: 2px;
+	height: 3px;
+	background: url(../public/img/playsing/btn.png) -217px -200px;
+}
+.progress_bg .bg_middle{
+	display: block;
+	width: 370px;
+	height: 3px;
+	margin-left: 2px;
+	margin-top: -3px;
+	background: url(../public/img/playsing/progress_bg_middle.png) repeat-x top left;
+}
+.progress_bg .bg_right{
+	display: block;
+	width: 2px;
+	height: 3px;
+	margin-left: 371px;
+	margin-top: -3px;
+	background: url(../public/img/playsing/btn.png) -237px -200px;
+}
+.progress_bar{
+	height: 3px;
+	cursor: pointer;
+}
+.progress_bar .bar_left{
+	display: block;
+	width: 2px;
+	height: 3px;
+	margin-top: -3px;
+	background: url(../public/img/playsing/btn.png) -527px -387px;
+}
+.progress_bar .bar_mid{
+	display: block;
+	margin-left: 2px;
+	width: 370px;
+	height: 3px;
+	overflow: hidden;
+	margin-top: -3px;
+	background: url(../public/img/playsing/progress_bar_middle.png)repeat-x top left;
+}
+.drag_playhead{
+	position: absolute;
+	margin-top: -8px;
+	width: 371px;
+	height: 12px;
+}
+.drag_playhead .playhead{
+	display: block;
+	margin-left: 0.32%;
+	width: 12px;
+	height: 12px;
+	background:url(../public/img/playsing/btn.png) -217px -181px;
+}
+/*右边功能块*/
+.bot_right{
+	width: 260px;
+	height: 80px;
+	float: left;
+	margin-left: 50px;
+	position: relative;
+}
+/*音量开关*/
+.bot_right .volume{
+	width: 16px;
+	height: 16px;
+	margin-top: 34px;
+	background: url(../public/img/playsing/btn.png) -64px -195px;
+	cursor: pointer;
+	float: left;
+}
+.volume:hover{
+	background: url(../public/img/playsing/btn.png) -80px -195px;
+}
+/*音量控制面板 隐藏部分*/
+.bot_right .volume_panel{
+	display: none;
+	margin-left: -5px;
+	margin-top: -115px;
+	width: 29px;
+	height: 114px;
+	background: url(../public/img/playsing/volume-panel.png) no-repeat;
+	z-index: 100;
+	position: absolute;
+}
+.panel_control{
+	cursor: pointer;
+	position: absolute;
+	left: 12px;
+	top: 11px;
+	width: 5px;
+	height: 90px;
+}
+.panel_bottom{
+	width: 3px;
+	height: 2px;
+	display: block;
+	cursor: pointer;
+    background:url(../public/img/playsing/btn.png) -584px -425px;
+	position: absolute;
+	left: 1px;
+	top: 78px;
+}
+.vol_bar{
+	cursor: pointer;
+	position: absolute;
+	left: 1px;
+	top: 2px;
+	width: 3px;
+	height: 86px;
+	overflow: hidden;
+}
+.panel_progress{
+	position: absolute;
+	left: 0px;
+	top: 41px;
+	width: 3px;
+	height: 86px;
+	background: url(../public/img/playsing/volume_middle.png);
+	overflow: hidden;
+}
+.vol_head{
+	cursor: pointer;
+	position: absolute;
+	left: -2px;
+	top: -1px;
+	width: 9px;
+	height: 80px;
+}
+.panel_head{
+	position: absolute;
+	left: 0px;
+	width: 9px;
+	height: 9px;
+	top: 42.5375px;
+	background: url(../public/img/playsing/btn.png) -242px -130px;
+}
+/*添加播放提示 隐藏部分*/
+.play_tips{
+	position: absolute;
+	width: 150px;
+	height: 40px;
+	padding: 10px 0;
+	line-height: 30px;
+	bottom: 80px;
+	right: 100px;
+	color: #fff;
+	text-align: center;
+	background: url(../public/img/playsing/paly_add.png) no-repeat left top;
+}
+/*播放模式*/
+.play_mode{
+	display: block;
+	cursor: pointer;
+	float: left;
+	width: 16px;
+	height: 16px;
+	background: url(../public/img/playsing/btn.png) no-repeat -64px -179px;
+	margin-left: 30px;
+	margin-top: 34px;
+}
+.play_mode:hover{
+	background: url(../public/img/playsing/btn.png) no-repeat -80px -179px;
+}
+/*播放模式 隐藏部分*/
+.mode_panel{
+	position: absolute;
+	margin-left: -5px;
+	margin-top: -116px;
+	width: 100px;
+	padding: 10px;
+	height: 95px;
+	z-index: 100;
+	background: url(../public/img/playsing/play_style.png) no-repeat left top;
+}
+.mode_panel li{
+	height: 30px;
+	width: 100px;
+	line-height: 30px;
+}
+.mode_panel li .mode_img1{
+	display: block;
+	float: left;
+	width: 16px;
+	height: 16px;
+	line-height: 16px;
+	margin: 7px 8px;
+	vertical-align: middle;
+	background: url(../public/img/playsing/btn.png) no-repeat -96px -179px;
+}
+.mode_panel li .mode_img2{
+	display: block;
+	float: left;
+	width: 16px;
+	height: 16px;
+	line-height: 16px;
+	margin: 7px 8px;
+	vertical-align: middle;
+	background: url(../public/img/playsing/btn.png) no-repeat 0 -179px;
+}
+.mode_panel li .mode_img3{
+	display: block;
+	float: left;
+	width: 16px;
+	height: 16px;
+	line-height: 16px;
+	margin: 7px 8px;
+	vertical-align: middle;
+	background: url(../public/img/playsing/btn.png) no-repeat -128px -179px;
+}
+.mode_panel li .mode_word{
+	color: #19b5f0;
+	line-height: 30px;
+	font-size: 13px;
+}
+.mode_panel li .mode_wordx{
+	color: #fff;
+	line-height: 30px;
+	font-size: 13px;
+}
+/*下载*/
+.pb_download{
+	display: block;
+	width: 15px;
+	height: 15px;
+	background:  url(../public/img/playsing/btn.png) no-repeat -240px -32px;
+	cursor: pointer;
+	position: absolute;
+	margin-left: 92px;
+	margin-top: 32.5px;
+}
+.pb_download:hover{
+	background:  url(../public/img/playsing/btn.png) no-repeat -256px -32px;
+}
+/*分享*/
+.pb_share{
+	display: block;
+	width: 15px;
+	height: 15px;
+	background:  url(../public/img/playsing/btn.png) no-repeat -240px 0;
+	cursor: pointer;
+	position: absolute;
+	margin-left: 136px;
+	margin-top: 32.5px;
+}
+.pb_share:hover{
+	background:  url(../public/img/playsing/btn.png) no-repeat -256px 0;
+}
+.list{
+	position: absolute;
+	display: block;
+	right: 10px;
+	top: 29px;
+	width: 60px;
+	height: 23px;
+	cursor: pointer;
+	background: url(../public/img/playsing/btn.png) no-repeat 0 -120px;
+}
+.list_count{
+	margin-left: 30px;
+	color: #fff;
+	font-size: 13px;
+}
+.list:hover{
+	background: url(../public/img/playsing/btn.png) no-repeat -61px -120px;
+}
+.list:hover .list_count{
+	color: #19b5f0;
+}
+/*播放列表 隐藏面板*/
+.mod-playlist{
+	display: block;
+	overflow: hidden;
+	position: absolute;
+	right: 20px;
+	bottom: 80px;
+	z-index: 99;
+	width: 480px;
+	height: 410px;
+	color: #7c898e;
+}
+/*控制台展示按钮*/
+.bot_bot{
+	position: absolute;
+	margin-top: -96px;
+	right: 40px;
+	width: 26px;
+	height: 16px;
+}
+.bot_bot .bot1{
+	position: absolute;
+	width: 26px;
+	height: 16px;
+	background: url(../public/img/playsing/shbar.png) no-repeat;
+	opacity: 0.3;
+}
+.bot_bot .bot2{
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	margin-left: 5px;
+	display: block;
+	cursor: pointer;
+	background: url(../public/img/playsing/btn.png) no-repeat -140px -211px;
+}
+.bot_bot .bot2:hover{
+	background: url(../public/img/playsing/btn.png) no-repeat -230px -211px;
+}
+
+
+	</style>
+
+
+</head>
+<body>
+	  <div class="header">
+        <h1 class="logo">
+            <a href="index.html">
+              <img src="../public/img/head/logo.png" alt="">
+            </a>
+        </h1>
+        <div class="search_wrapper">
+            <div class="search_input">
+                <input type="text" placeholder="阿离 微笑">
+                <div class="search_btn">
+                  <i class="search_icon"></i>
+                </div>
+            </div>
+        </div>
+        <div class="topNav fr">
+            <ul>
+                <li>
+                  <a target="_blank" href="serve.html">客服中心</a>
+                </li>
+                <li>
+                  <a target="_blank" href="recruit_sages.html">招贤纳士</a>
+                </li>
+                <li>
+                  <a target="_blank" href="vip.html">会员中心 </a>
+                </li>
+            </ul>
+            <div class="login_area">
+                <div id="login_in" class="clearfix">
+                  <a class="login_btn" id="login_btn">登录</a>
+                  <a target="_blank" href="register.html" class="regin_btn" id="regin_btn">注册</a>
+            </div>
+                <!-- 登录之后显示的 -->
+                <div id="user_menu" class="user_menu">
+                    <div class="topArrow1"></div>
+                    <div class="topArrow2"></div>
+                    <ul>
+                        <li>
+                          <a target="_blank" href="">
+                            <span class="user_icon1"></span>个人帐号
+                          </a>
+                        </li>
+                        <li>
+                          <a href="">
+                              <span class="user_icon2"></span>退出登录
+                          </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="navWrap">
+      <div class="nav">
+        <ul class="homeNav">
+            <li style="width: 92px;height: 55px;" class="active">
+                <a class="normal" href="index.html">首页</a>
+            </li>
+            <li style="width: 92px;height: 55px;">
+                <a class="normal" href="list.html">榜单</a>
+            </li>
+            <li style="width: 140px;height: 55px;">
+                <a class="normal" id="productCenter" href="download.html">下载客户端</a>
+            </li>
+            <li class="more"style="width: 113px;height: 55px;">
+                <a href="javascript:void(0);"id="showMore">更多</a>
+
+            </li>
+        </ul>
+        <ul class="secondMenu" id="secondMenu"style="display: none;">
+            <li><a href="radio.html">电台</a></li>
+            <li><a href="mv.html">MV</a></li>
+            <li><a href="songsheet.html">歌单</a></li>
+            <li><a href="singer.html">歌手</a></li>
+        </ul>
+        <ul class="subNav">
+            <li><a target="_blank" href="LiveMusic.html" class="icon-nav1">音乐直播</a></li>
+            <li><a target="_blank" href="live.html" class="icon-nav2">酷狗LIVE</a></li>
+            <li><a target="_blank" href="musicMan.html" class="icon-nav3">音乐人</a></li>
+            <li><a target="_blank" href="anchor.html" class="icon-nav4">成为主播</a></li>
+            <li><a target="_blank" href="mall.html" class="icon-nav5">商城</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="content">
+    	<div class="sing_content">
+    		<div class="album fl">
+                <div class="albumImg">
+                    <a class="fl" target="_blank" href="" title="">
+                    	<img src="">
+                    </a>
+                </div>
+                <div class="btnArea2 clearfix">
+                    <a class="btnDownloadClient" onclick=""></a>
+                </div>
+
+            </div>
+            <div class="song_info">
+            	<!-- 歌曲名字 -->
+            	<div class="songName clearfix" title="">
+            		<span class="audioName" title="一秒钟">一秒钟</span>
+            		<!-- 如果歌曲有mv的话，这个按钮就显示 -->
+                     <a target="_blank" style="display:none" href="#" class="icon btnMv">
+
+                     </a>
+                </div>
+                <!-- 专辑  歌手 -->
+                <div class="songDetail clearfix">
+                    <p class="albumName fl" style="">
+                        <span class="fontColor">专辑：</span>
+                        <a target="_blank" href="" title="一秒钟">一秒钟</a>
+                    </p>
+                    <p class="singerName fl" style="" title="">
+                    	<span class="fontColor">歌手：</span>
+                    	<a target="_blank" href="" title="林东">林东</a>
+                    </p>
+                </div>
+                <!-- 歌词 -->
+                <div class="songWordContent songWordContentM jspScrollable" style="height: 235px; overflow: hidden; padding: 0px; width: 460px;" tabindex="0">
+                	<div class="jspContainer" style="width: 460px; height: 235px;">
+                		<div class="jspPane" style="padding: 0px; top: 0px; width: 448px;">
+                			<p class="word">歌词</p>
+                		</div>
+                		<div class="jspVerticalBar">
+                			<!-- <div class="jspCap jspCapTop"></div> -->
+                			<div class="jspTrack" style="height: 235px;">
+                				<div class="jspDrag" style="height: 23px; top: 0px;">
+                					<div class="jspDragTop">
+
+                					</div>
+                					<div class="jspDragBottom">
+
+                					</div>
+                				</div>
+                			</div>
+                			<div class="jspCap jspCapBottom"></div>
+                		</div>
+                	</div>
+                </div>
+            </div>
+    	</div>
+    	<div id="bot">
+		<div class="bmid">
+			<div class="bot_left">
+				<a href="" class="prev" id="btn-pre"></a>
+				<a href="" class="play" id="btn-play"></a>
+				<a href="" class="stop" id="btn-stop"></a>
+				<a href="" class="next" id="btn-next"></a>
+			</div>
+			<a href="" class="playImg">
+				<img src="../public/img/playsing/20150716004147248755.jpg" alt="">
+			</a>
+			<div class="bot_mid">
+				<div class="mid_up">
+					<span class="songName">边走边唱</span>
+					<span style="float: right">
+						<i class="change-time">00:00</i>
+						<i class="all-time">03:51</i>
+					</span>
+				</div>
+				<div class="mid_down">
+					<div class="progress_bg">
+						<span class="bg_left"></span>
+						<span class="bg_middle"></span>
+						<span class="bg_right"></span>
+					</div>
+					<div class="progress_bar">
+						<span class="bar_left"></span>
+						<span class="bar_mid" style="width: 0.32%;"></span>
+					</div>
+					<div class="drag_playhead">
+						<span class="playhead"></span>
+					</div>
+				</div>
+			</div>
+			<div class="bot_right">
+				<!--音量控制-->
+				<div class="volume"></div>
+				<!--音量控制 隐藏面板-->
+				<div class="volume_panel">
+					<div class="panel_control">
+						<span class="panel_bottom"></span>
+						<div class="vol_bar">
+							<span class="panel_progress"></span>
+						</div>
+						<div class="vol_head">
+							<span class="panel_head" top: 42.5375px;></span>
+						</div>
+					</div>
+				</div>
+				<div class="play_tips" style="display: block; opacity: 0;">已添加到播放列表</div>
+				<!--播放模式-->
+				<a class="play_mode"></a>
+				<!--播放模式 隐藏面板-->
+				<div class="mode_panel" style="display: none;">
+					<ul>
+						<li>
+							<span class="mode_img1"></span>
+							<span class="mode_word">列表循环</span>
+						</li>
+						<li>
+							<span class="mode_img2"></span>
+							<span class="mode_wordx">单曲循环</span>
+						</li>
+						<li>
+							<span class="mode_img3"></span>
+							<span class="mode_wordx">随机播放</span>
+						</li>
+					</ul>
+				</div>
+				<!--下载-->
+				<a href="" class="pb_download"></a>
+				<!--分享-->
+				<a href="" class="pb_share"></a>
+				<!--播放列表-->
+				<a href="" class="list">
+					<span class="list_count">1</span>
+				</a>
+			</div>
+			<!--播放列表 隐藏面板-->
+			<div class="mod-playlist">
+				<div class="song-box">
+					<div class="box-header"></div>
+					<div class="musicbox"></div>
+				</div>
+			</div>
+		</div>
+		<div class="bot_bot">
+			<span class="bot1"></span>
+			<span class="bot2"></span>
+		</div>
+	</div>
+    </div>
+
+
+
+  <script>
+    $(function () {
+        $(".tab>li").click(function () {
+            $(this).addClass("active").siblings("li").removeClass("active");
+            var index=$(this).index();
+            $(".fr>div:eq("+index+")").addClass("selected").siblings("div").removeClass("selected");
+        })
+    })
+  </script>
+</body>
+</html>

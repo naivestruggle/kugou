@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)http://live.kugou.com/subscribe/306/3238 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>腾讯音乐人计划·直播成长基金</title>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="keywords" content="酷狗LIVE,kugou,酷狗,LIVE">
+    <meta itemprop="name" content="酷狗LIVE">
+    <meta itemprop="image" content="">
+    <meta name="description" itemprop="description" content="酷狗LIVE是数字音乐巨头酷狗倾力打造的O2O音乐现场直播平台。通过明星演唱会直播，娱乐名人访谈节目和音乐真人秀等板块，满足不同的用户需求。">
+    
+    <script src="./腾讯音乐人计划·直播成长基金_files/hm.js.下载"></script><script type="text/javascript">
+        (function() {
+            "use strict";
+            //获取当前时间
+            function getNowTime() {
+                var date = new Date();
+                return date.getTime();
+            }
+            window.pageGlobal = {};
+            window.pageGlobal.pageStartTime = getNowTime();
+    
+            var _reportType = {
+                DOM_LOAD_TIME: 1001, //Dom加载时长数据
+                FIRST_SCREEN_TIME: 1002, //首屏加载时长数据
+                BLANK_SCREEN_TIME: 1003, //白屏时长数据
+                CAN_CHAT_TIME: 1035, //可聊天时长
+                LIVE_PLAYER_LOAD_TIME: 1004, //直播flash加载耗时统计
+                VIEW_LIST_ERROR: 1022, //直播可看耗时
+                SENDGIFT_ERROR_DATA: 1091, //送礼失败上报
+    
+                TIME_LIVE_REVIEW_FLASH_LOAD: 2014, //回顾flash播放器加载时长
+                TIME_LIVE_REVIEW_VIDEO_LOAD: 2015, //回顾html5播放器加载时长
+                TIME_LIVE_REVIEW_FLASH_SEE: 2016, //flash播放器回顾视频可看时长
+                TIME_LIVE_REVIEW_VIDEO_SEE: 2017, //html5播放器回顾视频可看时长
+                STATE_LIVE_PC_REVIEW_FLASH_STATUS: 3010, //flash播放器回顾视频失败率
+                STATE_LIVE_PC_REVIEW_H5_STATUS: 3011, //html5播放器回顾视频失败率
+    
+                STATE_ACK_AJAX_STATUS: 3003 //繁星ack接口失败上报
+            };
+    
+            // //捕获js报错信息
+            // window.onerror = function(message, source, lineno, colno, error) {
+            //     var errMsg = {
+            //         message: message,
+            //         source: source,
+            //         lineno: lineno,
+            //         colno: colno,
+            //         error: error
+            //     };
+            //     if (typeof console.error === "function") {
+            //         console.error(errMsg);
+            //     }
+            //     return true;
+            // };
+    
+            /**
+             * 上报数据对象生成
+             * param longTime 日志时间
+             * param os 平台id 酷狗live是11
+             * param typeid 统计类型
+             * param pagechannel 页面
+             * param page 页面id
+             * param te 错误类型 错误类型E1——E6
+             * param position 错误步骤，默认为"01"就好
+             * param state 状态 0失败 1成功
+             * param fs 失败原因（是编码） 原始错误码,如果不足6位则补齐6位，
+             * param timeLength 时间长度，默认当前时间减去页面开始加载的时间
+             * param resolution 分辨率
+             * param fanxid 繁星id
+             * param userid 酷狗id
+             * param requesturl 页面url
+             *
+             * return 上报数据对象
+             */
+            function APMReportData(obj) {
+                this.longTime = obj.longTime || getNowTime();
+                this.os = 11;
+                this.typeId = _reportType[obj.typeId];
+                this.pagechannel = obj.pagechannel || "";
+                this.page = obj.page;
+                this.te = obj.te || ""; //错误类型 E1-E6
+                this.position = obj.position || "01";
+                this.state = (obj.state == 0 || obj.state) ? obj.state : "";
+                this.fs = obj.fs || "";
+                this.timeLength = obj.timeLength || getNowTime() - window.pageGlobal.pageStartTime;
+                this.resolution = obj.resolution || "";
+                this.fanxid = obj.fanxid || "";
+                this.userid = obj.userid || (window.userInfo ? window.userInfo.kugouId : 0);
+                this.requestUrl = obj.requestUrl || location.href;
+    
+                return this;
+            }
+    
+            /**
+             * 埋点方法
+             * param 和上报数据对象一致
+             * return null
+             */
+            function addPoint(o) {
+                if (!o) {
+                    return false;
+                }
+                var obj = new APMReportData(o);
+    
+                //存起来，添加需要上报的数据，totalReportObj字段是fx.apm用的
+                if (window.totalReportObj) {
+                    window.totalReportObj[12].push(obj);
+                } else {
+                    window.totalReportObj = {
+                        12: [obj]
+                    };
+                }
+    
+                //当统计方法和fxapm都加载完了之后再进行上报
+                if (window.Fx && window.Fx.apm && window.Fx.apm && window.Fx.apm.sendTotalReportObj) {
+                    //全量上报已经添加的数据（window.totalReportObj）
+                    window.Fx.apm.sendTotalReportObj(window.totalReportObj);
+                }
+            }
+    
+            //window.ready
+            function _ready(callback) {
+                if (typeof callback !== "function") {
+                    return false;
+                }
+    
+                function domLoadFunc() {
+                    callback();
+                    document.removeEventListener("DOMContentLoaded", domLoadFunc, false);
+                }
+    
+                function readyChangeFunc() {
+                    if (document.readyState === "complete") {
+                        document.detachEvent("onreadystatechange", readyChangeFunc);
+                    }
+                }
+                if (document.addEventListener) {
+                    document.addEventListener("DOMContentLoaded", domLoadFunc, false);
+                } else if (document.attachEvent) {
+                    document.attachEvent("onreadystatechange", readyChangeFunc);
+                } else if (document.lastChild === document.body) {
+                    callback();
+                }
+            }
+    
+            //window.onload
+            function windowOnload(callback) {
+                if (typeof callback !== "function") {
+                    return false;
+                }
+                var oldFunc = null;
+                if (typeof window.onload === "function") {
+                    oldFunc = window.onload;
+                }
+                window.onload = function() {
+                    if (typeof oldFunc === "function") {
+                        oldFunc();
+                    }
+                    callback();
+                };
+            }
+    
+            /**
+             * 添加页面公用的统计
+             * dom时长
+             * 首屏时长
+             * 白屏时长
+             */
+            function addCommentStat(page) {
+                page = page || 0;
+                //dom加载加载时长
+                _ready(function() {
+                    window.addPoint({
+                        typeId: "DOM_LOAD_TIME",
+                        page: page
+                    });
+                });
+    
+                //首屏加载时长
+                windowOnload(function() {
+                    window.addPoint({
+                        typeId: "FIRST_SCREEN_TIME",
+                        page: page
+                    });
+                });
+    
+                //白屏时长
+                window.addPoint({
+                    typeId: "BLANK_SCREEN_TIME",
+                    page: page
+                });
+            }
+    
+            window.addPoint = addPoint;
+            window.addCommentStat = addCommentStat;
+            window.getNowTime = getNowTime;
+            window.windowOnload = windowOnload;
+        })();
+    </script>
+        <link rel="stylesheet" href="./腾讯音乐人计划·直播成长基金_files/pubHead.html_aio_8c1f824.css">
+    <link rel="stylesheet" href="./腾讯音乐人计划·直播成长基金_files/subscribeTpl.html_aio_ad077a0.css">
+<style type="text/css" media="screen">#songPlayer {visibility:hidden}</style><script type="text/javascript" src="./腾讯音乐人计划·直播成长基金_files/fx.apm_9201bbf.js.下载"></script><script type="text/javascript" src="./腾讯音乐人计划·直播成长基金_files/time.js.下载"></script><script type="text/javascript" src="./腾讯音乐人计划·直播成长基金_files/time.js(1).下载"></script><script type="text/javascript" src="./腾讯音乐人计划·直播成长基金_files/time.js(2).下载"></script><script type="text/javascript" src="./腾讯音乐人计划·直播成长基金_files/time.js(3).下载"></script></head>
+<body style="background:#091439">
+<div class="header" id="header">
+	<div class="layout clearfix">
+		<a class="logo" href="http://live.kugou.com/" target="_blank">LOGO</a>
+		<div class="header_right_btns">
+			<a href="javascript:;" class="per_msg_btn login_show" style="display: none;">完善个人信息</a>
+			<a href="javascript:;" id="login" class="login not_login_show">登录</a>
+			<a href="http://www.kugou.com/newuc/user/reg" target="_blank" class="register not_login_show">注册</a>
+			<a href="http://fanxing.kugou.com/index.php?action=myProfile" target="_blank" class="nickname login_show" style="display: none;"></a>
+			<div class="fx_coin login_show" style="display: none;">
+				<span class="coin_ico"></span>
+				<a href="http://fanxing.kugou.com/index.php?action=userConsumeList" target="_blank"></a>
+			</div>
+			<a href="javascript:;" class="feedback_btn login_show" style="display: none;">问题反馈</a>
+			<a href="http://fanxing.kugou.com/ac/kefu" target="_blank" class="kefu">客服</a>
+			<a href="http://fanxing.kugou.com/webpage/recharge" id="recharge" class="recharge login_show" style="display: none;">充值</a>
+		
+			<a href="javascript:;" id="loginOut" class="login_out login_show" style="display: none;">退出</a>
+		
+			<div id="perMsg" class="feedback_pop per_msg css3-fadeInUp hide">
+				<h2>完善个人信息</h2>
+				<span class="close">×</span>
+				<div class="row">
+					<label for="perName"><em>*</em>收件人：</label>
+					<input id="perName" class="per_name" type="text">
+				</div>
+				<div class="row">
+					<label for="perPhone"><em>*</em>联系电话：</label>
+					<input id="perPhone" class="per_phone" type="text">	
+				</div>
+				<div class="row">
+					<label for="perAddr"><em>*</em>收货地址：</label>
+					<input id="perAddr" class="per_addr" type="text">	
+				</div>
+				<div class="row btns">
+					<a href="javascript:;" class="sub_msg">提交</a>
+					<a href="javascript:;" class="sub_cancel">取消</a>
+				</div>
+			</div>
+		
+			<div id="feedbackQues" class="feedback_pop feedback_ques css3-fadeInUp hide">
+				<h2>问题反馈</h2>
+				<span class="close">×</span>
+				<div class="row disc">
+					<label for="perDisc"><em>*</em>问题描述：</label>
+					<textarea id="perDisc" value="" placeholder="不超过150个汉字" class="per_disc"></textarea>
+				</div>
+				<div class="row btns">
+					<a href="javascript:;" class="sub_msg">提交</a>
+					<a href="javascript:;" class="sub_cancel">取消</a>
+				</div>
+			</div>
+		</div>	</div>
+</div><div id="banner" class="banner" style="background: url(&quot;http://s3.fx.kgimg.com/v2/kglive/T1nZK3B5V_1RCvBVdK.jpg&quot;) center top no-repeat; cursor: pointer;">
+    <div class="bannerCenter">
+        <div class="fx-pa shareBtnBox">
+            <a class="sharebtn" id="sharebtn" href="javascript:void(0)" style="background: rgb(58, 150, 235); color: rgb(255, 255, 255);">
+                分享
+            </a>
+        </div>
+    </div>
+</div>
+<div id="modal_player">
+    <div class="player">
+        <div class="flash-msg"><h1>请安装Adobe Flash Player</h1></div>
+        <a class="close-btn" href="javascript:void(0)">
+        </a>
+        <div id="liveBox"></div>
+    </div>
+</div>
+<div id="modal_layer"></div>
+<div id="shareBoxT" class="share-box bdsharebuttonbox">
+    <div class="fxz">请选择分享平台：</div>
+    <ul class="shareIcon">
+        <li class="sina">
+            <a href="javascript:;" hidefocus="true" class="bds_tsina" data-bds="tsina" title="分享至新浪微博"></a>
+            <span>新浪微博</span>
+        </li>
+        <li class="weixin">
+            <a href="javascript:;" hidefocus="true" class="bds_weixin" data-bds="tsina" title="分享至微信"></a>
+            <span>微信</span>
+        </li>
+        <li class="qq">
+            <a href="javascript:;" hidefocus="true" class="bds_sqq" data-cmd="sqq" title="分享至QQ好友"></a>
+            <span>QQ好友</span>
+        </li>
+        <li class="qzone">
+            <a href="javascript:;" hidefocus="true" class="bds_qzone" data-bds="qzone" title="分享至QQ空间"></a>
+            <span>QQ空间</span>
+        </li>
+    </ul>
+    <div class="weixin_share_pic" title="http://live.kugou.com/subscribe/306/3238"><canvas width="130" height="130" style="display: none;"></canvas><img alt="Scan me!" style="display: block;" src="data:image/png;base64,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"></div>
+    <div class="close"></div>
+</div>
+<div id="modules">
+        <div class="module">
+            <div class="module-detail" style="color:">
+                <a><img class="pic-detail" src="./腾讯音乐人计划·直播成长基金_files/T1pSdaB5Eg1RCvBVdK.jpg"></a>
+            </div>
+        </div>
+</div>
+<div id="songPlayer" style="visibility: visible;">
+</div>
+<div id="thisGuestsList" class="thisGuestsList">
+    <div class="layout clearfix">
+        <div class="thisGuestsCont" id="GuestsCont"></div>
+    </div>
+</div>
+
+<!--手机预约-->
+<div id="subscribePop" class="subscribe_pop fxPopwin">
+    <div class="sub_title"><h3>直播预约</h3><a href="javascript:;" class="close">×</a></div>
+    <span class="top_icon"></span>
+    <div class="sub_con">
+        <p class="p1">预约网络直播，成功预约后，活动开播时我们将会以手机短信的方式通知您！(本功能完全免费)</p>
+        <ul>
+            <li><span class="input_title">手机号码：</span><input class="ver_phone_num" type="text"><a class="a_getver" href="javascript:;">获取验证码</a></li>
+            <li><span class="input_title">手机验证码：</span><input class="ver_code" type="text"><span class="ver_err">验证码不正确</span></li>
+            <li><span class="input_title"></span><a class="sub_btn" href="javascript:;">立即预约</a></li>
+        </ul>
+        <p class="p2"><span>*</span>*活动开始前15分钟将会以短信通知您</p>
+    </div>
+</div>
+
+<!--预约成功二维码弹窗-->
+<div id="subscribeSuccPop" class="subscribe_succ_pop fxPopwin">
+    <div class="sub_title"><h3>预约成功</h3><a href="javascript:;" class="close"></a></div>
+    <div class="sub_con">
+        <p class="sub_tip">扫描二维码安装酷狗直播，第一时间收到预约提醒！</p>
+        <i class="qr-img1"></i>
+    </div>
+    <div class="sub_buttons">
+        <a href="javascript:void(0)" class="sub_btn white_btn">确定</a>
+        <a href="javascript:void(0)" class="sub_btn green_btn">分享活动</a>
+    </div>
+</div>
+<script type="text/javascript" src="./腾讯音乐人计划·直播成长基金_files/popuplogin-min.js.下载"></script>
+<script type="text/javascript" src="./腾讯音乐人计划·直播成长基金_files/sea_2e5d831.js.下载"></script>
+<script type="text/javascript" src="./腾讯音乐人计划·直播成长基金_files/subscribeTpl.html_aio_6aecd64.js.下载"></script>
+<script type="text/javascript">
+        //预约模板APM上报 6
+        addCommentStat(6);
+    </script>
+<script type="text/javascript">
+	window.isFXHost = NaN;
+    window.FXUrl = 'fanxing.kugou.com';
+    window.soaSecureUrl = 'https://fx.service.kugou.com';
+
+    var concertType = '0';
+    var concertId = '0';
+    var starKugouId = '0';//主播ID,用于关注主播
+    var tplId = '306';
+    var programId = '-1';
+    var channel = 3238;
+    window.oldFlow = programId == '-1' || programId == '';
+    window.g_liveData = {};
+    window.g_liveData.tplId = tplId;
+    window.g_liveData.programId = programId;
+    window.g_liveData.channel = channel;
+    seajs.use("static/live/js/web/subscribeTpl/subscribeinit",function(subscribeInit){
+        subscribeInit.init({
+            isError: 0,
+            lastTime: 0*1000,//秒转毫秒
+            baseData: {"actName":"腾讯音乐人计划·直播成长基金","bgColor":"#091439","buttonColor":"#3a96eb","buttonHoverColor":"#1377d3","buttonWordColor":"#ffffff","channelName":"默认渠道（应用宝）","channelUrl":"","concertId":0,"concertType":0,"downloadButtonWords":"","isFollowConcert":0,"isFollowStar":0,"isJumpChannelUrl":0,"isJumpWebTopImg":1,"isVideoDisplay":0,"lastTime":0,"lastTimeColor":"","logoUrlList":[],"phoneNum":0,"preButtonColor":"","preButtonHoverColor":"","preButtonWordColor":"","preButtonWords":"","previewSwitch":0,"programId":-1,"shareContent":"千万基金力挺音乐梦！即刻报名“腾讯音乐人计划·直播成长基金”，启程未来巨星之旅！","shareImg":"http://s3.fx.kgimg.com/v2/kglive/T1nCA3B_CT1RCvBVdK.jpg","starKugouId":0,"subscribeCount":0,"tplId":306,"videoHash":"","webLiveUrl":"","webTopImg":"http://s3.fx.kgimg.com/v2/kglive/T1nZK3B5V_1RCvBVdK.jpg","webTopImgJumpUrl":"https://jinshuju.net/f/sYgps3","hasChannelUrl":0,"hasWebLiveUrl":0},
+            channelId: 3238,
+            subData: {
+                concertType:concertType,
+                concertId:concertId,
+                starKugouId:starKugouId,
+                tplId:tplId,
+                programId:programId
+            },
+            commentOptions: {
+                code: "fea02a9958dda837dfb94da7b9f529bf",//评论模块id号
+                childrenId: 306
+            }
+        });
+    });
+</script>
+<div class="footer" id="footer">
+  <div class="footerContent">
+    <div class="footerLogo">
+      <a href="http://fanxing.kugou.com/" target="_blank" class="logo"></a>
+    </div>
+    <div class="footerPDiv">
+      <p><span class="footerSpanLeft">酷狗直播 fanxing.kugou.com</span><span><a class="f-special-url" href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备09017694号-2</a></span></p>
+      <p><span class="footerSpanLeft"><a class="f-special-url" href="http://live.kugou.com/">广州酷狗计算机科技有限公司</a>版权所有</span><span>Copyright © 2012-2018 KuGou.All Rights Reserved</span></p>
+      <p>
+        <span class="footerSpanLeft"><a target="_blank" class="f-special-url culturalUrl" href="http://sq.ccm.gov.cn/ccnt/sczr/service/business/emark/toDetail/E64D2439A71544C7B995FC0A53D8F965"><span class="culturalLogo"></span>粤网文〔2016〕1277-269号</a></span>
+        <span>信息网络传播视听节目许可证1910564号</span>
+      </p>
+      <p><span class="footerSpanLeft">增值电信业务经营许可证粤B2-20060339号</span><span>营业性演出许可证440106120029</span></p>
+      <p>
+        <span class="footerSpanLeft">广播电视节目制作经营许可证（粤）字第01270号</span>
+        <a class="footerSpanA" href="http://fanxing.kugou.com/index.php?action=noticeView&amp;noticeId=173" target="_blank">版权声明</a>
+        <a class="footerSpanA" href="http://fanxing.kugou.com/index.php?action=noticeView&amp;noticeId=111" target="_blank">投诉指引</a>
+        <a class="footerSpanA" href="http://www.kugou.com/about/privacy.html" target="_blank">隐私政策</a>
+        <a class="footerSpanA" href="http://fanxing.kugou.com/index.php?action=noticeView&amp;noticeId=135" target="_blank">用户协议</a>
+      </p>
+      <p>违法和不良信息举报：<a class="f-special-url" href="http://www.12377.cn/" target="_blank">www.12377.cn</a> 举报电话：12377
+        <a class="policeUrl" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44010602000141"><span class="policeLogo"></span>粤公网安备 44010602000141号</a>
+      </p>
+      <p>
+        <span class="footerSpanLeft">地址：广州天河区黄埔大道中315号羊城创意园内</span>
+        <span><a class="footerSpanA" href="http://fanxing.kugou.com/index.php?action=BusinessCooperation" target="_blank">联系方式</a></span>
+        <span><a class="footerSpanA" target="_blank" href="http://jb.ccm.gov.cn/">12318全国文化市场举报网站</a></span>
+      </p>
+    </div>
+    <div class="footerEr">
+      <i class="qr-img1"></i>
+      <i class="qr-img2"></i>
+    </div>
+  </div>
+</div>
+
+<!--统计相关js-->
+<script type="text/javascript" src="./腾讯音乐人计划·直播成长基金_files/statistics_9f03e6c.js.下载"></script>
+<script type="text/javascript">
+    window.windowOnload(function(){
+         //繁星apm统计
+        liveStatistics.fxApm.init();
+        //百度统计
+        liveStatistics.baidu();
+    });
+</script>
+
+
+
+
+
+<script src="./腾讯音乐人计划·直播成长基金_files/collect.js.下载"></script></body></html>

@@ -1,0 +1,630 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>腾讯音乐人</title>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	a{
+		text-decoration: none;
+	}
+	#header{
+		position: relative;
+		background-color: #fff;
+		z-index: 4;
+		color: #fff;
+		border-bottom: 1px solid #ededed;
+	}
+	#header .head_inner{
+		position: relative;
+		margin: 0 auto;
+		padding-top: 100px;
+		max-width: 1200px;
+	}
+	.head_inner .qqmusic{
+		position: absolute;
+		left: 0;
+		top: 31px;
+		overflow: hidden;
+		float: left;
+	}
+	.qqmusic a{
+		color: #333;
+    	text-decoration: none;
+	}
+	#header .nav{
+		width: 300px;
+		height: 100px;
+		position: absolute;
+		left: 275px;
+		top: 0;
+	}
+	.nav li{
+		float: left;
+		list-style: none;
+	}
+	.nav a{
+		display: block;
+		padding: 0 20px;
+		line-height: 100px;
+		height: 100px;
+		text-align: center;
+		font-size: 18px;
+	}
+	.nav .center{
+		color: #333;
+	}
+	.nav .center:hover{
+		color: #0060ff;
+	}
+	.enter{
+		display: inline-block;
+		margin: 30px 10px 0 0;
+		padding: 0 24px;
+		height: 40px;
+		line-height: 40px;
+		border-radius: 20px;
+		background: #0060ff;
+		font-size: 18px;
+		color: #fff;
+		vertical-align: top;
+		float: left;
+	}
+	.login{
+		margin-top: 0;
+    line-height: 100px;
+		float: left;
+	}
+	.top_login__link{
+		position: relative;
+		font-size: 14px;
+		float: left;
+		margin-right: 10px;
+		font-weight: 700;
+		color:#333;
+	}
+	.jinzhu{
+		width: 172px;
+		height: 106px;
+		position: absolute;
+		right: 50px;
+		top: 0;
+	}
+	#content{
+		width: 100%;
+		height: 520px;
+		background: url(../public/img/images/231966.jpg);
+		background-size: cover;
+	}
+	#platform{
+		margin-top: 120px;
+    	background: #fff url(../public/img/images/home_part_bg1.png) no-repeat center top;
+		overflow: hidden;
+		width: 100%;
+		height: 510px;
+	}
+	#platform .part_title{
+		position: relative;
+		margin: 0 auto 28px;
+		width: 100%;
+		height: 50px;
+		background: url(../public/img/images/title_1.png);
+		background-size: cover;
+	}
+	#platform .part_sub{
+		width: 1200px;
+		height: 434px;
+		margin: 0 auto;
+	}
+	.pass{
+		height: 162px;
+		font-size: 36px;
+    text-align: center;
+	}
+	.part_sub img{
+		display: block;
+    	margin: 100px auto 0;
+	}
+	#mod_part{
+		width: 100%;
+		height: 650px;
+		position: relative;
+   		 margin-top: 175px;
+	}
+	#mod_part img{
+		width: 100%;
+		height: 650px;
+	}
+	#service{
+		margin-top: 115px;
+    	background: #fff;
+		background:  url(../public/img/images/home_part_bg3.png) no-repeat center top;
+		width: 100%;
+		height: 776px;
+	}
+	#service .part_title{
+		position: relative;
+		margin: 0 auto 28px;
+		width: 100%;
+		height: 48px;
+		background: url(../public/img/images/title_2.png);
+		background-size: cover;
+	}
+	#service .service_list{
+		margin-top: 48px;
+    	overflow: hidden;
+		margin: 0 auto;
+		width: 1200px;
+	}
+	.service_list li{
+		float: left;
+		position: relative;
+		min-height: 170px;
+		width: 50%;
+		list-style: none;
+	}
+	.service_list__num{
+		position: absolute;
+		left: 0;
+		top: 10px;
+		width: 77px;
+		height: 64px;
+		background: url(../public/img/images/num.png) no-repeat;
+		text-indent: -1000px;
+		overflow: hidden;
+	}
+	.service_list__num2{
+		    background-position: 0 -81px;
+	}
+	.service_list__num3{
+		background-position: 0 -167px;
+	}
+	.service_list__num4{
+		background-position: 0 -243px;
+	}
+	.service_list__num5{
+		background-position: 0 -328px;
+	}
+	.service_list__num6{
+		background-position: 0 -410px;
+	}
+	.service_list__num7{
+		background-position: 0 -494px;
+	}
+	.service_list__tit{
+		margin: 0 80px 5px 102px;
+    font-size: 28px;
+
+}
+	.service_list__desc{
+		margin: 0 80px 0 102px;
+    font-size: 24px;
+	}
+	#coming{
+		width: 100%;
+		
+		margin-top: 60px;
+		background: url(../public/img/images/home_part_bg4.jpg) no-repeat center top;
+		
+		padding-bottom: 70px;
+		background-size: cover;
+		overflow: hidden;
+	}
+	#coming .part_title{
+		position: relative;
+		margin: 0 auto 28px;
+		width: 100%;
+		z-index: 3;
+		height: 50px;
+		background:url(../public/img/images/title_3.png);
+		background-size: cover;
+	}
+	.coming_list{
+		margin-top: 60px;
+    	overflow: hidden;
+		width: 1200px;
+		height: 600px;
+		margin: 0 auto;
+		
+	}
+	
+	.coming_list .coming_list__item{
+		position: relative;
+		float: left;
+		width:199.98px;
+		height: 199.98px;
+		cursor: pointer;
+		overflow: hidden;
+		transition: all 0.5s;
+	}
+	
+	 .coming_list .coming_list__item:hover{
+		transform: scale(1.05);
+	}
+	.coming_list .coming_list__pic{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		object-fit: cover;
+		object-position: left top;
+		
+		
+	}
+	
+	.coming_list .coming_list__cover{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,.7);
+		color: #fff;
+		text-align: center;
+		opacity: 0;
+		
+		
+	}
+	.coming_list .coming_list__cover:hover{
+		opacity: 0.8;
+		transition: 1s;
+		
+		
+	}
+	.coming_list .coming_list__name{
+		margin: 30px auto 6px;
+		font-size: 36px;
+		font-weight: 400;
+		
+	}
+	#part_step{
+		width: 100%;
+		height: 600px;
+		margin: 110px 0 120px;
+	}
+	#part_step .part_title{
+		position: relative;
+		margin: 0 auto 28px;
+		width: 100%;
+		background: url(../public/img/images/title_4.png);
+		background-size: cover;
+		height: 50px;
+	}
+	.Three_step{
+		position: relative;
+		margin: 0 auto;
+		min-width: 900px;
+		max-width: 1200px;
+		background: #fff url(../public/img/images/home_part_bg5.png) no-repeat center top;
+	}
+	.Three_step img{
+		position: relative;
+		display: block;
+		margin: 30px auto 0;
+	}
+	.btn_start{
+		position: relative;
+		display: block;
+		margin: 75px auto 0;
+		width: 380px;
+		height: 106px;
+		line-height: 106px;
+		text-align: center;
+		background: #0060ff;
+		border-radius: 50px;
+		font-size: 44px;
+		color: #fff;
+	}
+	#footer{
+		
+		position: relative;
+		width: 100%;
+		height: 148px;
+		background-color: #595959;
+		clear: both;
+		color: #999;
+		overflow: hidden;
+		z-index: 99999;
+	}
+	.section{
+		position: relative;
+		margin: 32px auto;
+		padding: 0 25px;
+		max-width: 1200px;
+	}
+	.footer__links{
+		line-height: 1;
+		color: #fff;
+		font-size: 14px;
+	}
+	.footer__link{
+		color: #fff;
+   		 vertical-align: middle;
+	}
+	.footer_copyright{
+		margin-top: 22px;
+    	line-height: 2;
+	}
+	.footer_copyright p{
+		font-size: 14px;
+	}
+	.footer__qrcode{
+		position: absolute;
+		right: 40px;
+		top:30px;
+		text-align: center;
+	}
+	.footer__qrcode_pic{
+		width: 56px;
+    	height: 56px;
+	}
+	.footer__qrcode_name{
+		margin-top: 5px;
+    	font-size: 16px;
+	}
+</style>
+</head>
+
+<body>
+<div id="header">
+	<div class="head_inner">
+		<h1 class="qqmusic">
+			<a href="#/">
+			<img src="../public/img/images/logo1.png" alt="腾讯音乐人" style="margin-right: 10px;
+    height: 37px;"></a>
+		</h1>
+		<ul class="nav">
+			<li><a href="" style="color: #fff;background-color: #0060ff;">首页</a></li>
+			<li><a href="" class="center">个人中心</a></li>
+			<li><a href="" class="center">帮助中心</a></li>
+		</ul>
+		<div class="jinzhu">
+			<a href="#/user" class="enter">立即进驻</a> 
+			<div class="login">
+				<a href="javascript:;" class="top_login__link">登录</a>
+				</div>
+			</div>
+		</div>
+</div>
+<div id="content"></div>
+<div id="platform">
+	<h2 class="part_title">	</h2>
+	<div class="part_sub">
+		<div class="pass">
+			月活超7亿的音乐平台<br/>
+            累计付费用户超过1.2亿，超过4000万数字专辑<br/>
+            超过200家国际及本地厂牌的合作伙伴<br/>
+                
+                
+		</div>
+		<img src="../public/img/images/logos.png"/>
+	</div>
+</div>
+<div id="mod_part">
+	<div id="slideWrap">
+	<div class="scroll_mid">
+	<img src="../public/img/images/block_1.jpg" id="pic" style="display:block;"/>
+	     <ul class="scroll_number">
+				<li onMouseOver="show(1)" onMouseOut="start()"></li>
+				<li onMouseOver="show(2)" onMouseOut="start()"></li>
+				<li onMouseOver="show(3)" onMouseOut="start()"></li>
+				<li onMouseOver="show(4)" onMouseOut="start()"></li>
+				
+			</ul>
+		</div>
+	</div>
+</div>
+<div id="service">
+	<h2 class="part_title">
+		
+	</h2>
+	<ul class="service_list">
+		<li>
+			<i class="service_list__num">01</i>
+			<h3 class="service_list__tit">作品发行</h3>
+			<div class="service_list__desc">六大平台一键认证、一键上传、一键管理</div>
+		</li>
+		<li>
+		<i class="service_list__num service_list__num2">02</i> 
+		<h3 class="service_list__tit">宣传推广</h3> 
+		<div class="service_list__desc">全腾讯线上线下资源联动推广，全网全渠道海量资源强势加持</div>
+		</li>
+		<li>
+		<i class="service_list__num service_list__num3">03</i> 
+		<h3 class="service_list__tit">数据管理</h3> 
+		<div class="service_list__desc">大数据管理与分析，轻松掌握行业趋势和粉丝偏好，每天提供详尽的数据报表，全网独家的傻瓜式运营</div>
+		</li>
+		<li>
+		<i class="service_list__num service_list__num4">04</i> 
+		<h3 class="service_list__tit">演出支持</h3> 
+		<div class="service_list__desc">量身打造最适合音乐人的演出，提供专业的宣传与策划</div></li>
+		<li>
+		<i class="service_list__num service_list__num5">05</i> 
+		<h3 class="service_list__tit">作品收益</h3> 
+		<div class="service_list__desc">付费包、众筹、虚拟礼物、伴奏授权等多渠道、多平台、多维度获取收益，帮助音乐人实现价值最大化</div>
+		</li>
+		<li>
+		<i class="service_list__num service_list__num6">06</i> 
+		<h3 class="service_list__tit">版权管理与维护</h3> 
+		<div class="service_list__desc">专业的版权及法务团队保驾护航，帮助完成作品分发及分销，坚决打击盗版、保护版权，音乐人全程无忧</div>
+		</li>
+		<li>
+			<i class="service_list__num service_list__num7">07</i>
+			<h3 class="service_list__tit">教育培训</h3>
+		    <div class="service_list__desc">阶梯式教育培训，基础的音乐服务，专业的导师辅导，海量的演出曝光</div>
+		 </li>
+		
+	</ul>
+</div>
+<div id="coming">
+<h2 class="part_title">
+	
+</h2> 
+<ul class="coming_list">
+	<li class="coming_list__item">
+		<img src="../public/img/images/T001R300x300M00000169imA4Iub3I.jpg" class="coming_list__pic"/> 
+		<div class="coming_list__cover">
+		<h4 class="coming_list__name">花粥</h4>
+		</div>
+	</li>
+	<li class="coming_list__item">
+		<img src="../public/img/images/T001R300x300M000001SXl8y2mQobu.jpg" class="coming_list__pic"/> 
+		<div class="coming_list__cover">
+		<h4 class="coming_list__name">游鸿宇</h4>
+		</div>
+	</li>
+	<li class="coming_list__item">
+		<img src="../public/img/images/231034.jpeg" class="coming_list__pic"/> 
+		<div class="coming_list__cover">
+		<h4 class="coming_list__name">简易宏</h4>
+		</div>
+	</li>
+	<li class="coming_list__item">
+		<img src="../public/img/images/T001R300x300M000003cHsJw40aXQ3.jpg" class="coming_list__pic"/> 
+		<div class="coming_list__cover">
+		<h4 class="coming_list__name">万尼答</h4>
+		</div>
+	</li>
+	<li class="coming_list__item">
+		<img src="../public/img/images/T001R300x300M000003NTUrM17PJhv.jpg" class="coming_list__pic"/> 
+		<div class="coming_list__cover">
+		<h4 class="coming_list__name">徐秉宏</h4>
+		</div>
+	</li>
+	
+	<li class="coming_list__item">
+		<img src="../public/img/images/T001R300x300M000004S3vUn27fDYv.jpg" class="coming_list__pic"/> 
+		<div class="coming_list__cover">
+		<h4 class="coming_list__name">鹿先森乐队</h4>
+		</div>
+	</li>
+	<li class="coming_list__item">
+		<img src="../public/img/images/T001R300x300M000004TkOlj2Gd435.jpg" class="coming_list__pic"/> 
+		<div class="coming_list__cover">
+		<h4 class="coming_list__name">V.K克</h4>
+		</div>
+	</li>
+	<li class="coming_list__item">
+		<img src="../public/img/images/T001R300x300M000004TkOlj2Gd435.jpg" class="coming_list__pic"/> 
+		<div class="coming_list__cover">
+		<h4 class="coming_list__name">V.K克</h4>
+		</div>
+	</li>
+	<li class="coming_list__item">
+		<img src="../public/img/images/T001R300x300M000004TkOlj2Gd435.jpg" class="coming_list__pic"/> 
+		<div class="coming_list__cover">
+		<h4 class="coming_list__name">V.K克</h4>
+		</div>
+	</li>
+	<li class="coming_list__item">
+		<img src="../public/img/images/T001R300x300M000004TkOlj2Gd435.jpg" class="coming_list__pic"/> 
+		<div class="coming_list__cover">
+		<h4 class="coming_list__name">V.K克</h4>
+		</div>
+	</li>
+	<li class="coming_list__item">
+		<img src="../public/img/images/T001R300x300M000004TkOlj2Gd435.jpg" class="coming_list__pic"/> 
+		<div class="coming_list__cover">
+		<h4 class="coming_list__name">V.K克</h4>
+		</div>
+	</li>
+	<li class="coming_list__item">
+		<img src="../public/img/images/T001R300x300M000004TkOlj2Gd435.jpg" class="coming_list__pic"/> 
+		<div class="coming_list__cover">
+		<h4 class="coming_list__name">V.K克</h4>
+		</div>
+	</li>
+	<li class="coming_list__item">
+		<img src="../public/img/images/T001R300x300M00000169imA4Iub3I.jpg" class="coming_list__pic"/> 
+		<div class="coming_list__cover">
+		<h4 class="coming_list__name">花粥</h4>
+		</div>
+	</li>
+	<li class="coming_list__item">
+		<img src="../public/img/images/T001R300x300M000001SXl8y2mQobu.jpg" class="coming_list__pic"/> 
+		<div class="coming_list__cover">
+		<h4 class="coming_list__name">游鸿宇</h4>
+		</div>
+	</li>
+	<li class="coming_list__item">
+		<img src="../public/img/images/231034.jpeg" class="coming_list__pic"/> 
+		<div class="coming_list__cover">
+		<h4 class="coming_list__name">简易宏</h4>
+		</div>
+	</li>
+	<li class="coming_list__item">
+		<img src="../public/img/images/T001R300x300M000003cHsJw40aXQ3.jpg" class="coming_list__pic"/> 
+		<div class="coming_list__cover">
+		<h4 class="coming_list__name">万尼答</h4>
+		</div>
+	</li>
+	<li class="coming_list__item">
+		<img src="../public/img/images/T001R300x300M000003NTUrM17PJhv.jpg" class="coming_list__pic"/> 
+		<div class="coming_list__cover">
+		<h4 class="coming_list__name">徐秉宏</h4>
+		</div>
+	</li>
+	
+	<li class="coming_list__item">
+		<img src="../public/img/images/T001R300x300M000004S3vUn27fDYv.jpg" class="coming_list__pic"/> 
+		<div class="coming_list__cover">
+		<h4 class="coming_list__name">鹿先森乐队</h4>
+		</div>
+	</li>
+</ul>
+</div>
+<div id="part_step">
+	<h2 class="part_title">
+		
+	</h2>
+	<div class="Three_step">
+		<img src="../public/img/images/step.png"/>	
+	</div>
+	<a href="#/user/data/all" class="btn_start">立即进驻</a>
+</div>
+<div id="footer">
+	<div class="section">
+		<div class="footer__links"><a href="#/help/agreement" class="footer__link">平台服务协议</a> <span>|</span> 
+		<a href="#/help/agreement" class="footer__link">帮助中心</a> <span>|</span> 
+		<a href="javascript:;" class="footer__link">意见反馈</a></div>
+		<div class="footer_copyright"><p>Copyright © 1998-2018 Tencent. All Rights Reserved.</p> <p>腾讯音乐娱乐科技（深圳）有限公司 版权所有</p></div>
+	</div>
+	<div class="footer__qrcode"><img src="../public/img/images/qrcode.png" class="footer__qrcode_pic"> <div class="footer__qrcode_name">微信公众号</div></div>
+</div>
+<script>
+var index=1;
+		var time; 
+		var pic=document.getElementById("pic");
+		time=setInterval("show()",2000);
+		function show(id){
+			if(Number(id)){
+				index=id;
+				clearInterval(time);
+			}else{
+				index++;
+				if(index==5){
+					index=1;
+				}
+			}
+			pic.src="../public/img/images/block_"+index+".jpg";
+			var lis=document.getElementsByTagName("#slideWrap li");
+			for(var i=0;i<lis.length;i++){
+				lis[i].setAttribute("class","scroll_number_out");
+				if(i==(index-1)){
+					lis[i].setAttribute("class","scroll_number_over");
+				}
+			}
+		}
+		function start(){
+			time=setInterval("show()",2000);
+		}
+	
+	
+</script>
+
+
+</body>
+</html>

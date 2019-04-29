@@ -1,0 +1,2435 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>酷狗直播 _ 一个真正唱歌的直播平台</title>
+<link rel="shortcut icon"  href="favicon.ico"/>
+</head>
+<style>
+*{margin:0;padding:0;}
+a{text-decoration: none;}
+li{list-style: none;}
+#head{
+	width: 100%;
+	height: 76px;
+	background: #fff;
+	}
+#head .logo{
+	background-position: 0px -755px;
+	background-image:url(../public/img/LiveMusic/index_z_ab26ab9.png);
+	float: left;
+    width: 149px;
+    height: 39px;
+	position: absolute;
+	left: 160px;
+	top:20px;
+	}
+#head .hbox{
+	width:1038px;
+	height:76px;
+	margin-left:322px;
+	position: absolute;
+	}
+#head .headl{
+	float: left;
+	text-align: center;
+	}
+	.headl i{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-repeat: no-repeat;
+		background-position: -940px -758px;
+		width: 7px;
+    	height: 4px;
+    	margin-left: 3px;
+    	vertical-align: 3px;
+    	display: inline-block;
+    	overflow: hidden;
+	}
+.hbox ul li{
+	float: left;
+    height: 76px;
+    margin-right: 8px;
+    padding: 0 9px;
+    position: relative;
+	}
+.hbox ul li.spe1 a{
+		color:#fff;
+	}
+.hbox ul li.spe1 a:hover{
+		color:#fff;
+	}
+.hbox ul li a{
+	float: left;
+    height: 76px;
+    line-height: 76px;
+    text-align: center;
+    font-size: 16px;
+    position: relative;
+	font-family:" Microsoft YaHei", 宋体, Arial, Verdana;
+}
+.hbox ul li a:hover{color:#3ca617;}
+.spe1{
+	background: #6bc30d;
+	width: 32px;
+	}
+#searchnamebox{
+	background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+	background-position: -139px -814px;
+	width: 177px;
+    height: 31px;
+    position: absolute;
+    top: 22px;
+    right: 210px;
+    background-repeat: no-repeat;
+	}
+#searchname{
+	color:#ccc;
+    left: 5px;
+    top: 4px;
+    color: #ccc;
+    padding: 0 4px;
+    width: 128px;
+    height: 22px;
+    line-height: 24px;
+    border: 1px solid #fff;
+	outline:0;     /*边框不显示*/
+	position: absolute;
+	}
+#searchnamebox a{
+	position: absolute;
+    right: 5px;
+    top: 5px;
+    height: 25px;
+    width: 32px;
+	}
+#head .headright{
+	font-family: Microsoft YaHei,\5b8b\4f53,Arial,Verdana;
+    font-size: 12px;
+	width: 154px;
+	height: 17px;
+	float:right;
+	margin-top: 30px;
+
+	}
+#head .headright a{margin-right: 8px;}
+#head span a:hover{color:#3ca617;}
+	.mv1u{
+		background: #fff;
+    	border: 1px solid #e2e0e0;
+    	position: absolute;
+    	top: 60px;
+    	height: 66px;
+    	margin: 0;
+		width: 110px;
+		margin-left: 20px;
+		z-index: 1;
+		display: none;
+	}
+	.mv1l{
+		border-bottom: 1px solid #e2e0e0;
+		width: 92px;
+	}
+	.mv1a{
+		height: 33px!important;
+		width: 78px!important;
+    	font-size: 14px;
+    	float: left;
+    	color: #717171;
+
+	}
+	.gh1{
+		background: #fff;
+    	border: 1px solid #e2e0e0;
+    	position: absolute;
+    	top: 60px;
+    	height: 99px;
+    	margin: 0;
+		width: 110px;
+		margin-left: 235px;
+		z-index: 1;
+		display: none;
+	}
+	.gh1l{
+		border-bottom: 1px solid #e2e0e0;
+		width: 92px;
+	}
+	.gh1a{
+		height: 33px!important;
+		width: 78px!important;
+    	font-size: 14px;
+    	float: left;
+    	color: #717171;
+
+	}
+	.nt1{
+		background: #fff;
+    	border: 1px solid #e2e0e0;
+    	position: absolute;
+    	top: 60px;
+    	height: 66px;
+    	margin: 0;
+		width: 110px;
+		margin-left: 355px;
+		z-index: 1;
+		display: none;
+	}
+	.nt1l{
+		border-bottom: 1px solid #e2e0e0;
+		width: 92px;
+	}
+	.nt1a{
+		height: 33px!important;
+		width: 78px!important;
+    	font-size: 14px;
+    	float: left;
+    	color: #717171;
+
+	}
+	.xz1{
+		background: #fff;
+    	border: 1px solid #e2e0e0;
+    	position: absolute;
+    	top: 60px;
+    	height: 99px;
+    	margin: 0;
+		width: 110px;
+		margin-left: 525px;
+		z-index: 1;
+		display: none;
+	}
+	.xz1l{
+		border-bottom: 1px solid #e2e0e0;
+		width: 92px;
+	}
+	.xz1a{
+		height: 33px!important;
+		width: 78px!important;
+    	font-size: 14px;
+    	float: left;
+    	color: #717171;
+
+	}
+
+	/*图片*/
+	#picbox{
+		width: 100%;
+		height: 318px;
+		background-color: rgba(243,243,243);
+	}
+	#btnshow{
+			width: 1200px;
+			height: 318px;
+			margin: auto;
+			position: relative;
+			display: block;
+		}
+	#btnshow .p1{
+			width: 750px;
+			height: 300px;
+			float: left;
+			overflow: hidden;
+		}
+	#btnshow p{
+			height: 30px;
+			width: 150px;
+			font-size: 12px;
+			color: #FFF;
+			background: #000;
+			line-height: 30px;
+			text-align: center;
+			opacity: 0.8;
+			/*position: absolute;*/
+			transition:All 0.4s ease-in-out;
+    		-webkit-transition:All 0.4s ease-in-out;
+    		-moz-transition:All 0.4s ease-in-out;
+    		-o-transition:All 0.4s ease-in-out;
+		}
+	.p1_1:hover .pp1{
+		transform:translate(0,-30px);
+    	-webkit-transform:translate(0,-30px);
+    	-moz-transform:translate(0,-30px);
+    	-o-transform:translate(0,-30px);
+    	-ms-transform:translate(0,-30px);
+	}
+	.p1_2:hover .pp2{
+		transform:translate(0,-30px);
+    	-webkit-transform:translate(0,-30px);
+    	-moz-transform:translate(0,-30px);
+    	-o-transform:translate(0,-30px);
+    	-ms-transform:translate(0,-30px);
+	}
+	.p1_3:hover .pp3{
+		transform:translate(0,-30px);
+    	-webkit-transform:translate(0,-30px);
+    	-moz-transform:translate(0,-30px);
+    	-o-transform:translate(0,-30px);
+    	-ms-transform:translate(0,-30px);
+	}
+	.p1_4:hover .pp4{
+		transform:translate(0,-30px);
+    	-webkit-transform:translate(0,-30px);
+    	-moz-transform:translate(0,-30px);
+    	-o-transform:translate(0,-30px);
+    	-ms-transform:translate(0,-30px);
+	}
+	.p1_5:hover .pp5{
+		transform:translate(0,-30px);
+    	-webkit-transform:translate(0,-30px);
+    	-moz-transform:translate(0,-30px);
+    	-o-transform:translate(0,-30px);
+    	-ms-transform:translate(0,-30px);
+	}
+	.p1_6:hover .pp6{
+		transform:translate(0,-30px);
+    	-webkit-transform:translate(0,-30px);
+    	-moz-transform:translate(0,-30px);
+    	-o-transform:translate(0,-30px);
+    	-ms-transform:translate(0,-30px);
+	}
+	.p1_7:hover .pp7{
+		transform:translate(0,-30px);
+    	-webkit-transform:translate(0,-30px);
+    	-moz-transform:translate(0,-30px);
+    	-o-transform:translate(0,-30px);
+    	-ms-transform:translate(0,-30px);
+	}
+	.p1_8:hover .pp8{
+		transform:translate(0,-30px);
+    	-webkit-transform:translate(0,-30px);
+    	-moz-transform:translate(0,-30px);
+    	-o-transform:translate(0,-30px);
+    	-ms-transform:translate(0,-30px);
+	}
+	.p1_9:hover .pp9{
+		transform:translate(0,-30px);
+    	-webkit-transform:translate(0,-30px);
+    	-moz-transform:translate(0,-30px);
+    	-o-transform:translate(0,-30px);
+    	-ms-transform:translate(0,-30px);
+	}
+	.p1_10:hover .pp10{
+		transform:translate(0,-30px);
+    	-webkit-transform:translate(0,-30px);
+    	-moz-transform:translate(0,-30px);
+    	-o-transform:translate(0,-30px);
+    	-ms-transform:translate(0,-30px);
+	}
+	.p1 .p1_1{
+			width: 150px;
+			height: 150px;
+			background: url(../public/img/LiveMusic/1.jpg);
+			background-size: 100% 100%;
+			float: left;
+			overflow: hidden;
+		}
+	.p1 .p1_2{
+			width: 150px;
+			height: 150px;
+			background: url(../public/img/LiveMusic/2.jpg);
+			background-size: 100% 100%;
+			float: left;
+			overflow: hidden;
+		}
+	.p1 .p1_3{
+			width: 150px;
+			height: 150px;
+			background: url(../public/img/LiveMusic/3.jpg);
+			background-size: 100% 100%;
+			float: left;
+			overflow: hidden;
+		}
+	.p1 .p1_4{
+			width: 150px;
+			height: 150px;
+			background: url(../public/img/LiveMusic/4.jpg);
+			background-size: 100% 100%;
+			float: left;
+			overflow: hidden;
+		}
+	.p1 .p1_5{
+			width: 150px;
+			height: 150px;
+			background: url(../public/img/LiveMusic/5.jpg);
+			background-size: 100% 100%;
+			float: left;
+			overflow: hidden;
+		}
+	.p1 .p1_6{
+			width: 150px;
+			height: 150px;
+			background: url(../public/img/LiveMusic/7.jpg);
+			background-size: 100% 100%;
+			float: left;
+			z-index: 1;
+		}
+	.p1 .p1_7{
+			width: 150px;
+			height: 150px;
+			background:url(../public/img/LiveMusic/8.jpg);
+			background-size: 100% 100%;
+			float: left;
+			z-index: 1;
+		}
+	.p1 .p1_8{
+			width: 150px;
+			height: 150px;
+			background: url(../public/img/LiveMusic/9.jpg);
+			background-size: 100% 100%;
+			float: left;
+			z-index: 1;
+		}
+	.p1 .p1_9{
+			width: 150px;
+			height: 150px;
+			background: url(../public/img/LiveMusic/10.jpg);
+			background-size: 100% 100%;
+			float: left;
+		z-index: 1;
+		}
+	.p1 .p1_10{
+			width: 150px;
+			height: 150px;
+			background: url(../public/img/LiveMusic/11.jpg);
+			background-size: 100% 100%;
+			float: left;
+		}
+	#btnshow .p2{
+			width: 300px;
+			height: 300px;
+			float: left;
+			overflow: hidden;
+		}
+	.p2 .p2_1{
+			width: 300px;
+			height: 300px;
+			background: url(../public/img/LiveMusic/6.jpg);
+			background-size: 100% 100%;
+		}
+	.p2_1:hover .pp11{
+		transform:translate(0,-30px);
+    	-webkit-transform:translate(0,-30px);
+    	-moz-transform:translate(0,-30px);
+    	-o-transform:translate(0,-30px);
+    	-ms-transform:translate(0,-30px);
+	}
+	#btnshow .p3{
+			width: 150px;
+			height: 300px;
+			float: left;
+		overflow: hidden;
+		}
+	.p3_1:hover .pp12{
+		transform:translate(0,-30px);
+    	-webkit-transform:translate(0,-30px);
+    	-moz-transform:translate(0,-30px);
+    	-o-transform:translate(0,-30px);
+    	-ms-transform:translate(0,-30px);
+	}
+	.p3_2:hover .pp13{
+		transform:translate(0,-30px);
+    	-webkit-transform:translate(0,-30px);
+    	-moz-transform:translate(0,-30px);
+    	-o-transform:translate(0,-30px);
+    	-ms-transform:translate(0,-30px);
+	}
+	.p3 .p3_1{
+			width: 150px;
+			height: 150px;
+			background: url(../public/img/LiveMusic/12.jpg);
+			background-size: 100% 100%;
+			overflow: hidden;
+		}
+	.p3 .p3_2{
+			width: 150px;
+			height: 150px;
+			background: url(../public/img/LiveMusic/13.jpg);
+			background-size: 100% 100%;
+		}
+	.review{
+			display: inline-block;
+			width: 40px;
+			height: 40px;
+			position: absolute;
+			background: url(../public/img/LiveMusic/index_z_ab26ab9.png) -629px -584px;
+			right:110px;
+			bottom:135px;
+		}
+	.review:hover{
+		background: url(../public/img/LiveMusic/index_z_ab26ab9.png) -478px -180px;
+	}
+	.close{
+			display: inline-block;
+			width: 40px;
+			height: 40px;
+			position: absolute;
+			background: url(../public/img/LiveMusic/index_z_ab26ab9.png) -689px -584px;
+			right: 110px;
+			bottom:96px;
+		}
+	.close:hover{
+		background: url(../public/img/LiveMusic/index_z_ab26ab9.png) -450px -695px;
+	}
+	.open{
+			display: inline-block;
+			width: 40px;
+			height: 40px;
+			position: absolute;
+			background: url(../public/img/LiveMusic/index_z_ab26ab9.png)-538px -180px ;
+			right: 110px;
+			top:76px;
+	}
+	.open:hover{
+		background: url(../public/img/LiveMusic/index_z_ab26ab9.png) -715px -480px;
+	}
+	/*中间*/
+	#center{
+		width: 100%;
+		background-color: rgba(243,243,243);
+		height: 1700px;
+	}
+	#con{
+			width: 1200px;
+			height: 1700px;
+			margin: auto;
+		}
+	.dir{
+			width: 210px;
+			height: 114px;
+			background: white;
+			float: left;
+		}
+	.dir .reg{
+			width: 210px;
+			height: 90px;
+			padding: 12px 0;
+			border-bottom: 1px solid #f3f3f3;
+		}
+	.reg a{
+			display: inline-block;
+			width: 70px;
+			height: 20px;
+			background: url(../public/img/LiveMusic/index_z_ab26ab9.png) no-repeat;
+			margin-left: 25px;
+			margin-top: 10px;
+			color: #333;
+			font-size: 16px;
+			padding-top: 64px;
+		}
+	.reglogo1:hover{
+		background-position: -639px -370px;
+		color: rgba(37,189,10);
+	}
+	.reglogo2:hover{
+		background-position: -230px -584px;
+		color: rgba(37,189,10);
+	}
+	.leftbar{
+		width: 210px;
+    	float: left;
+    	margin: 0 10px 0 0;
+    	background: #FFF;
+
+
+	}
+	.leftbar ul li{
+		height: 30px;
+    	line-height: 30px;
+    	position: relative;
+    	width: 209px;
+		font-size: 12px;
+	}
+	.leftbar ul li a{
+		width: 175px;
+    	height: 30px;
+    	line-height: 30px;
+    	display: inline-block;
+    	padding-left: 34px;
+		color: black;
+
+	}
+	.leftbar ul li a:hover{
+		color:#6BC30D;
+	}
+	.leftbar ul li i{
+		height: 30px;
+    	line-height: 30px;
+    	display: inline-block;
+		font-style: normal;
+		font-weight: 400;
+	}
+	.leftbar ul li em{
+		position: absolute;
+    	right: 10px;
+    	color: #999;
+    	height: 30px;
+    	line-height: 30px;
+		font-style: normal;
+		font-weight: 400;
+	}
+	.livebox{
+		padding-bottom: 6px;
+    	border-bottom: 1px dashed #F1F1F1;
+		cursor: pointer;
+	}
+	.live{
+		height: 36px;
+		line-height: 36px;
+		cursor: pointer;
+
+		}
+	.live:hover{
+		color: rgba(37,189,10);
+	}
+	.live:hover i{
+		background: url(../public/img/LiveMusic/index_z_ab26ab9.png) -894px -46px;
+	}
+	.live i{
+			display: inline-block;
+			width: 26px;
+			height: 21px;
+			background: url(../public/img/LiveMusic/index_z_ab26ab9.png) -894px 0px;
+			margin-top: 10px;
+			margin-left: 5px;
+		}
+	.singtitle{
+		font-size: 16px;
+    	font-family: "Microsoft YaHei";
+    	color: #000;
+    	padding: 6px 0 0;
+    	height: 30px;
+    	line-height: 28px;
+		padding-bottom: 6px;
+    	border-bottom: 1px dashed #F1F1F1;
+		cursor: pointer;
+	}
+	.singtitle:hover span{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-position: -825px -636px;
+	}
+	.singtitle:hover{
+		color: #6BC30D;
+	}
+	.singtitle span{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-repeat: no-repeat;
+		background-position: -779px -636px;
+		width: 26px;
+    	height: 26px;
+    	float: left;
+    	margin: 0 6px 4px 2px;
+	}
+	.singerbox{
+		padding-bottom: 6px;
+    	border-bottom: 1px dashed #F1F1F1;
+		height: 38px;
+		cursor: pointer;
+	}
+	.singer{
+		font-size: 16px;
+    	font-family: "Microsoft YaHei";
+    	color: #000;
+    	padding: 6px 0 0;
+    	height: 30px;
+    	line-height: 30px;
+	}
+	.singer:hover span{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-position: -894px -184px;
+	}
+	.singer:hover{
+		color: #6BC30D;
+	}
+	.singer span{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-repeat: no-repeat;
+		background-position: -894px -138px;
+		width: 26px;
+    	height: 26px;
+    	float: left;
+    	margin: 0 6px 4px 2px;
+	}
+	.starbox{
+		padding-bottom: 6px;
+    	border-bottom: 1px dashed #F1F1F1;
+		height: 40px;
+		cursor: pointer;
+	}
+	.star{
+		font-size: 16px;
+    	font-family: "Microsoft YaHei";
+    	color: #000;
+    	padding: 6px 0 0;
+    	height: 30px;
+    	line-height: 30px;
+	}
+	.star:hover span{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-position: -894px -368px;
+	}
+	.star:hover{
+		color: #6BC30D;
+	}
+	.star span{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-repeat: no-repeat;
+		background-position: -894px -322px;
+		width: 26px;
+    	height: 26px;
+    	float: left;
+    	margin: 0 6px 4px 2px;
+	}
+	.stage{
+		height: 156px;
+		padding-bottom: 6px;
+    	border-bottom: 1px dashed #F1F1F1;
+	}
+	.stagetitle{
+		font-size: 16px;
+    	font-family: "Microsoft YaHei";
+    	color: #000;
+    	padding: 6px 0 0;
+    	height: 30px;
+    	line-height: 28px;
+		cursor: pointer;
+	}
+	.stagetitle span{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-repeat: no-repeat;
+		background-position: -779px -682px;
+		width: 26px;
+    	height: 26px;
+    	float: left;
+    	margin: 0 6px 4px 2px;
+	}
+	.stagetitle:hover span{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-position: -825px -682px;
+	}
+	.stagetitle:hover{
+		color: #6BC30D;
+	}
+	.hotstage{
+		height: 276px;
+		padding-bottom: 6px;
+    	border-bottom: 1px dashed #F1F1F1;
+	}
+	.hotstagetitle{
+		font-size: 16px;
+    	font-family: "Microsoft YaHei";
+    	color: #000;
+    	padding: 6px 0 0;
+    	height: 30px;
+    	line-height: 28px;
+		cursor: pointer;
+	}
+	.hotstagetitle span{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-repeat: no-repeat;
+		background-position: -729px -260px;
+		width: 26px;
+    	height: 26px;
+    	float: left;
+    	margin: 0 6px 4px 2px;
+
+	}
+	.hotstagetitle:hover span{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-position: -729px -306px;
+	}
+	.hotstagetitle:hover{
+		color: #6BC30D;
+	}
+	.activebox{
+		height: 96px;
+		cursor: pointer;
+		border-bottom: 1px dashed #F1F1F1;
+	}
+	.activebox span{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-repeat: no-repeat;
+		background-position: -729px -370px;
+		width: 26px;
+    	height: 26px;
+    	float: left;
+    	margin:0 6px 4px 2px;
+	}
+	.activeboxtitle{
+		font-size: 16px;
+    	font-family: "Microsoft YaHei";
+    	color: #000;
+    	padding: 6px 0 0;
+    	height: 30px;
+    	line-height: 30px;
+		cursor: pointer;
+	}
+	.activeboxtitle:hover span{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-position: -729px -416px;
+	}
+	.activeboxtitle:hover{
+		color: #6BC30D;
+	}
+	.notice{
+		padding: 10px;
+    	padding-bottom: 0;
+		height: auto;
+	}
+	.notice h3{
+		height: 30px;
+    	width: 140px;
+		font-size: 14px;
+		font-weight: 400;
+	}
+	.notice h3 span{
+		width: 100%;
+    	height: 22px;
+    	float: left;
+    	color: #ABABAB;
+	}
+	.notice p{
+		margin: 0 0 12px;
+		font-size: 12px;
+	}
+	.notice p a{
+		width: 160px;
+    	height: 16px;
+    	padding: 0 0 2px;
+    	color: #333;
+    	border-bottom: 1px solid #fff;
+	}
+	.notice p a:hover{
+		color: #6BC30D;
+	}
+	.centercbox{
+		width: 758px;
+		float: left;
+		padding-left: 17px;
+		margin-top: 15px;
+		height: auto;
+	}
+	.centerctitle{
+		width: 758px;
+		height: 87px;
+	}
+	.centerctitle ul{
+		width: 750px;
+		height: 50px;
+	}
+	.centerctitle li{
+		height: 20px;
+    	line-height: 20px;
+    	float: left;
+	}
+	.centerctitle li a{
+		float: left;
+    	color: #999;
+    	font-size: 20px;
+    	height: 30px;
+    	line-height: 28px;
+	}
+	.centerctitle li span{
+		margin-left: 8px;
+    	font-weight: 400;
+    	display: none;
+    	height: 32px;
+    	line-height: 36px;
+	}
+	.centerctitle li i{
+		width: 0;
+    	height: 15px;
+    	background: #999;
+    	display: inline-block;
+    	margin: 0 15px;
+    	vertical-align: middle;
+    	position: relative;
+    	top: -2px;
+	}
+
+	.centerctitle li a:hover{
+		color: #0B0;
+    	border-bottom: 2px solid #0b0;
+	}
+	.centerctitlenotice{
+		margin-bottom: 20px;
+		text-align: center;
+		margin-top: 10px;
+		font-size: 12px;
+	}
+	.livestage{
+		width:758px;
+		height: 300px;
+	}
+	.pk h3{
+		position: relative;
+    	width: 728px;
+    	height: 30px;
+    	line-height: 24px;
+    	font-size: 21px;
+    	font-family: Microsoft YaHei;
+    	color: #0B0;
+	}
+	.pk h3 span{
+		border-bottom: 2px solid #0b0;
+	}
+	.pk h3 a{
+		position: absolute;
+    	top: 4px;
+    	left: 705px;
+    	width: 35px;
+    	height: 20px;
+    	color: #666;
+    	font-size: 12px;
+	}
+	.pk h3 a:hover{
+		text-decoration: underline;
+		color:rgba(60,166,23);
+	}
+	.pking{
+		background: #f14;
+		position: relative;
+    	z-index: 101;
+    	top: 16px;
+    	right: -132px;
+    	height: 12px;
+    	line-height: 12px;
+    	overflow: hidden;
+    	color: #fff;
+    	padding: 2px 2px 2px 7px;
+    	border-radius: 10px 0 0 10px;
+		width: 36px;
+	}
+	.pkpic li{
+		margin: 20px 0 0;
+    	width: 177px;
+    	height: 200px;
+		float: left;
+	}
+	.i-box{
+		height: 177px;
+		width: 100%;
+		overflow: hidden;
+		transition:.5s;
+	}
+	.i-box img{
+		width: 236px;
+    	height: 177px;
+		left: -39.5px;
+		position: relative;
+	}
+	.info{
+		height: 20px;
+    	line-height: 20px;
+	}
+	.info span{
+		width: 4;
+		color: #333;
+    	font-size: 14px;
+	}
+	.infob{
+		color: #bababa;
+    	margin: 3px 0 0;
+		font-size: 12px;
+	}
+	.infob i{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-position: -80px -867px;
+		background-repeat: no-repeat;
+		width: 27px;
+    	height: 20px;
+    	display: block;
+    	float: left;
+	}
+	.spk{
+		position: relative;
+    	top: -70px;
+    	left: 25px;
+    	width: 66px;
+    	height: 40px;
+    	z-index: 9999;
+	}
+	.fangda{
+
+	}
+	.theme{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-position:-565px -814px ;
+		background-repeat: no-repeat;
+		position: relative;
+    	top: 130px;
+    	left: -300px;
+    	width: 240px;
+    	height: 30px;
+    	font-weight: 700;
+    	color: #fff;
+    	text-align: center;
+    	line-height: 26px;
+    	z-index: 82;
+    	overflow: hidden;
+	}
+	.power{
+		position: relative;
+    	top: 125px;
+    	width: 354px;
+    	height: 18px;
+    	background: url(../public/img/LiveMusic/bloodBg_bede9d4.png) no-repeat;
+    	z-index: 81;
+	}
+	.power1{
+		background: url(../public/img/LiveMusic/index_z_ab26ab9.png) no-repeat;
+		background-position: -451px -867px;
+		width: 12px;
+    	height: 18px;
+		left: 4px;
+    	top:0px;
+		position: relative;
+	}
+	.power2{
+		background: url(../public/img/LiveMusic/index_x_26931ef.png);
+		background-repeat: repeat-x;
+		background-position: 0px 0px;
+		width: 74px;
+    	height: 18px;
+		top:-19px;
+		position: relative;
+		left: 15px;
+	}
+	.power3{
+		background: url(../public/img/LiveMusic/index_z_ab26ab9.png) no-repeat;
+		background-position: -340px -208px;
+		width: 5px;
+    	height: 18px;
+		top:-37px;
+		position: relative;
+		left: 89px;
+	}
+	.power4{
+		background: url(../public/img/LiveMusic/index_x_26931ef.png);
+		background-repeat: repeat-x;
+		background-position: 0px -38px;
+		width: 250px;
+    	height: 18px;
+		top:-56px;
+		position: relative;
+		left: 94px;
+	}
+	.power5{
+		background: url(../public/img/LiveMusic/index_z_ab26ab9.png) no-repeat;
+		background-position: -343px -867px;
+		width: 12px;
+    	height: 18px;
+    	top:-72px;
+		left: 344px;
+		position: relative;
+	}
+	.zi{
+		position: relative;
+		z-index:99;
+		line-height: 16px;
+    	left: -322px;
+    	font-weight: 700;
+		height: 17px;
+		color: #fff;
+		font-size: 12px;
+		top:106px;
+	}
+	.hotstar{
+		width: 758px;
+		height: auto;
+	}
+	.hotstar h3{
+		position: relative;
+    	width: 728px;
+		height: 30px;
+    	line-height: 24px;
+    	font-size: 21px;
+    	font-family: Microsoft YaHei;
+    	color: #0B0;
+	}
+	.hotstar h3 span{
+		border-bottom: 2px solid #0b0;
+	}
+	.hotstar h3 p{
+		font-size: 12px;
+    	margin-top: 45px;
+    	border: 1px solid #ccc;
+    	height: 18px;
+    	line-height: 18px;
+		width: 160px;
+		float: right;
+	}
+	.hotstar a{
+		float: none;
+    	padding: 1px 15px;
+    	position: relative;
+	}
+	.recom{
+		background: #61ba02;
+    	color: #fff;
+	}
+	.moods{
+		color: #ccc;
+
+	}
+	.select{
+		height: 30px;
+    	line-height: 30px;
+    	margin-top: 10px;
+    	margin-left: -10px;
+		font-weight: 400;
+		font-size: 14px;
+	}
+	.select dl{
+		padding: 0 12px;
+    	vertical-align: top;
+    	text-align: center;
+    	z-index: 81;
+    	position: relative;
+    	float: left;
+		width: 28px;
+		height: 32px;
+	}
+	.clearboth{
+		clear: both;
+    	font-size: 1px;
+    	line-height: 1px;
+    	height: 1px;
+	}
+	.content ul{
+		display: block;
+    	margin-top: 0px;
+    	text-align: left;
+	}
+	.content ul li{
+		width: 167px;
+    	height: 170px;
+    	float: left;
+    	position: relative;
+    	z-index: 80;
+    	margin: 20px 20px 0 0;
+	}
+	.content ul li:hover{
+
+	}
+	.livelogo{
+		background: rgba(0,0,0,.4);
+		position: absolute;
+    	z-index: 101;
+    	top: 0;
+    	right: 0;
+    	height: 12px;
+    	line-height: 12px;
+    	overflow: hidden;
+    	color: #fff;
+    	padding: 2px 2px 2px 7px;
+    	border-radius: 10px 0 0 10px;
+	}
+	.ci-box{
+		background-image: url(../public/img/LiveMusic/7ba833901b6466ccedf4be60b3db7a4f.jpg_260x196.jpg);
+		background-size: cover;
+		background-repeat: no-repeat;
+		width: 167px;
+    	height: 128px;
+    	overflow: hidden;
+    	position: relative;
+	}
+	.label{
+		max-width: 140px;
+    	z-index: 2;
+		bottom: 24px;
+	}
+	.label-target{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-position: -779px -118px;
+		background-repeat: no-repeat;
+		width: 54px;
+    	height: 36px;
+    	position: absolute;
+    	top:70px;
+    	left: 4px;
+		z-index: 3;
+	}
+	.label-area{
+		font-size: 12px;
+    	line-height: 16px;
+    	color: #3E1F14;
+    	position: relative;
+    	text-overflow: ellipsis;
+    	overflow: hidden;
+		width: 120px;
+		background-color: rgba(255,176,9);
+		margin-top: 80px;
+		margin-left: 48px;
+	}
+	.ci-box img{
+		width: 167px;
+    	height: 128px;
+    	display: block;
+    	position: relative;
+	}
+	.infoc{
+		position: relative;
+    	height: 20px;
+    	line-height: 20px;
+    	overflow: hidden;
+		font-style: normal;
+		font-weight: 400;
+	}
+	.infoc span{
+		color: #333;
+    	font-size: 14px;
+    	width: 80px;
+	}
+	.infoc i{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-position: -413px -867px;
+		background-repeat: no-repeat;
+		width: 18px;
+    	height: 18px;
+    	display: inline-block;
+    	margin-left: 2px;
+    	vertical-align: top;
+	}
+	.lpp{
+		color: #bababa;
+    	margin: 3px 0 0;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 12px;
+		height: 17px;
+	}
+	.lii{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-position: -80px -867px;
+		background-repeat: no-repeat;
+		width: 27px;
+    	height: 20px;
+    	display: block;
+    	float: left;
+	}
+	.spann{
+		position: absolute;
+    	top: 108px;
+    	left: 0;
+    	width: 165px;
+    	padding-right: 2px;
+    	line-height: 16px;
+    	height: 20px;
+    	background: #333;
+    	opacity: .8;
+    	color: #6DDB00;
+    	overflow: hidden;
+    	text-overflow: ellipsis;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 12px;
+	}
+	/*右边*/
+	.rightbar{
+		width: 205px;
+    	float: right;
+    	margin: 0;
+    	position: relative;
+    	margin-top: 15px;
+		height: auto;
+
+	}
+	.startimetitle{
+		height: 20px;
+    	margin-bottom: 36px;
+		text-align: center;
+    	font-size: 16px;
+    	color: #666;
+    	line-height: 40px;
+	}
+	.starhourbg{
+		height: 128px;
+		background: url(../public/img/LiveMusic/20180516192452868313.jpg);
+		background-repeat: no-repeat;
+	}
+	.winnerbox{
+		width: 205px;
+    	height: 87px;
+    	padding-top:30px;
+	}
+	.winnerbox img{
+		display: block;
+    	border-radius: 50%;
+    	margin: 20px auto 0;
+    	width: 40px;
+    	height: 40px;
+    	text-align: center;
+	}
+	.winnerbox span{
+		background: #3c00df;
+		display: block;
+    	width: 49px;
+    	height: 20px;
+    	margin: 7px auto 0;
+    	line-height: 20px;
+    	text-align: center;
+    	font-size: 12px;
+    	color: #fff;
+    	overflow: hidden;
+    	text-overflow: ellipsis;
+    	border-radius: 9px;
+    	white-space: nowrap;
+	}
+	.wonebox{
+		float: left;
+    	width: 49px;
+    	margin-left: 18px;
+	}
+	.wtwobox{
+		float: left;
+    	width: 60px;
+    	margin-left: 8px;
+		margin-top: -20px;
+	}
+	.wthreebox{
+		float: left;
+    	width: 49px;
+    	margin-left:4px;
+	}
+	.starurl{
+		height: 30px;
+    	line-height: 30px;
+    	font-size: 14px;
+    	color: #666
+	}
+	.starurl a{
+		color:rgba(0,204,119);
+		display: inline-block;
+	}
+	.playy{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-position: -225px -695px;
+		background-repeat: no-repeat;
+		width: 205px;
+    	height: 40px;
+    	line-height: 40px;
+    	color: #fff;
+    	display: block;
+		margin-top: 30px;
+	}
+	.playyy{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-position: -510px -695px;
+		background-repeat: no-repeat;
+		width: 205px;
+    	height: 40px;
+    	line-height: 40px;
+    	color: #fff;
+    	display: block;
+		margin-top: 15px;
+	}
+	.lunbo{
+		width: 205px;
+    	height: 270px;
+    	position: relative;
+    	overflow: hidden;
+    	padding: 0;
+		margin-top: 30px;
+	}
+	.focus{
+		width: 205px;
+    	height: 270px;
+    	position: relative;
+    	overflow: hidden;
+    	padding: 0;
+	}
+	.dian{
+		position: absolute;
+    	z-index: 100;
+    	right: 0;
+    	bottom: 3px;
+    	width: 100%;
+    	text-align: center;
+	}
+	.dian span{
+		display: inline-block;
+    	width: 16px;
+    	height: 16px;
+	}
+	.dian span em{
+		display: block;
+    	margin: 4px auto;
+    	width: 8px;
+    	height: 8px;
+    	border-radius: 4px;
+    	background: #7a7a7a;
+	}
+	.singground{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-repeat: no-repeat;
+		background-position: 0px 0px;
+		height: 227px;
+    	width: 205px;
+    	position: relative;
+    	margin-top: 15px;
+
+	}
+	.ava-img{
+		left: 17px;
+		width: 54px;
+    	height: 54px;
+    	position: absolute;
+    	border-radius: 27px;
+    	top: 77px;
+		overflow: hidden;
+	}
+	.avatarboss{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-repeat: no-repeat;
+		background-position: -639px -480px;
+		width: 56px;
+    	height: 64px;
+    	position: absolute;
+    	top: 77px;
+    	color: #640AA9;
+		left: 15px;
+	}
+	.avatarboss span{
+		position: absolute;
+    	bottom: 2px;
+    	text-align: center;
+		font-size: 12px;
+	}
+	.nameboss{
+		left: 15px;
+		position: absolute;
+    	max-width: 80px;
+    	color: #FFD211;
+    	text-align: center;
+    	top: 145px;
+    	text-overflow: ellipsis;
+    	overflow: hidden;
+		font-size: 12px;
+	}
+	.ava-img_star{
+		width: 54px;
+    	height: 54px;
+    	position: absolute;
+    	border-radius: 27px;
+    	top: 77px;
+    	overflow: hidden;
+		right: 17px;
+	}
+	.avatar_star{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-repeat: no-repeat;
+		background-position: -639px -480px;
+		width: 56px;
+    	height: 64px;
+    	position: absolute;
+    	top: 77px;
+    	color: #640AA9;
+		right: 15px;
+	}
+	.avatar_star span{
+		position: absolute;
+    	bottom: 2px;
+    	text-align: center;
+    	display: block;
+    	width: 100%;
+		font-size: 12px;
+	}
+	.namestar{
+		right: 15px;
+		position: absolute;
+    	max-width: 80px;
+    	color: #FFD211;
+    	text-align: center;
+    	top: 145px;
+		font-size: 12px;
+	}
+	.text-box{
+		position: absolute;
+    	bottom: 10px;
+    	line-height: 20px;
+    	width: 100%;
+		font-size: 12px;
+
+	}
+	.text{
+		font-size: 16px;
+    	color: #fff;
+    	text-align: center;
+	}
+	.text span{
+		color: #f90;
+		font-size: 16px;
+
+	}
+	.starlistbox{
+		width: 205px;
+		height: 250px;
+		margin-top: 20px;
+	}
+	.starlist{
+		width: 200px;
+		height: 22px;
+		font-size: 12px;
+		font-weight: 400;
+		color: #666;
+	}
+	.starlist1{
+		height: 24px;
+    	line-height: 24px;
+    	font-size: 20px;
+		width: 60px;
+		float: left;
+	}
+	.slisttab{
+		float: right;
+    	color: #c7c7c7;
+    	padding-top: 5px;
+	}
+	.slisttab span.current{
+		font-weight: 700;
+		color: #000;
+	}
+	.slisttab span{
+		margin: 0 2px;
+		text-align: center;
+		display: inline-block;
+	}
+	.sls{
+		display: block;
+		width: 200px;
+		font-size: 12px;
+		overflow: hidden;
+	}
+	.sls img{
+		width: 30px;
+    	height: 30px;
+    	float: left;
+    	margin: 0 6px 0 0;
+	}
+	.sls dl{
+		overflow: hidden;
+		margin:18px 0 0;
+ 	}
+	.sls dl dd{
+		margin: 0 0 6px;
+    	padding: 0 0 4px;
+		width: 200px;
+		height: 34px;
+	}
+	.sls p{
+		width: 60px;
+    	float: left;
+    	color: #bababa;
+    	margin-top: 7px;
+	}
+	.level1{
+		float: right;
+    	width: auto!important;
+    	height: 16px;
+    	line-height: 16px;
+    	margin-top: 5px;
+	}
+	.starspan{
+		float: left;
+    	width: 23px;
+    	hight:20px;
+    	font-size: 18px;
+    	color: #f60;
+    	font-family: Arial,Helvetica,sans-serif;
+    	line-height: 20px;
+    	text-align: center;
+    	margin: 6px 5px 0 0;
+    	font-style: italic;
+	}
+	.sls a{
+		color: #666;
+	}
+	.starfirst{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-repeat: no-repeat;
+		background-position: 0px -907px;
+		width: 23px;
+		height: 20px;
+		float: left;
+		margin: 6px 5px 0 0;
+	}
+	/*尾部*/
+	#foot{
+		width: 100%;
+		border-top: 1px solid #d8d8d8;
+    	height: 210px;
+    	background: #f3f3f3;
+	}
+	.footbox{
+		margin: 0 auto;
+    	color: #8f8f8f;
+    	padding: 24px 0 40px;
+    	line-height: 24px;
+    	width: 1000px;
+	}
+	.footlogo{
+		background-image: url(../public/img/LiveMusic/_d59fde7.png);
+		background-repeat: no-repeat;
+		background-position: -264px 0px;
+		display: inline-block;
+    	width: 110px;
+    	height: 97px;
+		padding-right: 13px;
+		float: left;
+	}
+	.footcbox{
+		width: 580px;
+		float: left;
+		font-size: 12px;
+	}
+	.footcbox a{
+		color: #8F8F8F;
+	}
+	.footcbox p{
+		height: 20px;
+    	line-height: 20px;
+    	width: 580px;
+    	float: left;
+	}
+	.fspan1{
+		float: left;
+    	display: block;
+    	width: 270px;
+	}
+	.yuelogo{
+		background-image: url(../public/img/LiveMusic/_d59fde7.png);
+		background-repeat: no-repeat;
+		background-position: -304px -117px;
+		display: inline-block;
+    	width: 20px;
+    	height: 20px;
+    	margin-top: -1px;
+		float: left;
+	}
+	.fspan2{
+		text-decoration: underline;
+	}
+	.fspan2:hover{
+		text-decoration: none;
+	}
+	.policelogo{
+		background-image: url(../public/img/LiveMusic/_d59fde7.png);
+		background-repeat: no-repeat;
+		background-position: -264px -117px;
+		display: inline-block;
+    	width: 20px;
+    	height: 20px;
+    	vertical-align: text-bottom;
+
+	}
+	.footewm{
+		float: left;
+		width: 268px;
+		height: 165px;
+	}
+	.ewm1{
+		background-image: url(../public/img/LiveMusic/_d59fde7.png);
+		background-repeat: no-repeat;
+		background-position: 0px 0px;
+		display: inline-block;
+    	width: 112px;
+    	height: 137px;
+    	margin: 0 8px;
+	}
+	.ewm2{
+		background-image: url(../public/img/LiveMusic/_d59fde7.png);
+		background-repeat: no-repeat;
+		background-position: -132px 0px;
+		display: inline-block;
+    	width: 112px;
+    	height: 137px;
+    	margin: 0 10px;
+	}
+
+	/*返回*/
+	.fixed{
+		position: fixed;
+    	top: 375px;
+    	right: 10px;
+    	z-index: 1000;
+    	background: #adadad;
+    	width: 39px;
+    	height: 94px;
+	}
+	.topp{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-position: -779px -585px;
+		background-repeat: no-repeat;
+		width: 39px;
+    	height: 31px;
+    	display: block;
+	}
+	.topp:hover{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-position: -779px -483px;
+	}
+	.massage{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-position: -779px -330px;
+		background-repeat: no-repeat;
+		width: 39px;
+    	height: 31px;
+    	display: block;
+	}
+	.massage:hover{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-position: -779px -432px;
+	}
+	.bottomm{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-position: -779px -534px;
+		background-repeat: no-repeat;
+		width: 39px;
+    	height: 31px;
+    	display: block;
+	}
+	.bottomm:hover{
+		background-image: url(../public/img/LiveMusic/index_z_ab26ab9.png);
+		background-position: -779px -381px;
+	}
+</style>
+<body>
+<!--头部-->
+<div id="head">
+	<div class="logo"><a href=""></a></div>
+		<div class="hbox">
+			<div class="headl">
+				<ul>
+					<li class="spe1"><a href="">首页</a></li>
+					<li class="spe2"><a href="">MV<i></i></a></li>
+							<ul class="mv1u">
+									<li class="mv1l" style="height: 33px;"><a href="" class="mv1a" style="font-size:12px;">MV广场</a></li>
+									<li class="mv1l" style="height: 33px;"><a href=""  class="mv1a" style="font-size: 12px;">MV榜单</a></li>
+							</ul>
+					<li class="spe3"><a href="">点歌广场</a></li>
+					<li class="spe4"><a href="">榜单</a></li>
+					<li class="spe5"><a href="">工会<i></i></a></li>
+							<ul class="gh1">
+								<li  class="gh1l" style="height: 33px;"><a href=""  class="gh1a" style="font-size:12px;">工会列表</a></li>
+								<li style="height: 33px;" ><a href="" class="gh1a"  style="font-size:12px;">工会排行</a></li>
+								<li style="height: 33px;"><a href="" class="gh1a" style="font-size:12px;">工会活动</a></li>
+							</ul>
+					<li class="spe6"><a href="">商城</a></li>
+					<li class="spe7"><a href="">女团<i></i></a></li>
+						<ul class="nt1">
+					 		<li  class="nt1l" style="height: 33px;"><a href="" class="nt1a" style="font-size:12px;">SING官网</a></li>
+					 		<li class="nt1l" style="height: 33px;"><a href="" class="nt1a" style="font-size:12px;">SING招募</a></li>
+					 	</ul>
+					<li class="spe8"><a href="">酷狗LIVE</a></li>
+					<li class="spe9"><a href="">下载<i></i></a></li>
+					 	<ul class="xz1">
+					 		<li  class="xz1l" style="height: 33px;"><a href="" class="xz1a" style="font-size:12px;">酷狗直播PC端</a></li>
+					 		<li  class="xz1l" style="height: 33px;"><a href="" class="xz1a" style="font-size:12px;">酷狗直播手机端</a></li>
+					 		<li  class="xz1l" style="height: 33px;"><a href="" class="xz1a" style="font-size:12px;">酷狗伴侣</a></li>
+					 	</ul>
+
+				</ul>
+			</div>
+			<div id="searchnamebox">
+				<input type="text" value="房间号或艺人昵称" id="searchname"/>
+				<a href=""></a>
+			</div>
+			<div class="headright">
+				<span><a href="">登陆</a></span>
+				<span><a href="">注册</a></span>
+				<span><a href="">客服</a></span>
+				<span><a href="">举报</a></span>
+			</div>
+		</div>
+
+</div>
+<!--图片-->
+<div id="picbox">
+	<div id="btnshow" style="display: block;">
+		<div class="p1">
+			<li><a href=""><div class="p1_1"><p style="margin-top: 150px;"class="pp1">HI真实幻境主唱</p></div></a></li>
+			<li><a href=""><div class="p1_2"><p style="margin-top: 150px;" class="pp2">LMZ女团6月加油</p></div></a></li>
+			<li><a href=""><div class="p1_3"><p style="margin-top: 150px;" class="pp3">李研</p></div></a></li>
+			<li><a href=""><div class="p1_4"><p style="margin-top: 150px;" class="pp4">歌者千里</p></div></a></li>
+			<li><a href=""><div class="p1_5"><p style="margin-top: 150px;"class="pp5">BM莎</p></div></a></li>
+			<li><a href=""><div class="p1_6"><p style="margin-top: 150px;" class="pp6">玺晨</p></div></a></li>
+			<li><a href=""><div class="p1_7"><p style="margin-top: 150px;"class="pp7">尹小能</p></div></a></li>
+			<li><a href=""><div class="p1_8"><p style="margin-top: 150px;"class="pp8">萌萌免费挖宝房</p></div></a></li>
+			<li><a href=""><div class="p1_9"><p style="margin-top: 150px;"class="pp9">夏允儿新主播</p></div></a></li>
+			<li><a href=""><div class="p1_10"><p style="margin-top: 150px;"class="pp10">BM糖超缺爱</p></div></a></li>
+		</div>
+		<div class="p2">
+			<a href=""><div class="p2_1"><p style="width: 300px;bottom: -300px;position: relative"class="pp11">DK小慧段友</p></div></a>
+		</div>
+		<div class="p3">
+			<a href=""><div class="p3_1"><p style="bottom: -150px;position: relative" class="pp12">媚娘与狼群</p></div></a>
+			<a href=""><div class="p3_2"><p style="bottom: -150px;position: relative" class="pp13">M莫柒柒历劫史</p></div></a>
+		</div>
+
+	</div>
+</div>
+		<a href="" class="review" onclick="show()"></a>
+		<a href="" class="close"></a>
+		<a href="" class="open" style="display: none;"></a>
+
+<!--中间-->
+<div id="center">
+<!--左边-->
+	<div id="con">
+		<div class="dir">
+			<div class="reg">
+				<a href="javascript" style="background-position:-230px -584px " class="reglogo1">用户登陆</a>
+				<a href="javascript" style="background-position:-639px -260px " class="reglogo2">用户注册</a>
+			</div>
+			<div class="leftbar">
+				<div class="livebox">
+					<div class="live">
+					<i></i>&nbsp;&nbsp;直播分类
+				</div>
+				<ul>
+					<li>
+						<a href=""><i>推荐</i><em>2223807人</em></a>
+					</li>
+					<li>
+						<a href=""><i>热门</i><em>5689749人</em></a>
+					</li>
+					<li>
+						<a href=""><i>女神</i><em>1166642人</em></a>
+					</li>
+					<li>
+						<a href=""><i>男神</i><em>229146人</em></a>
+					</li>
+					<li>
+						<a href=""><i>新秀</i><em>48438人</em></a>
+					</li>
+					<li>
+						<a href=""><i>好声音</i><em>158222人</em></a>
+					</li>
+					<li>
+						<a href=""><i>乐器</i><em>99761人</em></a>
+					</li>
+					<li>
+						<a href=""><i>组合</i><em>37558人</em></a>
+					</li>
+				</ul>
+				</div>
+				<div class="singtitle">
+					<span></span>&nbsp;&nbsp;SING招募
+				</div>
+				<div class="singerbox">
+					<div class="singer">
+						<span></span>&nbsp;&nbsp;歌手专区
+					</div>
+				</div>
+				<div class="starbox">
+					<div class="star">
+						<span></span>&nbsp;&nbsp;独家艺人
+					</div>
+				</div>
+				<div class="stage">
+					<div class="stagetitle">
+						<span></span>&nbsp;&nbsp;星光偶像
+					</div>
+					<div class="stagedetail">
+							<ul>
+								<li>
+									<a href="">
+										<i>超星</i>
+										<em>2494507人</em>
+									</a>
+								</li>
+								<li>
+									<a href="">
+										<i>巨星</i>
+										<em>978882人</em>
+									</a>
+								</li>
+								<li>
+									<a href="">
+										<i>红星</i>
+										<em>1189850人</em>
+									</a>
+								</li>
+								<li>
+									<a href="">
+										<i>新星</i>
+										<em>825037人</em>
+									</a>
+								</li>
+							</ul>
+						</div>
+
+				</div>
+				<div class="hotstage">
+					<div class="hotstagetitle">
+						<span></span>热门活动
+					</div>
+					<ul>
+							<li ><a href=""style="color: red;">官方充值返点</a></li>
+							<li><a href="">才艺PK排位赛</a></li>
+							<li><a href="">PK头条排位赛</a></li>
+							<li><a href="">点歌星期天</a></li>
+							<li><a href="">摇一摇升级</a></li>
+							<li><a href="">周星争夺战</a></li>
+							<li><a href="">幸运星期三</a></li>
+							<li><a href="">新人充值有礼</a></li>
+						</ul>
+				</div>
+				<div class="activebox">
+					<div class="activeboxtitle">
+						<span></span>&nbsp;活动
+					</div>
+					<ul>
+						<li><a href="">寻找女神</a></li>
+						<li><a href="">约会女神</a></li>
+					</ul>
+				</div>
+				<div class="notice" style="border-bottom: 1px dashed #F1F1F1;">
+					<h3><span>公告</span></h3>
+					<p><a href="">直播歌手原创新歌征集</a></p>
+					<p><a href="">酷狗VIP会员座驾领取</a></p>
+					<p><a href="">关于20凌晨账号数据异常...</a></p>
+					<p><a href="">双摄像头直播安卓机型黑名单</a></p>
+					<p><a href="">2017年度盛典名人堂</a></p>
+					<p><a href="">清理点歌无效歌曲公告</a></p>
+				</div>
+				<div class="notice" style="border-bottom: 1px dashed #F1F1F1;">
+					<h3><span>帮助中心</span></h3>
+					<p><a href="">什么是明星等级？</a></p>
+					<p><a href="">什么是财富等级？</a></p>
+					<p><a href="">如何开始直播？</a></p>
+					<p><a href="">如何点亮勋章</a></p>
+					<p><a href="">什么是守护者？</a></p>
+					<p><a href="">什么是会员特权？</a></p>
+					<p><a href="">什么是魅力指数</a></p>
+				</div>
+				<div class="notice">
+					<h3><span>合作与招聘</span></h3>
+					<p><a href="">商务招聘</a></p>
+					<p><a href="">高薪招聘</a></p>
+				</div>
+			</div>
+		</div>
+		<!--中间-->
+		<div class="centercbox">
+			<div class="centerctitle">
+			<ul>
+				<li>
+					<a href="">我关注的</a>
+					<span></span>
+					<i></i>
+				</li>
+				<li>
+					<a href="" style="color: #0B0;
+    	border-bottom: 2px solid #0b0;">我看过的</a>
+					<span></span>
+					<i></i>
+				</li>
+				<li>
+					<a href="">我守护的</a>
+					<span></span>
+					<i></i>
+				</li>
+				<li>
+					<a href="">我管理的</a>
+					<span></span>
+					<i></i>
+				</li>
+			</ul>
+			<div class="centerctitlenotice">
+				<p>您今天还没有观看直播，马上观看喜欢的艺人吧！</p>
+			</div>
+		</div>
+		<div class="livestage">
+			<div class="pk">
+				<h3>
+					<span>PK专区</span>
+					<a href="">更多</a>
+				</h3>
+				<div class=pkpic>
+					<ul>
+						<div class="fangda">
+							<li>
+								<div class="pking">pk中</div>
+								<div class="i-box"><img src="../public/img/LiveMusic/live.jpg"/></div>
+								<div class="info"><span>XH天晴感谢有你</span></div>
+								<div class="infob">
+									<span>
+										<i></i>
+										<span style"color: #bababa;">观众：29328</span>
+									</span>
+								</div>
+
+							</li>
+							<li>
+								<div class="pking">pk中</div>
+								<div class="i-box"><img src="../public/img/LiveMusic/live.jpg"/></div>
+								<div class="info" style="float: right;"><span>XH天晴感谢有你</span></div>
+								<div class="infob" style="float: right;">
+									<span>
+										<i></i>
+										<span style="color: #bababa;">观众：22222</span>
+									</span>
+								</div>
+
+							</li>
+							<div class="spk">
+								<img src="../public/img/LiveMusic/f84887141f4885c7c3190c05f605aeee.png"/>
+							</div>
+							<div class="theme"><p>主题：唱首山歌</p></div>
+							<div class="power">
+
+								<div class="power1"></div>
+								<div class="power2"></div>
+								<div class="power3"></div>
+								<div class="power4"></div>
+								<div class="power5"></div>
+							</div>
+							<div class="zi">
+								<span>10000</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<span>20000</span>
+							</div>
+						</div>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="hotstar">
+			<h3>
+				<span>PK专区</span>
+				<p>
+					<a href="" class="recom">推荐排序</a>
+					<a href="" class="moods">人气排序</a>
+				</p>
+			</h3>
+			<div class="select">
+				<dl>
+					<a href=""style="color: #4eac33;width: 30px;height: 20px;font-size: 12px;">所有</a>
+				</dl>
+				<dl>
+					<dt>
+						<span>华南</span>
+						<div>
+							<a href=""></a>
+							<a href=""></a>
+							<a href=""></a>
+							<a href=""></a>
+						</div>
+					</dt>
+				</dl>
+				<dl>
+					<dt>
+						<span>华东</span>
+						<div>
+							<a href=""></a>
+							<a href=""></a>
+							<a href=""></a>
+							<a href=""></a>
+						</div>
+					</dt>
+				</dl>
+				<dl>
+					<dt>
+						<span>华中</span>
+						<div>
+							<a href=""></a>
+							<a href=""></a>
+							<a href=""></a>
+							<a href=""></a>
+						</div>
+					</dt>
+				</dl>
+				<dl>
+					<dt>
+						<span>华北</span>
+						<div>
+							<a href=""></a>
+							<a href=""></a>
+							<a href=""></a>
+							<a href=""></a>
+						</div>
+					</dt>
+				</dl>
+				<dl>
+					<dt>
+						<span>西南</span>
+						<div>
+							<a href=""></a>
+							<a href=""></a>
+							<a href=""></a>
+							<a href=""></a>
+						</div>
+					</dt>
+				</dl>
+				<dl>
+					<dt>
+						<span>东北</span>
+						<div>
+							<a href=""></a>
+							<a href=""></a>
+							<a href=""></a>
+							<a href=""></a>
+						</div>
+					</dt>
+				</dl>
+				<dl>
+					<dt>
+						<span>西北</span>
+						<div>
+							<a href=""></a>
+							<a href=""></a>
+							<a href=""></a>
+							<a href=""></a>
+						</div>
+					</dt>
+				</dl>
+				<dl>
+					<dt><span>其他</span></dt>
+				</dl>
+			</div>
+			<div class="clearboth"></div>
+			<div class="content">
+				<ul>
+					<li>
+						<div class="livelogo">直播</div>
+						<div class="ci-box">
+							<div class="label">
+								<div class="label-target"></div>
+							</div>
+
+							<div class="label-area">代表作《新贵妃醉酒》</div>
+
+						</div>
+						<div class="infoc">
+							<span>王子<i></i></span>
+						</div>
+						<p class="lpp"><i class="lii"></i>观众：30355</p>
+						<span class="spann">
+							<i>♪</i>
+							Go Time
+						</span>
+					</li>
+					<li>
+						<div class="livelogo">直播</div>
+						<div class="ci-box">
+							<div class="label">
+								<div class="label-target"></div>
+							</div>
+
+							<div class="label-area">代表作《新贵妃醉酒》</div>
+
+						</div>
+						<div class="infoc">
+							<span>王子<i></i></span>
+						</div>
+						<p class="lpp"><i class="lii"></i>观众：30355</p>
+						<span class="spann">
+							<i>♪</i>
+							Go Time
+						</span>
+					</li>
+					<li>
+						<div class="livelogo">直播</div>
+						<div class="ci-box">
+							<div class="label">
+								<div class="label-target"></div>
+							</div>
+
+							<div class="label-area">代表作《新贵妃醉酒》</div>
+
+						</div>
+						<div class="infoc">
+							<span>王子<i></i></span>
+						</div>
+						<p class="lpp"><i class="lii"></i>观众：30355</p>
+						<span class="spann">
+							<i>♪</i>
+							Go Time
+						</span>
+					</li>
+					<li>
+						<div class="livelogo">直播</div>
+						<div class="ci-box">
+							<div class="label">
+								<div class="label-target"></div>
+							</div>
+
+							<div class="label-area">代表作《新贵妃醉酒》</div>
+
+						</div>
+						<div class="infoc">
+							<span>王子<i></i></span>
+						</div>
+						<p class="lpp"><i class="lii"></i>观众：30355</p>
+						<span class="spann">
+							<i>♪</i>
+							Go Time
+						</span>
+					</li>
+					<li>
+						<div class="livelogo">直播</div>
+						<div class="ci-box">
+							<div class="label">
+								<div class="label-target"></div>
+							</div>
+
+							<div class="label-area">代表作《新贵妃醉酒》</div>
+
+						</div>
+						<div class="infoc">
+							<span>王子<i></i></span>
+						</div>
+						<p class="lpp"><i class="lii"></i>观众：30355</p>
+						<span class="spann">
+							<i>♪</i>
+							Go Time
+						</span>
+					</li>
+					<li>
+						<div class="livelogo">直播</div>
+						<div class="ci-box">
+							<div class="label">
+								<div class="label-target"></div>
+							</div>
+
+							<div class="label-area">代表作《新贵妃醉酒》</div>
+
+						</div>
+						<div class="infoc">
+							<span>王子<i></i></span>
+						</div>
+						<p class="lpp"><i class="lii"></i>观众：30355</p>
+						<span class="spann">
+							<i>♪</i>
+							Go Time
+						</span>
+					</li>
+					<li>
+						<div class="livelogo">直播</div>
+						<div class="ci-box">
+							<div class="label">
+								<div class="label-target"></div>
+							</div>
+
+							<div class="label-area">代表作《新贵妃醉酒》</div>
+
+						</div>
+						<div class="infoc">
+							<span>王子<i></i></span>
+						</div>
+						<p class="lpp"><i class="lii"></i>观众：30355</p>
+						<span class="spann">
+							<i>♪</i>
+							Go Time
+						</span>
+					</li>
+					<li>
+						<div class="livelogo">直播</div>
+						<div class="ci-box">
+							<div class="label">
+								<div class="label-target"></div>
+							</div>
+
+							<div class="label-area">代表作《新贵妃醉酒》</div>
+
+						</div>
+						<div class="infoc">
+							<span>王子<i></i></span>
+						</div>
+						<p class="lpp"><i class="lii"></i>观众：30355</p>
+						<span class="spann">
+							<i>♪</i>
+							Go Time
+						</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		</div>
+		<!--右边-->
+		<div class="rightbar">
+			<div class="startime">
+				<div class="startimetitle">小时榜（16：00-17：00）</div>
+				<a href="">
+					<div class="starhourbg">
+							<div class="winnerbox">
+								<div class="wonebox">
+									<img src="../public/img/LiveMusic/30cf0c9ecbca2aec5c93b1c4c443b740.jpg_45x45.jpg"/>
+									<span>小猪猪在这等你</span>
+								</div>
+								<div class="wtwobox">
+									<img src="../public/img/LiveMusic/ed1544e5c5d59e957f855ab157898853.jpg_45x45.jpg" style="width: 60px;height: 60px;"/>
+									<span>惜宝双生贺白天</span>
+								</div>
+								<div class="wthreebox">
+									<img src="../public/img/LiveMusic/2df09d537626c9fd984cf522161470bb.jpg_45x45.jpg"/>
+									<span>福州高圆圆</span>
+								</div>
+							</div>
+
+					</div>
+				</a>
+				<div class="starurl">
+					每30秒更新一次。
+					<a href="">查看完整榜单</a>
+				</div>
+				<a href=""><div class="playy"></div></a>
+				<a href=""><div class="playyy"></div></a>
+				<div class="lunbo">
+					<div class="focus">
+						<ul class="scroll_number">
+							<li onMouseOver="show(1)" onMouseOut="start()"><a href=""><img src="../public/img/LiveMusic/20180619163024241166.jpg"/></a></li>
+							<li onMouseOver="show(2)" onMouseOut="start()"><a href=""><img src="../public/img/LiveMusic/20180622091510685237.jpg"/></a></li>
+							<li onMouseOver="show(3)" onMouseOut="start()"><a href=""><img src="../public/img/LiveMusic/20180619143153498753.jpg"/></a></li>
+							<li onMouseOver="show(4)" onMouseOut="start()"><a href=""><img src="../public/img/LiveMusic/20180621193918685438.jpg"/></a></li>
+							<li onMouseOver="show(5)" onMouseOut="start()"><a href=""><img src="../public/img/LiveMusic/20180615103007258386.jpg"/></a></li>
+						</ul>
+						<!--<div class="dian">
+							<ul id="head-dian">
+								<li><a href="javascript:void(0);"><span><em></em></span></a></li>
+								<li><a href="javascript:void(0);"><span><em></em></span></a></li>
+								<li><a href="javascript:void(0);"><span><em></em></span></a></li>
+								<li><a href="javascript:void(0);"><span><em></em></span></a></li>
+								<li><a href="javascript:void(0);"><span><em></em></span></a></li>
+							</ul>
+						</div>-->
+					</div>
+				</div>
+				<a href="">
+					<div class="singground">
+						<div class="ava-img"><img src="../public/img/LiveMusic/11 (1).jpg"/></div>
+						<div class="avatarboss"><span>点歌老板</span></div>
+						<div class="nameboss">守护塔尖</div>
+						<div class="ava-img_star"><img src="../public/img/LiveMusic/fe24b4f72b86cf406f8a078dd7544553.jpg_85x85.jpg"/></div>
+						<div class="avatar_star"><span>服务主播</span></div>
+						<div class="namestar">雪儿求过任务</div>
+						<div class="text-box">
+							<div class="text">
+								悬赏<span>18888星币</span>点歌
+							</div>
+							<div class="text">
+								<span style="color: #fff;font-size: 12px;">《Havana》</span>
+							</div>
+						</div>
+					</div>
+				</a>
+				<div class="funprogram">
+					<h3><span>今日活动</span></h3>
+					<ul>
+						<li>
+							<a href=""><img src="../public/img/LiveMusic/18437.jpg"/></a>
+							<p>
+								<label>进行中</label>
+								<img src="../public/img/LiveMusic/music2_5576c39.gif"/>
+								<a href=""></a>
+							</p>
+						</li>
+					</ul>
+				</div>
+				<div class="starlistbox">
+					<h3 class="starlist">
+					<div class="starlist1">明星榜</div>
+					<div class="slisttab">
+						<span class="current" onClick="sdnclick(18844)">日</span> |
+						<span onClick="sdnclick(18844)">周</span> |
+						<span>月</span> |
+						<span>总</span>
+					</div>
+					</h3>
+					<div class="sls">
+						<dl>
+							<dd>
+								<span class="starfirst"></span>
+								<a href=""><img src="../public/img/LiveMusic/7996d396465d08b3d53255e5b6afa7ef.jpg_45x45.jpg";/></a>
+								<p><a href="">依微GO小富婆</a></p>
+								<div class="level1"><img src="../public/img/LiveMusic/45.png";/></div>
+							</dd>
+							<dd>
+								<span class="starspan">2</span>
+								<a href=""><img src="../public/img/LiveMusic/38abd8f2fce212d51d597100710a5e3c.jpg";/></a>
+								<p><a href="">夏嫣尊s丫宝</a></p>
+								<div class="level1"><img src="../public/img/LiveMusic/26.png";/></div>
+							</dd>
+							<dd>
+								<span class="starspan">3</span>
+								<a href=""><img src="../public/img/LiveMusic/bcbbcf9d4e75bc4591f48f70818d6020.jpg";/></a>
+								<p><a  href="">柚茶CC一1314</a></p>
+								<div class="level1"><img src="../public/img/LiveMusic/45.png";/></div>
+							</dd>
+							<dd>
+								<span class="starspan" style="color:#000000;
+								">4</span>
+								<a href=""><img src="../public/img/LiveMusic/T1pfYABKV_1RCvBVdK.jpg";/></a>
+								<p><a href="">ke乐乐副院长</a></p>
+								<div class="level1"><img src="../public/img/LiveMusic/45.png";/></div>
+							</dd>
+
+						</dl>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+</div>
+
+<!--尾部-->
+<div id="foot">
+	<div class="footbox">
+		<div class="footlogo"><a href=""></a></div>
+		<div class="footcbox">
+			<p>
+				<span class="fspan1">酷狗直播 fanxing.kugou.com</span>
+				<span><a href="">粤ICP备09017694号-2</a></span>
+			</p>
+			<p>
+				<span class="fspan1"><a href="">广州酷狗计算机科技有限公司</a>版权所有</span>
+				<span>Copyright© 2012-2018 KuGou.All Right Reserved</span>
+			</p>
+			<p>
+				<span class="fspan1">
+					<a href="">
+						<span class="yuelogo"></span>粤网文（2016）1277-269号
+					</a>
+				</span>
+				<span>信息网络传播视听节目许可证1910564号</span>
+			</p>
+			<p>
+				<span class="fspan1">增值电信业务经营许可证粤B2-20060339号</span>
+				<span>营业性演出许可证440106120029</span>
+			</p>
+			<p>
+				<span class="fspan1">广播电视节目制作经营许可证（粤）字第01270号</span>
+				<a href="" class="fspan2">版权声明</a>
+				<a href="" class="fspan2">投诉指引</a>
+				<a href="" class="fspan2">隐私政策</a>
+				<a href="" class="fspan2">用户协议</a>
+			</p>
+			<p>
+				违法和不良信息举报：
+				<a href="">www.12377.cn</a>
+				举报电话：12377
+				<a href="" style="margin-left: 10px;"><span class="policelogo"></span>粤公网安备  44010602000141号</a>
+			</p>
+			<p>
+				<span class="fspan1">地址：广州天河区黄埔大道中315号羊城创意园内</span>
+				<span class="fspan2"><a href="">联系方式</a></span>
+				<span class="fspan2"><a href="">12318全国文化市场举报网站</a></span>
+			</p>
+		</div>
+		<div class="footewm">
+			<div class="ewm1"></div>
+			<div class="ewm2"></div>
+		</div>
+		<div id="p1"></div>
+	</div>
+</div>
+<div class="fixed">
+	<a href="#" class="topp"></a>
+	<a href="" class="massage"></a>
+	<a href="#p1" class="bottomm"></a>
+</div>
+<script src="../public/js/LiveMusic.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

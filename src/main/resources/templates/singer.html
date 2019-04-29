@@ -1,0 +1,1818 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="../public/css/singer.css">
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+  </head>
+  <body>
+<!-- 头 -->
+    <section>
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a class="nav-link active" href="#NO1" data-toggle="pill">全部歌手</a></li>
+        <li class="nav-item"><a href="#NO2" class="nav-link" data-toggle="pill">华语男歌手</a></li>
+        <li class="nav-item"><a href="#NO3" class="nav-link" data-toggle="pill">华语女歌手</a></li>
+        <li class="nav-item"><a href="#NO4" class="nav-link" data-toggle="pill">华语组合</a></li>
+        <li style="width:100%; height:30px;"></li>
+        <li class="nav-item"><a href="#NO5" class="nav-link" data-toggle="pill">日韩男歌手</a></li>
+        <li class="nav-item"><a href="#NO6" class="nav-link" data-toggle="pill">日韩女歌手</a></li>
+        <li class="nav-item"><a href="#NO7" class="nav-link" data-toggle="pill">日韩组合</a></li>
+        <li style="width:100%; height:30px;"></li>
+        <li class="nav-item"><a href="#NO8" class="nav-link" data-toggle="pill">欧美男歌手</a></li>
+        <li class="nav-item"><a href="#NO9" class="nav-link" data-toggle="pill">欧美女歌手</a></li>
+        <li class="nav-item"><a href="#NO10" class="nav-link" data-toggle="pill">欧美组合</a></li>
+        <li style="width:100%; height:30px;"></li>
+        <li class="nav-item"><a href="#NO11" class="nav-link" data-toggle="pill">其他</a></li>
+    	</ul>
+      <!--要切换的内容-->
+    	<div class="tab-content">
+        <div class="tab-pane active" id="NO1">
+          <div id="lib_Tab1">
+            <div class="lib_Menubox">
+              <ul>
+                <!-- 热门+26个字母 -->
+                 <li id="one1" onclick="setTab('one',1,27)" class="hover">热门</li>
+                 <li id="one2" onclick="setTab('one',2,27)">A</li>
+                 <li id="one3" onclick="setTab('one',3,27)">B</li>
+                 <li id="one4" onclick="setTab('one',4,27)">C</li>
+                 <li id="one5" onclick="setTab('one',5,27)">D</li>
+                 <li id="one6" onclick="setTab('one',6,27)">E</li>
+              </ul>
+            </div>
+            <div class="lib_Contentbox">
+               <div id="con_one_1" >
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+                 <div class="singer_name">
+             		   <ul class="singer_name1">
+               				<li class="odd">
+               						<span class="rank">19</span>
+               						<span class="up" title="上升了12位"></span>
+               						<a title="黄家驹" href="" class="text">黄家驹</a>
+               				</li>
+               				<li>
+               						<span class="rank">20</span>
+               						<span class="up" title="上升了11位"></span>
+               						<a title="华晨宇" href="" class="text">华晨宇</a>
+               				</li>
+               				<li class="odd">
+               						<span class="rank">21</span>
+               						<span class="down" title="下降了47位"></span>
+               						<a title="孙露"  href="" class="text">孙露</a>
+               				</li>
+               				<li>
+               						<span class="rank">22</span>
+               						<span class="up" title="上升了46位"></span>
+               						<a title="鹿晗" href="" class="text">鹿晗</a>
+               				</li>
+             			 </ul>
+                   <ul class="singer_name1">
+               				<li class="odd">
+               						<span class="rank">19</span>
+               						<span class="up" title="上升了12位"></span>
+               						<a title="黄家驹" href="" class="text">黄家驹</a>
+               				</li>
+               				<li>
+               						<span class="rank">20</span>
+               						<span class="up" title="上升了11位"></span>
+               						<a title="华晨宇" href="" class="text">华晨宇</a>
+               				</li>
+               				<li class="odd">
+               						<span class="rank">21</span>
+               						<span class="down" title="下降了47位"></span>
+               						<a title="孙露"  href="" class="text">孙露</a>
+               				</li>
+               				<li>
+               						<span class="rank">22</span>
+               						<span class="up" title="上升了46位"></span>
+               						<a title="鹿晗" href="" class="text">鹿晗</a>
+               				</li>
+             			 </ul>
+                   <ul class="singer_name1">
+               				<li class="odd">
+               						<span class="rank">19</span>
+               						<span class="up" title="上升了12位"></span>
+               						<a title="黄家驹" href="" class="text">黄家驹</a>
+               				</li>
+               				<li>
+               						<span class="rank">20</span>
+               						<span class="up" title="上升了11位"></span>
+               						<a title="华晨宇" href="" class="text">华晨宇</a>
+               				</li>
+               				<li class="odd">
+               						<span class="rank">21</span>
+               						<span class="down" title="下降了47位"></span>
+               						<a title="孙露"  href="" class="text">孙露</a>
+               				</li>
+               				<li>
+               						<span class="rank">22</span>
+               						<span class="up" title="上升了46位"></span>
+               						<a title="鹿晗" href="" class="text">鹿晗</a>
+               				</li>
+             			 </ul>
+                   <ul class="singer_name1">
+               				<li class="odd">
+               						<span class="rank">19</span>
+               						<span class="up" title="上升了12位"></span>
+               						<a title="黄家驹" href="" class="text">黄家驹</a>
+               				</li>
+               				<li>
+               						<span class="rank">20</span>
+               						<span class="up" title="上升了11位"></span>
+               						<a title="华晨宇" href="" class="text">华晨宇</a>
+               				</li>
+               				<li class="odd">
+               						<span class="rank">21</span>
+               						<span class="down" title="下降了47位"></span>
+               						<a title="孙露"  href="" class="text">孙露</a>
+               				</li>
+               				<li>
+               						<span class="rank">22</span>
+               						<span class="up" title="上升了46位"></span>
+               						<a title="鹿晗" href="" class="text">鹿晗</a>
+               				</li>
+             			 </ul>
+                   <ul class="singer_name1">
+               				<li class="odd">
+               						<span class="rank">19</span>
+               						<span class="up" title="上升了12位"></span>
+               						<a title="黄家驹" href="" class="text">黄家驹</a>
+               				</li>
+               				<li>
+               						<span class="rank">20</span>
+               						<span class="up" title="上升了11位"></span>
+               						<a title="华晨宇" href="" class="text">华晨宇</a>
+               				</li>
+               				<li class="odd">
+               						<span class="rank">21</span>
+               						<span class="down" title="下降了47位"></span>
+               						<a title="孙露"  href="" class="text">孙露</a>
+               				</li>
+               				<li>
+               						<span class="rank">22</span>
+               						<span class="up" title="上升了46位"></span>
+               						<a title="鹿晗" href="" class="text">鹿晗</a>
+               				</li>
+             			 </ul>
+             		 </div>
+                 <!-- 分页 -->
+                 <div id="pagination">
+                   	<a id="firPage" class="btnPage" onclick="firstPage()">首页</a>
+                   	<a id="prePage" class="btnPage" onclick="prevPage()">上一页</a>
+                    <i id="page_1" class="current">1</i>
+               			<i id="page_2" href="">2</i>
+               			<i id="page_3" href="">3</i>
+               			<i id="page_4" href="">4</i>
+               			<i id="page_5" href="">5</i>
+                   	<a id="nexPage" class="btnPage" onclick="pnextPage()">下一页</a>
+                   	<a id="lasPage" class="btnPage" onclick="lastPage()">尾页</a>
+                 </div>
+               </div>
+               <div id="con_one_2" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+                 <div class="singer_name">
+                   <ul class="singer_name1">
+               				<li class="odd">
+               						<span class="rank">19</span>
+               						<span class="up" title="上升了12位"></span>
+               						<a title="黄家驹" href="" class="text">黄家驹</a>
+               				</li>
+               				<li>
+               						<span class="rank">20</span>
+               						<span class="up" title="上升了11位"></span>
+               						<a title="华晨宇" href="" class="text">华晨宇</a>
+               				</li>
+               				<li class="odd">
+               						<span class="rank">21</span>
+               						<span class="down" title="下降了47位"></span>
+               						<a title="孙露"  href="" class="text">孙露</a>
+               				</li>
+               				<li>
+               						<span class="rank">22</span>
+               						<span class="up" title="上升了46位"></span>
+               						<a title="鹿晗" href="" class="text">鹿晗</a>
+               				</li>
+             			 </ul>
+                 </div>
+               </div>
+               <div id="con_one_3" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+                 <div class="singer_name">
+                   <ul class="singer_name1">
+               				<li class="odd">
+               						<span class="rank">19</span>
+               						<span class="up" title="上升了12位"></span>
+               						<a title="黄家驹" href="" class="text">黄家驹</a>
+               				</li>
+               				<li>
+               						<span class="rank">20</span>
+               						<span class="up" title="上升了11位"></span>
+               						<a title="华晨宇" href="" class="text">华晨宇</a>
+               				</li>
+               				<li class="odd">
+               						<span class="rank">21</span>
+               						<span class="down" title="下降了47位"></span>
+               						<a title="孙露"  href="" class="text">孙露</a>
+               				</li>
+               				<li>
+               						<span class="rank">22</span>
+               						<span class="up" title="上升了46位"></span>
+               						<a title="鹿晗" href="" class="text">鹿晗</a>
+               				</li>
+             			 </ul>
+                 </div>
+               </div>
+               <div id="con_one_4" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_one_5" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_one_6" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+             </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="NO2">
+          <div id="lib_Tab2">
+            <div class="lib_Menubox">
+              <ul>
+                <!-- 热门+26个字母 -->
+                 <li id="two1" onclick="setTab('two',1,27)" class="hover">热门</li>
+                 <li id="two2" onclick="setTab('two',2,27)">A</li>
+                 <li id="two3" onclick="setTab('two',3,27)">B</li>
+                 <li id="two4" onclick="setTab('two',4,27)">C</li>
+                 <li id="two5" onclick="setTab('two',5,27)">D</li>
+                 <li id="two6" onclick="setTab('two',6,27)">E</li>
+              </ul>
+            </div>
+            <div class="lib_Contentbox">
+               <div id="con_two_1" >
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_two_2" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_two_3" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_two_4" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_two_5" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_two_6" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+             </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="NO3">
+          <div id="lib_Tab3">
+            <div class="lib_Menubox">
+              <ul>
+                <!-- 热门+26个字母 -->
+                 <li id="three1" onclick="setTab('three',1,27)" class="hover">热门</li>
+                 <li id="three2" onclick="setTab('three',2,27)">A</li>
+                 <li id="three3" onclick="setTab('three',3,27)">B</li>
+                 <li id="three4" onclick="setTab('three',4,27)">C</li>
+                 <li id="three5" onclick="setTab('three',5,27)">D</li>
+                 <li id="three6" onclick="setTab('three',6,27)">E</li>
+              </ul>
+            </div>
+            <div class="lib_Contentbox">
+               <div id="con_three_1" >
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_three_2" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_three_3" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_three_4" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_three_5" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_three_6" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+             </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="NO4">
+          <div id="lib_Tab4">
+            <div class="lib_Menubox">
+              <ul>
+                <!-- 热门+26个字母 -->
+                 <li id="four1" onclick="setTab('four',1,27)" class="hover">热门</li>
+                 <li id="four2" onclick="setTab('four',2,27)">A</li>
+                 <li id="four3" onclick="setTab('four',3,27)">B</li>
+                 <li id="four4" onclick="setTab('four',4,27)">C</li>
+                 <li id="four5" onclick="setTab('four',5,27)">D</li>
+                 <li id="four6" onclick="setTab('four',6,27)">E</li>
+              </ul>
+            </div>
+            <div class="lib_Contentbox">
+               <div id="con_four_1" >
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_four_2" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_four_3" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_four_4" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_four_5" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_four_6" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+             </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="NO5">
+          <div id="lib_Tab5">
+            <div class="lib_Menubox">
+              <ul>
+                <!-- 热门+26个字母 -->
+                 <li id="five1" onclick="setTab('five',1,27)" class="hover">热门</li>
+                 <li id="five2" onclick="setTab('five',2,27)">A</li>
+                 <li id="five3" onclick="setTab('five',3,27)">B</li>
+                 <li id="five4" onclick="setTab('five',4,27)">C</li>
+                 <li id="five5" onclick="setTab('five',5,27)">D</li>
+                 <li id="five6" onclick="setTab('five',6,27)">E</li>
+              </ul>
+            </div>
+            <div class="lib_Contentbox">
+               <div id="con_five_1" >
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_five_2" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_five_3" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_five_4" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_five_5" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_five_6" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+             </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="NO6">
+          <div id="lib_Tab6">
+            <div class="lib_Menubox">
+              <ul>
+                <!-- 热门+26个字母 -->
+                 <li id="six1" onclick="setTab('six',1,27)" class="hover">热门</li>
+                 <li id="six2" onclick="setTab('six',2,27)">A</li>
+                 <li id="six3" onclick="setTab('six',3,27)">B</li>
+                 <li id="six4" onclick="setTab('six',4,27)">C</li>
+                 <li id="six5" onclick="setTab('six',5,27)">D</li>
+                 <li id="six6" onclick="setTab('six',6,27)">E</li>
+              </ul>
+            </div>
+            <div class="lib_Contentbox">
+               <div id="con_six_1" >
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_six_2" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_six_3" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_six_4" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_six_5" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_six_6" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+             </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="NO7">
+          <div id="lib_Tab7">
+            <div class="lib_Menubox">
+              <ul>
+                <!-- 热门+26个字母 -->
+                 <li id="seven1" onclick="setTab('seven',1,27)" class="hover">热门</li>
+                 <li id="seven2" onclick="setTab('seven',2,27)">A</li>
+                 <li id="seven3" onclick="setTab('seven',3,27)">B</li>
+                 <li id="seven4" onclick="setTab('seven',4,27)">C</li>
+                 <li id="seven5" onclick="setTab('seven',5,27)">D</li>
+                 <li id="seven6" onclick="setTab('seven',6,27)">E</li>
+              </ul>
+            </div>
+            <div class="lib_Contentbox">
+               <div id="con_seven_1" >
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_seven_2" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_seven_3" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_seven_4" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_seven_5" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_seven_6" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+             </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="NO8">
+          <div id="lib_Tab8">
+            <div class="lib_Menubox">
+              <ul>
+                <!-- 热门+26个字母 -->
+                 <li id="eight1" onclick="setTab('eight',1,27)" class="hover">热门</li>
+                 <li id="eight2" onclick="setTab('eight',2,27)">A</li>
+                 <li id="eight3" onclick="setTab('eight',3,27)">B</li>
+                 <li id="eight4" onclick="setTab('eight',4,27)">C</li>
+                 <li id="eight5" onclick="setTab('eight',5,27)">D</li>
+                 <li id="eight6" onclick="setTab('eight',6,27)">E</li>
+              </ul>
+            </div>
+            <div class="lib_Contentbox">
+               <div id="con_eight_1" >
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_eight_2" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_eight_3" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_eight_4" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_eight_5" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_eight_6" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+             </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="NO9">
+          <div id="lib_Tab9">
+            <div class="lib_Menubox">
+              <ul>
+                <!-- 热门+26个字母 -->
+                 <li id="nine1" onclick="setTab('nine',1,27)" class="hover">热门</li>
+                 <li id="nine2" onclick="setTab('nine',2,27)">A</li>
+                 <li id="nine3" onclick="setTab('nine',3,27)">B</li>
+                 <li id="nine4" onclick="setTab('nine',4,27)">C</li>
+                 <li id="nine5" onclick="setTab('nine',5,27)">D</li>
+                 <li id="nine6" onclick="setTab('nine',6,27)">E</li>
+              </ul>
+            </div>
+            <div class="lib_Contentbox">
+               <div id="con_nine_1" >
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_nine_2" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_nine_3" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_nine_4" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_nine_5" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_nine_6" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+             </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="NO10">
+          <div id="lib_Tab10">
+            <div class="lib_Menubox">
+              <ul>
+                <!-- 热门+26个字母 -->
+                 <li id="ten1" onclick="setTab('ten',1,27)" class="hover">热门</li>
+                 <li id="ten2" onclick="setTab('ten',2,27)">A</li>
+                 <li id="ten3" onclick="setTab('ten',3,27)">B</li>
+                 <li id="ten4" onclick="setTab('ten',4,27)">C</li>
+                 <li id="ten5" onclick="setTab('ten',5,27)">D</li>
+                 <li id="ten6" onclick="setTab('ten',6,27)">E</li>
+              </ul>
+            </div>
+            <div class="lib_Contentbox">
+               <div id="con_ten_1" >
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_ten_2" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_ten_3" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_ten_4" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_ten_5" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_ten_6" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+             </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="NO11">
+          <div id="lib_Tab11">
+            <div class="lib_Menubox">
+              <ul>
+                <!-- 热门+26个字母 -->
+                 <li id="eleven1" onclick="setTab('eleven',1,27)" class="hover">热门</li>
+                 <li id="eleven2" onclick="setTab('eleven',2,27)">A</li>
+                 <li id="eleven3" onclick="setTab('eleven',3,27)">B</li>
+                 <li id="eleven4" onclick="setTab('eleven',4,27)">C</li>
+                 <li id="eleven5" onclick="setTab('eleven',5,27)">D</li>
+                 <li id="eleven6" onclick="setTab('eleven',6,27)">E</li>
+              </ul>
+            </div>
+            <div class="lib_Contentbox">
+               <div id="con_eleven_1" >
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_eleven_2" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_eleven_3" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_eleven_4" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_eleven_5" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+               <div id="con_eleven_6" style="display:none">
+                 <ul class="singer_pic">
+                   <li>
+                     <a title="摩登兄弟" class="pic" href="">
+                       <img alt="摩登兄弟" src="../public/img/singer/a.jpg"/>
+                       <i>1<em>st</em></i>
+                     </a>
+                     <strong><a href="" title="摩登兄弟" style="color: black;">摩登兄弟</a></strong>
+                   </li>
+                 </ul>
+               </div>
+             </div>
+          </div>
+        </div>
+    	</div>
+    </section>
+<!-- 尾巴 -->
+
+    <script src="../public/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../public/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../public/js/singer.js" type="text/javascript" charset="utf-8"></script>
+
+  </body>
+</html>

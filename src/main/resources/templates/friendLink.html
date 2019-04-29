@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Document</title>
+	<script src="../public/js/jquery-3.2.1.js"></script>
+	<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #f6f6f6;
+}
+
+.header {
+	width: 1000px;
+	height: 74px;
+	margin: 0 auto;
+	background-color: #ffffff;
+}
+
+.header h1 {
+	width: 205px;
+	height: 50px;
+	margin: 24px 0px 0px 0px;
+	text-indent: -999em;
+	background: url(../public/img/friendLink/logo-e1606a1b101.png) no-repeat 0 0;
+}
+
+.nav_wrapper {
+	width: 100%;
+	line-height: 43px;
+	background-color: #2babe8;
+	margin-bottom: 40px;
+}
+
+.nav_wrapper .nav {
+	margin: 0 auto;
+	height: 43px;
+	line-height: 43px;
+	width: 1000px;
+}
+
+.nav_wrapper .nav ul {
+	display: block;
+	list-style: none;
+}
+
+.nav_wrapper .nav ul:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.nav_wrapper .nav li {
+	text-align: center;
+	width: 124px;
+	float: left;
+}
+
+.nav_wrapper .nav li a {
+	display: block;
+	color: #fff;
+	text-decoration: none;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.nav_wrapper .nav li a.active {
+	background-color: #48cbff;
+}
+
+.nav .fr {
+	width: auto !important;
+	float: right !important;
+}
+
+.fr a {
+	padding: 0px 5px;
+	font-weight: normal !important;
+	font-size: 16px !important;
+}
+
+.wrap {
+	width: 100%;
+	height: 20px;
+	border-bottom: 2px solid #f0f0f0;
+	padding: 14px 0;
+	background-color: #fff;
+	z-index: 9999;
+}
+
+.top {
+	width: 1000px;
+	height: 20px;
+	margin: 0 auto;
+}
+
+.tab {
+	width: 1000px;
+	height: 20px;
+	margin: 0 auto;
+}
+
+.top li {
+	float: left;
+	width: 124px;
+	height: 20px;
+	line-height: 20px;
+	border-right: 1px solid #eaeaea;
+	list-style: none;
+	text-align: center;
+	cursor: pointer;
+}
+
+.top .active {
+	color: #2babe8;
+	font-weight: bold;
+}
+
+.content {
+	width: 1000px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.content .main {
+	display: none;
+}
+
+.content .selected {
+	display: block;
+}
+
+.secoundTitle {
+	margin-top: 50px;
+}
+
+.secoundTitle p {
+	color: #999;
+}
+
+.friendList {
+	overflow: hidden;
+	width: 100%;
+	min-height: 600px;
+	margin-top: 40px;
+}
+
+.friendList ul {
+	width: 1100px;
+	list-style: none;
+}
+
+.friendList ul li {
+	overflow: hidden;
+	list-style: none;
+	width: 155px;
+	height: 60px;
+	margin: 0px 14px 14px 0;
+	text-align: center;
+	background-color: #fff;
+	float: left;
+}
+
+.friendList ul li a {
+	display: block;
+	line-height: 60px;
+	font-size: 16px;
+	color: #555555;
+	text-decoration: none;
+}
+
+/*广告服务*/
+.adItemList {
+	margin-top: 20px;
+}
+
+.ItemList {
+	width: 100%;
+	margin-top: 40px;
+	background-color: #fff;
+}
+
+.ItemList .item {
+	border-bottom: 1px solid #f6f6f6;
+	padding: 25px 20px;
+}
+
+.ItemList .item .ItemTitle {
+	height: 18px;
+	line-height: 18px;
+	border-left: 3px solid #2babe8;
+	padding-left: 20px;
+	color: #2babe8;
+	font-size: 18px;
+}
+
+.ItemList .item .ItemContent {
+	overflow: hidden;
+	padding: 20px 0px 0px 20px;
+}
+
+.ItemList .item .ItemContent p {
+	height: 32px;
+	line-height: 32px;
+	font-size: 18px;
+	color: #555;
+}
+
+.footer {
+	width: 1000px;
+	height: 24px;
+	padding: 60px 0px;
+	font-size: 12px;
+	text-align: center;
+	color: #999999;
+	margin: 0 auto;
+}
+
+.ItemList .item .ItemContent ul li {
+	list-style: none;
+	width: 138px;
+	height: 138px;
+	margin: 0px 16px 16px 0px;
+	border: 1px dashed #ccc;
+	text-align: center;
+	float: left;
+}
+	</style>
+
+</head>
+<body>
+	<div style="width: 100%;background: #fff;">
+		<div class="header">
+		<h1>酷狗音乐</h1>
+		</div>	
+	</div>
+	
+	<div class="nav_wrapper">
+		<div class="nav">
+			<ul>
+				<li>
+					<a href="#">关于酷狗</a>
+				</li>
+				<li>
+					<a class="active" href="friendLink.html">对外合作</a>
+				</li>
+				<li>
+					<a target="_blank" href="#">加入我们</a>
+				</li>
+				<li>
+					<a href="#">版权指引</a>
+				</li>
+				<li class="fr">
+					<a href="index.html" target="_blank">Kugou官网首页&gt;&gt;</a>
+				</li>
+			</ul>
+		</div>
+		<div class="wrap">
+		    <div class="top">
+		      <ul class="tab">
+		        <li class="tab-item active">友情链接</li>
+		        <li class="tab-item">广告服务</li>
+		        <li class="tab-item" style="border:0;">商务合作</li>
+		       
+		      </ul>
+		    </div>
+  
+	<div class="content">
+	      <div class="main selected">
+	        <div class="secoundTitle">
+				<p>友情链接请联系bd@kugou.net</p>		
+			</div>
+			<div class="friendList">
+				<ul class="friendListUl">
+					<li><a target="_blank" href="#">永乐票务</a></li>
+					<li><a target="_blank" href="#">优酷</a></li>
+					<li><a target="_blank" href="#">沃音乐</a></li>
+					<li><a target="_blank" href="#">07073网页游戏</a></li>
+					<li><a target="_blank" href="#">杂碎音乐</a></li>
+					<li><a target="_blank" href="#">5sing</a></li>
+					<li><a target="_blank" href="#">新浪下载</a></li>
+					<li><a target="_blank" href="#">酷6网</a></li>
+					<li><a target="_blank" href="#">CUTV</a></li>
+					<li><a target="_blank" href="#">环球音乐</a></li>
+					<li><a target="_blank" href="#">中国票为在线</a></li>
+					<li><a target="_blank" href="#">音悦台</a></li>
+					<li><a target="_blank" href="#">海报时尚网</a></li>
+					<li><a target="_blank" href="#">站长之家</a></li>
+					<li><a target="_blank" href="#">妆品网</a></li>
+					<li><a target="_blank" href="#">乐蜂网</a></li>
+					<li><a target="_blank" href="#">华体网</a></li>
+					<li><a target="_blank" href="#">悠视网</a></li>
+					<li><a target="_blank" href="#">pps影音</a></li>
+					<li><a target="_blank" href="#">北京快网</a></li>
+					<li><a target="_blank" href="#">StyleMode中文网</a></li>
+				</ul>
+			</div>
+	      </div>	
+	        <div class="main">
+	    
+	        	<div class="ItemList adItemList">
+					<div class="item">
+						<p class="ItemTitle">华南区</p>
+						<div class="ItemContent">
+							<p>联系人：何敏</p>
+							<p>电话：020-85559005</p>
+							<p>手机：18688404755</p>
+							<p>E-mail：hemin@kugou.net</p>
+						</div>
+					</div>
+					<div class="item">
+						<p class="ItemTitle">华北区</p>
+						<div class="ItemContent">
+							<p>联系人：王蜜蜜</p>
+							<p>电话：010-65814277</p>
+							<p>手机：18601365623</p>
+							<p>E-mail：wanglei@kugou.net</p>
+						</div>
+					</div>
+					<div class="item">
+						<p class="ItemTitle">华东区</p>
+						<div class="ItemContent">
+							<p>联系人：赵林</p>
+							<p>电话：021-58359260</p>
+							<p>E-mail：zhaolin@kugou.net</p>
+						</div>
+					</div>
+				</div>
+		  	</div>
+	   	
+	      <div class="main">
+		      	<div class="secoundTitle">
+					<p>酷狗一直致力于推动音乐事业发展，努力寻求网络媒体与音乐行业合作共赢的发展路线和运作模式，并在实践探索中取得了初步成效。</p>	
+				</div>
+				<div class="ItemList">
+				<div class="item">
+					<p class="ItemTitle">商务合作</p>
+					<div class="ItemContent">
+						<p>E-mail：cooperation@kugou.net</p>
+					</div>
+				</div>
+			</div>
+			<div class="ItemList marginTop20">
+				<div class="item">
+					<p class="ItemTitle">合作伙伴</p>
+					<div class="ItemContent listLogoC">
+						<ul>
+							<li><a href="javascript:;">
+								<img src="../public/img/friendLink/1-135d1c7e00.jpg">
+							</a></li>
+							<li><a href="javascript:;">
+								<img src="../public/img/friendLink/2-655bb7ebe1.jpg">
+							</a></li>
+							<li><a href="javascript:;">
+								<img src="../public/img/friendLink/3-713c3823a4.jpg">
+							</a></li>
+							<li><a href="javascript:;">
+								<img src="../public/img/friendLink/4-6e52ba1ce4.jpg">
+							</a></li>
+							<li><a href="javascript:;">
+								<img src="../public/img/friendLink/5-431a539288.jpg">
+							</a></li>
+							<li><a href="javascript:;">
+								<img src="../public/img/friendLink/6-41c6e7740e.jpg">
+							</a></li>
+							<li><a href="javascript:;">
+								<img src="../public/img/friendLink/7-90d25d5277.jpg">
+							</a></li>
+							<li><a href="javascript:;">
+								<img src="../public/img/friendLink/8-03755e2779.jpg">
+							</a></li>
+							<li><a href="javascript:;">
+								<img src="../public/img/friendLink/9-d7b3eb6baa.jpg">
+							</a></li>
+							<li><a href="javascript:;">
+								<img src="../public/img/friendLink/10-2d44fbf329.jpg">
+							</a></li>
+							<li><a href="javascript:;">
+								<img src="../public/img/friendLink/11-98f81f5a40.jpg">
+							</a></li>
+							<li><a href="javascript:;">
+								<img src="../public/img/friendLink/12-b73d299fdc.jpg">
+							</a></li>
+							<li><a href="javascript:;">
+								<img src="../public/img/friendLink/13-0e0c26a682.jpg">
+							</a></li>
+							<li><a href="javascript:;">
+								<img src="../public/img/friendLink/14-3557e3bf60.jpg">
+							</a></li>
+							<li><a href="javascript:;">
+								<img src="../public/img/friendLink/15-57bcfc743c.jpg">
+							</a></li>
+							<li><a href="javascript:;">
+								<img src="../public/img/friendLink/16-8edfa77958.jpg">
+							</a></li>
+							<li><a href="javascript:;">
+								<img src="../public/img/friendLink/17-c4eeac3bb2.jpg">
+							</a></li>
+							<li><a href="javascript:;">
+								<img src="../public/img/friendLink/18-2b2a2f0a8a.jpg">
+							</a></li>
+							<li><a href="javascript:;">
+								<img src="../public/img/friendLink/19-ba4b06561f.jpg">
+							</a></li>
+							<li><a href="javascript:;">
+								<img src="../public/img/friendLink/20-1df929c9b2.jpg">
+							</a></li>
+							<li><a href="javascript:;">
+								<img src="../public/img/friendLink/21-9c67b07c78.jpg">
+							</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+	      </div>
+	</div>
+	<div class="footer">
+			广州酷狗计算机科技有限公司 Copyright © 2004-2019 KuGou-Inc.All Rights Reserved
+	</div>
+	<script>
+		$(function () {
+        $(".tab>li").click(function () {
+            $(this).addClass("active").siblings("li").removeClass("active");
+            var index=$(this).index();
+            $(".content>div:eq("+index+")").addClass("selected").siblings("div").removeClass("selected");
+        })
+    })
+	</script>
+</body>
+</html>

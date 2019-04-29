@@ -1,0 +1,700 @@
+a{
+		text-decoration: none;
+	}
+	li{
+		list-style: none;
+	}
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	#head{
+		width: 1000px;
+		height: 78px;
+		margin: 0 auto;
+		position: relative;
+
+	}
+	#head .logo{
+		width: 153px;
+		height: 37px;
+		float: left;
+		margin-top: 20px;
+	}
+	#head .search{
+		width: 300px;
+   		height: 36px;
+    	margin-left: 193px;
+    	padding-top: 20px;
+
+	}
+	#head .search_input{
+		width: 298px;
+    	height: 34px;
+    	border: 1px solid #ccc;
+    	line-height: 34px;
+		position: relative;
+		z-index: 100;
+	}
+
+	.search_input input{
+		width: 249px;
+    	height: 24px;
+    	line-height: 24px;
+		margin-left: 14px;
+    	padding: 5px 0;
+   	 	color: #666;
+		border: none;
+		font-size: 13px;
+		position: absolute;
+    	left: 0;
+    	top: 0;
+		outline: none; /*边框按下去没有颜色*/
+
+	}
+	#head .search_btn{
+		width: 34px;
+		height: 34px;
+		float: right;
+		cursor: pointer;
+	}
+
+	#head .search_icon{
+		background: url(../img/mvPlay/search.png);
+		background-position: -40px -56px;
+		display: block;
+		margin: 9px 0 0 9px;
+		width: 16px;
+		height: 16px;
+		cursor: pointer;
+
+	}
+ /*  有问题为什么只在head下面才有效果*/
+	#head .search_icon:hover{
+		background: url(../img/mvPlay/search.png);
+		background-position: -40px -86px;
+
+	}
+	#head .head_right{
+		width: 402px;
+		float: right;
+		height: 25px;
+		margin-top: -25px;
+
+	}
+	.head_right ul{
+		width: 240px;
+		border-right: 1px solid #e6e6e6;
+		padding-right: 11px;
+        text-align: right;
+		float: left;
+
+	}
+	.head_right ul li{
+		list-style: none;
+		float: left;
+		padding-left: 20px;
+	}
+	.head_right ul li a{
+		text-decoration: none;
+		color: #777;
+		font-size: 13px;
+	}
+	.head_right ul li a:hover{
+		color: #169af3;
+	}
+	#head .loading{
+		width: 110px;
+		height: 30px;
+		position: absolute;
+		right: 0;
+		top:25px;
+	}
+	.loading .login {
+		width: 48px;
+		height: 28px;
+		line-height: 28px;
+		border: 1px solid #169af3;
+		border-radius: 2px;
+		text-align: center;
+		background-color: #169af3;
+		float: left;
+
+	}
+
+	.loading .regin{
+		width: 48px;
+		height: 28px;
+		line-height: 28px;
+		border: 1px solid #dbdbdb;
+		border-radius: 2px;
+		text-align: center;
+		color: black;
+		text-decoration: none;
+		float:right;
+	}
+	.loading .login:hover{
+		background-color: #158fe1;
+	}
+	.loading .regin:hover{
+		border: 1px solid #169af3;
+
+		}
+	.loading .regin a{
+		color:black;
+	}
+	.loading .regin:hover{
+		color: #169af3;
+	}
+	.loading a{
+		text-decoration: none;
+		font-size: 13px;
+	}
+
+	/*首页榜单*/
+	#navWrap{
+		width: 100%;
+		height: 55px;
+		background:#2c323b;
+		position: relative;
+	}
+	#navWrap .nav{
+		width: 1000px;
+		margin: 0 auto;
+
+
+	}
+	#navWrap li{
+		float: left;
+		list-style: none;
+	}
+	#navWrap a{
+		text-decoration: none;
+	}
+	.nav .homeNav{
+		width: 437px;
+		height: 55px;
+		float: left;
+		position: relative;
+	}
+	.homeNav .normal active{
+		background-color: #0c8ed9;
+        color: #fff;
+	}
+	.homeNav a{
+		font-size: 16px;
+    	color: #ddd;
+		display:block;
+
+	}
+	.homeNav  li:hover a{
+		color: white;
+	}
+	.homeNav li{
+		text-align: center;
+		line-height: 55px;
+		display:inline-block;
+	}
+	.homeNav li:hover{
+
+        background-color: #0c8ed9;
+	}
+
+
+	.homeNav .more a{
+		background:url(../img/mvPlay/arrowMored.png) no-repeat;
+	    margin-left: 5px;
+    	padding: 0 30px;
+		margin-right: 5px;
+		background-position: 72px 8px;
+		display: inline;
+	}
+	.homeNav .more:hover a{
+		background:url(../img/mvPlay/arrowMoreu.png)no-repeat;
+	    background-position: 70px 8px;
+        background-color: #0c8ed9;
+
+	}
+	 .secondMenu{
+		position: absolute;
+		left: 500px;
+		top: 55px;
+		display: none;
+		width: 113px;
+		height: 146px;
+		background-color: #252a32;
+		z-index: 99;
+
+		}
+	.secondMenu li{
+		display:block;
+		padding: 0;
+		height: 36px;
+		line-height: 36px;
+		float: none;
+		margin: 0;
+		width: 113px;
+		text-align: center;
+		cursor: pointer;
+	}
+	.secondMenu li:hover{
+		background-color: #2d343d;
+		border-top: 1px solid #383d44;
+
+	}
+		.secondMenu a{
+		text-align: center;
+		font-size: 15px;
+		color: #bbb;
+		background: 0 0;
+		background-color: #252b34;
+		display: block;
+	}
+	.secondMenu li:hover a{
+		color: #fff;
+		background-color: #2d343d;
+	}
+
+	.subNav {
+		width: 445.44px;
+		float:right;
+		margin-top: 16px;
+    	height: 35px;
+
+	}
+	.subNav li{
+		margin-left: 30px;
+		list-style: none;
+	}
+	.subNav a.icon-nav1{
+		background-position: 0 -119px;
+	}
+	.subNav a.icon-nav1:hover{
+		background-position: 0 -101px;
+	}
+	.subNav a.icon-nav2{
+		background-position:0 -155px;
+	}
+	.subNav a.icon-nav2:hover{
+		background-position:0 -137px;
+	}
+	.subNav a.icon-nav3{
+		background-position:0 -191px;
+	}
+	.subNav a.icon-nav3:hover{
+		background-position:0 -173px;
+	}
+	.subNav a.icon-nav4{
+		background-position:0 -226px;
+	}
+	.subNav a.icon-nav4:hover{
+		background-position:0 -208px;
+	}
+	.subNav a.icon-nav5{
+		background-position:0 -281px;
+	}
+	.subNav a.icon-nav5:hover{
+		background-position:0 -245px;
+	}
+	.subNav a{
+		background: url(../img/mvPlay/sprite.png);
+		padding-left: 20px;
+		color: #bbb;
+    	font-size: 13px;
+	}
+	.subNav a:hover{
+		color: #14a9ff;
+		background: url(../img/mvPlay/sprite.png);
+	}
+	#frame_mv{
+		width: 1000px;
+    	margin: 0 auto;
+		position: relative;
+	}
+	#frame_mv .radio_wrap{
+		width: 1000px;
+		height: 758px;
+		margin: 18px 0 0 0;
+	}
+	.radio_wrap h2{
+		font-size: 12px;
+		height: 27px;
+		line-height: 27px;
+    	color: #878787;
+	}
+	.radio_wrap h2 span{
+		font-weight: normal;
+	}
+	.clearfix{
+		width: 960px;
+		height: 38px;
+		line-height: 38px;
+		margin-top: -5px;
+		padding: 15px 20px;
+		background: #25292c;
+		color: #ffffff;
+		font-size: 12px;
+	}
+	.clearfix .mv_title{
+		width: 760px;
+		float: left;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+	.clearfix .mv_action{
+		position: relative;
+		width: 165px;
+		height: 20px;
+		line-height: 20px;
+		padding: 9px 0 9px 35px;
+		float: right;
+	}
+	.mv_action .mobileShare{
+		float: left;
+		display: block;
+		width: 45px;
+		margin-left: 20px;
+		padding-left: 20px;
+		font-size: 14px;
+		background: url(../img/mvPlay/icon_mv_phone.png) no-repeat left top;
+		color: gray;
+}
+	.mv_action .mobileShare:hover{
+		color: #FF6600;
+	}
+
+	.mv_action .shareBtn{
+		float: left;
+		display: block;
+		width: 18px;
+		height: 18px;
+		margin-left: 20px;
+		background: url(../img/mvPlay/icon_mv_share_btn.png) no-repeat left top;
+		cursor: pointer;
+	}
+	.mv_action .shareBtn:hover{
+		background: url(../img/mvPlay/icon_mv_share_hover.png) no-repeat left top;
+	}
+	.mv_action .downloadBtn{
+		float: left;
+		display: block;
+		width: 19px;
+		height: 18px;
+		margin-left: 20px;
+		background: url(../img/mvPlay/icon_mv_download.png) no-repeat left top;
+		cursor: pointer;
+	}
+	.mv_action .downloadBtn:hover{
+		background: url(../img/mvPlay/icon_mv_download_hover.png) no-repeat left top;
+	}
+	.mobileShareQrcode{
+		position: absolute;
+		left: 40px;
+		top: -220px;
+		width: 136px;
+		height: 146px;
+		padding: 45px 10px 10px 10px;
+		background: url(../img/mvPlay/icon_mv_qrcode.png) no-repeat left top;
+	}
+	.qrcodeForMobile{
+		background: #fff;
+		padding: 10px;
+		width: 120px;
+		height: 120px;
+	}
+	.guess{
+		width: 1000px;
+		height: 159px;
+		margin: 10px 0 0 0;
+	}
+	.guess h2{
+		padding: 0 0 0 10px;
+		height: 27px;
+		line-height: 27px;
+		color: #878787;
+		font-size: 14px;
+	}
+	.guess_mv{
+		position: relative;
+		padding-top: 10px;
+	}
+	.guess_mv li{
+		margin-bottom: 45px;
+		width: 140px;
+		margin: 0px;
+		margin-right: 32px;
+		height: 110px;
+		float: left;
+	}
+	.guess_mv li a{
+		display: block;
+		width: 140px;
+		height: 78px;
+		cursor: pointer;
+		position: relative;
+	}
+	.guess_mv li img{
+		width: 140px;
+		height: 78px;
+
+	}
+	.guess_mv li em{
+		position: absolute;
+		z-index: 99;
+		right: 12px;
+		top: 45px;
+		background: url(../img/mvPlay/play_icon.png) no-repeat;
+		width: 22px;
+		height: 22px;
+	}
+	.guess_mv li i{
+		position: absolute;
+		z-index: 80;
+		left: 0px;
+		top: 34px;
+		display: block;
+		width: 140px;
+		height: 44px;
+		background: url(../img/mvPlay/btn_bg.png) no-repeat;
+	}
+	.guess_mv li span{
+		color: #555;
+		height: 20px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: block;
+		white-space: nowrap;
+		width: 124px;
+   	 	margin: 5px 0 0 3px;
+		font-family: '微软雅黑', Arial, Helvetica, sans-serif;
+    	font-size: 14px;
+	}
+	#bottom{
+		width: 100%;
+		height: 319px;
+		background: #2c323b;
+
+
+	}
+	#bottom .footer{
+		padding-bottom: 50px;
+	}
+	.footer .links{
+		position: relative;
+		border-bottom: 1px solid #3d424a;
+		padding: 15px 0;
+		font-size: 12px;
+		color: #b1b3b9;
+		text-align: center;
+		height: 20px;
+	}
+	.footer .links a{
+		color: #b1b3b9;
+    	padding: 10px;
+	}
+	.footer .links a:hover{
+		color:#009af3;
+
+	}
+	.footer .copyright{
+		width: 1000px;
+		height: 180px;
+		margin: 40px auto 0;
+	}
+	.copyright .footerIcon{
+		width: 16px;
+		height: 16px;
+		margin-left: 5px;
+		margin-top: -2px;
+		background: url(../img/mvPlay/footer_icon.png) no-repeat 0 0;
+	}
+	.copyright .office-verification{
+		margin-left: 5px;
+		padding: 5px 10px;
+		background: url(../img/mvPlay/logo_down.png) no-repeat 0 0;
+	}
+	.copyright p{
+		line-height: 30px;
+		text-align: center;
+		color: #b1b3b9;
+		font-size: 14px;
+	}
+	.copyright a{
+		color: #999;
+	}
+	#dialog{
+		box-shadow: 0 0 8px rgba(0,0,0,0.1);
+		width: 430px;
+   	 	height: 210px;
+		position: fixed;
+		background-color: #fff;
+		outline: 0;
+		background-clip: padding-box;
+		font-size: 14px;
+		color: #333;
+		margin: 0 auto;
+		top:90px;
+		left: 520px;
+		z-index: 999999;
+		display: none;
+
+
+}
+	.download_song{
+		width: 430px;
+		height: 36px;
+		background: #2c323b;
+	}
+	.close{
+		opacity: 1;
+		width: 11px;
+		height: 11px;
+		background: url(../img/mvPlay/closeDialog.png) no-repeat left top;
+		position: relative;
+		float: right;
+		top: 13px;
+		right: 13px;
+		border: 0;
+		cursor: pointer;
+		outline: none;
+
+
+
+	}
+	.close:hover{
+		opacity: 0.5;
+	}
+	.download_song p{
+		margin-left: 16px;
+		color: white;
+		font-size: 14px;
+		line-height: 36px;
+		width: 390px;
+		float: left;
+	}
+	#dialog .warning{
+		width: 430px;
+		height: 148px;
+	}
+	.contentText{
+		height: 55px;
+		padding-top: 45px;
+		line-height: 25px;
+		color: #000;
+		font-size: 15px;
+		text-align: center;
+	}
+	.warning p{
+		color: #000;
+		font-size: 15px;
+		width: 283px;
+		height: 31px;
+		line-height: 31px;
+		margin: 0 auto;
+		margin-left: 80px;
+	}
+	.warning .warn_icon{
+		float: left;
+		display: block;
+		width: 31px;
+		height: 31px;
+		margin-right: 10px;
+		background: url(../img/mvPlay/warn.png) no-repeat left top;
+	}
+	.btnDl{
+		margin-right: 10px;
+		padding: 5px 15px;
+		border: 1px solid #ddd;
+		color: #555;
+		border-radius: 2px;
+		background: #fff;
+		margin-left: 155px;
+		cursor: pointer;
+		font-size: 14px;
+
+	}
+	.btnDl:hover{
+		background: #169af3;
+		color: white;
+
+	}
+	#sharing{
+		width: 475px;
+		height: 308px;
+		background-color: #fff;
+		outline: 0;
+		position: fixed;
+		background-clip: padding-box;
+		font-size: 14px;
+		color: #333;
+		margin: 0 auto;
+		top:90px;
+		left: 520px;
+		z-index: 999999;
+		display: none;
+	}
+	#sharing p{
+		margin-left: 16px;
+		color: white;
+		font-size: 14px;
+		line-height: 36px;
+		width: 390px;
+		float: left;
+	}
+	.share_list{
+		width: 410px;
+		height: 230px;
+		padding: 0 10px;
+	}
+	.share_list dl{
+		float: left;
+    	padding: 70px 20px;
+	}
+	.share_list dt{
+		width: 62px;
+		height: 62px;
+		display: block;
+		cursor: pointer;
+	}
+	.share_list .share_weixin{
+		background: url(../img/mvPlay/share_weixin.png) no-repeat left top;
+	}
+	.share_list .share_friend{
+		background: url(../img/mvPlay/share_qq.png) no-repeat left top;
+	}
+	.share_list .share_qzone{
+		background:  url(../img/mvPlay/share_qqspace.png) no-repeat left top;
+	}
+	.share_list .share_weibo{
+		background: url(../img/mvPlay/share_weibo.png) no-repeat left top;
+	}
+	.share_list dd{
+		position: relative;
+		color: #555;
+		height: 24px;
+		line-height: 24px;
+		padding-top: 5px;
+		text-align: center;
+	}
+	.sharing_song{
+		    background: #2c323b;
+		width: 475px;
+		height: 40px;
+	}
+	.close1{
+		opacity: 1;
+		width: 11px;
+		height: 11px;
+		background: url(../img/mvPlay/closeDialog.png) no-repeat left top;
+		position: relative;
+		float: right;
+		top: 13px;
+		right: 13px;
+		border: 0;
+		cursor: pointer;
+		outline: none;
+	}
+	.close1:hover{
+		opacity: 0.5;
+	}

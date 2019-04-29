@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8"/>
+    <title>酷狗音乐 - 就是歌多</title>
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="../public/css/index.css" th:href="@{/css/index.css}" media="all"/>
+  </head>
+  <body>
+    <div id="head">
+    	<h1 class="logo">
+    		<a href="#"><img src="../public/img/index/logo.png" th:src="@{/img/index/logo.png}"/></a>
+    	</h1>
+    	<div class="search">
+    	    <div class="search_input">
+    			<input type="text"/>
+    			<div class="search_btn" onClick="window.open('')">
+    			<i class="search_icon" onClick="window.open('')"></i>
+    			</div>
+    		</div>
+    	</div>
+    	<div class="head_right">
+    		<ul>
+    			<li><a href="serve.html" target="_blank">客服中心</a></li>
+    			<li><a href="recruit_sages.html" target="_blank">招纳贤士</a></li>
+    			<li><a href="vip.html" target="_blank">会员中心</a></li>
+    		</ul>
+    		<div class="loading">
+    			<a href="javascript:void(0)" style="color:white;"><div class="login">登录</div></a>
+    			<a href="register.html"><div class="regin">注册</div></a>
+    		</div>
+    	</div>
+    </div>
+    <!--首页榜单-->
+    <div id="navWrap">
+      <div class="nav">
+        <ul class="homeNav">
+          <li style="width: 92px;height: 55px;background-color: #0c8ed9;"><a class="normal active" href="#" style="color: white;">首页</a></li>
+  		    <li style="width: 92px;height: 55px;"><a class="normal" href="list.html">榜单</a></li>
+          <li  style="width: 140px;height: 55px;"><a class="normal" id="productCenter" href="download.html">下载客户端</a></li>
+          <li class="more" style="width: 113px;height: 55px;"><a href="javascript:void(0);"  id="showMore">更多</a></li>
+       </ul>
+       <ul class="secondMenu" id="secondMenu" style="display: none;">
+         <li><a href="radio.html">电台</a></li>
+         <li><a href="mv.html">MV</a></li>
+         <li><a href="songsheet.html">歌单</a></li>
+         <li><a href="singer.html">歌手</a></li>
+       </ul>
+       <ul class="subNav">
+         <li><a target="_blank" href="LiveMusic.html" class="icon-nav1">音乐直播</a></li>
+         <li><a target="_blank" href="live.html" class="icon-nav2">酷狗LIVE</a></li>
+         <li><a target="_blank" href="musicMan.html" class="icon-nav3">音乐人</a></li>
+         <li><a target="_blank" href="anchor.html" class="icon-nav4">游戏</a></li>
+         <li><a target="_blank" href="mall.html" class="icon-nav5">商城</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!--轮播-->
+    <div id="slideWrap">
+    	<div class="scroll_mid">
+  	    <img src="../public/img/index/pic_1.jpg" th:src="@{/img/index/pic_1.jpg}" id="pic" style="display:block;"/>
+  	    <ul class="scroll_number">
+  				<li onMouseOver="show(1)" onMouseOut="start()"></li>
+  				<li onMouseOver="show(2)" onMouseOut="start()"></li>
+  				<li onMouseOver="show(3)" onMouseOut="start()"></li>
+  				<li onMouseOver="show(4)" onMouseOut="start()"></li>
+  				<li onMouseOver="show(5)" onMouseOut="start()"></li>
+  				<li onMouseOver="show(6)" onMouseOut="start()"></li>
+  			</ul>
+  				<a href="javascript:void(0);" style="display: none;" class="slide_icon1"></a>
+  				<a href="javascript:void(0);" style="display: none;" class="slide_icon2"></a>
+  			<ul id="head-dian">
+          <li><a href="javascript:void(0);"></a></li>
+          <li><a href="javascript:void(0);"></a></li>
+          <li><a href="javascript:void(0);"></a></li>
+          <li><a href="javascript:void(0);"></a></li>
+          <li><a href="javascript:void(0);"></a></li>
+      	</ul>
+			</div>
+
+    	<div class="download">
+    		<div style="margin: 0 auto;width: 745px;height: 64px;">
+    			<a href="javascript:void(0);" class="pcdown">下载PC版</a>
+    			<span class="line"></span>
+    			<a href="javascript:void(0);" class="appledown">下载IPhone版</a>
+    			<span class="line"></span>
+    			<a href="javascript:void(0);" class="androiddown">下载Android版</a>
+    		</div>
+    	</div>
+
+    </div>
+
+    <!-- 内容 -->
+    <div id="content">
+    	<!--精选歌单  热门榜单-->
+    	<div class="topContent">
+    		<div class="lsong">
+    			<div class="lsong_title">
+    				<a href="songsheet.html" class="more1">更多</a>
+    			</div>
+    			<div class="itemContent">
+    				<div class="cpt">
+    					<p class="cptT">
+    						<span class="music_icon"></span>
+    						<span style="margin-top:-5px;">1.2万</span>
+    					</p>
+    					<div class="cover">
+    						<a href="../歌曲播放/歌曲播放.html"></a>
+    						<div class="playBtn" onClick="window.open('../歌曲播放/歌曲播放.html')"></div>
+    					</div>
+    					<p classs="cptBg"></p>
+    					<div class="cptB">
+                  <p class="songListName">同学们，帮你准备好33首周游列国的打卡歌了</p>
+                  <p class="songListSinger">鸡蛋面</p>
+              </div>
+    				</div>
+    				<div class="cpt cptMid">
+             	<p class="cptT">
+             		<span class="music_icon"></span>
+              		<span class="num">150.3万</span>
+              	</p>
+             	<img src="../public/img/index/20180605094914368464.jpg" th:src="@{/img/index/20180605094914368464.jpg}" width="160" height="160" />
+             	<div class="Cover">
+                      <a target="_blank" href="../歌曲播放/歌曲播放.html">
+                      </a>
+                      <div class="playBtn" onClick="window.open('../歌曲播放/歌曲播放.html')"></div>
+                </div>
+                <p class="cptBg"></p>
+                <div class="cptB">
+                      <p class="songListName">用一首歌赶走负能量</p>
+                      <p class="songListSinger">型鲨宝骏530</p>
+                </div>
+            </div>
+            <div class="cpt cptMid">
+             	<p class="cptT">
+             		<span class="music_icon"></span>
+              		<span class="num">0.8万</span>
+              	</p>
+             	<img src="../public/img/index/20180606181308579319.jpg" th:src="@{/img/index/20180606181308579319.jpg}" width="160" height="160" />
+             	<div class="Cover">
+                      <a target="_blank" href="../歌曲播放/歌曲播放.html">
+                      </a>
+                      <div class="playBtn" onClick="window.open('../歌曲播放/歌曲播放.html')"></div>
+                 </div>
+                 <p class="cptBg"></p>
+                 <div class="cptB">
+                       <p class="songListName">「砂糖女声」清爽温润一整个夏天</p>
+                       <p class="songListSinger">Moawa莫阿瓦</p>
+                  </div>
+            </div>
+            <div class="cpt cptMid">
+             	<p class="cptT">
+             		<span class="music_icon"></span>
+              		<span class="num">3.6万</span>
+              	</p>
+             	<img src="../public/img/index/20180506200804578740.jpg" th:src="@{/img/index/20180506200804578740.jpg}" width="160" height="160" />
+             	<div class="Cover">
+                      <a target="_blank" href="../歌曲播放/歌曲播放.html">
+                      </a>
+                      <div class="playBtn" onClick="window.open('../歌曲播放/歌曲播放.html')"></div>
+                 </div>
+                 <p class="cptBg"></p>
+                 <div class="cptB">
+                       <p class="songListName">浪客江湖：古风里的武学神诀</p>
+                       <p class="songListSinger">生如夏花</p>
+                 </div>
+            </div>
+            <div class="cpt cptMid">
+             	<p class="cptT">
+             		<span class="music_icon"></span>
+              		<span class="num">0.5万</span>
+              	</p>
+             	<img src="../public/img/index/20180609054206909376.jpg" th:src="@{/img/index/20180609054206909376.jpg}" width="160" height="160" />
+             	<div class="Cover">
+                      <a target="_blank" href="../歌曲播放/歌曲播放.html">
+                      </a>
+                      <div class="playBtn" onClick="window.open('../歌曲播放/歌曲播放.html')"></div>
+                 </div>
+                 <p class="cptBg"></p>
+                 <div class="cptB">
+                       <p class="songListName">Vehicle Remix：午夜车神的超速节奏</p>
+                       <p class="songListSinger">电子鱼</p>
+                  </div>
+            </div>
+    			</div>
+    		</div>
+    		<div class="HotSong">
+    			<div class="itemTitle">
+    				<a href="list.html" class="more1">更多</a>
+    			</div>
+    			<div class="list_hot">
+    					<div class="listItem">
+    						<span class="arrow"></span>
+    						<img src="../public/img/index/T1M4h4BKKj1RCvBVdK.jpg_240x240.jpg" th:src="@{/img/index/T1M4h4BKKj1RCvBVdK.jpg_240x240.jpg}"/>
+    						<div class="cover_bd">
+    							<a href="list.html"></a>
+    							<div class="playBtn" onClick="window.open('../歌曲播放/歌曲播放.html')"></div>
+    						</div>
+    						<a href="list.html">
+    							<div class="list">
+    							<dl>
+    								<dt>酷狗飙升榜</dt>
+    								<dd>1 . G.E.M.邓紫棋、代悦 - A.I.N.Y. (Live)</dd>
+    								<dd>2 . G.E.M.邓紫棋、周东升 - 我们的爱 (Live)</dd>
+    							</dl>
+    							</div>
+    						</a>
+
+    					</div>
+
+    				<div class="listItem">
+    					<span class="arrow"></span>
+    					<img src="../public/img/index/T1fHd4BXd_1RCvBVdK.jpg_240x240.jpg" th:src="@{/img/index/T1fHd4BXd_1RCvBVdK.jpg_240x240.jpg}"/>
+    					<div class="cover_bd">
+    						<a href="list.html">
+    						</a>
+    						<div class="playBtn" onClick="window.open('../歌曲播放/歌曲播放.html')"></div>
+    					</div>
+    					<a href="list.html">
+    						<div class="list">
+    						<dl>
+    							<dt>酷狗TOP500</dt>
+    							<dd>1 . 烟把儿乐队 - 纸短情长 (完整版)</dd>
+    							<dd>2 . 庄心妍 - 再见只是陌生人</dd>
+    						</dl>
+    					</div>
+    					</a>
+
+    				</div>
+    				<div class="listItem">
+    					<span class="arrow"></span>
+    					<img src="../public/img/index/T1Fpd4BKbg1RCvBVdK.jpg_240x240.jpg" th:src="@{/img/index/T1Fpd4BKbg1RCvBVdK.jpg_240x240.jpg}"/>
+    					<div class="cover_bd">
+    						<a href="list.html">
+    						</a>
+    						<div class="playBtn" onClick="window.open('../歌曲播放/歌曲播放.html')"></div>
+    					</div>
+    					<a href="list.html"><div class="list">
+    						<dl>
+    							<dt>网络红歌榜</dt>
+    							<dd>1 . 庄心妍 - 记得找我</dd>
+    							<dd>2 . 魏新雨 - 千年一梦</dd>
+    						</dl>
+    					</div>
+    					</a>
+
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    	<!--广告1-->
+      <div style="width: 1000px;height: 100px;margin-top: 30px;">
+    		<a href="#"><img src="../public/img/index/ad1.jpg" th:src="@{/img/index/ad1.jpg}"/></a>
+    	</div>
+    	<!--新歌首发 推荐mv-->
+    	<div style="width: 1000px;height: 375px;margin-top: 40px;">
+      	<!--新歌首发-->
+      	<div class="newsonglist">
+      		<div style="border-bottom: 1px solid #f0f0f0;padding-bottom:50px;">
+      			<div style="width: 120px;height: 30px;padding-right: 25px;float: left;">
+      				<img src="../public/img/index/newlist.jpg" th:src="@{/img/index/newlist.jpg}"/>
+      			</div>
+      			<div class="tabT">
+      				<span onMouseOver="abc(0)">华语</span>
+      				<span onMouseOver="abc(1)">韩国</span>
+      				<span onMouseOver="abc(2)">欧美</span>
+      				<span onMouseOver="abc(3)">日本</span>
+      			</div>
+      			<button class="playAll">
+      				<span class="icon_play" onClick="window.open('../歌曲播放/歌曲播放.html')"></span>
+      				<em style="font-style: normal;" onClick="window.open('../歌曲播放/歌曲播放.html')">全部播放</em>
+      			</button>
+      		</div>
+      		<div class="song_name">
+      			<div class="song_tab">
+      				<ul id="tabT1">
+      					<ul class="m1" style="display: block;">
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">李宇春 - 动物世界【动物世界电影主题曲】</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:43</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">尚雯婕 - Will You</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">04:22</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">鹿晗 - Skin to skin (Machinedrum Remix)</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:37</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">徐佳莹 - 一爱难求【扶摇影视剧片尾主题曲】</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">04:22</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">A-Lin - 一舞钟情【QQ炫舞系列主题曲】</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:09</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">姜鹏 - 义薄云天</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:02</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">阿悄 - 诡辩</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">陈立农 - 解码游戏【解码游戏电影同名主题曲】</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      					</ul>
+      					<ul class="m2" style="display: none;">
+      					<li>
+      					<a href="../歌曲播放/歌曲播放.html">
+      						<span class="songName">印子月 - 可以的话</span>
+      						<span class="songTips"></span>
+      						<span class="songTime">03:56</span>
+      						<span class="icon-play"></span>
+      						<span class="icon-download"></span>
+      					</a>
+      					</li>
+      					<li>
+      					<a href="../歌曲播放/歌曲播放.html">
+      						<span class="songName">摩登兄弟 - 兄弟情【镇魔司 四象伏魔电影片尾曲】</span>
+      						<span class="songTips"></span>
+      						<span class="songTime">03:56</span>
+      						<span class="icon-play"></span>
+      						<span class="icon-download"></span>
+      					</a>
+      					</li>
+      					<li>
+      					<a href="../歌曲播放/歌曲播放.html">
+      						<span class="songName">黄绮珊 - 想说不说</span>
+      						<span class="songTips"></span>
+      						<span class="songTime">03:56</span>
+      						<span class="icon-play"></span>
+      						<span class="icon-download"></span>
+      					</a>
+      					</li>
+      					<li>
+      					<a href="../歌曲播放/歌曲播放.html">
+      						<span class="songName">苏诗丁、张赫宣 - 金蝉脱壳【金蝉脱壳2电影推广曲】</span>
+      						<span class="songTips"></span>
+      						<span class="songTime">03:56</span>
+      						<span class="icon-play"></span>
+      						<span class="icon-download"></span>
+      					</a>
+      					</li>
+      					<li>
+      					<a href="../歌曲播放/歌曲播放.html">
+      						<span class="songName">胡66、单色凌 - 浪人琵琶</span>
+      						<span class="songTips"></span>
+      						<span class="songTime">03:56</span>
+      						<span class="icon-play"></span>
+      						<span class="icon-download"></span>
+      					</a>
+      					</li>
+      					<li>
+      					<a href="../歌曲播放/歌曲播放.html">
+      						<span class="songName">信 - 荣耀征战【2018年KPL春季赛赛季主题曲】</span>
+      						<span class="songTips"></span>
+      						<span class="songTime">03:56</span>
+      						<span class="icon-play"></span>
+      						<span class="icon-download"></span>
+      					</a>
+      					</li>
+      					<li>
+      					<a href="../歌曲播放/歌曲播放.html">
+      						<span class="songName">金帅 - 我们谁更怕寂寞</span>
+      						<span class="songTips"></span>
+      						<span class="songTime">03:56</span>
+      						<span class="icon-play"></span>
+      						<span class="icon-download"></span>
+      					</a>
+      					</li>
+      					<li>
+      					<a href="../歌曲播放/歌曲播放.html">
+      						<span class="songName">金久哲 - 面儿</span>
+      						<span class="songTips"></span>
+      						<span class="songTime">03:56</span>
+      						<span class="icon-play"></span>
+      						<span class="icon-download"></span>
+      					</a>
+      					</li>
+      					</ul>
+      					<ul class="m3" style="display: none;">
+      					<li>
+      					<a href="../歌曲播放/歌曲播放.html">
+      						<span class="songName">薛明媛 - 格林童话</span>
+      						<span class="songTips"></span>
+      						<span class="songTime">03:56</span>
+      						<span class="icon-play"></span>
+      						<span class="icon-download"></span>
+      					</a>
+      					</li>
+      					<li>
+      					<a href="../歌曲播放/歌曲播放.html">
+      						<span class="songName">璟年、段星宇 - 童话故事</span>
+      						<span class="songTips"></span>
+      						<span class="songTime">03:56</span>
+      						<span class="icon-play"></span>
+      						<span class="icon-download"></span>
+      					</a>
+      					</li>
+      					<li>
+      					<a href="../歌曲播放/歌曲播放.html">
+      						<span class="songName">一修 - 唱腔另类</span>
+      						<span class="songTips"></span>
+      						<span class="songTime">03:56</span>
+      						<span class="icon-play"></span>
+      						<span class="icon-download"></span>
+      					</a>
+      					</li>
+      					<li>
+      					<a href="../歌曲播放/歌曲播放.html">
+      						<span class="songName">彭昱畅、董力、谢彬彬、张逸杰、朱致灵、徐可、吴旭东、李鹤、樊霖锋 - 正少年【网球少年电视剧开赛推广曲】</span>
+      						<span class="songTips"></span>
+      						<span class="songTime">03:56</span>
+      						<span class="icon-play"></span>
+      						<span class="icon-download"></span>
+      					</a>
+      					</li>
+      					<li>
+      					<a href="../歌曲播放/歌曲播放.html">
+      						<span class="songName">苏运莹 - 笑容【快把我哥带走网络剧主题曲】</span>
+      						<span class="songTips"></span>
+      						<span class="songTime">03:56</span>
+      						<span class="icon-play"></span>
+      						<span class="icon-download"></span>
+      					</a>
+      					</li>
+      					<li>
+      					<a href="../歌曲播放/歌曲播放.html">
+      						<span class="songName">刘畊宏、刘宇芙 - 摆乌龙【新乌龙院之笑闹江湖电影宣传曲】</span>
+      						<span class="songTips"></span>
+      						<span class="songTime">03:56</span>
+      						<span class="icon-play"></span>
+      						<span class="icon-download"></span>
+      					</a>
+      					</li>
+      					<li>
+      					<a href="../歌曲播放/歌曲播放.html">
+      						<span class="songName">朱元冰、刘凡 - 在干嘛</span>
+      						<span class="songTips"></span>
+      						<span class="songTime">03:56</span>
+      						<span class="icon-play"></span>
+      						<span class="icon-download"></span>
+      					</a>
+      					</li>
+      					<li>
+      					<a href="../歌曲播放/歌曲播放.html">
+      						<span class="songName">恩宠 - 我在你的眼睛里迷了路</span>
+      						<span class="songTips"></span>
+      						<span class="songTime">03:56</span>
+      						<span class="icon-play"></span>
+      						<span class="icon-download"></span>
+      					</a>
+      					</li>
+      					</ul>
+      				</ul>
+      				<ul id="tabT2" style="display: none;">
+      					<ul class="m1" style="display: block;">
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">Demi Lovato - Sober</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:43</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">Cheat Codes、Little Mix - Only You</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">04:22</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">Meghan Trainor - ALL THE WAYS</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:37</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">Dan Reynolds、Hans Zimmer - Skipping Stones</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">04:22</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">Dimitri Vegas &amp; Like Mike、Wiz Khalifa - When I Grow Up</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:09</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">Ariana Grande、Nicki Minaj - the light is coming</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:02</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">Kris Kross Amsterdam、The Boy Next Door、Conor Maynard - Whenever</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">Robin Schulz、Piso 21 - Oh Child</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      					</ul>
+      					<ul class="m2" style="display: none;">
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">Kungs、StarGate、GOLDN - Be right here</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">DJ Snake、Mercer - Let s Get Ill</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">DJ Snake、Mercer - Let s Get Ill</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">DJ Snake、Mercer - Let s Get Ill</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">DJ Snake、Mercer - Let s Get Ill</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">DJ Snake、Mercer - Let s Get Ill</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">DJ Snake、Mercer - Let s Get Ill</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">DJ Snake、Mercer - Let s Get Ill</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      					</ul>
+      					<ul class="m3" style="display: none;">
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">Nicki Minaj、Ariana Grande - Bed</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">Nicki Minaj、Ariana Grande - Bed</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">Nicki Minaj、Ariana Grande - Bed</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">Nicki Minaj、Ariana Grande - Bed</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">Nicki Minaj、Ariana Grande - Bed</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">Nicki Minaj、Ariana Grande - Bed</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">Nicki Minaj、Ariana Grande - Bed</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">Nicki Minaj、Ariana Grande - Bed</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      					</ul>
+      				</ul>
+      				<ul id="tabT3" style="display: none;">
+      					<ul class="m1" style="display: block;">
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">BTOB - 너 없인 안 된다 (Only one for me)</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:43</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">BLACKPINK - 뚜두뚜두 (DDU-DU DDU-DU)</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">04:22</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">梁耀燮 - 길에서 (On the road)</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:37</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">泫雅、赵权、BTOB、CLC、PENTAGON、柳善皓、(G)I-DLE - Upgrade</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">04:22</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">金龙国、尹美莱 - CLOVER</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:09</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">Simon Dominic - 정진철 (jung jin chul)</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:02</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">Superbee、twlv - 신한은행</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">BTOB - The Feeling</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      					</ul>
+      					<ul class="m2" style="display:none;">
+      						<li>
+        						<a href="../歌曲播放/歌曲播放.html">
+        							<span class="songName">柳昇佑 - 천천히 (Slowly)</span>
+        							<span class="songTips"></span>
+        							<span class="songTime">03:56</span>
+        							<span class="icon-play"></span>
+        							<span class="icon-download"></span>
+        						</a>
+      						</li>
+      						<li>
+        						<a href="../歌曲播放/歌曲播放.html">
+        							<span class="songName">柳昇佑 - 천천히 (Slowly)</span>
+        							<span class="songTips"></span>
+        							<span class="songTime">03:56</span>
+        							<span class="icon-play"></span>
+        							<span class="icon-download"></span>
+        						</a>
+      						</li>
+      						<li>
+        						<a href="../歌曲播放/歌曲播放.html">
+        							<span class="songName">柳昇佑 - 천천히 (Slowly)</span>
+        							<span class="songTips"></span>
+        							<span class="songTime">03:56</span>
+        							<span class="icon-play"></span>
+        							<span class="icon-download"></span>
+        						</a>
+      						</li>
+      						<li>
+        						<a href="../歌曲播放/歌曲播放.html">
+        							<span class="songName">柳昇佑 - 천천히 (Slowly)</span>
+        							<span class="songTips"></span>
+        							<span class="songTime">03:56</span>
+        							<span class="icon-play"></span>
+        							<span class="icon-download"></span>
+        						</a>
+      						</li>
+      						<li>
+        						<a href="../歌曲播放/歌曲播放.html">
+        							<span class="songName">柳昇佑 - 천천히 (Slowly)</span>
+        							<span class="songTips"></span>
+        							<span class="songTime">03:56</span>
+        							<span class="icon-play"></span>
+        							<span class="icon-download"></span>
+        						</a>
+      						</li>
+      						<li>
+        						<a href="../歌曲播放/歌曲播放.html">
+        							<span class="songName">柳昇佑 - 천천히 (Slowly)</span>
+        							<span class="songTips"></span>
+        							<span class="songTime">03:56</span>
+        							<span class="icon-play"></span>
+        							<span class="icon-download"></span>
+        						</a>
+      						</li>
+      						<li>
+        						<a href="../歌曲播放/歌曲播放.html">
+        							<span class="songName">柳昇佑 - 천천히 (Slowly)</span>
+        							<span class="songTips"></span>
+        							<span class="songTime">03:56</span>
+        							<span class="icon-play"></span>
+        							<span class="icon-download"></span>
+        						</a>
+      						</li>
+      						<li>
+        						<a href="../歌曲播放/歌曲播放.html">
+        							<span class="songName">柳昇佑 - 천천히 (Slowly)</span>
+        							<span class="songTips"></span>
+        							<span class="songTime">03:56</span>
+        							<span class="icon-play"></span>
+        							<span class="icon-download"></span>
+        						</a>
+      						</li>
+      					</ul>
+      					<ul class="m3" style="display: none;">
+      						<li>
+        						<a href="../歌曲播放/歌曲播放.html">
+        							<span class="songName">PRISTIN V - 네 멋대로 (Get It)</span>
+        							<span class="songTips"></span>
+        							<span class="songTime">03:56</span>
+        							<span class="icon-play"></span>
+        							<span class="icon-download"></span>
+        						</a>
+      						</li>
+      						<li>
+        						<a href="../歌曲播放/歌曲播放.html">
+        							<span class="songName">PRISTIN V - 네 멋대로 (Get It)</span>
+        							<span class="songTips"></span>
+        							<span class="songTime">03:56</span>
+        							<span class="icon-play"></span>
+        							<span class="icon-download"></span>
+        						</a>
+      						</li>
+      						<li>
+        						<a href="../歌曲播放/歌曲播放.html">
+        							<span class="songName">PRISTIN V - 네 멋대로 (Get It)</span>
+        							<span class="songTips"></span>
+        							<span class="songTime">03:56</span>
+        							<span class="icon-play"></span>
+        							<span class="icon-download"></span>
+        						</a>
+      						</li>
+      						<li>
+        						<a href="../歌曲播放/歌曲播放.html">
+        							<span class="songName">PRISTIN V - 네 멋대로 (Get It)</span>
+        							<span class="songTips"></span>
+        							<span class="songTime">03:56</span>
+        							<span class="icon-play"></span>
+        							<span class="icon-download"></span>
+        						</a>
+      						</li>
+      						<li>
+        						<a href="../歌曲播放/歌曲播放.html">
+        							<span class="songName">PRISTIN V - 네 멋대로 (Get It)</span>
+        							<span class="songTips"></span>
+        							<span class="songTime">03:56</span>
+        							<span class="icon-play"></span>
+        							<span class="icon-download"></span>
+        						</a>
+      						</li>
+      						<li>
+        						<a href="../歌曲播放/歌曲播放.html">
+        							<span class="songName">PRISTIN V - 네 멋대로 (Get It)</span>
+        							<span class="songTips"></span>
+        							<span class="songTime">03:56</span>
+        							<span class="icon-play"></span>
+        							<span class="icon-download"></span>
+        						</a>
+      						</li>
+      						<li>
+        						<a href="../歌曲播放/歌曲播放.html">
+        						<span class="songName">PRISTIN V - 네 멋대로 (Get It)</span>
+        							<span class="songTips"></span>
+        							<span class="songTime">03:56</span>
+        							<span class="icon-play"></span>
+        							<span class="icon-download"></span>
+        						</a>
+      						</li>
+      						<li>
+        						<a href="../歌曲播放/歌曲播放.html">
+        							<span class="songName">PRISTIN V - 네 멋대로 (Get It)</span>
+        							<span class="songTips"></span>
+        							<span class="songTime">03:56</span>
+        							<span class="icon-play"></span>
+        							<span class="icon-download"></span>
+        						</a>
+      						</li>
+      					</ul>
+      				</ul>
+      				<ul id="tabT4" style="display: none;">
+      					<ul class="m1" style="display: block;">
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">IDOLiSH7 - ナナツイロ REALiZE</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:43</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">わーすた - JUMPING SUMMER</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">04:22</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">梁耀燮 - 길에서 (On the road)</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:37</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">泫雅、赵权、BTOB、CLC、PENTAGON、柳善皓、(G)I-DLE - Upgrade</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">04:22</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">金龙国、尹美莱 - CLOVER</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:09</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">Simon Dominic - 정진철 (jung jin chul)</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:02</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">Superbee、twlv - 신한은행</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">BTOB - The Feeling</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      					</ul>
+      					<ul class="m2" style="display: none;">
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">柳昇佑 - 천천히 (Slowly)</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">柳昇佑 - 천천히 (Slowly)</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">柳昇佑 - 천천히 (Slowly)</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">柳昇佑 - 천천히 (Slowly)</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">柳昇佑 - 천천히 (Slowly)</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">柳昇佑 - 천천히 (Slowly)</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">柳昇佑 - 천천히 (Slowly)</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      						<li>
+      						<a href="../歌曲播放/歌曲播放.html">
+      							<span class="songName">柳昇佑 - 천천히 (Slowly)</span>
+      							<span class="songTips"></span>
+      							<span class="songTime">03:56</span>
+      							<span class="icon-play"></span>
+      							<span class="icon-download"></span>
+      						</a>
+      						</li>
+      					</ul>
+      					<ul class="m3" style="display: none;">
+      						<li>
+        						<a href="../歌曲播放/歌曲播放.html">
+        							<span class="songName">PRISTIN V - 네 멋대로 (Get It)</span>
+        							<span class="songTips"></span>
+        							<span class="songTime">03:56</span>
+        							<span class="icon-play"></span>
+        							<span class="icon-download"></span>
+        						</a>
+      						</li>
+      						<li>
+        						<a href="../歌曲播放/歌曲播放.html">
+        							<span class="songName">PRISTIN V - 네 멋대로 (Get It)</span>
+        							<span class="songTips"></span>
+        							<span class="songTime">03:56</span>
+        							<span class="icon-play"></span>
+        							<span class="icon-download"></span>
+        						</a>
+      						</li>
+      						<li>
+        						<a href="../歌曲播放/歌曲播放.html">
+        							<span class="songName">PRISTIN V - 네 멋대로 (Get It)</span>
+        							<span class="songTips"></span>
+        							<span class="songTime">03:56</span>
+        							<span class="icon-play"></span>
+        							<span class="icon-download"></span>
+        						</a>
+      						</li>
+      						<li>
+        						<a href="../歌曲播放/歌曲播放.html">
+        							<span class="songName">PRISTIN V - 네 멋대로 (Get It)</span>
+        							<span class="songTips"></span>
+        							<span class="songTime">03:56</span>
+        							<span class="icon-play"></span>
+        							<span class="icon-download"></span>
+        						</a>
+      						</li>
+      						<li>
+        						<a href="../歌曲播放/歌曲播放.html">
+        							<span class="songName">PRISTIN V - 네 멋대로 (Get It)</span>
+        							<span class="songTips"></span>
+        							<span class="songTime">03:56</span>
+        							<span class="icon-play"></span>
+        							<span class="icon-download"></span>
+        						</a>
+      						</li>
+      						<li>
+        						<a href="../歌曲播放/歌曲播放.html">
+        							<span class="songName">PRISTIN V - 네 멋대로 (Get It)</span>
+        							<span class="songTips"></span>
+        							<span class="songTime">03:56</span>
+        							<span class="icon-play"></span>
+        							<span class="icon-download"></span>
+        						</a>
+      						</li>
+      						<li>
+        						<a href="../歌曲播放/歌曲播放.html">
+        						<span class="songName">PRISTIN V - 네 멋대로 (Get It)</span>
+        							<span class="songTips"></span>
+        							<span class="songTime">03:56</span>
+        							<span class="icon-play"></span>
+        							<span class="icon-download"></span>
+        						</a>
+      						</li>
+      						<li>
+        						<a href="../歌曲播放/歌曲播放.html">
+        							<span class="songName">PRISTIN V - 네 멋대로 (Get It)</span>
+        							<span class="songTips"></span>
+        							<span class="songTime">03:56</span>
+        							<span class="icon-play"></span>
+        							<span class="icon-download"></span>
+        						</a>
+      						</li>
+      					</ul>
+      				</ul>
+      			</div>
+      		</div>
+      		<div id="dialog">
+      			<div class="download_song">
+      				<p>下载歌曲</p>
+      				<button class="close" title="cancel"></button>
+      			</div>
+      			<div class="warning">
+      				<div class="contentText">
+      					<p>
+      						<span class="warn_icon"></span>
+      						下载歌曲需要在酷狗音乐客户端操作
+      					</p>
+      				</div>
+      				<div style="width: 291px;height: 32px;margin-left: 100px;">
+      					<button class="btnDl">打开客户端</button>
+      					<button class="btnDl">下载新版客户端</button>
+      				</div>
+      			</div>
+      		</div>
+      		<div class="pages">
+      			<a class="front" onclick="showOrHide(1)"></a>
+      			<div class="page"><span class="currentPage">1/3</span></div>
+      			<a class="next" onclick="showOrHide(2)"></a>
+      		</div>
+      	</div>
+      	<!--推荐mv -->
+      	<div class="albumList">
+      		<div style="width: 320px;height: 50px;">
+      			<div class="mv" style="width: 120px;height: 30px"></div>
+      			<span style="margin-top: 7px;color: #999;float: right;text-decoration: none">
+      				<a href="mv.html" class="more1">更多</a>
+      			</span>
+      		</div>
+      		<div class="mvContent" style="width: 332px;">
+      			<div class="mv_pic1 mvDiv">
+      				<a href="mv.html"><img src="../public/img/index/20180601201046687656.jpg" th:src="@{/img/index/20180601201046687656.jpg}" style="width: 320px;height: 175px;"/></a>
+      				<div class="cover_mv" style="width:320px;height: 175px;">
+                  <a href="mv.html" style="width:320px;height: 175px;display:inline-block"></a>
+                  <div class="playBtn" onClick="window.open('mv.html')"></div>
+              </div>
+      				<div class="mv_cpt">
+      					<p class="songListName">Privacy (2018流行(liú xíng)巡演LIVE)</p>
+      					<p class="songListSinger">李宇春</p>
+      				</div>
+      			</div>
+      			<div class="mv_pic2 mvDiv">
+      				<a href="mv.html"><img src="../public/img/index/20180527133722615334.jpg" th:src="@{/img/index/20180527133722615334.jpg}" style="width: 154px;height: 84px;"/></a>
+      				<div class="cover_mv">
+                  <a href="mv.html"></a>
+                  <div class="playBtn" onClick="window.open('mv.html')"></div>
+              </div>
+      				<div class="mv_cpt">
+      					<p class="songListName">在无风的时光遇见你</p>
+      					<p class="songListSinger">金志文</p>
+      				</div>
+      			</div>
+      			<div class="mv_pic2 mvDiv" >
+      				<a href="mv.html"><img src="../public/img/index/20180526100547724937.jpg" th:src="@{/img/index/20180526100547724937.jpg}" style="width: 154px;height: 84px;"/></a>
+      				<div class="cover_mv">
+                  <a href="mv.html"></a>
+                  <div class="playBtn" onClick="window.open('mv.html')"></div>
+              </div>
+      				<div class="mv_cpt">
+      					<p class="songListName">Like That</p>
+      					<p class="songListSinger">吴亦凡</p>
+      				</div>
+      			</div>
+      		</div>
+      	</div>
+    	</div>
+    	<!--广告2-->
+    	<div style="width: 1000px;height: 100px;margin-top: 30px;">
+    		<a href="#"><img src="../public/img/index/ad2.jpg" th:src="@{/img/index/ad2.jpg}"/></a>
+    	</div>
+    	<!--热门电台  热门歌手-->
+    	<div class="diantai">
+    		<!--热门电台-->
+    		<div class="HotRadio">
+    			<div class="itemTitle">
+    				<div style="width: 120px;height: 30px;float: left;"><img src="../public/img/index/hotredio.jpg" th:src="@{/img/index/hotredio.jpg}"/></div>
+    				<span style="color: #999;margin-top: 7px;float: right;font-size: 14px;" >
+    					<a href="radio.html" class="more1">更多</a>
+    				</span>
+    			</div>
+    			<div class="itemContent">
+    				<ul>
+    					<li>
+                <a href="radio.html">
+    							<div class="radioLogo"><img src="../public/img/index/radio_1.jpg" th:src="@{/img/index/radio_1.jpg}" style="width: 100px;height: 100px;"/></div>
+    							<div class="cover_radio"><div class="playBtn"></div></div>
+    							<div class="radioKind">KTV必点曲</div>
+    					  </a>
+              </li>
+              <li>
+                <a href="radio.html">
+    							<div class="radioLogo"><img src="../public/img/index/radio_1.jpg" th:src="@{/img/index/radio_1.jpg}" style="width: 100px;height: 100px;"/></div>
+    							<div class="cover_radio"><div class="playBtn"></div></div>
+    							<div class="radioKind">KTV必点曲</div>
+    					  </a>
+              </li>
+              <li>
+                <a href="radio.html">
+    							<div class="radioLogo"><img src="../public/img/index/radio_1.jpg" th:src="@{/img/index/radio_1.jpg}" style="width: 100px;height: 100px;"/></div>
+    							<div class="cover_radio"><div class="playBtn"></div></div>
+    							<div class="radioKind">KTV必点曲</div>
+    					  </a>
+              </li>
+              <li>
+                <a href="radio.html">
+    							<div class="radioLogo"><img src="../public/img/index/radio_1.jpg" th:src="@{/img/index/radio_1.jpg}" style="width: 100px;height: 100px;"/></div>
+    							<div class="cover_radio"><div class="playBtn"></div></div>
+    							<div class="radioKind">KTV必点曲</div>
+    					  </a>
+              </li>
+              <li>
+                <a href="radio.html">
+    							<div class="radioLogo"><img src="../public/img/index/radio_1.jpg" th:src="@{/img/index/radio_1.jpg}" style="width: 100px;height: 100px;"/></div>
+    							<div class="cover_radio"><div class="playBtn"></div></div>
+    							<div class="radioKind">KTV必点曲</div>
+    					  </a>
+              </li>
+              <li>
+                <a href="radio.html">
+    							<div class="radioLogo"><img src="../public/img/index/radio_1.jpg" th:src="@{/img/index/radio_1.jpg}" style="width: 100px;height: 100px;"/></div>
+    							<div class="cover_radio"><div class="playBtn"></div></div>
+    							<div class="radioKind">KTV必点曲</div>
+    					  </a>
+              </li>
+              <li>
+                <a href="radio.html">
+    							<div class="radioLogo"><img src="../public/img/index/radio_1.jpg" th:src="@{/img/index/radio_1.jpg}" style="width: 100px;height: 100px;"/></div>
+    							<div class="cover_radio"><div class="playBtn"></div></div>
+    							<div class="radioKind">KTV必点曲</div>
+    					  </a>
+              </li>
+              <li>
+                <a href="radio.html">
+    							<div class="radioLogo"><img src="../public/img/index/radio_1.jpg" th:src="@{/img/index/radio_1.jpg}" style="width: 100px;height: 100px;"/></div>
+    							<div class="cover_radio"><div class="playBtn"></div></div>
+    							<div class="radioKind">KTV必点曲</div>
+    					  </a>
+              </li>
+              <li>
+                <a href="radio.html">
+    							<div class="radioLogo"><img src="../public/img/index/radio_1.jpg" th:src="@{/img/index/radio_1.jpg}" style="width: 100px;height: 100px;"/></div>
+    							<div class="cover_radio"><div class="playBtn"></div></div>
+    							<div class="radioKind">KTV必点曲</div>
+    					  </a>
+              </li>
+              <li>
+                <a href="radio.html">
+    							<div class="radioLogo"><img src="../public/img/index/radio_1.jpg" th:src="@{/img/index/radio_1.jpg}" style="width: 100px;height: 100px;"/></div>
+    							<div class="cover_radio"><div class="playBtn"></div></div>
+    							<div class="radioKind">KTV必点曲</div>
+    					  </a>
+              </li>
+    				</ul>
+    			</div>
+    		</div>
+    		<!--热门歌手-->
+    		<div class="HotSinger">
+    			<div class="itemTitle">
+    				<div style="width:120px;height: 30px;float:left;"><img src="../public/img/index/hotsinger.jpg" th:src="@{/img/index/hotsinger.jpg}"/></div>
+    				<div class="tabT">
+    					<span onMouseOver="ABC(0)">华语</span>
+    					<span onMouseOver="ABC(1)">欧美</span>
+    					<span onMouseOver="ABC(2)">日韩</span>
+    					<span style="margin-top: 7px;color: #999;"><a href="singer.html" class="more1">更多</a></span>
+    				</div>
+    			</div>
+    			<div class="itemContent">
+    				<div class="singers" id="singers1" style="width: 330px;height: 270px;position: relative;">
+    					<div class="cptMid1">
+    						<a href="singer.html"><img src="../public/img/index/20180508175857586.jpg" th:src="@{/img/index/20180508175857586.jpg}"/>
+    							<div class="cpt">
+    								<p class="songList_Singer">薛之谦</p>
+    							</div>
+    							<div class="cover_singer" style="width: 160px;height: 160px;"></div>
+    						</a>
+    					</div>
+    					<div class="cptMid1">
+    						<a href="singer.html"><img src="../public/img/index/20180515002522714.jpg" th:src="@{/img/index/20180515002522714.jpg}"/>
+    							<div class="cpt">
+    								<p class="songList_Singer">周杰伦</p>
+    							</div>
+    							<div class="cover_singer" style="width: 160px;height: 160px;">
+    						</div>
+    						</a>
+    					</div>
+    					<div class="cptSmall">
+    						<a href="singer.html"><img src="../public/img/index/20180518110342985.jpg" th:src="@{/img/index/20180518110342985.jpg}"/>
+    							<div class="cpt" style="width: 105px;">
+    								<p class="songList_Singer">TFBOYS</p>
+    							</div>
+    							<div class="cover_singer"></div>
+    						</a>
+    					</div>
+    					<div class="cptSmall">
+    						<a href="singer.html"><img src="../public/img/index/20180122113125103.jpg" th:src="@{/img/index/20180122113125103.jpg}"/>
+    							<div class="cpt" style="width: 105px;">
+    								<p class="songList_Singer">张杰</p>
+    							</div>
+    							<div class="cover_singer"></div>
+    						</a>
+    					</div>
+    					<div class="cptSmall">
+    						<a href="singer.html"><img src="../public/img/index/20161209164303152140.jpg" th:src="@{/img/index/20161209164303152140.jpg}"/>
+    							<div class="cpt" style="width: 105px;">
+    								<p class="songList_Singer">林俊杰</p>
+    							</div>
+    							<div class="cover_singer"></div>
+    						</a>
+    					</div>
+    				</div>
+    				<div class="singers" id="singers2" style="width: 330px;height: 270px;position: relative;display: none;">
+    					<div class="cptMid1">
+    						<a href="singer.html"><img src="../public/img/index/20170316182005449.jpg" th:src="@{/img/index/20170316182005449.jpg}"/>
+    							<div class="cpt">
+
+    								<p class="songList_Singer">Alan Walker</p>
+    							</div>
+    							<div class="cover_singer" style="width: 160px;height: 160px;">
+    						</div>
+    						</a>
+    					</div>
+    					<div class="cptMid1">
+    						<a href="singer.html"><img src="../public/img/index/20121113170456141.jpg" th:src="@{/img/index/20121113170456141.jpg}"/>
+    							<div class="cpt">
+    								<p class="songList_Singer">Olly Murs</p>
+    							</div>
+    							<div class="cover_singer" style="width: 160px;height: 160px;">
+    						</div>
+    						</a>
+    					</div>
+    					<div class="cptSmall">
+    						<a href="singer.html"><img src="../public/img/index/20180112180129652.jpg" th:src="@{/img/index/20180112180129652.jpg}"/>
+    							<div class="cpt" style="width: 105px;">
+    								<p class="songList_Singer">Justin Bieber</p>
+    							</div>
+    							<div class="cover_singer"></div>
+    						</a>
+    					</div>
+    					<div class="cptSmall">
+    						<a href="singer.html"><img src="../public/img/index/20180112182909895.jpg" th:src="@{/img/index/20180112182909895.jpg}"/>
+    							<div class="cpt" style="width: 105px;">
+    								<p class="songList_Singer">Taylor Swift</p>
+    							</div>
+    							<div class="cover_singer"></div>
+    						</a>
+    					</div>
+    					<div class="cptSmall">
+    						<a href="singer.html"><img src="../public/img/index/20140409145904650908.jpg" th:src="@{/img/index/20140409145904650908.jpg}"/>
+    							<div class="cpt" style="width: 105px;">
+    								<p class="songList_Singer">Michael Jackson</p>
+    							</div>
+    							<div class="cover_singer"></div>
+    						</a>
+    					</div>
+    				</div>
+    				<div class="singers" id="singers3" style="width: 330px;height: 270px;position: relative;display: none;">
+    					<div class="cptMid1">
+    						<a href="singer.html"><img src="../public/img/index/20170704172442730.jpg" th:src="@{/img/index/20170704172442730.jpg}"/>
+    							<div class="cpt">
+    								<p class="songList_Singer">BIGBANG</p>
+    							</div>
+    							<div class="cover_singer" style="width: 160px;height: 160px;">
+    						</div>
+    						</a>
+    					</div>
+    					<div class="cptMid1">
+    						<a href="singer.html"><img src="../public/img/index/20180620191347895.jpg" th:src="@{/img/index/20180620191347895.jpg}"/>
+    							<div class="cpt">
+    								<p class="songList_Singer">BLACKPINK</p>
+    							</div>
+    							<div class="cover_singer" style="width: 160px;height: 160px;">
+    						</div>
+    						</a>
+    					</div>
+    					<div class="cptSmall">
+    						<a href="singer.html"><img src="../public/img/index/20161219112538266.jpg" th:src="@{/img/index/20161219112538266.jpg}"/>
+    							<div class="cpt" style="width: 105px;">
+    								<p class="songList_Singer">EXO</p>
+    							</div>
+    							<div class="cover_singer"></div>
+    						</a>
+    					</div>
+    					<div class="cptSmall">
+    						<a href="singer.html"><img src="../public/img/index/20161229183012269.jpg" th:src="@{/img/index/20161229183012269.jpg}"/>
+    							<div class="cpt" style="width: 105px;">
+    								<p class="songList_Singer">G-DARGON</p>
+    							</div>
+    							<div class="cover_singer"></div>
+    						</a>
+    					</div>
+    					<div class="cptSmall">
+    						<a href="singer.html"><img src="../public/img/index/20160418100501854.jpg" th:src="@{/img/index/20160418100501854.jpg}"/>
+    							<div class="cpt" style="width: 105px;">
+    								<p class="songList_Singer">少女时代</p>
+    							</div>
+    							<div class="cover_singer"></div>
+    						</a>
+    					</div>
+    				</div>
+    			</div>
+    			<div class="tabDot">
+    				<a class="icon_dot" onMouseOver="ABC(0)"></a>
+    				<a class="icon_dot" onMouseOver="ABC(1)"></a>
+    				<a class="icon_dot" onMouseOver="ABC(2)"></a>
+    			</div>
+    		</div>
+    	</div>
+    	<!--广告3-->
+    	<div style="width: 1000px;height: 100px;margin-top: 30px;">
+    		<a href="#"><img src="../public/img/index/ad3.jpg" th:src="@{/img/index/ad3.jpg}"/></a>
+    	</div>
+    	<!--合作伙伴-->
+    	<div class="partner">
+    		<div class="itemTitle" style="width: 120px;height: 30px;padding-bottom: 30px;">
+          <img src="../public/img/index/partner.jpg" th:src="@{/img/index/partner.jpg}"/>
+        </div>
+    		<ul class="itemContent">
+    			<li><img src="../public/img/index/partner01.jpg" th:src="@{/img/index/partner01.jpg}"></li>
+    			<li><img src="../public/img/index/partner02.jpg" th:src="@{/img/index/partner02.jpg}"></li>
+    			<li><img src="../public/img/index/partner03.jpg" th:src="@{/img/index/partner03.jpg}"></li>
+    			<li><img src="../public/img/index/partner04.jpg" th:src="@{/img/index/partner04.jpg}"></li>
+    			<li><img src="../public/img/index/partner05.jpg" th:src="@{/img/index/partner05.jpg}"></li>
+    			<li><img src="../public/img/index/partner06.jpg" th:src="@{/img/index/partner06.jpg}"></li>
+          <li><img src="../public/img/index/partner07.jpg" th:src="@{/img/index/partner07.jpg}"></li>
+          <li><img src="../public/img/index/partner08.jpg" th:src="@{/img/index/partner08.jpg}"></li>
+          <li><img src="../public/img/index/partner09.jpg" th:src="@{/img/index/partner09.jpg}"></li>
+          <li><img src="../public/img/index/partner10.jpg" th:src="@{/img/index/partner10.jpg}"></li>
+    			<li><img src="../public/img/index/partner11.jpg" th:src="@{/img/index/partner11.jpg}"></li>
+    			<li><img src="../public/img/index/partner12.jpg" th:src="@{/img/index/partner12.jpg}"></li>
+          <li><img src="../public/img/index/partner13.jpg" th:src="@{/img/index/partner13.jpg}"></li>
+          <li><img src="../public/img/index/partner14.jpg" th:src="@{/img/index/partner14.jpg}"></li>
+    			<li><img src="../public/img/index/partner15.jpg" th:src="@{/img/index/partner01.jpg}"></li>
+    			<li><img src="../public/img/index/partner16.jpg" th:src="@{/img/index/partner01.jpg}"></li>
+    			<li><img src="../public/img/index/partner17.jpg" th:src="@{/img/index/partner01.jpg}"></li>
+    			<li><img src="../public/img/index/partner18.jpg" th:src="@{/img/index/partner01.jpg}"></li>
+    			<li><img src="../public/img/index/partner19.jpg" th:src="@{/img/index/partner01.jpg}"></li>
+    			<li><img src="../public/img/index/partner20.jpg" th:src="@{/img/index/partner01.jpg}"></li>
+    			<li><img src="../public/img/index/partner21.jpg" th:src="@{/img/index/partner01.jpg}"></li>
+    		</ul>
+    	</div>
+    	<!--友情链接-->
+    	<div class="friendLink">
+    		<div class="itemTitle">
+    			<div style="width:120px;height: 30px;float:left;"><img src="../public/img/index/friendLink.jpg" th:src="@{/img/index/friendLink.jpg}"/></div>
+    			<span style="margin-top: 7px;color: #999;font-size: 14px;float: right;">
+    				<a href="友情链接.html" class="more1">更多</a>
+    			</span>
+    		</div>
+    		<ul class="itemContent">
+    			<li><a target="" href="友情链接.html" title="爱美网">爱美网</a></li>
+    			<li><a target="" href="友情链接.html" title="央视网综艺频道">央视网综艺频道</a></li>
+    			<li><a target="" href="友情链接.html" title="汽车论坛">汽车论坛</a></li>
+    			<li><a target="" href="友情链接.html" title="IT之家">IT之家</a></li>
+    			<li><a target="" href="友情链接.html" title="iPhone游戏">iPhone游戏</a></li>
+    			<li><a target="" href="友情链接.html" title="旅游攻略">旅游攻略</a></li>
+    			<li><a target="" href="友情链接.html" title="悦声无限">悦声无限</a></li>
+    			<li><a target="" href="友情链接.html" title="华为商城">华为商城</a></li>
+    			<li><a target="" href="友情链接.html" title="365音乐网">365音乐网</a></li>
+    			<li><a target="" href="友情链接.html" title="软件下载">软件下载</a></li>
+    			<li><a target="" href="友情链接.html" title="漫漫看漫画">漫漫看漫画</a></li>
+    			<li><a target="" href="友情链接.html" title="手机游戏">手机游戏</a></li>
+    			<li><a target="" href="友情链接.html" title="5sing原创音乐">5sing原创音乐</a></li>
+    			<li><a target="" href="腾讯音乐人.html" title="腾讯音乐人">腾讯音乐人</a></li>
+    			<li><a target="" href="友情链接.html" title="豌豆荚">豌豆荚</a></li>
+    		</ul>
+    	</div>
+    </div>
+
+    <!--底部-->
+  	<div id="bottom" class="footer">
+  		<div class="links">
+  			<a href="音乐人.html" title="关于酷狗">关于酷狗</a>|
+  			<a href="音乐人.html" title="监督举报">监督举报</a>|
+  			<a href="音乐人.html" title="广告服务">广告服务</a>|
+  			<a href="音乐人.html" title="版权指引">版权指引</a>|
+  			<a href="音乐人.html" title="隐私政策">隐私政策</a>|
+  			<a href="音乐人.html" title="用户服务协议">用户服务协议</a>|
+  			<a href="音乐人.html" title="推广合作">推广合作</a>|
+  			<a href="音乐人.html" title="酷狗音乐人">酷狗音乐人</a>|
+  			<a href="音乐人.html" title="酷狗音乐推">酷狗音乐推</a>|
+  			<a href="音乐人.html" title="招聘信息">招聘信息</a>|
+  			<a href="音乐人.html" title="客服中心">客服中心</a>|
+  			<a href="音乐人.html" title="用户体验提升计划">用户体验提升计划</a>
+  		</div>
+  		<div class="copyright">
+  			<p>我们致力于推动网络正版音乐发展，相关版权合作请联系copyrights@kugou.com</p>
+  			<p>信息网络传播视听节目许可证 1910564 增值电信业务经营许可证粤B2-20060339 &nbsp;&nbsp;&nbsp;
+    			<a target="_blank" href="#">粤ICP备09017694号-2</a>
+    			<span class="footerIcon"><a target="_blank" href="#">&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
+  			</p>
+  			<p>广播电视节目制作经营许可证（粤）字第01270号&nbsp;&nbsp;&nbsp;&nbsp;营业性演出许可证穗天演440106026</p>
+  			<p>穗公网监备案证第44010650010167&nbsp;&nbsp;&nbsp;&nbsp;互联网药品信息服务资格证编号（粤）-非经营性-2012-0018
+          <a  href="#">
+            &nbsp;&nbsp;&nbsp;
+            <span>粤公网安备 44010602000141号</span>
+            <img src="../public/img/index/icon_yuewangga1.png" th:src="@{/img/index/icon_yuewangga1.png}" width="16" height="16">
+          </a>
+        </p>
+  			<p>不良信息举报邮箱：jubao_music@kugou.net&nbsp;&nbsp;&nbsp;&nbsp;客服邮箱：cs@kugou.com</p>
+  			<p>Copyright&nbsp;&nbsp;©&nbsp;&nbsp;2004-2018 KuGou-Inc.All Rights Reserved
+          <a class="office-verification" href="#" target="_blank"></a>
+        </p>
+  		</div>
+  	</div>
+
+    <!--跳到最上面-->
+    <div id="scollTop">
+    	<a href="#"></a>
+    </div>
+
+    <!--<script src="../public/js/index.js" th:src="@{/js/index.js}" type="text/javascript" charset="utf-8"></script>-->
+  </body>
+</html>

@@ -1,0 +1,1656 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>电台频道-酷狗网</title>
+<link rel="shortcut icon" href="favicon.ico"/>
+<style>
+	a{
+		text-decoration: none;
+	}
+	li{
+		list-style: none;
+	}
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	#head{
+		width: 1000px;
+		height: 78px;
+		margin: 0 auto;
+		position: relative;
+
+	}
+	#head .logo{
+		width: 153px;
+		height: 37px;
+		float: left;
+		margin-top: 20px;
+	}
+	#head .search{
+		width: 300px;
+   		height: 36px;
+    	margin-left: 193px;
+    	padding-top: 20px;
+
+	}
+	#head .search_input{
+		width: 298px;
+    	height: 34px;
+    	border: 1px solid #ccc;
+    	line-height: 34px;
+		position: relative;
+		z-index: 100;
+	}
+
+	.search_input input{
+		width: 249px;
+    	height: 24px;
+    	line-height: 24px;
+		margin-left: 14px;
+    	padding: 5px 0;
+   	 	color: #666;
+		border: none;
+		font-size: 13px;
+		position: absolute;
+    	left: 0;
+    	top: 0;
+		outline: none; /*边框按下去没有颜色*/
+
+	}
+	#head .search_btn{
+		width: 34px;
+		height: 34px;
+		float: right;
+		cursor: pointer;
+	}
+
+	#head .search_icon{
+		background: url(../public/img/radio/search.png);
+		background-position: -40px -56px;
+		display: block;
+		margin: 9px 0 0 9px;
+		width: 16px;
+		height: 16px;
+		cursor: pointer;
+
+	}
+ /*  有问题为什么只在head下面才有效果*/
+	#head .search_icon:hover{
+		background: url(../public/img/radio/search.png);
+		background-position: -40px -86px;
+
+	}
+	#head .head_right{
+		width: 402px;
+		float: right;
+		height: 25px;
+		margin-top: -25px;
+
+	}
+	.head_right ul{
+		width: 240px;
+		border-right: 1px solid #e6e6e6;
+		padding-right: 11px;
+        text-align: right;
+		float: left;
+
+	}
+	.head_right ul li{
+		list-style: none;
+		float: left;
+		padding-left: 20px;
+	}
+	.head_right ul li a{
+		text-decoration: none;
+		color: #777;
+		font-size: 13px;
+	}
+	.head_right ul li a:hover{
+		color: #169af3;
+	}
+	#head .loading{
+		width: 110px;
+		height: 30px;
+		position: absolute;
+		right: 0;
+		top:25px;
+	}
+	.loading .login {
+		width: 48px;
+		height: 28px;
+		line-height: 28px;
+		border: 1px solid #169af3;
+		border-radius: 2px;
+		text-align: center;
+		background-color: #169af3;
+		float: left;
+
+	}
+
+	.loading .regin{
+		width: 48px;
+		height: 28px;
+		line-height: 28px;
+		border: 1px solid #dbdbdb;
+		border-radius: 2px;
+		text-align: center;
+		color: black;
+		text-decoration: none;
+		float:right;
+	}
+	.loading .login:hover{
+		background-color: #158fe1;
+	}
+	.loading .regin:hover{
+		border: 1px solid #169af3;
+
+		}
+	.loading .regin a{
+		color:black;
+	}
+	.loading .regin:hover{
+		color: #169af3;
+	}
+	.loading a{
+		text-decoration: none;
+		font-size: 13px;
+	}
+
+	/*首页榜单*/
+	#navWrap{
+		width: 100%;
+		height: 55px;
+		background:#2c323b;
+		position: relative;
+	}
+	#navWrap .nav{
+		width: 1000px;
+		margin: 0 auto;
+
+
+	}
+	#navWrap li{
+		float: left;
+		list-style: none;
+	}
+	#navWrap a{
+		text-decoration: none;
+	}
+	.nav .homeNav{
+		width: 437px;
+		height: 55px;
+		float: left;
+		position: relative;
+	}
+	.homeNav .normal active{
+		background-color: #0c8ed9;
+        color: #fff;
+	}
+	.homeNav a{
+		font-size: 16px;
+    	color: #ddd;
+		display:block;
+
+	}
+	.homeNav  li:hover a{
+		color: white;
+	}
+	.homeNav li{
+		text-align: center;
+		line-height: 55px;
+		display:inline-block;
+	}
+	.homeNav li:hover{
+
+        background-color: #0c8ed9;
+	}
+
+
+	.homeNav .more a{
+		background:url(../public/img/radio/arrowMored.png) no-repeat;
+	    margin-left: 5px;
+    	padding: 0 30px;
+		margin-right: 5px;
+		background-position: 72px 8px;
+		display: inline;
+	}
+	.homeNav .more:hover a{
+		background:url(../public/img/radio/arrowMoreu.png)no-repeat;
+	    background-position: 70px 8px;
+        background-color: #0c8ed9;
+
+	}
+	 .secondMenu{
+		position: absolute;
+		left: 500px;
+		top: 55px;
+		display: none;
+		width: 113px;
+		height: 146px;
+		background-color: #252a32;
+		z-index: 99;
+
+		}
+	.secondMenu li{
+		display:block;
+		padding: 0;
+		height: 36px;
+		line-height: 36px;
+		float: none;
+		margin: 0;
+		width: 113px;
+		text-align: center;
+		cursor: pointer;
+	}
+	.secondMenu li:hover{
+		background-color: #2d343d;
+		border-top: 1px solid #383d44;
+
+	}
+		.secondMenu a{
+		text-align: center;
+		font-size: 15px;
+		color: #bbb;
+		background: 0 0;
+		background-color: #252b34;
+		display: block;
+	}
+	.secondMenu li:hover a{
+		color: #fff;
+		background-color: #2d343d;
+	}
+
+	.subNav {
+		width: 445.44px;
+		float:right;
+		margin-top: 16px;
+    	height: 35px;
+
+	}
+	.subNav li{
+		margin-left: 30px;
+		list-style: none;
+	}
+	.subNav a.icon-nav1{
+		background-position: 0 -119px;
+	}
+	.subNav a.icon-nav1:hover{
+		background-position: 0 -101px;
+	}
+	.subNav a.icon-nav2{
+		background-position:0 -155px;
+	}
+	.subNav a.icon-nav2:hover{
+		background-position:0 -137px;
+	}
+	.subNav a.icon-nav3{
+		background-position:0 -191px;
+	}
+	.subNav a.icon-nav3:hover{
+		background-position:0 -173px;
+	}
+	.subNav a.icon-nav4{
+		background-position:0 -226px;
+	}
+	.subNav a.icon-nav4:hover{
+		background-position:0 -208px;
+	}
+	.subNav a.icon-nav5{
+		background-position:0 -281px;
+	}
+	.subNav a.icon-nav5:hover{
+		background-position:0 -245px;
+	}
+	.subNav a{
+		background: url(../public/img/radio/sprite.png);
+		padding-left: 20px;
+		color: #bbb;
+    	font-size: 13px;
+	}
+	.subNav a:hover{
+		color: #14a9ff;
+		background: url(../public/img/radio/sprite.png);
+	}
+	#frame{
+		width: 1000px;
+		margin: 0 auto;
+	}
+	#frame .topPlay{
+		height: 228px;
+
+	}
+	.topPlay .listened_audio{
+		margin: 22px 0 0 0;
+		width: 332px;
+		float: left;
+		position: relative;
+	}
+	.listened_audio .recentList{
+		line-height: 26px;
+	}
+	.recentList dt{
+		color: #333;
+		border-bottom: 1px solid #c2c2c2;
+		font-size: 16px;
+		line-height: 1;
+		padding-bottom: 10px;
+	}
+	.recentList dd{
+		padding: 0 0 0 24px;
+		height: 26px;
+		position: relative;
+		background: #ffffff;
+	}
+
+	.hidebox .grey{
+		background: #efefef;
+	}
+	.flash_box{
+		width: 654px;
+		height: 205px;
+		float: right;
+		margin: 22px 0 0 0;
+	}
+	.flash_box .webPlayer{
+		width:  654px;
+		height: 210px;
+		border:1px solid grey;
+	}
+	#frame .radio{
+		height: 600px;
+		margin-top: 20px;
+	}
+	.radio .left{
+		width: 210px;
+		height: 30px;
+		float: left;
+	}
+	.radio h2{
+		height: 30px;
+		line-height: 30px;
+		color: #fff;
+		font-size: 16px;
+		text-align: center;
+		background: #cfcfcf;
+		font-weight: normal;
+	}
+	.radio .right{
+		width: 780px;
+		height: 30px;
+		float: right;
+	}
+	.radio .radio_classify{
+		float: left;
+		width: 210px;
+		height: 262px;
+	}
+	.radio_classify .radio_list{
+		height: 252px;
+		margin: 10px 0 0px 0px;
+		position: relative;
+		overflow: hidden;
+	}
+	.radio_list dd{
+		font-size: 12px;
+		width: 210px;
+		height: 36px;
+		line-height: 36px;
+		font-family: Microsoft YaHei;
+	}
+	.radio_list .allRadio{
+		background: url(../public/img/radio/bg.png) no-repeat;
+		background-position: 0 -854px;
+    	color: #FFF;
+	}
+	.radio_list dd a{
+		display: block;
+		height: 36px;
+		color: #555;
+		text-align: center;
+		font-size: 14px;
+	}
+	.radio_list dd a:hover{
+		background: url(../public/img/radio/bg.png) no-repeat;
+		background-position: 0 -854px;
+    	color: #FFF;
+	}
+	.radio_right{
+		width: 765px;
+		float: left;
+		position: relative;
+		min-height: 100px;
+	}
+	.radioBox{
+		width: 755px;
+		min-height: 100px;
+		font-size: 12px;
+		margin: 20px 0 20px 10px;
+		border-left: 1px solid #e2e2e2;
+		position: relative;
+	}
+	.radioBox dd{
+		width: 185px;
+		float: left;
+		margin: 0 0 8px 56px;
+		display: inline;
+	}
+
+	.radioBox dd a{
+		height: 42px;
+		display: block;
+		overflow: hidden;
+		cursor: pointer;
+	}
+	.radio dd img{
+		width: 32px;
+		height: 32px;
+		margin: 4px;
+	}
+	.radioBox dd a i{
+		width: 40px;
+		height: 40px;
+		float: left;
+		margin: 0 10px 0 0;
+		background: url(../public/img/radio/bg.png) -55px -501px no-repeat;
+		position: relative;
+	}
+	.radioBox dd a:hover i{
+		background: url(../public/img/radio/bg.png) -5px -501px no-repeat;
+	}
+	.radioBox dd em{
+		color: #555;
+		font-style: normal;
+		line-height: 1;
+		margin: -4px 0 4px 0px;
+		cursor: pointer;
+		font-size: 14px;
+		display: inline-block;
+	}
+	.radioBox dd a:hover em{
+		color:#009bd8;
+	}
+	.radioBox dd b{
+		background: url(../public/img/radio/bg.png) -8px -302px no-repeat;
+		width: 18px;
+		height: 19px;
+		display: inline-block;
+		position: relative;
+		top: 3px;
+		left: 3px;
+		opacity: 0;
+	}
+	.radioBox dd:hover b{
+		opacity: 1;
+	}
+
+	.radio .songs{
+		height: 18px;
+    	overflow: hidden;
+	}
+	.radio .songs span{
+		height: 18px;
+		overflow: hidden;
+		color: #999999;
+		margin: 2px 3px 0 0px;
+		cursor: pointer;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	#bottom{
+		width: 100%;
+		height: 319px;
+		background: #2c323b;
+
+
+	}
+	#bottom .footer{
+		padding-bottom: 50px;
+	}
+	.footer .links{
+		position: relative;
+		border-bottom: 1px solid #3d424a;
+		padding: 15px 0;
+		font-size: 12px;
+		color: #b1b3b9;
+		text-align: center;
+		height: 20px;
+	}
+	.footer .links a{
+		color: #b1b3b9;
+    	padding: 10px;
+	}
+	.footer .links a:hover{
+		color:#009af3;
+
+	}
+	.footer .copyright{
+		width: 1000px;
+		height: 180px;
+		margin: 40px auto 0;
+	}
+	.copyright .footerIcon{
+		width: 16px;
+		height: 16px;
+		margin-left: 5px;
+		margin-top: -2px;
+		background: url(../public/img/radio/footer_icon.png) no-repeat 0 0;
+	}
+	.copyright .office-verification{
+		margin-left: 5px;
+		padding: 5px 10px;
+		background: url(../public/img/radio/logo_down.png) no-repeat 0 0;
+	}
+	.copyright p{
+		line-height: 30px;
+		text-align: center;
+		color: #b1b3b9;
+		font-size: 14px;
+	}
+	.copyright a{
+		color: #999;
+	}
+</style>
+</head>
+
+<body>
+<div id="head">
+	<h1 class="logo">
+		<img src="../public/img/radio/logo.png"/>
+	</h1>
+	<div class="search">
+	    <div class="search_input">
+			<input type="text" />
+			<div class="search_btn" onClick="window.open('')">
+			<i class="search_icon" onClick="window.open('')"></i>
+			</div>
+		</div>
+	</div>
+	<div class="head_right">
+		<ul>
+			<li><a href="客服中心/客服中心.html" target="_blank">客服中心</a></li>
+			<li><a href="招贤纳士/招贤纳士.html" target="_blank">招纳贤士</a></li>
+			<li><a href="会员中心/会员中心.html" target="_blank">会员中心</a></li>
+		</ul>
+		<div class="loading">
+			<a href="javascript:void(0);" style="color:white;"><div class="login">登录</div></a>
+			<a href="注册.html"><div class="regin">注册</div></a>
+		</div>
+	</div>
+</div>
+    <!--首页榜单-->
+<div id="navWrap">
+    <div class="nav">
+      <ul class="homeNav">
+       		<li style="width: 92px;height: 55px;"><a class="normal active" href="首页/首页.html" style="color: white;">首页</a></li>
+		    <li style="width: 92px;height: 55px;"><a class="normal" href="榜单/榜单.html">榜单</a></li>
+            <li  style="width: 140px;height: 55px;"><a class="normal" id="productCenter" href="下载客户端/Downlode.html">下载客户端</a></li>
+            <li class="more" style="width: 113px;height: 55px;"><a href="javascript:void(0);"  id="showMore">更多</a></li>
+       </ul>
+       <ul class="secondMenu" id="secondMenu" style="display: none;">
+             <li><a href="电台.html">电台</a></li>
+             <li><a href="更多——MV/MV.html">MV</a></li>
+             <li><a href="更多——歌单/Song.html">歌单</a></li>
+             <li><a href="歌手.html">歌手</a></li>
+       </ul>
+       <ul class="subNav">
+                    <li><a target="_blank" href="音乐直播/音乐直播.html" class="icon-nav1">音乐直播</a></li>
+                    <li><a target="_blank" href="酷狗LIVE/酷狗LIVE.html" class="icon-nav2">酷狗LIVE</a></li>
+                    <li><a target="_blank" href="音乐人.html" class="icon-nav3">音乐人</a></li>
+                    <li><a target="_blank" href="游戏/Play.html" class="icon-nav4">游戏</a></li>
+                    <li><a target="_blank" href="商城/Shop.html" class="icon-nav5">商城</a></li>
+
+        </ul>
+     </div>
+</div>
+<div id="frame">
+	<div class="topPlay">
+		<div class="listened_audio">
+			<dl class="recentList">
+				<dt>最近听过的电台</dt>
+				<div class="hidebox">
+				<dd class=""><a href="">寂寞电台</a></dd>
+				<dd class="grey"><a href="">寂寞电台</a></dd>
+				<dd class=""><a href="">寂寞电台</a></dd>
+				<dd class="grey"><a href="">寂寞电台</a></dd>
+				<dd class=""><a href="">寂寞电台</a></dd>
+				<dd class="grey"><a href="">寂寞电台</a></dd>
+				</div>
+			</dl>
+		</div>
+		<div class="flash_box">
+			<div class="webPlayer"></div>
+		</div>
+	</div>
+	<div class="radio">
+		<div class="left">
+			<h2>电台分类</h2>
+		</div>
+		<div class="right">
+			<h2>
+				<label id="radiotype">全部电台</label>(<label id="radionum">232</label>个)
+			</h2>
+		</div>
+		<div class="radio_classify">
+			<div class="radio_list">
+				<dl>
+				<dd><a href="javascript:void(0);" class="allRadio" onClick="abc(0)">全部电台</a></dd>
+				<dd><a href="javascript:void(0);" onClick="abc(1)">主题电台</a></dd>
+				<dd><a href="javascript:void(0);" onClick="abc(2)">风格电台</a></dd>
+				<dd><a href="javascript:void(0);" onClick="abc(3)">语言电台</a></dd>
+				<dd><a href="javascript:void(0);" onClick="abc(4)">人群电台</a></dd>
+				<dd><a href="javascript:void(0);" onClick="abc(5)">地点电台</a></dd>
+				<dd><a href="javascript:void(0);" onClick="abc(6)">心情电台</a></dd>
+				</dl>
+			</div>
+		</div>
+		<div class="radio_right">
+			<div class="radioBox">
+				<dl id="rightRadioList_1">
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20130128102453881885.jpg"/></i>
+							<em title="点击收听KTV必点曲电台" class="popu">KTV必点曲
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20180424175222981215.jpg"/></i>
+							<em title="点击收听创造101电台" class="popu">创造101
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20180111165926961760.jpg"/></i>
+							<em title="点击收听嗨，唱起来电台" class="popu">嗨，唱起来
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20180507181913561334.jpg"/></i>
+							<em title="点击收听2018跨界歌王电台" class="popu">2018跨界歌王
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20180425110408680160.jpg"/></i>
+							<em title="点击歌手电台" class="popu">歌手
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20180423165937989890.jpg"/></i>
+							<em title="点击收听我想和你唱第三季电台" class="popu">我想和你唱第三季
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150716170806448394.jpg"/></i>
+							<em title="点击收听我想和你唱第三季电台" class="popu">蒙面歌王
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150716170806448394.jpg"/></i>
+							<em title="点击收听我想和你唱第三季电台" class="popu">蒙面歌王
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150716170806448394.jpg"/></i>
+							<em title="点击收听我想和你唱第三季电台" class="popu">蒙面歌王
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150716170806448394.jpg"/></i>
+							<em title="点击收听我想和你唱第三季电台" class="popu">蒙面歌王
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150716170806448394.jpg"/></i>
+							<em title="点击收听我想和你唱第三季电台" class="popu">蒙面歌王
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150716170806448394.jpg"/></i>
+							<em title="点击收听我想和你唱第三季电台" class="popu">蒙面歌王
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150716170806448394.jpg"/></i>
+							<em title="点击收听我想和你唱第三季电台" class="popu">蒙面歌王
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150716170806448394.jpg"/></i>
+							<em title="点击收听我想和你唱第三季电台" class="popu">蒙面歌王
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150716170806448394.jpg"/></i>
+							<em title="点击收听我想和你唱第三季电台" class="popu">蒙面歌王
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:none" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+								<span _order="1" style="display:none" title="林俊杰、金莎 - 被风吹过的夏天">林俊杰、金莎 - 被风吹过的夏天</span>
+								<span _order="2" style="display: none;" title="林俊杰 - 她说">林俊杰 - 她说</span>
+								<span _order="3" style="display: block; margin-top: 0px;" title="周传雄 - 黄昏">周传雄 - 黄昏</span>
+								<span _order="4" style="display:none" title="张学友 - 旧情绵绵">张学友 - 旧情绵绵</span>
+							</div>
+						</a>
+					</dd>
+				</dl>
+				<dl id="rightRadioList_2" style="display: none;">
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20160530152019588931.jpg"/></i>
+							<em title="点击收听百听不厌英文歌" class="popu">百听不厌英文歌
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150409163539212076.jpg"/></i>
+							<em title="点击收听怀旧粤语" class="popu">怀旧粤语
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150409162708193455.jpg"/></i>
+							<em title="点击收听粤语" class="popu">粤语
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20111012160836586512.jpg"/></i>
+							<em title="点击收听闽南语" class="popu">闽南语
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150123181217959323.jpg"/></i>
+							<em title="点击收听欧美" class="popu">欧美
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20120814165648282939.jpg"/></i>
+							<em title="点击收听怀旧华语" class="popu">怀旧华语"
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150123181658490560.jpg"/></i>
+							<em title="点击收听韩语" class="popu">韩语
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20140930193630745558.jpg"/></i>
+							<em title="点击收听国语" class="popu">国语
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20130411165902227344.jpg"/></i>
+							<em title="点击收听日语" class="popu">日语
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150122145701333244.jpg"/></i>
+							<em title="点击收听傣语" class="popu">傣语
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150123181959700623.jpg"/></i>
+							<em title="点击收听法语" class="popu">法语
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+				</dl>
+				<dl id="rightRadioList_3" style="display: none;">
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150409163247127617.jpg"/></i>
+							<em title="点击收听90后" class="popu">90后
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150409163152947915.jpg"/></i>
+							<em title="点击收听80后" class="popu">80后
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20130411165947427627.jpg"/></i>
+							<em title="点击收听70后" class="popu">70后
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20140826192759776329.jpg"/></i>
+							<em title="点击收听00后" class="popu">00后
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20160513141520269584.jpg"/></i>
+							<em title="点击收听舒缓音乐" class="popu">舒缓音乐
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20160513141831457301.jpg"/></i>
+							<em title="点击收听轻快节奏" class="popu">轻快节奏
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20160513142046835992.jpg"/></i>
+							<em title="点击收听解乏电音" class="popu">解乏电音
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+				</dl>
+				<dl id="rightRadioList_4" style="display: none;">
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20160530152019588931.jpg"/></i>
+							<em title="点击收听百听不厌英文歌" class="popu">百听不厌英文歌
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150409163539212076.jpg"/></i>
+							<em title="点击收听怀旧粤语" class="popu">怀旧粤语
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150409162708193455.jpg"/></i>
+							<em title="点击收听粤语" class="popu">粤语
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20111012160836586512.jpg"/></i>
+							<em title="点击收听闽南语" class="popu">闽南语
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150123181217959323.jpg"/></i>
+							<em title="点击收听欧美" class="popu">欧美
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20120814165648282939.jpg"/></i>
+							<em title="点击收听怀旧华语" class="popu">怀旧华语"
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150123181658490560.jpg"/></i>
+							<em title="点击收听韩语" class="popu">韩语
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20140930193630745558.jpg"/></i>
+							<em title="点击收听国语" class="popu">国语
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20130411165902227344.jpg"/></i>
+							<em title="点击收听日语" class="popu">日语
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150122145701333244.jpg"/></i>
+							<em title="点击收听傣语" class="popu">傣语
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150123181959700623.jpg"/></i>
+							<em title="点击收听法语" class="popu">法语
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+				</dl>
+				<dl id="rightRadioList_5" style="display: none;">
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150409163247127617.jpg"/></i>
+							<em title="点击收听90后" class="popu">90后
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150409163152947915.jpg"/></i>
+							<em title="点击收听80后" class="popu">80后
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20130411165947427627.jpg"/></i>
+							<em title="点击收听70后" class="popu">70后
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20140826192759776329.jpg"/></i>
+							<em title="点击收听00后" class="popu">00后
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20160513141520269584.jpg"/></i>
+							<em title="点击收听舒缓音乐" class="popu">舒缓音乐
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20160513141831457301.jpg"/></i>
+							<em title="点击收听轻快节奏" class="popu">轻快节奏
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20160513142046835992.jpg"/></i>
+							<em title="点击收听解乏电音" class="popu">解乏电音
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+				</dl>
+				<dl id="rightRadioList_6" style="display: none;">
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20160530152019588931.jpg"/></i>
+							<em title="点击收听百听不厌英文歌" class="popu">百听不厌英文歌
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150409163539212076.jpg"/></i>
+							<em title="点击收听怀旧粤语" class="popu">怀旧粤语
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150409162708193455.jpg"/></i>
+							<em title="点击收听粤语" class="popu">粤语
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20111012160836586512.jpg"/></i>
+							<em title="点击收听闽南语" class="popu">闽南语
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150123181217959323.jpg"/></i>
+							<em title="点击收听欧美" class="popu">欧美
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20120814165648282939.jpg"/></i>
+							<em title="点击收听怀旧华语" class="popu">怀旧华语"
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150123181658490560.jpg"/></i>
+							<em title="点击收听韩语" class="popu">韩语
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20140930193630745558.jpg"/></i>
+							<em title="点击收听国语" class="popu">国语
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20130411165902227344.jpg"/></i>
+							<em title="点击收听日语" class="popu">日语
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150122145701333244.jpg"/></i>
+							<em title="点击收听傣语" class="popu">傣语
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150123181959700623.jpg"/></i>
+							<em title="点击收听法语" class="popu">法语
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+				</dl>
+				<dl id="rightRadioList_7" style="display: none;">
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150409163247127617.jpg"/></i>
+							<em title="点击收听90后" class="popu">90后
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20150409163152947915.jpg"/></i>
+							<em title="点击收听80后" class="popu">80后
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20130411165947427627.jpg"/></i>
+							<em title="点击收听70后" class="popu">70后
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20140826192759776329.jpg"/></i>
+							<em title="点击收听00后" class="popu">00后
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20160513141520269584.jpg"/></i>
+							<em title="点击收听舒缓音乐" class="popu">舒缓音乐
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20160513141831457301.jpg"/></i>
+							<em title="点击收听轻快节奏" class="popu">轻快节奏
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+					<dd>
+						<a href="">
+							<i><img src="../public/img/radio/20160513142046835992.jpg"/></i>
+							<em title="点击收听解乏电音" class="popu">解乏电音
+							<b class=""></b></em>
+							<div class="songs">
+								<span _order="0" style="display:block" title="杨幂 - 爱的供养">杨幂 - 爱的供养</span>
+							</div>
+						</a>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="bottom">
+	<div class="footer">
+		<div class="links">
+			<a href="音乐人.html" title="关于酷狗">关于酷狗</a>|
+			<a href="音乐人.html" title="监督举报">监督举报</a>|
+			<a href="音乐人.html" title="广告服务">广告服务</a>|
+			<a href="音乐人.html" title="版权指引">版权指引</a>|
+			<a href="音乐人.html" title="隐私政策">隐私政策</a>|
+			<a href="音乐人.html" title="用户服务协议">用户服务协议</a>|
+			<a href="音乐人.html" title="推广合作">推广合作</a>|
+			<a href="音乐人.html" title="酷狗音乐人">酷狗音乐人</a>|
+			<a href="音乐人.html" title="酷狗音乐推">酷狗音乐推</a>|
+			<a href="音乐人.html" title="招聘信息">招聘信息</a>|
+			<a href="音乐人.html" title="客服中心">客服中心</a>|
+			<a href="音乐人.html" title="用户体验提升计划">用户体验提升计划</a>
+		</div>
+		<div class="copyright">
+			<p>我们致力于推动网络正版音乐发展，相关版权合作请联系copyrights@kugou.com</p>
+			<p>信息网络传播视听节目许可证 1910564 增值电信业务经营许可证粤B2-20060339 &nbsp;&nbsp;&nbsp;
+			<a target="_blank" href="">粤ICP备09017694号-2</a>
+			<span class="footerIcon"><a target="_blank" href="">&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
+			</p>
+			<p>广播电视节目制作经营许可证（粤）字第01270号&nbsp;&nbsp;&nbsp;&nbsp;营业性演出许可证穗天演440106026</p>
+			<p>穗公网监备案证第44010650010167&nbsp;&nbsp;&nbsp;&nbsp;互联网药品信息服务资格证编号（粤）-非经营性-2012-0018<a  href="">&nbsp;&nbsp;&nbsp;<span>粤公网安备 44010602000141号</span><img src="../public/img/radio/icon_yuewangga1.png" width="16" height="16"></a></p>
+			<p>不良信息举报邮箱：jubao_music@kugou.net&nbsp;&nbsp;&nbsp;&nbsp;客服邮箱：cs@kugou.com</p>
+			<p>Copyright&nbsp;&nbsp;©&nbsp;&nbsp;2004-2018 KuGou-Inc.All Rights Reserved
+                <a class="office-verification" href="" target="_blank"></a>
+            </p>
+
+		</div>
+
+	</div>
+</div>
+<script>
+	var secondMenu=document.getElementById("secondMenu");
+	var more=document.getElementsByClassName("more")[0];
+	more.onmouseover=function(){
+		secondMenu.style.display="block";
+	}
+	more.onmouseout=function(){
+		secondMenu.style.display="none";
+	}
+	setTimeout(function(){
+		secondMenu.onmouseover=function(){
+			this.style.display="block";
+			}
+		},500)
+
+	secondMenu.onmouseout=function(){
+		clearTimeout();
+		this.style.display="none";
+	}
+
+	function $(id){
+		return document.getElementById(id);
+	}
+
+	function abc(num){
+		for(var i=0;i<8;i++){
+			if( i==num ){
+				$("rightRadioList_"+(i+1)).style.display="block";
+
+			}else{
+				$("rightRadioList_"+(i+1)).style.display="none";
+
+			}
+		}
+	}
+	</script>
+</body>
+</html>

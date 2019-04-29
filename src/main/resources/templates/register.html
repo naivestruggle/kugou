@@ -1,0 +1,625 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>注册</title>
+<link rel="shortcut icon" href="favicon.ico"/>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	a{
+		text-decoration: none;
+	}
+	/*头部*/
+	#head{
+		height: 40px;
+		width: 100%;
+	}
+	#head .header{
+		width: 960px;
+		height: 40px;
+		margin: 0 auto;
+		background: #fff;
+		background: url(../public/img/images/header_bg.jpg) no-repeat 0 bottom;
+	}
+	#head .login{
+		float: right;
+		width:150px;
+		height: 40px;
+	}
+	.login .line{
+		background: url(../public/img/images/line.png) no-repeat;
+		width: 1px;
+    	height: 40px;
+		margin-top: 3px;
+	}
+	.login a{
+		color: #0c85cc;
+		text-decoration: none;
+		font-size: 15px;
+		font-weight: lighter;
+
+	}
+	.login a:hover{
+		text-decoration: underline;
+	}
+	.login .shopping{
+		background: url(../public/img/images/header_bg.png);
+		width: 16px;
+		height: 16px;
+		background-position: 0px -310px;
+		margin-left: 8px;
+		float: right;
+		margin-top: 13px;
+	}
+	.login li{
+		float: left;
+	}
+	/*酷狗商城  中心*/
+	#List{
+		width: 100%;
+		height: 60px;
+		background: #008ad4;
+	}
+	#List .clear_fix{
+		width: 960px;
+		height: 60px;
+		margin: 0 auto;
+	}
+	#List .ulHead{
+		width: 376px;
+		height: 60px;
+		list-style: none;
+		float: left;
+	}
+	#List li{
+		float: left;
+
+	}
+	.ulHead a{
+		display: inline;
+		color: #fff;
+		font-size: 16px;
+		height: 60px;
+		line-height: 60px;
+		padding: 0px 11px;
+		text-align: center;
+	}
+	#List .center{
+		width: 252px;
+		height: 60px;
+		float: right;
+		list-style: none;
+	}
+	.center a{
+		display: inline;
+		color: #fff;
+		font-size: 16px;
+		height: 60px;
+		line-height: 60px;
+		padding: 0px 11px;
+		text-align: center;
+	}
+	#content{
+		width: 960px;
+		margin: 0 auto;
+		padding: 40px 0 50px;
+		height: 628px;
+		}
+	#content .regBox{
+		border-radius: 0 0 5px 5px;
+		box-shadow: 0 0 10px #ccc;
+		height: 626px;
+		border-top: 6px solid #54ade7;
+		border-left: 1px solid #54ade7;
+		border-right: 1px solid #54ade7;
+		border-bottom: 1px solid #54ade7;
+	}
+	.regBox .reg_hd{
+		position: relative;
+		height: 84px;
+	}
+	.reg_hd .mobile_reg{
+		background: url(../public/img/images/kg_lgn_splice.png) no-repeat;
+		background-position: -350px -50px;
+		position: absolute;
+		width: 100%;
+		height: 27px;
+		top: 50%;
+		left: 45%;
+
+	}
+	#content .biaodan{
+		width: 858px;
+		height: 450px;
+		padding: 50px;
+
+	}
+	.biaodan .biaodan_form{
+		width: 858px;
+		height: 384px;
+
+	}
+	.textBox .ipt{
+		height: 22px;
+		padding: 7px;
+		line-height: 22px;
+		width: 275px;
+		color: #7b7b7b;
+		outline: none;
+		border:none;
+		border: 1px solid #ccc;
+		background:#f3f3f3;
+	}
+	#phonenumber{
+		font-size: 14px;
+		color: #7b7b7b;
+		float: left;
+		margin-top: -30px;
+		margin-left: 320px;
+		display: none;
+	}
+	.ipt1{
+		height: 22px;
+		padding: 7px;
+		line-height: 22px;
+		width: 120px;
+		color: #7b7b7b;
+		outline: none;
+		border:none;
+		border: 1px solid #ccc;
+		background:#f3f3f3;
+	}
+	#mima{
+		width: 229px;
+		height: 39px;
+		font-size: 14px;
+		color: #7b7b7b;
+		float: left;
+		margin-top: -30px;
+		margin-left: 320px;
+		display: none;
+	}
+	#mimax{
+		width: 98px;
+		height: 18px;
+		font-size: 14px;
+		color: #7b7b7b;
+		float: left;
+		margin-top: -30px;
+		margin-left: 320px;
+		display: none;
+	}
+	.message{
+		width: 66px;
+		height: 38px;
+		cursor: default;
+    	background: #bbb;
+		border-radius: 3px;
+		display: inline-block;
+		float: left;
+		margin-left: 10px;
+	}
+	.message span{
+		color: white;
+		line-height: 38px;
+		font-size: 14px;
+		margin-left: 5px;
+		font-family: Microsoft Yahei,simsun,sans-serif;
+	}
+	.password_sec{
+		width: 558px;
+		height: 12px;
+		font-size: 12px;
+		margin-top: 10px;
+	}
+	.password_sec .password_3{
+		display: inline;
+    	color: #7b7b7b;
+		position: relative;
+		margin: 0 5px;
+		width: 169px;
+		height: 12px;
+		overflow: hidden;
+		background: #e0e0e0;
+		float: left;
+	}
+	.password_size{
+		position: relative;
+		top: -1px;
+		display: inline;
+		color: #7b7b7b;
+		float: left;
+	}
+	.bg{
+		position: relative;
+		top: 0;
+		left: -169px;
+		display: block;
+		width: 169px;
+		height: 12px;
+	}
+	.line1{
+		position: absolute;
+		top: 0;
+		width: 2px;
+		height: 12px;
+		background: #fff;
+		overflow: hidden;
+		left: 55px;
+	}
+	.line2{
+		position: absolute;
+		top: 0;
+		width: 2px;
+		height: 12px;
+		background: #fff;
+		overflow: hidden;
+		left: 112px;
+}
+	.qiang{
+		position: relative;
+		top: -1px;
+		display: inline;
+		color: #7b7b7b;
+	}
+	.sex input{
+		margin-left: 15px;
+		margin-top: 13px;
+	}
+	.a_link{
+		text-decoration: underline;
+		color: #54ade7;
+		font-size: 14px;
+		font-weight: lighter;
+	}
+	.zc{
+		background: #3db9ec;
+		cursor: pointer;
+		width: 90px;
+		height: 42px;
+		line-height: 42px;
+		text-align: center;
+		font-size: 21px;
+		border: 1px solid transparent;
+		border-radius: 3px;
+		color: white;
+	}
+	.zc:hover{
+		background: #2085e5;
+	}
+	 .biaodan_form .ipt:hover{
+		border-color: #54ade7;
+	}
+	.biaodan_form .ipt1:hover{
+		border-color: #54ade7;
+		background-color:#E0F3F6;
+	}
+	.biaodan_form .ipt:hover{
+		border-color: #54ade7;
+		background-color:#E0F3F6;
+	}
+	/*底部*/
+	#bottom{
+		width: 100%;
+		height: 319px;
+		background: #2c323b;
+
+	}
+	#bottom .footer{
+		padding-bottom: 50px;
+	}
+	.footer .links{
+		position: relative;
+		border-bottom: 1px solid #3d424a;
+		padding: 15px 0;
+		font-size: 12px;
+		color: #b1b3b9;
+		text-align: center;
+		height: 20px;
+	}
+	.footer .links a{
+		color: #b1b3b9;
+    	padding: 10px;
+	}
+	.footer .links a:hover{
+		color:#009af3;
+
+	}
+	.footer .copyright{
+		width: 1000px;
+		height: 180px;
+		margin: 40px auto 0;
+	}
+	.copyright .footerIcon{
+		width: 16px;
+		height: 16px;
+		margin-left: 5px;
+		margin-top: -2px;
+		background: url(../public/img/images/footer_icon.png) no-repeat 0 0;
+	}
+	.copyright .office-verification{
+		margin-left: 5px;
+		padding: 5px 10px;
+		background: url(../public/img/images/logo_down.png) no-repeat 0 0;
+	}
+	.copyright p{
+		line-height: 30px;
+		text-align: center;
+		color: #b1b3b9;
+		font-size: 14px;
+	}
+	.copyright a{
+		color: #999;
+	}
+
+	#roll{
+		display: none;
+		top: 60%;
+		left: 1179px;
+		width: 36px;
+    	height: 121px;
+    	cursor: pointer;
+		position: fixed
+	}
+</style>
+</head>
+
+<body>
+<!--头部-->
+<div id="head">
+	<div class="header">
+		<div class="login">
+		<div style="float: right;height: 40px;">
+			<ul style="list-style: none;width:90px;height: 40px;float: left;margin-top: 10px;">
+				<li style="width: 42px;height: 40px;">
+					<a href="" title="新用户注册" class="zhuce">注册</a>
+				</li>
+				<li class="denglu" style="width: 42px;height: 40px;">
+					<a href="">登录</a>
+				</li>
+				<li class="line"></li>
+			</ul>
+			<a href="" class="shopping" title="购物车中还没有商品，赶紧选购吧" ></a>
+		</div>
+
+		</div>
+	</div>
+</div>
+<!--酷狗商城  中心-->
+<div id="List">
+	<div class="clear_fix">
+		<div style="width: 180px;height: 50px;padding: 10px 10px 0px 0px;float: left;">
+		<a href="首页/首页.html"><img src="../public/img/images/herder_logo.jpg"/></a>
+		</div>
+		<ul class="ulHead">
+			<li><a href="商城/Shop.html" title="酷狗商城">酷狗商城</a></li>
+			<li><a href="下载客户端/Downlode.html" title="下载客户端">下载客户端</a></li>
+			<li><a href="音乐直播/音乐直播.html" title="音乐直播">音乐直播</a></li>
+			<li><a href="音乐人.html" title="酷狗音乐人">酷狗音乐人</a></li>
+		</ul>
+		<ul class="center">
+			<li><a href="下载客户端/Downlode.html" title="酷狗音乐盒2015官方免费下载">产品中心</a></li>
+			<li><a href="会员中心/会员中心.html" title="VIP中心">VIP中心</a></li>
+			<li><a href="客服中心/客服中心.html" title="客服中心">客服中心</a></li>
+		</ul>
+	</div>
+</div>
+<div id="content">
+	<div class="regBox">
+		<div class="reg_hd">
+			<div class="mobile_reg"></div>
+		</div>
+		<div class="biaodan">
+			<form class="biaodan_form">
+				<table>
+					<tr>
+						<td style="width:300px;height:38px;text-align:right;padding-bottom: 15px;padding-right:8px;">
+							*&nbsp;手机号码:
+						</td>
+						<td style="width: 558px;height: 38px;padding-bottom: 15px;">
+							<div style="width: 558px;height: 38px;">
+								<div class="textBox" style="width: 291px;height: 38px;">
+									<div><input maxlength="30" type="text" class="ipt" id="mou1"/></div>
+								</div>
+								<span id="phonenumber">请输入手机号码</span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 300px;height: 38px;padding-bottom: 15px;text-align: right;padding-right: 8px;">
+							*&nbsp;短信验证:
+						</td>
+						<td style="width: 558px;height: 38px;padding-bottom: 15px;">
+							<div style="width: 558px;height: 38px;">
+								<div style="width: 136px;height: 38px;float: left;">
+									<input maxlength="6" type="text" class="ipt1" id="mou2">
+								</div>
+								<a href="" class="message"><span>获取短信</span></a>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td style="width:300px;height:60px;text-align:right;padding-bottom: 15px;padding-right:8px;">
+							*&nbsp;密码:
+						</td>
+						<td style="width: 558px;height:60px;padding-bottom: 15px;">
+							<div style="width: 558px;height: 38px;">
+								<div class="textBox" style="width: 291px;height: 38px;">
+									<div>
+										<input style="font-size: 24px" maxlength="30" type="password" class="ipt" id="mou3">
+									</div>
+									<span id="mima">密码需由6—16个字母，数字和符号组成</span>
+									<div class="password_sec">
+										<div class="password_size">密码强度:弱</div>
+										<div class="password_3">
+											<span class="bg" id="bg"></span>
+											<span class="line1" id="line1"></span>
+											<span class="line2" id="line2"></span>
+										</div>
+										<div class="qiang">强</div>
+									</div>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td style="width:300px;height:38px;text-align:right;padding-bottom: 15px;padding-right:8px;">
+							*&nbsp;确认密码:
+						</td>
+						<td style="width: 558px;height: 38px;padding-bottom: 15px;">
+							<div style="width: 558px;height: 38px;">
+								<div class="textBox" style="width: 291px;height: 38px;">
+								<div>
+									<input maxlength="30" type="text" class="ipt" id="mou4">
+								</div>
+								<span id="mimax">请再次确认密码</span>
+							</div>
+							</div>
+
+						</td>
+					</tr>
+					<tr>
+						<td style="width:300px;height:38px;text-align:right;padding-bottom: 15px;padding-right:8px;">
+							*&nbsp;性别:
+						</td>
+						<td style="width: 558px;height: 38px;padding-bottom: 15px;">
+							<div style="width: 558px;height: 38px;">
+								<div class="textBox" style="width: 291px;height: 38px;">
+								<div class="sex">
+									<input type="radio" name="sex">男
+									<input type="radio" name="sex">女
+									<!--name相同，则只能选择一个-->
+								</div>
+							</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td style="width:300px;height:38px;text-align:right;padding-bottom: 15px;padding-right:8px;"></td>
+						<td style="width: 558px;height: 38px;padding-bottom: 15px;">
+							<div style="width: 558px;height: 38px;">
+								<!--<input type="checkbox">-->
+								<!--默认不选中-->
+								<input id="mou5" name="checkbox" type="checkbox" value="checkbox" checked="checked" /> <!--默认选中-->
+								我已经认真阅读并同意&nbsp;&nbsp;
+								<a href="" class="a_link">用户协议</a>、
+								<a href="" class="a_link">隐私政策</a>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td style="width:300px;height:38px;text-align:right;padding-bottom: 15px;padding-right:8px;"></td>
+						<td style="width: 558px;height: 38px;padding-bottom: 15px;">
+							<p class="zc">注册</p>    <!--onclick="window.open('')"-->
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+</div>
+<div id="bottom">
+	<div class="footer">
+		<div class="links">
+			<a href="">关于酷狗</a>|
+			<a href="">监督举报</a>|
+			<a href="">广告服务</a>|
+			<a href="">版权指引</a>|
+			<a href="">隐私政策</a>|
+			<a href="">用户服务协议</a>|
+			<a href="">推广合作</a>|
+			<a href="">酷狗音乐人</a>|
+			<a href="">酷狗音乐推</a>|
+			<a href="">招聘信息</a>|
+			<a href="">客服中心</a>|
+			<a href="">用户体验提升计划</a>
+		</div>
+		<div class="copyright">
+			<p>我们致力于推动网络正版音乐发展，相关版权合作请联系copyrights@kugou.com</p>
+			<p>信息网络传播视听节目许可证 1910564 增值电信业务经营许可证粤B2-20060339 &nbsp;&nbsp;&nbsp;
+			<a target="_blank" href="">粤ICP备09017694号-2</a>
+			<span class="footerIcon"><a target="_blank" href="">&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
+			</p>
+			<p>广播电视节目制作经营许可证（粤）字第01270号&nbsp;&nbsp;&nbsp;&nbsp;营业性演出许可证穗天演440106026</p>
+			<p>穗公网监备案证第44010650010167&nbsp;&nbsp;&nbsp;&nbsp;互联网药品信息服务资格证编号（粤）-非经营性-2012-0018<a  href="">&nbsp;&nbsp;&nbsp;<span>粤公网安备 44010602000141号</span><img src="../public/img/images/icon_yuewangga1.png" width="16" height="16"></a></p>
+			<p>不良信息举报邮箱：jubao_music@kugou.net&nbsp;&nbsp;&nbsp;&nbsp;客服邮箱：cs@kugou.com</p>
+			<p>Copyright&nbsp;&nbsp;©&nbsp;&nbsp;2004-2018 KuGou-Inc.All Rights Reserved
+                <a class="office-verification" href="" target="_blank"></a>
+            </p>
+
+		</div>
+
+	</div>
+</div>
+<!--回到顶部-->
+<a href="#" id="roll">
+	<img src="../public/img/images/scrolltop.png"/>
+</a>
+
+<script>
+	/*手机号*/
+	var mou1=document.getElementById("mou1");
+	var phonenumber=document.getElementById("phonenumber");
+	mou1.onclick=function(){
+		phonenumber.style.display="block";
+	}
+	mou1.onblur=function(){
+		phonenumber.style.display="none";
+	}
+
+	/*密码*/
+	var mou3=document.getElementById("mou3");
+	var mima=document.getElementById("mima");
+	mou3.onclick=function(){
+		mima.style.display="block";
+	}
+	mou3.onblur=function(){
+		mima.style.display="none";
+	}
+	var bg=document.getElementById("bg");
+	var line1=document.getElementById("line1");
+	var line2=document.getElementById("line2");
+	mou3.onchange=function(){
+		bg.style.background="#a9d6f3";
+	}
+
+
+	/*确认密码*/
+	var mou4=document.getElementById("mou4");
+	var mimax=document.getElementById("mimax");
+	mou4.onclick=function(){
+		mimax.style.display="block";
+	}
+	mou4.onblur=function(){
+		mimax.style.display="none";
+	}
+
+	/*注册*/
+	var zc=document.getElementsByClassName("zc")[0];
+	var mou5=document.getElementById("mou5");
+	mou5.onclick=function(){
+		if(this.checked == true){
+			zc.style.background="#3db9ec";
+		}else{
+			zc.style.background="#bbb";
+		}
+
+
+	}
+
+	/*返回最上面*/
+	window.onscroll=function(){
+		if(document.documentElement.scrollTop+document.body.scrollTop>400){
+			document.getElementById("roll").style.display="block";
+		}else{
+			document.getElementById("roll").style.display="none";
+		}
+	}
+</script>
+
+
+</body>
+</html>

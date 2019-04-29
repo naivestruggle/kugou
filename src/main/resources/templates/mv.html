@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="../public/css/mv.css">
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+  </head>
+  <body>
+<!-- 头 -->
+
+    <section id="con">
+      <div class="BigImg">
+  			<ul class="BigImgs">
+  				<li class="BigImg1" style="display: inline">
+  					<a href="mv.html" ><img src="../public/img/mv/mv1.jpg"/ id="picc"></a>
+  					<span class="tag1">
+  						<a href="mv.html"  class="name">吴亦凡 - Like That<em></em></a>
+  					</span>
+  				</li>
+  				<li class="BigImg2" style="display: inline">
+  					<a href="mv.html" ><img src="../public/img/mv/mv2.jpg"/></a>
+  					<span class="tag2">
+  						<a href="mv.html"  class="name">AOA - Bingle Bangle<em></em></a>
+  					</span>
+  				</li>
+  				<li class="BigImg3" style="display: inline">
+  					<a href="mv.html" ><img src="../public/img/mv/mv3.jpg"/></a>
+  					<span class="tag3">
+  						<a href="mv.html" class="name">Hwang Seon Ho - 像那天一样 (Like we just met)<em></em></a>
+  					</span>
+  				</li>
+  				<li class="BigImg4" style="display: inline">
+  					<a href="mv.html" ><img src="../public/img/mv/mv4.jpg"/></a>
+  					<span class="tag4">
+  						<a href="mv.html"  class="name">许佳慧 - 本末倒置<em></em></a>
+  					</span>
+  				</li>
+  				<li class="BigImg5" style="display: inline">
+  					<a href="mv.html" ><img src="../public/img/mv/mv5.jpg"/></a>
+  					<span class="tag5">
+  						<a href="mv.html"  class="name">张杰 - Pretty White Lies<em></em></a>
+  					</span>
+  				</li>
+  			</ul>
+  			<ul class="dot">
+  				<li class="dott1"></li>
+  				<li class="dott2"></li>
+  				<li class="dott3"></li>
+  				<li class="dott4"></li>
+  				<li class="dott5"></li>
+  			</ul>
+  		</div>
+      <div id="mvhot">
+  			<h3>
+  				<span>&nbsp;&nbsp;&nbsp;MV热播总播排行</span>
+  				<a href="mv.html" >更多</a>
+  			</h3>
+  			<ul class="queue">
+  				<li onClick="window.open('mv.html')">
+  					<span class="Qnum" id="Q1"></span>
+  					<span class="Qname">儿童歌曲-我的小猪</span>
+  					<em class="play"></em>
+  				</li>
+  				<li onClick="window.open('mv.html')">
+  					<span class="Qnum" id="Q2"></span>
+  					<span class="Qname">筷子兄弟-小苹果</span>
+  					<em class="play"></em>
+  				</li>
+  				<li onClick="window.open('mv.html')">
+  					<span class="Qnum" id="Q3"></span>
+  					<span class="Qname">儿童歌曲-小跳蛙</span>
+  					<em class="play"></em>
+  				</li>
+  				<li onClick="window.open('mv.html')">
+  					<span class="Qnum" id="Q4"></span>
+  					<span class="Qname">筷子兄弟-小水果</span>
+  					<em class="play"></em>
+  				</li>
+  				<li onClick="window.open('mv.html')">
+  					<span class="Qnum" id="Q5"></span>
+  					<span class="Qname">儿童歌曲-我的好妈妈</span>
+  					<em class="play"></em>
+  				</li>
+  				<li onClick="window.open('mv.html')">
+  					<span class="Qnum" id="Q6"></span>
+  					<span class="Qname">儿童歌曲-小毛驴</span>
+  					<em class="play"></em>
+  				</li>
+  				<li onClick="window.open('mv.html')">
+  					<span class="Qnum" id="Q7"></span>
+  					<span class="Qname">杨烁-找朋友</span>
+  					<em class="play"></em>
+  				</li>
+  				<li onClick="window.open('mv.html')">
+  					<span class="Qnum" id="Q8"></span>
+  					<span class="Qname">儿童歌曲-拔萝卜</span>
+  					<em class="play"></em>
+  				</li>
+  				<li onClick="window.open('mv.html')">
+  					<span class="Qnum" id="Q9"></span>
+  					<span class="Qname">儿童歌曲-小燕子</span>
+  					<em class="play"></em>
+  				</li>
+  				<li onClick="window.open('mv.html')">
+  					<span class="Qnum" id="Q10"></span>
+  					<span class="Qname">儿童歌曲-小兔子乖乖</span>
+  					<em class="play"></em>
+  				</li>
+  			</ul>
+  		</div>
+    </section>
+    <!-- 内容 -->
+    <section id="con2">
+      <ul class="nav nav-pills">
+        <h3>MV分类</h3>
+        <li class="nav-item"><a class="nav-link active" href="#NO1" data-toggle="pill">新歌推荐</a></li>
+        <li class="nav-item"><a href="#NO2" class="nav-link" data-toggle="pill">欧美精选</a></li>
+        <li class="nav-item"><a href="#NO3" class="nav-link" data-toggle="pill">日韩精选</a></li>
+        <li class="nav-item"><a href="#NO4" class="nav-link" data-toggle="pill">华语精选</a></li>
+    	</ul>
+      <!--要切换的内容-->
+    	<div class="tab-content">
+        <h3>新歌推荐</h3>
+        <div class="tab-pane active" id="NO1">
+          <ul>
+            <li>
+              <a href="mv.html">
+                <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg"/>
+              </a>
+              <p>HANA - 飞蛾扑火</p>
+            </li>
+            <li>
+              <a href="mv.html">
+                <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg"/>
+              </a>
+              <p>HANA - 飞蛾扑火</p>
+            </li>
+            <li>
+              <a href="mv.html">
+                <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg"/>
+              </a>
+              <p>HANA - 飞蛾扑火</p>
+            </li>
+            <li>
+              <a href="mv.html">
+                <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg"/>
+              </a>
+              <p>HANA - 飞蛾扑火</p>
+            </li>
+            <li>
+              <a href="mv.html">
+                <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg"/>
+              </a>
+              <p>HANA - 飞蛾扑火</p>
+            </li>
+            <li>
+              <a href="mv.html">
+                <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg"/>
+              </a>
+              <p>HANA - 飞蛾扑火</p>
+            </li>
+          </ul>
+        </div>
+        <div class="tab-pane" id="NO2" style="color:red">
+          <ul>
+            <li>
+              <a href="mv.html">
+                <img src="../public/img/mv/72462591CB07F1E81C2B99405C882B6A.jpg"/>
+              </a>
+              <p>HANA - 飞蛾扑火</p>
+            </li>
+            <li>
+              <a href="mv.html">
+                <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg"/>
+              </a>
+              <p>HANA - 飞蛾扑火</p>
+            </li>
+            <li>
+              <a href="mv.html">
+                <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg"/>
+              </a>
+              <p>HANA - 飞蛾扑火</p>
+            </li>
+            <li>
+              <a href="mv.html">
+                <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg"/>
+              </a>
+              <p>HANA - 飞蛾扑火</p>
+            </li>
+            <li>
+              <a href="mv.html">
+                <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg"/>
+              </a>
+              <p>HANA - 飞蛾扑火</p>
+            </li>
+            <li>
+              <a href="mv.html">
+                <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg"/>
+              </a>
+              <p>HANA - 飞蛾扑火</p>
+            </li>
+          </ul>
+        </div>
+        <div class="tab-pane" id="NO3" style="color:red">
+          <ul>
+            <li>
+              <a href="mv.html">
+                <img src="../public/img/mv/6FEBB88119E85FDE6B64C9952AE89BF7.jpg"/>
+              </a>
+              <p>HANA - 飞蛾扑火</p>
+            </li>
+            <li>
+              <a href="mv.html">
+                <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg"/>
+              </a>
+              <p>HANA - 飞蛾扑火</p>
+            </li>
+            <li>
+              <a href="mv.html">
+                <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg"/>
+              </a>
+              <p>HANA - 飞蛾扑火</p>
+            </li>
+            <li>
+              <a href="mv.html">
+                <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg"/>
+              </a>
+              <p>HANA - 飞蛾扑火</p>
+            </li>
+            <li>
+              <a href="mv.html">
+                <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg"/>
+              </a>
+              <p>HANA - 飞蛾扑火</p>
+            </li>
+            <li>
+              <a href="mv.html">
+                <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg"/>
+              </a>
+              <p>HANA - 飞蛾扑火</p>
+            </li>
+          </ul>
+        </div>
+        <div class="tab-pane" id="NO4" style="color:red">
+          <ul>
+            <li>
+              <a href="mv.html">
+                <img src="../public/img/mv/E901069D05CF8D8BA92E0115D3DA4934.jpg"/>
+              </a>
+              <p>HANA - 飞蛾扑火</p>
+            </li>
+            <li>
+              <a href="mv.html">
+                <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg"/>
+              </a>
+              <p>HANA - 飞蛾扑火</p>
+            </li>
+            <li>
+              <a href="mv.html">
+                <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg"/>
+              </a>
+              <p>HANA - 飞蛾扑火</p>
+            </li>
+            <li>
+              <a href="mv.html">
+                <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg"/>
+              </a>
+              <p>HANA - 飞蛾扑火</p>
+            </li>
+            <li>
+              <a href="mv.html">
+                <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg"/>
+              </a>
+              <p>HANA - 飞蛾扑火</p>
+            </li>
+            <li>
+              <a href="mv.html">
+                <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg"/>
+              </a>
+              <p>HANA - 飞蛾扑火</p>
+            </li>
+          </ul>
+        </div>
+    	</div>
+    </section>
+
+<!-- 尾巴 -->
+
+    <script src="../public/js/mv.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../public/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  	<script src="../public/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+  </body>
+</html>

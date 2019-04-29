@@ -1,0 +1,9 @@
+window.onscroll=function(){
+  if(document.documentElement.scrollTop+document.body.scrollTop>400){
+    document.getElementById("scollTop").style.display="block";
+  }
+  else{
+    document.getElementById("scollTop").style.display="none";
+  }
+}
+onscroll();

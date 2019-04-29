@@ -1,0 +1,741 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>酷狗VIP 会员中心</title>
+<link rel="shortcut icon"  href="favicon.ico"/>
+</head>
+<style>
+	*{
+		margin:0;
+		padding: 0;
+	}
+	a{
+		text-decoration: none;
+	}
+	li{
+		list-style: none;
+
+	}
+	/*头部*/
+	#topbox{
+		width: 100%;
+		height: 135px;
+	}
+	.head{
+		width: 100%;
+		height: 90px;
+		background-color: rgb(246,246,246);
+	}
+	.headbox{
+		width: 960px;
+		height: 90px;
+		margin: 0 auto;
+	}
+	.hi{
+		position: absolute;
+		top:10;
+		width: 158px;
+		height: 64px;
+	}
+	.hi a{
+		width: 158px;
+		height: 64px;
+		display: block;
+    	background-repeat: no-repeat;
+    	background-position: -141px -582px;
+		background-image: url(../public/img/vip/vip_splice01.png);
+	}
+	.landing{
+		color: #7b7b7b;
+		float: right;
+		font-size: 12px;
+		line-height: 100px;
+		font-family: Tahoma,Arial,宋体,sans-serif;
+	}
+	.landing a:hover{
+		color:#169af3!important;
+	}
+	.headnav{
+		width: 100%;
+		height: 45px;
+		background-color: rgb(205,4,41);
+	}
+	.headnavbox{
+		margin: 0 auto;
+		width: 960px;
+		height: 45px;
+	}
+	.headnavbox li{
+		float: left;
+	}
+	.hlb a{
+		padding: 0 20px;
+		font:18px/45px Microsoft Yahei,"\5b8b\4f53",sans-serif;
+		color:#fff;
+	}
+	.headnavboxspe{
+		background: #8f000a;
+	}
+	.headnavbox ul li:hover{
+		background: rgb(233,22,62);
+	}
+	.hrb{
+		float: right;
+	}
+	.hrb a{
+		padding: 0 10px;
+		color:#fff;
+		font-family: "\5FAE\8F6F\96C5\9ED1";
+		font:14px/45px;
+		line-height: 45px;
+	}
+	/*中间大图*/
+	.bgbox{
+		background-color: #f8eace;
+		width: 100%;
+		height: 320px;
+	}
+	.bgpic{
+		background-image: url(../public/img/vip/vipbanner.jpg);
+		background-repeat: no-repeat;
+		width: 100%;
+		height: 320px;
+		float: left;
+	}
+	.registbox{
+		width:230px;
+		height: 320px;
+		background: #fff;
+		opacity: 0.8;
+		z-index: 1;
+		left: 50%;
+		margin-left: -480px;
+		position: absolute;
+		top:135px;
+	}
+	.regbox{
+		width: 190px;
+    	padding-left: 25px;
+   		padding-top: 30px;
+    	position: relative;
+    	z-index: 100;
+	}
+	.btn{
+		border-bottom: 1px dotted #888888;
+    	padding-bottom: 10px;
+		font-size: 12px;
+		font-family: Tahoma, Arial, 宋体, sans-serif;
+	}
+	.btn1 a{
+		width: 178px;
+    	height: 36px;
+    	line-height: 36px;
+    	border: 1px solid #D1D1D1;
+    	text-align: center;
+    	background-color: #f5f5f5;
+    	background-repeat: repeat-x;
+		display: block;
+	}
+	.btn1 a:hover{
+		color: #333333;
+    	border-color: #AEAEAE;
+    	background-color: #ececec;
+    	background-repeat: repeat-x;
+	}
+	.btn p{
+		line-height: 24px;
+    	padding-top: 10px;
+		padding-top: 10px;
+		display: block;
+	}
+	.btn p a{
+		font-weight: 700;
+    	color: #FF0D3D;
+	}
+	.btn p a:hover{
+		text-decoration: underline;
+	}
+	.btnb{
+		font-family: Tahoma, Arial, 宋体, sans-serif;
+	}
+	.btnb p{
+		line-height: 25px;
+		font-size: 12px;
+	}
+	.btn2{
+		font-size: 18px;
+    	width: 180px;
+    	height: 40px;
+    	background-position: -456px 0px;
+    	background: url(../public/img/vip/vip_ico_150327.png);
+		background-repeat: no-repeat;
+		margin-top: 20px;
+		text-align: center;
+		line-height: 40px;
+	}
+	.btn3{
+		background-position: -820px 0px;
+		background-image: url(../public/img/vip/vip_ico_150327.png);
+		font-size: 18px;
+		background-repeat: no-repeat;
+		text-align: center;
+		width: 180px;
+    	height: 40px;
+		margin-top: 20px;
+		line-height: 40px;
+	}
+	#body{
+		background-color: rgba(246,246,246);
+		height: 1396px;
+		width: 100%;
+	}
+	#bodybox{
+		width: 960px;
+		height: 1192px;
+		padding-top: 20px;
+		margin: 0 auto;
+
+
+	}
+	.blb{
+		width:690px;
+		height: 992px;
+		float: left;
+		padding-bottom: 80px;
+	}
+	.blb h4{
+		display: inline-block;
+    	margin-bottom: 30px;
+		background: url(../public/img/vip/vip_bg.png)no-repeat #DDDDDD;
+		height: 34px;
+		width: 690px;
+		text-indent: -999px;
+    	overflow: hidden;
+		background-position: 0 -200px;
+	}
+	.musicspe{
+		display: block;
+		height: 232px;
+		width: 690px;
+		margin-bottom: 30px;
+	}
+	.musicspe a{
+		border: 0.1px solid rgba(0,0,0,0);
+	}
+	.musicspe h5{
+		height: 32px;
+		background: url(../public/img/vip/vip_bg.png) 10px 0 no-repeat #F6F6F6;
+		text-indent: -999px;
+    	overflow: hidden;
+	}
+	.musicspepic{
+		height: 200px;
+		background: url(../public/img/vip/privi_music_1.png) no-repeat #FFFFFF;
+		width: 690px;
+	}
+	.musicspepic a{
+		width: 229.6px;
+		height: 199.6px;
+		float: left;
+	}
+	.musicspepic span{
+		top:15px;
+		left:11px;
+		font-size: 16px;
+		font-family: "\5FAE\8F6F\96C5\9ED1";
+		position: relative;
+		color:black;
+	}
+	.musicspepic a:hover{
+		border: 0.4px solid #F90409;
+	}
+	.musicspepic a:hover .blbspan{
+		color:red;
+	}
+	.indentspe{
+		height: 232px;
+		width: 690px;
+		margin-bottom: 30px;
+	}
+	.indentspe h5{
+		height: 32px;
+		background: url(../public/img/vip/vip_bg.png) 10px -50px no-repeat #F6F6F6;
+		text-indent: -999px;
+    	overflow: hidden;
+	}
+	.indentspepic{
+		height: 200px;
+		background: url(../public/img/vip/privi_cert.png) no-repeat #FFFFFF;
+		width: 690px;
+	}
+	.indentspepic a{
+		width: 229.6px;
+		height: 199.6px;
+		float:left;
+	}
+	.indentspepic span{
+		top:15px;
+		left:11px;
+		font-size: 16px;
+		font-family: "\5FAE\8F6F\96C5\9ED1";
+		position: relative;
+		color:black;
+	}
+	.indentspepic a:hover{
+		color:rgb(255,0,42);
+		border: 0.4px solid #F90409;
+	}
+	.indentspepic a:hover .blbspan{
+		color:red;
+	}
+
+	.gamespe{
+		height: 232px;
+		width: 690px;
+		margin-bottom: 30px;
+	}
+	.gamespe h5{
+		height: 32px;
+		background: url(../public/img/vip/vip_bg.png) 10px -100px no-repeat #F6F6F6;
+		text-indent: -999px;
+    	overflow: hidden;
+	}
+	.gamespepic{
+		height: 200px;
+		background: url(../public/img/vip/privi_game.png) no-repeat #FFFFFF;
+		width: 690px;
+	}
+	.gamespepic a{
+		width: 344.6px;
+		height: 199.6px;
+		float:left;
+	}
+	.gamespepic span{
+		top:15px;
+		left:11px;
+		font-size: 16px;
+		font-family: "\5FAE\8F6F\96C5\9ED1";
+		position: relative;
+		color:black;
+	}
+	.gamespepic a:hover{
+		color:rgb(255,0,42);
+		border: 0.4px solid #F90409;
+	}
+	.gamespepic a:hover .blbspan{
+		color:red;
+	}
+	.morespe{
+		height: 232px;
+		width: 690px;
+		margin-bottom: 30px;
+	}
+	.morespe h5{
+		height: 32px;
+		background: url(../public/img/vip/vip_bg.png) 10px -150px no-repeat #F6F6F6;
+		text-indent: -999px;
+    	overflow: hidden;
+	}
+	.morespepic{
+		height: 200px;
+		background: url(../public/img/vip/privi_huodong.png) no-repeat #FFFFFF;
+		width: 690px;
+	}
+	.morespepic a{
+		width: 689.6px;
+		height: 199.6px;
+		float: left;
+	}
+	.morespepic a:hover{
+		color:rgb(255,0,42);
+		border: 0.4px solid #F90409;
+	}
+	.brb{
+		width: 240px;
+		height: 826px;
+		margin-bottom: 30px;
+		float: right;
+	}
+	.hotact{
+		width: 240px;
+		height: 236px;
+		margin-bottom: 20px;
+	}
+	.hotact h4{
+		height: 34px;
+    	text-indent: -999px;
+    	background: url(../public/img/vip/vip_bg.png) no-repeat #DDDDDD;
+		background-position:0 -250px;
+    	overflow: hidden;
+	}
+	.helpcenter{
+		width: 240px;
+		height: 267px;
+		margin-bottom: 20px;
+	}
+	.helpcenter h4{
+		height: 34px;
+    	text-indent: -999px;
+   		background: url(../public/img/vip/vip_bg.png) no-repeat #DDDDDD;
+    	overflow: hidden;
+		background-position: 0 -300px;
+	}
+	.helpq{
+		border: 1px solid #E8E8E8;
+    	border-top: 0 none;
+    	background: #FFFFFF;
+    	padding: 8px 20px 13px;
+	}
+	.helpq ul{
+		border-bottom: 1px dashed #CCCCCC;
+    	width: 198px;
+    	padding-bottom: 8px;
+		height: 65px;
+	}
+	.helpq ul li{
+		float: left;
+    	height: 22px;
+    	width: 100%;
+	}
+	.helpq li em{
+		float: left;
+    	width: 16px;
+    	height: 22px;
+    	line-height: 22px;
+    	color: #FFFFFF;
+    	text-align: center;
+    	font-style: normal;
+    	background: url(../public/img/vip/vip_bg.png) 0 -462px no-repeat;
+	}
+	.helpq li a{
+		float: left;
+    	display: inline;
+    	margin-left: 9px;
+    	color: #666666;
+		font-size: 12px;
+	}
+	.kefu{
+		margin: 13px auto 17px;
+		height: auto;
+	}
+	.title{
+		font-size: 16px;
+    	color: #333;
+    	line-height: 18px;
+    	font-family: "microsoft yahei";
+    	margin-bottom: 15px;
+	}
+	.mail{
+		background: url(../public/img/vip/kefu_mess_icon.png) 0px 2px no-repeat;
+		font-size: 13px;
+    	color: #666;
+    	text-indent: 27px;
+    	line-height: 18px;
+    	margin-bottom: 5px;
+	}
+	.time{
+		text-indent: 0px;
+		font-size: 13px;
+    	color: #666;
+    	line-height: 18px;
+    	margin-bottom: 5px;
+	}
+	.btns a{
+		width: 92px;
+    	height: 32px;
+    	line-height: 32px;
+    	color: #FF2B2B;
+    	text-align: center;
+    	display: inline-block;
+    	background: url(../public/img/vip/vip_bg.png) 0 -568px no-repeat;
+		font-size: 12px;
+	}
+	.client{
+		margin-bottom: 20px;
+		width: 240px;
+		height: 142px;
+	}
+	.client h4{
+		height: 34px;
+    	text-indent: -999px;
+    	background: url(../public/img/vip/vip_bg.png) no-repeat #DDDDDD;
+    	overflow: hidden;
+		background-position: 0 -350px;
+	}
+	.clientpic{
+		height: 75px;
+		border: 1px solid #E8E8E8;
+    	border-top: 0 none;
+    	background: #FFFFFF;
+    	padding: 14px 17px 18px;
+	}
+	.clientpic a{
+		float: left;
+    	width: 68px;
+    	padding-top: 57px;
+    	text-align: center;
+		font-size: 12px;
+
+	}
+	.clientpic a:hover{
+		color:#FF2030;
+	}
+	.it1{
+		background: url(../public/img/vip/vip_bg.png)no-repeat;
+		background-position: 10px -625px;
+	}
+	.it2{
+		background: url(../public/img/vip/vip_bg.png)no-repeat;
+		background-position: -66px -625px;
+	}
+	.it3{
+		background: url(../public/img/vip/vip_bg.png)no-repeat;
+		background-position: -142px -625px;
+	}
+	.linkbb{
+		width: 240px;
+		height: 121px;
+	}
+	.linkbb h4{
+		height: 34px;
+    	text-indent: -999px;
+    	background: url(../public/img/vip/vip_bg.png) no-repeat #DDDDDD;
+    	overflow: hidden;
+		background-position: 0 -400px;
+	}
+	.linkbg{
+		height: 66px;
+		border: 1px solid #E8E8E8;
+    	border-top: 0 none;
+    	background: #FFFFFF;
+    	padding: 10px 19px 10px;
+		float: left;
+	}
+	.linkbg p{
+		width: 200px;
+    	height: 22px;
+    	float: left;
+    	overflow: hidden;
+    	line-height: 22px;
+	}
+	.linkbg  a{
+    	font-size: 12px;
+    	color: #666666;
+	}
+	/*尾部*/
+	#last{
+		width: 100%;
+		padding-top: 20px;
+		font-family: Microsoft Yahei,'\5b8b\4f53',Arial,Verdana;
+		height: 164px;
+	}
+	.foot{
+		margin: 0 auto;
+		color: #999;
+		width: 960px;
+		font-size: 12px;
+	}
+	.link{
+		width: 960px;
+		margin-top: 15px;
+    	border-top: #c2c2c2 1px solid;
+    	padding:15px 0px;
+
+	}
+	.link a{
+		color: #666;
+		padding: 0px 3px;
+	}
+	.copyright{
+
+		height: 100px;
+	}
+	.copyright p{
+		line-height: 25px;
+	}
+	.copyright a{
+		color: #999;
+		padding: 0px 3px;
+	}
+	.copyright ../public/img/vip{
+		width: 16px;
+		height: 16px;
+		margin-top: -2px;
+	}
+	.copyright a:hover{
+		color: #666;
+	}
+	.kgpic{
+		width: 148px;
+    	background: url(../public/img/vip/ikugou2.png) no-repeat;
+    	height: 35px;
+		position: relative;
+		margin-left:800px;
+    	top:-85px;
+	}
+</style>
+<body>
+<!--头部-->
+<div id="topbox">
+	<div class="head">
+		<div class="headbox">
+			<div class="hi"><a href=""></a></div>
+			<div class="landing">
+				你还没登录，请 <a href="" style="color: #D7002B;font-weight: bold;">登录</a> | <a href="register.html">注册</a>
+			</div>
+		</div>
+	</div>
+	<div class="headnav">
+		<div class="headnavbox">
+			<div class="hlb">
+				<ul>
+					<li class="headnavboxspe"><a href="index.html" >首页</a></li>
+					<li><a href="">VIP特权</a></li>
+					<li><a href="">音乐包特权</a></li>
+					<li><a href="">精彩活动</a></li>
+				</ul>
+			</div>
+			<div class="hrb">
+				<ul>
+					<li><a href="">充值</a></li>
+					<li><a href="">兑换</a></li>
+					<li><a href="">帮助</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!--中间大图-->
+<div>
+	<div class="bgbox">
+		<a href=""><div class="bgpic"></div></a>
+	</div>
+	<div class="registbox">
+		<div class="regbox">
+			<div class="btn">
+				<div class="btn1"><a href="" >用户登录</a></div>
+				<p>还不是酷狗用户？<a href="">注册</a></p>
+			</div>
+			<div class="btnb">
+				<div class="btn2"><a href="" style="color: #fff;">开通酷狗豪华VIP</a></div>
+				<p>多项特权服务，畅享音乐生活</p>
+				<div class="btn3"><a href="" style="color: #fff;">购买音乐包</a></div>
+				<p>付费歌曲下载，低至0.02元/首</p>
+			</div>
+		</div>
+	</div>
+</div>
+<!--中间部分-->
+<div id="body">
+	<div id="bodybox">
+		<div class="blb">
+			<h4>会员特权</h4>
+			<div class="musicspe">
+				<h5>更强大-音乐特权</h5>
+				<div class="musicspepic">
+					<a href=""><span class="blbspan">付费音乐高品试听</span></a>
+					<a href=""><span class="blbspan">会员专属曲库</span></a>
+					<a href=""><span class="blbspan">VIP高速下载</span></a>
+				</div>
+			</div>
+			<div class="indentspe">
+				<h5>更贴心-身份特权</h5>
+				<div class="indentspepic">
+					<a href=""><span class="blbspan">尊贵身份标识</span></a>
+					<a href=""><span class="blbspan">客户端去广告</span></a>
+					<a href=""><span class="blbspan">VIP专用客服</span></a>
+				</div>
+			</div>
+			<div class="gamespe">
+				<h5>更丰富-直播及游戏特权</h5>
+				<div class="gamespepic">
+					<a href=""><span class="blbspan">赠送直播专用座驾</span></a>
+					<a href=""><span class="blbspan">游戏VIP礼包领取</span></a>
+				</div>
+			</div>
+			<div class="morespe">
+				<h5>更好玩-精彩活动特权</h5>
+				<div class="morespepic"><a href=""></a></div>
+			</div>
+
+		</div>
+		<div class="brb">
+			<div class="hotact">
+				<h4>热门活动</h4>
+				<div>
+					<a href=""><img src="../public/img/vip/tq_img05.png"></a>
+					<a href=""><img src="../public/img/vip/fxcar.jpg"/></a>
+				</div>
+			</div>
+			<div class="helpcenter">
+				<h4>热门活动</h4>
+				<div class="helpq">
+					<ul>
+						<li><em>1</em><a href="">什么是酷狗VIP？</a></li>
+						<li><em>2</em><a href="">如何开通酷狗VIP服务？</a></li>
+						<li><em>3</em><a href="">酷狗VIP有什么特权？</a></li>
+					</ul>
+					<div class="kefu">
+						<p class="title">联系方式</p>
+						<p class="mail">cs@kugou.com</p>
+						<p class="time">工作时间:9:30-18:30</p>
+					</div>
+					<div class="btns">
+						<a href="">常见问题</a>
+						<a href="">意见反馈</a>
+					</div>
+				</div>
+			</div>
+			<div class="client">
+				<h4>客户端下载</h4>
+				<div class="clientpic">
+					<a href="" class="it1">PC</a>
+					<a href="" class="it2">安卓</a>
+					<a href="" class="it3">IOS</a>
+				</div>
+			</div>
+			<div class="linkbb">
+				<h4></h4>
+				<div class="linkbg">
+					<p><a href="index.html">酷狗音乐官方网站</a></p>
+					<p><a href="LiveMusic.html">酷狗直播网</a></p>
+					<p><a href="">酷狗游戏官方网站</a></p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!--结尾-->
+	<div id="last">
+		<div class="foot">
+			<div class="link">
+
+				<a href="../../音乐人.html">关于酷狗</a> |
+				<a href="../../音乐人.html">广告服务</a> |
+				<a href="../../音乐人.html">版权指引</a> |
+				<a href="../../音乐人.html">用户服务协议</a> |
+				<a href="../../音乐人.html">推广合作</a> |
+				<a href="../../音乐人.html">酷狗音乐人</a> |
+				<a href="../../音乐人.html">酷狗音乐推</a> |
+				<a href="../../音乐人.html">招聘信息</a> |
+				<a href="../../音乐人.html">客服中心</a> |
+				<a href="../../音乐人.html">用户体验提升计划</a>
+			</div>
+			<div >
+				<div class="copyright">
+					<p>我们致力于推动网络正版音乐发展，相关版权合作请联系copyrights@kugou.com</p>
+					<p>信息网络传播视听节目许可证 1910564 <a href="">互联网文化经营单位</a> 增值电信业务经营许可证   粤B2-20060339<a href="">  粤ICP备09017694号-2 <../public/img/vip src="../public/img/vip/footer_icon.jpg"/></a>
+					</p>
+					<p>广播电视节目制作经营许可证（粤）字第01270号  营业性演出许可证穗天演440106026  穗公网监备案证第44010650010167</p>
+					<p>Copyright©2004-2017 KuGou-Inc.All Rights Reserved <a href=""><../public/img/vip src="../public/img/vip/logo_down.jpg"/></a></p>
+					<div class="kgpic"></div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+</body>
+</html>

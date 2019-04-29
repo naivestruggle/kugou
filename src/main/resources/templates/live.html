@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="../public/css/live.css">
+  </head>
+  <body>
+    <!--头部-->
+    <div id="head">
+    	<div class="header">
+    		<a href="" class="headlogo"></a>
+    		<div class="hcb">
+    			<li><a href="" class="focus">首页</a></li>
+    			<li><a href="">星主播</a></li>
+    			<li><a href="">星乐坊</a></li>
+    			<li><a href="">IN雄联盟</a></li>
+    			<li><a href="">跨界也疯狂</a></li>
+    			<li><a href="">音超联赛</a></li>
+    			<li><a href="">嗨唱起来</a></li>
+    		</div>
+    		<div class="hlb">
+    			<a href="javascript" id="logining" class="login">登录</a>
+    			<a href="">注册</a>
+    			<a href="">客服</a>
+    		</div>
+    		<!--登录成功
+    		<div class="login">
+    			<a href="">充值</a>
+    			<a href="">退出</a>
+    		-->
+    	</div>
+    </div>
+    <!--轮播-->
+    <div id="banner">
+    	     <ul id="bannerl" class="imgs">
+    				<li style="background: rgb(115,175,235);" class="case_3"><img src="../public/img/live/banner.jpg"/></li>
+    		</ul>
+    </div>
+    <!--视频部分-->
+    <div id="live">
+    	<div class="liveblankbox"></div>
+    	<div class="livebox">
+
+    			<h2>热门直播：<span style="color: black;">星乐坊遇见孙子涵“心上人”（上）</span></h2>
+    			<div class="videobox">
+    	</div>
+    	<div class="program">
+    		<h3><span>&nbsp;&nbsp;&nbsp;&nbsp;节目单</span></h3>
+    		<div class="linebg"></div>
+    		<div id="scrollDiv" class="listbox" onscroll="divScroll()">
+    			<div id="maincontent" class="maincontent">
+    				<ul id="menu">
+    					<li>
+    						<h4>2018-06-08</h4>
+    						<div class="list1">
+    							<span class="ico"></span>
+    							<span class="title1"><em>嗨唱起来</em></span>
+    							<span class="dot"><em>.</em></span>
+    							<span class="time1">22:00</span>
+    							<span class="line1"></span>
+    							<a href="" class="title2">《嗨，唱起来！》第七期（上）</a>
+    							<span class="num1">
+    								<em class="numbg"></em>
+    								<em>165人已观看</em>
+    							</span>
+    							<a href="" class="lback">回顾</a>
+    						</div>
+    						<div class="list1">
+    							<span class="ico"></span>
+    							<span class="title1"><em>嗨唱起来</em></span>
+    							<span class="dot"><em>.</em></span>
+    							<span class="time1">22:00</span>
+    							<span class="line1"></span>
+    							<a href="" class="title2">《嗨，唱起来！》第七期（下）</a>
+    							<span class="num1">
+    								<em class="numbg"></em>
+    								<em>41人已观看</em>
+    							</span>
+    							<a href="" class="lback">回顾</a>
+    						</div>
+    					</li>
+    					<li>
+    						<h4>2018-06-07</h4>
+    						<div class="list1">
+    							<span class="ico"></span>
+    							<span class="title1"><em>星主播</em></span>
+    							<span class="dot"><em>.</em></span>
+    							<span class="time1">19:00</span>
+    							<span class="line1"></span>
+    							<a href="" class="title2">青春不散场</a>
+    							<span class="num1">
+    								<em class="numbg"></em>
+    								<em>2396人已观看</em>
+    							</span>
+    							<a href="" class="lback">回顾</a>
+    						</div>
+    					</li>
+    					<li>
+    						<h4>2018-06-01</h4>
+    						<div class="list1">
+    							<span class="ico"></span>
+    							<span class="title1"><em>嗨唱起来</em></span>
+    							<span class="dot"><em>.</em></span>
+    							<span class="time1">22:00</span>
+    							<span class="line1"></span>
+    							<a href="" class="title2">《嗨，唱起来！》第六期（上）</a>
+    							<span class="num1">
+    								<em class="numbg"></em>
+    								<em>36人已观看</em>
+    							</span>
+    							<a href="" class="lback">回顾</a>
+    						</div>
+    						<h4>2018-05-29</h4>
+    						<div class="list1">
+    							<span class="ico"></span>
+    							<span class="title1"><em>嗨唱起来</em></span>
+    							<span class="dot"><em>.</em></span>
+    							<span class="time1">22:00</span>
+    							<span class="line1"></span>
+    							<a href="" class="title2">《嗨，唱起来！》第六期（下）</a>
+    							<span class="num1">
+    								<em class="numbg"></em>
+    								<em>24人已观看</em>
+    							</span>
+    							<a href="" class="lback">回顾</a>
+    						</div>
+    					</li>
+    					<li>
+    						<h4>2018-05-27</h4>
+    						<div class="list1">
+    							<span class="ico"></span>
+    							<span class="title1"><em>星主播</em></span>
+    							<span class="dot"><em>.</em></span>
+    							<span class="time1">19:00</span>
+    							<span class="line1"></span>
+    							<a href="" class="title2">快乐就要唱出来</a>
+    							<span class="num1">
+    								<em class="numbg"></em>
+    								<em>740人已观看</em>
+    							</span>
+    							<a href="" class="lback">回顾</a>
+    						</div>
+    					</li>
+    					<li>
+    						<h4>2018-05-23</h4>
+    						<div class="list1">
+    							<span class="ico"></span>
+    							<span class="title1"><em>星乐坊</em></span>
+    							<span class="dot"><em>.</em></span>
+    							<span class="time1">15:01</span>
+    							<span class="line1"></span>
+    							<a href="" class="title2">星乐坊遇见孙子涵的心上人（下）</a>
+    							<span class="num1">
+    								<em class="numbg"></em>
+    								<em>21450人已观看</em>
+    							</span>
+    							<a href="" class="lback">回顾</a>
+    						</div>
+    						<div class="list1">
+    							<span class="ico"></span>
+    							<span class="title1"><em>星乐坊</em></span>
+    							<span class="dot"><em>.</em></span>
+    							<span class="time1">15:00</span>
+    							<span class="line1"></span>
+    							<a href="" class="title2">星乐坊遇见孙子涵的心上人（上）</a>
+    							<span class="num1">
+    								<em class="numbg"></em>
+    								<em>20148人已观看</em>
+    							</span>
+    							<a href="" class="lback">回顾</a>
+    						</div>
+    					</li>
+    					<li>
+    						<h4>2018-05-21</h4>
+    						<div class="list1">
+    							<span class="ico"></span>
+    							<span class="title1"><em>星乐坊</em></span>
+    							<span class="dot"><em>.</em></span>
+    							<span class="time1">15:01</span>
+    							<span class="line1"></span>
+    							<a href="" class="title2">星乐坊遇见孙子涵的心上人（下）</a>
+    							<span class="num1">
+    								<em class="numbg"></em>
+    								<em>21450人已观看</em>
+    							</span>
+    							<a href="" class="lback">回顾</a>
+    						</div>
+    					</li>
+
+    					<li id="loadmore" class="loadmore">加载更多>></li>
+    				</ul>
+    			</div>
+    		</div>
+    	</div>
+
+    	</div>
+    </div>
+    <!--热门现场-->
+    <div id="hotlive">
+    	<div class="hotlivebox">
+    		<h2>
+    			<span class="htitle"><i class="htbg"></i>热门现场</span>
+    		</h2>
+    		<ul>
+    			<li>
+    				<a href="" class="hlimg"><img src="../public/img/live/hlbg1.jpg" style="width: 220px;height: 124px;"/></a>
+    				<a class="hlt" href="">&nbsp;&nbsp;&nbsp;星乐坊遇见孙子涵的“心上认”（上）</a>
+    				<span class="hlnum">
+    					<em class="hlnumbg"></em>
+    					<em class="hlnumtxt">20203人已观看</em>
+    				</span>
+    				<span class="hltime"> &nbsp;&nbsp;2018-05-30</span>
+    				<a href=""class="bfpicc"></a>
+    				<a href="" class="bfpic"></a>
+    			</li>
+    			<li>
+    				<a href="" class="hlimg"><img src="../public/img/live/hlbg1.jpg" style="width: 220px;height: 124px;"/></a>
+    				<a class="hlt" href="">&nbsp;&nbsp;&nbsp;星乐坊遇见孙子涵的“心上认”（上）</a>
+    				<span class="hlnum">
+    					<em class="hlnumbg"></em>
+    					<em class="hlnumtxt">20203人已观看</em>
+    				</span>
+    				<span class="hltime"> &nbsp;&nbsp;2018-05-30</span>
+    				<a href=""class="bfpicc"></a>
+    				<a href="" class="bfpic"></a>
+    			</li>
+    			<li>
+    				<a href="" class="hlimg"><img src="../public/img/live/hlbg1.jpg" style="width: 220px;height: 124px;"/></a>
+    				<a class="hlt" href="">&nbsp;&nbsp;&nbsp;星乐坊遇见孙子涵的“心上认”（上）</a>
+    				<span class="hlnum">
+    					<em class="hlnumbg"></em>
+    					<em class="hlnumtxt">20203人已观看</em>
+    				</span>
+    				<span class="hltime"> &nbsp;&nbsp;2018-05-30</span>
+    				<a href=""class="bfpicc"></a>
+    				<a href="" class="bfpic"></a>
+    			</li>
+    			<li>
+    				<a href="" class="hlimg"><img src="../public/img/live/hlbg1.jpg" style="width: 220px;height: 124px;"/></a>
+    				<a class="hlt" href="">&nbsp;&nbsp;&nbsp;星乐坊遇见孙子涵的“心上认”（上）</a>
+    				<span class="hlnum">
+    					<em class="hlnumbg"></em>
+    					<em class="hlnumtxt">20203人已观看</em>
+    				</span>
+    				<span class="hltime"> &nbsp;&nbsp;2018-05-30</span>
+    				<a href=""class="bfpicc"></a>
+    				<a href="" class="bfpic"></a>
+    			</li>
+    			<li>
+    				<a href="" class="hlimg"><img src="../public/img/live/hlbg1.jpg" style="width: 220px;height: 124px;"/></a>
+    				<a class="hlt" href="">&nbsp;&nbsp;&nbsp;星乐坊遇见孙子涵的“心上认”（上）</a>
+    				<span class="hlnum">
+    					<em class="hlnumbg"></em>
+    					<em class="hlnumtxt">20203人已观看</em>
+    				</span>
+    				<span class="hltime"> &nbsp;&nbsp;2018-05-30</span>
+    				<a href=""class="bfpicc"></a>
+    				<a href="" class="bfpic"></a>
+    			</li>
+    			<li>
+    				<a href="" class="hlimg"><img src="../public/img/live/hlbg1.jpg" style="width: 220px;height: 124px;"/></a>
+    				<a class="hlt" href="">&nbsp;&nbsp;&nbsp;星乐坊遇见孙子涵的“心上认”（上）</a>
+    				<span class="hlnum">
+    					<em class="hlnumbg"></em>
+    					<em class="hlnumtxt">20203人已观看</em>
+    				</span>
+    				<span class="hltime"> &nbsp;&nbsp;2018-05-30</span>
+    				<a href=""class="bfpicc"></a>
+    				<a href="" class="bfpic"></a>
+    			</li>
+    			<li>
+    				<a href="" class="hlimg"><img src="../public/img/live/hlbg1.jpg" style="width: 220px;height: 124px;"/></a>
+    				<a class="hlt" href="">&nbsp;&nbsp;&nbsp;星乐坊遇见孙子涵的“心上认”（上）</a>
+    				<span class="hlnum">
+    					<em class="hlnumbg"></em>
+    					<em class="hlnumtxt">20203人已观看</em>
+    				</span>
+    				<span class="hltime"> &nbsp;&nbsp;2018-05-30</span>
+    				<a href=""class="bfpicc"></a>
+    				<a href="" class="bfpic"></a>
+    			</li>
+    			<li>
+    				<a href="" class="hlimg"><img src="../public/img/live/hlbg1.jpg" style="width: 220px;height: 124px;"/></a>
+    				<a class="hlt" href="">&nbsp;&nbsp;&nbsp;星乐坊遇见孙子涵的“心上认”（上）</a>
+    				<span class="hlnum">
+    					<em class="hlnumbg"></em>
+    					<em class="hlnumtxt">20203人已观看</em>
+    				</span>
+    				<span class="hltime"> &nbsp;&nbsp;2018-05-30</span>
+    				<a href=""class="bfpicc"></a>
+    				<a href="" class="bfpic"></a>
+    			</li>
+    			<li>
+    				<a href="" class="hlimg"><img src="../public/img/live/hlbg1.jpg" style="width: 220px;height: 124px;"/></a>
+    				<a class="hlt" href="">&nbsp;&nbsp;&nbsp;星乐坊遇见孙子涵的“心上认”（上）</a>
+    				<span class="hlnum">
+    					<em class="hlnumbg"></em>
+    					<em class="hlnumtxt">20203人已观看</em>
+    				</span>
+    				<span class="hltime"> &nbsp;&nbsp;2018-05-30</span>
+    				<a href=""class="bfpicc"></a>
+    				<a href="" class="bfpic"></a>
+    			</li>
+    			<li>
+    				<a href="" class="hlimg"><img src="../public/img/live/hlbg1.jpg" style="width: 220px;height: 124px;"/></a>
+    				<a class="hlt" href="">&nbsp;&nbsp;&nbsp;星乐坊遇见孙子涵的“心上认”（上）</a>
+    				<span class="hlnum">
+    					<em class="hlnumbg"></em>
+    					<em class="hlnumtxt">20203人已观看</em>
+    				</span>
+    				<span class="hltime"> &nbsp;&nbsp;2018-05-30</span>
+    				<a href=""class="bfpicc"></a>
+    				<a href="" class="bfpic"></a>
+    			</li>
+    		</ul>
+    	</div>
+    </div>
+    <div id="hotlive1">
+    	<div class="hotlivebox1">
+    		<h2>
+    			<span class="htitle"><i class="htbg"></i>星主播</span><a href="" class="hlmore">更多</a>
+    		</h2>
+    		<ul>
+    			<li>
+    				<a href="" class="hlimg"><img src="../public/img/live/hlbg1.jpg" style="width: 220px;height: 124px;"/></a>
+    				<a class="hlt" href="">&nbsp;&nbsp;&nbsp;星乐坊遇见孙子涵的“心上认”（上）</a>
+    				<span class="hlnum">
+    					<em class="hlnumbg"></em>
+    					<em class="hlnumtxt">20203人已观看</em>
+    				</span>
+    				<span class="hltime"> &nbsp;&nbsp;2018-05-30</span>
+    				<a href=""class="bfpicc"></a>
+    				<a href="" class="bfpic"></a>
+    			</li>
+    			<li>
+    				<a href="" class="hlimg"><img src="../public/img/live/hlbg1.jpg" style="width: 220px;height: 124px;"/></a>
+    				<a class="hlt" href="">&nbsp;&nbsp;&nbsp;星乐坊遇见孙子涵的“心上认”（上）</a>
+    				<span class="hlnum">
+    					<em class="hlnumbg"></em>
+    					<em class="hlnumtxt">20203人已观看</em>
+    				</span>
+    				<span class="hltime"> &nbsp;&nbsp;2018-05-30</span>
+    				<a href=""class="bfpicc"></a>
+    				<a href="" class="bfpic"></a>
+    			</li>
+    			<li>
+    				<a href="" class="hlimg"><img src="../public/img/live/hlbg1.jpg" style="width: 220px;height: 124px;"/></a>
+    				<a class="hlt" href="">&nbsp;&nbsp;&nbsp;星乐坊遇见孙子涵的“心上认”（上）</a>
+    				<span class="hlnum">
+    					<em class="hlnumbg"></em>
+    					<em class="hlnumtxt">20203人已观看</em>
+    				</span>
+    				<span class="hltime"> &nbsp;&nbsp;2018-05-30</span>
+    				<a href=""class="bfpicc"></a>
+    				<a href="" class="bfpic"></a>
+    			</li>
+    			<li>
+    				<a href="" class="hlimg"><img src="../public/img/live/hlbg1.jpg" style="width: 220px;height: 124px;"/></a>
+    				<a class="hlt" href="">&nbsp;&nbsp;&nbsp;星乐坊遇见孙子涵的“心上认”（上）</a>
+    				<span class="hlnum">
+    					<em class="hlnumbg"></em>
+    					<em class="hlnumtxt">20203人已观看</em>
+    				</span>
+    				<span class="hltime"> &nbsp;&nbsp;2018-05-30</span>
+    				<a href=""class="bfpicc"></a>
+    				<a href="" class="bfpic"></a>
+    			</li>
+    			<li>
+    				<a href="" class="hlimg"><img src="../public/img/live/hlbg1.jpg" style="width: 220px;height: 124px;"/></a>
+    				<a class="hlt" href="">&nbsp;&nbsp;&nbsp;星乐坊遇见孙子涵的“心上认”（上）</a>
+    				<span class="hlnum">
+    					<em class="hlnumbg"></em>
+    					<em class="hlnumtxt">20203人已观看</em>
+    				</span>
+    				<span class="hltime"> &nbsp;&nbsp;2018-05-30</span>
+    				<a href=""class="bfpicc"></a>
+    				<a href="" class="bfpic"></a>
+    			</li>
+    			<li>
+    				<a href="" class="hlimg"><img src="../public/img/live/hlbg1.jpg" style="width: 220px;height: 124px;"/></a>
+    				<a class="hlt" href="">&nbsp;&nbsp;&nbsp;星乐坊遇见孙子涵的“心上认”（上）</a>
+    				<span class="hlnum">
+    					<em class="hlnumbg"></em>
+    					<em class="hlnumtxt">20203人已观看</em>
+    				</span>
+    				<span class="hltime"> &nbsp;&nbsp;2018-05-30</span>
+    				<a href=""class="bfpicc"></a>
+    				<a href="" class="bfpic"></a>
+    			</li>
+    			<li>
+    				<a href="" class="hlimg"><img src="../public/img/live/hlbg1.jpg" style="width: 220px;height: 124px;"/></a>
+    				<a class="hlt" href="">&nbsp;&nbsp;&nbsp;星乐坊遇见孙子涵的“心上认”（上）</a>
+    				<span class="hlnum">
+    					<em class="hlnumbg"></em>
+    					<em class="hlnumtxt">20203人已观看</em>
+    				</span>
+    				<span class="hltime"> &nbsp;&nbsp;2018-05-30</span>
+    				<a href=""class="bfpicc"></a>
+    				<a href="" class="bfpic"></a>
+    			</li>
+    			<li>
+    				<a href="" class="hlimg"><img src="../public/img/live/hlbg1.jpg" style="width: 220px;height: 124px;"/></a>
+    				<a class="hlt" href="">&nbsp;&nbsp;&nbsp;星乐坊遇见孙子涵的“心上认”（上）</a>
+    				<span class="hlnum">
+    					<em class="hlnumbg"></em>
+    					<em class="hlnumtxt">20203人已观看</em>
+    				</span>
+    				<span class="hltime"> &nbsp;&nbsp;2018-05-30</span>
+    				<a href=""class="bfpicc"></a>
+    				<a href="" class="bfpic"></a>
+    			</li>
+    			<li>
+    				<a href="" class="hlimg"><img src="../public/img/live/hlbg1.jpg" style="width: 220px;height: 124px;"/></a>
+    				<a class="hlt" href="">&nbsp;&nbsp;&nbsp;星乐坊遇见孙子涵的“心上认”（上）</a>
+    				<span class="hlnum">
+    					<em class="hlnumbg"></em>
+    					<em class="hlnumtxt">20203人已观看</em>
+    				</span>
+    				<span class="hltime"> &nbsp;&nbsp;2018-05-30</span>
+    				<a href=""class="bfpicc"></a>
+    				<a href="" class="bfpic"></a>
+    			</li>
+    			<li>
+    				<a href="" class="hlimg"><img src="../public/img/live/hlbg1.jpg" style="width: 220px;height: 124px;"/></a>
+    				<a class="hlt" href="">&nbsp;&nbsp;&nbsp;星乐坊遇见孙子涵的“心上认”（上）</a>
+    				<span class="hlnum">
+    					<em class="hlnumbg"></em>
+    					<em class="hlnumtxt">20203人已观看</em>
+    				</span>
+    				<span class="hltime"> &nbsp;&nbsp;2018-05-30</span>
+    				<a href=""class="bfpicc"></a>
+    				<a href="" class="bfpic"></a>
+    			</li>
+    		</ul>
+    	</div>
+    </div>
+    <!--尾部-->
+    <div id="foot">
+    	<div class="footbox">
+    		<div class="footlogo"><a href=""></a></div>
+    		<div class="footcbox">
+    			<p>
+    				<span class="fspan1">酷狗直播 fanxing.kugou.com</span>
+    				<span><a href="">粤ICP备09017694号-2</a></span>
+    			</p>
+    			<p>
+    				<span class="fspan1"><a href="">广州酷狗计算机科技有限公司</a>版权所有</span>
+    				<span>Copyright© 2012-2018 KuGou.All Right Reserved</span>
+    			</p>
+    			<p>
+    				<span class="fspan1">
+    					<a href="">
+    						<span class="yuelogo"></span>粤网文（2016）1277-269号
+    					</a>
+    				</span>
+    				<span>信息网络传播视听节目许可证1910564号</span>
+    			</p>
+    			<p>
+    				<span class="fspan1">增值电信业务经营许可证粤B2-20060339号</span>
+    				<span>营业性演出许可证440106120029</span>
+    			</p>
+    			<p>
+    				<span class="fspan1">广播电视节目制作经营许可证（粤）字第01270号</span>
+    				<a href="" class="fspan2">版权声明</a>
+    				<a href="" class="fspan2">投诉指引</a>
+    				<a href="" class="fspan2">隐私政策</a>
+    				<a href="" class="fspan2">用户协议</a>
+    			</p>
+    			<p>
+    				违法和不良信息举报：
+    				<a href="">www.12377.cn</a>
+    				举报电话：12377
+    				<a href="" style="margin-left: 10px;"><span class="policelogo"></span>粤公网安备  44010602000141号</a>
+    			</p>
+    			<p>
+    				<span class="fspan1">地址：广州天河区黄埔大道中315号羊城创意园内</span>
+    				<span class="fspan2"><a href="">联系方式</a></span>
+    				<span class="fspan2"><a href="">12318全国文化市场举报网站</a></span>
+    			</p>
+    		</div>
+    		<div class="footewm">
+    			<div class="ewm1"></div>
+    			<div class="ewm2"></div>
+    		</div>
+    	</div>
+    </div>
+  <script src="../public/js/live.js" type="text/javascript" charset="utf-8"></script>
+  </body>
+</html>

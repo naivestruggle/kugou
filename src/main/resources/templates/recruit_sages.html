@@ -1,0 +1,363 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>招贤纳士</title>
+<link rel="shortcut icon"  href="favicon.ico"/>
+</head>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+a{text-decoration: none;}
+li{
+	list-style: none;
+	text-align: center;
+	}
+#headbody{
+	width:100%;
+	height: 488px;
+	background-image: url(../public/img/recruit_sages/banner01.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	}
+.head{
+	width: 100%;
+	height: 90px;
+	}
+.header{
+	margin: 0 auto;
+	width: 960px;
+	height: 60px;
+	padding-top: 30px;
+	position: relative;
+	}
+.logo{
+	color: #fff;
+	height: 60px;
+	width: auto;
+	float: left;
+
+}
+.logo img{
+	margin-top: 10px;
+	vertical-align: middle;
+	}
+.rightlogo{
+	float: right;
+	width:227px;
+	height: 36px;
+	color: #fff;
+	font-size: 12px;
+	margin-top: 17px;
+	position: relative;
+	}
+.weibo{
+	background-image: url(../public/img/recruit_sages/weiboIcon.png);
+	background-repeat: no-repeat;
+	margin-left: 5px;
+	display: inline-block;
+	width: 36px;
+	height: 36px;
+	vertical-align: middle;/*垂直居中*/
+	}
+.weixin{
+	background-image: url(../public/img/recruit_sages/weiboIcon.png);
+	background-repeat: no-repeat;
+	background-position: -44px 0;
+	width: 36px;
+	height: 36px;
+	display: inline-block;
+	vertical-align: middle;
+	}
+.scan{
+	position: absolute;
+    right: 10px;
+    top: 92px;
+    width: 200px;
+}
+.scan img{
+	width: 200px;
+	height: 208px;
+}
+.nav{
+	width: 100%;
+	height: 58px;
+	margin: 20px auto auto;
+    background: #F2F2F2;
+	font-family: Microsoft YaHei,"Microsoft Yahei";
+	}
+.menu{
+	width: 960px;
+	margin: 0 auto;
+	}
+.menu ul{
+	height: 58px;
+	line-height: 1.0;
+	}
+.menu li{
+	float: left;
+	margin: 0;
+	line-height: 60px;
+	font-size: 14px;
+	width: 192px;
+	height: 58px;
+	font-weight: lighter;
+	}
+.menu li:hover{
+	background-color: #3cace7;
+	color: #fff;
+	}
+.menu a{
+		color: black;
+	}
+.faq{
+	background: #FF9F1E;
+	height: 58px;
+   	line-height: 47px;
+   	position: absolute;
+   	text-align: center;
+   	width: 240px;
+   	right: 146px;
+	top: 160px;
+}
+.faq a{
+	line-height: 58px;
+    color: #fff;
+   	font-size: 18px;
+   	font-weight: lighter;
+}
+#body{
+	background-color: rgb(250,250,250);
+	}
+#center{
+	margin: auto;
+	width: 960px;
+	height: 355px;
+	padding: 20px 0 30px;
+	}
+.video{
+	width: 310px;
+	height: 275px;
+	float: left;padding: 15px;
+	background: #fff;
+	margin-right: 20px;
+	}
+.video h3{
+	padding-bottom: 8px;
+    border-bottom: 1px solid #e8e8e8;
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: normal;
+	}
+#play{
+	cursor: pointer;
+	}
+.playing{
+	height: 168px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+	}
+.introduce{
+	margin-top: 5px;
+    line-height: 20px;
+    color: #7b7b7b;
+    font-size: 14px;
+	}
+.hot{
+	height: 275px;
+	float: left;
+    background: #fff;
+    padding: 15px;
+    width: 565px;
+	}
+.hot h3{
+	padding-bottom: 8px;
+    border-bottom: 1px solid #e8e8e8;
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: normal;
+	}
+.hot h3 a:hover{
+	text-decoration: underline;
+	}
+.more{
+	float: right;
+    color: #666;
+    font-weight: normal;
+    font-size: 14px;
+    margin-top: 2px;
+	}
+.content li{
+	float: left;
+    width: 46%;
+    margin: 5px 10px;
+    color: #7b7b7b;
+	}
+.content a{
+	color: #7b7b7b;
+    font-size: 14px;
+	}
+.content span{
+	float: right;
+	}
+#foot{
+	height: 115px;
+	width: 100%;
+	}
+.footwrap{
+	width: 960px;
+    margin: 0 auto;
+    padding: 20px 0;
+	height: 75px;
+	line-height: 25px;
+	text-align: center;
+	color: #b9b9b9;
+	font-size: 12px;
+	}
+
+.footwrap1 a{
+	color: #b9b9b9;
+    margin-right: 5px;
+	font-size: 12px;
+	}
+</style>
+<body>
+<div id="headbody">
+	<div id="head">
+		<div class="header">
+			<div class="logo">
+				<a href="../首页/首页.html"><img  height="38" src="../public/img/recruit_sages/logo.png"/></a>
+				<a href="../首页/首页.html" style="font-size: 20px;color: #fff;text-decoration: none;font-weight: normal;margin: 0 10px; position: absolute;left: 150px; top: 45px;">招聘官网</a>
+			</div>
+			<span class="rightlogo">
+				<a href="" style="color: #df4f00;margin-right:10px;">求职登录</a>关注酷狗招聘：
+				<a class="weibo" href=""></a>
+				<a class="weixin" href=""></a>
+			</span>
+			<div class="scan" id="scan" style="display: none;"><img src="../public/img/recruit_sages/two.png";/></div>
+		</div>
+		<div class="nav">
+			<div class="menu">
+				<ul>
+					<a href=""><li>首页</li></a>
+					<a href=""><li>社会招聘</li></a>
+					<a href=""><li>校园招聘</li></a>
+					<a href=""><li>走进酷狗</li></a>
+					<a href="" class="nbtj"><li>内部推荐</li></a>
+				</ul>
+				<div class="faq" id="faq" style="display: none;"><a href="">FAQ</a></div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<div id="body">
+	<div id="center">
+		<div class="video">
+			<h3>公司介绍</h3>
+			<div id="play" class="playing"><img src="../public/img/recruit_sages/videoBg.jpg"/></div>
+			<div class="introduce">
+				<p>
+				酷狗科技（KuGou NetWorks）是中国领先的数字音乐交互服务提供商，互联网技术创新的领军企业，致力于...
+				<a href="" style="color: #3cace7;">[详情]</a>
+				</p>
+			</div>
+		</div>
+		<div class="hot">
+			<h3>热招职位<a href="" class="more">更多>></a></h3>
+			<div class="content">
+				<li>
+					<span>天河区</span>
+					<a href="">PTBU-数据挖掘工程师</a>
+				</li>
+				<li>
+					<span>广州市</span>
+					<a href="">ZBBU-高级音视频算法工程师（VOIP方向）</a>
+				</li>
+				<li>
+					<span>广州市</span>
+					<a href="">PTBU-主编（歌单）</a>
+				</li>
+				<li>
+					<span>上海市</span>
+					<a href="">YLBU-内容运营（音乐制作）</a>
+				</li>
+			</div>
+		</div>
+	</div>
+	<div id="foot">
+		<div class="footwrap">
+			<div class="footwrap1">
+				<a href="">关于酷狗</a>|
+				<a href="">广告服务</a>|
+				<a href="">友情链接</a>|
+				<a href="">版权指引</a>|
+				<a href="">推广合作</a>|
+				<a href="">招聘信息</a>|
+				<a href="">客服中心</a>|
+				<a href="">用户体验提升计划</a>|
+				<a href="">酷狗2018官方免费下载</a>
+			</div>
+			<div class="footwrap2">
+				<p>
+					网络视听许可证1910564号 文网文[2010]175号 Copyright(c)  2004-2018 KuGou-Inc.All Rights Reserved
+				</p>
+			</div>
+			<div class="footwrap3">
+				<p>
+					增值电信业务经营许可证粤B2-20060339 粤ICP备09017694号-2
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+
+	/*二维码*/
+	var scan=document.getElementById("scan");
+	var more=document.getElementsByClassName("weixin")[0];
+	more.onmouseover=function(){
+		scan.style.display="block";
+	}
+	more.onmouseout=function(){
+		scan.style.display="none";
+	}
+	setTimeout(function(){
+		scan.onmouseover=function(){
+			this.style.display="block";
+			}
+		},500)
+
+		scan.onmouseout=function(){
+		clearTimeout();
+		this.style.display="none";
+	}
+
+
+
+	/*FAQ*/
+	var faq=document.getElementById("faq");
+	var more=document.getElementsByClassName("nbtj")[0];
+	more.onmouseover=function(){
+		faq.style.display="block";
+	}
+	more.onmouseout=function(){
+		faq.style.display="none";
+	}
+	setTimeout(function(){
+		faq.onmouseover=function(){
+			this.style.display="block";
+			}
+		},500)
+
+		faq.onmouseout=function(){
+		clearTimeout();
+		this.style.display="none";
+	}
+</script>
+</body>
+</html>

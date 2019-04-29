@@ -1,0 +1,922 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>酷狗飙升榜_排行榜_乐库频道_酷狗网</title>
+<link rel="shortcut icon"  href="favicon.ico"/>
+
+</head>
+<style  type="text/css">
+	*{
+		margin:0;
+		padding: 0;
+	}
+	a{
+		text-decoration: none;
+	}
+	li{
+		list-style: none;
+	}
+	/*头部*/
+	#head{
+		width: 1000px;
+		height: 78px;
+		margin: 0 auto;
+		position: relative;
+		
+	}
+	#head .logo{
+		width: 153px;
+		height: 37px;
+		float: left;
+		margin-top: 20px;
+	}
+	#head .search{
+		width: 300px;
+   		height: 36px;
+    	margin-left: 193px;
+    	padding-top: 20px;
+		
+	}
+	#head .search_input{
+		width: 298px;
+    	height: 34px;
+    	border: 1px solid #ccc;
+    	line-height: 34px;
+		position: relative;
+		z-index: 100;
+	}
+	.search_input input{
+		width: 249px;
+    	height: 24px;
+    	line-height: 24px;
+		margin-left: 14px;
+    	padding: 5px 0;
+   	 	color: #666;
+		border: none;
+		font-size: 13px;
+		position: absolute;
+    	left: 0;
+    	top: 0;
+		outline: none; /*边框按下去没有颜色*/
+		
+	}
+	#head .search_btn{
+		width: 34px;
+		height: 34px;
+		float: right;
+		right: 10px;
+    	top:10px;
+	}
+	#head .search_icon{
+		background: url(../public/img/list/search.png);
+		background-position: -40px -56px;
+		width: 16px;
+		height: 16px;
+		right: 10px;
+    	top:10px;
+		position: absolute;
+		cursor: pointer;
+	}
+	#head .search_icon:hover{
+		background: url(../public/img/list/search.png);
+		background-position: -40px -86px;
+		width: 16px;
+		height: 16px;
+		right: 10px;
+    	top:10px;
+		position: absolute;
+	}
+	#head .head_right{
+		width: 402px;
+		float: right;
+		height: 25px;
+		margin-top: -25px;
+		
+	}
+	.head_right ul{
+		width: 240px;
+		border-right: 1px solid #e6e6e6;
+		padding-right: 11px;
+        text-align: right;
+		float: left;
+		
+	}
+	.head_right ul li{
+		list-style: none;
+		float: left;
+		padding-left: 20px;
+	}
+	.head_right ul li a{
+		text-decoration: none;
+		color: #777;
+		font-size: 13px;
+	}
+	.head_right ul li a:hover{
+		color: #169af3;
+	}
+	#head .loading{
+		width: 110px;
+		height: 30px;
+		position: absolute;
+		right: 0;
+		top:25px;
+	}
+	.loading .login {
+		width: 48px;
+		height: 28px;
+		line-height: 28px;
+		border: 1px solid #169af3;
+		border-radius: 2px;
+		text-align: center;
+		background-color: #169af3;
+		float: left;
+	}
+	.loading .regin{
+		width: 48px;
+		height: 28px;
+		line-height: 28px;
+		border: 1px solid #dbdbdb;
+		border-radius: 2px;
+		text-align: center;
+		color: black;
+		text-decoration: none;
+		float:right;
+	}
+	.loading .login:hover{
+		background-color: #158fe1;
+	}
+	.loading .regin:hover{
+		border: 1px solid #169af3;
+		
+		}
+	.loading .regin a{
+		color:black;
+	}
+	.loading .regin:hover{
+		color: #169af3;
+	}
+	.loading a{
+		text-decoration: none;
+		font-size: 13px;
+	}
+	
+	/*首页榜单*/
+	#navWrap{
+		width: 100%;
+		height: 55px;
+		background:#2c323b;
+		position: relative;
+	}
+	#navWrap .nav{
+		width: 1000px;
+		margin: 0 auto;
+		
+			
+	}
+	#navWrap li{
+		float: left;
+		list-style: none;
+	}
+	#navWrap a{
+		text-decoration: none;
+	}
+	.nav .homeNav{
+		width: 445px;
+		height: 55px;
+		float: left;
+		position: relative;
+	}
+	.homeNav .normalactive{
+		background-color: #0c8ed9;
+        color: #fff;
+	}
+	.homeNav a{
+		font-size: 16px;
+    	color: #ddd;
+		display:block;
+		
+	}
+	.homeNav  li:hover a{
+		color: white;
+	}
+	.homeNav li{
+		text-align: center;
+		line-height: 55px;
+		display:inline-block;
+	}
+	.homeNav li:hover{
+		
+        background-color: #0c8ed9;
+	}
+		
+	/*更多以及下拉列表*/
+	.homeNav .more a{
+		background:url(../public/img/list/arrowMored.png) no-repeat;
+	    margin-left: 5px;
+    	padding: 0 30px;
+		margin-right: 5px;
+		background-position: 72px 8px;
+		display: inline;
+	}
+	.homeNav .more:hover a{
+		background:url(../public/img/list/arrowMoreu.png)no-repeat;
+	    background-position: 70px 8px;
+        background-color: #0c8ed9;
+		
+	}
+	 .secondMenu{
+		position: absolute;
+		left: 500px;
+		top: 55px;
+		display: none;
+		width: 113px;
+		height: 146px;
+		background-color: #252a32;
+		z-index: 99;
+	
+		}
+	.secondMenu li{
+		display:block;
+		padding: 0;
+		height: 36px;
+		line-height: 36px;
+		float: none;
+		margin: 0;
+		width: 113px;
+		text-align: center;
+		cursor: pointer;
+	}
+	.secondMenu li:hover{
+		background-color: #2d343d;
+		border-top: 1px solid #383d44;
+
+	}
+		.secondMenu a{
+		text-align: center;
+		font-size: 15px;
+		color: #bbb;
+		background: 0 0;
+		background-color: #252b34;
+		display: block;
+	}
+	.secondMenu li:hover a{
+		color: #fff;
+		background-color: #2d343d;
+	}
+	.subNav {
+		width: 445.44px;
+		float:right;
+		margin-top: 16px;
+    	height: 35px;	
+	}
+	.subNav li{
+		margin-left: 24px;
+		list-style: none;
+	}
+	.subNav a.icon-nav1{
+		background-position: 0 -119px;
+	}
+	.subNav a.icon-nav1:hover{
+		background-position: 0 -101px;
+	}
+	.subNav a.icon-nav2{
+		background-position:0 -155px;
+	}
+	.subNav a.icon-nav2:hover{
+		background-position:0 -137px;
+	}
+	.subNav a.icon-nav3{
+		background-position:0 -191px;
+	}
+	.subNav a.icon-nav3:hover{
+		background-position:0 -173px;
+	}
+	.subNav a.icon-nav4{
+		background-position:0 -226px;
+	}
+	.subNav a.icon-nav4:hover{
+		background-position:0 -208px;
+	}
+	.subNav a.icon-nav5{
+		background-position:0 -281px;
+	}
+	.subNav a.icon-nav5:hover{
+		background-position:0 -245px;
+	}
+	.subNav a{
+		background: url(../public/img/list/sprite.png);
+		padding-left: 20px;
+		color: #bbb;
+    	font-size: 13px;
+	}
+	.subNav a:hover{
+		color: #14a9ff;
+		background: url(../public/img/list/sprite.png);
+	}
+	/*中间部分*/
+	#center{
+		margin:40px auto;
+		width: 100%;
+		height: 650px;
+		position: relative;
+		}
+	#center .main{
+		padding-right: 12px;
+		padding: 0 3px 0 20px;
+		margin:0 auto;
+		position: relative;
+		min-width: 1000px;
+		width: 1000px!important;/*优先匹配*/
+		}
+	#center .side{
+		width: 218px;
+		border: 1px solid #eee;
+		float: left;
+		overflow: hidden;
+		}
+	.spelistbox{
+		overflow: hidden;
+		position: relative;
+		z-index: 1;
+		}
+	.spelistbox h3 a{
+		height: 45px;
+		padding-left: 15px;
+		line-height: 45px;
+		font-size: 16px;
+		color: #555;
+		position: relative;
+		font-weight: 400;
+
+		}
+	.arrow{
+		background-image: url(../public/img/list/icon_splice.png);
+		background-repeat: no-repeat;
+		background-position: -450px -120px;
+		right: 20px;
+		position: absolute;
+		top:20px;
+		padding-left: 9px;
+		height: 5px;
+		display: inline-block;
+		}
+	.arrow:hover{
+			background-position: -450px -60px;
+		}
+	.spelistbox ul{
+		overflow: hidden;
+		margin-top: 6px;
+		color: #000000;
+		}
+	.spelistbox a{
+		font-size:14px;
+		padding: 0 0 0 15px;
+		margin-bottom: 4px;
+		line-height: 36px;
+		height: 36px;
+		position: relative;
+		display: block;
+		color: black;
+		}
+	.current:hover{
+			background: #169af3;
+			color: #fff;
+		}
+	.spelistbox ul li a:hover{
+		background-color: #f5f8fb;
+		color: #288fe7;
+		}
+	.content{
+		margin-left: -220px;
+		float: left;
+		width: 100%;
+		}
+	.contentlist{
+		margin-left: 220px;
+		padding-left:120px;
+		border-left: none;
+		width: 750px;
+		height: 500px;
+		margin: 15px 0 0 139px;
+		position: relative;
+		}
+	.spelistmenubox{
+		border-bottom: 1px dotted #cacaca;
+		margin-bottom: 24px;
+		position: relative;
+		}
+	.spelistmenu{
+		font-size: 0;
+		}
+	.spelistmenu h3{
+		font-size: 24px;
+		padding: 0;
+		margin-bottom: 33px;
+		display: inline-block;/*将对象呈递为内联对象，但是对象的内容作为块对象呈递。旁边的内联对象会被呈递在同一行内，允许空格*/
+		margin-right: 20px;
+		font-weight: 400;
+		line-height: 100%;
+		}
+	.spspan{
+		color:#999;
+		display: inline-block;
+		font-size: 14px;
+		}
+	.menuplay{
+		float: right;
+		margin-top: -6px;
+		font-size: 14px;
+		height: 34px;
+		width: 112px;
+		}
+	.menuplay span{
+		padding: 9px 20px 9px 34px;
+		background: #169af3;
+		color: #fff;
+		border: 1px solid #dbdbdb;
+		border-radius: 2px;
+		display: inline;
+		}
+		.menuplay span:hover{
+			background-color: #158fe1;
+		}
+	.bf{
+		background-image: url(../public/img/list/play_icon.png);
+		background-repeat: no-repeat;
+		margin-left: -18px;
+		padding-left: 9px;
+		width: 0;
+		height: 16px;
+		position: absolute;
+		margin-top: 3px;
+		}
+	.music{
+		height: 400px;
+		}
+	.allselect{
+		font-size: 14px;
+		color: #999;
+		padding-bottom: 10px;
+		position: relative;	
+		}
+	.checkbox{
+		display: inline-block;
+		margin: 0 10px;
+		padding-left: 14px;
+		height: 14px;
+		background-position: -180px -180px;
+		background-image: url(../public/img/list/icon_splice.png);
+		background-repeat: no-repeat;
+		cursor: pointer;
+		}
+	.checkedbox{
+	margin: 0 10px;
+	padding-left: 14px;
+    height: 14px;
+    background-position: -180px -150px;
+	background-image: url(../public/img/list/icon_splice.png);
+	background-repeat: no-repeat;
+	}
+	.music ul li{
+	height: 54px;
+    line-height: 54px;
+	padding: 0 10px;
+    border-bottom: 1px solid #f2f2f2;
+	font-size: 0;
+	}
+	.musics ul li:hover{
+	background-color: #f5f8fb;
+	
+	}
+	.musics ul li:hover .musicname{
+		color: #288fe7;
+	}
+	.musics ul li:hover .musictime{
+		color: #288fe7;
+	}
+	.musicsnum{
+		min-width: 15px;
+		width: auto!important;
+		color: #999;
+		font-size: 14px;
+		margin-right: 10px;
+		}
+	.musicsnew{
+		display: inline-block;
+		width: 17px;
+		height: 9px;
+		background-position: -240px -240px;
+		background-image: url(../public/img/list/icon_splice.png) ;
+		background-repeat: no-repeat;
+		}
+	.musicname{
+		width: 84px;
+		height: 54px;
+		font-size: 14px;
+		margin-left: 10px;
+		color: black;
+		}
+	.musichidden{
+		top: 10px;
+		right: 10px;
+		float: right;
+		padding-top: 6px;
+		height: 15px;
+		}
+	.listen{
+		background-image: url(../public/img/list/icon_splice.png);
+		background-repeat: no-repeat;
+		padding-left: 12px;
+		height: 14px;
+		background-position: 0 0;
+		margin-left: 10px;
+		margin-top: 5px;
+		width: 12px;
+		display: inline-block;
+		opacity: 0;/*设置透明度*/
+		}
+	.musics ul li:hover .listen{
+		opacity: 1;
+	}
+	.listen:hover{
+		 background-position:0 -30px ;
+	}
+		.download{
+		background-image: url(../public/img/list/icon_splice.png);
+		background-repeat: no-repeat;
+		padding-left: 16px;
+		height: 13px;
+		background-position: -90px 0;
+		margin-left: 10px;
+		margin-top: 5px;
+		display: inline-block;
+		opacity: 0;
+		}
+	.musics ul li:hover .download{
+		opacity: 1;
+	}
+	.download:hover{
+		background-position: -90px -30px;
+	}
+	.share{
+	background-image: url(../public/img/list/icon_splice.png);
+	background-repeat: no-repeat;
+	margin-top: 5px;
+	margin-left: 10px;
+	padding-left: 16px;
+    height: 14px;
+    background-position: -298px 0;
+	display: inline-block;
+	opacity: 0;
+	}
+	.musics ul li:hover .share{
+		opacity: 1;
+	}
+	.share:hover{
+		 background-position: -298px -30px;
+	}
+	.musictime{
+	height: 100%;
+    color: #999;
+    font-size: 14px;
+    margin-top: -2px;
+    margin-left: 20px;	
+	}
+	.downloadkhd{
+		height: 120px;
+    	line-height: 120px;
+    	text-align: center;
+    	font-size: 16px;
+    	color: #666;
+	}
+	.downloadkhd a{
+		width: 108px;
+    	height: 36px;
+    	line-height: 36px;
+    	margin-left: 20px;
+    	border-radius: 3px;
+    	background-color: #169af3;
+    	color: #fff;
+    	font-size: 16px;
+		display: block;
+		margin-right: 30px;
+	}
+	/*底部*/
+	#bottom{
+		width: 100%;
+		height: 319px;
+		background: #2c323b;
+		margin-top: -60px;
+	}
+	#bottom .footer{
+		padding-bottom: 50px;
+	}
+	.footer .links{
+		position: relative;
+		border-bottom: 1px solid #3d424a;
+		padding: 15px 0;
+		font-size: 12px;
+		color: #b1b3b9;
+		text-align: center;
+		height: 20px;
+	}
+	.footer .links a{
+		color: #b1b3b9;
+    	padding: 10px;
+	}
+	.footer .links a:hover{
+		color:#009af3;
+    	
+	}
+	.footer .copyright{
+		width: 1000px;
+		height: 180px;
+		margin: 40px auto 0;
+	}
+	.copyright .footerIcon{
+		width: 16px;
+		height: 16px;
+		margin-left: 5px;
+		margin-top: -2px;
+		background: url(../public/img/list/footer_icon.png) no-repeat 0 0;
+	}
+	.copyright .office-verification{
+		margin-left: 5px;
+		padding: 5px 10px;
+		background: url(../public/img/list/logo_down.png) no-repeat 0 0;
+	}
+	.copyright p{
+		line-height: 30px;
+		text-align: center;
+		color: #b1b3b9;
+		font-size: 14px;
+	}
+	.copyright a{
+		color: #999;
+	}
+</style>
+<body>
+<div style="width: 100%;min-width: 1000px;margin: 0 auto;position: relative;">
+<div id="head">
+	<h1 class="logo">
+		<a href=""><img src="../public/img/list/logo.png"/></a>
+	</h1>
+	<div class="search">
+	    <div class="search_input">
+			<input type="text" />
+			<div class="search_btn">
+			<i class="search_icon"></i>
+			</div>
+		</div>	
+	</div>
+	<div class="head_right">
+		<ul>
+			<li><a href="serve.html" target="_blank">客服中心</a></li>
+			<li><a href="recruit_sages" target="_blank">招纳贤士</a></li>
+			<li><a href="vip.html" target="_blank">会员中心</a></li>
+		</ul>
+		<div class="loading">
+			<a href="" style="color:white;"><div class="login">登录</div></a>
+			<a href="register.html"><div class="regin">注册</div></a>
+		</div>
+	</div>
+</div>
+    <!--首页榜单-->
+<div id="navWrap">
+	<div class="nav">
+      	<ul class="homeNav">
+       		<li style="width: 92px;height: 55px;"><a class="normal" href="index.html">首页</a></li>
+		    <li style="width: 92px;height: 55px;background-color: #0c8ed9;"><a style="color: #fff;" class="normal" href="">榜单</a></li>
+            <li  style="width: 140px;height: 55px;"><a class="normal" id="productCenter" href="downlode.html">下载客户端</a></li>
+            <li class="more" style="width: 113px;height: 55px;"><a href="javascript:void(0);"  id="showMore">更多</a></li>
+       </ul>
+     	<ul class="secondMenu" id="secondMenu" style="display: none;">
+            <li><a href="radio.html">电台</a></li>
+            <li><a href="mv.html">MV</a></li>
+            <li><a href="songsheet.html">歌单</a></li>
+            <li><a href="singer.html">歌手</a></li>
+       </ul>
+       <ul class="subNav">
+            <li><a target="_blank" href="LiveMusic.html" class="icon-nav1">音乐直播</a></li>
+			<li><a target="_blank" href="live.html" class="icon-nav2">酷狗LIVE</a></li>
+			<li><a target="_blank" href="musicMan.html" class="icon-nav3">音乐人</a></li>
+			<li><a target="_blank" href="anchor.html" class="icon-nav4">成为主播</a></li>
+			<li><a target="_blank" href="mall.html" class="icon-nav5">商城</a></li>
+       </ul>
+    </div>
+</div>
+<!--中间部分-->
+<div id="center">
+	<div class="main">
+		<div class="side">
+			<div class="spelistbox">
+				<h3 id="linkk">
+					<a href="#">热门榜单<i class="arrow"></i></a>
+					
+				</h3>
+				<div id="btnshow" style="display: block;">
+					<ul>
+					<li>
+						<a href="javascript" class="current" style="color: #fff;background: #169af3;">
+							<span><img src="../public/img/list/spelist1.png"/></span>
+							酷狗飙升榜
+							<img src="../public/img/list/spelist1hot.png"/>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<span><img src="../public/img/list/spelist2.png"/></span>
+							酷狗TOP500
+							<img src="../public/img/list/spelist1hot.png"/>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<span><img src="../public/img/list/spelist3.png"/></span>
+							网络红歌榜
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<span><img src="../public/img/list/spelist4.jpg"/></span>
+							DJ热歌榜
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<span><img src="../public/img/list/spelist5.jpg"/></span>
+							华语新歌榜
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<span><img src="../public/img/list/spelist6.jpg"/></span>
+							欧美新歌榜
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<span><img src="../public/img/list/spelist7.jpg"/></span>
+							韩国新歌榜
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<span><img src="../public/img/list/spelist8.jpg"/></span>
+							日本新歌榜
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<span><img src="../public/img/list/spelist9.jpg"/></span>
+							创造101榜
+							<img src="../public/img/list/spelist9new.png"/>
+						</a>
+					</li>
+					
+				</ul>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="contentlist">
+				<div class="spelistmenubox">
+					<div class="spelistmenu">
+						<h3>酷狗飙升榜</h3>
+						<span class="spspan">2018-06-06更新</span>
+						<a href="javascript" class="menuplay">
+							<span><i class="bf"></i>播放全部</span>
+						</a>
+					</div>
+				</div>
+				<div class="music">
+					<div class="allselect">
+						<span class="checkbox" onClick="allcheck()"></span>全选
+					</div>
+					<div class="musics">
+						<ul>
+							<li>
+								<span class="checkbox" style="margin-left: 0;"></span>
+								<span class="musicsnum" style="color: red;font-size: 16px;"><strong>1</strong></span>
+								<span class="musicsnew"></span>
+								<a href="" class="musicname">吴亦凡 - 天地</a>
+								<span class="musichidden">
+									<a href="" class="listen"></a>
+									<a href="" class="download"></a>
+									<a href="" class="share"></a>
+									<span class="musictime">3:36</span>
+								</span>
+							</li>
+							<li>
+								<span class="checkbox" style="margin-left: 0;"></span>
+								<span class="musicsnum" style="color: red;font-size: 16px;"><strong>2</strong></span>
+								<span class="musicsnew"></span>
+								<a href="" class="musicname">吴亦凡 - 天地</a>
+								<span class="musichidden">
+									<a href="" class="listen"></a>
+									<a href="" class="download"></a>
+									<a href="" class="share"></a>
+									<span class="musictime">3:36</span>
+								</span>
+							</li>
+							<li>
+								<span class="checkbox" style="margin-left: 0;"></span>
+								<span class="musicsnum" style="color: red;font-size: 16px;"><strong>3</strong></span>
+								<span class="musicsnew"></span>
+								<a href="" class="musicname">吴亦凡 - 天地</a>
+								<span class="musichidden">
+									<a href="" class="listen"></a>
+									<a href="" class="download"></a>
+									<a href="" class="share"></a>
+									<span class="musictime">3:36</span>
+								</span>
+							</li>
+							<li>
+								<span class="checkbox" style="margin-left: 0;"></span>
+								<span class="musicsnum" ><strong>4</strong></span>
+								<span class="musicsnew"></span>
+								<a href="" class="musicname">吴亦凡 - 天地</a>
+								<span class="musichidden">
+									<a href="" class="listen"></a>
+									<a href="" class="download"></a>
+									<a href="" class="share"></a>
+									<span class="musictime">3:36</span>
+								</span>
+							</li>
+							<li>
+								<span class="checkbox" style="margin-left: 0;"></span>
+								<span class="musicsnum"><strong>5</strong></span>
+								<span class="musicsnew"></span>
+								<a href="" class="musicname">吴亦凡 - 天地</a>
+								<span class="musichidden">
+									<a href="" class="listen"></a>
+									<a href="" class="download"></a>
+									<a href="" class="share"></a>
+									<span class="musictime">3:36</span>
+								</span>
+							</li>
+							<li>
+								<span class="checkbox" style="margin-left: 0;"></span>
+								<span class="musicsnum"><strong>6</strong></span>
+								<span class="musicsnew"></span>
+								<a href="" class="musicname">吴亦凡 - 天地</a>
+								<span class="musichidden">
+									<a href="" class="listen"></a>
+									<a href="" class="download"></a>
+									<a href="" class="share"></a>
+									<span class="musictime">3:36</span>
+								</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="downloadkhd">
+					查看更多内容，请下载客户端
+					<span style="display: inline-block;"><a href="">立即下载</a></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>
+<!--底部-->
+
+<div id="bottom">
+	<div class="footer">
+		<div class="links">
+			<a href="">关于酷狗</a>|
+			<a href="">监督举报</a>|
+			<a href="">广告服务</a>|
+			<a href="">版权指引</a>|
+			<a href="">隐私政策</a>|
+			<a href="">用户服务协议</a>|
+			<a href="">推广合作</a>|
+			<a href="">酷狗音乐人</a>|
+			<a href="">酷狗音乐推</a>|
+			<a href="">招聘信息</a>|
+			<a href="">客服中心</a>|
+			<a href="">用户体验提升计划</a>
+		</div>
+		<div class="copyright">
+			<p>我们致力于推动网络正版音乐发展，相关版权合作请联系copyrights@kugou.com</p>
+			<p>信息网络传播视听节目许可证 1910564 增值电信业务经营许可证粤B2-20060339 &nbsp;&nbsp;&nbsp;
+			<a target="_blank" href="">粤ICP备09017694号-2</a>
+			<span class="footerIcon"><a target="_blank" href="">&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
+			</p>
+			<p>广播电视节目制作经营许可证（粤）字第01270号&nbsp;&nbsp;&nbsp;&nbsp;营业性演出许可证穗天演440106026</p>
+			<p>穗公网监备案证第44010650010167&nbsp;&nbsp;&nbsp;&nbsp;互联网药品信息服务资格证编号（粤）-非经营性-2012-0018<a  href="">&nbsp;&nbsp;&nbsp;<span>粤公网安备 44010602000141号</span><img src="../public/img/list/icon_yuewangga1.png" width="16" height="16"></a></p>
+			<p>不良信息举报邮箱：jubao_music@kugou.net&nbsp;&nbsp;&nbsp;&nbsp;客服邮箱：cs@kugou.com</p>
+			<p>Copyright&nbsp;&nbsp;©&nbsp;&nbsp;2004-2018 KuGou-Inc.All Rights Reserved
+                <a class="office-verification" href="" target="_blank"></a>
+            </p>
+			
+		</div>
+		
+	</div>
+</div>
+
+
+<script src="../public/js/list.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
