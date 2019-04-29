@@ -1,7 +1,7 @@
 // JavaScript Document
 //头部
 var dir_aa=document.getElementsByClassName("dir_aa");
-for(let i=0;i<dir_aa.length;i++){
+for(var i=0;i<dir_aa.length;i++){
 	dir_aa[i].onmouseover=function(){
 		var aaA=this.getElementsByTagName("a")[0];
 		aaA.style.color="#fff";
@@ -44,7 +44,7 @@ var z=1;
 
 setInterval(function(){
 	for(var i=0;i<dotli.length;i++){
-		dotli[i].style.background="../MVIMg/doc_hover.png";
+		dotli[i].style.background="../mv/doc_hover.png";
 	}
 
 	//单位换算

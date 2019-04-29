@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8"/>
     <title></title>
-    <link rel="shortcut icon" href="favicon.ico"/>
-    <link rel="stylesheet" href="../public/css/mall.css">
+	  <link rel="shortcut icon"  href="../static/favicon.ico" th:href="@{/favicon.ico}"/>
+    <link rel="stylesheet" href="../public/css/mall.css" th:href="@{/css/mall.css}">
   </head>
 
   <body>
@@ -116,6 +116,6 @@
   		<a href="#"></a>
   	</div>
 
-    <script src="../public/js/mall.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../public/js/mall.js" th:src="@{/js/mall.js}" type="text/javascript" charset="utf-8"></script>
   </body>
 </html>

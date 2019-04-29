@@ -210,7 +210,7 @@ a{
 		display: inline;
 	}
 	.homeNav .more:hover a{
-		background:url(../img/mvPlay/arrowMoreu.png)no-repeat;
+		background:url(../img/mvPlay/arrowMoreu.png) no-repeat;
 	    background-position: 70px 8px;
         background-color: #0c8ed9;
 

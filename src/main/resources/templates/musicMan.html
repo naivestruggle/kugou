@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8"/>
     <title></title>
-    <link rel="shortcut icon" href="favicon.ico"/>
-    <link rel="stylesheet" href="../public/css/musicMan.css">
+	  <link rel="shortcut icon"  href="../static/favicon.ico" th:href="@{/favicon.ico}"/>
+    <link rel="stylesheet" href="../public/css/musicMan.css" th:href="@{/css/musicMan.css}">
   </head>
   <body>
 <!-- 头 -->
@@ -94,6 +94,6 @@
     	</div>
     </div>
 <!-- 尾 -->
-  <script src="../public/js/musicMan.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../public/js/musicMan.js" th:src="@{/js/musicMan.js}" type="text/javascript" charset="utf-8"></script>
   </body>
 </html>

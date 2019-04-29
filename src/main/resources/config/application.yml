@@ -21,6 +21,11 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.showSqlMillis=500
-server:
-  servlet:
-    context-path: /kugou
+  thymeleaf:
+    cache: false
+  mvc:
+    favicon:
+      enabled: false
+#server:
+#  servlet:
+#    context-path: /kugou

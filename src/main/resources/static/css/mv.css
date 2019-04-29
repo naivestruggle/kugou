@@ -90,7 +90,7 @@ section{
 	display: inline-block;
 	width: 18px;
 	height: 18px;
-	background: url(../MVIMg/play.png);
+	background: url(../img/mv/play.png);
 	position: absolute;
 	top: 12px;
 	margin-left: 10px;
@@ -106,7 +106,7 @@ section{
 	width: 12px;
 	height: 11px;
 	float: left;
-	background: url(../MVIMg/doc.png);
+	background: url(../img/mv/doc.png);
 	margin-top: 9px;
 	margin-left: 8px;
 }
@@ -162,7 +162,7 @@ h3{
 	display: inline-block;
 	height: 29px;
 	width: 37px;
-	background: url(../MVIMg/bg.png);
+	background: url(../img/mv/bg.png);
 }
 .queue #Q1 {
 	background-position: -336px -218px;
@@ -239,7 +239,7 @@ h3{
 	display: inline-block;
 	width: 18px;
 	height: 18px;
-	background-image: url(../MVIMg/play.png);
+	background-image: url(../img/mv/play.png);
 	position: absolute;
 	right: 35px;
 	top: 6px;

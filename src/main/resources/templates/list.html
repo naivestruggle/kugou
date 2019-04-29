@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"/>
 <title>酷狗飙升榜_排行榜_乐库频道_酷狗网</title>
-<link rel="shortcut icon"  href="favicon.ico"/>
-
+	<link rel="shortcut icon" href="../static/favicon.ico" th:href="@{/favicon.ico}"/>
+	
 </head>
 <style  type="text/css">
 	*{
@@ -69,7 +69,7 @@
     	top:10px;
 	}
 	#head .search_icon{
-		background: url(../public/img/list/search.png);
+		background: url(../img/list/search.png);
 		background-position: -40px -56px;
 		width: 16px;
 		height: 16px;
@@ -79,7 +79,7 @@
 		cursor: pointer;
 	}
 	#head .search_icon:hover{
-		background: url(../public/img/list/search.png);
+		background: url(../img/list/search.png);
 		background-position: -40px -86px;
 		width: 16px;
 		height: 16px;
@@ -212,7 +212,7 @@
 		
 	/*更多以及下拉列表*/
 	.homeNav .more a{
-		background:url(../public/img/list/arrowMored.png) no-repeat;
+		background:url(../img/list/arrowMored.png) no-repeat;
 	    margin-left: 5px;
     	padding: 0 30px;
 		margin-right: 5px;
@@ -220,7 +220,7 @@
 		display: inline;
 	}
 	.homeNav .more:hover a{
-		background:url(../public/img/list/arrowMoreu.png)no-repeat;
+		background:url(../img/list/arrowMoreu.png)no-repeat;
 	    background-position: 70px 8px;
         background-color: #0c8ed9;
 		
@@ -305,14 +305,14 @@
 		background-position:0 -245px;
 	}
 	.subNav a{
-		background: url(../public/img/list/sprite.png);
+		background: url(../img/list/sprite.png);
 		padding-left: 20px;
 		color: #bbb;
     	font-size: 13px;
 	}
 	.subNav a:hover{
 		color: #14a9ff;
-		background: url(../public/img/list/sprite.png);
+		background: url(../img/list/sprite.png);
 	}
 	/*中间部分*/
 	#center{
@@ -351,7 +351,7 @@
 
 		}
 	.arrow{
-		background-image: url(../public/img/list/icon_splice.png);
+		background-image: url(../img/list/icon_splice.png);
 		background-repeat: no-repeat;
 		background-position: -450px -120px;
 		right: 20px;
@@ -442,7 +442,7 @@
 			background-color: #158fe1;
 		}
 	.bf{
-		background-image: url(../public/img/list/play_icon.png);
+		background-image: url(../img/list/play_icon.png);
 		background-repeat: no-repeat;
 		margin-left: -18px;
 		padding-left: 9px;
@@ -466,7 +466,7 @@
 		padding-left: 14px;
 		height: 14px;
 		background-position: -180px -180px;
-		background-image: url(../public/img/list/icon_splice.png);
+		background-image: url(../img/list/icon_splice.png);
 		background-repeat: no-repeat;
 		cursor: pointer;
 		}
@@ -475,7 +475,7 @@
 	padding-left: 14px;
     height: 14px;
     background-position: -180px -150px;
-	background-image: url(../public/img/list/icon_splice.png);
+	background-image: url(../img/list/icon_splice.png);
 	background-repeat: no-repeat;
 	}
 	.music ul li{
@@ -507,7 +507,7 @@
 		width: 17px;
 		height: 9px;
 		background-position: -240px -240px;
-		background-image: url(../public/img/list/icon_splice.png) ;
+		background-image: url(../img/list/icon_splice.png) ;
 		background-repeat: no-repeat;
 		}
 	.musicname{
@@ -525,7 +525,7 @@
 		height: 15px;
 		}
 	.listen{
-		background-image: url(../public/img/list/icon_splice.png);
+		background-image: url(../img/list/icon_splice.png);
 		background-repeat: no-repeat;
 		padding-left: 12px;
 		height: 14px;
@@ -543,7 +543,7 @@
 		 background-position:0 -30px ;
 	}
 		.download{
-		background-image: url(../public/img/list/icon_splice.png);
+		background-image: url(../img/list/icon_splice.png);
 		background-repeat: no-repeat;
 		padding-left: 16px;
 		height: 13px;
@@ -560,7 +560,7 @@
 		background-position: -90px -30px;
 	}
 	.share{
-	background-image: url(../public/img/list/icon_splice.png);
+	background-image: url(../img/list/icon_splice.png);
 	background-repeat: no-repeat;
 	margin-top: 5px;
 	margin-left: 10px;
@@ -639,12 +639,12 @@
 		height: 16px;
 		margin-left: 5px;
 		margin-top: -2px;
-		background: url(../public/img/list/footer_icon.png) no-repeat 0 0;
+		background: url(../img/list/footer_icon.png) no-repeat 0 0;
 	}
 	.copyright .office-verification{
 		margin-left: 5px;
 		padding: 5px 10px;
-		background: url(../public/img/list/logo_down.png) no-repeat 0 0;
+		background: url(../img/list/logo_down.png) no-repeat 0 0;
 	}
 	.copyright p{
 		line-height: 30px;
@@ -660,7 +660,7 @@
 <div style="width: 100%;min-width: 1000px;margin: 0 auto;position: relative;">
 <div id="head">
 	<h1 class="logo">
-		<a href=""><img src="../public/img/list/logo.png"/></a>
+		<a href=""><img src="../img/list/logo.png" th:src="@{/img/list/logo.png}"/></a>
 	</h1>
 	<div class="search">
 	    <div class="search_input">
@@ -688,7 +688,7 @@
       	<ul class="homeNav">
        		<li style="width: 92px;height: 55px;"><a class="normal" href="index.html">首页</a></li>
 		    <li style="width: 92px;height: 55px;background-color: #0c8ed9;"><a style="color: #fff;" class="normal" href="">榜单</a></li>
-            <li  style="width: 140px;height: 55px;"><a class="normal" id="productCenter" href="downlode.html">下载客户端</a></li>
+            <li  style="width: 140px;height: 55px;"><a class="normal" id="productCenter" href="download.html">下载客户端</a></li>
             <li class="more" style="width: 113px;height: 55px;"><a href="javascript:void(0);"  id="showMore">更多</a></li>
        </ul>
      	<ul class="secondMenu" id="secondMenu" style="display: none;">
@@ -719,59 +719,59 @@
 					<ul>
 					<li>
 						<a href="javascript" class="current" style="color: #fff;background: #169af3;">
-							<span><img src="../public/img/list/spelist1.png"/></span>
+							<span><img src="../img/list/spelist1.png" th:src="@{/img/list/spelist1.png}"/></span>
 							酷狗飙升榜
-							<img src="../public/img/list/spelist1hot.png"/>
+							<img src="../img/list/spelist1hot.png" th:src="@{/img/list/spelist1hot.png}"/>
 						</a>
 					</li>
 					<li>
 						<a href="">
-							<span><img src="../public/img/list/spelist2.png"/></span>
+							<span><img src="../img/list/spelist2.png" th:src="@{/img/list/spelist2.png}"/></span>
 							酷狗TOP500
-							<img src="../public/img/list/spelist1hot.png"/>
+							<img src="../img/list/spelist1hot.png" th:src="@{/img/list/spelist1hot.png}"/>
 						</a>
 					</li>
 					<li>
 						<a href="">
-							<span><img src="../public/img/list/spelist3.png"/></span>
+							<span><img src="../img/list/spelist3.png" th:src="@{/img/list/spelist3.png}"/></span>
 							网络红歌榜
 						</a>
 					</li>
 					<li>
 						<a href="">
-							<span><img src="../public/img/list/spelist4.jpg"/></span>
+							<span><img src="../img/list/spelist4.jpg" th:src="@{/img/list/spelist4.jpg}"/></span>
 							DJ热歌榜
 						</a>
 					</li>
 					<li>
 						<a href="">
-							<span><img src="../public/img/list/spelist5.jpg"/></span>
+							<span><img src="../img/list/spelist5.jpg" th:src="@{/img/list/spelist5.jpg}"/></span>
 							华语新歌榜
 						</a>
 					</li>
 					<li>
 						<a href="">
-							<span><img src="../public/img/list/spelist6.jpg"/></span>
+							<span><img src="../img/list/spelist6.jpg" th:src="@{/img/list/spelist6.jpg}"/></span>
 							欧美新歌榜
 						</a>
 					</li>
 					<li>
 						<a href="">
-							<span><img src="../public/img/list/spelist7.jpg"/></span>
+							<span><img src="../img/list/spelist7.jpg" th:src="@{/img/list/spelist7.jpg}"/></span>
 							韩国新歌榜
 						</a>
 					</li>
 					<li>
 						<a href="">
-							<span><img src="../public/img/list/spelist8.jpg"/></span>
+							<span><img src="../img/list/spelist8.jpg" th:src="@{/img/list/spelist8.jpg}"/></span>
 							日本新歌榜
 						</a>
 					</li>
 					<li>
 						<a href="">
-							<span><img src="../public/img/list/spelist9.jpg"/></span>
+							<span><img src="../img/list/spelist9.jpg" th:src="@{/img/list/spelist9.jpg}"/></span>
 							创造101榜
-							<img src="../public/img/list/spelist9new.png"/>
+							<img src="../img/list/spelist9new.png" th:src="@{/img/list/spelist9new.png}"/>
 						</a>
 					</li>
 					
@@ -905,7 +905,7 @@
 			<span class="footerIcon"><a target="_blank" href="">&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
 			</p>
 			<p>广播电视节目制作经营许可证（粤）字第01270号&nbsp;&nbsp;&nbsp;&nbsp;营业性演出许可证穗天演440106026</p>
-			<p>穗公网监备案证第44010650010167&nbsp;&nbsp;&nbsp;&nbsp;互联网药品信息服务资格证编号（粤）-非经营性-2012-0018<a  href="">&nbsp;&nbsp;&nbsp;<span>粤公网安备 44010602000141号</span><img src="../public/img/list/icon_yuewangga1.png" width="16" height="16"></a></p>
+			<p>穗公网监备案证第44010650010167&nbsp;&nbsp;&nbsp;&nbsp;互联网药品信息服务资格证编号（粤）-非经营性-2012-0018<a  href="">&nbsp;&nbsp;&nbsp;<span>粤公网安备 44010602000141号</span><img src="../img/list/icon_yuewangga1.png" width="16" height="16"></a></p>
 			<p>不良信息举报邮箱：jubao_music@kugou.net&nbsp;&nbsp;&nbsp;&nbsp;客服邮箱：cs@kugou.com</p>
 			<p>Copyright&nbsp;&nbsp;©&nbsp;&nbsp;2004-2018 KuGou-Inc.All Rights Reserved
                 <a class="office-verification" href="" target="_blank"></a>
@@ -917,6 +917,6 @@
 </div>
 
 
-<script src="../public/js/list.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/list.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

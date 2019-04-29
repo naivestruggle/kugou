@@ -17,7 +17,7 @@ closer.onclick=function(){
 
 /*头部*/
 var dir_aa=document.getElementsByClassName("dir_aa");
-for(let i=0;i<dir_aa.length;i++){
+for(var i=0;i<dir_aa.length;i++){
 	dir_aa[i].onmouseover=function(){
 		var aaA=this.getElementsByTagName("a")[0];
 		aaA.style.color="#fff";

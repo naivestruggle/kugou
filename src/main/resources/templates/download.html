@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8"/>
     <title></title>
-    <link rel="shortcut icon" href="favicon.ico"/>
-    <link rel="stylesheet" href="../public/css/download.css">
+    <link rel="shortcut icon" href="../static/favicon.ico" th:href="@{/favicon.ico}"/>
+    <link rel="stylesheet" href="../public/css/download.css" th:href="@{/css/download.css}">
   </head>
   <body>
 
 <!-- 头 -->
 	<div id="local">
 		<span class="local">我的位置：</span>
-		<a href="index.html">首页</a> >
-		<a href="download.html">下载客户端</a>
+		<a href="index.html" th:href="@{/index.html}">首页</a> >
+		<a href="download.html" th:href="@{/download.html}">下载客户端</a>
 	</div>
 	<!--内容部分-->
 	<div id="con1">
@@ -181,6 +181,6 @@
 	</div>
 <!-- 尾 -->
 
-	<script src="../public/js/download.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../public/js/download.js" th:src="@{/js/download.js}" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

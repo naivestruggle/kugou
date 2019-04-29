@@ -19,7 +19,27 @@ public class MyMvcConfig{
             @Override
             public void addViewControllers(ViewControllerRegistry registry) {
                 registry.addViewController("/").setViewName("index");
-                registry.addViewController("/anchor").setViewName("anchor");
+                registry.addViewController("/anchor.html").setViewName("anchor");
+                registry.addViewController("/index.html").setViewName("index");
+                registry.addViewController("/download.html").setViewName("download");
+                registry.addViewController("/friendLink.html").setViewName("friendLink");
+                registry.addViewController("/hello.html").setViewName("hello");
+                registry.addViewController("/list.html").setViewName("list");
+                registry.addViewController("/live.html").setViewName("live");
+                registry.addViewController("/LiveMusic.html").setViewName("LiveMusic");
+                registry.addViewController("/mall.html").setViewName("mall");
+                registry.addViewController("/musicMan.html").setViewName("musicMan");
+                registry.addViewController("/mv.html").setViewName("mv");
+                registry.addViewController("/mvPlay.html").setViewName("mvPlay");
+                registry.addViewController("/playsong.html").setViewName("playsong");
+                registry.addViewController("/radio.html").setViewName("radio");
+                registry.addViewController("/recruit_sages.html").setViewName("recruit_sages");
+                registry.addViewController("/register.html").setViewName("register");
+                registry.addViewController("/serve.html").setViewName("serve");
+                registry.addViewController("/singer.html").setViewName("singer");
+                registry.addViewController("/songsheet.html").setViewName("songsheet");
+                registry.addViewController("/txsinger.html").setViewName("txsinger");
+                registry.addViewController("/vip.html").setViewName("vip");
             }
         };
         return webMvcConfigurer;

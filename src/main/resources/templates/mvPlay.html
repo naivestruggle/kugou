@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8"/>
     <title>王菲 - 偶遇_MV频道_酷狗网</title>
-    <link rel="shortcut icon" href="favicon.ico"/>
-    <link rel="stylesheet" href="../public/css/mvPlay.css">
-    <link rel="stylesheet" href="../public/js/video.js/css/video-js.css">
+	  <link rel="shortcut icon"  href="../static/favicon.ico" th:href="@{/favicon.ico}"/>
+    <link rel="stylesheet" href="../public/css/mvPlay.css" th:href="@{/css/mvPlay.css}">
+    <link rel="stylesheet" href="../public/js/video.js/css/video-js.css" th:href="@{/js/video.js/css/video-js.css}">
   </head>
   <body>
 <!-- 头 -->
@@ -17,7 +17,7 @@
       		<span>&gt;</span> 萧敬腾 - 欲望反光
     		</h2>
     		<video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="1000" height="500" data-setup="{}">
-          <source src="../public/img/mvPlay/侯旭 - 慢慢来吧.mkv" type='video/mp4' />
+          <source src="../public/img/mvPlay/侯旭 - 慢慢来吧.mkv" th:src="@{/img/mvPlay/侯旭 - 慢慢来吧.mkv}" type='video/mp4' />
         </video>
     		<div class="clearfix">
     			<div class="mv_title"></div>
@@ -38,42 +38,42 @@
     				<ul class="guess_mv" style="width: 1050px;height: 120px">
     					<li>
     						<a href="mv.html">
-    						<img src="../public/img/mvPlay/a.jpg" title=""/>
+    						<img src="../public/img/mvPlay/a.jpg" th:src="@{/img/mvPlay/a.jpg}" title=""/>
     						<em></em><i></i>
     						</a>
     						<span>灿烈、Punch - Stay With Me(KBS柳熙烈的写生簿18/03/03)</span>
     					</li>
     					<li>
     						<a href="mv.html">
-    						<img src="../public/img/mvPlay/a.jpg" title=""/>
+    						<img src="../public/img/mvPlay/a.jpg" th:src="@{/img/mvPlay/a.jpg}" title=""/>
     						<em></em><i></i>
     						</a>
     						<span>昭宥、灿烈 - Stay With Me(2017 MAMA in Hong Kong)</span>
     					</li>
     					<li>
     						<a href="mv.html">
-    						<img src="../public/img/mvPlay/a.jpg" title=""/>
+    						<img src="../public/img/mvPlay/a.jpg" th:src="@{/img/mvPlay/a.jpg}" title=""/>
     						<em></em><i></i>
     						</a>
     						<span>灿烈、俞宙 - Stay With Me(Music Bank in Jakarta 2017)</span>
     					</li>
     					<li>
     						<a href="mv.html">
-    						<img src="../public/img/mvPlay/a.jpg" title=""/>
+    						<img src="../public/img/mvPlay/a.jpg" th:src="@{/img/mvPlay/a.jpg}" title=""/>
     						<em></em><i></i>
     						</a>
     						<span>灿烈 - Creep(朴振英的Party People17/09/30)</span>
     					</li>
     					<li>
     						<a href="mv.html">
-    						<img src="../public/img/mvPlay/a.jpg" title=""/>
+    						<img src="../public/img/mvPlay/a.jpg" th:src="@{/img/mvPlay/a.jpg}" title=""/>
     						<em></em><i></i>
     						</a>
     						<span>灿烈 - Hug Me(朴振英的Party People17/09/30)</span>
     					</li>
     					<li>
     						<a href="mv.html">
-    						<img src="../public/img/mvPlay/a.jpg" title=""/>
+    						<img src="../public/img/mvPlay/a.jpg" th:src="@{/img/mvPlay/a.jpg}" title=""/>
     						<em></em><i></i>
     						</a>
     						<span>灿烈、金泫静 - Stay With Me(KCON Australia 2017)</span>
@@ -115,7 +115,7 @@
     	</div>
     </div>
 
-    <script src="../public/js/mvPlay.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../public/js/video.js/js/video.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../public/js/mvPlay.js" th:src="@{/js/mvPlay.js}" type="text/javascript" charset="utf-8"></script>
+    <script src="../public/js/video.js/js/video.min.js" th:src="@{/js/video.js/js/video.min.js}" type="text/javascript" charset="utf-8"></script>
   </body>
 </html>
