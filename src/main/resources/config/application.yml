@@ -3,9 +3,8 @@ spring:
     username: mysql
     password: .306ZHANGpeng
     url: jdbc:mysql://119.29.229.221:3306/HGHC
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-
     initialSize: 5
     minIdle: 5
     maxActive: 20
@@ -26,6 +25,12 @@ spring:
   mvc:
     favicon:
       enabled: false
-#server:
-#  servlet:
-#    context-path: /kugou
+  redis:
+    host: 47.110.156.54
+server:
+  servlet:
+    context-path: /kugou
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+

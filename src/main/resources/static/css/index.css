@@ -9,7 +9,7 @@
 		margin: 0;
 		padding: 0;
 	}
-	#head{
+	/*#head{
 		width: 1000px;
 		height: 78px;
 		margin: 0 auto;
@@ -50,7 +50,7 @@
 		position: absolute;
     	left: 0;
     	top: 0;
-		outline: none; /*边框按下去没有颜色*/
+		outline: none; !*边框按下去没有颜色*!
 
 	}
 	#head .search_btn{
@@ -70,7 +70,7 @@
 		cursor: pointer;
 
 	}
- /*  有问题为什么只在head下面才有效果*/
+ !*  有问题为什么只在head下面才有效果*!
 	#head .search_icon:hover{
 		background: url(../img/index/search.png);
 		background-position: -40px -86px;
@@ -152,7 +152,7 @@
 		font-size: 13px;
 	}
 
-	/*首页榜单*/
+	!*首页榜单*!
 	#navWrap{
 		width: 100%;
 		height: 55px;
@@ -197,7 +197,7 @@
 		background-color: #0c8ed9;
 	}
 
-	/*更多以及下拉列表*/
+	!*更多以及下拉列表*!
 	.homeNav .more a{
 		background:url(../img/index/arrowMored.png) no-repeat;
     margin-left: 5px;
@@ -249,7 +249,7 @@
 		color: #fff;
 		background-color: #2d343d;
 	}
-	/*到这里止*/
+	!*到这里止*!
 	.subNav {
 		width: 445.44px;
 		float:right;
@@ -300,7 +300,8 @@
 	.subNav a:hover{
 		color: #14a9ff;
 		background: url(../img/index/sprite.png);
-	}
+	}*/
+
 	/*轮播*/
 	#slideWrap{
 		width: 100%;

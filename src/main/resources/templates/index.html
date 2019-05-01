@@ -3,58 +3,12 @@
   <head>
     <meta charset="utf-8"/>
     <title>酷狗音乐 - 就是歌多</title>
-    <link rel="shortcut icon" href="../static/favicon.ico"/>
+    <link rel="shortcut icon" href="../static/favicon.ico" th:href="@{/favicon.ico}"/>
     <link rel="stylesheet" href="../public/css/index.css" th:href="@{/css/index.css}" media="all"/>
   </head>
   <body>
-    <div id="head">
-    	<h1 class="logo">
-    		<a href="#"><img src="../public/img/index/logo.png" th:src="@{/img/index/logo.png}"/></a>
-    	</h1>
-    	<div class="search">
-    	    <div class="search_input">
-    			<input type="text"/>
-    			<div class="search_btn" onClick="window.open('')">
-    			<i class="search_icon" onClick="window.open('')"></i>
-    			</div>
-    		</div>
-    	</div>
-    	<div class="head_right">
-    		<ul>
-    			<li><a href="serve.html" target="_blank">客服中心</a></li>
-    			<li><a href="recruit_sages.html" target="_blank">招纳贤士</a></li>
-    			<li><a href="vip.html" target="_blank">会员中心</a></li>
-    		</ul>
-    		<div class="loading">
-    			<a href="javascript:void(0)" style="color:white;"><div class="login">登录</div></a>
-    			<a href="register.html"><div class="regin">注册</div></a>
-    		</div>
-    	</div>
-    </div>
-    <!--首页榜单-->
-    <div id="navWrap">
-      <div class="nav">
-        <ul class="homeNav">
-          <li style="width: 92px;height: 55px;background-color: #0c8ed9;"><a class="normal active" href="#" style="color: white;">首页</a></li>
-  		    <li style="width: 92px;height: 55px;"><a class="normal" href="list.html">榜单</a></li>
-          <li  style="width: 140px;height: 55px;"><a class="normal" id="productCenter" href="download.html">下载客户端</a></li>
-          <li class="more" style="width: 113px;height: 55px;"><a href="javascript:void(0);"  id="showMore">更多</a></li>
-       </ul>
-       <ul class="secondMenu" id="secondMenu" style="display: none;">
-         <li><a href="radio.html">电台</a></li>
-         <li><a href="mv.html">MV</a></li>
-         <li><a href="songsheet.html">歌单</a></li>
-         <li><a href="singer.html">歌手</a></li>
-       </ul>
-       <ul class="subNav">
-         <li><a target="_blank" href="LiveMusic.html" class="icon-nav1">音乐直播</a></li>
-         <li><a target="_blank" href="live.html" class="icon-nav2">酷狗LIVE</a></li>
-         <li><a target="_blank" href="musicMan.html" class="icon-nav3">音乐人</a></li>
-         <li><a target="_blank" href="anchor.html" class="icon-nav4">游戏</a></li>
-         <li><a target="_blank" href="mall.html" class="icon-nav5">商城</a></li>
-        </ul>
-      </div>
-    </div>
+  	<!-- 引入头部 -->
+    <div th:replace="commons/head::headbar(activeUri='index')"></div>
 
     <!--轮播-->
     <div id="slideWrap">
@@ -1584,7 +1538,6 @@
     <div id="scollTop">
     	<a href="#"></a>
     </div>
-
     <!--<script src="../public/js/index.js" th:src="@{/js/index.js}" type="text/javascript" charset="utf-8"></script>-->
   </body>
 </html>

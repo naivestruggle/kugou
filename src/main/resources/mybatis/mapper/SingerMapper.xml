@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hc.kugou.mapper.SingerMapper">
+    <sql id="allValues">
+        KuGo_singer.id as id,
+        KuGo_singer.class_name as class_name,
+        KuGo_singer.sindex as sindex,
+        KuGo_singer.singername as singername,
+        KuGo_singer.singerid as singerid,
+        KuGo_singer.imgurl as imgurl,
+        KuGo_singer.listener_count as listener_count
+    </sql>
+
+    <select id="selectSingerByClassName" resultType="com.hc.kugou.bean.Singer">
+        select <include refid="allValues"/>
+        from KuGo_singer
+        where KuGo_singer.class_name like concat('#{className}','%')
+        order by KuGo_singer.listener_count desc
+        limit 0,#{n}
+    </select>
+</mapper>

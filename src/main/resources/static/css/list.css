@@ -1,0 +1,341 @@
+/*中间部分*/
+#center{
+    margin:40px auto;
+    width: 100%;
+    height: 650px;
+    position: relative;
+}
+#center .main{
+    padding-right: 12px;
+    padding: 0 3px 0 20px;
+    margin:0 auto;
+    position: relative;
+    min-width: 1000px;
+    width: 1000px!important;/*优先匹配*/
+}
+#center .side{
+    width: 218px;
+    border: 1px solid #eee;
+    float: left;
+    overflow: hidden;
+}
+.spelistbox{
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+.spelistbox h3 a{
+    height: 45px;
+    padding-left: 15px;
+    line-height: 45px;
+    font-size: 16px;
+    color: #555;
+    position: relative;
+    font-weight: 400;
+
+}
+.arrow{
+    background-image: url(../img/list/icon_splice.png);
+    background-repeat: no-repeat;
+    background-position: -450px -120px;
+    right: 20px;
+    position: absolute;
+    top:20px;
+    padding-left: 9px;
+    height: 5px;
+    display: inline-block;
+}
+.arrow:hover{
+    background-position: -450px -60px;
+}
+.spelistbox ul{
+    overflow: hidden;
+    margin-top: 6px;
+    color: #000000;
+}
+.spelistbox a{
+    font-size:14px;
+    padding: 0 0 0 15px;
+    margin-bottom: 4px;
+    line-height: 36px;
+    height: 36px;
+    position: relative;
+    display: block;
+    color: black;
+}
+.current:hover{
+    background: #169af3;
+    color: #fff;
+}
+.spelistbox ul li a:hover{
+    background-color: #f5f8fb;
+    color: #288fe7;
+}
+.content{
+    margin-left: -220px;
+    float: left;
+    width: 100%;
+}
+.contentlist{
+    margin-left: 220px;
+    padding-left:120px;
+    border-left: none;
+    width: 750px;
+    height: 500px;
+    margin: 15px 0 0 139px;
+    position: relative;
+}
+.spelistmenubox{
+    border-bottom: 1px dotted #cacaca;
+    margin-bottom: 24px;
+    position: relative;
+}
+.spelistmenu{
+    font-size: 0;
+}
+.spelistmenu h3{
+    font-size: 24px;
+    padding: 0;
+    margin-bottom: 33px;
+    display: inline-block;/*将对象呈递为内联对象，但是对象的内容作为块对象呈递。旁边的内联对象会被呈递在同一行内，允许空格*/
+    margin-right: 20px;
+    font-weight: 400;
+    line-height: 100%;
+}
+.spspan{
+    color:#999;
+    display: inline-block;
+    font-size: 14px;
+}
+.menuplay{
+    float: right;
+    margin-top: -6px;
+    font-size: 14px;
+    height: 34px;
+    width: 112px;
+}
+.menuplay span{
+    padding: 9px 20px 9px 34px;
+    background: #169af3;
+    color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 2px;
+    display: inline;
+}
+.menuplay span:hover{
+    background-color: #158fe1;
+}
+.bf{
+    background-image: url(../img/list/play_icon.png);
+    background-repeat: no-repeat;
+    margin-left: -18px;
+    padding-left: 9px;
+    width: 0;
+    height: 16px;
+    position: absolute;
+    margin-top: 3px;
+}
+.music{
+    height: 400px;
+}
+.allselect{
+    font-size: 14px;
+    color: #999;
+    padding-bottom: 10px;
+    position: relative;
+}
+.checkbox{
+    display: inline-block;
+    margin: 0 10px;
+    padding-left: 14px;
+    height: 14px;
+    background-position: -180px -180px;
+    background-image: url(../img/list/icon_splice.png);
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+.checkedbox{
+    margin: 0 10px;
+    padding-left: 14px;
+    height: 14px;
+    background-position: -180px -150px;
+    background-image: url(../img/list/icon_splice.png);
+    background-repeat: no-repeat;
+}
+.music ul li{
+    height: 54px;
+    line-height: 54px;
+    padding: 0 10px;
+    border-bottom: 1px solid #f2f2f2;
+    font-size: 0;
+}
+.musics ul li:hover{
+    background-color: #f5f8fb;
+
+}
+.musics ul li:hover .musicname{
+    color: #288fe7;
+}
+.musics ul li:hover .musictime{
+    color: #288fe7;
+}
+.musicsnum{
+    min-width: 15px;
+    width: auto!important;
+    color: #999;
+    font-size: 14px;
+    margin-right: 10px;
+}
+.musicsnew{
+    display: inline-block;
+    width: 17px;
+    height: 9px;
+    background-position: -240px -240px;
+    background-image: url(../img/list/icon_splice.png) ;
+    background-repeat: no-repeat;
+}
+.musicname{
+    width: 84px;
+    height: 54px;
+    font-size: 14px;
+    margin-left: 10px;
+    color: black;
+}
+.musichidden{
+    top: 10px;
+    right: 10px;
+    float: right;
+    padding-top: 6px;
+    height: 15px;
+}
+.listen{
+    background-image: url(../img/list/icon_splice.png);
+    background-repeat: no-repeat;
+    padding-left: 12px;
+    height: 14px;
+    background-position: 0 0;
+    margin-left: 10px;
+    margin-top: 5px;
+    width: 12px;
+    display: inline-block;
+    opacity: 0;/*设置透明度*/
+}
+.musics ul li:hover .listen{
+    opacity: 1;
+}
+.listen:hover{
+    background-position:0 -30px ;
+}
+.download{
+    background-image: url(../img/list/icon_splice.png);
+    background-repeat: no-repeat;
+    padding-left: 16px;
+    height: 13px;
+    background-position: -90px 0;
+    margin-left: 10px;
+    margin-top: 5px;
+    display: inline-block;
+    opacity: 0;
+}
+.musics ul li:hover .download{
+    opacity: 1;
+}
+.download:hover{
+    background-position: -90px -30px;
+}
+.share{
+    background-image: url(../img/list/icon_splice.png);
+    background-repeat: no-repeat;
+    margin-top: 5px;
+    margin-left: 10px;
+    padding-left: 16px;
+    height: 14px;
+    background-position: -298px 0;
+    display: inline-block;
+    opacity: 0;
+}
+.musics ul li:hover .share{
+    opacity: 1;
+}
+.share:hover{
+    background-position: -298px -30px;
+}
+.musictime{
+    height: 100%;
+    color: #999;
+    font-size: 14px;
+    margin-top: -2px;
+    margin-left: 20px;
+}
+.downloadkhd{
+    height: 120px;
+    line-height: 120px;
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+}
+.downloadkhd a{
+    width: 108px;
+    height: 36px;
+    line-height: 36px;
+    margin-left: 20px;
+    border-radius: 3px;
+    background-color: #169af3;
+    color: #fff;
+    font-size: 16px;
+    display: block;
+    margin-right: 30px;
+}
+/*底部*/
+#bottom{
+    width: 100%;
+    height: 319px;
+    background: #2c323b;
+    margin-top: -60px;
+}
+#bottom .footer{
+    padding-bottom: 50px;
+}
+.footer .links{
+    position: relative;
+    border-bottom: 1px solid #3d424a;
+    padding: 15px 0;
+    font-size: 12px;
+    color: #b1b3b9;
+    text-align: center;
+    height: 20px;
+}
+.footer .links a{
+    color: #b1b3b9;
+    padding: 10px;
+}
+.footer .links a:hover{
+    color:#009af3;
+
+}
+.footer .copyright{
+    width: 1000px;
+    height: 180px;
+    margin: 40px auto 0;
+}
+.copyright .footerIcon{
+    width: 16px;
+    height: 16px;
+    margin-left: 5px;
+    margin-top: -2px;
+    background: url(../img/list/footer_icon.png) no-repeat 0 0;
+}
+.copyright .office-verification{
+    margin-left: 5px;
+    padding: 5px 10px;
+    background: url(../img/list/logo_down.png) no-repeat 0 0;
+}
+.copyright p{
+    line-height: 30px;
+    text-align: center;
+    color: #b1b3b9;
+    font-size: 14px;
+}
+.copyright a{
+    color: #999;
+}
