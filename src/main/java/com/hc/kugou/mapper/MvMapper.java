@@ -2,6 +2,7 @@ package com.hc.kugou.mapper;
 
 import com.hc.kugou.bean.Mv;import org.apache.ibatis.annotations.Param;
 
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -25,4 +26,12 @@ public interface MvMapper {
      * @param mv mv对象
      */
     void insert(@Param("mv")Mv mv);
+
+    /**
+     * 修改更新日期
+     *
+     * @param id
+     * @param updateTime
+     */
+    void updateTime(@Param("id")Long id, @Param("updateTime")Date updateTime);
 }

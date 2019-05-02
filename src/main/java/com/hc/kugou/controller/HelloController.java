@@ -1,8 +1,6 @@
-package com.hc.kugou;
+package com.hc.kugou.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.hc.commons.MvUtils;
-import com.hc.kugou.bean.IndexViewBean;
 import com.hc.kugou.bean.Music;
 import com.hc.kugou.bean.Mv;
 import com.hc.kugou.bean.Singer;
@@ -10,20 +8,21 @@ import com.hc.kugou.mapper.MusicMapper;
 import com.hc.kugou.mapper.MvMapper;
 import com.hc.kugou.mapper.SingerMapper;
 import com.hc.kugou.service.IndexService;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.io.InputStream;
-import java.net.URL;
 import java.sql.Date;
 import java.util.List;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class KugouApplicationTests {
+/**
+ * @Author:
+ * @Date:2019/5/2
+ * @Description:com.hc.kugou.controller
+ * @Version:1.0
+ */
+@Controller
+public class HelloController {
 
     @Autowired
     private IndexService indexService;
@@ -35,22 +34,11 @@ public class KugouApplicationTests {
     private MusicMapper musicMapper;
     @Autowired
     private SingerMapper singerMapper;
-    @Test
-    public void contextLoads() {
-//        Long time1 = System.currentTimeMillis();
-//        IndexViewBean indexViewBean = indexService.showService();
-//        Long time2 = System.currentTimeMillis();
-//        Long time = time2-time1;
-//        System.out.println(indexViewBean);
-//        System.out.println("执行时间："+time+"ms");
-    }
 
-    @Test
-    public void fun(){
+    @RequestMapping("updateMv")
+    public String hello(){
         //78143
-        //mv 16969
-        //select count(*) from KuGo_mv
-        Long id = 74491L;
+        Long id = 67131L;
         while(id < 78144) {
             Music music = musicMapper.selectMusicById(id);
             //获取作者ID
@@ -90,15 +78,6 @@ public class KugouApplicationTests {
             }
             id++;
         }
+        return "index";
     }
-
-    @Test
-    public void fun1(){
-//        String str = "周杰伦、陶晶莹 - 我愿意 (2003陶子娱乐秀现场)";
-//        String str1 = str.split("-")[0].trim().split("、")[0];
-//        System.out.println();
-    }
-
-
-
 }

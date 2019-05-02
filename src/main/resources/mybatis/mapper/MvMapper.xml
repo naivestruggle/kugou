@@ -6,22 +6,27 @@
     <sql id="allKeys">
         KuGo_mv.id as id,
         KuGo_mv.mv_name as mv_name,
+        KuGo_mv.mv_hash as mv_hash,
         KuGo_mv.hc_url as hc_url,
         KuGo_mv.hd_url as hd_url,
         KuGo_mv.bd_url as bd_url,
         KuGo_mv.head_image as head_image,
-        KuGo_mv.update_time as update_time
+        KuGo_mv.update_time as update_time,
+        KuGo_mv.class_name as class_name
     </sql>
     <sql id="allValues">
-        #{id},#{mvName},#{hcUrl},#{hdUrl},#{bdUrl},#{headImage},#{updateTime}
+        #{mv.id},#{mv.mvHash},#{mv.mvName},#{mv.hcUrl},#{mv.hdUrl},#{mv.bdUrl},#{mv.headImage},#{mv.updateTime},#{mv.className}
     </sql>
     <select id="findMvByName" resultType="com.hc.kugou.bean.Mv">
         select <include refid="allKeys"/>
         from KuGo_mv
         where KuGo_mv.mv_name like concat(#{mvName},'%')
     </select>
-    <insert id="insert">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
         insert into KuGo_mv
         values (<include refid="allValues"/>)
     </insert>
+    <update id="updateTime">
+        update KuGo_mv set update_time=#{updateTime} where id=#{id}
+    </update>
 </mapper>

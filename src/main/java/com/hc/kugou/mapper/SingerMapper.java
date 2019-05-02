@@ -19,4 +19,12 @@ public interface SingerMapper {
      * @return 歌手集合
      */
     List<Singer> selectSingerByClassName(@Param("className")String className, @Param("n")int n);
+
+    /**
+     * 根据歌手ID查询歌手
+     *
+     * @param authorId 歌手ID
+     * @return 歌手对象
+     */
+    List<Singer> findBySingerId(@Param("authorId")Long authorId);
 }

@@ -35,15 +35,7 @@ public class MvServiceImpl implements MvService {
             mv = MvUtils.getMv(mvName);
             final Mv insertMv = mv;
             //将这条mv存入数据库
-            new Thread(){
-                @Override
-                public void run() {
-                    synchronized (MvServiceImpl.class){
-                        mvMapper.insert(insertMv);
-                    }
-                }
-            }.start();
-
+            mvMapper.insert(insertMv);
         }else{
             //数据库中有  返回第一条
             mv = mvList.get(0);

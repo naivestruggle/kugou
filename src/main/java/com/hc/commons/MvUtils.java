@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.hc.kugou.bean.Mv;
 import com.sun.javafx.collections.MappingChange;
 import org.springframework.boot.json.GsonJsonParser;
+import org.thymeleaf.util.StringUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,7 +32,7 @@ public class MvUtils {
      */
     public static Mv getMv(String audioName){
         Mv mv = new Mv();
-        mv.setId(UUID.randomUUID().toString().replace("-",""));
+        mv.setMvHash(UUID.randomUUID().toString().replace("-",""));
         String exe = "python";
         String command = MvUtils.class.getResource("/python/mvSpider.py").toString().replace("file:/","").replace("/","\\");
         String[] cmdArr = new String[] { exe, command,audioName };
@@ -46,6 +47,10 @@ public class MvUtils {
                 sb.append(new String(buff,0,len,"gbk"));
             }
             String result = sb.toString();
+            if (StringUtils.isEmpty(result)){
+                System.out.println(audioName+"：这首音乐没有mv");
+                return null;
+            }
             Map<String,Map<String,Object>> map = (Map<String, Map<String, Object>>) JSONObject.parse(result);
             for(Iterator<Map.Entry<String,Map<String,Object>>> it = map.entrySet().iterator();it.hasNext();){
                 Map.Entry<String,Map<String,Object>> me = it.next();

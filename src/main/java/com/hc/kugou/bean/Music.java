@@ -114,6 +114,11 @@ public class Music implements Serializable {
      * 听这首歌的人数
      */
     private Long listenerCount;
+
+    /**
+     * 语种
+     */
+    private String className;
 //    https://www.kugou.com/song/#hash=44C60678EF095B12845D2056279B8E7B&album_id=0
 //    http://fs.w.kugou.com/201905010911/92c9775ff309fc2b39f3f581548aaa36/G159/M04/1F/14/P4cBAFzCxBeAKoBiAD4dE_mpuUE604.mp3
 //    http://fs.w.kugou.com/201904271611/c583e0dfa2140775e39f741e89bc3d7a/G159/M04/1F/14/P4cBAFzCxBeAKoBiAD4dE_mpuUE604.mp3
