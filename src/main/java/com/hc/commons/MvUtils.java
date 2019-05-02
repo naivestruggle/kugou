@@ -31,7 +31,7 @@ public class MvUtils {
      */
     public static Mv getMv(String audioName){
         Mv mv = new Mv();
-        mv.setId(UUID.randomUUID().toString().replace("-",""));
+        mv.setMvHash(UUID.randomUUID().toString().replace("-",""));
         String exe = "python";
         String command = MvUtils.class.getResource("/python/mvSpider.py").toString().replace("file:/","").replace("/","\\");
         String[] cmdArr = new String[] { exe, command,audioName };

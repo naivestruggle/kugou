@@ -40,6 +40,8 @@ public class MyMvcConfig{
                 registry.addViewController("/songsheet.html").setViewName("songsheet");
                 registry.addViewController("/txsinger.html").setViewName("txsinger");
                 registry.addViewController("/vip.html").setViewName("vip");
+                registry.addViewController("/queryMusic.html").setViewName("queryMusic");
+                registry.addViewController("/queryMv.html").setViewName("queryMv");
             }
         };
         return webMvcConfigurer;

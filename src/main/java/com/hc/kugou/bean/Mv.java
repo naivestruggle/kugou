@@ -16,7 +16,9 @@ public class Mv implements Serializable {
     /**
      * ID
      */
-    private String id;
+    private Integer id;
+
+    private String mvHash;
 
     /**
      * mv名字
@@ -46,4 +48,7 @@ public class Mv implements Serializable {
      * 数据库更新时间
      */
     private Date updateTime;
+
+    private String className;
+
 }
