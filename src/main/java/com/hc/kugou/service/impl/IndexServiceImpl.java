@@ -64,7 +64,7 @@ public class IndexServiceImpl implements IndexService {
      * @return
      */
     @Override
-    @Cacheable(cacheNames = "indexViewBean")
+//    @Cacheable(cacheNames = "indexViewBean")
     public IndexViewBean showService() {
         IndexViewBean indexViewBean = new IndexViewBean();
 
@@ -80,12 +80,10 @@ public class IndexServiceImpl implements IndexService {
         //添加【推荐MV模块】
         addRecommendMv(indexViewBean);
 
-
         //添加【热门电台模块】
 
         //添加【热门歌手模块】
         addPopSinger(indexViewBean);
-
         return indexViewBean;
     }
 
@@ -128,7 +126,7 @@ public class IndexServiceImpl implements IndexService {
      * @param indexViewBean 信息对象
      */
     private void addRecommendMv(IndexViewBean indexViewBean) {
-        //先取出推荐的歌曲  华语15  欧美15  日韩15   推荐根据歌曲的访问量来排序
+        //先取出推荐的歌曲  华语15  欧美15  日韩15
         List<Mv> mvList = null;
         Map<String,List<Mv>> recommendMvCollect = new HashMap<String,List<Mv>>();
         //1、添加华语MV

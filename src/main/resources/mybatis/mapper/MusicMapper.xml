@@ -53,4 +53,7 @@
         ORDER BY listener_count DESC
         limit 0,#{n}
     </select>
+    <update id="updateHasMv">
+        update KuGo_music set have_mv=#{isHasMv},video_id=#{mvId},class_name=#{className} where id=#{id}
+    </update>
 </mapper>

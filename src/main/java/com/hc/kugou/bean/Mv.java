@@ -18,6 +18,9 @@ public class Mv implements Serializable {
      */
     private Integer id;
 
+    /**
+     * 哈希
+     */
     private String mvHash;
 
     /**
@@ -49,6 +52,9 @@ public class Mv implements Serializable {
      */
     private Date updateTime;
 
+    /**
+     * 语种
+     */
     private String className;
 
 }

@@ -35,4 +35,11 @@ public interface MusicMapper {
      * @return  歌曲集合
      */
     List<Music> selectRecommendMusicByClassName(@Param("className")String className, @Param("n")int n);
+
+    /**
+     * 修改是否有mv
+     *
+     * @param isHasMv
+     */
+    void updateHasMv(@Param("id") Long id, @Param("mvId") Long mvId, @Param("isHasMv") int isHasMv, @Param("className")String className);
 }
