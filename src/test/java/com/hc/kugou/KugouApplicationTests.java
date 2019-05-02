@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.io.InputStream;
+import java.io.*;
 import java.net.URL;
 import java.sql.Date;
 import java.util.List;
@@ -37,20 +37,59 @@ public class KugouApplicationTests {
     private SingerMapper singerMapper;
     @Test
     public void contextLoads() {
-//        Long time1 = System.currentTimeMillis();
-//        IndexViewBean indexViewBean = indexService.showService();
-//        Long time2 = System.currentTimeMillis();
-//        Long time = time2-time1;
-//        System.out.println(indexViewBean);
-//        System.out.println("执行时间："+time+"ms");
+        Long time1 = System.currentTimeMillis();
+        IndexViewBean indexViewBean = indexService.showService();
+        Long time2 = System.currentTimeMillis();
+        Long time = time2-time1;
+        System.out.println(indexViewBean);
+        System.out.println("执行时间："+time+"ms");
     }
 
     @Test
+    public void copy() throws IOException {
+//        StringBuffer sb = new StringBuffer();
+//        sb.append("insert into KuGo_music values");
+//        List<Music> list = musicMapper.selectCopy(0,1000);
+//        for(Music music : list){
+//            sb.append("(");
+//            sb.append(music.getId()+",");
+//            sb.append(music.getAuthorId()+",");
+//            sb.append("'"+music.getAuthorName()+"'"+",");
+//            sb.append(music.getAudioId()+",");
+//            sb.append("'"+music.getAudioName()+"'"+",");
+//            sb.append("'"+music.getSongName()+"'"+",");
+//            sb.append("'"+music.getHashCode()+"'"+",");
+//            sb.append(music.getFilesize()+",");
+//            sb.append(music.getTimelength()+",");
+//            sb.append(music.getHaveAlbum()+",");
+//            sb.append(music.getAlbumId()+",");
+//            sb.append("'"+music.getAlbumName()+"'"+",");
+//            sb.append(music.getHaveMv()+",");
+//            sb.append(music.getVideoId()+",");
+//            sb.append(music.getPrivilege()+",");
+//            sb.append(music.getPrivilege2()+",");
+//            sb.append("'"+music.getPlayUrl()+"'"+",");
+//            sb.append("'"+music.getImg()+"'"+",");
+//            sb.append("'"+music.getLyrics()+"'"+",");
+//            sb.append(music.getListenerCount()+",");
+//            sb.append("'"+music.getClassName()+"'");
+//            sb.append(")");
+//            sb.append(",");
+//        }
+//
+//        String sql = sb.toString();
+//        FileWriter fileWriter = new FileWriter(new File("g:/sql.txt"));
+//        fileWriter.write(sql);
+//        fileWriter.close();
+    }
+
+    /*119.29.229.221
+    @Test
     public void fun(){
-        //78143
+        //78144
         //mv 16969
         //select count(*) from KuGo_mv
-        Long id = 74491L;
+        Long id = 77687L;
         while(id < 78144) {
             Music music = musicMapper.selectMusicById(id);
             //获取作者ID
@@ -91,6 +130,8 @@ public class KugouApplicationTests {
             id++;
         }
     }
+
+     */
 
     @Test
     public void fun1(){

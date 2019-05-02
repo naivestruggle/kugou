@@ -58,6 +58,9 @@ public class IndexServiceImpl implements IndexService {
 
     @Autowired
     private MvService mvService;
+
+    @Autowired
+    private MvMapper mvMapper;
     /**
      * 得到所有的主页要显示的信息
      *
@@ -126,33 +129,15 @@ public class IndexServiceImpl implements IndexService {
      * @param indexViewBean 信息对象
      */
     private void addRecommendMv(IndexViewBean indexViewBean) {
-        //先取出推荐的歌曲  华语15  欧美15  日韩15
-        List<Mv> mvList = null;
         Map<String,List<Mv>> recommendMvCollect = new HashMap<String,List<Mv>>();
-        //1、添加华语MV
-        List<Music> chinaRecommendMusicList = musicMapper.selectRecommendMusicByClassName("华",15);
-        mvList = new ArrayList<Mv>();
-        for(Music music:chinaRecommendMusicList){
-            Mv mv = mvService.findByName(music.getAudioName());
-            mvList.add(mv);
-        }
-        recommendMvCollect.put(MAP_CHINA,mvList);
-        //2、添加欧美Mv
-        List<Music> eaaRecommendMusicList = musicMapper.selectRecommendMusicByClassName("欧美",15);
-        mvList = new ArrayList<Mv>();
-        for(Music music:eaaRecommendMusicList){
-            Mv mv = mvService.findByName(music.getAudioName());
-            mvList.add(mv);
-        }
-        recommendMvCollect.put(MAA_EAA,mvList);
-        //3、添加日韩Mv
-        List<Music> japanKoreaRecommendMusicList = musicMapper.selectRecommendMusicByClassName("日韩",15);
-        mvList = new ArrayList<Mv>();
-        for(Music music:japanKoreaRecommendMusicList){
-            Mv mv = mvService.findByName(music.getAudioName());
-            mvList.add(mv);
-        }
-        recommendMvCollect.put(MAP_JAPAN_KOREA,mvList);
+        List<Mv> chinaMvList = mvMapper.selectPopMvByClassName("华",24);
+        List<Mv> eaaMvList = mvMapper.selectPopMvByClassName("欧美",24);
+        List<Mv> japanMvList = mvMapper.selectPopMvByClassName("日",24);
+        List<Mv> koreaMvList = mvMapper.selectPopMvByClassName("韩",24);
+        recommendMvCollect.put(MAP_CHINA,chinaMvList);
+        recommendMvCollect.put(MAA_EAA,eaaMvList);
+        recommendMvCollect.put(MAP_JAPAN,japanMvList);
+        recommendMvCollect.put(MAP_KOREA,koreaMvList);
         indexViewBean.setRecommendMvCollect(recommendMvCollect);
     }
 }

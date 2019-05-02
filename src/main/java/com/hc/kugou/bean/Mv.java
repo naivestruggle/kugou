@@ -56,4 +56,9 @@ public class Mv implements Serializable {
      * 语种
      */
     private String className;
+
+    /**
+     * 播放量
+     */
+    private Long listenerCount;
 }

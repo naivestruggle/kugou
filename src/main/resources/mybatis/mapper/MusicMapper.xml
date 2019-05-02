@@ -23,16 +23,13 @@
         KuGo_music.play_url as play_url,
         KuGo_music.img as img,
         KuGo_music.lyrics as lyrics,
-        KuGo_music.listener_count as listener_count
+        KuGo_music.listener_count as listener_count,
+        KuGo_music.class_name as class_name
     </sql>
     <select id="selectNewMusicByClassName" resultType="com.hc.kugou.bean.Music">
         select <include refid="allkeys"/>
         from KuGo_music
-        where author_id in (
-	        select singerid
-	        from KuGo_singer
-	        where class_name like concat(#{className},'%')
-        )
+        where KuGo_music.class_name like concat(#{className} ,'%')
         ORDER BY audio_id DESC
         limit 0,#{n}
     </select>
@@ -56,4 +53,9 @@
     <update id="updateHasMv">
         update KuGo_music set have_mv=#{isHasMv},video_id=#{mvId},class_name=#{className} where id=#{id}
     </update>
+    <select id="selectCopy" resultType="com.hc.kugou.bean.Music">
+        select <include refid="allkeys"/>
+        from KuGo_music
+        limit #{start},#{end}
+    </select>
 </mapper>

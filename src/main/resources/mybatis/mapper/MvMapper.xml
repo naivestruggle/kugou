@@ -12,7 +12,8 @@
         KuGo_mv.bd_url as bd_url,
         KuGo_mv.head_image as head_image,
         KuGo_mv.update_time as update_time,
-        KuGo_mv.class_name as class_name
+        KuGo_mv.class_name as class_name,
+        KuGo_mv.listener_count as listener_count
     </sql>
     <sql id="allValues">
         #{mv.id},#{mv.mvHash},#{mv.mvName},#{mv.hcUrl},#{mv.hdUrl},#{mv.bdUrl},#{mv.headImage},#{mv.updateTime},#{mv.className}
@@ -29,4 +30,11 @@
     <update id="updateTime">
         update KuGo_mv set update_time=#{updateTime} where id=#{id}
     </update>
+    <select id="selectPopMvByClassName" resultType="com.hc.kugou.bean.Mv">
+        select <include refid="allKeys"/>
+        from KuGo_mv
+        where KuGo_mv.class_name like concat(#{className} ,'%')
+        order by KuGo_mv.listener_count
+        limit 0,#{n}
+    </select>
 </mapper>

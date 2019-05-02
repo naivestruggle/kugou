@@ -16,7 +16,7 @@
     <select id="selectSingerByClassName" resultType="com.hc.kugou.bean.Singer">
         select <include refid="allKeys"/>
         from KuGo_singer
-        where KuGo_singer.class_name like concat('#{className}','%')
+        where KuGo_singer.class_name like concat(#{className},'%')
         order by KuGo_singer.listener_count desc
         limit 0,#{n}
     </select>
