@@ -16,7 +16,7 @@ public class Mv implements Serializable {
     /**
      * ID
      */
-    private Integer id;
+    private Long id;
 
     /**
      * 哈希
