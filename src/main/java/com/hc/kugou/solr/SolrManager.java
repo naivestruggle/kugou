@@ -50,8 +50,7 @@ public class SolrManager<T>{
      * @param object    要更新的对象
      */
     public void update(String id,T object){
-        delete(id);
-        add(object);
+        add(id,object);
     }
 
     /**
@@ -60,8 +59,7 @@ public class SolrManager<T>{
      */
     public void update(java.util.Map<String,T> map){
         for(java.util.Map.Entry<String,T> me : map.entrySet()){
-            delete(me.getKey());
-            add(me.getValue());
+            add(me.getKey(),me.getValue());
         }
     }
 
@@ -107,11 +105,12 @@ public class SolrManager<T>{
 
     /**
      * 添加一个对象
+     * @param id id
      * @param object    对象
      */
-    public void add(T object){
+    public void add(String id,T object){
         //添加一个对象但是未提交
-        addOneNotCommit(object);
+        addOneNotCommit(id,object);
 
         //提交
         commit();
@@ -120,11 +119,12 @@ public class SolrManager<T>{
 
     /**
      * 批量添加
+     * @param id id
      * @param objects   集合
      */
-    public void add(List<T> objects){
+    public void add(String id,List<T> objects){
         for(T object : objects){
-            addOneNotCommit(object);
+            addOneNotCommit(id,object);
         }
         //提交
         commit();
@@ -132,12 +132,13 @@ public class SolrManager<T>{
 
     /**
      * 批量添加
+     * @param  id id
      * @param objects   数组
      */
-    public void add(T... objects){
+    public void add(String id,T... objects){
         for (T object:objects){
             //添加一个对象但是未提交
-            addOneNotCommit(object);
+            addOneNotCommit(id,object);
         }
         //提交
         commit();
@@ -145,9 +146,10 @@ public class SolrManager<T>{
 
     /**
      * 添加一个对象  但是未提交
+     * @param id id
      * @param object    对象
      */
-    private void addOneNotCommit(T object) {
+    private void addOneNotCommit(String id,T object) {
         //得到所有的字段  包括私有的
         Field[] fields = clazz.getDeclaredFields();
         SolrInputDocument doc = new SolrInputDocument();
@@ -169,7 +171,7 @@ public class SolrManager<T>{
 
             //将所有字段和值添加到document中
             try {
-                doc.setField("id",UUID.randomUUID().toString().replace("-",""));
+                doc.setField("id",id);
                 doc.setField(sqlString,method.invoke(object));
             } catch (IllegalAccessException e) {
                 e.printStackTrace();

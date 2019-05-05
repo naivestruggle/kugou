@@ -1,12 +1,14 @@
 package com.hc.kugou.service.impl;
 
 import com.hc.kugou.bean.*;
+import com.hc.kugou.solr.MvSolr;
 import com.hc.kugou.solr.SolrBean;
 import com.hc.kugou.mapper.MusicMapper;
 import com.hc.kugou.mapper.MvMapper;
 import com.hc.kugou.mapper.SingerMapper;
 import com.hc.kugou.service.IndexService;
 import com.hc.kugou.solr.MusicSolr;
+import org.omg.CORBA.PRIVATE_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -57,6 +59,9 @@ public class IndexServiceImpl implements IndexService {
 
     @Autowired
     private MusicSolr musicSolr;
+
+    @Autowired
+    private MvSolr mvSolr;
     /**
      * 得到所有的主页要显示的信息
      *
@@ -125,15 +130,15 @@ public class IndexServiceImpl implements IndexService {
      * @param indexViewBean 信息对象
      */
     private void addRecommendMv(IndexViewBean indexViewBean) {
-        Map<String,List<Mv>> recommendMvCollect = new HashMap<String,List<Mv>>();
-        List<Mv> chinaMvList = mvMapper.selectPopMvByClassName("华",24);
-        List<Mv> eaaMvList = mvMapper.selectPopMvByClassName("欧美",24);
-        List<Mv> japanMvList = mvMapper.selectPopMvByClassName("日",24);
-        List<Mv> koreaMvList = mvMapper.selectPopMvByClassName("韩",24);
-        recommendMvCollect.put(MAP_CHINA,chinaMvList);
-        recommendMvCollect.put(MAP_EAA,eaaMvList);
-        recommendMvCollect.put(MAP_JAPAN,japanMvList);
-        recommendMvCollect.put(MAP_KOREA,koreaMvList);
+        Map<String,SolrBean<Mv>> recommendMvCollect = new HashMap<String,SolrBean<Mv>>();
+        SolrBean<Mv> chinaMvSolrBean = mvSolr.selectPopMvByClassName("华语",24);
+        SolrBean<Mv> eaaMvSolrBean = mvSolr.selectPopMvByClassName("欧美",24);
+        SolrBean<Mv> japanMvSolrBean = mvSolr.selectPopMvByClassName("日",24);
+        SolrBean<Mv> koreaMvSolrBean = mvSolr.selectPopMvByClassName("韩",24);
+        recommendMvCollect.put(MAP_CHINA,chinaMvSolrBean);
+        recommendMvCollect.put(MAP_EAA,eaaMvSolrBean);
+        recommendMvCollect.put(MAP_JAPAN,japanMvSolrBean);
+        recommendMvCollect.put(MAP_KOREA,koreaMvSolrBean);
         indexViewBean.setRecommendMvCollect(recommendMvCollect);
     }
 }

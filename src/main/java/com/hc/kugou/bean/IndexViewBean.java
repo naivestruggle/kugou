@@ -28,5 +28,5 @@ public class IndexViewBean implements Serializable {
     /**
      * 推荐Mv
      */
-    private Map<String,List<Mv>> recommendMvCollect;
+    private Map<String,SolrBean<Mv>> recommendMvCollect;
 }
