@@ -15,115 +15,108 @@ public class Music implements Serializable {
     /**
      * ID
      */
-    private Integer id;
+    private Integer musicId;
 
     /**
      * 作者ID
      */
-    private Long authorId;
+    private Long musicAuthorId;
 
     /**
      * 作者姓名
      */
-    private String authorName;
+    private String musicAuthorName;
 
     /**
      * 音频ID
      */
-    private Long audioId;
+    private Long musicAudioId;
 
     /**
      * 音频名
      */
-    private String audioName;
+    private String musicAudioName;
 
     /**
      * 歌曲名
      */
-    private String songName;
+    private String musicSongName;
 
     /**
      * 哈希值
      */
-    private String hashCode;
+    private String musicHashCode;
 
     /**
      * 歌曲文件大小
      */
-    private Long filesize;
+    private Long musicFilesize;
 
     /**
      * 歌曲时长
      */
-    private Long timelength;
+    private Long musicTimelength;
 
 
     /**
      * 是否有唱片集
      */
-    private Integer haveAlbum;
+    private Integer musicHaveAlbum;
 
 
     /**
      * 唱片集ID
      */
-    private Long albumId;
+    private Long musicAlbumId;
 
     /**
      * 唱片集名
      */
-    private String albumName;
+    private String musicAlbumName;
 
     /**
      * 是否有mv
      */
-    private Integer haveMv;
+    private Integer musicHaveMv;
 
 
     /**
      * mvID
      */
-    private Integer videoId;
+    private Integer musicVideoId;
 
 
     /**
      * 权限
      */
-    private Integer privilege;
+    private Integer musicPrivilege;
     /**
      * 权限2
      */
-    private Integer privilege2;
+    private Integer musicPrivilege2;
 
     /**
      * 歌曲播放链接
      */
-    private String playUrl;
+    private String musicPlayUrl;
 
     /**
      * 图片路径
      */
-    private String img;
+    private String musicImg;
 
     /**
      * 歌词
      */
-    private String lyrics;
+    private String musicLyrics;
 
     /**
      * 听这首歌的人数
      */
-    private Long listenerCount;
+    private Long musicListenerCount;
 
     /**
      * 语种
      */
-    private String className;
-//    https://www.kugou.com/song/#hash=44C60678EF095B12845D2056279B8E7B&album_id=0
-//    http://fs.w.kugou.com/201905010911/92c9775ff309fc2b39f3f581548aaa36/G159/M04/1F/14/P4cBAFzCxBeAKoBiAD4dE_mpuUE604.mp3
-//    http://fs.w.kugou.com/201904271611/c583e0dfa2140775e39f741e89bc3d7a/G159/M04/1F/14/P4cBAFzCxBeAKoBiAD4dE_mpuUE604.mp3
-//
-//    http://fs.w.kugou.com/201905010905/bf3e32aae7706a1aeea11b9690b01025/G157/M05/1B/0D/PYcBAFzG90GAVTDLADHU-kEwu2E876.mp3
-//    http://fs.w.kugou.com/201905011540/9b68b0e167809424f506dd849fe91b21/G113/M07/07/1F/UZQEAFluVU2AGS4OAD1d-2CAjGQ832.mp3
-//    http://fs.w.kugou.com/201904271540/42cd4a6cb04a53a3ee259f0e033dcb32/G082/M03/13/18/MpQEAFhfN7KAP67vADb2_EgpN7g297.mp3
+    private String musicClassName;
 }

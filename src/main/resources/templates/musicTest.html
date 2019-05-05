@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <script src="../public/js/jquery-3.2.1.js" th:src="@{/js/jquery-3.2.1.js}"></script>
+</head>
+<body>
+    <input type="text" name="" id="search" oninput="search()"/><br /><br />
+    <div id="content">
+
+    </div>
+</body>
+<script type="text/javascript">
+    function search() {
+       var data = {
+           queryStr : $("#search").val()
+       };
+       $.post("find_music",data,function (data) {
+           var h = "";
+           for(var i=0;i<data.length;i++) {
+               h = h+ "歌曲名: " + data[i].audioName + " <br />歌曲id:" + 0 +
+               "    <hr />"
+           }
+           $("#content").html(h);
+       });
+    }
+</script>
+
+</html>

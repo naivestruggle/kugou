@@ -4,56 +4,58 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hc.kugou.mapper.MusicMapper">
     <sql id="allkeys">
-        KuGo_music.id as id,
-        KuGo_music.author_id as author_id,
-        KuGo_music.author_name as author_name,
-        KuGo_music.audio_id as audio_id,
-        KuGo_music.audio_name as audio_name,
-        KuGo_music.song_name as song_name,
-        KuGo_music.hash_code as hash_code,
-        KuGo_music.filesize as filesize,
-        KuGo_music.timelength as timelength,
-        KuGo_music.have_album as have_album,
-        KuGo_music.album_id as album_id,
-        KuGo_music.album_name as album_name,
-        KuGo_music.have_mv as have_mv,
-        KuGo_music.video_id as video_id,
-        KuGo_music.privilege as privilege,
-        KuGo_music.privilege2 as privilege2,
-        KuGo_music.play_url as play_url,
-        KuGo_music.img as img,
-        KuGo_music.lyrics as lyrics,
-        KuGo_music.listener_count as listener_count
+        kugou_music.music_id as music_id,
+        kugou_music.music_author_id as music_author_id,
+        kugou_music.music_author_name as music_author_name,
+        kugou_music.music_audio_id as music_audio_id,
+        kugou_music.music_audio_name as music_audio_name,
+        kugou_music.music_song_name as music_song_name,
+        kugou_music.music_hash_code as music_hash_code,
+        kugou_music.music_filesize as music_filesize,
+        kugou_music.music_timelength as music_timelength,
+        kugou_music.music_have_album as music_have_album,
+        kugou_music.music_album_id as music_album_id,
+        kugou_music.music_album_name as music_album_name,
+        kugou_music.music_have_mv as music_have_mv,
+        kugou_music.music_video_id as music_video_id,
+        kugou_music.music_privilege as music_privilege,
+        kugou_music.music_privilege2 as music_privilege2,
+        kugou_music.music_play_url as music_play_url,
+        kugou_music.music_img as music_img,
+        kugou_music.music_lyrics as music_lyrics,
+        kugou_music.music_listener_count as music_listener_count,
+        kugou_music.music_class_name as music_class_name
     </sql>
     <select id="selectNewMusicByClassName" resultType="com.hc.kugou.bean.Music">
         select <include refid="allkeys"/>
-        from KuGo_music
-        where author_id in (
-	        select singerid
-	        from KuGo_singer
-	        where class_name like concat(#{className},'%')
-        )
-        ORDER BY audio_id DESC
+        from kugou_music
+        where kugou_music.music_class_name like concat(#{className} ,'%')
+        ORDER BY music_audio_id DESC
         limit 0,#{n}
     </select>
     <select id="selectMusicById" resultType="com.hc.kugou.bean.Music">
         select <include refid="allkeys"></include>
-        from  KuGo_music
-        where KuGo_music.id = #{id}
+        from  kugou_music
+        where kugou_music.music_id = #{id}
     </select>
 
     <select id="selectRecommendMusicByClassName" resultType="com.hc.kugou.bean.Music">
         select <include refid="allkeys"/>
-        from  KuGo_music
-        where author_id in (
-        select singerid
-        from KuGo_singer
-        where class_name like concat(#{className},'%')
+        from  kugou_music
+        where music_author_id in (
+        select music_singerid
+        from kugou_singer
+        where music_class_name like concat(#{className},'%')
         )
         ORDER BY listener_count DESC
         limit 0,#{n}
     </select>
     <update id="updateHasMv">
-        update KuGo_music set have_mv=#{isHasMv},video_id=#{mvId},class_name=#{className} where id=#{id}
+        update kugou_music set music_have_mv=#{isHasMv},music_video_id=#{mvId},music_class_name=#{className} where music_id=#{id}
     </update>
+    <select id="selectCopy" resultType="com.hc.kugou.bean.Music">
+        select <include refid="allkeys"/>
+        from kugou_music
+        limit #{start},#{end}
+    </select>
 </mapper>

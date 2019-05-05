@@ -4,29 +4,47 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hc.kugou.mapper.MvMapper">
     <sql id="allKeys">
-        KuGo_mv.id as id,
-        KuGo_mv.mv_name as mv_name,
-        KuGo_mv.mv_hash as mv_hash,
-        KuGo_mv.hc_url as hc_url,
-        KuGo_mv.hd_url as hd_url,
-        KuGo_mv.bd_url as bd_url,
-        KuGo_mv.head_image as head_image,
-        KuGo_mv.update_time as update_time,
-        KuGo_mv.class_name as class_name
+        kugou_mv.mv_id as mv_id,
+        kugou_mv.mv_name as mv_name,
+        kugou_mv.mv_hash as mv_hash,
+        kugou_mv.mv_hc_url as mv_hc_url,
+        kugou_mv.mv_hd_url as mv_hd_url,
+        kugou_mv.mv_bd_url as mv_bd_url,
+        kugou_mv.mv_head_image as mv_head_image,
+        kugou_mv.mv_update_time as mv_update_time,
+        kugou_mv.mv_class_name as mv_class_name,
+        kugou_mv.mv_listener_count as mv_listener_count
     </sql>
     <sql id="allValues">
-        #{mv.id},#{mv.mvHash},#{mv.mvName},#{mv.hcUrl},#{mv.hdUrl},#{mv.bdUrl},#{mv.headImage},#{mv.updateTime},#{mv.className}
+        #{mv.mvId},#{mv.mvHash},#{mv.mvName},#{mv.hcUrl},#{mv.mvHdUrl},#{mv.mvBdUrl},#{mv.mvHeadImage},#{mv.mvUpdateTime},#{mv.mvClassName},#{mv.mvListenerCount}
     </sql>
     <select id="findMvByName" resultType="com.hc.kugou.bean.Mv">
         select <include refid="allKeys"/>
-        from KuGo_mv
-        where KuGo_mv.mv_name like concat(#{mvName},'%')
+        from kugou_mv
+        where kugou_mv.mv_name like concat(#{mvName},'%')
     </select>
     <insert id="insert" useGeneratedKeys="true" keyProperty="id">
-        insert into KuGo_mv
+        insert into kugou_mv
         values (<include refid="allValues"/>)
     </insert>
     <update id="updateTime">
-        update KuGo_mv set update_time=#{updateTime} where id=#{id}
+        update kugou_mv set mv_update_time=#{updateTime} where mv_id=#{id}
     </update>
+    <select id="selectPopMvByClassName" resultType="com.hc.kugou.bean.Mv">
+        select <include refid="allKeys"/>
+        from kugou_mv
+        where kugou_mv.mv_class_name like concat(#{className} ,'%')
+        order by kugou_mv.mv_listener_count
+        limit 0,#{n}
+    </select>
+    <select id="selectById" resultType="com.hc.kugou.bean.Mv">
+        select <include refid="allKeys"/>
+        from kugou_mv
+        where kugou_mv.mv_id = #{id}
+    </select>
+    <select id="selectCopy" resultType="com.hc.kugou.bean.Mv">
+        select <include refid="allKeys"/>
+        from  kugou_mv
+        limit #{start},#{end}
+    </select>
 </mapper>

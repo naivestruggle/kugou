@@ -29,7 +29,7 @@ spring:
     host: 47.110.156.54
   data:
     solr:
-      host: http://127.0.0.1:8051/solr
+      host: http://47.110.156.54:8080/solr
 
 server:
   servlet:

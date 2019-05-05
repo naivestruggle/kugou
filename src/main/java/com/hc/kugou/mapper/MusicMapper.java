@@ -42,4 +42,13 @@ public interface MusicMapper {
      * @param isHasMv
      */
     void updateHasMv(@Param("id") Long id, @Param("mvId") Long mvId, @Param("isHasMv") int isHasMv, @Param("className")String className);
+
+    /**
+     * 查询music
+     *
+     * @param start 起始位置
+     * @param end   终止位置
+     * @return
+     */
+    List<Music> selectCopy(@Param("start")int start, @Param("end")int end);
 }

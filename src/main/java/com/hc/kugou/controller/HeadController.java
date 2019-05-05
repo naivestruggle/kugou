@@ -80,34 +80,34 @@ public class HeadController {
             if(list == null){
                 list = map.get("music_song_name");
                 //将作品名高亮
-                music.setSongName(list.get(0));
-                music.setAuthorName((String) solrDocument.get("music_author_name"));
+                music.setMusicSongName(list.get(0));
+                music.setMusicAuthorName((String) solrDocument.get("music_author_name"));
             }else{
                 //将作者名高亮
-                music.setAuthorName(list.get(0));
-                music.setSongName((String) solrDocument.get("music_song_name"));
+                music.setMusicAuthorName(list.get(0));
+                music.setMusicSongName((String) solrDocument.get("music_song_name"));
             }
-            music.setId(Integer.parseInt(solrDocument.get("id").toString()));
-            music.setAuthorId(Long.parseLong(solrDocument.get("music_author_id").toString()));
-            music.setAudioId(Long.parseLong(solrDocument.get("music_audio_id").toString()));
-            music.setAudioName((String) solrDocument.get("music_audio_name"));
+            music.setMusicId(Integer.parseInt(solrDocument.get("id").toString()));
+            music.setMusicAuthorId(Long.parseLong(solrDocument.get("music_author_id").toString()));
+            music.setMusicAudioId(Long.parseLong(solrDocument.get("music_audio_id").toString()));
+            music.setMusicAudioName((String) solrDocument.get("music_audio_name"));
 
-            music.setHashCode((String) solrDocument.get("music_hash_code"));
-            music.setFilesize(Long.parseLong(solrDocument.get("music_filesize").toString()));
-            music.setTimelength(Long.parseLong(solrDocument.get("music_timelength").toString()));
+            music.setMusicHashCode((String) solrDocument.get("music_hash_code"));
+            music.setMusicFilesize(Long.parseLong(solrDocument.get("music_filesize").toString()));
+            music.setMusicTimelength(Long.parseLong(solrDocument.get("music_timelength").toString()));
             //Integer.parseInt(solrDocument.get("music_privilege2").toString())
             //Long.parseLong(solrDocument.get("music_listener_count").toString())
-            music.setHaveAlbum(Integer.parseInt(solrDocument.get("music_have_album").toString()));
-            music.setAlbumId(Long.parseLong(solrDocument.get("music_album_id").toString()));
-            music.setAlbumName((String) solrDocument.get("music_album_name"));
-            music.setHaveMv(Integer.parseInt(solrDocument.get("music_have_mv").toString()));
-            music.setVideoId(Integer.parseInt(solrDocument.get("music_video_id").toString()));
-            music.setPrivilege(Integer.parseInt(solrDocument.get("music_privilege").toString()));
-            music.setPrivilege2(Integer.parseInt(solrDocument.get("music_privilege2").toString()));
-            music.setPlayUrl((String) solrDocument.get("music_play_url"));
-            music.setImg((String) solrDocument.get("music_img"));
-            music.setLyrics((String) solrDocument.get("music_lyrics"));
-            music.setListenerCount(Long.parseLong(solrDocument.get("music_listener_count").toString()));
+            music.setMusicHaveAlbum(Integer.parseInt(solrDocument.get("music_have_album").toString()));
+            music.setMusicAlbumId(Long.parseLong(solrDocument.get("music_album_id").toString()));
+            music.setMusicAlbumName((String) solrDocument.get("music_album_name"));
+            music.setMusicHaveMv(Integer.parseInt(solrDocument.get("music_have_mv").toString()));
+            music.setMusicVideoId(Integer.parseInt(solrDocument.get("music_video_id").toString()));
+            music.setMusicPrivilege(Integer.parseInt(solrDocument.get("music_privilege").toString()));
+            music.setMusicPrivilege2(Integer.parseInt(solrDocument.get("music_privilege2").toString()));
+            music.setMusicPlayUrl((String) solrDocument.get("music_play_url"));
+            music.setMusicImg((String) solrDocument.get("music_img"));
+            music.setMusicLyrics((String) solrDocument.get("music_lyrics"));
+            music.setMusicListenerCount(Long.parseLong(solrDocument.get("music_listener_count").toString()));
 
             musicList.add(music);
         }
@@ -159,14 +159,14 @@ public class HeadController {
                 mv.setMvName((String) solrDocument.get("mv_name"));
             }
 
-            mv.setId(Long.parseLong(solrDocument.get("id").toString()));
+            mv.setMvId(Long.parseLong(solrDocument.get("id").toString()));
             mv.setMvHash((String) solrDocument.get("mv_hash"));
-            mv.setHcUrl((String) solrDocument.get("hc_url"));
-            mv.setHdUrl((String) solrDocument.get("hd_url"));
-            mv.setBdUrl((String) solrDocument.get("bd_url"));
-            mv.setHeadImage((String) solrDocument.get("head_image"));
+            mv.setMvHcUrl((String) solrDocument.get("hc_url"));
+            mv.setMvHdUrl((String) solrDocument.get("hd_url"));
+            mv.setMvBdUrl((String) solrDocument.get("bd_url"));
+            mv.setMvHeadImage((String) solrDocument.get("head_image"));
             //mv.setUpdateTime((Date) solrDocument.get("update_time"));
-            mv.setClassName((String) solrDocument.get("class_name"));
+            mv.setMvClassName((String) solrDocument.get("class_name"));
 
             mvList.add(mv);
         }

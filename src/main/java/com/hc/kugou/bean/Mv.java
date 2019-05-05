@@ -16,7 +16,7 @@ public class Mv implements Serializable {
     /**
      * ID
      */
-    private Long id;
+    private Long mvId;
 
     /**
      * 哈希
@@ -30,31 +30,36 @@ public class Mv implements Serializable {
     /**
      * 流畅
      */
-    private String hcUrl;
+    private String mvHcUrl;
 
     /**
      * 高清
      */
-    private String hdUrl;
+    private String mvHdUrl;
 
     /**
      * 超清
      */
-    private String bdUrl;
+    private String mvBdUrl;
 
     /**
      * 封面
      */
-    private String headImage;
+    private String mvHeadImage;
 
     /**
      * 数据库更新时间
      */
-    private Date updateTime;
+    private Date mvUpdateTime;
 
     /**
      * 语种
      */
-    private String className;
+    private String mvClassName;
+
+    /**
+     * 播放量
+     */
+    private Long mvListenerCount;
 
 }

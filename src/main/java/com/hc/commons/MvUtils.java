@@ -73,11 +73,11 @@ public class MvUtils {
                                 String key2 = me2.getKey();
                                 String value2 = me2.getValue();
                                 if(key2.equals("流畅")){
-                                    mv.setHcUrl(value2);
+                                    mv.setMvHcUrl(value2);
                                 }else if(key2.equals("高清")){
-                                    mv.setHdUrl(value2);
+                                    mv.setMvHdUrl(value2);
                                 }else if(key2.equals("超清")){
-                                    mv.setBdUrl(value2);
+                                    mv.setMvBdUrl(value2);
                                 }
                             }
                         }
@@ -85,7 +85,7 @@ public class MvUtils {
                 }
             }
             //设置更新该条数据时间
-            mv.setUpdateTime(new Date(System.currentTimeMillis()));
+            mv.setMvUpdateTime(new Date(System.currentTimeMillis()));
             inputStream.close();
         } catch (IOException e) {
             e.printStackTrace();

@@ -36,4 +36,23 @@ public interface MvMapper {
      * @param updateTime
      */
     void updateTime(@Param("id")Long id, @Param("updateTime")Date updateTime);
+
+    /**
+     * 根据语种查询推荐MV
+     * @param className 语种
+     * @param n 查询条数
+     * @return  Mv集合
+     */
+    List<Mv> selectPopMvByClassName(@Param("className")String className, @Param("n")int n);
+
+    Mv selectById(@Param("id")long id);
+
+    /**
+     * 查询
+     *
+     * @param start 从第几条开始
+     * @param end   查多少条
+     * @return 结果集
+     */
+    List<Mv> selectCopy(@Param("start")int start, @Param("end")int end);
 }
