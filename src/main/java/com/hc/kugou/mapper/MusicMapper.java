@@ -1,6 +1,8 @@
 package com.hc.kugou.mapper;
 
 import com.hc.kugou.bean.Music;import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -51,4 +53,20 @@ public interface MusicMapper {
      * @return
      */
     List<Music> selectCopy(@Param("start")int start, @Param("end")int end);
+
+    /**
+     * 查询记录条数
+     * @return  返回记录条数
+     */
+    @Select("select count(1) from kugou_music")
+    Long selectMusicCount();
+
+    /**
+     * 修改歌名
+     *
+     * @param musicId
+     * @param newName
+     */
+    @Update("update kugou_music set music_song_name=#{newName} where music_id=#{musicId}")
+    void updateMusicSongName(@Param("musicId")long musicId, @Param("newName")String newName);
 }

@@ -1,7 +1,8 @@
 package com.hc.kugou.solr;
 
-import com.hc.kugou.bean.Music;
 import com.hc.kugou.bean.Mv;
+import com.hc.kugou.bean.custombean.CustomMv;
+import com.hc.kugou.solr.solrtool.MvTool;
 import org.apache.solr.client.solrj.SolrClient;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,10 +16,51 @@ public class MvSolr {
     @Autowired
     private SolrClient client;
 
-    private SolrManager<Mv> solrManager;
+    private SolrManager<CustomMv> solrManager;
 
+    public MvSolr(){
 
-    public SolrBean<Mv> selectPopMvByClassName(String 华语, int i) {
-        return null;
+    }
+    /**
+     * 查询热门Mv
+     * @param className 语种
+     * @param n 查询数量
+     * @return  结果集
+     */
+    public SolrBean<CustomMv> selectPopMvByClassName(String className, int n) {
+        if(this.solrManager == null) {
+            this.solrManager = solrManager = SolrManager.getInstance(Mv.class, client);
+        }
+        SolrBean<CustomMv> solrBean = solrManager.find(className,null,new String[]{MvTool.MV_LISTENER_COUNT_FIELD},SolrManager.SORT_RULE_DESC,0,n,
+                new String[]{MvTool.MV_CLASS_NAME_FIELD},MvTool.MV_POINT_FIELDS_ALL,null);
+        return solrBean;
+    }
+
+    /**
+     * 查询热门Mv
+     * @param n 查询数量
+     * @return  结果集
+     */
+    public SolrBean<CustomMv> selectPopMv(int n) {
+        if(this.solrManager == null) {
+            this.solrManager = solrManager = SolrManager.getInstance(CustomMv.class, client);
+        }
+        SolrBean<CustomMv> solrBean = solrManager.find("mv_class_name:*",null,new String[]{MvTool.MV_LISTENER_COUNT_FIELD},SolrManager.SORT_RULE_DESC,0,n,
+                new String[]{MvTool.MV_CLASS_NAME_FIELD},MvTool.MV_POINT_FIELDS_ALL,null);
+        return solrBean;
+    }
+
+    /**
+     * 根据ID查询mv
+     * @param mvId  mvID
+     * @return  结果集
+     */
+    public SolrBean<CustomMv> selectMvById(Integer mvId) {
+        if(this.solrManager == null) {
+            this.solrManager = solrManager = SolrManager.getInstance(CustomMv.class, client);
+        }
+        SolrBean<CustomMv> solrBean = solrManager.find(mvId+"",null,null,null,0,1,
+                new String[]{MvTool.MV_ID_FIELD},MvTool.MV_POINT_FIELDS_ALL,null);
+        return solrBean;
     }
 }

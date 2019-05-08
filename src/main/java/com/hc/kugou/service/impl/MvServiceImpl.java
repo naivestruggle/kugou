@@ -1,6 +1,5 @@
 package com.hc.kugou.service.impl;
 
-import com.hc.commons.MvUtils;
 import com.hc.kugou.bean.Mv;
 import com.hc.kugou.mapper.MvMapper;
 import com.hc.kugou.service.MvService;
@@ -28,18 +27,19 @@ public class MvServiceImpl implements MvService {
      */
     @Override
     public Mv findByName(String mvName) {
-        List<Mv> mvList = mvMapper.findMvByName(mvName);
-        Mv mv = null;
-        if(mvList == null || mvList.size() == 0){
-            //数据库中没有 调用python
-            mv = MvUtils.getMv(mvName);
-            final Mv insertMv = mv;
-            //将这条mv存入数据库
-            mvMapper.insert(insertMv);
-        }else{
-            //数据库中有  返回第一条
-            mv = mvList.get(0);
-        }
-        return mv;
+//        List<Mv> mvList = mvMapper.findMvByName(mvName);
+//        Mv mv = null;
+//        if(mvList == null || mvList.size() == 0){
+//            //数据库中没有 调用python
+//            mv = MvUtils.getMv(mvName);
+//            final Mv insertMv = mv;
+//            //将这条mv存入数据库
+//            mvMapper.insert(insertMv);
+//        }else{
+//            //数据库中有  返回第一条
+//            mv = mvList.get(0);
+//        }
+//        return mv;
+        return null;
     }
 }

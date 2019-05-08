@@ -2,6 +2,7 @@ package com.hc.kugou.solr;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Map;
  * @Version:1.0
  */
 @Data
-public class SolrBean<T> {
+public class SolrBean<T> implements Serializable {
     /**
      * 结果集
      */

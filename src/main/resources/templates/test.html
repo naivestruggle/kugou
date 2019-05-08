@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+    <link rel="shortcut icon"  href="/kugou/favicon.ico"/>
+    <link rel="stylesheet" href="/kugou/css/playsong.css"/>
+    <script src="/kugou/js/jquery-3.2.1.js"></script>
+
+
+
+</head>
+<body>
+<!-- 引入头部 -->
+<div>
+    <link href="/kugou/css/headbar.css" rel="stylesheet"/>
+    <div id="head">
+        <h1 class="logo">
+            <a href="#"><img src="/kugou/img/index/logo.png"/></a>
+        </h1>
+        <div class="search">
+            <div class="search_input">
+                <input type="text"/>
+                <div class="search_btn" onClick="window.open('')">
+                    <i class="search_icon" onClick="window.open('')"></i>
+                </div>
+            </div>
+        </div>
+        <div class="head_right">
+            <ul>
+                <li><a href="serve.html" target="_blank">客服中心</a></li>
+                <li><a href="recruit_sages.html" target="_blank">招纳贤士</a></li>
+                <li><a href="vip.html" target="_blank">会员中心</a></li>
+            </ul>
+            <div class="loading">
+                <a href="javascript:void(0)" style="color:white;"><div class="login">登录</div></a>
+                <a href="register.html"><div class="regin">注册</div></a>
+            </div>
+        </div>
+    </div>
+
+    <!--首页榜单-->
+    <div id="navWrap">
+        <div class="nav">
+            <ul class="homeNav">
+                <li style="width: 92px;height: 55px;background-color: #0c8ed9;">
+                    <a class="normal active" href="index.html" style="color: white;">首页</a>
+                </li>
+                <li style="width: 92px;height: 55px;"><a class="normal" href="list.html" >榜单</a></li>
+                <li  style="width: 140px;height: 55px;"><a class="normal" id="productCenter" href="download.html" >下载客户端</a></li>
+                <li class="more" style="width: 113px;height: 55px;"><a href="javascript:void(0);"  id="showMore">更多</a></li>
+            </ul>
+            <ul class="secondMenu" id="secondMenu" style="display: none;">
+                <li><a href="radio.html">电台</a></li>
+                <li><a href="mv.html">MV</a></li>
+                <li><a href="songsheet.html">歌单</a></li>
+                <li><a href="singer.html">歌手</a></li>
+            </ul>
+            <ul class="subNav">
+                <li><a target="_blank" href="LiveMusic.html" class="icon-nav1">音乐直播</a></li>
+                <li><a target="_blank" href="live.html" class="icon-nav2">酷狗LIVE</a></li>
+                <li><a target="_blank" href="musicMan.html" class="icon-nav3">音乐人</a></li>
+                <li><a target="_blank" href="anchor.html" class="icon-nav4">游戏</a></li>
+                <li><a target="_blank" href="mall.html" class="icon-nav5">商城</a></li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript" src="/kugou/js/headbar.js"></script>
+</div>
+
+<div class="content">
+    <div class="sing_content">
+        <div class="album fl">
+            <div class="albumImg">
+                <a class="fl" target="_blank" href="" title="">
+                    <img src="http://imge.kugou.com/stdmusic/20190426/20190426170430244543.jpg">
+                </a>
+            </div>
+            <div class="btnArea2 clearfix">
+                <a class="btnDownloadClient" onclick=""></a>
+            </div>
+
+        </div>
+        <div class="song_info">
+            <!-- 歌曲名字 -->
+            <div class="songName clearfix" title="">
+                <span class="audioName" title="我是唱作人 第3期">我是唱作人 第3期</span>
+                <!-- 如果歌曲有mv的话，这个按钮就显示 -->
+                <div>
+                    <a target="_blank" href="SimpleMv.html/2941" class="icon btnMv"></a>
+                </div>
+            </div>
+            <!-- 专辑  歌手 -->
+            <div class="songDetail clearfix">
+                <p class="albumName fl" style="">
+                    <span class="fontColor">专辑：</span>
+                    <a target="_blank" href="" title="我是唱作人 第3期">我是唱作人 第3期</a>
+                </p>
+                <p class="singerName fl" style="" title="">
+                    <span class="fontColor">歌手：</span>
+                    <a target="_blank" href="" title="毛不易、">毛不易、</a>
+                </p>
+            </div>
+            <!-- 播放器 -->
+            <audio id="myAudio" src="http://fs.w.kugou.com/201905071744/7a456b162a81a6fc66fe596684f88071/G159/M04/1F/14/P4cBAFzCxBeAKoBiAD4dE_mpuUE604.mp3
+" >
+                您的浏览器不支持 audio 标签。
+            </audio>
+
+            <!-- 歌词 -->
+            <div class="songWordContent songWordContentM jspScrollable" style="height: 235px; overflow: hidden; padding: 0px; width: 460px;" tabindex="0">
+                <div class="jspContainer" style="width: 460px; height: 235px;">
+                    <div class="jspPane" style="padding: 0px; top: 0px; width: 448px;">
+                        <!-- 循环生成歌词 -->
+                        <p class="ie8FontColor playOver" times="00:00.63">毛不易 - 水乡 (Live)
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:01.29">词：毛不易
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:01.43">曲：毛不易
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:01.56">制作人：赵兆
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:01.72">音乐总监：谭伊哲@TYZ
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:01.99">混音：林梦洋
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:02.15">TYZ乐队：
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:02.25">乐队队长/吉他：黄竣琮@TYZ
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:02.58">TYZ音乐统筹：修卓辰@TYZ
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:02.88">吉他：Mike McLaughlin
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:03.01">贝斯：Ryan Bradetich
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:03.14">键盘：韩天赫/Roksana
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:03.34">鼓：Gabriel Cornelius
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:03.44">打击乐：胡瑀轩
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:03.64">和声：梁古驰/刘芮嘉/王若卉
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:04.00">Program：齐文涛
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:04.13">弦乐：靳海音®弦乐团
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:04.40">古筝：李丹丹
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:04.56">笛子/箫：赵雪
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:22.14">余晖洒下一缕缕碎波潺潺
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:27.36">晚风里灯影柔曼
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:32.81">荡漾着湖水清清倩影婉转
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:38.08">青底白花油纸伞
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:43.46">采一片莲叶清香飘在两岸
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:48.66">长亭和垂柳作伴
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:54.11">暗下来薄雾不散不见远山
+                        </p>
+                        <p class="ie8FontColor playOver" times="00:59.31">一方天地风轻水软
+                        </p>
+                        <p class="ie8FontColor playOver" times="01:05.64">水绿天蓝蓝 白鹭一行路辗转
+                        </p>
+                        <p class="ie8FontColor playOver" times="01:16.04">飞过芦苇滩 停在相思畔
+                        </p>
+                        <p class="ie8FontColor playOver" times="01:21.27">听船歌声声慢
+                        </p>
+                        <p class="ie8FontColor playOver" times="01:27.01">长忆相见欢 多少柔情落江南
+                        </p>
+                        <p class="ie8FontColor playOver" times="01:37.49">一曲唱不完 此去几时还
+                        </p>
+                        <p class="ie8FontColor playOver" times="01:43.08">明月照两端
+                        </p>
+                        <p class="ie8FontColor playOver" times="02:11.51">落红时四野尽染你在对岸
+                        </p>
+                        <p class="ie8FontColor playOver" times="02:16.66">留不住彩云易散
+                        </p>
+                        <p class="ie8FontColor playOver" times="02:22.16">雾尽时月影微寒独上远山
+                        </p>
+                        <p class="ie8FontColor playOver" times="02:27.26">两处别离 良宵短
+                        </p>
+                        <p class="ie8FontColor playOver" times="02:33.71">水绿天蓝蓝 白鹭一行路辗转
+                        </p>
+                        <p class="ie8FontColor playOver" times="02:43.97">飞过芦苇滩 停在相思畔
+                        </p>
+                        <p class="ie8FontColor playOver" times="02:49.28">听船歌声声慢
+                        </p>
+                        <p class="ie8FontColor playOver" times="02:54.97">长忆相见欢 多少柔情落江南
+                        </p>
+                        <p class="ie8FontColor playOver" times="03:05.54">一曲唱不完 此去几时还
+                        </p>
+                        <p class="ie8FontColor playOver" times="03:10.64">明月照两端
+                        </p>
+                        <p class="ie8FontColor playOver" times="03:16.41">长忆相见欢 多少柔情落江南
+                        </p>
+                        <p class="ie8FontColor playOver" times="03:26.62">一曲唱不完 此去几时还
+                        </p>
+                        <p class="ie8FontColor playOver" times="03:32.31">明月照两端
+                        </p>
+                        <p class="ie8FontColor playOver" times="03:37.37">一曲唱不完 此去几时还
+                        </p>
+                    </div>
+                    <div class="jspVerticalBar">
+                        <!-- <div class="jspCap jspCapTop"></div> -->
+                        <div class="jspTrack" style="height: 235px;">
+                            <div class="jspDrag" style="height: 23px; top: 0px;">
+                                <div class="jspDragTop">
+
+                                </div>
+                                <div class="jspDragBottom">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="jspCap jspCapBottom"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="bot">
+        <div class="bmid">
+            <div class="bot_left">
+                <a href="javascript:void(0);" class="prev" id="btn-pre"></a>
+                <a href="javascript:void(0);" class="play" id="btn-play" onclick="playAudio(this)"></a>
+                <a href="javascript:void(0);" class="stop" id="btn-stop" onclick="stopAudio(this)"></a>
+                <a href="javascript:void(0);" class="next" id="btn-next"></a>
+            </div>
+            <a href="" class="playImg">
+                <img src="http://imge.kugou.com/stdmusic/20190426/20190426170430244543.jpg" alt="">
+            </a>
+            <div class="bot_mid">
+                <div class="mid_up">
+                    <span class="songName">水乡 (Live)</span>
+                    <span style="float: right">
+						<i class="change-time">00:00</i>
+						<i class="all-time">04:14</i>
+					</span>
+                </div>
+                <div class="mid_down">
+                    <div class="progress_bg">
+                        <span class="bg_left"></span>
+                        <span class="bg_middle"></span>
+                        <span class="bg_right"></span>
+                    </div>
+                    <div class="progress_bar">
+                        <span class="bar_left"></span>
+                        <span class="bar_mid" style="width: 0.32%;"></span>
+                    </div>
+                    <div class="drag_playhead">
+                        <span class="playhead"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="bot_right">
+                <!--音量控制-->
+                <div class="volume"></div>
+                <!--音量控制 隐藏面板-->
+                <div class="volume_panel">
+                    <div class="panel_control">
+                        <span class="panel_bottom"></span>
+                        <div class="vol_bar">
+                            <span class="panel_progress"></span>
+                        </div>
+                        <div class="vol_head">
+                            <span class="panel_head" style="top: 42.5375px;" ></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="play_tips" style="display: block; opacity: 0;">已添加到播放列表</div>
+                <!--播放模式-->
+                <a class="play_mode"></a>
+                <!--播放模式 隐藏面板-->
+                <div class="mode_panel" style="display: none;">
+                    <ul>
+                        <li>
+                            <span class="mode_img1"></span>
+                            <span class="mode_word">列表循环</span>
+                        </li>
+                        <li>
+                            <span class="mode_img2"></span>
+                            <span class="mode_wordx">单曲循环</span>
+                        </li>
+                        <li>
+                            <span class="mode_img3"></span>
+                            <span class="mode_wordx">随机播放</span>
+                        </li>
+                    </ul>
+                </div>
+                <!--下载-->
+                <a href="" class="pb_download"></a>
+                <!--分享-->
+                <a href="" class="pb_share"></a>
+                <!--播放列表-->
+                <a href="" class="list">
+                    <span class="list_count">1</span>
+                </a>
+            </div>
+            <!--播放列表 隐藏面板-->
+            <div class="mod-playlist">
+                <div class="song-box">
+                    <div class="box-header"></div>
+                    <div class="musicbox"></div>
+                </div>
+            </div>
+        </div>
+        <div class="bot_bot">
+            <span class="bot1"></span>
+            <span class="bot2"></span>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    $(function () {
+        $(".tab>li").click(function () {
+            $(this).addClass("active").siblings("li").removeClass("active");
+            var index=$(this).index();
+            $(".fr>div:eq("+index+")").addClass("selected").siblings("div").removeClass("selected");
+        });
+    });
+
+    function playAudio(obj){
+        $(obj).css('display','none');
+        $("#btn-stop").css('display','block');
+        $("#myAudio").attr('autoplay','autoplay');
+    }
+
+    function stopAudio(obj){
+        $(obj).css('display','none');
+        $("#btn-play").css('display','block');
+        $("#myAudio").removeAttr('autoplay');
+    }
+
+</script>
+</body>
+</html>

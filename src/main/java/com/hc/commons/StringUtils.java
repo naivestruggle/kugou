@@ -18,6 +18,16 @@ public class StringUtils {
     private static Pattern linePattern = Pattern.compile("_(\\w)");
 
     /**
+     * 登录用户
+     */
+    public static final String LOGINED_USER = "loginedUser";
+
+    /**
+     * 用户歌单前缀
+     */
+    public static final String PLAT_SONG_LIST_PRE = "playSongListPre";
+
+    /**
      * 定义条件
      */
     public static final int GET_METHOD = 1;

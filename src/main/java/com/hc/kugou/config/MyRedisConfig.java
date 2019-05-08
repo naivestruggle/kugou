@@ -21,7 +21,7 @@ public class MyRedisConfig {
      * 自定义Redis缓存模版 改变默认的序列化规则（序列化为json）
      */
     @Bean
-    public RedisTemplate<Object, Object> userRedisTemplate
+    public RedisTemplate<Object, Object> objectRedisTemplate
     (RedisConnectionFactory redisConnectionFactory)throws UnknownHostException {
 
         RedisTemplate<Object,Object> redisTemplate = new RedisTemplate<>();

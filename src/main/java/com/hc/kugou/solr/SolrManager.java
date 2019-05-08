@@ -1,5 +1,6 @@
 package com.hc.kugou.solr;
 
+import com.hc.commons.ReflectUtils;
 import com.hc.commons.StringUtils;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
@@ -8,12 +9,14 @@ import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
 import org.apache.solr.common.SolrInputDocument;
+import org.springframework.cache.annotation.Cacheable;
 
 import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
+import java.security.KeyStore;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -45,22 +48,38 @@ public class SolrManager<T>{
     }
 
     /**
-     * 更新   先删除 再 添加
-     * @param id    要更新的id
+     * 更新
+     * @param idColumnName 传入对象的id列名  也是域名
      * @param object    要更新的对象
      */
-    public void update(String id,T object){
-        add(id,object);
-    }
-
-    /**
-     * 批量更新
-     * @param map
-     */
-    public void update(java.util.Map<String,T> map){
-        for(java.util.Map.Entry<String,T> me : map.entrySet()){
-            add(me.getKey(),me.getValue());
+    public void update(String idColumnName,T object){
+        String objectId = null;
+        String fieldId = null;
+        //将id列名变化为驼峰命名法
+        fieldId = StringUtils.lineToHump(idColumnName);
+        //得到getter方法名
+        fieldId = StringUtils.toGetter(fieldId);
+        //得到方法对象
+        Method method = null;
+        try {
+            method = clazz.getMethod(fieldId);
+            //执行方法
+            objectId = String.valueOf(method.invoke(object));
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
         }
+        SolrBean<T> solrBean = find(objectId,null, null,null,0,1,
+                new String[]{idColumnName},new String[]{"id"},null);
+        Map<String,T> map = solrBean.getSolrBeanMap();
+        String uuid = "";
+        for(Map.Entry<String,T> me : map.entrySet()){
+            uuid = me.getKey();
+        }
+        add(uuid,object);
     }
 
     /**
@@ -149,7 +168,7 @@ public class SolrManager<T>{
      * @param id id
      * @param object    对象
      */
-    private void addOneNotCommit(String id,T object) {
+    public void addOneNotCommit(String id,T object) {
         //得到所有的字段  包括私有的
         Field[] fields = clazz.getDeclaredFields();
         SolrInputDocument doc = new SolrInputDocument();
@@ -217,8 +236,9 @@ public class SolrManager<T>{
      * @param highlightField    高亮域
      * @return  查询结果
      */
-    public SolrBean<T> find(String queryStr,String[] filterQueries,String sortFieldName,Integer sortRule,int start,int rows,
+    public SolrBean<T> find(String queryStr,String[] filterQueries,String[] sortFieldName,Integer sortRule,int start,int rows,
                              String[] defaultFields,String[] pointFields,String highlightField){
+        System.out.println("进来了");
         return find(queryStr,filterQueries,sortFieldName,sortRule,start,rows,defaultFields,pointFields,highlightField,"<font style='color:red;'>","</font>");
     }
 
@@ -237,7 +257,7 @@ public class SolrManager<T>{
      * @param highlightSimpleLast   高亮后缀
      * @return  查询结果集
      */
-    private SolrBean<T> find(String queryStr,String[] filterQueries,String sortFieldName,Integer sortRule,int start,int rows,
+    private SolrBean<T> find(String queryStr,String[] filterQueries,String[] sortFieldName,Integer sortRule,int start,int rows,
                              String defaultFields[],String[] pointFields,String highlightField,
                              String highlightSimplePre,String highlightSimpleLast){
         //查询
@@ -253,12 +273,15 @@ public class SolrManager<T>{
 
         //排序
         if(sortFieldName != null && sortRule != null) {
-            if (sortRule == SORT_RULE_ASC) {
-            solrQuery.addSort(sortFieldName, SolrQuery.ORDER.asc);
-        } else if (sortRule == SORT_RULE_DESC) {
-            solrQuery.addSort(sortFieldName, SolrQuery.ORDER.desc);
+            for (String str:sortFieldName) {
+                if (sortRule == SORT_RULE_ASC) {
+                    solrQuery.addSort(str, SolrQuery.ORDER.asc);
+                } else if (sortRule == SORT_RULE_DESC) {
+
+                    solrQuery.addSort(str, SolrQuery.ORDER.desc);
+                }
+            }
         }
-    }
         //分页
         solrQuery.setStart(start);
         solrQuery.setRows(rows);
@@ -281,8 +304,6 @@ public class SolrManager<T>{
             //后缀
             solrQuery.setHighlightSimplePost(highlightSimpleLast);
         }
-
-
 
         //执行查询
         QueryResponse response = null;
@@ -313,7 +334,16 @@ public class SolrManager<T>{
         Map<String,T> objectList = new HashMap<String,T>();
         //遍历每个document对象   也就是对应着每一条数据库记录
         for(SolrDocument doc:docs){
-            //高亮信息
+            T taget = null;
+            try {
+                taget = clazz.newInstance();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+
+            //高亮
             if(highlighting != null){
                 Map<String, List<String>> map1 = highlighting.get(doc.get("id"));
                 List<String> list = map1.get(highlightField);
@@ -323,46 +353,43 @@ public class SolrManager<T>{
             }
             //得到id
             String id = String.valueOf(doc.get("id"));
-//            System.out.println("id："+id);
 
-            //创建一个对象用来保存数据
-            T object = null;
-            try {
-                object = clazz.newInstance();
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
+            g1:for(Map.Entry<String,Object> me : doc.entrySet()){
+                //域
+                String key = me.getKey();
+                //值
+                Object value = me.getValue();
 
-            //得到所有的属性
-            Field[] fields = clazz.getDeclaredFields();
-            for (Field field:fields){
-                String fieldName = field.getName();
-                //得到数据库字段   也是域名
-                String sqlString = StringUtils.humpToLine(fieldName);
+                //将域转化驼峰命名法方法
+                String fieldName = StringUtils.lineToHump(key);
+
+                //得到属性对象
+                Field field = null;
+                try {
+                    field = ReflectUtils.getField(clazz,fieldName);
+                } catch (NoSuchFieldException e) {
+                    //如果没有属性   直接终止这次循化
+                    continue g1;
+                }
+
+                //得到属性类型
+                Class fieldClassType = field.getType();
 
                 //得到set方法名
                 String methodName = StringUtils.toSetter(fieldName);
 
-                //得到属性的类型
-                Class type = field.getType();
-
-                //得到get方法对象
+                //得到set方法对象
                 Method method = null;
                 try {
-                    method = clazz.getMethod(methodName,type);
-
+                    method = ReflectUtils.getMethod(clazz,methodName,fieldClassType);
                 } catch (NoSuchMethodException e) {
-                    e.printStackTrace();
+                    //如果没有方法   直接终止这次循化
+                    continue g1;
                 }
-                Object val = doc.get(sqlString);
 
-                //映射
-                mapping(object, type, method, val);
+                mapping(taget,fieldClassType,method,value);
             }
-
-            objectList.put(id,object);
+            objectList.put(id,taget);
         }
         solrBean.setSolrBeanMap(objectList);
         return solrBean;
@@ -397,8 +424,9 @@ public class SolrManager<T>{
                         method.invoke(object, Long.parseLong(value));
                         break g2;
                     case "java.sql.Date":
-                        DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-                        method.invoke(object, new java.sql.Date(dateformat.parse(value).getTime()));
+                        DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        Date date = new Date(value);
+                        method.invoke(object, new java.sql.Date(date.getTime()));
                         break g2;
                     case "java.sql.Timestamp":
                         method.invoke(object, Timestamp.valueOf(value));
@@ -408,10 +436,10 @@ public class SolrManager<T>{
                 e.printStackTrace();
             } catch (InvocationTargetException e) {
                 e.printStackTrace();
-            } catch (ParseException e) {
-                e.printStackTrace();
             }
         }
     }
+
+
 
 }
