@@ -64,7 +64,7 @@ public class MvUtils {
                     Object value1 = me1.getValue();
                     if(key1.equals("headImage")){
                         //设置封面
-                        mv.setHeadImage((String)value1);
+                        mv.setMvHeadImage((String)value1);
                     }else{
                         List<Map<String,String>> list = (List<Map<String, String>>) JSONObject.parse(value1.toString());
                         for(Map<String,String> map2 : list){

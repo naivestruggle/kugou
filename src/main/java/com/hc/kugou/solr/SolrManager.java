@@ -254,11 +254,11 @@ public class SolrManager<T>{
         //排序
         if(sortFieldName != null && sortRule != null) {
             if (sortRule == SORT_RULE_ASC) {
-                solrQuery.addSort(sortFieldName, SolrQuery.ORDER.asc);
-            } else if (sortRule == SORT_RULE_DESC) {
-                solrQuery.addSort(sortFieldName, SolrQuery.ORDER.desc);
-            }
+            solrQuery.addSort(sortFieldName, SolrQuery.ORDER.asc);
+        } else if (sortRule == SORT_RULE_DESC) {
+            solrQuery.addSort(sortFieldName, SolrQuery.ORDER.desc);
         }
+    }
         //分页
         solrQuery.setStart(start);
         solrQuery.setRows(rows);

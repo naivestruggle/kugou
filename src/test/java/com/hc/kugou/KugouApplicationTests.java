@@ -22,6 +22,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.*;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -303,7 +305,7 @@ public class KugouApplicationTests {
         Music music = musicMapper.selectMusicById(11297L);
 //        client.deleteById("11297");
 //        client.commit();
-        solrManager.add(music);
+        //solrManager.add(music);
         solrManager.update("11297",music);
 //        solrManager.delete("11297");
 //        SolrInputDocument doc = new SolrInputDocument();
@@ -389,7 +391,7 @@ public class KugouApplicationTests {
                 start = 1;
             }
             List<Music> musicList = musicMapper.selectCopy(start,end);
-            solrManager.add(musicList);
+           // solrManager.add(musicList);
         }
 
 //        solrManager.delete("");
@@ -409,7 +411,7 @@ public class KugouApplicationTests {
                 start = 1;
             }
             List<Mv> mvList = mvMapper.selectCopy(start,end);
-            solrManager.add(mvList);
+         //   solrManager.add(mvList);
         }
 
         SolrManager<Singer> singerSolrManager = SolrManager.getInstance(Singer.class,client);
@@ -423,7 +425,7 @@ public class KugouApplicationTests {
                 start = 1;
             }
             List<Singer> singerList = singerMapper.selectCopy(start,end);
-            singerSolrManager.add(singerList);
+        //    singerSolrManager.add(singerList);
         }
 
 
@@ -439,7 +441,7 @@ public class KugouApplicationTests {
                 start = 1;
             }
             List<SingerInfo> singerInfoList = singerInfoMapper.selectCopy(start,end);
-            singerInfoSolrManager.add(singerInfoList);
+          //  singerInfoSolrManager.add(singerInfoList);
         }
     }
 
@@ -459,4 +461,7 @@ public class KugouApplicationTests {
             System.out.println(me.getValue());
         }
     }
+
+
+
 }
