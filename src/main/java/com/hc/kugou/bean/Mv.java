@@ -62,4 +62,9 @@ public class Mv implements Serializable {
      */
     private Long mvListenerCount;
 
+    /**
+     * 发行时间
+     */
+    private Date mvCreateTime;
+
 }

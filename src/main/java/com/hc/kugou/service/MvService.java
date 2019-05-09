@@ -1,6 +1,9 @@
 package com.hc.kugou.service;
 
 import com.hc.kugou.bean.Mv;
+import com.hc.kugou.bean.custombean.CustomMv;
+import com.hc.kugou.bean.custombean.MvViewBean;
+import com.hc.kugou.solr.SolrBean;
 
 /**
  * @Author:
@@ -16,4 +19,27 @@ public interface MvService {
      * @return  Mv对象
      */
     Mv findByName(String mvName);
+
+    /**
+     * 通过mvid查询mv信息
+     * @param mvId  mvid
+     * @return 返回solrBean的MV对象
+     */
+    SolrBean<CustomMv> selectMvById(Integer mvId);
+
+    /**
+     * 根据当前播放的mv推荐相应的mv
+     * @param customMvSolrBean  当前播放的mv信息
+     * @return 返回solrBean的MV集合
+     */
+    SolrBean<CustomMv> recommendMv(SolrBean<CustomMv> customMvSolrBean);
+
+
+    /**
+     * 查询展示mv页面的所有内容所需要的数据
+     * @param mvClassName 语种
+     * @param page   页数
+     * @return
+     */
+    MvViewBean showService(int mvClassName, int page);
 }

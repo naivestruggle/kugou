@@ -11,13 +11,13 @@
 <!-- 头 -->
 
     <div id="frame_mv">
-    	<div class="radio_wrap">
+    	<div class="radio_wrap" th:each="bean:${customMvSolrBean.solrBeanMap}">
     		<h2>
-      		<span><a href="mv.html" style="color:#878787;">MV首页</a></span> <span>&gt;</span> <span>正在播放</span>
-      		<span>&gt;</span> 萧敬腾 - 欲望反光
+      		<span><a href="mv.html" th:href="@{/mv.html}" style="color:#878787;">MV首页</a></span> <span>&gt;</span> <span>正在播放</span>
+      		<span>&gt;</span> <font th:text="${bean.value.mvName}" />
     		</h2>
     		<video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="1000" height="500" data-setup="{}">
-          <source src="../public/img/mvPlay/侯旭 - 慢慢来吧.mkv" th:src="@{/img/mvPlay/侯旭 - 慢慢来吧.mkv}" type='video/mp4' />
+          <source th:src="${bean.value.mvHcUrl}" type='video/mp4' />
         </video>
     		<div class="clearfix">
     			<div class="mv_title"></div>
@@ -36,47 +36,12 @@
     			<h2>猜你喜欢</h2>
     			<div class="mv_list" style="width: 1000px;height: 120px;margin-top: 12px;">
     				<ul class="guess_mv" style="width: 1050px;height: 120px">
-    					<li>
-    						<a href="mv.html">
-    						<img src="../public/img/mvPlay/a.jpg" th:src="@{/img/mvPlay/a.jpg}" title=""/>
+    					<li th:each="bean:${recommendMvSolrBean.solrBeanMap}">
+    						<a href="mv.html" th:href="${bean.value.mvId}">
+    						<img src="../public/img/mvPlay/a.jpg" th:src="${bean.value.mvHeadImage}" title=""/>
     						<em></em><i></i>
     						</a>
-    						<span>灿烈、Punch - Stay With Me(KBS柳熙烈的写生簿18/03/03)</span>
-    					</li>
-    					<li>
-    						<a href="mv.html">
-    						<img src="../public/img/mvPlay/a.jpg" th:src="@{/img/mvPlay/a.jpg}" title=""/>
-    						<em></em><i></i>
-    						</a>
-    						<span>昭宥、灿烈 - Stay With Me(2017 MAMA in Hong Kong)</span>
-    					</li>
-    					<li>
-    						<a href="mv.html">
-    						<img src="../public/img/mvPlay/a.jpg" th:src="@{/img/mvPlay/a.jpg}" title=""/>
-    						<em></em><i></i>
-    						</a>
-    						<span>灿烈、俞宙 - Stay With Me(Music Bank in Jakarta 2017)</span>
-    					</li>
-    					<li>
-    						<a href="mv.html">
-    						<img src="../public/img/mvPlay/a.jpg" th:src="@{/img/mvPlay/a.jpg}" title=""/>
-    						<em></em><i></i>
-    						</a>
-    						<span>灿烈 - Creep(朴振英的Party People17/09/30)</span>
-    					</li>
-    					<li>
-    						<a href="mv.html">
-    						<img src="../public/img/mvPlay/a.jpg" th:src="@{/img/mvPlay/a.jpg}" title=""/>
-    						<em></em><i></i>
-    						</a>
-    						<span>灿烈 - Hug Me(朴振英的Party People17/09/30)</span>
-    					</li>
-    					<li>
-    						<a href="mv.html">
-    						<img src="../public/img/mvPlay/a.jpg" th:src="@{/img/mvPlay/a.jpg}" title=""/>
-    						<em></em><i></i>
-    						</a>
-    						<span>灿烈、金泫静 - Stay With Me(KCON Australia 2017)</span>
+    						<span th:text="${bean.value.mvName}">灿烈、Punch - Stay With Me(KBS柳熙烈的写生簿18/03/03)</span>
     					</li>
     				</ul>
     			</div>
