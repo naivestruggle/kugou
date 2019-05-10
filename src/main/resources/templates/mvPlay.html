@@ -11,13 +11,13 @@
 <!-- 头 -->
 
     <div id="frame_mv">
-    	<div class="radio_wrap" th:each="bean:${customMvSolrBean.solrBeanMap}">
+    	<div class="radio_wrap" th:each="bean:${customMvSolrBean.solrBeanList}">
     		<h2>
       		<span><a href="mv.html" th:href="@{/mv.html}" style="color:#878787;">MV首页</a></span> <span>&gt;</span> <span>正在播放</span>
-      		<span>&gt;</span> <font th:text="${bean.value.mvName}" />
+      		<span>&gt;</span> <font th:text="${bean.mvName}" />
     		</h2>
     		<video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="1000" height="500" data-setup="{}">
-          <source th:src="${bean.value.mvHcUrl}" type='video/mp4' />
+          <source th:src="${bean.mvHcUrl}" type='video/mp4' />
         </video>
     		<div class="clearfix">
     			<div class="mv_title"></div>
@@ -36,12 +36,12 @@
     			<h2>猜你喜欢</h2>
     			<div class="mv_list" style="width: 1000px;height: 120px;margin-top: 12px;">
     				<ul class="guess_mv" style="width: 1050px;height: 120px">
-    					<li th:each="bean:${recommendMvSolrBean.solrBeanMap}">
-    						<a href="mv.html" th:href="${bean.value.mvId}">
-    						<img src="../public/img/mvPlay/a.jpg" th:src="${bean.value.mvHeadImage}" title=""/>
+    					<li th:each="bean:${recommendMvSolrBean.solrBeanList}">
+    						<a href="mv.html" th:href="${bean.mvId}">
+    						<img src="../public/img/mvPlay/a.jpg" th:src="${bean.mvHeadImage}" title=""/>
     						<em></em><i></i>
     						</a>
-    						<span th:text="${bean.value.mvName}">灿烈、Punch - Stay With Me(KBS柳熙烈的写生簿18/03/03)</span>
+    						<span th:text="${bean.mvName}">灿烈、Punch - Stay With Me(KBS柳熙烈的写生簿18/03/03)</span>
     					</li>
     				</ul>
     			</div>

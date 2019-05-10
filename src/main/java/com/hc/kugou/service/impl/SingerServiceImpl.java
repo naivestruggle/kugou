@@ -128,11 +128,11 @@ public class SingerServiceImpl implements SingerService {
             //solr查询
             singerSolr.singer(singerClassName,singerSindex,page);
             //放入map
-            singerSolr.singer();
-            addMap(singerClassName,singerCollect,)
-            if(singerClassName == MAP_CHINA_MALE_SINGER_NUM){
-                singerCollect.put(MAP_CHINA_MALE_SINGER,);
-            }else if(singerClassName == )
+//            singerSolr.singer();
+//            addMap(singerClassName,singerCollect,)
+//            if(singerClassName == MAP_CHINA_MALE_SINGER_NUM){
+//                singerCollect.put(MAP_CHINA_MALE_SINGER,);
+//            }else if(singerClassName == )
         }
         singerViewBean.setSingerCollect(singerCollect);
     }

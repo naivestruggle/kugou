@@ -54,16 +54,16 @@
   				<li class="dott5"></li>
   			</ul>
   		</div>
-      <div id="mvhot" th:with="beanMap=${mvViewBean.topTenMvCollect.solrBeanMap}">
+      <div id="mvhot" th:with="beanMap=${mvViewBean.topTenMvCollect.solrBeanList}">
   			<h3>
   				<span>&nbsp;&nbsp;&nbsp;MV热播总播排行</span>
   				<a href="mv.html" >更多</a>
   			</h3>
   			<ul class="queue">
                 <li th:each="bean,beanStat:${beanMap}">
-                    <a th:href="@{/mvPlay.html/}+${bean.value.mvId}">
+                    <a th:href="@{/mvPlay.html/}+${bean.mvId}">
   					<span class="Qnum" id="Q1" th:id="Q+${beanStat.index+1}"></span>
-  					<span class="Qname" th:text="${bean.value.mvName}">儿童歌曲-我的小猪</span>
+  					<span class="Qname" th:text="${bean.mvName}">儿童歌曲-我的小猪</span>
   					<em class="play"></em>
                    </a>
   				</li>
@@ -92,42 +92,42 @@
         <h3>新歌推荐</h3>
         <div th:class="${mvViewBean.hotMvCollect.get('newMv')}!=null?'tab-pane active':'tab-pane'" class="tab-pane active" id="NO1">
           <ul th:if="${mvViewBean.hotMvCollect.get('newMv') ne null}">
-            <li th:each="bean,beanStat:${mvViewBean.hotMvCollect.get('newMv').solrBeanMap}">
-              <a href="mv.html" th:href="@{/mvPlay.html/}+${bean.value.mvId}">
-                <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg" th:src="${bean.value.mvHeadImage}"/>
+            <li th:each="bean,beanStat:${mvViewBean.hotMvCollect.get('newMv').solrBeanList}">
+              <a href="mv.html" th:href="@{/mvPlay.html/}+${bean.mvId}">
+                <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg" th:src="${bean.mvHeadImage}"/>
               </a>
-              <p th:text="${bean.value.mvName}">HANA - 飞蛾扑火</p>
+              <p th:text="${bean.mvName}">HANA - 飞蛾扑火</p>
             </li>
           </ul>
         </div>
 
         <div th:class="${mvViewBean.hotMvCollect.get('eaa')}!=null?'tab-pane active':'tab-pane'" class="tab-pane" id="NO2" style="color:red">
           <ul th:if="${mvViewBean.hotMvCollect.get('eaa') ne null}">
-              <li th:each="bean,beanStat:${mvViewBean.hotMvCollect.get('eaa').solrBeanMap}">
-                  <a href="mv.html" th:href="@{/mvPlay.html/}+${bean.value.mvId}">
-                      <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg" th:src="${bean.value.mvHeadImage}"/>
+              <li th:each="bean,beanStat:${mvViewBean.hotMvCollect.get('eaa').solrBeanList}">
+                  <a href="mv.html" th:href="@{/mvPlay.html/}+${bean.mvId}">
+                      <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg" th:src="${bean.mvHeadImage}"/>
                   </a>
-                  <p th:text="${bean.value.mvName}">HANA - 飞蛾扑火</p>
+                  <p th:text="${bean.mvName}">HANA - 飞蛾扑火</p>
               </li>
           </ul>
         </div>
         <div th:class="${mvViewBean.hotMvCollect.get('japanKorea')}!=null?'tab-pane active':'tab-pane'" class="tab-pane" id="NO3" style="color:red">
           <ul th:if="${mvViewBean.hotMvCollect.get('japanKorea') ne null}">
-              <li th:each="bean,beanStat:${mvViewBean.hotMvCollect.get('japanKorea').solrBeanMap}">
-                  <a href="mv.html" th:href="@{/mvPlay.html/}+${bean.value.mvId}">
-                      <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg" th:src="${bean.value.mvHeadImage}"/>
+              <li th:each="bean,beanStat:${mvViewBean.hotMvCollect.get('japanKorea').solrBeanList}">
+                  <a href="mv.html" th:href="@{/mvPlay.html/}+${bean.mvId}">
+                      <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg" th:src="${bean.mvHeadImage}"/>
                   </a>
-                  <p th:text="${bean.value.mvName}">HANA - 飞蛾扑火</p>
+                  <p th:text="${bean.mvName}">HANA - 飞蛾扑火</p>
               </li>
           </ul>
         </div>
         <div th:class="${mvViewBean.hotMvCollect.get('china')}!=null?'tab-pane active':'tab-pane'" class="tab-pane" id="NO4" style="color:red">
             <ul th:if="${mvViewBean.hotMvCollect.get('china') ne null}">
-                <li th:each="bean,beanStat:${mvViewBean.hotMvCollect.get('china').solrBeanMap}">
-                    <a href="mv.html" th:href="@{/mvPlay.html/}+${bean.value.mvId}">
-                        <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg" th:src="${bean.value.mvHeadImage}"/>
+                <li th:each="bean,beanStat:${mvViewBean.hotMvCollect.get('china').solrBeanList}">
+                    <a href="mv.html" th:href="@{/mvPlay.html/}+${bean.mvId}">
+                        <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg" th:src="${bean.mvHeadImage}"/>
                     </a>
-                    <p th:text="${bean.value.mvName}">HANA - 飞蛾扑火</p>
+                    <p th:text="${bean.mvName}">HANA - 飞蛾扑火</p>
                 </li>
             </ul>
         </div>

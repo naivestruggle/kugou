@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -96,13 +97,9 @@ public class MvServiceImpl implements MvService {
     @Override
     public SolrBean<CustomMv> recommendMv(SolrBean<CustomMv> customMvSolrBean) {
         SolrBean<CustomMv> solrBean = new SolrBean<CustomMv>();
-        //1.得到歌手名
-        Map<String, CustomMv> solrBeanMap = customMvSolrBean.getSolrBeanMap();
-        Mv mv = null;
-        for (Map.Entry<String, CustomMv> entry : solrBeanMap.entrySet()) {
-            mv = entry.getValue();
-        }
-        String mvName = mv.getMvName();
+
+        //1.得到mv名
+        String mvName = customMvSolrBean.getSolrBeanList().get(0).getMvName();;
         mvName = mvName.split(" - ")[0];
         //得到该MV的所有歌手
         String[] singers = mvName.split(",");
@@ -111,9 +108,9 @@ public class MvServiceImpl implements MvService {
         for (int i = 0; i < singers.length; i++) {
             SolrBean<CustomMv> customMvSolrBean1 = mvSolr.selectMvBySingerName(singers[i]);
             if (i == 0) {
-                solrBean.setSolrBeanMap(customMvSolrBean1.getSolrBeanMap());
+                solrBean.setSolrBeanList(customMvSolrBean1.getSolrBeanList());
             } else {
-                solrBean.getSolrBeanMap().putAll(customMvSolrBean1.getSolrBeanMap());
+                solrBean.getSolrBeanList().addAll(customMvSolrBean1.getSolrBeanList());
             }
         }
 
@@ -121,7 +118,7 @@ public class MvServiceImpl implements MvService {
         Random r = new Random();
         List randomNum = new ArrayList();
         while (randomNum.size() != 6) {
-            int num = r.nextInt(solrBean.getSolrBeanMap().size());
+            int num = r.nextInt(solrBean.getSolrBeanList().size());
             if (!randomNum.contains(num)) {
                 randomNum.add(num);
             }
@@ -132,21 +129,17 @@ public class MvServiceImpl implements MvService {
 
         int count = 0;
         boolean flag = false;
-        for (Map.Entry<String, CustomMv> entry : solrBean.getSolrBeanMap().entrySet()) {
-            Map<String, CustomMv> customMvMap = new HashMap<String, CustomMv>();
-            customMvMap.put(entry.getKey(), entry.getValue());
-            for (int i = 0; i < randomNum.size(); i++) {
-                if (count == Integer.parseInt(randomNum.get(i).toString()) && !flag) {
-                    solrBeanMv.setSolrBeanMap(customMvMap);
-                    flag = true;
-                } else if (count == Integer.parseInt(randomNum.get(i).toString()) && flag) {
-                    solrBeanMv.getSolrBeanMap().putAll(customMvMap);
+        List bean = new ArrayList<CustomMv>();
+        for(int i = 0; i < solrBean.getSolrBeanList().size(); i++){
+            for(int j = 0; j < randomNum.size(); j++){
+                if(i == Integer.parseInt(randomNum.get(j).toString())){
+                    bean.add(solrBean.getSolrBeanList().get(i));
+                    break;
                 }
             }
-            count++;
         }
 
-
+        solrBeanMv.setSolrBeanList(bean);
         return solrBeanMv;
     }
 
