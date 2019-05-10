@@ -37,84 +37,84 @@ public class HeadController {
 
     JSONObject jsonObject = new JSONObject();
 
-    @ResponseBody
-    @PostMapping("/queryMusic")
-    public String queryMusic(String word) throws IOException, SolrServerException {
-        List<Music> musicList = new ArrayList<Music>();
-
-        SolrQuery solrQuery = new SolrQuery();
-        //关键词
-        solrQuery.setQuery(word);
-        //默认查询域
-        solrQuery.set("df", "music_keywords");
-        //过滤条件
-        //solrQuery.set("fq", "item_bus_no:100");
-        //分页
-        solrQuery.setStart(0);
-        solrQuery.setRows(4);
-        //查询指定域
-        //solrQuery.set("fl", "item_bus_busline,item_bus_runtime,id");
-        //高亮
-        //开启高亮开关
-        solrQuery.setHighlight(true);
-        //指定高亮域
-        solrQuery.addHighlightField("music_author_name,music_song_name");
-        //前缀
-        solrQuery.setHighlightSimplePre("<span style=\"color:red\">");
-        //后缀
-        solrQuery.setHighlightSimplePost("</span>");
-
-        //执行查询
-        QueryResponse queryResponse = solrClient.query(solrQuery);
-
-        SolrDocumentList docs = queryResponse.getResults();
-        Map<String, Map<String, List<String>>> highlighting = queryResponse.getHighlighting();
-        //总条数
-        //System.out.println("总条数：" + docs.getNumFound());
-
-        for (SolrDocument solrDocument : docs) {
-            Music music = new Music();
-
-            Map<String, List<String>> map = highlighting.get(solrDocument.get("id"));
-            List<String> list = map.get("music_author_name");
-            if(list == null){
-                list = map.get("music_song_name");
-                //将作品名高亮
-                music.setMusicSongName(list.get(0));
-                music.setMusicAuthorName((String) solrDocument.get("music_author_name"));
-            }else{
-                //将作者名高亮
-                music.setMusicAuthorName(list.get(0));
-                music.setMusicSongName((String) solrDocument.get("music_song_name"));
-            }
-            music.setMusicId(Integer.parseInt(solrDocument.get("id").toString()));
-            music.setMusicAuthorId(Long.parseLong(solrDocument.get("music_author_id").toString()));
-            music.setMusicAudioId(Long.parseLong(solrDocument.get("music_audio_id").toString()));
-            music.setMusicAudioName((String) solrDocument.get("music_audio_name"));
-
-            music.setMusicHashCode((String) solrDocument.get("music_hash_code"));
-            music.setMusicFilesize(Long.parseLong(solrDocument.get("music_filesize").toString()));
-            music.setMusicTimelength(Long.parseLong(solrDocument.get("music_timelength").toString()));
-            //Integer.parseInt(solrDocument.get("music_privilege2").toString())
-            //Long.parseLong(solrDocument.get("music_listener_count").toString())
-            music.setMusicHaveAlbum(Integer.parseInt(solrDocument.get("music_have_album").toString()));
-            music.setMusicAlbumId(Long.parseLong(solrDocument.get("music_album_id").toString()));
-            music.setMusicAlbumName((String) solrDocument.get("music_album_name"));
-            music.setMusicHaveMv(Integer.parseInt(solrDocument.get("music_have_mv").toString()));
-            music.setMusicVideoId(Integer.parseInt(solrDocument.get("music_video_id").toString()));
-            music.setMusicPrivilege(Integer.parseInt(solrDocument.get("music_privilege").toString()));
-            music.setMusicPrivilege2(Integer.parseInt(solrDocument.get("music_privilege2").toString()));
-            music.setMusicPlayUrl((String) solrDocument.get("music_play_url"));
-            music.setMusicImg((String) solrDocument.get("music_img"));
-            music.setMusicLyrics((String) solrDocument.get("music_lyrics"));
-            music.setMusicListenerCount(Long.parseLong(solrDocument.get("music_listener_count").toString()));
-
-            musicList.add(music);
-        }
-
-        jsonObject.put("musicList", musicList);
-        return jsonObject.toString();
-    }
+//    @ResponseBody
+//    @PostMapping("/queryMusic")
+//    public String queryMusic(String word) throws IOException, SolrServerException {
+//        List<Music> musicList = new ArrayList<Music>();
+//
+//        SolrQuery solrQuery = new SolrQuery();
+//        //关键词
+//        solrQuery.setQuery(word);
+//        //默认查询域
+//        solrQuery.set("df", "music_keywords");
+//        //过滤条件
+//        //solrQuery.set("fq", "item_bus_no:100");
+//        //分页
+//        solrQuery.setStart(0);
+//        solrQuery.setRows(4);
+//        //查询指定域
+//        //solrQuery.set("fl", "item_bus_busline,item_bus_runtime,id");
+//        //高亮
+//        //开启高亮开关
+//        solrQuery.setHighlight(true);
+//        //指定高亮域
+//        solrQuery.addHighlightField("music_author_name,music_song_name");
+//        //前缀
+//        solrQuery.setHighlightSimplePre("<span style=\"color:red\">");
+//        //后缀
+//        solrQuery.setHighlightSimplePost("</span>");
+//
+//        //执行查询
+//        QueryResponse queryResponse = solrClient.query(solrQuery);
+//
+//        SolrDocumentList docs = queryResponse.getResults();
+//        Map<String, Map<String, List<String>>> highlighting = queryResponse.getHighlighting();
+//        //总条数
+//        //System.out.println("总条数：" + docs.getNumFound());
+//
+//        for (SolrDocument solrDocument : docs) {
+//            Music music = new Music();
+//
+//            Map<String, List<String>> map = highlighting.get(solrDocument.get("id"));
+//            List<String> list = map.get("music_author_name");
+//            if(list == null){
+//                list = map.get("music_song_name");
+//                //将作品名高亮
+//                music.setMusicSongName(list.get(0));
+//                music.setMusicAuthorName((String) solrDocument.get("music_author_name"));
+//            }else{
+//                //将作者名高亮
+//                music.setMusicAuthorName(list.get(0));
+//                music.setMusicSongName((String) solrDocument.get("music_song_name"));
+//            }
+//            music.setMusicId(Integer.parseInt(solrDocument.get("id").toString()));
+//            music.setMusicAuthorId(Long.parseLong(solrDocument.get("music_author_id").toString()));
+//            music.setMusicAudioId(Long.parseLong(solrDocument.get("music_audio_id").toString()));
+//            music.setMusicAudioName((String) solrDocument.get("music_audio_name"));
+//
+//            music.setMusicHashCode((String) solrDocument.get("music_hash_code"));
+//            music.setMusicFilesize(Long.parseLong(solrDocument.get("music_filesize").toString()));
+//            music.setMusicTimelength(Long.parseLong(solrDocument.get("music_timelength").toString()));
+//            //Integer.parseInt(solrDocument.get("music_privilege2").toString())
+//            //Long.parseLong(solrDocument.get("music_listener_count").toString())
+//            music.setMusicHaveAlbum(Integer.parseInt(solrDocument.get("music_have_album").toString()));
+//            music.setMusicAlbumId(Long.parseLong(solrDocument.get("music_album_id").toString()));
+//            music.setMusicAlbumName((String) solrDocument.get("music_album_name"));
+//            music.setMusicHaveMv(Integer.parseInt(solrDocument.get("music_have_mv").toString()));
+//            music.setMusicVideoId(Integer.parseInt(solrDocument.get("music_video_id").toString()));
+//            music.setMusicPrivilege(Integer.parseInt(solrDocument.get("music_privilege").toString()));
+//            music.setMusicPrivilege2(Integer.parseInt(solrDocument.get("music_privilege2").toString()));
+//            music.setMusicPlayUrl((String) solrDocument.get("music_play_url"));
+//            music.setMusicImg((String) solrDocument.get("music_img"));
+//            music.setMusicLyrics((String) solrDocument.get("music_lyrics"));
+//            music.setMusicListenerCount(Long.parseLong(solrDocument.get("music_listener_count").toString()));
+//
+//            musicList.add(music);
+//        }
+//
+//        jsonObject.put("musicList", musicList);
+//        return jsonObject.toString();
+//    }
 
     @ResponseBody
     @PostMapping("/queryMv")

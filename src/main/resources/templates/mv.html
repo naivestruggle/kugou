@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="../public/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
   </head>
   <body>
-<!-- 头 -->
+
+    <!-- 引入头部 -->
+    <div th:replace="commons/head::headbar(activeUri='index')"></div>
 
     <section id="con">
       <div class="BigImg">

@@ -603,7 +603,10 @@
 }
 
 .ie8FontColor{color:#eee\9}
-.playOver{color:#01e5ff;opacity:1}
+.playOver{
+    color:#01e5ff;
+    opacity:1;
+}
 /*.content .songContent .songWordContent .nosong_tip{color:#bdbebe}*/
 /*.content .songContent .songWordContent .nosong_tilte{color:#fff;font-size:18px}*/
 /*.content .songContent .songWordContent .goIndex{padding:5px 15px;background-color:#169af3;color:#fff;border-radius:5px}*/

@@ -31,24 +31,26 @@ public class IndexServiceImpl implements IndexService {
     /**
      * 华语
      */
-    private static final String MAP_CHINA = "china";
+    private static final String CHINA = "1";
     /**
      * 欧美
      */
-    private static final String MAP_EAA = "eaa";
+    private static final String EAA = "2";
     /**
      * 日本
      */
-    private static final String MAP_JAPAN = "japan";
+    private static final String JAPAN = "3";
     /**
      * 韩国
      */
-    private static final String MAP_KOREA = "korea";
+    private static final String KOREA = "4";
 
     /**
      * 日韩
      */
-    private static final String MAP_JAPAN_KOREA = "japanKorea";
+    private static final String JAPAN_KOREA = "5";
+
+
 
     @Autowired
     private MusicMapper musicMapper;
@@ -104,9 +106,9 @@ public class IndexServiceImpl implements IndexService {
         SolrBean<Singer> chinaSingerSolrBean = singerSolr.selectSingerByClassName("华语",5);
         SolrBean<Singer> eaaSingerSolrBean = singerSolr.selectSingerByClassName("欧美",5);
         SolrBean<Singer> japanKoreaSingerSolrBean = singerSolr.selectSingerByClassName("日韩",5);
-        popSingerCollect.put(MAP_CHINA,chinaSingerSolrBean);
-        popSingerCollect.put(MAP_EAA,eaaSingerSolrBean);
-        popSingerCollect.put(MAP_JAPAN_KOREA,japanKoreaSingerSolrBean);
+        popSingerCollect.put(CHINA,chinaSingerSolrBean);
+        popSingerCollect.put(EAA,eaaSingerSolrBean);
+        popSingerCollect.put(JAPAN_KOREA,japanKoreaSingerSolrBean);
         indexViewBean.setPopSingerCollect(popSingerCollect);
     }
 
@@ -120,10 +122,10 @@ public class IndexServiceImpl implements IndexService {
         SolrBean<CustomMusic> eaaMusicSolrBean = musicSolr.selectNewMusicByClassName("欧美",24);
         SolrBean<CustomMusic> japanMusicSolrBean = musicSolr.selectNewMusicByClassName("日本",24);
         SolrBean<CustomMusic> koreaMusicSolrBean = musicSolr.selectNewMusicByClassName("韩国",24);
-        newMusicCollect.put(MAP_CHINA,chinaMusicSolrBean);
-        newMusicCollect.put(MAP_EAA,eaaMusicSolrBean);
-        newMusicCollect.put(MAP_JAPAN,japanMusicSolrBean);
-        newMusicCollect.put(MAP_KOREA,koreaMusicSolrBean);
+        newMusicCollect.put(CHINA,chinaMusicSolrBean);
+        newMusicCollect.put(EAA,eaaMusicSolrBean);
+        newMusicCollect.put(JAPAN,japanMusicSolrBean);
+        newMusicCollect.put(KOREA,koreaMusicSolrBean);
         indexViewBean.setNewMusicCollect(newMusicCollect);
     }
 

@@ -14,6 +14,10 @@ import java.sql.Date;
 @Data
 public class Mv implements Serializable {
     /**
+     * hashcode
+     */
+    private String hashCode;
+    /**
      * ID
      */
     private Long mvId;

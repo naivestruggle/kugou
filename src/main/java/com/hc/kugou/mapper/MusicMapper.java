@@ -69,4 +69,7 @@ public interface MusicMapper {
      */
     @Update("update kugou_music set music_song_name=#{newName} where music_id=#{musicId}")
     void updateMusicSongName(@Param("musicId")long musicId, @Param("newName")String newName);
+
+    @Update("update kugou_music set music_hash_code=#{hashCode} where music_id=#{id}")
+    void updateHashCode(@Param("id")Integer id, @Param("hashCode")String hashCode);
 }

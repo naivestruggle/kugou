@@ -33,6 +33,7 @@ public class SolrManager<T>{
     private SolrClient client;
     public static final int SORT_RULE_DESC = 1;
     public static final int SORT_RULE_ASC = 2;
+    private static final String HASH_CODE = "hashCode";
 
     private Class<T> clazz;
 
@@ -49,35 +50,25 @@ public class SolrManager<T>{
 
     /**
      * 更新
-     * @param idColumnName 传入对象的id列名  也是域名
      * @param object    要更新的对象
      */
-    public void update(String idColumnName,T object){
-        String objectId = null;
-        String fieldId = null;
-        //将id列名变化为驼峰命名法
-        fieldId = StringUtils.lineToHump(idColumnName);
+    public void update(T object){
+        //根据hashcode就可以实现更新
+        String uuid = null;
         //得到getter方法名
-        fieldId = StringUtils.toGetter(fieldId);
+        String fieldId = StringUtils.toGetter(HASH_CODE);
         //得到方法对象
         Method method = null;
         try {
             method = clazz.getMethod(fieldId);
             //执行方法
-            objectId = String.valueOf(method.invoke(object));
+            uuid = String.valueOf(method.invoke(object));
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
             e.printStackTrace();
-        }
-        SolrBean<T> solrBean = find(objectId,null, null,null,0,1,
-                new String[]{idColumnName},new String[]{"id"},null);
-        Map<String,T> map = solrBean.getSolrBeanMap();
-        String uuid = "";
-        for(Map.Entry<String,T> me : map.entrySet()){
-            uuid = me.getKey();
         }
         add(uuid,object);
     }
@@ -135,33 +126,6 @@ public class SolrManager<T>{
         commit();
     }
 
-
-    /**
-     * 批量添加
-     * @param id id
-     * @param objects   集合
-     */
-    public void add(String id,List<T> objects){
-        for(T object : objects){
-            addOneNotCommit(id,object);
-        }
-        //提交
-        commit();
-    }
-
-    /**
-     * 批量添加
-     * @param  id id
-     * @param objects   数组
-     */
-    public void add(String id,T... objects){
-        for (T object:objects){
-            //添加一个对象但是未提交
-            addOneNotCommit(id,object);
-        }
-        //提交
-        commit();
-    }
 
     /**
      * 添加一个对象  但是未提交
@@ -331,7 +295,7 @@ public class SolrManager<T>{
         Map<String, Map<String, List<String>>> highlighting = response.getHighlighting();
         Long numFound = docs.getNumFound();
         solrBean.setFoundNum(numFound);
-        Map<String,T> objectList = new HashMap<String,T>();
+        List<T> objectList = new ArrayList<T>();
         //遍历每个document对象   也就是对应着每一条数据库记录
         for(SolrDocument doc:docs){
             T taget = null;
@@ -359,6 +323,23 @@ public class SolrManager<T>{
                 String key = me.getKey();
                 //值
                 Object value = me.getValue();
+
+                if("id".equals(key)){
+                    //如果是id列，就映射成hashcode
+                    //得到方法对象
+                    try {
+                        Method method = ReflectUtils.getMethod(clazz,StringUtils.toSetter(HASH_CODE),String.class);
+                        method.invoke(taget,String.valueOf(value));
+                    } catch (NoSuchMethodException e) {
+                        //如果没有方法   直接终止这次循化
+                        continue g1;
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    } catch (InvocationTargetException e) {
+                        e.printStackTrace();
+                    }
+                    continue g1;
+                }
 
                 //将域转化驼峰命名法方法
                 String fieldName = StringUtils.lineToHump(key);
@@ -389,9 +370,9 @@ public class SolrManager<T>{
 
                 mapping(taget,fieldClassType,method,value);
             }
-            objectList.put(id,taget);
+            objectList.add(taget);
         }
-        solrBean.setSolrBeanMap(objectList);
+        solrBean.setSolrBeanList(objectList);
         return solrBean;
     }
 

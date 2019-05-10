@@ -8,6 +8,7 @@ import com.hc.kugou.mapper.*;
 import com.hc.kugou.solr.SolrBean;
 import com.hc.kugou.service.IndexService;
 import com.hc.kugou.solr.MusicSolr;
+import com.hc.kugou.solr.SolrManager;
 import org.apache.solr.client.solrj.SolrClient;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -52,25 +53,6 @@ public class KugouApplicationTests {
     private MusicSolr musicSolr;
 
 
-    @Test
-    public void testMusicSolr1(){
-        SolrBean<CustomMusic> solrBean = musicSolr.selectNewMusicByClassName("华语",1);
-        System.out.println("查到结果："+solrBean.getFoundNum());
-        System.out.println("高亮字段："+solrBean.getHighlight());
-        System.out.println("-----------------------------------");;
-        Map<String,CustomMusic> map = solrBean.getSolrBeanMap();
-        for(Map.Entry<String,CustomMusic> me:map.entrySet()){
-            System.out.println("id："+me.getKey());
-            System.out.println(me.getValue());
-            List<String[]> list = me.getValue().getMusicLyricsList();
-            for(String[] arr : list){
-                for(String str:arr){
-                    System.out.println("歌词："+str);
-                }
-            }
-        }
-    }
-
     /**
      * 得到UUID
      * @return
@@ -79,21 +61,6 @@ public class KugouApplicationTests {
         return UUID.randomUUID().toString().replace("-","");
     }
 
-    @Test
-    public void testfun1(){
-        SolrBean<CustomMusic> solrBean = musicSolr.selectMusicById(35);
-        Map<String,CustomMusic> map = solrBean.getSolrBeanMap();
-        for(Map.Entry<String,CustomMusic> me:map.entrySet()) {
-            System.out.println("id：" + me.getKey());
-            System.out.println(me.getValue());
-            List<String[]> list = me.getValue().getMusicLyricsList();
-            for(String[] arr : list){
-                for(String str:arr){
-                    System.out.println("歌词："+str);
-                }
-            }
-        }
-    }
 
     @Test
     public void updateMusicSongName(){
@@ -106,6 +73,19 @@ public class KugouApplicationTests {
                 musicMapper.updateMusicSongName(i,name);
             }
             System.out.println(i);
+        }
+    }
+
+
+    @Test
+    public void addHashCode(){
+        SolrManager<Music> solrManager = SolrManager.getInstance(Music.class,client);
+        for(int i=1;i<=78142;i++){
+            SolrBean<Music> solrBean = solrManager.find(i+"",null,null,null,0,1,new String[]{"music_id"},new String[]{"music_hash_code"},null);
+            Integer id = i;
+            String hashCode = solrBean.getSolrBeanList().get(0).getMusicHashCode();
+            musicMapper.updateHashCode(id,hashCode);
+            System.out.println(i+"......"+hashCode);
         }
     }
 }

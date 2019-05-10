@@ -185,6 +185,13 @@
 
 		var myAudio = $("#myAudio")[0];
 
+		var num = $(".jspPane p").length;
+		var nDivHight = $(".jspContainer").height();
+		var rightScrollLenOne = nDivHight / num + 40;
+		// var rightScrollLenOne = 200 / num;
+		var rightScrollLenTop = 0;
+		var rightScrollFlag = 0;
+		var i = 1;
 		//时间更新事件
 		myAudio.ontimeupdate = function () {
 			//更新歌曲当前时间
@@ -214,7 +221,7 @@
 			drag_playhead2.css("width",baifenbi);
 
 			//循环所有的歌词  把当前时间的歌词高亮
-			var i = "1";
+
 			$(".jspPane p").each(function () {
 				//02:33.71
 				var str = $(this).attr("times");
@@ -226,28 +233,44 @@
 				var nowTime = parseFloat(times + "." + arr2[1]);
 				if(myAudio.currentTime > nowTime){
 					i = $(this).attr("rel");
-					$(".jspPane p").each(function () {
-						if($(this).attr("rel") == i){
-							$(this).addClass("playOver");
-						}else {
-							$(this).removeClass("playOver");
-						}
-					});
 				}
 			});
-
+			$(".jspPane p").each(function () {
+				if($(this).attr("rel") == i){
+					$(this).addClass("playOver");
+					if(i != rightScrollFlag && i>2){
+						rightScrollLenTop = (rightScrollLenOne * i) - 110;
+						document.getElementsByClassName('jspContainer')[0].scrollTop = rightScrollLenTop;
+						// console.log(rightScrollLenTop)
+						rightScrollFlag = i;
+					}
+					// window.scrollBy(0,20);
+				}else {
+					$(this).removeClass("playOver");
+				}
+			});
+			i = 1;
 			//
 
+
+			// ////////高亮歌词显示到中间//////////////
+			// //有多少行歌词
+			//
+			// console.log(nDivHight+"...."+lenBaifen)
 		};
 
-		// //鼠标在进度条上按下
-		// function updateJinDuTiao1(obj){
-		// 	//添加移动事件
-		// }
-		// //鼠标在进度条上释放
-		// function updateJinDuTiao1(obj){
-		// 	//删除移动事件
-		// }
+
+
+
+		/////////////////////////////下面是进度条操作事件/////////////////////////////
+		//鼠标在进度条上按下
+		function updateJinDuTiao1(obj){
+			//添加移动事件
+		}
+		//鼠标在进度条上释放
+		function updateJinDuTiao2(obj){
+			//删除移动事件
+		}
 
 		//进度条移动 点击事件
 		function updateJinDuTiao(){
