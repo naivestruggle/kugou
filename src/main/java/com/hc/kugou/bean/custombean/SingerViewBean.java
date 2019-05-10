@@ -12,6 +12,9 @@ import java.util.Map;
 @Data
 public class SingerViewBean {
 
-
+    /**
+     * 歌手集合
+     */
+    Map<String,SolrBean<CustomSinger>> singerCollect;
 
 }

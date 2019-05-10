@@ -34,4 +34,17 @@ public class SingerSolr {
             new String[]{SingerTool.SINGER_CLASS_NAME_FIELD},SingerTool.SINGER_POINTER_FIELD,null);
         return solrBean;
     }
+
+    /**
+     * 查询展示Singer页面所需要的数据
+     * @param singerClassName  语种
+     * @param singerSindex     A-Z
+     * @param page             当前页
+     *
+     *  第一页 50 位歌手  后面页 63 位歌手
+     */
+    public void singer(int singerClassName, String singerSindex, int page) {
+
+
+    }
 }

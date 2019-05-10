@@ -25,23 +25,23 @@ public class MvServiceImpl implements MvService {
      * 新歌
      */
     private static final String MAP_NEWMV = "newMv";
-    private static final Integer MAP_NEWMV_NUM = 1;
+    private static final int MAP_NEWMV_NUM = 1;
     /**
      * 华语
      */
     private static final String MAP_CHINA = "china";
-    private static final Integer MAP_CHINA_NUM = 2;
+    private static final int MAP_CHINA_NUM = 2;
     /**
      * 欧美
      */
     private static final String MAP_EAA = "eaa";
-    private static final Integer MAP_EAA_NUM = 3;
+    private static final int MAP_EAA_NUM = 3;
 
     /**
      * 日韩
      */
     private static final String MAP_JAPAN_KOREA = "japanKorea";
-    private static final Integer MAP_JAPAN_NUM = 4;
+    private static final int MAP_JAPAN_KOREA_NUM = 4;
 
 
     @Autowired
@@ -195,7 +195,7 @@ public class MvServiceImpl implements MvService {
         //计算起始行
         page = (page - 1) * 20;
 
-        if (mvClassName == 1) {
+        if (mvClassName == MAP_NEWMV_NUM) {
             SolrBean<CustomMv> customMvSolrBean = mvSolr.selectNewMv(page);
             hotMv.put(MAP_NEWMV,customMvSolrBean);
 
@@ -204,11 +204,11 @@ public class MvServiceImpl implements MvService {
             String languages = getLanguages(mvClassName);
 
             SolrBean<CustomMv> customMvSolrBean = mvSolr.selectHotMvByClassName(languages, page);
-            if(mvClassName == 2){
+            if(mvClassName == MAP_CHINA_NUM){
                 hotMv.put(MAP_CHINA,customMvSolrBean);
-            }else if(mvClassName == 3){
+            }else if(mvClassName == MAP_EAA_NUM){
                 hotMv.put(MAP_EAA,customMvSolrBean);
-            }else if(mvClassName == 4){
+            }else if(mvClassName == MAP_JAPAN_KOREA_NUM){
                 hotMv.put(MAP_JAPAN_KOREA,customMvSolrBean);
             }
         }
@@ -225,13 +225,13 @@ public class MvServiceImpl implements MvService {
     private String getLanguages(int mvClassName) {
         String languages = null;
         switch (mvClassName) {
-            case 2:
+            case MAP_CHINA_NUM:
                 languages = "华语";
                 break;
-            case 3:
+            case MAP_EAA_NUM:
                 languages = "欧美";
                 break;
-            case 4:
+            case MAP_JAPAN_KOREA_NUM:
                 languages = "日韩";
                 break;
             default:
