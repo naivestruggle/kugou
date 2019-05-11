@@ -1,8 +1,7 @@
 package com.hc.kugou.controller;
 
 import com.hc.kugou.bean.custombean.SingerViewBean;
-import com.hc.kugou.service.impl.SingerService;
-import com.hc.kugou.solr.SingerSolr;
+import com.hc.kugou.service.SingerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +23,15 @@ public class SingerContorller {
     public String singer(@PathVariable("singerClassName") int singerClassName, @PathVariable("singerSindex") String singerSindex,
                          @PathVariable("page") int page, Model model){
 
+        //如果页数超出范围
+        if(page > 5){
+            page = 5;
+        }else if(page < 1){
+            page = 1;
+        }
+
         SingerViewBean singerViewBean = singerService.singer(singerClassName, singerSindex, page);
+
 
         model.addAttribute("singerViewBean",singerViewBean);
 
@@ -34,7 +41,7 @@ public class SingerContorller {
 
     @GetMapping({"singer.html"})
     public void toMvHtml(Model model){
-        singer(1,"all",1,model);
+        singer(1,"ALL",1,model);
     }
 
 }

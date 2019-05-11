@@ -3,6 +3,7 @@ package com.hc.kugou.service.impl;
 import com.hc.kugou.bean.*;
 import com.hc.kugou.bean.custombean.CustomMusic;
 import com.hc.kugou.bean.custombean.CustomMv;
+import com.hc.kugou.bean.custombean.CustomSinger;
 import com.hc.kugou.bean.custombean.IndexViewBean;
 import com.hc.kugou.solr.MvSolr;
 import com.hc.kugou.solr.SingerSolr;
@@ -102,10 +103,10 @@ public class IndexServiceImpl implements IndexService {
      * @param indexViewBean 信息对象
      */
     private void addPopSinger(IndexViewBean indexViewBean) {
-        Map<String, SolrBean<Singer>> popSingerCollect = new HashMap<String,SolrBean<Singer>>();
-        SolrBean<Singer> chinaSingerSolrBean = singerSolr.selectSingerByClassName("华语",5);
-        SolrBean<Singer> eaaSingerSolrBean = singerSolr.selectSingerByClassName("欧美",5);
-        SolrBean<Singer> japanKoreaSingerSolrBean = singerSolr.selectSingerByClassName("日韩",5);
+        Map<String, SolrBean<CustomSinger>> popSingerCollect = new HashMap<String,SolrBean<CustomSinger>>();
+        SolrBean<CustomSinger> chinaSingerSolrBean = singerSolr.selectSingerByClassName("华语",5);
+        SolrBean<CustomSinger> eaaSingerSolrBean = singerSolr.selectSingerByClassName("欧美",5);
+        SolrBean<CustomSinger> japanKoreaSingerSolrBean = singerSolr.selectSingerByClassName("日韩",5);
         popSingerCollect.put(CHINA,chinaSingerSolrBean);
         popSingerCollect.put(EAA,eaaSingerSolrBean);
         popSingerCollect.put(JAPAN_KOREA,japanKoreaSingerSolrBean);

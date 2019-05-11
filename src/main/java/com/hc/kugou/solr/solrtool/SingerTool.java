@@ -9,6 +9,7 @@ package com.hc.kugou.solr.solrtool;
 public class SingerTool {
     public static String SINGER_LISTENER_COUNT_FIELD = "singer_listener_count";
     public static String SINGER_CLASS_NAME_FIELD = "singer_class_name";
+    public static String SINGER_FLAG_FIELD = "singer_flag";
     public static String[] SINGER_POINTER_FIELD = {
             "id",
             "singer_id",

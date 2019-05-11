@@ -17,4 +17,24 @@ public class SingerViewBean {
      */
     Map<String,SolrBean<CustomSinger>> singerCollect;
 
+    /**
+     * 歌手语种
+     */
+    Integer singerClassName;
+
+    /**
+     * A-Z
+     */
+    String singerSindex;
+
+    /**
+     * 当前页
+     */
+    Integer page;
+
+
+    /**
+     * 总页数
+     */
+    Integer totalPage;
 }
