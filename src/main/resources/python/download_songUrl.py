@@ -13,7 +13,7 @@ import sys
 
 class KuGo_Spider(  object  ):
     def __init__(self):
-        data=self.download_music(sys.args[1])
+        data=self.download_music(sys.argv[1])
         print(data)
         
     #下载歌曲信息  参数hash与album_id

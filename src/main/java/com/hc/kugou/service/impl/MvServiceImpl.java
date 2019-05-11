@@ -156,7 +156,7 @@ public class MvServiceImpl implements MvService {
         MvViewBean mvViewBean = new MvViewBean();
 
         //轮播图模块
-        //addSlideGraph(mvViewBean);
+        addSlideGraph(mvViewBean);
 
         //top10模块
         addTopTenMv(mvViewBean);
@@ -165,6 +165,15 @@ public class MvServiceImpl implements MvService {
         addHotMv(mvViewBean, mvClassName, page);
 
         return mvViewBean;
+    }
+
+    /**
+     * 添加轮播
+     * @param mvViewBean
+     */
+    private void addSlideGraph(MvViewBean mvViewBean) {
+        SolrBean<CustomMv> slideGraphCollect = mvSolr.selectHotFiveMv();
+        mvViewBean.setSlideGraphCollect(slideGraphCollect);
     }
 
 
@@ -185,7 +194,8 @@ public class MvServiceImpl implements MvService {
      */
     private void addHotMv(MvViewBean mvViewBean, int mvClassName, int page) {
         Map<String,SolrBean<CustomMv>> hotMv = new HashMap<String,SolrBean<CustomMv>>();
-
+        //设置分类
+        mvViewBean.setMvClassName(mvClassName);
         //设置当前页
         mvViewBean.setPage(page);
         //计算起始行

@@ -38,15 +38,18 @@ dir_hind.mouseout(function(){
 
 //大图
 var dot=document.getElementsByClassName("dot")[0];
-var dotli=dot.getElementsByTagName("li");
-
+//var dotli=dot.getElementsByTagName("li");
+var dotli = $(".dot li");
 var BigImgs=document.getElementsByClassName("BigImgs")[0];
 var z=1;
 
 setInterval(function(){
-	for(var i=0;i<dotli.length;i++){
-		dotli[i].style.background="../img/mv/doc_hover.png";
-	}
+	$(".dot li:nth-child("+z+")").css({
+		background: "url(/kugou/img/mv/doc_hover.png) no-repeat"
+	});
+	$(".dot li").not($(".dot li:nth-child("+z+")")).css({
+		background: "url(/kugou/img/mv/doc.png) no-repeat"
+	});
 
 	//单位换算
 	if(BigImgs.style.left==""){

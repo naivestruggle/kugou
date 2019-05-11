@@ -196,8 +196,8 @@
                         <a id="firPage" class="btnPage" th:href="@{'/singer.html/'+${language}+'/'+${sindex}+'/1'}">首页</a>
                         <a id="prePage" class="btnPage" th:href="@{'/singer.html/'+${language}+'/'+${sindex}+'/'+${page-1}}" th:if="${page}>1">上一页</a>
                         <i id="page_1" class="current"
-                           th:class="${singerViewBean.page}==${pageIndex}?'current'"
-                           th:each="pageIndex:${#numbers.sequence(1,singerViewBean.totalPage)}"
+                           th:class="${page}==${pageIndex}?'current'"
+                           th:each="pageIndex:${#numbers.sequence(1,totalPage)}"
                            th:if="${pageIndex<6}"><a th:href="@{'/singer.html/'+${language}+'/'+${sindex}+'/'+${pageIndex}}">[[${pageIndex}]]</a></i>
                         <a id="nexPage" class="btnPage" th:href="@{'/singer.html/'+${language}+'/'+${sindex}+'/'+${page+1}}" th:if="${page}<${totalPage}">下一页</a>
                         <a id="lasPage" class="btnPage" th:href="@{'/singer.html/'+${language}+'/'+${sindex}+'/' + ${totalPage}}">尾页</a>

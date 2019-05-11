@@ -1,130 +1,118 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
-  <head>
+<head>
     <meta charset="utf-8"/>
     <title>酷狗音乐 - MV频道</title>
-      <link rel="shortcut icon"  href="../static/favicon.ico" th:href="@{/favicon.ico}"/>
-      <link rel="stylesheet" href="../public/css/mv.css" th:href="@{/css/mv.css}">
-      <link rel="stylesheet" href="../public/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
-  </head>
-  <body>
+    <link rel="shortcut icon" href="../static/favicon.ico" th:href="@{/favicon.ico}"/>
+    <link rel="stylesheet" href="../public/css/mv.css" th:href="@{/css/mv.css}">
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
 
-    <!-- 引入头部 -->
-    <div th:replace="commons/head::headbar(activeUri='index')"></div>
+<!-- 引入头部 -->
+<div th:replace="commons/head::headbar(activeUri='index')"></div>
 
-    <section id="con">
-      <div class="BigImg">
-  			<ul class="BigImgs">
-  				<li class="BigImg1" style="display: inline">
-  					<a href="mv.html" ><img src="../public/img/mv/mv1.jpg" th:src="@{/img/mv/mv1.jpg}" id="picc"/></a>
-  					<span class="tag1">
-  						<a href="mv.html"  class="name">吴亦凡 - Like That<em></em></a>
+<section id="con">
+    <div class="BigImg">
+        <ul class="BigImgs">
+            <li class="BigImg1" th:class="BigImg+${beanStat.count}" style="display: inline"
+                th:each="bean,beanStat:${mvViewBean.slideGraphCollect.solrBeanList}">
+                <a href="mv.html" th:href="@{/mvPlay.html/}+${bean.mvId}"><img src="../public/img/mv/mv1.jpg"
+                                                                               th:src="${bean.mvHeadImage}"
+                                                                               style="width: 663px;height: 325px"
+                                                                               id="picc"/></a>
+                <span class="tag1" th:class="tag+${beanStat.count}">
+  						<a href="mv.html" class="name" th:href="@{/mvPlay.html/}+${bean.mvId}" th:text="${bean.mvName}">吴亦凡 - Like That<em></em></a>
   					</span>
-  				</li>
-  				<li class="BigImg2" style="display: inline">
-  					<a href="mv.html" ><img src="../public/img/mv/mv2.jpg" th:src="@{/img/mv/mv2.jpg}"/></a>
-  					<span class="tag2">
-  						<a href="mv.html"  class="name">AOA - Bingle Bangle<em></em></a>
-  					</span>
-  				</li>
-  				<li class="BigImg3" style="display: inline">
-  					<a href="mv.html" ><img src="../public/img/mv/mv3.jpg" th:src="@{/img/mv/mv3.jpg}"/></a>
-  					<span class="tag3">
-  						<a href="mv.html" class="name">Hwang Seon Ho - 像那天一样 (Like we just met)<em></em></a>
-  					</span>
-  				</li>
-  				<li class="BigImg4" style="display: inline">
-  					<a href="mv.html" ><img src="../public/img/mv/mv4.jpg" th:src="@{/img/mv/mv4.jpg}"/></a>
-  					<span class="tag4">
-  						<a href="mv.html"  class="name">许佳慧 - 本末倒置<em></em></a>
-  					</span>
-  				</li>
-  				<li class="BigImg5" style="display: inline">
-  					<a href="mv.html" ><img src="../public/img/mv/mv5.jpg" th:src="@{/img/mv/mv5.jpg}"/></a>
-  					<span class="tag5">
-  						<a href="mv.html"  class="name">张杰 - Pretty White Lies<em></em></a>
-  					</span>
-  				</li>
-  			</ul>
-  			<ul class="dot">
-  				<li class="dott1"></li>
-  				<li class="dott2"></li>
-  				<li class="dott3"></li>
-  				<li class="dott4"></li>
-  				<li class="dott5"></li>
-  			</ul>
-  		</div>
-      <div id="mvhot" th:with="beanMap=${mvViewBean.topTenMvCollect.solrBeanList}">
-  			<h3>
-  				<span>&nbsp;&nbsp;&nbsp;MV热播总播排行</span>
-  				<a href="mv.html" >更多</a>
-  			</h3>
-  			<ul class="queue">
-                <li th:each="bean,beanStat:${beanMap}">
-                    <a th:href="@{/mvPlay.html/}+${bean.mvId}">
-  					<span class="Qnum" id="Q1" th:id="Q+${beanStat.index+1}"></span>
-  					<span class="Qname" th:text="${bean.mvName}">儿童歌曲-我的小猪</span>
-  					<em class="play"></em>
-                   </a>
-  				</li>
-  			</ul>
-  		</div>
-    </section>
-    <!-- 内容 -->
-    <section id="con2">
-      <ul class="nav nav-pills">
+            </li>
+        </ul>
+        <ul class="dot">
+            <li class="dott1"></li>
+            <li class="dott2"></li>
+            <li class="dott3"></li>
+            <li class="dott4"></li>
+            <li class="dott5"></li>
+        </ul>
+    </div>
+    <div id="mvhot" th:with="beanMap=${mvViewBean.topTenMvCollect.solrBeanList}">
+        <h3>
+            <span>&nbsp;&nbsp;&nbsp;MV热播总播排行</span>
+            <a href="mv.html">更多</a>
+        </h3>
+        <ul class="queue">
+            <li th:each="bean,beanStat:${beanMap}">
+                <a th:href="@{/mvPlay.html/}+${bean.mvId}">
+                    <span class="Qnum" id="Q1" th:id="Q+${beanStat.index+1}"></span>
+                    <span class="Qname" th:text="${bean.mvName}">儿童歌曲-我的小猪</span>
+                    <em class="play"></em>
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>
+<!-- 内容 -->
+<section id="con2">
+    <ul class="nav nav-pills">
         <h3>MV分类</h3>
         <li class="nav-item">
-            <a th:class="${mvViewBean.hotMvCollect.get('newMv')}!=null?'nav-link active':'nav-link'" href="#NO1" th:href="@{/mv.html/1/1}">新歌推荐</a>
+            <a th:class="${mvViewBean.hotMvCollect.get('newMv')}!=null?'nav-link active':'nav-link'" href="#NO1"
+               th:href="@{/mv.html/1/1}">新歌推荐</a>
         </li>
         <li class="nav-item">
-            <a th:class="${mvViewBean.hotMvCollect.get('eaa')}!=null?'nav-link active':'nav-link'"  href="#NO2" th:href="@{/mv.html/3/1}" class="nav-link">欧美精选</a>
+            <a th:class="${mvViewBean.hotMvCollect.get('eaa')}!=null?'nav-link active':'nav-link'" href="#NO2"
+               th:href="@{/mv.html/3/1}" class="nav-link">欧美精选</a>
         </li>
         <li class="nav-item">
-            <a th:class="${mvViewBean.hotMvCollect.get('japanKorea')}!=null?'nav-link active':'nav-link'" href="#NO3" th:href="@{/mv.html/4/1}" class="nav-link">日韩精选</a>
+            <a th:class="${mvViewBean.hotMvCollect.get('japanKorea')}!=null?'nav-link active':'nav-link'" href="#NO3"
+               th:href="@{/mv.html/4/1}" class="nav-link">日韩精选</a>
         </li>
         <li class="nav-item">
-            <a th:class="${mvViewBean.hotMvCollect.get('china')}!=null?'nav-link active':'nav-link'" href="#NO4" th:href="@{/mv.html/2/1}" class="nav-link">华语精选</a>
+            <a th:class="${mvViewBean.hotMvCollect.get('china')}!=null?'nav-link active':'nav-link'" href="#NO4"
+               th:href="@{/mv.html/2/1}" class="nav-link">华语精选</a>
         </li>
-    	</ul>
-      <!--要切换的内容-->
-    	<div class="tab-content">
+    </ul>
+    <!--要切换的内容-->
+    <div class="tab-content">
         <h3 th:if="${mvViewBean.hotMvCollect.get('newMv')}!=null">新歌推荐([[${mvViewBean.totalMv}]]个)</h3>
         <h3 th:if="${mvViewBean.hotMvCollect.get('eaa')}!=null">欧美精选([[${mvViewBean.totalMv}]]个)</h3>
         <h3 th:if="${mvViewBean.hotMvCollect.get('japanKorea')}!=null">日韩精选([[${mvViewBean.totalMv}]]个)</h3>
         <h3 th:if="${mvViewBean.hotMvCollect.get('china')}!=null">华语精选([[${mvViewBean.totalMv}]]个)</h3>
 
-        <div th:class="${mvViewBean.hotMvCollect.get('newMv')}!=null?'tab-pane active':'tab-pane'" class="tab-pane active" id="NO1">
-          <ul th:if="${mvViewBean.hotMvCollect.get('newMv') ne null}">
-            <li th:each="bean,beanStat:${mvViewBean.hotMvCollect.get('newMv').solrBeanList}">
-              <a href="mv.html" th:href="@{/mvPlay.html/}+${bean.mvId}">
-                <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg" th:src="${bean.mvHeadImage}"/>
-              </a>
-              <p th:text="${bean.mvName}">HANA - 飞蛾扑火</p>
-            </li>
-          </ul>
+        <div th:class="${mvViewBean.hotMvCollect.get('newMv')}!=null?'tab-pane active':'tab-pane'"
+             class="tab-pane active" id="NO1">
+            <ul th:if="${mvViewBean.hotMvCollect.get('newMv') ne null}">
+                <li th:each="bean,beanStat:${mvViewBean.hotMvCollect.get('newMv').solrBeanList}">
+                    <a href="mv.html" th:href="@{/mvPlay.html/}+${bean.mvId}">
+                        <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg" th:src="${bean.mvHeadImage}"/>
+                    </a>
+                    <p th:text="${bean.mvName}">HANA - 飞蛾扑火</p>
+                </li>
+            </ul>
         </div>
-        <div th:class="${mvViewBean.hotMvCollect.get('eaa')}!=null?'tab-pane active':'tab-pane'" class="tab-pane" id="NO2" style="color:red">
-          <ul th:if="${mvViewBean.hotMvCollect.get('eaa') ne null}">
-              <li th:each="bean,beanStat:${mvViewBean.hotMvCollect.get('eaa').solrBeanList}">
-                  <a href="mv.html" th:href="@{/mvPlay.html/}+${bean.mvId}">
-                      <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg" th:src="${bean.mvHeadImage}"/>
-                  </a>
-                  <p th:text="${bean.mvName}">HANA - 飞蛾扑火</p>
-              </li>
-          </ul>
+        <div th:class="${mvViewBean.hotMvCollect.get('eaa')}!=null?'tab-pane active':'tab-pane'" class="tab-pane"
+             id="NO2" style="color:red">
+            <ul th:if="${mvViewBean.hotMvCollect.get('eaa') ne null}">
+                <li th:each="bean,beanStat:${mvViewBean.hotMvCollect.get('eaa').solrBeanList}">
+                    <a href="mv.html" th:href="@{/mvPlay.html/}+${bean.mvId}">
+                        <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg" th:src="${bean.mvHeadImage}"/>
+                    </a>
+                    <p th:text="${bean.mvName}">HANA - 飞蛾扑火</p>
+                </li>
+            </ul>
         </div>
-        <div th:class="${mvViewBean.hotMvCollect.get('japanKorea')}!=null?'tab-pane active':'tab-pane'" class="tab-pane" id="NO3" style="color:red">
-          <ul th:if="${mvViewBean.hotMvCollect.get('japanKorea') ne null}">
-              <li th:each="bean,beanStat:${mvViewBean.hotMvCollect.get('japanKorea').solrBeanList}">
-                  <a href="mv.html" th:href="@{/mvPlay.html/}+${bean.mvId}">
-                      <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg" th:src="${bean.mvHeadImage}"/>
-                  </a>
-                  <p th:text="${bean.mvName}">HANA - 飞蛾扑火</p>
-              </li>
-          </ul>
+        <div th:class="${mvViewBean.hotMvCollect.get('japanKorea')}!=null?'tab-pane active':'tab-pane'" class="tab-pane"
+             id="NO3" style="color:red">
+            <ul th:if="${mvViewBean.hotMvCollect.get('japanKorea') ne null}">
+                <li th:each="bean,beanStat:${mvViewBean.hotMvCollect.get('japanKorea').solrBeanList}">
+                    <a href="mv.html" th:href="@{/mvPlay.html/}+${bean.mvId}">
+                        <img src="../public/img/mv/D727A7CE8C9E8EC9BFC4A9F69D2DF150.jpg" th:src="${bean.mvHeadImage}"/>
+                    </a>
+                    <p th:text="${bean.mvName}">HANA - 飞蛾扑火</p>
+                </li>
+            </ul>
         </div>
-        <div th:class="${mvViewBean.hotMvCollect.get('china')}!=null?'tab-pane active':'tab-pane'" class="tab-pane" id="NO4" style="color:red">
+        <div th:class="${mvViewBean.hotMvCollect.get('china')}!=null?'tab-pane active':'tab-pane'" class="tab-pane"
+             id="NO4" style="color:red">
             <ul th:if="${mvViewBean.hotMvCollect.get('china') ne null}">
                 <li th:each="bean,beanStat:${mvViewBean.hotMvCollect.get('china').solrBeanList}">
                     <a href="mv.html" th:href="@{/mvPlay.html/}+${bean.mvId}">
@@ -134,13 +122,31 @@
                 </li>
             </ul>
         </div>
-    	</div>
-    </section>
+    </div>
+    <!-- 分页 -->
+    <div id="pagination" th:with="mvClassName=${mvViewBean.mvClassName},page=${mvViewBean.page},totalPage=${mvViewBean.totalPage}">
+        <a class="btnPage" th:href="@{'/mv.html/'+${mvClassName}+'/1'}">首页</a>
+        <a id="prePage" class="btnPage" th:href="@{'/mv.html/'+${mvClassName}+'/'+${page-1}}" th:if="${page}>1">上一页</a>
+        <i id="page_1" class="current"
+           th:each="pageIndex:${#numbers.sequence(1,7)}"
+           th:class="${page}>5?(${page}==${pageIndex+page-5}?'current'):(${page}==${pageIndex}?'current')"
+        ><a th:href="@{'/mv.html/'+${mvClassName}+'/'+ @{${page>5}?${page+pageIndex-5}:${pageIndex}}}"
+            th:text="${page}>5?${page+pageIndex-5}:${pageIndex}"
+            th:if="${page+pageIndex-5}<=${totalPage}">1</a></i>
+        <!--@{'/mv.html/'+${mvClassName}+'/'+(${page}>5?${page+pageIndex-5}:${pageIndex})}-->
+        <a id="nexPage" class="btnPage" th:href="@{'/mv.html/'+${mvClassName}+'/'+${page+1}}" th:if="${page}<${totalPage}">下一页</a>
+        <a class="btnPage" th:href="@{'/mv.html/'+${mvClassName}+'/'+${totalPage}}">尾页</a>
+    </div>
+</section>
 
-    <!-- 尾巴 -->
-    <script src="../public/js/jquery.min.js" th:src="@{/js/jquery.min.js}" type="text/javascript" charset="utf-8"></script>
-    <script src="../public/js/mv.js" th:src="@{/js/mv.js}" type="text/javascript" charset="utf-8"></script>
-  	<script src="../public/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}" type="text/javascript" charset="utf-8"></script>
 
-  </body>
+
+<!-- 尾巴 -->
+<script src="../public/js/jquery.min.js" th:src="@{/js/jquery.min.js}" type="text/javascript" charset="utf-8"></script>
+<script src="../public/js/mv.js" th:src="@{/js/mv.js}" type="text/javascript" charset="utf-8"></script>
+<script src="../public/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}" type="text/javascript"
+        charset="utf-8"></script>
+
+
+</body>
 </html>
