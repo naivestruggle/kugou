@@ -16,7 +16,6 @@ public class Music implements Serializable {
      * hashcode
      */
     private String hashCode;
-    private String musicHashCode;
     /**
      * ID
      */
