@@ -15,25 +15,26 @@ for(var i=0;i<dir_aa.length;i++){
 }
 
 //更多盒子
-var dir_more=document.getElementsByClassName("dir_more")[0];
-var dir_hind=document.getElementsByClassName("dir_hind")[0];
+var dir_more = $(".dir_more");
+var dir_hind = $(".dir_hind");
 
-dir_more.onmouseover=function(){
-	dir_hind.style.display="block";
-}
-dir_more.onmouseout=function(){
-	dir_hind.style.display="none";
-}
+dir_more.mouseover(function () {
+	$(".dir_hind").attr(display,"block");
+});
+dir_hind.mouseout(function () {
+	$(".dir_hind").attr(display,"none");
+});
+
 setTimeout(function(){
-	dir_hind.onmouseover=function(){
+	dir_hind.mousemove(function(){
 		this.style.display="block";
-	    }
-	},500)
+	})
+	},2000);
 
-dir_hind.onmouseout=function(){
+dir_hind.mouseout(function(){
 	clearTimeout();
 	this.style.display="none";
-}
+});
 
 //大图
 var dot=document.getElementsByClassName("dot")[0];
@@ -44,7 +45,7 @@ var z=1;
 
 setInterval(function(){
 	for(var i=0;i<dotli.length;i++){
-		dotli[i].style.background="../mv/doc_hover.png";
+		dotli[i].style.background="../img/mv/doc_hover.png";
 	}
 
 	//单位换算
@@ -60,7 +61,7 @@ setInterval(function(){
 		z=1;
 		BigImgs.style.left=0+"px";
 	}
-},1000);
+},2000);
 
 //内容 菜单部分
 var dds=document.getElementsByTagName("dd");

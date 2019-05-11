@@ -4,8 +4,8 @@
     <meta charset="utf-8"/>
     <title>酷狗音乐 - MV频道</title>
       <link rel="shortcut icon"  href="../static/favicon.ico" th:href="@{/favicon.ico}"/>
-    <link rel="stylesheet" href="../public/css/mv.css" th:href="@{/css/mv.css}">
-    <link rel="stylesheet" href="../public/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+      <link rel="stylesheet" href="../public/css/mv.css" th:href="@{/css/mv.css}">
+      <link rel="stylesheet" href="../public/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
   </head>
   <body>
 
@@ -89,7 +89,11 @@
     	</ul>
       <!--要切换的内容-->
     	<div class="tab-content">
-        <h3>新歌推荐</h3>
+        <h3 th:if="${mvViewBean.hotMvCollect.get('newMv')}!=null">新歌推荐([[${mvViewBean.totalMv}]]个)</h3>
+        <h3 th:if="${mvViewBean.hotMvCollect.get('eaa')}!=null">欧美精选([[${mvViewBean.totalMv}]]个)</h3>
+        <h3 th:if="${mvViewBean.hotMvCollect.get('japanKorea')}!=null">日韩精选([[${mvViewBean.totalMv}]]个)</h3>
+        <h3 th:if="${mvViewBean.hotMvCollect.get('china')}!=null">华语精选([[${mvViewBean.totalMv}]]个)</h3>
+
         <div th:class="${mvViewBean.hotMvCollect.get('newMv')}!=null?'tab-pane active':'tab-pane'" class="tab-pane active" id="NO1">
           <ul th:if="${mvViewBean.hotMvCollect.get('newMv') ne null}">
             <li th:each="bean,beanStat:${mvViewBean.hotMvCollect.get('newMv').solrBeanList}">
@@ -100,7 +104,6 @@
             </li>
           </ul>
         </div>
-
         <div th:class="${mvViewBean.hotMvCollect.get('eaa')}!=null?'tab-pane active':'tab-pane'" class="tab-pane" id="NO2" style="color:red">
           <ul th:if="${mvViewBean.hotMvCollect.get('eaa') ne null}">
               <li th:each="bean,beanStat:${mvViewBean.hotMvCollect.get('eaa').solrBeanList}">
@@ -134,10 +137,9 @@
     	</div>
     </section>
 
-<!-- 尾巴 -->
-
-    <script src="../public/js/mv.js" th:src="@{/js/mv.js}" type="text/javascript" charset="utf-8"></script>
+    <!-- 尾巴 -->
     <script src="../public/js/jquery.min.js" th:src="@{/js/jquery.min.js}" type="text/javascript" charset="utf-8"></script>
+    <script src="../public/js/mv.js" th:src="@{/js/mv.js}" type="text/javascript" charset="utf-8"></script>
   	<script src="../public/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}" type="text/javascript" charset="utf-8"></script>
 
   </body>

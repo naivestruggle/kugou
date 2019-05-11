@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8"/>
-    <title>王菲 - 偶遇_MV频道_酷狗网</title>
+    <title th:text="${customMvSolrBean.solrBeanList.get(0).mvName}+'_MV频道_酷狗网'">王菲 - 偶遇_MV频道_酷狗网</title>
 	  <link rel="shortcut icon"  href="../static/favicon.ico" th:href="@{/favicon.ico}"/>
     <link rel="stylesheet" href="../public/css/mvPlay.css" th:href="@{/css/mvPlay.css}">
     <link rel="stylesheet" href="../public/js/video.js/css/video-js.css" th:href="@{/js/video.js/css/video-js.css}">

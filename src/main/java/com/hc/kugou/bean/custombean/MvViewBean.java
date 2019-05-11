@@ -28,4 +28,22 @@ public class MvViewBean {
      */
     private Map<String,SolrBean<CustomMv>> hotMvCollect;
 
+
+    /**
+     * 热门mv的总条数
+     */
+    private Long totalMv;
+
+
+    /**
+     * 当前页
+     */
+    private Integer page;
+
+
+    /**
+     * 总页数
+     */
+    private Integer totalPage;
+
 }

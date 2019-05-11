@@ -100,7 +100,8 @@ section{
 	height: 29px;
 	position: absolute;
 	right: 15px;
-	bottom: 5px;
+	bottom: -13px;
+	z-index: 998;
 }
 .dot li{
 	width: 12px;
