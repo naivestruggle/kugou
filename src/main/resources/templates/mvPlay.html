@@ -1,86 +1,100 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
-  <head>
+<head>
     <meta charset="utf-8"/>
     <title th:text="${customMvSolrBean.solrBeanList.get(0).mvName}+'_MV频道_酷狗网'">王菲 - 偶遇_MV频道_酷狗网</title>
-	  <link rel="shortcut icon"  href="../static/favicon.ico" th:href="@{/favicon.ico}"/>
+    <link rel="shortcut icon" href="../static/favicon.ico" th:href="@{/favicon.ico}"/>
     <link rel="stylesheet" href="../public/css/mvPlay.css" th:href="@{/css/mvPlay.css}">
     <link rel="stylesheet" href="../public/js/video.js/css/video-js.css" th:href="@{/js/video.js/css/video-js.css}">
-  </head>
-  <body>
+</head>
+<body>
 <!-- 头 -->
 
-    <div id="frame_mv">
-    	<div class="radio_wrap" th:each="bean:${customMvSolrBean.solrBeanList}">
-    		<h2>
-      		<span><a href="mv.html" th:href="@{/mv.html}" style="color:#878787;">MV首页</a></span> <span>&gt;</span> <span>正在播放</span>
-      		<span>&gt;</span> <font th:text="${bean.mvName}" />
-    		</h2>
-    		<video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="1000" height="500" data-setup="{}">
-          <source th:src="${bean.mvHcUrl}" type='video/mp4' />
+<div id="frame_mv">
+    <div class="radio_wrap" th:each="bean:${customMvSolrBean.solrBeanList}">
+        <h2>
+            <span><a href="mv.html" th:href="@{/mv.html}" style="color:#878787;">MV首页</a></span> <span>&gt;</span>
+            <span>正在播放</span>
+            <span>&gt;</span> <font th:text="${bean.mvName}"/>
+        </h2>
+        <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="1000" height="500"
+               data-setup="{}">
+            <source th:src="${bean.mvHcUrl}" type='video/mp4'/>
         </video>
-    		<div class="clearfix">
-    			<div class="mv_title"></div>
-    			<div class="mv_action">
-    				<div class="mobileShareQrcode" style="display: none;">
-               <div class="qrcodeForMobile">
-               	  <canvas width="120" height="120"></canvas>
-               </div>
+        <div class="clearfix">
+            <div class="mv_title"></div>
+            <div class="mv_action">
+                <div class="mobileShareQrcode" style="display: none;">
+                    <div class="qrcodeForMobile">
+                        <canvas width="120" height="120"></canvas>
+                    </div>
+                </div>
+                <a href="" class="mobileShare">手机看</a>
+                <a class="shareBtn"></a>
+                <a class="downloadBtn"></a>
             </div>
-    				<a href="" class="mobileShare">手机看</a>
-    				<a class="shareBtn"></a>
-    				<a class="downloadBtn"></a>
-    			</div>
-    		</div>
-    		<div class="guess">
-    			<h2>猜你喜欢</h2>
-    			<div class="mv_list" style="width: 1000px;height: 120px;margin-top: 12px;">
-    				<ul class="guess_mv" style="width: 1050px;height: 120px">
-    					<li th:each="bean:${recommendMvSolrBean.solrBeanList}">
-    						<a href="mv.html" th:href="${bean.mvId}">
-    						<img src="../public/img/mvPlay/a.jpg" th:src="${bean.mvHeadImage}" title=""/>
-    						<em></em><i></i>
-    						</a>
-    						<span th:text="${bean.mvName}">灿烈、Punch - Stay With Me(KBS柳熙烈的写生簿18/03/03)</span>
-    					</li>
-    				</ul>
-    			</div>
-    		</div>
-    	</div>
+        </div>
+        <div class="guess">
+            <h2>猜你喜欢</h2>
+            <div class="mv_list" style="width: 1000px;height: 120px;margin-top: 12px;">
+                <ul class="guess_mv" style="width: 1050px;height: 120px">
+                    <li th:each="bean:${recommendMvSolrBean.solrBeanList}">
+                        <a href="mv.html" th:href="${bean.mvId}">
+                            <img src="../public/img/mvPlay/a.jpg" th:src="${bean.mvHeadImage}" title=""/>
+                            <em></em><i></i>
+                        </a>
+                        <span th:text="${bean.mvName}">灿烈、Punch - Stay With Me(KBS柳熙烈的写生簿18/03/03)</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
+</div>
 
 <!-- 尾巴 -->
 
-    <!-- 下载（隐藏） -->
-    <div id="dialog">
-  		<div class="download_song">
-  			<p>下载歌曲</p>
-  			<button class="close" title="cancel"></button>
-  		</div>
-  		<div class="warning">
-  			<div class="contentText">
-  				<p>
-  					<span class="warn_icon"></span>
-  					下载MV需要在酷狗音乐客户端操作
-  				</p>
-  			</div>
-  			<button class="btnDl">下载客户端</button>
-  		</div>
+<!-- 下载（隐藏） -->
+<div id="dialog">
+    <div class="download_song">
+        <p>下载歌曲</p>
+        <button class="close" title="cancel"></button>
     </div>
-    <div id="sharing">
-    	<div class="sharing_song">
-    		<p>分享歌曲</p>
-    		<button class="close1" title="cancel"></button>
-    	</div>
-    	<div class="share_list">
-    		<dl><dt class="share_weixin"></dt><dd>微信</dd></dl>
-    		<dl><dt class="share_friend"></dt><dd>QQ好友</dd></dl>
-    		<dl><dt class="share_qzone"></dt><dd>QQ空间</dd></dl>
-    		<dl><dt class="share_weibo"></dt><dd>新浪微博</dd></dl>
-    	</div>
+    <div class="warning">
+        <div class="contentText">
+            <p>
+                <span class="warn_icon"></span>
+                下载MV需要在酷狗音乐客户端操作
+            </p>
+        </div>
+        <button class="btnDl">下载客户端</button>
     </div>
-
-    <script src="../public/js/mvPlay.js" th:src="@{/js/mvPlay.js}" type="text/javascript" charset="utf-8"></script>
-    <script src="../public/js/video.js/js/video.min.js" th:src="@{/js/video.js/js/video.min.js}" type="text/javascript" charset="utf-8"></script>
-  </body>
+</div>
+<div id="sharing">
+    <div class="sharing_song">
+        <p>分享歌曲</p>
+        <button class="close1" title="cancel"></button>
+    </div>
+    <div class="share_list">
+        <dl>
+            <dt class="share_weixin"></dt>
+            <dd>微信</dd>
+        </dl>
+        <dl>
+            <dt class="share_friend"></dt>
+            <dd>QQ好友</dd>
+        </dl>
+        <dl>
+            <dt class="share_qzone"></dt>
+            <dd>QQ空间</dd>
+        </dl>
+        <dl>
+            <dt class="share_weibo"></dt>
+            <dd>新浪微博</dd>
+        </dl>
+    </div>
+</div>
+<script src="../public/js/video.js/js/video.min.js" th:src="@{/js/video.js/js/video.min.js}" type="text/javascript" charset="utf-8"></script>
+<script src="../public/js/jquery.min.js" th:src="@{/js/jquery.min.js}" type="text/javascript" charset="utf-8"></script>
+<script src="../public/js/mvPlay.js" th:src="@{/js/mvPlay.js}" type="text/javascript" charset="utf-8"></script>
+</body>
 </html>
