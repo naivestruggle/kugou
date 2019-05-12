@@ -7,408 +7,420 @@
     <link rel="stylesheet" href="../public/css/index.css" th:href="@{/css/index.css}" media="all"/>
 
 </head>
-  <body>
-  	<!-- 引入头部 -->
-    <div th:replace="commons/head::headbar(activeUri='index')"></div>
+<body>
+<!-- 引入头部 -->
+<div th:replace="commons/head::headbar(activeUri='index')"></div>
 
-    <!--轮播-->
-    <div id="slideWrap">
-    	<div class="scroll_mid">
-  	    <img src="../public/img/index/pic_1.jpg" th:src="@{/img/index/pic_1.jpg}" id="pic" style="display:block;"/>
-  	    <ul class="scroll_number">
-  				<li onMouseOver="show(1)" onMouseOut="start()"></li>
-  				<li onMouseOver="show(2)" onMouseOut="start()"></li>
-  				<li onMouseOver="show(3)" onMouseOut="start()"></li>
-  				<li onMouseOver="show(4)" onMouseOut="start()"></li>
-  				<li onMouseOver="show(5)" onMouseOut="start()"></li>
-  				<li onMouseOver="show(6)" onMouseOut="start()"></li>
-  			</ul>
-  				<a href="javascript:void(0);" style="display: none;" class="slide_icon1"></a>
-  				<a href="javascript:void(0);" style="display: none;" class="slide_icon2"></a>
-  			<ul id="head-dian">
-          <li><a href="javascript:void(0);"></a></li>
-          <li><a href="javascript:void(0);"></a></li>
-          <li><a href="javascript:void(0);"></a></li>
-          <li><a href="javascript:void(0);"></a></li>
-          <li><a href="javascript:void(0);"></a></li>
-      	</ul>
-			</div>
+<!--轮播-->
+<div id="slideWrap">
+    <div class="scroll_mid">
+        <img src="../public/img/index/pic_1.jpg" th:src="@{/img/index/pic_1.jpg}" id="pic" style="display:block;"/>
+        <ul class="scroll_number">
+            <li onMouseOver="show(1)" onMouseOut="start()"></li>
+            <li onMouseOver="show(2)" onMouseOut="start()"></li>
+            <li onMouseOver="show(3)" onMouseOut="start()"></li>
+            <li onMouseOver="show(4)" onMouseOut="start()"></li>
+            <li onMouseOver="show(5)" onMouseOut="start()"></li>
+            <li onMouseOver="show(6)" onMouseOut="start()"></li>
+        </ul>
+        <a href="javascript:void(0);" style="display: none;" class="slide_icon1"></a>
+        <a href="javascript:void(0);" style="display: none;" class="slide_icon2"></a>
+        <ul id="head-dian">
+            <li><a href="javascript:void(0);" style="background-position: 0 -37px;"></a></li>
+            <li><a href="javascript:void(0);"></a></li>
+            <li><a href="javascript:void(0);"></a></li>
+            <li><a href="javascript:void(0);"></a></li>
+            <li><a href="javascript:void(0);"></a></li>
+        </ul>
+    </div>
 
-    	<div class="download">
-    		<div style="margin: 0 auto;width: 745px;height: 64px;">
-    			<a href="javascript:void(0);" class="pcdown">下载PC版</a>
-    			<span class="line"></span>
-    			<a href="javascript:void(0);" class="appledown">下载IPhone版</a>
-    			<span class="line"></span>
-    			<a href="javascript:void(0);" class="androiddown">下载Android版</a>
-    		</div>
-    	</div>
+    <div class="download">
+        <div style="margin: 0 auto;width: 745px;height: 64px;">
+            <a href="javascript:void(0);" class="pcdown">下载PC版</a>
+            <span class="line"></span>
+            <a href="javascript:void(0);" class="appledown">下载IPhone版</a>
+            <span class="line"></span>
+            <a href="javascript:void(0);" class="androiddown">下载Android版</a>
+        </div>
+    </div>
 
 </div>
 
-    <!-- 内容 -->
-    <div id="content">
-    	<!--精选歌单  热门榜单-->
-    	<div class="topContent">
-    		<div class="lsong">
-    			<div class="lsong_title">
-    				<a href="songsheet.html" class="more1">更多</a>
-    			</div>
-    			<div class="itemContent">
-    				<div class="cpt">
-    					<p class="cptT">
-    						<span class="music_icon"></span>
-    						<span style="margin-top:-5px;">1.2万</span>
-    					</p>
-    					<div class="cover">
-    						<a href="../歌曲播放/歌曲播放.html"></a>
-    						<div class="playBtn" onClick="window.open('../歌曲播放/歌曲播放.html')"></div>
-    					</div>
-    					<p classs="cptBg"></p>
-    					<div class="cptB">
-                  <p class="songListName">同学们，帮你准备好33首周游列国的打卡歌了</p>
-                  <p class="songListSinger">鸡蛋面</p>
-              </div>
-    				</div>
-    				<div class="cpt cptMid">
-             	<p class="cptT">
-             		<span class="music_icon"></span>
-              		<span class="num">150.3万</span>
-              	</p>
-             	<img src="../public/img/index/20180605094914368464.jpg" th:src="@{/img/index/20180605094914368464.jpg}" width="160" height="160" />
-             	<div class="Cover">
-                      <a target="_blank" href="../歌曲播放/歌曲播放.html">
-                      </a>
-                      <div class="playBtn" onClick="window.open('../歌曲播放/歌曲播放.html')"></div>
+<!-- 内容 -->
+<div id="content">
+    <!--精选歌单  热门榜单-->
+    <div class="topContent">
+        <div class="lsong">
+            <div class="lsong_title">
+                <a href="songsheet.html" class="more1">更多</a>
+            </div>
+            <div class="itemContent">
+                <div class="cpt">
+                    <p class="cptT">
+                        <span class="music_icon"></span>
+                        <span style="margin-top:-5px;">1.2万</span>
+                    </p>
+                    <div class="cover">
+                        <a href="../歌曲播放/歌曲播放.html"></a>
+                        <div class="playBtn" onClick="window.open('../歌曲播放/歌曲播放.html')"></div>
+                    </div>
+                    <p classs="cptBg"></p>
+                    <div class="cptB">
+                        <p class="songListName">同学们，帮你准备好33首周游列国的打卡歌了</p>
+                        <p class="songListSinger">鸡蛋面</p>
+                    </div>
                 </div>
-                <p class="cptBg"></p>
-                <div class="cptB">
-                      <p class="songListName">用一首歌赶走负能量</p>
-                      <p class="songListSinger">型鲨宝骏530</p>
+                <div class="cpt cptMid">
+                    <p class="cptT">
+                        <span class="music_icon"></span>
+                        <span class="num">150.3万</span>
+                    </p>
+                    <img src="../public/img/index/20180605094914368464.jpg"
+                         th:src="@{/img/index/20180605094914368464.jpg}" width="160" height="160"/>
+                    <div class="Cover">
+                        <a target="_blank" href="../歌曲播放/歌曲播放.html">
+                        </a>
+                        <div class="playBtn" onClick="window.open('../歌曲播放/歌曲播放.html')"></div>
+                    </div>
+                    <p class="cptBg"></p>
+                    <div class="cptB">
+                        <p class="songListName">用一首歌赶走负能量</p>
+                        <p class="songListSinger">型鲨宝骏530</p>
+                    </div>
+                </div>
+                <div class="cpt cptMid">
+                    <p class="cptT">
+                        <span class="music_icon"></span>
+                        <span class="num">0.8万</span>
+                    </p>
+                    <img src="../public/img/index/20180606181308579319.jpg"
+                         th:src="@{/img/index/20180606181308579319.jpg}" width="160" height="160"/>
+                    <div class="Cover">
+                        <a target="_blank" href="../歌曲播放/歌曲播放.html">
+                        </a>
+                        <div class="playBtn" onClick="window.open('../歌曲播放/歌曲播放.html')"></div>
+                    </div>
+                    <p class="cptBg"></p>
+                    <div class="cptB">
+                        <p class="songListName">「砂糖女声」清爽温润一整个夏天</p>
+                        <p class="songListSinger">Moawa莫阿瓦</p>
+                    </div>
+                </div>
+                <div class="cpt cptMid">
+                    <p class="cptT">
+                        <span class="music_icon"></span>
+                        <span class="num">3.6万</span>
+                    </p>
+                    <img src="../public/img/index/20180506200804578740.jpg"
+                         th:src="@{/img/index/20180506200804578740.jpg}" width="160" height="160"/>
+                    <div class="Cover">
+                        <a target="_blank" href="../歌曲播放/歌曲播放.html">
+                        </a>
+                        <div class="playBtn" onClick="window.open('../歌曲播放/歌曲播放.html')"></div>
+                    </div>
+                    <p class="cptBg"></p>
+                    <div class="cptB">
+                        <p class="songListName">浪客江湖：古风里的武学神诀</p>
+                        <p class="songListSinger">生如夏花</p>
+                    </div>
+                </div>
+                <div class="cpt cptMid">
+                    <p class="cptT">
+                        <span class="music_icon"></span>
+                        <span class="num">0.5万</span>
+                    </p>
+                    <img src="../public/img/index/20180609054206909376.jpg"
+                         th:src="@{/img/index/20180609054206909376.jpg}" width="160" height="160"/>
+                    <div class="Cover">
+                        <a target="_blank" href="../歌曲播放/歌曲播放.html">
+                        </a>
+                        <div class="playBtn" onClick="window.open('../歌曲播放/歌曲播放.html')"></div>
+                    </div>
+                    <p class="cptBg"></p>
+                    <div class="cptB">
+                        <p class="songListName">Vehicle Remix：午夜车神的超速节奏</p>
+                        <p class="songListSinger">电子鱼</p>
+                    </div>
                 </div>
             </div>
-            <div class="cpt cptMid">
-             	<p class="cptT">
-             		<span class="music_icon"></span>
-              		<span class="num">0.8万</span>
-              	</p>
-             	<img src="../public/img/index/20180606181308579319.jpg" th:src="@{/img/index/20180606181308579319.jpg}" width="160" height="160" />
-             	<div class="Cover">
-                      <a target="_blank" href="../歌曲播放/歌曲播放.html">
-                      </a>
-                      <div class="playBtn" onClick="window.open('../歌曲播放/歌曲播放.html')"></div>
-                 </div>
-                 <p class="cptBg"></p>
-                 <div class="cptB">
-                       <p class="songListName">「砂糖女声」清爽温润一整个夏天</p>
-                       <p class="songListSinger">Moawa莫阿瓦</p>
-                  </div>
+        </div>
+        <div class="HotSong">
+            <div class="itemTitle">
+                <a href="list.html" class="more1">更多</a>
             </div>
-            <div class="cpt cptMid">
-             	<p class="cptT">
-             		<span class="music_icon"></span>
-              		<span class="num">3.6万</span>
-              	</p>
-             	<img src="../public/img/index/20180506200804578740.jpg" th:src="@{/img/index/20180506200804578740.jpg}" width="160" height="160" />
-             	<div class="Cover">
-                      <a target="_blank" href="../歌曲播放/歌曲播放.html">
-                      </a>
-                      <div class="playBtn" onClick="window.open('../歌曲播放/歌曲播放.html')"></div>
-                 </div>
-                 <p class="cptBg"></p>
-                 <div class="cptB">
-                       <p class="songListName">浪客江湖：古风里的武学神诀</p>
-                       <p class="songListSinger">生如夏花</p>
-                 </div>
+            <div class="list_hot">
+                <div class="listItem">
+                    <span class="arrow"></span>
+                    <img src="../public/img/index/T1M4h4BKKj1RCvBVdK.jpg_240x240.jpg"
+                         th:src="@{/img/index/T1M4h4BKKj1RCvBVdK.jpg_240x240.jpg}"/>
+                    <div class="cover_bd">
+                        <a href="list.html"></a>
+                        <div class="playBtn" onClick="window.open('../歌曲播放/歌曲播放.html')"></div>
+                    </div>
+                    <a href="list.html">
+                        <div class="list">
+                            <dl>
+                                <dt>酷狗飙升榜</dt>
+                                <dd>1 . G.E.M.邓紫棋、代悦 - A.I.N.Y. (Live)</dd>
+                                <dd>2 . G.E.M.邓紫棋、周东升 - 我们的爱 (Live)</dd>
+                            </dl>
+                        </div>
+                    </a>
+
+                </div>
+
+                <div class="listItem">
+                    <span class="arrow"></span>
+                    <img src="../public/img/index/T1fHd4BXd_1RCvBVdK.jpg_240x240.jpg"
+                         th:src="@{/img/index/T1fHd4BXd_1RCvBVdK.jpg_240x240.jpg}"/>
+                    <div class="cover_bd">
+                        <a href="list.html">
+                        </a>
+                        <div class="playBtn" onClick="window.open('../歌曲播放/歌曲播放.html')"></div>
+                    </div>
+                    <a href="list.html">
+                        <div class="list">
+                            <dl>
+                                <dt>酷狗TOP500</dt>
+                                <dd>1 . 烟把儿乐队 - 纸短情长 (完整版)</dd>
+                                <dd>2 . 庄心妍 - 再见只是陌生人</dd>
+                            </dl>
+                        </div>
+                    </a>
+
+                </div>
+                <div class="listItem">
+                    <span class="arrow"></span>
+                    <img src="../public/img/index/T1Fpd4BKbg1RCvBVdK.jpg_240x240.jpg"
+                         th:src="@{/img/index/T1Fpd4BKbg1RCvBVdK.jpg_240x240.jpg}"/>
+                    <div class="cover_bd">
+                        <a href="list.html">
+                        </a>
+                        <div class="playBtn" onClick="window.open('../歌曲播放/歌曲播放.html')"></div>
+                    </div>
+                    <a href="list.html">
+                        <div class="list">
+                            <dl>
+                                <dt>网络红歌榜</dt>
+                                <dd>1 . 庄心妍 - 记得找我</dd>
+                                <dd>2 . 魏新雨 - 千年一梦</dd>
+                            </dl>
+                        </div>
+                    </a>
+
+                </div>
             </div>
-            <div class="cpt cptMid">
-             	<p class="cptT">
-             		<span class="music_icon"></span>
-              		<span class="num">0.5万</span>
-              	</p>
-             	<img src="../public/img/index/20180609054206909376.jpg" th:src="@{/img/index/20180609054206909376.jpg}" width="160" height="160" />
-             	<div class="Cover">
-                      <a target="_blank" href="../歌曲播放/歌曲播放.html">
-                      </a>
-                      <div class="playBtn" onClick="window.open('../歌曲播放/歌曲播放.html')"></div>
-                 </div>
-                 <p class="cptBg"></p>
-                 <div class="cptB">
-                       <p class="songListName">Vehicle Remix：午夜车神的超速节奏</p>
-                       <p class="songListSinger">电子鱼</p>
-                  </div>
+        </div>
+    </div>
+    <!--广告1-->
+    <div style="width: 1000px;height: 100px;margin-top: 30px;">
+        <a href="#"><img src="/kugou/img/index/ad1.jpg"/></a>
+    </div>
+    <!--新歌首发 推荐mv-->
+    <div style="width: 1000px;height: 375px;margin-top: 40px;">
+        <!--新歌首发-->
+        <div class="newsonglist">
+            <div style="border-bottom: 1px solid #f0f0f0;padding-bottom:50px;">
+                <div style="width: 120px;height: 30px;padding-right: 25px;float: left;">
+                    <img src="../public/img/index/newlist.jpg" th:src="@{/img/index/newlist.jpg}"/>
+                </div>
+                <div class="tabT">
+                    <span onmouseover="abc(0,this)" id="tabTonLoadFistShow">华语</span>
+                    <span onmouseover="abc(1,this)">韩国</span>
+                    <span onmouseover="abc(2,this)">欧美</span>
+                    <span onmouseover="abc(3,this)">日本</span>
+                </div>
+                <button class="playAll">
+                    <span class="icon_play" onClick="window.open('../歌曲播放/歌曲播放.html')"></span>
+                    <em style="font-style: normal;" onClick="window.open('../歌曲播放/歌曲播放.html')">全部播放</em>
+                </button>
             </div>
-    			</div>
-    		</div>
-    		<div class="HotSong">
-    			<div class="itemTitle">
-    				<a href="list.html" class="more1">更多</a>
-    			</div>
-    			<div class="list_hot">
-    					<div class="listItem">
-    						<span class="arrow"></span>
-    						<img src="../public/img/index/T1M4h4BKKj1RCvBVdK.jpg_240x240.jpg" th:src="@{/img/index/T1M4h4BKKj1RCvBVdK.jpg_240x240.jpg}"/>
-    						<div class="cover_bd">
-    							<a href="list.html"></a>
-    							<div class="playBtn" onClick="window.open('../歌曲播放/歌曲播放.html')"></div>
-    						</div>
-    						<a href="list.html">
-    							<div class="list">
-    							<dl>
-    								<dt>酷狗飙升榜</dt>
-    								<dd>1 . G.E.M.邓紫棋、代悦 - A.I.N.Y. (Live)</dd>
-    								<dd>2 . G.E.M.邓紫棋、周东升 - 我们的爱 (Live)</dd>
-    							</dl>
-    							</div>
-    						</a>
+            <div class="song_name">
+                <div class="song_tab">
 
-    					</div>
+                    <!-- 新歌首发  华语 -->
+                    <ul id="tabT1" th:with="solrBeanList=${indexViewBean.newMusicCollect.get('china').solrBeanList}">
+                        <ul class="m1" style="display: block;">
+                            <li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 7}">
+                                <a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+                                    <span class="songName" th:text="${bean.musicAudioName}">李宇春 - 动物世界【动物世界电影主题曲】</span>
+                                    <span class="songTips"></span>
+                                    <span class="songTime" th:text="${bean.musicTimes}">03:43</span>
+                                    <span class="icon-play"></span>
+                                    <span class="icon-download"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="m2" style="display: none;">
+                            <li th:each="bean,beanStat:${solrBeanList}"
+                                th:if="${beanStat.index ge 8 &&  beanStat.index le 15}">
+                                <a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+                                    <span class="songName" th:text="${bean.musicAudioName}">印子月 - 可以的话</span>
+                                    <span class="songTips"></span>
+                                    <span class="songTime" th:text="${bean.musicTimes}">03:56</span>
+                                    <span class="icon-play"></span>
+                                    <span class="icon-download"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="m3" style="display: none;">
+                            <li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 16}">
+                                <a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+                                    <span class="songName" th:text="${bean.musicAudioName}">薛明媛 - 格林童话</span>
+                                    <span class="songTips"></span>
+                                    <span class="songTime" th:text="${bean.musicTimes}">03:56</span>
+                                    <span class="icon-play"></span>
+                                    <span class="icon-download"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </ul>
 
-    				<div class="listItem">
-    					<span class="arrow"></span>
-    					<img src="../public/img/index/T1fHd4BXd_1RCvBVdK.jpg_240x240.jpg" th:src="@{/img/index/T1fHd4BXd_1RCvBVdK.jpg_240x240.jpg}"/>
-    					<div class="cover_bd">
-    						<a href="list.html">
-    						</a>
-    						<div class="playBtn" onClick="window.open('../歌曲播放/歌曲播放.html')"></div>
-    					</div>
-    					<a href="list.html">
-    						<div class="list">
-    						<dl>
-    							<dt>酷狗TOP500</dt>
-    							<dd>1 . 烟把儿乐队 - 纸短情长 (完整版)</dd>
-    							<dd>2 . 庄心妍 - 再见只是陌生人</dd>
-    						</dl>
-    					</div>
-    					</a>
+                    <!-- 新歌首发  韩国 -->
+                    <ul id="tabT2" th:with="solrBeanList=${indexViewBean.newMusicCollect.get('korea').solrBeanList}">
+                        <ul class="m1" style="display: block;">
+                            <li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 7}">
+                                <a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+                                    <span class="songName" th:text="${bean.musicAudioName}">李宇春 - 动物世界【动物世界电影主题曲】</span>
+                                    <span class="songTips"></span>
+                                    <span class="songTime" th:text="${bean.musicTimes}">03:43</span>
+                                    <span class="icon-play"></span>
+                                    <span class="icon-download"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="m2" style="display: none;">
+                            <li th:each="bean,beanStat:${solrBeanList}"
+                                th:if="${beanStat.index ge 8 &&  beanStat.index le 15}">
+                                <a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+                                    <span class="songName" th:text="${bean.musicAudioName}">印子月 - 可以的话</span>
+                                    <span class="songTips"></span>
+                                    <span class="songTime" th:text="${bean.musicTimes}">03:56</span>
+                                    <span class="icon-play"></span>
+                                    <span class="icon-download"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="m3" style="display: none;">
+                            <li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 16}">
+                                <a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+                                    <span class="songName" th:text="${bean.musicAudioName}">薛明媛 - 格林童话</span>
+                                    <span class="songTips"></span>
+                                    <span class="songTime" th:text="${bean.musicTimes}">03:56</span>
+                                    <span class="icon-play"></span>
+                                    <span class="icon-download"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </ul>
 
-    				</div>
-    				<div class="listItem">
-    					<span class="arrow"></span>
-    					<img src="../public/img/index/T1Fpd4BKbg1RCvBVdK.jpg_240x240.jpg" th:src="@{/img/index/T1Fpd4BKbg1RCvBVdK.jpg_240x240.jpg}"/>
-    					<div class="cover_bd">
-    						<a href="list.html">
-    						</a>
-    						<div class="playBtn" onClick="window.open('../歌曲播放/歌曲播放.html')"></div>
-    					</div>
-    					<a href="list.html"><div class="list">
-    						<dl>
-    							<dt>网络红歌榜</dt>
-    							<dd>1 . 庄心妍 - 记得找我</dd>
-    							<dd>2 . 魏新雨 - 千年一梦</dd>
-    						</dl>
-    					</div>
-    					</a>
+                    <!-- 新歌首发  欧美 -->
+                    <ul id="tabT3" th:with="solrBeanList=${indexViewBean.newMusicCollect.get('eaa').solrBeanList}">
+                        <ul class="m1" style="display: block;">
+                            <li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 7}">
+                                <a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+                                    <span class="songName" th:text="${bean.musicAudioName}">李宇春 - 动物世界【动物世界电影主题曲】</span>
+                                    <span class="songTips"></span>
+                                    <span class="songTime" th:text="${bean.musicTimes}">03:43</span>
+                                    <span class="icon-play"></span>
+                                    <span class="icon-download"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="m2" style="display: none;">
+                            <li th:each="bean,beanStat:${solrBeanList}"
+                                th:if="${beanStat.index ge 8 &&  beanStat.index le 15}">
+                                <a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+                                    <span class="songName" th:text="${bean.musicAudioName}">印子月 - 可以的话</span>
+                                    <span class="songTips"></span>
+                                    <span class="songTime" th:text="${bean.musicTimes}">03:56</span>
+                                    <span class="icon-play"></span>
+                                    <span class="icon-download"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="m3" style="display: none;">
+                            <li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 16}">
+                                <a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+                                    <span class="songName" th:text="${bean.musicAudioName}">薛明媛 - 格林童话</span>
+                                    <span class="songTips"></span>
+                                    <span class="songTime" th:text="${bean.musicTimes}">03:56</span>
+                                    <span class="icon-play"></span>
+                                    <span class="icon-download"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </ul>
 
-    				</div>
-    			</div>
-    		</div>
-    	</div>
-    	<!--广告1-->
-      <div style="width: 1000px;height: 100px;margin-top: 30px;">
-    		<a href="#"><img src="../public/img/index/ad1.jpg" th:src="@{/img/index/ad1.jpg}"/></a>
-    	</div>
-    	<!--新歌首发 推荐mv-->
-    	<div style="width: 1000px;height: 375px;margin-top: 40px;">
-      	<!--新歌首发-->
-      	<div class="newsonglist">
-      		<div style="border-bottom: 1px solid #f0f0f0;padding-bottom:50px;">
-      			<div style="width: 120px;height: 30px;padding-right: 25px;float: left;">
-      				<img src="../public/img/index/newlist.jpg" th:src="@{/img/index/newlist.jpg}"/>
-      			</div>
-      			<div class="tabT">
-      				<span onmouseover="abc(0,this)" id="tabTonLoadFistShow">华语</span>
-      				<span onmouseover="abc(1,this)">韩国</span>
-      				<span onmouseover="abc(2,this)">欧美</span>
-      				<span onmouseover="abc(3,this)">日本</span>
-      			</div>
-      			<button class="playAll">
-      				<span class="icon_play" onClick="window.open('../歌曲播放/歌曲播放.html')"></span>
-      				<em style="font-style: normal;" onClick="window.open('../歌曲播放/歌曲播放.html')">全部播放</em>
-      			</button>
-      		</div>
-      		<div class="song_name">
-      			<div class="song_tab">
+                    <!-- 新歌首发 日本 -->
+                    <ul id="tabT4" th:with="solrBeanList=${indexViewBean.newMusicCollect.get('japan').solrBeanList}">
+                        <ul class="m1" style="display: block;">
+                            <li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 7}">
+                                <a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+                                    <span class="songName" th:text="${bean.musicAudioName}">李宇春 - 动物世界【动物世界电影主题曲】</span>
+                                    <span class="songTips"></span>
+                                    <span class="songTime" th:text="${bean.musicTimes}">03:43</span>
+                                    <span class="icon-play"></span>
+                                    <span class="icon-download"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="m2" style="display: none;">
+                            <li th:each="bean,beanStat:${solrBeanList}"
+                                th:if="${beanStat.index ge 8 &&  beanStat.index le 15}">
+                                <a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+                                    <span class="songName" th:text="${bean.musicAudioName}">印子月 - 可以的话</span>
+                                    <span class="songTips"></span>
+                                    <span class="songTime" th:text="${bean.musicTimes}">03:56</span>
+                                    <span class="icon-play"></span>
+                                    <span class="icon-download"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="m3" style="display: none;">
+                            <li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 16}">
+                                <a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+                                    <span class="songName" th:text="${bean.musicAudioName}">薛明媛 - 格林童话</span>
+                                    <span class="songTips"></span>
+                                    <span class="songTime" th:text="${bean.musicTimes}">03:56</span>
+                                    <span class="icon-play"></span>
+                                    <span class="icon-download"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
 
-					<!-- 新歌首发  华语 -->
-					<ul id="tabT1" th:with="solrBeanList=${indexViewBean.newMusicCollect.get('china').solrBeanList}">
-						<ul class="m1" style="display: block;" >
-							<li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 7}">
-								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
-									<span class="songName" th:text="${bean.musicAudioName}">李宇春 - 动物世界【动物世界电影主题曲】</span>
-									<span class="songTips"></span>
-									<span class="songTime" th:text="${bean.musicTimes}">03:43</span>
-									<span class="icon-play"></span>
-									<span class="icon-download"></span>
-								</a>
-							</li>
-						</ul>
-						<ul class="m2" style="display: none;" >
-							<li  th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 8 &&  beanStat.index le 15}">
-								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
-									<span class="songName" th:text="${bean.musicAudioName}">印子月 - 可以的话</span>
-									<span class="songTips"></span>
-									<span class="songTime" th:text="${bean.musicTimes}">03:56</span>
-									<span class="icon-play"></span>
-									<span class="icon-download"></span>
-								</a>
-							</li>
-						</ul>
-						<ul class="m3" style="display: none;">
-							<li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 16}">
-								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
-									<span class="songName" th:text="${bean.musicAudioName}">薛明媛 - 格林童话</span>
-									<span class="songTips"></span>
-									<span class="songTime" th:text="${bean.musicTimes}">03:56</span>
-									<span class="icon-play"></span>
-									<span class="icon-download"></span>
-								</a>
-							</li>
-						</ul>
-					</ul>
-
-					<!-- 新歌首发  韩国 -->
-					<ul id="tabT2" th:with="solrBeanList=${indexViewBean.newMusicCollect.get('korea').solrBeanList}">
-						<ul class="m1" style="display: block;" >
-							<li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 7}">
-								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
-									<span class="songName" th:text="${bean.musicAudioName}">李宇春 - 动物世界【动物世界电影主题曲】</span>
-									<span class="songTips"></span>
-									<span class="songTime" th:text="${bean.musicTimes}">03:43</span>
-									<span class="icon-play"></span>
-									<span class="icon-download"></span>
-								</a>
-							</li>
-						</ul>
-						<ul class="m2" style="display: none;" >
-							<li  th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 8 &&  beanStat.index le 15}">
-								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
-									<span class="songName" th:text="${bean.musicAudioName}">印子月 - 可以的话</span>
-									<span class="songTips"></span>
-									<span class="songTime" th:text="${bean.musicTimes}">03:56</span>
-									<span class="icon-play"></span>
-									<span class="icon-download"></span>
-								</a>
-							</li>
-						</ul>
-						<ul class="m3" style="display: none;">
-							<li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 16}">
-								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
-									<span class="songName" th:text="${bean.musicAudioName}">薛明媛 - 格林童话</span>
-									<span class="songTips"></span>
-									<span class="songTime" th:text="${bean.musicTimes}">03:56</span>
-									<span class="icon-play"></span>
-									<span class="icon-download"></span>
-								</a>
-							</li>
-						</ul>
-					</ul>
-
-					<!-- 新歌首发  欧美 -->
-					<ul id="tabT3" th:with="solrBeanList=${indexViewBean.newMusicCollect.get('eaa').solrBeanList}">
-						<ul class="m1" style="display: block;" >
-							<li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 7}">
-								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
-									<span class="songName" th:text="${bean.musicAudioName}">李宇春 - 动物世界【动物世界电影主题曲】</span>
-									<span class="songTips"></span>
-									<span class="songTime" th:text="${bean.musicTimes}">03:43</span>
-									<span class="icon-play"></span>
-									<span class="icon-download"></span>
-								</a>
-							</li>
-						</ul>
-						<ul class="m2" style="display: none;" >
-							<li  th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 8 &&  beanStat.index le 15}">
-								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
-									<span class="songName" th:text="${bean.musicAudioName}">印子月 - 可以的话</span>
-									<span class="songTips"></span>
-									<span class="songTime" th:text="${bean.musicTimes}">03:56</span>
-									<span class="icon-play"></span>
-									<span class="icon-download"></span>
-								</a>
-							</li>
-						</ul>
-						<ul class="m3" style="display: none;">
-							<li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 16}">
-								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
-									<span class="songName" th:text="${bean.musicAudioName}">薛明媛 - 格林童话</span>
-									<span class="songTips"></span>
-									<span class="songTime" th:text="${bean.musicTimes}">03:56</span>
-									<span class="icon-play"></span>
-									<span class="icon-download"></span>
-								</a>
-							</li>
-						</ul>
-					</ul>
-
-					<!-- 新歌首发 日本 -->
-					<ul id="tabT4" th:with="solrBeanList=${indexViewBean.newMusicCollect.get('japan').solrBeanList}">
-						<ul class="m1" style="display: block;" >
-							<li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 7}">
-								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
-									<span class="songName" th:text="${bean.musicAudioName}">李宇春 - 动物世界【动物世界电影主题曲】</span>
-									<span class="songTips"></span>
-									<span class="songTime" th:text="${bean.musicTimes}">03:43</span>
-									<span class="icon-play"></span>
-									<span class="icon-download"></span>
-								</a>
-							</li>
-						</ul>
-						<ul class="m2" style="display: none;" >
-							<li  th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 8 &&  beanStat.index le 15}">
-								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
-									<span class="songName" th:text="${bean.musicAudioName}">印子月 - 可以的话</span>
-									<span class="songTips"></span>
-									<span class="songTime" th:text="${bean.musicTimes}">03:56</span>
-									<span class="icon-play"></span>
-									<span class="icon-download"></span>
-								</a>
-							</li>
-						</ul>
-						<ul class="m3" style="display: none;">
-							<li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 16}">
-								<a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
-									<span class="songName" th:text="${bean.musicAudioName}">薛明媛 - 格林童话</span>
-									<span class="songTips"></span>
-									<span class="songTime" th:text="${bean.musicTimes}">03:56</span>
-									<span class="icon-play"></span>
-									<span class="icon-download"></span>
-								</a>
-							</li>
-						</ul>
-					</ul>
-      			</div>
-      		</div>
-
-      		<div id="dialog">
-      			<div class="download_song">
-      				<p>下载歌曲</p>
-      				<button class="close" title="cancel"></button>
-      			</div>
-      			<div class="warning">
-      				<div class="contentText">
-      					<p>
-      						<span class="warn_icon"></span>
-      						下载歌曲需要在酷狗音乐客户端操作
-      					</p>
-      				</div>
-      				<div style="width: 291px;height: 32px;margin-left: 100px;">
-      					<button class="btnDl">打开客户端</button>
-      					<button class="btnDl">下载新版客户端</button>
-      				</div>
-      			</div>
-      		</div>
-      		<div class="pages">
-      			<a class="front" onclick="showOrHide(1)"></a>
-      			<div class="page"><span class="currentPage">1/3</span></div>
-      			<a class="next" onclick="showOrHide(2)"></a>
-      		</div>
-      	</div>
-      	<!--推荐mv -->
-      	<div class="albumList">
-      		<div style="width: 320px;height: 50px;">
-      			<div class="mv" style="width: 120px;height: 30px"></div>
-      			<span style="margin-top: 7px;color: #999;float: right;text-decoration: none">
+            <div id="dialog">
+                <div class="download_song">
+                    <p>下载歌曲</p>
+                    <button class="close" title="cancel"></button>
+                </div>
+                <div class="warning">
+                    <div class="contentText">
+                        <p>
+                            <span class="warn_icon"></span>
+                            下载歌曲需要在酷狗音乐客户端操作
+                        </p>
+                    </div>
+                    <div style="width: 291px;height: 32px;margin-left: 100px;">
+                        <button class="btnDl">打开客户端</button>
+                        <button class="btnDl">下载新版客户端</button>
+                    </div>
+                </div>
+            </div>
+            <div class="pages">
+                <a class="front" onclick="showOrHide(1)"></a>
+                <div class="page"><span class="currentPage">1/3</span></div>
+                <a class="next" onclick="showOrHide(2)"></a>
+            </div>
+        </div>
+        <!--推荐mv -->
+        <div class="albumList">
+            <div style="width: 320px;height: 50px;">
+                <div class="mv" style="width: 120px;height: 30px"></div>
+                <span style="margin-top: 7px;color: #999;float: right;text-decoration: none">
       				<a href="mv.html" class="more1">更多</a>
       			</span>
             </div>
@@ -499,236 +511,285 @@
                 <span style="color: #999;margin-top: 7px;float: right;font-size: 14px;">
     					<a href="radio.html" class="more1">更多</a>
     				</span>
-    			</div>
-    			<div class="itemContent">
-    				<ul>
-    					<li>
-                <a href="radio.html">
-    							<div class="radioLogo"><img src="../public/img/index/radio_1.jpg" th:src="@{/img/index/radio_1.jpg}" style="width: 100px;height: 100px;"/></div>
-    							<div class="cover_radio"><div class="playBtn"></div></div>
-    							<div class="radioKind">KTV必点曲</div>
-    					  </a>
-              </li>
-              <li>
-                <a href="radio.html">
-    							<div class="radioLogo"><img src="../public/img/index/radio_1.jpg" th:src="@{/img/index/radio_1.jpg}" style="width: 100px;height: 100px;"/></div>
-    							<div class="cover_radio"><div class="playBtn"></div></div>
-    							<div class="radioKind">KTV必点曲</div>
-    					  </a>
-              </li>
-              <li>
-                <a href="radio.html">
-    							<div class="radioLogo"><img src="../public/img/index/radio_1.jpg" th:src="@{/img/index/radio_1.jpg}" style="width: 100px;height: 100px;"/></div>
-    							<div class="cover_radio"><div class="playBtn"></div></div>
-    							<div class="radioKind">KTV必点曲</div>
-    					  </a>
-              </li>
-              <li>
-                <a href="radio.html">
-    							<div class="radioLogo"><img src="../public/img/index/radio_1.jpg" th:src="@{/img/index/radio_1.jpg}" style="width: 100px;height: 100px;"/></div>
-    							<div class="cover_radio"><div class="playBtn"></div></div>
-    							<div class="radioKind">KTV必点曲</div>
-    					  </a>
-              </li>
-              <li>
-                <a href="radio.html">
-    							<div class="radioLogo"><img src="../public/img/index/radio_1.jpg" th:src="@{/img/index/radio_1.jpg}" style="width: 100px;height: 100px;"/></div>
-    							<div class="cover_radio"><div class="playBtn"></div></div>
-    							<div class="radioKind">KTV必点曲</div>
-    					  </a>
-              </li>
-              <li>
-                <a href="radio.html">
-    							<div class="radioLogo"><img src="../public/img/index/radio_1.jpg" th:src="@{/img/index/radio_1.jpg}" style="width: 100px;height: 100px;"/></div>
-    							<div class="cover_radio"><div class="playBtn"></div></div>
-    							<div class="radioKind">KTV必点曲</div>
-    					  </a>
-              </li>
-              <li>
-                <a href="radio.html">
-    							<div class="radioLogo"><img src="../public/img/index/radio_1.jpg" th:src="@{/img/index/radio_1.jpg}" style="width: 100px;height: 100px;"/></div>
-    							<div class="cover_radio"><div class="playBtn"></div></div>
-    							<div class="radioKind">KTV必点曲</div>
-    					  </a>
-              </li>
-              <li>
-                <a href="radio.html">
-    							<div class="radioLogo"><img src="../public/img/index/radio_1.jpg" th:src="@{/img/index/radio_1.jpg}" style="width: 100px;height: 100px;"/></div>
-    							<div class="cover_radio"><div class="playBtn"></div></div>
-    							<div class="radioKind">KTV必点曲</div>
-    					  </a>
-              </li>
-              <li>
-                <a href="radio.html">
-    							<div class="radioLogo"><img src="../public/img/index/radio_1.jpg" th:src="@{/img/index/radio_1.jpg}" style="width: 100px;height: 100px;"/></div>
-    							<div class="cover_radio"><div class="playBtn"></div></div>
-    							<div class="radioKind">KTV必点曲</div>
-    					  </a>
-              </li>
-              <li>
-                <a href="radio.html">
-    							<div class="radioLogo"><img src="../public/img/index/radio_1.jpg" th:src="@{/img/index/radio_1.jpg}" style="width: 100px;height: 100px;"/></div>
-    							<div class="cover_radio"><div class="playBtn"></div></div>
-    							<div class="radioKind">KTV必点曲</div>
-    					  </a>
-              </li>
-    				</ul>
-    			</div>
-    		</div>
-    		<!--热门歌手-->
-    		<div class="HotSinger">
-    			<div class="itemTitle">
-    				<div style="width:120px;height: 30px;float:left;"><img src="../public/img/index/hotsinger.jpg" th:src="@{/img/index/hotsinger.jpg}"/></div>
-    				<div class="tabT">
-    					<span onMouseOver="ABC(0)">华语</span>
-    					<span onMouseOver="ABC(1)">欧美</span>
-    					<span onMouseOver="ABC(2)">日韩</span>
-    					<span style="margin-top: 7px;color: #999;"><a href="singer.html" class="more1">更多</a></span>
-    				</div>
-    			</div>
-    			<div class="itemContent">
-
-					<!-- 热门歌手  华语 -->
-    				<div class="singers" id="singers1" th:with="solrBeanList=${indexViewBean.popSingerCollect.get('china').solrBeanList}" style="width: 330px;height: 270px;position: relative;">
-						<!-- 热门歌手  大图 -->
-    					<div class="cptMid1" th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 1}">
-    						<a href="singer.html"><img th:src="${bean.singerImgurl}"/>
-    							<div class="cpt">
-    								<p class="songList_Singer" th:text="${bean.singerSingername}">TFBOYS</p>
-    							</div>
-    							<div class="cover_singer" style="width: 160px;height: 160px;"></div>
-    						</a>
-    					</div>
-						<!-- 热门歌手 小图 -->
-    					<div class="cptSmall" th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 2}">
-    						<a href="singer.html"><img th:src="${bean.singerImgurl}"/>
-    							<div class="cpt" style="width: 105px;">
-    								<p class="songList_Singer" th:text="${bean.singerSingername}">TFBOYS</p>
-    							</div>
-    							<div class="cover_singer"></div>
-    						</a>
-    					</div>
-    				</div>
-
-
-					<!-- 热门歌手  欧美 -->
-    				<div class="singers" id="singers2" th:with="solrBeanList=${indexViewBean.popSingerCollect.get('eaa').solrBeanList}"  style="width: 330px;height: 270px;position: relative;display: none;">
-						<!-- 热门歌手  大图 -->
-						<div class="cptMid1" th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 1}">
-							<a href="singer.html"><img th:src="${bean.singerImgurl}"/>
-								<div class="cpt">
-									<p class="songList_Singer" th:text="${bean.singerSingername}">TFBOYS</p>
-								</div>
-								<div class="cover_singer" style="width: 160px;height: 160px;"></div>
-							</a>
-						</div>
-						<!-- 热门歌手 小图 -->
-						<div class="cptSmall" th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 2}">
-							<a href="singer.html"><img th:src="${bean.singerImgurl}"/>
-								<div class="cpt" style="width: 105px;">
-									<p class="songList_Singer" th:text="${bean.singerSingername}">TFBOYS</p>
-								</div>
-								<div class="cover_singer"></div>
-							</a>
-						</div>
-    				</div>
-
-					<!-- 热门歌手  日韩 -->
-					<div class="singers" id="singers3" th:with="solrBeanList=${indexViewBean.popSingerCollect.get('japanKorea').solrBeanList}"  style="width: 330px;height: 270px;position: relative;display: none;">
-						<!-- 热门歌手  大图 -->
-						<div class="cptMid1" th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 1}">
-							<a href="singer.html"><img th:src="${bean.singerImgurl}"/>
-								<div class="cpt">
-									<p class="songList_Singer" th:text="${bean.singerSingername}">TFBOYS</p>
-								</div>
-								<div class="cover_singer" style="width: 160px;height: 160px;"></div>
-							</a>
-						</div>
-						<!-- 热门歌手 小图 -->
-						<div class="cptSmall" th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 2}">
-							<a href="singer.html"><img th:src="${bean.singerImgurl}"/>
-								<div class="cpt" style="width: 105px;">
-									<p class="songList_Singer" th:text="${bean.singerSingername}">TFBOYS</p>
-								</div>
-								<div class="cover_singer"></div>
-							</a>
-						</div>
-					</div>
-
-    			</div>
-    			<div class="tabDot">
-    				<a class="icon_dot" onMouseOver="ABC(0)"></a>
-    				<a class="icon_dot" onMouseOver="ABC(1)"></a>
-    				<a class="icon_dot" onMouseOver="ABC(2)"></a>
-    			</div>
-    		</div>
-    	</div>
-    	<!--广告3-->
-    	<div style="width: 1000px;height: 100px;margin-top: 30px;">
-    		<a href="#"><img src="../public/img/index/ad3.jpg" th:src="@{/img/index/ad3.jpg}"/></a>
-    	</div>
-    	<!--合作伙伴-->
-    	<div class="partner">
-    		<div class="itemTitle" style="width: 120px;height: 30px;padding-bottom: 30px;">
-          <img src="../public/img/index/partner.jpg" th:src="@{/img/index/partner.jpg}"/>
+            </div>
+            <div class="itemContent">
+                <ul>
+                    <li>
+                        <a href="radio.html">
+                            <div class="radioLogo"><img src="../public/img/index/radio_1.jpg"
+                                                        th:src="@{/img/index/radio_1.jpg}"
+                                                        style="width: 100px;height: 100px;"/></div>
+                            <div class="cover_radio">
+                                <div class="playBtn"></div>
+                            </div>
+                            <div class="radioKind">KTV必点曲</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="radio.html">
+                            <div class="radioLogo"><img src="../public/img/index/radio_1.jpg"
+                                                        th:src="@{/img/index/radio_1.jpg}"
+                                                        style="width: 100px;height: 100px;"/></div>
+                            <div class="cover_radio">
+                                <div class="playBtn"></div>
+                            </div>
+                            <div class="radioKind">KTV必点曲</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="radio.html">
+                            <div class="radioLogo"><img src="../public/img/index/radio_1.jpg"
+                                                        th:src="@{/img/index/radio_1.jpg}"
+                                                        style="width: 100px;height: 100px;"/></div>
+                            <div class="cover_radio">
+                                <div class="playBtn"></div>
+                            </div>
+                            <div class="radioKind">KTV必点曲</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="radio.html">
+                            <div class="radioLogo"><img src="../public/img/index/radio_1.jpg"
+                                                        th:src="@{/img/index/radio_1.jpg}"
+                                                        style="width: 100px;height: 100px;"/></div>
+                            <div class="cover_radio">
+                                <div class="playBtn"></div>
+                            </div>
+                            <div class="radioKind">KTV必点曲</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="radio.html">
+                            <div class="radioLogo"><img src="../public/img/index/radio_1.jpg"
+                                                        th:src="@{/img/index/radio_1.jpg}"
+                                                        style="width: 100px;height: 100px;"/></div>
+                            <div class="cover_radio">
+                                <div class="playBtn"></div>
+                            </div>
+                            <div class="radioKind">KTV必点曲</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="radio.html">
+                            <div class="radioLogo"><img src="../public/img/index/radio_1.jpg"
+                                                        th:src="@{/img/index/radio_1.jpg}"
+                                                        style="width: 100px;height: 100px;"/></div>
+                            <div class="cover_radio">
+                                <div class="playBtn"></div>
+                            </div>
+                            <div class="radioKind">KTV必点曲</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="radio.html">
+                            <div class="radioLogo"><img src="../public/img/index/radio_1.jpg"
+                                                        th:src="@{/img/index/radio_1.jpg}"
+                                                        style="width: 100px;height: 100px;"/></div>
+                            <div class="cover_radio">
+                                <div class="playBtn"></div>
+                            </div>
+                            <div class="radioKind">KTV必点曲</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="radio.html">
+                            <div class="radioLogo"><img src="../public/img/index/radio_1.jpg"
+                                                        th:src="@{/img/index/radio_1.jpg}"
+                                                        style="width: 100px;height: 100px;"/></div>
+                            <div class="cover_radio">
+                                <div class="playBtn"></div>
+                            </div>
+                            <div class="radioKind">KTV必点曲</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="radio.html">
+                            <div class="radioLogo"><img src="../public/img/index/radio_1.jpg"
+                                                        th:src="@{/img/index/radio_1.jpg}"
+                                                        style="width: 100px;height: 100px;"/></div>
+                            <div class="cover_radio">
+                                <div class="playBtn"></div>
+                            </div>
+                            <div class="radioKind">KTV必点曲</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="radio.html">
+                            <div class="radioLogo"><img src="../public/img/index/radio_1.jpg"
+                                                        th:src="@{/img/index/radio_1.jpg}"
+                                                        style="width: 100px;height: 100px;"/></div>
+                            <div class="cover_radio">
+                                <div class="playBtn"></div>
+                            </div>
+                            <div class="radioKind">KTV必点曲</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    		<ul class="itemContent">
-    			<li><img src="../public/img/index/partner01.jpg" th:src="@{/img/index/partner01.jpg}"></li>
-    			<li><img src="../public/img/index/partner02.jpg" th:src="@{/img/index/partner02.jpg}"></li>
-    			<li><img src="../public/img/index/partner03.jpg" th:src="@{/img/index/partner03.jpg}"></li>
-    			<li><img src="../public/img/index/partner04.jpg" th:src="@{/img/index/partner04.jpg}"></li>
-    			<li><img src="../public/img/index/partner05.jpg" th:src="@{/img/index/partner05.jpg}"></li>
-    			<li><img src="../public/img/index/partner06.jpg" th:src="@{/img/index/partner06.jpg}"></li>
-          <li><img src="../public/img/index/partner07.jpg" th:src="@{/img/index/partner07.jpg}"></li>
-          <li><img src="../public/img/index/partner08.jpg" th:src="@{/img/index/partner08.jpg}"></li>
-          <li><img src="../public/img/index/partner09.jpg" th:src="@{/img/index/partner09.jpg}"></li>
-          <li><img src="../public/img/index/partner10.jpg" th:src="@{/img/index/partner10.jpg}"></li>
-    			<li><img src="../public/img/index/partner11.jpg" th:src="@{/img/index/partner11.jpg}"></li>
-    			<li><img src="../public/img/index/partner12.jpg" th:src="@{/img/index/partner12.jpg}"></li>
-          <li><img src="../public/img/index/partner13.jpg" th:src="@{/img/index/partner13.jpg}"></li>
-          <li><img src="../public/img/index/partner14.jpg" th:src="@{/img/index/partner14.jpg}"></li>
-    			<li><img src="../public/img/index/partner15.jpg" th:src="@{/img/index/partner01.jpg}"></li>
-    			<li><img src="../public/img/index/partner16.jpg" th:src="@{/img/index/partner01.jpg}"></li>
-    			<li><img src="../public/img/index/partner17.jpg" th:src="@{/img/index/partner01.jpg}"></li>
-    			<li><img src="../public/img/index/partner18.jpg" th:src="@{/img/index/partner01.jpg}"></li>
-    			<li><img src="../public/img/index/partner19.jpg" th:src="@{/img/index/partner01.jpg}"></li>
-    			<li><img src="../public/img/index/partner20.jpg" th:src="@{/img/index/partner01.jpg}"></li>
-    			<li><img src="../public/img/index/partner21.jpg" th:src="@{/img/index/partner01.jpg}"></li>
-    		</ul>
-    	</div>
-    	<!--友情链接-->
-    	<div class="friendLink">
-    		<div class="itemTitle">
-    			<div style="width:120px;height: 30px;float:left;"><img src="../public/img/index/friendLink.jpg" th:src="@{/img/index/friendLink.jpg}"/></div>
-    			<span style="margin-top: 7px;color: #999;font-size: 14px;float: right;">
+        <!--热门歌手-->
+        <div class="HotSinger">
+            <div class="itemTitle">
+                <div style="width:120px;height: 30px;float:left;"><img src="../public/img/index/hotsinger.jpg"
+                                                                       th:src="@{/img/index/hotsinger.jpg}"/></div>
+                <div class="tabT">
+                    <span onMouseOver="ABC(0)">华语</span>
+                    <span onMouseOver="ABC(1)">欧美</span>
+                    <span onMouseOver="ABC(2)">日韩</span>
+                    <span style="margin-top: 7px;color: #999;"><a href="singer.html" class="more1">更多</a></span>
+                </div>
+            </div>
+            <div class="itemContent">
+
+                <!-- 热门歌手  华语 -->
+                <div class="singers" id="singers1"
+                     th:with="solrBeanList=${indexViewBean.popSingerCollect.get('china').solrBeanList}"
+                     style="width: 330px;height: 270px;position: relative;">
+                    <!-- 热门歌手  大图 -->
+                    <div class="cptMid1" th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 1}">
+                        <a href="singer.html"><img th:src="${bean.singerImgurl}"/>
+                            <div class="cpt">
+                                <p class="songList_Singer" th:text="${bean.singerSingername}">TFBOYS</p>
+                            </div>
+                            <div class="cover_singer" style="width: 160px;height: 160px;"></div>
+                        </a>
+                    </div>
+                    <!-- 热门歌手 小图 -->
+                    <div class="cptSmall" th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 2}">
+                        <a href="singer.html"><img th:src="${bean.singerImgurl}"/>
+                            <div class="cpt" style="width: 105px;">
+                                <p class="songList_Singer" th:text="${bean.singerSingername}">TFBOYS</p>
+                            </div>
+                            <div class="cover_singer"></div>
+                        </a>
+                    </div>
+                </div>
+
+
+                <!-- 热门歌手  欧美 -->
+                <div class="singers" id="singers2"
+                     th:with="solrBeanList=${indexViewBean.popSingerCollect.get('eaa').solrBeanList}"
+                     style="width: 330px;height: 270px;position: relative;display: none;">
+                    <!-- 热门歌手  大图 -->
+                    <div class="cptMid1" th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 1}">
+                        <a href="singer.html"><img th:src="${bean.singerImgurl}"/>
+                            <div class="cpt">
+                                <p class="songList_Singer" th:text="${bean.singerSingername}">TFBOYS</p>
+                            </div>
+                            <div class="cover_singer" style="width: 160px;height: 160px;"></div>
+                        </a>
+                    </div>
+                    <!-- 热门歌手 小图 -->
+                    <div class="cptSmall" th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 2}">
+                        <a href="singer.html"><img th:src="${bean.singerImgurl}"/>
+                            <div class="cpt" style="width: 105px;">
+                                <p class="songList_Singer" th:text="${bean.singerSingername}">TFBOYS</p>
+                            </div>
+                            <div class="cover_singer"></div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 热门歌手  日韩 -->
+                <div class="singers" id="singers3"
+                     th:with="solrBeanList=${indexViewBean.popSingerCollect.get('japanKorea').solrBeanList}"
+                     style="width: 330px;height: 270px;position: relative;display: none;">
+                    <!-- 热门歌手  大图 -->
+                    <div class="cptMid1" th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 1}">
+                        <a href="singer.html"><img th:src="${bean.singerImgurl}"/>
+                            <div class="cpt">
+                                <p class="songList_Singer" th:text="${bean.singerSingername}">TFBOYS</p>
+                            </div>
+                            <div class="cover_singer" style="width: 160px;height: 160px;"></div>
+                        </a>
+                    </div>
+                    <!-- 热门歌手 小图 -->
+                    <div class="cptSmall" th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 2}">
+                        <a href="singer.html"><img th:src="${bean.singerImgurl}"/>
+                            <div class="cpt" style="width: 105px;">
+                                <p class="songList_Singer" th:text="${bean.singerSingername}">TFBOYS</p>
+                            </div>
+                            <div class="cover_singer"></div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="tabDot">
+                <a class="icon_dot" onMouseOver="ABC(0)"></a>
+                <a class="icon_dot" onMouseOver="ABC(1)"></a>
+                <a class="icon_dot" onMouseOver="ABC(2)"></a>
+            </div>
+        </div>
+    </div>
+    <!--广告3-->
+    <div style="width: 1000px;height: 100px;margin-top: 30px;">
+        <a href="#"><img src="../public/img/index/ad3.jpg" th:src="@{/img/index/ad3.jpg}"/></a>
+    </div>
+    <!--合作伙伴-->
+    <div class="partner">
+        <div class="itemTitle" style="width: 120px;height: 30px;padding-bottom: 30px;">
+            <img src="../public/img/index/partner.jpg" th:src="@{/img/index/partner.jpg}"/>
+        </div>
+        <ul class="itemContent">
+            <li><img src="../public/img/index/partner01.jpg" th:src="@{/img/index/partner01.jpg}"></li>
+            <li><img src="../public/img/index/partner02.jpg" th:src="@{/img/index/partner02.jpg}"></li>
+            <li><img src="../public/img/index/partner03.jpg" th:src="@{/img/index/partner03.jpg}"></li>
+            <li><img src="../public/img/index/partner04.jpg" th:src="@{/img/index/partner04.jpg}"></li>
+            <li><img src="../public/img/index/partner05.jpg" th:src="@{/img/index/partner05.jpg}"></li>
+            <li><img src="../public/img/index/partner06.jpg" th:src="@{/img/index/partner06.jpg}"></li>
+            <li><img src="../public/img/index/partner07.jpg" th:src="@{/img/index/partner07.jpg}"></li>
+            <li><img src="../public/img/index/partner08.jpg" th:src="@{/img/index/partner08.jpg}"></li>
+            <li><img src="../public/img/index/partner09.jpg" th:src="@{/img/index/partner09.jpg}"></li>
+            <li><img src="../public/img/index/partner10.jpg" th:src="@{/img/index/partner10.jpg}"></li>
+            <li><img src="../public/img/index/partner11.jpg" th:src="@{/img/index/partner11.jpg}"></li>
+            <li><img src="../public/img/index/partner12.jpg" th:src="@{/img/index/partner12.jpg}"></li>
+            <li><img src="../public/img/index/partner13.jpg" th:src="@{/img/index/partner13.jpg}"></li>
+            <li><img src="../public/img/index/partner14.jpg" th:src="@{/img/index/partner14.jpg}"></li>
+            <li><img src="../public/img/index/partner15.jpg" th:src="@{/img/index/partner01.jpg}"></li>
+            <li><img src="../public/img/index/partner16.jpg" th:src="@{/img/index/partner01.jpg}"></li>
+            <li><img src="../public/img/index/partner17.jpg" th:src="@{/img/index/partner01.jpg}"></li>
+            <li><img src="../public/img/index/partner18.jpg" th:src="@{/img/index/partner01.jpg}"></li>
+            <li><img src="../public/img/index/partner19.jpg" th:src="@{/img/index/partner01.jpg}"></li>
+            <li><img src="../public/img/index/partner20.jpg" th:src="@{/img/index/partner01.jpg}"></li>
+            <li><img src="../public/img/index/partner21.jpg" th:src="@{/img/index/partner01.jpg}"></li>
+        </ul>
+    </div>
+    <!--友情链接-->
+    <div class="friendLink">
+        <div class="itemTitle">
+            <div style="width:120px;height: 30px;float:left;"><img src="../public/img/index/friendLink.jpg"
+                                                                   th:src="@{/img/index/friendLink.jpg}"/></div>
+            <span style="margin-top: 7px;color: #999;font-size: 14px;float: right;">
     				<a href="友情链接.html" class="more1">更多</a>
     			</span>
-    		</div>
-    		<ul class="itemContent">
-    			<li><a target="" href="友情链接.html" title="爱美网">爱美网</a></li>
-    			<li><a target="" href="友情链接.html" title="央视网综艺频道">央视网综艺频道</a></li>
-    			<li><a target="" href="友情链接.html" title="汽车论坛">汽车论坛</a></li>
-    			<li><a target="" href="友情链接.html" title="IT之家">IT之家</a></li>
-    			<li><a target="" href="友情链接.html" title="iPhone游戏">iPhone游戏</a></li>
-    			<li><a target="" href="友情链接.html" title="旅游攻略">旅游攻略</a></li>
-    			<li><a target="" href="友情链接.html" title="悦声无限">悦声无限</a></li>
-    			<li><a target="" href="友情链接.html" title="华为商城">华为商城</a></li>
-    			<li><a target="" href="友情链接.html" title="365音乐网">365音乐网</a></li>
-    			<li><a target="" href="友情链接.html" title="软件下载">软件下载</a></li>
-    			<li><a target="" href="友情链接.html" title="漫漫看漫画">漫漫看漫画</a></li>
-    			<li><a target="" href="友情链接.html" title="手机游戏">手机游戏</a></li>
-    			<li><a target="" href="友情链接.html" title="5sing原创音乐">5sing原创音乐</a></li>
-    			<li><a target="" href="腾讯音乐人.html" title="腾讯音乐人">腾讯音乐人</a></li>
-    			<li><a target="" href="友情链接.html" title="豌豆荚">豌豆荚</a></li>
-    		</ul>
-    	</div>
+        </div>
+        <ul class="itemContent">
+            <li><a target="" href="友情链接.html" title="爱美网">爱美网</a></li>
+            <li><a target="" href="友情链接.html" title="央视网综艺频道">央视网综艺频道</a></li>
+            <li><a target="" href="友情链接.html" title="汽车论坛">汽车论坛</a></li>
+            <li><a target="" href="友情链接.html" title="IT之家">IT之家</a></li>
+            <li><a target="" href="友情链接.html" title="iPhone游戏">iPhone游戏</a></li>
+            <li><a target="" href="友情链接.html" title="旅游攻略">旅游攻略</a></li>
+            <li><a target="" href="友情链接.html" title="悦声无限">悦声无限</a></li>
+            <li><a target="" href="友情链接.html" title="华为商城">华为商城</a></li>
+            <li><a target="" href="友情链接.html" title="365音乐网">365音乐网</a></li>
+            <li><a target="" href="友情链接.html" title="软件下载">软件下载</a></li>
+            <li><a target="" href="友情链接.html" title="漫漫看漫画">漫漫看漫画</a></li>
+            <li><a target="" href="友情链接.html" title="手机游戏">手机游戏</a></li>
+            <li><a target="" href="友情链接.html" title="5sing原创音乐">5sing原创音乐</a></li>
+            <li><a target="" href="腾讯音乐人.html" title="腾讯音乐人">腾讯音乐人</a></li>
+            <li><a target="" href="友情链接.html" title="豌豆荚">豌豆荚</a></li>
+        </ul>
     </div>
+</div>
 
 
-    <!-- 引入底部 -->
-	<div th:replace="commons/foot::footbar"></div>
+<!-- 引入底部 -->
+<div th:replace="commons/foot::footbar"></div>
 
 
-  </body>
+</body>
 <script src="../public/js/index.js" th:src="@{/js/index.js}" type="text/javascript"></script>
 </html>
+
