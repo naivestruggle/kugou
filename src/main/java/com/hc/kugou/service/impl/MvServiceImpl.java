@@ -260,13 +260,5 @@ public class MvServiceImpl implements MvService {
     }
 
 
-    //    /**
-//     * 添加轮播图集合
-//     * @param mvViewBean
-//     */
-//    private void addSlideGraph(MvViewBean mvViewBean) {
-//
-//    }
-
 
 }
