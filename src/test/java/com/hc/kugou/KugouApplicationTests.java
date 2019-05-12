@@ -52,7 +52,6 @@ public class KugouApplicationTests {
     @Autowired
     private MusicSolr musicSolr;
 
-
     /**
      * 得到UUID
      * @return
@@ -75,6 +74,9 @@ public class KugouApplicationTests {
             System.out.println(i);
         }
     }
+
+
+
 
 
 }

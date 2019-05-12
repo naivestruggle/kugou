@@ -26,7 +26,6 @@ public class MusicSolr {
     public MusicSolr(){
 
     }
-
     /**
      * 查询新歌   按照播放量排序
      * @param className 歌曲语种
