@@ -1,6 +1,5 @@
 package com.hc.kugou.service.impl;
 
-import com.hc.kugou.bean.*;
 import com.hc.kugou.bean.custombean.CustomMusic;
 import com.hc.kugou.bean.custombean.CustomMv;
 import com.hc.kugou.bean.custombean.CustomSinger;
@@ -26,8 +25,8 @@ import java.util.Map;
  * @Description:com.hc.kugou.service.impl
  * @Version:1.0
  */
+
 @Service("indexService")
-@Transactional
 public class IndexServiceImpl implements IndexService {
     /**
      * 华语

@@ -1,6 +1,8 @@
 package com.hc.kugou.mapper;
 
 import com.hc.kugou.bean.custombean.CustomUser;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 /**
  * @Author:
@@ -21,4 +23,20 @@ public interface UserMapper {
      * @param user  用户信息
      */
     void insertUser(CustomUser user);
+
+    /**
+     * 根据id查询用户
+     * @param userId
+     * @return
+     * @throws Exception
+     */
+    CustomUser selectById(Integer userId)throws Exception;
+
+    /**
+     * 根据电话查询用户
+     * @param account
+     * @return
+     */
+    @Select("select count(1) from kugou_user where user_tel = #{account}")
+    Integer selectByTelToCount(@Param("account") String account);
 }

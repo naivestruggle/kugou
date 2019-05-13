@@ -1,0 +1,433 @@
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+body {
+	position: relative;
+}
+
+.wrap {
+	width: 1000px;
+	margin: 0 auto;
+	font-size: 13px;
+}
+
+.wrap .mysite {
+	color: #ada8a8;
+	margin: 15px 0;
+}
+
+.wrap .mysite a, span {
+	color: #3d3d3d;
+}
+
+/*左边的分享*/
+.left {
+	float: left;
+	width: 180px;
+	position: relative;
+	z-index: 1000;
+}
+
+.left .pic {
+	background: url(../img/songsheetlist/other.png) no-repeat -1px -750px;
+	width: 170px;
+	height: 169px;
+	margin-left: -5px;
+}
+
+.pic img {
+	margin: 4px 0 0 5px;
+}
+
+.left .share {
+	margin-bottom: 10px;
+	border-color: #169af3;
+	display: inline-block;
+	vertical-align: middle;
+	zoom: 1;
+	border: 0 solid #dbdbdb;
+	font-size: 12px;
+}
+
+.left .share span {
+	padding: 7px 25px 7px 40px;
+	border-color: #169af3;
+	color: #fff;
+	background: #169af3;
+	position: relative;
+	float: left;
+	display: inline;
+	border: 1px solid #dbdbdb;
+	line-height: 100%;
+	overflow: hidden;
+	zoom: 1;
+	cursor: pointer;
+	border-radius: 2px;
+}
+
+.left .share i {
+	background: url(../img/songsheet/icon_splice.png) no-repeat;
+	display: inline-block;
+	vertical-align: middle;
+	width: 0;
+	overflow: hidden;
+	padding-left: 14px;
+	height: 14px;
+	background-position: -300px 0;
+	position: absolute;
+	left: 20px;
+	top: 50%;
+	margin-top: -7px;
+}
+
+.left .share .t2 {
+	background-position: -300px -90px;
+}
+
+.left .detail {
+	color: #323232;
+	width: 160px;
+	line-height: 23px;
+	text-align: left;
+	word-wrap: break-word;
+}
+
+.left .detail span {
+	color: #7d7d7d;
+}
+
+.left .intro {
+	margin: 10px 0;
+	height: 300px;
+	outline: none;
+}
+
+.intro .content {
+	overflow: hidden;
+	position: relative;
+}
+
+.intro span {
+	color: #7d7d7d;
+}
+
+/*右边的歌曲*/
+.wrap .right {
+	float: left;
+	width: 764px;
+	border-left: 1px solid #dcdcdc;
+	padding: 10px 0 0 15px;
+	min-height: 700px;
+}
+
+.right .list {
+	font-size: 12px;
+	color: #878787;
+	padding-bottom: 7px;
+	margin-bottom: 5px;
+	margin: 15px 0 10px;
+	font-weight: normal;
+	position: relative;
+	padding: 0 8px 5px;
+}
+
+.list strong {
+	color: #323232;
+	font-size: 14px;
+}
+
+.list h4 {
+	font-size: 12px;
+	color: #878787;
+	margin-bottom: 5px;
+	margin: 15px 0 10px;
+	font-weight: normal;
+	position: relative;
+	padding: 0 8px 5px;
+	border-bottom: 1px solid #d4d4d4;
+}
+
+.dq  .play {
+	position: absolute;
+	right: 0;
+	top: -10px;
+	border-color: #169af3;
+	display: inline-block;
+	vertical-align: middle;
+	zoom: 1;
+	border: 0 solid #dbdbdb;
+	font-size: 12px;
+}
+
+.play span {
+	padding: 7px 20px 7px 35px;
+	border-color: #169af3;
+	color: #fff;
+	background: #169af3;
+	position: relative;
+	float: left;
+	display: inline;
+	border: 1px solid #dbdbdb;
+	line-height: 100%;
+	overflow: hidden;
+	zoom: 1;
+	cursor: pointer;
+	border-radius: 2px;
+	font-size: 12px;
+}
+
+.play i {
+	padding-left: 9px;
+	height: 12px;
+	position: absolute;
+	left: 20px;
+	top: 50%;
+	margin-top: -6px;
+	background: url(../img/songsheetlist/icon_splice.png) no-repeat;
+	background-position: -570px -90px;
+	display: inline-block;
+	vertical-align: middle;
+	width: 0;
+	overflow: hidden;
+}
+
+.dq input {
+	width: 13px;
+	height: 15px;
+	margin: 0 10px 0 0;
+	position: relative;
+	top: 3px;
+}
+
+/*歌曲*/
+.list ul {
+	padding-top: 15px;
+	list-style: none;
+}
+
+.list ul li {
+	width: auto;
+	height: 25px;
+	margin: 0 0 3px 0;
+	line-height: 25px;
+	vertical-align: bottom;
+}
+
+.list ul li a {
+	display: block;
+	zoom: 1;
+	height: 25px;
+	padding-left: 8px;
+}
+
+.list ul li a:hover {
+	background: #daf1fb;
+}
+
+.list li input {
+	float: left;
+	width: 13px;
+	height: 15px;
+	margin-right: 15px;
+	margin-top: 4px;
+}
+
+.list .share {
+	background: url(../img/songsheetlist/other.png) no-repeat 0 0;
+	width: 19px;
+	height: 19px;
+	margin-top: 2px;
+	margin-left: 10px;
+	display: inline;
+	float: right;
+	cursor: pointer;
+	line-height: 0;
+	font-size: 0;
+}
+
+.list a:hover .share {
+	background-position: 0 -20px;
+}
+
+.list .listen {
+	background: url(../img/songsheetlist/other.png) no-repeat -19px 0;
+	width: 19px;
+	height: 19px;
+	margin-top: 2px;
+	float: right;
+	cursor: pointer;
+	line-height: 0;
+	font-size: 0;
+}
+
+.list a:hover .listen {
+	background-position: -59px -20px;
+}
+
+.list .num {
+	width: 30px;
+	display: inline;
+	margin-left: 3px;
+	margin-right: 10px;
+	float: left;
+}
+
+.list .text {
+	height: 24px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	cursor: pointer;
+	font-size: 14px;
+}
+
+.text i {
+	font-style: normal;
+	cursor: pointer;
+}
+
+.dialog {
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+	width: 475px;
+	height: 300px;
+	background-color: #fff;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	margin-left: -235.5px;
+	margin-top: -200px;
+	outline: 0;
+	background-clip: padding-box;
+	font-family: Helvetica, arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.428571429;
+	color: #333;
+	z-index: 9999;
+	display: none;
+}
+
+.dialog .dialog_head {
+	height: 36px;
+	padding: 0;
+	background: #2c323b;
+	color: #fff;
+	font-style: normal;
+	white-space: nowrap;
+	border-bottom: 1px solid #e5e5e5;
+	border: 0 none;
+	text-align: left;
+}
+
+.dialog_head .close {
+	position: relative;
+	float: right;
+	top: 13px;
+	right: 13px;
+	padding: 0 4px;
+	font-size: 21px;
+	font-weight: 700;
+	border: 0;
+	color: #000;
+	text-shadow: 0 1px 0 #fff;
+	cursor: pointer;
+	opacity: 1;
+	width: 11px;
+	height: 11px;
+	background: url(../img/songsheetlist/closeDialog.png) no-repeat left top;
+	text-indent: -999em;
+}
+
+.dialog_head .close:hover {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+	outline: 0;
+	opacity: .5;
+}
+
+.dialog_head .title {
+	height: 24px;
+	line-height: 24px;
+	padding: 6px 15px;
+	font-size: 13px;
+}
+
+.dialog_body {
+	padding: 20px;
+	text-align: center;
+}
+
+.dialog_body .content {
+	display: inline-block;
+	position: relative;
+	vertical-align: middle;
+	text-align: left;
+}
+
+.content .share_list {
+	width: 410px;
+	height: 230px;
+	padding: 0 10px;
+}
+
+.share_list dl {
+	float: left;
+	padding: 70px 20px;
+}
+
+.share_list dt {
+	width: 62px;
+	height: 62px;
+	display: block;
+	cursor: pointer;
+}
+
+.share_weixin {
+	background: url(../img/songsheetlist/share_weixin.png) no-repeat left top;
+}
+
+.share_friend {
+	background: url(../img/songsheetlist/share_qq.png) no-repeat left top;
+}
+
+.share_qzone {
+	background: url(../img/songsheetlist/share_qqspace.png) no-repeat left top;
+}
+
+.share_weibo {
+	background: url(../img/songsheetlist/share_weibo.png) no-repeat left top;
+}
+
+.share_list	.qrcode {
+	position: absolute;
+	top: 50px;
+	left: 95px;
+	width: 125px;
+	height: 150px;
+	padding: 0;
+	background: url(../img/songsheetlist/weixin_bg.png) no-repeat left top;
+	z-index: 199999;
+}
+
+.qrcode img {
+	margin: 10px;
+	padding: 0;
+	width: 106px;
+	height: 106px;
+}
+
+.share_list dd {
+	position: relative;
+	color: #555;
+	height: 24px;
+	line-height: 24px;
+	padding-top: 5px;
+	text-align: center;
+}

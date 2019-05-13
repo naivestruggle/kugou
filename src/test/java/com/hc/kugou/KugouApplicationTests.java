@@ -1,22 +1,14 @@
 package com.hc.kugou;
 
-import com.hc.kugou.bean.Music;
-import com.hc.kugou.bean.User;
-import com.hc.kugou.bean.custombean.CustomMusic;
-import com.hc.kugou.bean.custombean.CustomUser;
-import com.hc.kugou.bean.custombean.IndexViewBean;
 import com.hc.kugou.mapper.*;
-import com.hc.kugou.solr.SolrBean;
 import com.hc.kugou.service.IndexService;
 import com.hc.kugou.solr.MusicSolr;
-import com.hc.kugou.solr.SolrManager;
 import org.apache.solr.client.solrj.SolrClient;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.thymeleaf.util.StringUtils;
 
 import java.util.*;
 

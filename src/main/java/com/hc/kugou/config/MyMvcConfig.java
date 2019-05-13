@@ -55,7 +55,7 @@ public class MyMvcConfig{
                 registry.addViewController("/queryMv.html").setViewName("queryMv");
                 registry.addViewController("/musicTest.html").setViewName("musicTest");
                 registry.addViewController("/specialColumn.html").setViewName("specialColumn");
-                registry.addViewController("/songsheetInfo.html").setViewName("songsheetInfo");
+                registry.addViewController("/songsheetlist.html").setViewName("songsheetlist");
             }
         };
         return webMvcConfigurer;

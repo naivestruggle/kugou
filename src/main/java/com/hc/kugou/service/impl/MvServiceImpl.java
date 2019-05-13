@@ -10,8 +10,6 @@ import com.hc.kugou.solr.SolrBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**
