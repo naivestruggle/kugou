@@ -15,6 +15,7 @@ public interface UserMapper {
      * 根据对象中不为null的属性进行多条件组合查询
      * @param keyUser   user对象
      * @return  一个user对象
+     * @throws Exception
      */
     CustomUser selectByNotNullFields(CustomUser keyUser)throws Exception;
 
@@ -26,7 +27,7 @@ public interface UserMapper {
 
     /**
      * 根据id查询用户
-     * @param userId
+     * @param userId 用户id
      * @return
      * @throws Exception
      */
@@ -34,9 +35,18 @@ public interface UserMapper {
 
     /**
      * 根据电话查询用户
-     * @param account
+     * @param account 电话
      * @return
      */
     @Select("select count(1) from kugou_user where user_tel = #{account}")
     Integer selectByTelToCount(@Param("account") String account);
+
+    /**
+     * 根据邮箱查询用户
+     * @param account 邮箱
+     * @return
+     */
+    @Select("select count(1) from kugou_user where user_email = #{account}")
+    Integer selectByEmailToCount(@Param("account") String account);
+
 }

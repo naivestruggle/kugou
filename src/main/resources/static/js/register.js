@@ -6,6 +6,10 @@ regxRegistInputInfo();
 /**
  * 动态验证用户注册输入
  */
+var regxTel = false;
+var regxCode = false;
+var regxPassword = false;
+var regxPassword2 = false;
 function regxRegistInputInfo() {
 
     //验证电话
@@ -22,14 +26,36 @@ function regxRegistInputInfo() {
                 $(".message").css({
                     "background": "#bbb"
                 });
+                regxTel = false;
             } else if (data.code == 1) {
                 $("#phonenumber").html("请输入手机号");
                 $(".message").css({
                     "background": "#2085e5"
                 });
+                regxTel = true;
             }
-
+            if(regxTel && regxCode && regxPassword && regxPassword2){
+                $("#register").removeClass("not_register");
+            }else{
+                $("#register").addClass("not_register");
+            }
         });
+
+    });
+
+    //验证码
+    $("#mou2").blur(function () {
+        if($(this).val() == null ||  $(this).val() == ""){
+            regxCode = false;
+        }else{
+            console.log("jinglai");
+            regxCode = true
+        }
+        if(regxTel && regxCode && regxPassword && regxPassword2){
+            $("#register").removeClass("not_register");
+        }else{
+            $("#register").addClass("not_register");
+        }
     });
 
     //验证密码
@@ -43,9 +69,40 @@ function regxRegistInputInfo() {
                 $("#mima").css({
                     "display": "block"
                 });
+                regxPassword = false;
+            }else if(data.code == 1){
+                regxPassword = true;
             }
-
+            if(regxTel && regxCode && regxPassword && regxPassword2){
+                $("#register").removeClass("not_register");
+            }else{
+                $("#register").addClass("not_register");
+            }
         });
+        if($("#mou4").val() != null){
+            var data = {
+                userPassword: $("#mou3").val(),
+                userPassword2: $("#mou4").val()
+            };
+            $.post("user.regxRegistInputInfo.ajax", data, function (data) {
+                data = eval(data);
+                if (data.code == 0) {
+                    console.log(data.msg);
+                    $("#mimax").css({
+                        "display": "block"
+                    }).html(data.msg);
+                    regxPassword2 = false;
+                } else if (data.code == 1) {
+                    $("#mimax").html("请再次确认密码");
+                    regxPassword2 = true;
+                }
+                if(regxTel && regxCode && regxPassword && regxPassword2){
+                    $("#register").removeClass("not_register");
+                }else{
+                    $("#register").addClass("not_register");
+                }
+            });
+        }
     });
 
     //确认密码
@@ -61,11 +118,18 @@ function regxRegistInputInfo() {
                 $("#mimax").css({
                     "display": "block"
                 }).html(data.msg);
+                regxPassword2 = false;
             } else if (data.code == 1) {
                 $("#mimax").html("请再次确认密码");
+                regxPassword2 = true;
             }
-
+            if(regxTel && regxCode && regxPassword && regxPassword2){
+                $("#register").removeClass("not_register");
+            }else{
+                $("#register").addClass("not_register");
+            }
         });
+
     });
 
 }
@@ -104,25 +168,41 @@ function sendVerifyCode() {
  */
 function register() {
     $(".zc").click(function () {
-
-        var data = {
-            userTel: $("#mou1").val(),
-            verifyCode: $("#mou2").val(),
-            userPassword: $("#mou3").val(),
-            userPassword2: $("#mou4").val(),
-            userSex: $('.sex input[name="sex"]:checked').val()
-        };
-        $.post("user.regist.ajax", data, function (data) {
-            data = eval(data);
-            if(data.code == 1){
-                alert("注册成功");
-            }else if(data.code == 0){
-                alert(data.msg);
-            }else if(data.code == -1){
-                alert("系统繁忙，请稍后再试");
-            }
-        });
-
+        if(regxTel && regxCode && regxPassword && regxPassword2){
+            var data = {
+                userTel: $("#mou1").val(),
+                verifyCode: $("#mou2").val(),
+                userPassword: $("#mou3").val(),
+                userPassword2: $("#mou4").val(),
+                userSex: $('.sex input[name="sex"]:checked').val()
+            };
+            $.post("user.regist.ajax", data, function (data) {
+                if(data.code == 1){
+                    var loginData = {
+                        account: $("#mou1").val(),
+                        password: $("#mou3").val()
+                    };
+                    //自动登录
+                    $.post("user.login.ajax",loginData,function (data) {
+                        if(data.code == 1){
+                            //跳主页
+                            window.location.href="index.html";
+                        }else if(data.code == 0){
+                            $("#errorMsg").html(data.msg);
+                        }else if(data.code == -1){
+                            $("#errorMsg").html("系统繁忙请稍后再试");
+                        }
+                    })
+                    //alert("注册成功");
+                }else if(data.code == 0){
+                    alert(data.msg);
+                }else if(data.code == -1){
+                    alert("系统繁忙，请稍后再试");
+                }
+            });
+        }else{
+            alert("用户信息不正确");
+        }
     });
 }
 

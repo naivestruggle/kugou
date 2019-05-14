@@ -23,5 +23,21 @@
         select <include refid="allKeys"></include> from kugou_user where user_id = #{userId}
     </select>
 
+    <select id="selectByNotNullFields" resultType="com.hc.kugou.bean.custombean.CustomUser">
+        select <include refid="allKeys"></include> from kugou_user
+        <where>
+            <if test="userAccount != null">
+                and user_account = #{userAccount}
+            </if>
+            <if test="userTel != null">
+                and user_tel = #{userTel}
+            </if>
+            <if test="userEmail != null">
+                and user_email = #{userEmail}
+            </if>
+        </where>
+        and user_password = #{userPassword}
+    </select>
+
 
 </mapper>

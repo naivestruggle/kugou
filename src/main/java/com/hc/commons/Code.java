@@ -71,13 +71,11 @@ public class Code {
 	}
 
 	public static String createUserAccount(){
-		System.out.println(System.currentTimeMillis());
-		return null;
+		long time = System.currentTimeMillis();
+		Random random = new Random();
+		String account = (time + "").substring(6) + random.nextInt(10)+random.nextInt(10)+random.nextInt(10);
+		return account;
 	}
 
-	@Test
-	public void test(){
-		createUserAccount();
-	}
 	
 }

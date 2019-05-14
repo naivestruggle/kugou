@@ -1,6 +1,8 @@
 package com.hc.kugou.service;
 
 import com.hc.kugou.bean.custombean.CustomUser;
+import com.hc.kugou.service.exception.login.LoginException;
+import com.hc.kugou.service.exception.tel.UnknownTelException;
 
 /**
  * @Author:
@@ -12,15 +14,17 @@ public interface UserService {
 
     /**
      * 验证用户输入的登录信息
-     * @param user  存储登录信息的用户对象
+     * @param account  账号
+     * @param password 密码
      */
-    void regxLoginInputInfo(CustomUser user);
+    void regxLoginInputInfo(String account,String password) throws Exception;
 
     /**
      * 登录
-     * @param user  用户输入的登录信息
+     * @param account  账号
+     * @param password 密码
      */
-    void loginService(CustomUser user);
+    CustomUser loginService(String account,String password) throws Exception;
 
     /**
      * 验证用户输入的注册信息

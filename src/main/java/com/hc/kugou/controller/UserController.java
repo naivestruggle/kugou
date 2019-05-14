@@ -1,6 +1,5 @@
 package com.hc.kugou.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.hc.commons.ResponseUtils;
 import com.hc.kugou.bean.custombean.CustomUser;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @Author:
@@ -47,28 +45,46 @@ public class UserController {
     private JSONObject jsonObject;
     /**
      * 校验用户在登录框输入的信息
-     * @param user  输入的信息
+     * @param account  账号
+     * @param password 密码
      * @return  返回验证结果信息
      */
     @ResponseBody
     @PostMapping("user.regxLoginInputInfo.ajax")
-    public JSONObject regxLoginInputInfo(CustomUser user){
+    public JSONObject regxLoginInputInfo(String account,String password){
+        jsonObject = new JSONObject();
         //验证业务
-        userService.regxLoginInputInfo(user);
-        return null;
+        try {
+            userService.regxLoginInputInfo(account,password);
+            //返回信息
+            ResponseUtils.responseNoException(jsonObject);
+        } catch (Exception e) {
+            ResponseUtils.responseException(jsonObject,e);
+        }
+        return jsonObject;
     }
 
     /**
      * 登录
-     * @param user  用户输入的登录信息
+     * @param account  账号
+     * @param password 密码
      * @return  返回登录结果信息
      */
     @ResponseBody
     @PostMapping("user.login.ajax")
-    public JSONObject loginAjax(CustomUser user){
+    public JSONObject loginAjax(String account,String password,HttpSession session){
+        jsonObject = new JSONObject();
         //登录业务
-        userService.loginService(user);
-        return null;
+        try {
+            CustomUser loginedUser = userService.loginService(account, password);
+            //将用户信息存入session
+            session.setAttribute("loginedUser",loginedUser);
+            //返回信息
+            ResponseUtils.responseNoException(jsonObject);
+        } catch (Exception e) {
+            ResponseUtils.responseException(jsonObject,e);
+        }
+        return jsonObject;
     }
 
     /**
@@ -95,10 +111,10 @@ public class UserController {
         try {
             userService.regxRegistInputInfo(user);
 
-            jsonObject.put("code",1);
+            //返回信息
+            ResponseUtils.responseNoException(jsonObject);
         } catch (Exception e) {
-            jsonObject.put("code",0);
-            jsonObject.put("msg",e.getMessage());
+            ResponseUtils.responseException(jsonObject,e);
         }
         return jsonObject;
     }
@@ -122,13 +138,11 @@ public class UserController {
 
             //清除session中的验证码
             session.removeAttribute(user.getUserTel() + REGIST_VERFIY_CODE_STRING);
+
+            //返回信息
+            ResponseUtils.responseNoException(jsonObject);
         } catch (Exception e) {
-            if(e instanceof CustomException){
-                jsonObject.put("code",0);
-                jsonObject.put("msg",e.getMessage());
-            }else{
-                jsonObject.put("code",-1);
-            }
+            ResponseUtils.responseException(jsonObject,e);
         }
         return jsonObject;
     }
@@ -178,14 +192,10 @@ public class UserController {
             }
             //将验证码保存在session中
             session.setAttribute(verifyCodeKey,verifyCodeValue);
-            jsonObject.put("code",1);
+            //返回信息
+            ResponseUtils.responseNoException(jsonObject);
         } catch (Exception e) {
-            if( e instanceof CustomException){
-                jsonObject.put("code",0);
-                jsonObject.put("msg",e.getMessage());
-            }else {
-                jsonObject.put("code",-1);
-            }
+            ResponseUtils.responseException(jsonObject,e);
         }
 
         return jsonObject;
