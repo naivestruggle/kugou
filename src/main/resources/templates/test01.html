@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../js/jquery.js" type="text/javascript" th:src="@{/js/jquery-3.2.1.js}" charset="utf-8"></script>
+<button onclick="addSongSheet()">添加歌单</button>
+<script>
+    function addSongSheet(){
+        var data = {
+            "musicListName" : "日语"
+        };
+
+        $.post("song.addSongSheet.ajax",data,function (data) {
+            console.log(data);
+        });
+    }
+
+</script>
+</body>
+</html>

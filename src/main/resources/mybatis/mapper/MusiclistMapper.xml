@@ -34,7 +34,7 @@
 
     <sql id="allValues">
      #{musicListId},#{musicListName},#{musicListUserId},#{musicListUserUsername},#{musicListMood},#{musicListUpdateTime},
-     #{musicListDescribe},#{musicListHeadImage},#{musicListMusicCount},#{musicListListenerCount},#{musicListHashCode},
+     #{musicListDescribe},#{musicListHeadImage},#{musicListMusicCount},#{musicListListenerCount},#{musicListHashCode}
     </sql>
 
     <resultMap id="musicList" type="com.hc.kugou.bean.custombean.CustomMusicList" autoMapping="true">

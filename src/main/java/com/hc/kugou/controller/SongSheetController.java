@@ -3,7 +3,6 @@ package com.hc.kugou.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.hc.commons.ResponseUtils;
 import com.hc.kugou.bean.custombean.CustomMusicList;
-import com.hc.kugou.bean.custombean.CustomUser;
 import com.hc.kugou.service.SongSheetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -103,6 +102,7 @@ public class SongSheetController {
         try {
             customMusicList = songSheetService.updateSongSheet(customMusicList,session);
             //将修改后的歌单信息返回
+            jsonObject.put("code",1);
             jsonObject.put("customMusicList",customMusicList);
         } catch (Exception e) {
             e.printStackTrace();
