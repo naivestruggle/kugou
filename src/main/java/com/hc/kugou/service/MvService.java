@@ -48,4 +48,11 @@ public interface MvService {
      * @param id    mvID
      */
     void updateMvListenerCount(Integer id);
+
+    /**
+     * 根据查询关键字查询mv
+     * @param searchKey 查询关键字
+     * @return  solrbean
+     */
+    SolrBean<CustomMv> selectMvBySearchKey(String searchKey);
 }

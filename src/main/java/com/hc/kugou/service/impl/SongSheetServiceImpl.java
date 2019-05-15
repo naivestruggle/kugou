@@ -5,6 +5,9 @@ import com.hc.kugou.bean.custombean.CustomMusicList;
 import com.hc.kugou.bean.custombean.CustomUser;
 import com.hc.kugou.mapper.MusiclistMapper;
 import com.hc.kugou.service.SongSheetService;
+import com.hc.kugou.solr.SolrBean;
+import com.hc.kugou.solr.MusicListSolr;
+import org.springframework.beans.factory.annotation.Autowired;
 import com.hc.kugou.service.exception.songsheet.SongSheetAddException;
 import com.hc.kugou.service.exception.songsheet.SongSheetException;
 import com.hc.kugou.service.exception.songsheet.SongSheetExistsException;
@@ -25,9 +28,11 @@ import javax.servlet.http.HttpSession;
 @Transactional(rollbackFor = {SongSheetException.class})
 public class SongSheetServiceImpl implements SongSheetService {
 
+    @Autowired
+    private MusiclistMapper musiclistMapper;
 
-    @Resource
-    MusiclistMapper musiclistMapper;
+    @Autowired
+    private MusicListSolr musicListSolr;
 
 
     @Override
@@ -93,5 +98,16 @@ public class SongSheetServiceImpl implements SongSheetService {
         customMusicList = selectMusicListById(customMusicList.getMusicListId());
 
         return customMusicList;
+    }
+
+    /**
+     * 根据关键字查询歌单集合
+     *
+     * @param searchKey 关键字
+     * @return 歌单集合
+     */
+    @Override
+    public SolrBean<CustomMusicList> selectMusicListSearchBySearchKey(String searchKey) {
+        return musicListSolr.selectMusicListSearchBySearchKey(searchKey,50);
     }
 }

@@ -3,18 +3,11 @@ package com.hc.kugou.config;
 import com.hc.kugou.solr.MusicSolr;
 import com.hc.kugou.solr.MvSolr;
 import com.hc.kugou.solr.SingerSolr;
-import org.springframework.cache.interceptor.KeyGenerator;
+import com.hc.kugou.solr.MusicListSolr;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-import java.lang.reflect.Method;
-import java.rmi.UnknownHostException;
-import java.util.Arrays;
 
 /**
  * @Author:杨鑫虎
@@ -55,6 +48,8 @@ public class MyMvcConfig{
                 registry.addViewController("/queryMv.html").setViewName("queryMv");
                 registry.addViewController("/musicTest.html").setViewName("musicTest");
                 registry.addViewController("/specialColumn.html").setViewName("specialColumn");
+                registry.addViewController("/songsheetInfo.html").setViewName("songsheetInfo");
+                registry.addViewController("/search.html").setViewName("search.html");
                 registry.addViewController("/songsheetlist.html").setViewName("songsheetlist");
                 registry.addViewController("/test01.html").setViewName("test01");
             }
@@ -75,5 +70,10 @@ public class MyMvcConfig{
     @Bean
     public SingerSolr singerSolr(){
         return new SingerSolr();
+    }
+
+    @Bean
+    public MusicListSolr musicListSolr(){
+        return new MusicListSolr();
     }
 }

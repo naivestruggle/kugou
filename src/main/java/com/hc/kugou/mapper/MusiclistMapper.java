@@ -1,5 +1,8 @@
 package com.hc.kugou.mapper;
 
+import com.hc.kugou.bean.custombean.CustomMusicList;import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 import com.hc.kugou.bean.custombean.CustomMusicList;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
@@ -61,4 +64,5 @@ public interface MusiclistMapper {
      * @param customMusicList 歌单对象
      */
     void updateSongSheet(CustomMusicList customMusicList);
+
 }

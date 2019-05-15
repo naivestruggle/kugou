@@ -1,6 +1,9 @@
 package com.hc.kugou.service;
 
 import com.hc.kugou.bean.custombean.CustomMusicList;
+import com.hc.kugou.solr.SolrBean;
+
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,12 +14,18 @@ import javax.servlet.http.HttpSession;
 public interface SongSheetService {
 
     /**
-     * 根据歌单id查询
-     * @param musicListId  歌单id
-     * @throws Exception
+     * 根据id查询歌单对象
+     * @param musicListId
      * @return
      */
     CustomMusicList selectMusicListById(Integer musicListId) throws Exception;
+//    /**
+//     * 根据歌单id查询
+//     * @param musicListId  歌单id
+//     * @throws Exception
+//     * @return
+//     */
+//    CustomMusicList selectMusicListById(Integer musicListId) throws Exception;
 
     /**
      * 添加歌单
@@ -26,6 +35,12 @@ public interface SongSheetService {
      */
     void addSongSheet(CustomMusicList customMusicList,HttpSession session) throws Exception;
 
+    /**
+     * 根据关键字查询歌单集合
+     * @param searchKey 关键字
+     * @return  歌单集合
+     */
+    SolrBean<CustomMusicList> selectMusicListSearchBySearchKey(String searchKey);
     /**
      * 删除歌单
      * @param musicListId 歌单id

@@ -2,6 +2,7 @@ package com.hc.kugou.solr;
 
 import com.hc.kugou.bean.Mv;
 import com.hc.kugou.bean.custombean.CustomMv;
+import com.hc.kugou.solr.solrtool.MusicTool;
 import com.hc.kugou.solr.solrtool.MvTool;
 import org.apache.solr.client.solrj.SolrClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -108,4 +109,19 @@ public class MvSolr {
         return solrBean;
     }
 
+    /**
+     * 根据关键字查询mv
+     * @param searchKey 关键字
+     * @param n 查询条数
+     * @return  solrbean
+     */
+    public SolrBean<CustomMv> selectMvBySearchKey(String searchKey,Integer n) {
+        if(this.solrManager == null) {
+            this.solrManager = SolrManager.getInstance(CustomMv.class, client);
+        }
+        //过滤条件
+        String fq = "mv_name:"+searchKey+" or "+"mv_class_name:"+searchKey;
+        return solrManager.find("mv_name:"+searchKey,new String[]{fq}, new String[]{MvTool.MV_LISTENER_COUNT_FIELD},
+                SolrManager.SORT_RULE_DESC,0,n,null,MvTool.MV_POINT_FIELDS_ALL,MvTool.MV_NAME_FIELD,"<em style='color:#14a9ff;'>","</em>");
+    }
 }

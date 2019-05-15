@@ -1,5 +1,6 @@
 package com.hc.kugou.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.hc.kugou.bean.Mv;
 import com.hc.kugou.bean.custombean.CustomMv;
 import com.hc.kugou.bean.custombean.MvViewBean;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 import java.util.Map;
@@ -69,5 +72,13 @@ public class MvController {
         mvHtml(1,1,model);
     }
 
+    @PostMapping("mv.search.ajax")
+    @ResponseBody
+    public JSONObject fun1(String searchKey){
+        JSONObject jsonObject = new JSONObject();
+        SolrBean<CustomMv> solrBean = mvService.selectMvBySearchKey(searchKey);
+        jsonObject.put("mvSolrBean",solrBean);
+        return jsonObject;
+    }
 
 }

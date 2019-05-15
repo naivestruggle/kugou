@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * @Author:
@@ -95,6 +96,23 @@ public class IndexServiceImpl implements IndexService {
         //添加【热门歌手模块】
         addPopSinger(indexViewBean);
         return indexViewBean;
+    }
+
+    /**
+     * 得到全站搜索框中显示的内容
+     *
+     * @return  显示内容
+     */
+    @Override
+    public String getSearchBoxKey() {
+        //搜索新歌  按访问量排行  拿到第一个
+        SolrBean<CustomMusic> musicSolrBean = musicSolr.selectNewMusic(5,null);
+        if(musicSolrBean.getSolrBeanList() == null || musicSolrBean.getSolrBeanList().size() == 0){
+            return "";
+        }
+        Integer num = musicSolrBean.getSolrBeanList().size();
+        String searchString = musicSolrBean.getSolrBeanList().get(new Random().nextInt(num)).getMusicAudioName();
+        return searchString;
     }
 
     /**

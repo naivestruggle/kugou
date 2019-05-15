@@ -184,6 +184,18 @@ public class MvServiceImpl implements MvService {
 
     }
 
+    /**
+     * 根据查询关键字查询mv
+     *
+     * @param searchKey 查询关键字
+     * @return solrbean
+     */
+    @Override
+    public SolrBean<CustomMv> selectMvBySearchKey(String searchKey) {
+        SolrBean<CustomMv> customMvSolrBean = mvSolr.selectMvBySearchKey(searchKey,50);
+        return customMvSolrBean;
+    }
+
 
     /**
      * 添加top集合

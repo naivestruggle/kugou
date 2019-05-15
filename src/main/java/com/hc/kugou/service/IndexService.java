@@ -15,4 +15,10 @@ public interface IndexService {
      * @return  信息对象
      */
     IndexViewBean showService();
+
+    /**
+     * 得到全站搜索框中显示的内容
+     * @return
+     */
+    String getSearchBoxKey();
 }

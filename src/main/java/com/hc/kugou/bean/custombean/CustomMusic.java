@@ -18,6 +18,10 @@ import java.util.List;
 @Data
 public class CustomMusic extends Music implements Serializable {
     /**
+     * 高亮
+     */
+    private String highlight;
+    /**
      * mv对象
      */
     private CustomMv mv;
@@ -77,9 +81,4 @@ public class CustomMusic extends Music implements Serializable {
         return str.substring(0,str.length()-1);
     }
 
-    @Override
-    public String getMusicAlbumName(){
-        String str = super.getMusicAlbumName();
-        return str.substring(0,str.length()-1);
-    }
 }
