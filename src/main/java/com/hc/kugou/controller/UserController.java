@@ -2,6 +2,7 @@ package com.hc.kugou.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.hc.commons.ResponseUtils;
+import com.hc.commons.StringUtils;
 import com.hc.kugou.bean.custombean.CustomUser;
 import com.hc.kugou.service.UserService;
 import com.hc.kugou.service.exception.CustomException;
@@ -79,7 +80,7 @@ public class UserController {
         try {
             CustomUser loginedUser = userService.loginService(account, password);
             //将用户信息存入session
-            session.setAttribute("loginedUser",loginedUser);
+            session.setAttribute(StringUtils.LOGINED_USER,loginedUser);
             //返回信息
             ResponseUtils.responseNoException(jsonObject);
         } catch (Exception e) {
@@ -94,7 +95,7 @@ public class UserController {
      */
     @GetMapping("user.loginOut.ajax")
     public String loginOutAjax(HttpSession session){
-        session.removeAttribute("loginedUser");
+        session.removeAttribute(StringUtils.LOGINED_USER);
         return "redirect:index.html";
     }
 
