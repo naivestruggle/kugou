@@ -30,9 +30,20 @@
                     <a href="javascript:void(0);" style="color:white;"><div class="login">登录</div></a>
                     <a href="register.html"><div class="regin">注册</div></a>
                 </div>
+                <div class="logined_area">
                 <div class="logined" th:if="${session.loginedUser} != null">
                     <img th:src="${session.loginedUser.userImgpath}!=null?${session.loginedUser.userImgpath}:@{/img/images/defaultHead.jpg}">
                     <span class="userName" th:text="${session.loginedUser.userUsername}" th:title="${session.loginedUser.userUsername}">音梦用户</span>
+                </div>
+                <div style="width: 127px;height: 21px;float: right;margin-top: -11px;"></div>
+                <div class="user_menus" style="display:none;">
+                    <ul>
+                        <li><a target="_blank" href="">
+                            <span class="user_icon1"></span>个人帐号</a></li>
+                        <li><a href="user.loginOut.ajax">
+                            <span class="user_icon2"></span>退出登录</a></li>
+                    </ul>
+                </div>
                 </div>
             </div>
         </div>

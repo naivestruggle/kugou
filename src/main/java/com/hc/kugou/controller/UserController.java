@@ -7,6 +7,7 @@ import com.hc.kugou.service.UserService;
 import com.hc.kugou.service.exception.CustomException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -91,10 +92,10 @@ public class UserController {
      * 退出登录
      * @return  退出登录结果信息
      */
-    @ResponseBody
-    @PostMapping("user.loginOut.ajax")
-    public JSONObject loginOutAjax(){
-        return null;
+    @GetMapping("user.loginOut.ajax")
+    public String loginOutAjax(HttpSession session){
+        session.removeAttribute("loginedUser");
+        return "redirect:index.html";
     }
 
 

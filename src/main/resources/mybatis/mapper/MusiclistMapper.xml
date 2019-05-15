@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hc.kugou.mapper.MusiclistMapper">
+
+    <sql id="allKeysMusicList">
+        ml.music_list_id,
+        ml.music_list_name,
+        ml.music_list_user_id,
+        ml.music_list_user_username,
+        ml.music_list_mood,
+        ml.music_list_update_time,
+        ml.music_list_describe,
+        ml.music_list_head_image,
+        ml.music_list_music_count,
+        ml.music_list_listener_count,
+        ml.music_list_hash_code
+    </sql>
+
+    <sql id="allValuesKeysMusicList">
+     #{musicListId},#{musicListName},#{musicListUserId},#{musicListUserUsername},#{musicListMood},#{musicListUpdateTime},
+     #{musicListDescribe},#{musicListHeadImage},#{musicListMusicCount},#{musicListListenerCount},#{musicListHashCode},
+    </sql>
+
+    <resultMap id="musicList" type="com.hc.kugou.bean.custombean.CustomMusicList" autoMapping="true">
+        <id column="music_list_id" property="musicListId"></id>
+        <collection property="musicsList" ofType="com.hc.kugou.bean.custombean.CustomMusic" autoMapping="true">
+
+        </collection>
+    </resultMap>
+
+
+    <select id="selectMusicListById" resultMap="musicList">
+        select <include refid="allKeysMusicList"></include>,m.music_id,m.music_audio_name from kugou_musiclist ml join kugou_musiclist_music mlm
+        on ml.music_list_id = mlm.music_list_id join kugou_music m
+        on m.music_id = mlm.music_id where ml.music_list_id = #{musicListId}
+    </select>
+
+
+</mapper>

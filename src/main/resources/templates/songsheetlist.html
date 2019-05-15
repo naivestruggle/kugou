@@ -17,21 +17,21 @@
     <!-- 左边的分享 -->
     <div class="left">
         <div class="pic">
-            <img alt="" src="" height="148" width="148">
+            <img alt="" src="" th:src="${customMusicList.musicListHeadImage}" height="148" width="148">
         </div>
         <a href="javascript:void(0)" class="share" title="分享">
             <span><i class="t2"></i>分享</span>
         </a>
         <p class="detail">
-            <span>名称：</span>虐心：爱过你，却终究错过了你<br>
-            <span>创建人：</span>暖心相随<br>
-            <span>心情：</span><br>
-            <span>更新时间：</span>2019-05-12<br>
+            <span>名称：</span>[[${customMusicList.musicListName}]]<br>
+            <span>创建人：</span>[[${customMusicList.musicListUserUsername}]]<br>
+            <span>心情：</span>[[${customMusicList.musicListMood}]]<br>
+            <span>更新时间：</span>[[${customMusicList.musicListUpdateTime}]]<br>
         </p>
         <div class="intro" style="overflow: hidden; padding: 0px; width: 160px;">
             <div class="content" style="width: 160px; height: 300px;">
                 <div class="jspPane" style="padding: 0px; top: 0px; left: 0px; width: 160px;">
-                    <p><span>简介：</span>我们都在结尾走失，多理智……</p>
+                    <p><span>简介：</span>[[${customMusicList.musicListDescribe}]]</p>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
     <!-- 右边的歌曲 -->
     <div class="right">
         <div id="songs" class="list">
-            <strong>&lt;虐心：爱过你，却终究错过了你&gt; - 歌曲列表</strong>
+            <strong>&lt;[[${customMusicList.musicListName}]]&gt; - 歌曲列表</strong>
             <h4 class="dq">
                 <a href="javascript:void(0)" class="play" title="播放">
                     <span><i class="t2"></i>播放</span>
@@ -48,25 +48,14 @@
             </h4>
             <!-- 歌曲 -->
             <ul>
-                <li>
-                    <a title="" href="javascript:;">
+                <li th:each="bean:${customMusicList.musicsList}">
+                    <a title="" href="javascript:;" th:href="@{/simpleSong.html/}+${bean.musicId}">
                         <input type="checkbox" class="checkItem" checked="true">
                         <span class="share" title="分享"></span>
                         <span class="listen" title="播放"></span>
-                        <span class="num">01</span>
+                        <span class="num" th:text="${#numbers.formatInteger(beanStat.count,2)}">01</span>
                         <span class="text">
-      							<i>叶洛洛 - 爱过你这件事</i>
-      						</span>
-                    </a>
-                </li>
-                <li>
-                    <a title="" href="javascript:;">
-                        <input type="checkbox" class="checkItem" checked="true">
-                        <span class="share" title="分享"></span>
-                        <span class="listen" title="播放"></span>
-                        <span class="num">02</span>
-                        <span class="text">
-      							<i>叶洛洛 - 爱过你这件事</i>
+      							<i th:text="${bean.musicAudioName}">叶洛洛 - 爱过你这件事</i>
       						</span>
                     </a>
                 </li>

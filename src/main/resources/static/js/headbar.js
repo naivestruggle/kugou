@@ -19,6 +19,23 @@ secondMenu.mouseout(function () {
     $(this).css("display", "none");
 });
 
+
+//用户menu
+
+$(".logined_area").hover(
+    function () {
+        $(".user_menus").css({
+            "display" : "block"
+        });
+    },
+    function () {
+        $(".user_menus").css({
+            "display" : "none"
+        });
+    }
+);
+
+
 // function $(id){
 //     return document.getElementById(id);
 // }
@@ -130,6 +147,16 @@ function loginInputInfoAjax(obj) {
     // console.log("autoLogin:"+autoLogin)
     // console.log("----------------------------------")
 }
+
+$("#KgPopupUserPwd").keypress(function (event) {
+    if($(this).val() != null && $(this).val() != ""){
+        var e = event || window.event
+        if (e.keyCode == 13){
+            login();
+        }
+    }
+});
+
 
 //登录
 function login() {
