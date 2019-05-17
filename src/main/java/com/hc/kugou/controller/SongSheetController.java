@@ -2,6 +2,7 @@ package com.hc.kugou.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.hc.commons.ResponseUtils;
+import com.hc.commons.StringUtils;
 import com.hc.kugou.bean.custombean.CustomMusicList;
 import com.hc.kugou.service.SongSheetService;
 import com.hc.kugou.solr.SolrBean;
@@ -58,7 +59,6 @@ public class SongSheetController {
     @ResponseBody
     @PostMapping("musiclist.search.ajax")
     public JSONObject fun1(String searchKey){
-        System.out.println("进来了："+searchKey);
         JSONObject jsonObject = new JSONObject();
         SolrBean<CustomMusicList> lists = songSheetService.selectMusicListSearchBySearchKey(searchKey);
         jsonObject.put("lists",lists);

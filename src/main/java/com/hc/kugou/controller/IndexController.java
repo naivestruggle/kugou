@@ -95,24 +95,8 @@ public class IndexController {
         //将搜索关键词放入request域
         model.addAttribute("searchKey",searchKey);
 
-
-        //将关键词存入cookie中
-        //取出cookie的值
-        String cookieValue = CookieUtils.getCookieValueByName(COOKIE_HISTORY_SEARCH,request);
-        Cookie cookie = null;
-        //将字符串中的空格去掉
-        searchKey = searchKey.replace(" ","");
-        if(cookieValue == null){
-            cookie = new Cookie(COOKIE_HISTORY_SEARCH,searchKey+CookieUtils.SEPARATOR);
-        }else {
-            cookie = new Cookie(COOKIE_HISTORY_SEARCH,cookieValue+searchKey+CookieUtils.SEPARATOR);
-        }
-        //默认保存7天历史搜索
-        cookie.setMaxAge(7*24*60*60);
-        response.addCookie(cookie);
-
         //查询单曲
-        SolrBean<CustomMusic> solrBean = musicService.selectMusicBySearchKey(searchKey);
+        SolrBean<CustomMusic> solrBean = musicService.selectMusicBySearchKey(searchKey,50);
         model.addAttribute("solrMusicList",solrBean);
         return "search";
     }

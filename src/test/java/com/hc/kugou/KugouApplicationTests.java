@@ -1,6 +1,7 @@
 package com.hc.kugou;
 
 import com.hc.commons.Code;
+import com.hc.commons.StringUtils;
 import com.hc.kugou.mapper.*;
 import com.hc.kugou.service.IndexService;
 import com.hc.kugou.solr.MusicSolr;
@@ -57,16 +58,8 @@ public class KugouApplicationTests {
 
     @Test
     public void updateMusicSongName(){
-//        //78142
-//        for(long i=1;i<=78142;i++){
-//            Music music = musicMapper.selectMusicById(i);
-//            if(StringUtils.isEmpty(music.getMusicSongName())){
-//                String name = music.getMusicAudioName();
-//                name = name.split("-")[1].trim();
-//                musicMapper.updateMusicSongName(i,name);
-//            }
-//            System.out.println(i);
-//        }
+        String str = "                            原创 - 仓央嘉措情歌 周;";
+        System.out.println(StringUtils.getRealSearchKey(str));
     }
 
     @Test

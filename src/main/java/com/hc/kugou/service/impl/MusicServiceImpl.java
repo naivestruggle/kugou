@@ -30,8 +30,8 @@ public class MusicServiceImpl implements MusicService {
      * @return 返回solrbean
      */
     @Override
-    public SolrBean<CustomMusic> selectMusicBySearchKey(String searchKey){
-        SolrBean<CustomMusic> solrBean = musicSolr.selectMusicBySearchKey(searchKey,50);
+    public SolrBean<CustomMusic> selectMusicBySearchKey(String searchKey,Integer n){
+        SolrBean<CustomMusic> solrBean = musicSolr.selectMusicBySearchKey(searchKey,n);
         return solrBean;
     }
 }

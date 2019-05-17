@@ -116,4 +116,13 @@ public class StringUtils {
         }
     }
 
+    public static String getRealSearchKey(String searchKey){
+        return searchKey.replace(" ","").replace("-","").replace(";","").replace("\"","").replace("'","").replace("(","")
+                .replace(")","").replace("（","").replace("）","").replace("{","").replace("}","").replace("[","").replace("]","")
+                .replace("!","").replace("@","").replace("#","").replace("$","").replace("%","").replace("^","").replace("&","")
+                .replace("*","").replace("=","").replace("+","").replace("\\","").replace("/","").replace("、","").replace("‘","")
+                .replace("“","").replace("：","").replace(":","").replace("<","").replace(">","").replace("《","").replace("》","").replace("。","")
+                .replace(".","").replace(",","").replace("，","").replace("·","").replace("`","").replace("~","").replace("?","");
+    }
+
 }

@@ -13,10 +13,7 @@ import java.sql.Date;
  */
 @Data
 public class MusicList implements Serializable {
-    /**
-     * 高亮
-     */
-    private String highlight;
+
     /**
      * hashcode  solr中的
      */

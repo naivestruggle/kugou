@@ -92,6 +92,6 @@ public class MusicSolr {
                 + "music_class_name:"+searchKey+" or " + "music_album_name:"+searchKey+" or "+"music_author_name:"+searchKey;
         //"music_audio_name:毛不易 or music_song_name:毛不易 or music_class_name:毛不易 or music_album_name:毛不易 or music_author_name:毛不易";
         return solrManager.find("music_audio_name:"+searchKey,new String[]{fq}, new String[]{MusicTool.MUSIC_LISTENER_COUNT_FIELD},
-                SolrManager.SORT_RULE_DESC,0,50,null,MusicTool.MUSIC_POINT_FIELDS_ALL,MusicTool.MUSIC_AUDIO_NAME,"<em>","</em>");
+                SolrManager.SORT_RULE_DESC,0,n,null,MusicTool.MUSIC_POINT_FIELDS_ALL,MusicTool.MUSIC_AUDIO_NAME,"<em>","</em>");
     }
 }

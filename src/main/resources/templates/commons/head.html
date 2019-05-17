@@ -13,13 +13,19 @@
             <h1 class="logo">
                 <a href="#"><img style="width:150px;margin-top: -20px;" th:src="@{/img/index/logo.png}"/></a>
             </h1>
-            <div class="search">
-                <div class="search_input">
+            <div class="search" id="head_search_box">
+                <div class="search_input" id="head_search_input">
                     <form id="searchForm1" method="post"></form>
                     <input type="text" class="searchAllBox" id="searchAllBox1" name="searchKey" th:value="${searchKey}"/>
                     <div class="search_btn" id="searchAllBox1SubmitButton">
                         <i class="search_icon"></i>
                     </div>
+                </div>
+                <!-- 搜索字推荐 -->
+                <div class="search_recommend_head hide" id="search_recommend_head" style="display: none;">
+                </div>
+                <!-- 历史纪录 -->
+                <div class="history_head" id="history_head" style="display: none;">
                 </div>
             </div>
             <div class="head_right">

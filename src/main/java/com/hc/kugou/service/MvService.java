@@ -54,5 +54,5 @@ public interface MvService {
      * @param searchKey 查询关键字
      * @return  solrbean
      */
-    SolrBean<CustomMv> selectMvBySearchKey(String searchKey);
+    SolrBean<CustomMv> selectMvBySearchKey(String searchKey,Integer n);
 }

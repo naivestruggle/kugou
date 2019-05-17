@@ -15,6 +15,10 @@ import java.util.List;
 @Data
 public class CustomMusicList extends MusicList {
     /**
+     * 高亮
+     */
+    private String highlight;
+    /**
      * 歌曲集合
      */
     private List<CustomMusic> musicsList;
