@@ -7,13 +7,63 @@
 <body>
 <script src="../js/jquery.js" type="text/javascript" th:src="@{/js/jquery-3.2.1.js}" charset="utf-8"></script>
 <button onclick="addSongSheet()">添加歌单</button>
+<button onclick="updateSongSheet()">修改歌单</button>
+<button onclick="delSongSheet()">删除歌单</button>
+<button onclick="delSong()">删除歌曲</button>
+<button onclick="addSong()">添加歌曲</button>
 <script>
     function addSongSheet(){
         var data = {
-            "musicListName" : "日语"
+            "musicListName" : "仙剑"
         };
 
         $.post("song.addSongSheet.ajax",data,function (data) {
+            console.log(data);
+        });
+    }
+
+
+    function updateSongSheet() {
+
+        var data = {
+            "musicListId": 6,
+            "musicListName":"日语啊",
+            "musicListMood": "smile"
+        };
+
+        $.post("song.updateSongSheet.ajax",data,function (data) {
+            console.log(data);
+        })
+    }
+
+    function delSongSheet() {
+        var data = {
+            "musicListId" : 5
+        };
+
+        $.post("song.delSongSheet.ajax",data,function (data) {
+            console.log(data);
+        });
+    }
+
+    function addSong() {
+        var data = {
+            "musicListId":4,
+            "musicId":78148
+        };
+
+        $.post("song.addMusicToSongSheet.ajax",data,function (data) {
+            console.log(data);
+        });
+    }
+
+    function delSong() {
+        var data = {
+            "musicListId":4,
+            "musicId":78148
+        };
+
+        $.post("song.delMusicFromSongSheet.ajax",data,function (data) {
             console.log(data);
         });
     }

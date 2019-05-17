@@ -16,7 +16,8 @@
         ml.music_list_music_count,
         ml.music_list_listener_count,
         ml.music_list_hash_code,
-        ml.music_list_collect_count
+        ml.music_list_collect_count,
+        ml.music_list_status
     </sql>
 
     <sql id="allKeys">
@@ -30,12 +31,14 @@
         music_list_head_image,
         music_list_music_count,
         music_list_listener_count,
-        music_list_hash_code
+        music_list_hash_code,
+        music_list_collect_count,
+        music_list_status
     </sql>
 
     <sql id="allValues">
      #{musicListId},#{musicListName},#{musicListUserId},#{musicListUserUsername},#{musicListMood},#{musicListUpdateTime},
-     #{musicListDescribe},#{musicListHeadImage},#{musicListMusicCount},#{musicListListenerCount},#{musicListHashCode},
+     #{musicListDescribe},#{musicListHeadImage},#{musicListMusicCount},#{musicListListenerCount},#{musicListHashCode},#{musicListCollectCount},#{musicListStatus}
     </sql>
 
     <resultMap id="musicList" type="com.hc.kugou.bean.custombean.CustomMusicList" autoMapping="true">
@@ -47,8 +50,8 @@
 
 
     <select id="selectMusicListById" resultMap="musicList">
-        select <include refid="allKeysMusicList"></include>,m.music_id,m.music_audio_name from kugou_musiclist ml join kugou_musiclist_music mlm
-        on ml.music_list_id = mlm.music_list_id join kugou_music m
+        select <include refid="allKeysMusicList"></include>,m.music_id,m.music_audio_name from kugou_musiclist ml left join kugou_musiclist_music mlm
+        on ml.music_list_id = mlm.music_list_id left join kugou_music m
         on m.music_id = mlm.music_id where ml.music_list_id = #{musicListId}
     </select>
 
@@ -61,13 +64,13 @@
         update kugou_musiclist set 
         <trim suffixOverrides=",">
             <if test="musicListName != null">
-                music_list_name = #{musicListName}
+                music_list_name = #{musicListName},
             </if>
             <if test="musicListMood != null">
-                music_list_mood = #{musicListMood}
+                music_list_mood = #{musicListMood},
             </if>
             <if test="musicListDescribe != null">
-                music_list_describe = #{musicListDescribe}
+                music_list_describe = #{musicListDescribe},
             </if>
         </trim>
         where music_list_id = #{musicListId}

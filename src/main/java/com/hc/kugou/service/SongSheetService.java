@@ -56,4 +56,21 @@ public interface SongSheetService {
      * @throws Exception
      */
     CustomMusicList updateSongSheet(CustomMusicList customMusicList, HttpSession session) throws Exception;
+
+    /**
+     * 添加歌曲到歌单中
+     * @param musicId   歌曲id
+     * @param musicListId  歌单id
+     * @param session
+     */
+    void addMusicToSongSheet(Integer musicListId, Integer musicId, HttpSession session) throws Exception;
+
+    /**
+     * 将歌曲从歌单中删除
+     * @param musicId 歌曲id
+     * @param musicListId  歌单id
+     * @param session
+     * @throws Exception
+     */
+    void delMusicFromSongSheet(Integer musicListId,Integer musicId, HttpSession session)throws Exception;
 }

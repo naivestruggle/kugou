@@ -69,4 +69,9 @@ public class MusicList implements Serializable {
      * 歌单收藏量
      */
     private Long musicListCollectCount;
+
+    /**
+     * 歌单状态
+     */
+    private Integer musicListStatus;
 }
