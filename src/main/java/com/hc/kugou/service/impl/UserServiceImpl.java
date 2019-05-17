@@ -65,6 +65,7 @@ public class UserServiceImpl implements UserService {
     public CustomUser loginService(String account,String password) throws Exception {
         //登录支持QQ 微信 手机号 酷狗号 + 密码
         CustomUser keyUser = new CustomUser();
+        account = account.trim();
         //查询数据库  看用户是否存在
         if(Regx.regxTelphone(account)){
             //如果是电话
@@ -78,7 +79,7 @@ public class UserServiceImpl implements UserService {
         }
 
         //两次加密密码
-        keyUser.setUserPassword(MD5.parseMD5(MD5.parseMD5(password)));
+        keyUser.setUserPassword(MD5.parseMD5(MD5.parseMD5(password.trim())));
 
         CustomUser resultUser = userMapper.selectByNotNullFields(keyUser);
 
@@ -100,15 +101,15 @@ public class UserServiceImpl implements UserService {
         if(user == null){
             throw new UnknownUserException("用户错误");
         }
-        if(user.getUserTel() != null && !Regx.regxTelphone(user.getUserTel())){
+        if(user.getUserTel() != null && !Regx.regxTelphone(user.getUserTel().trim())){
             throw new UnknownTelException("手机号格式不正确");
         }
 
-        if(user.getUserPassword() != null && !Regx.regxPassword(user.getUserPassword())){
+        if(user.getUserPassword() != null && !Regx.regxPassword(user.getUserPassword().trim())){
             throw new UnknownPasswordException("密码格式不正确,6-18位！");
         }
 
-        if(user.getUserPassword2() != null && user.getUserPassword() != null && !user.getUserPassword().equals(user.getUserPassword2())){
+        if(user.getUserPassword2() != null && user.getUserPassword() != null && !user.getUserPassword().trim().equals(user.getUserPassword2().trim())){
             throw new UnknownPasswordException("两次密码不一致");
         }
     }
@@ -123,26 +124,26 @@ public class UserServiceImpl implements UserService {
         if(user == null){
             throw new UnknownUserException("用户为空");
         }
-        if(user.getUserTel() == null || "".equals(user.getUserTel())){
+        if(user.getUserTel() == null || "".equals(user.getUserTel().trim())){
             throw new UnknownTelException("手机号不能为空");
         }
-        if(user.getVerifyCode() == null || "".equals(user.getVerifyCode())){
+        if(user.getVerifyCode() == null || "".equals(user.getVerifyCode().trim())){
             throw new UnknownVerifyException("验证码不能为空");
         }
-        if(user.getUserPassword() == null || "".equals(user.getUserPassword())){
+        if(user.getUserPassword() == null || "".equals(user.getUserPassword().trim())){
             throw new UnknownPasswordException("密码不能为空");
         }
-        if(user.getUserPassword2() == null || "".equals(user.getUserPassword2())){
+        if(user.getUserPassword2() == null || "".equals(user.getUserPassword2().trim())){
             throw new UnknownPasswordException("确认密码不能为空");
         }
         //验证验证码
-        if(!Regx.regxVerifCode(user.getVerifyCode(),sessionVerifyCode)){
+        if(!Regx.regxVerifCode(user.getVerifyCode().trim(),sessionVerifyCode)){
             throw new UnknownVerifyException("验证码错误");
         }
 
         //如果能注册   向数据库中添加用户记录
         //密码加密两次
-        user.setUserPassword(MD5.parseMD5(MD5.parseMD5(user.getUserPassword())));
+        user.setUserPassword(MD5.parseMD5(MD5.parseMD5(user.getUserPassword().trim())));
         //设置用户名
         user.setUserUsername(Code.createUserName("音梦人",""));
         //设置用户账号
