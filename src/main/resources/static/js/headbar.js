@@ -126,7 +126,7 @@ function loginInputInfoAjax(obj) {
         password: userPassword
     };
 
-    $.post("user.regxLoginInputInfo.ajax", data, function (data) {
+    $.post(rootPath+"user.regxLoginInputInfo.ajax", data, function (data) {
         if(data.code == 1){
             $("#KgPopupLoginBtn").removeClass("not_allow_login");
             $("#errorMsg").html("");
@@ -158,7 +158,7 @@ function login() {
         account: $("#KgPopupUserName").val(),
         password: $("#KgPopupUserPwd").val()
     };
-    $.post("user.login.ajax",data,function (data) {
+    $.post(rootPath+"user.login.ajax",data,function (data) {
         if(data.code == 1){
             //将账号和密码保存起来
             if(isAutoLogin){

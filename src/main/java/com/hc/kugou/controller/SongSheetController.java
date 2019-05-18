@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.hc.commons.ResponseUtils;
 import com.hc.commons.StringUtils;
 import com.hc.kugou.bean.custombean.CustomMusicList;
-import com.hc.kugou.bean.custombean.CustomUser;
 import com.hc.kugou.service.SongSheetService;
 import com.hc.kugou.solr.SolrBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -112,6 +111,9 @@ public class SongSheetController {
 
     /**
      * 编辑歌单信息
+     * @param customMusicList  歌单
+     * @param session
+     * @return
      */
     @ResponseBody
     @PostMapping("song.updateSongSheet.ajax")
@@ -121,6 +123,7 @@ public class SongSheetController {
         try {
             customMusicList = songSheetService.updateSongSheet(customMusicList,session);
             //将修改后的歌单信息返回
+            jsonObject.put("code",1);
             jsonObject.put("customMusicList",customMusicList);
         } catch (Exception e) {
             e.printStackTrace();
@@ -129,5 +132,46 @@ public class SongSheetController {
         return jsonObject;
     }
 
+    /**
+     * 将歌曲添加到歌单
+     * @param musicId  歌曲id
+     * @param musicListId  歌单id
+     * @param session
+     * @return
+     */
+    @ResponseBody
+    @PostMapping("song.addMusicToSongSheet.ajax")
+    public JSONObject addMusicToSongSheet(Integer musicListId,Integer musicId,HttpSession session){
+        jsonObject = new JSONObject();
+        try {
+            songSheetService.addMusicToSongSheet(musicListId,musicId,session);
+            ResponseUtils.responseNoException(jsonObject);
+        } catch (Exception e) {
+            e.printStackTrace();
+            ResponseUtils.responseException(jsonObject,e);
+        }
+        return jsonObject;
+    }
+
+    /**
+     * 将歌曲从歌单中删除
+     * @param musicId  歌曲id
+     * @param musicListId 歌单id
+     * @param session
+     * @return
+     */
+    @ResponseBody
+    @PostMapping("song.delMusicFromSongSheet.ajax")
+    public JSONObject delMusicFromSongSheet(Integer musicListId,Integer musicId,HttpSession session){
+        jsonObject = new JSONObject();
+        try {
+            songSheetService.delMusicFromSongSheet(musicListId,musicId,session);
+            ResponseUtils.responseNoException(jsonObject);
+        } catch (Exception e) {
+            e.printStackTrace();
+            ResponseUtils.responseException(jsonObject,e);
+        }
+        return jsonObject;
+    }
 
 }

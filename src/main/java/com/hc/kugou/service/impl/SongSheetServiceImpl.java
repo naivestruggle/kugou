@@ -5,6 +5,7 @@ import com.hc.kugou.bean.custombean.CustomMusicList;
 import com.hc.kugou.bean.custombean.CustomUser;
 import com.hc.kugou.mapper.MusiclistMapper;
 import com.hc.kugou.service.SongSheetService;
+import com.hc.kugou.service.exception.music.MusicExistsException;
 import com.hc.kugou.solr.SolrBean;
 import com.hc.kugou.solr.MusicListSolr;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.sql.Date;
 
 
 /**
@@ -55,6 +57,7 @@ public class SongSheetServiceImpl implements SongSheetService {
         //设置用户id和用户名
         customMusicList.setMusicListUserId(userId);
         customMusicList.setMusicListUserUsername(userName);
+        customMusicList.setMusicListUpdateTime(new Date(System.currentTimeMillis()));
         //查询当前用户是否已创建该歌单
         Integer count = musiclistMapper.selectMusiclistCountByIdName(customMusicList);
         if(count > 0){
@@ -63,8 +66,8 @@ public class SongSheetServiceImpl implements SongSheetService {
         //添加歌单
         musiclistMapper.addSongSheet(customMusicList);
         //查询歌单是否已创建
-        CustomMusicList musicList = musiclistMapper.selectMusicListById(customMusicList.getMusicListId());
-        if(musicList == null){
+        count = musiclistMapper.countMusicListById(customMusicList.getMusicListId());
+        if(count == 0){
             throw new SongSheetAddException("新建歌单失败，请稍后再试");
         }
 
@@ -98,6 +101,27 @@ public class SongSheetServiceImpl implements SongSheetService {
         customMusicList = selectMusicListById(customMusicList.getMusicListId());
 
         return customMusicList;
+    }
+
+    @Override
+    public void addMusicToSongSheet( Integer musicListId, Integer musicId, HttpSession session) throws Exception {
+        if(session.getAttribute(StringUtils.LOGINED_USER) == null){
+            throw new UserNotExistsException("用户未登录");
+        }
+        //查询歌单中是否存在该歌曲
+        Integer count = musiclistMapper.queryMusicIsExists(musicListId,musicId);
+        if(count > 0){
+            throw new MusicExistsException("歌曲已存在");
+        }
+        musiclistMapper.addMusicToSongSheet(musicListId,musicId);
+    }
+
+    @Override
+    public void delMusicFromSongSheet(Integer musicListId, Integer musicId,  HttpSession session) throws Exception {
+        if(session.getAttribute(StringUtils.LOGINED_USER) == null){
+            throw new UserNotExistsException("用户未登录");
+        }
+        musiclistMapper.delMusicFromSongSheet(musicListId,musicId);
     }
 
     /**
