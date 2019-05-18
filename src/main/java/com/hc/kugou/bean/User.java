@@ -26,7 +26,7 @@ public class User implements Serializable {
      */
     private Integer userId;
     /**
-     * 用户名
+     * 昵称
      */
     private String userUsername;
     /**
@@ -83,4 +83,13 @@ public class User implements Serializable {
      * 账号状态
      */
     private Integer userStatus;
+
+    /**
+     * 音梦ID
+     */
+    private String userInmengId;
+    /**
+     * 安全问题
+     */
+    private String userSafeQuestion;
 }

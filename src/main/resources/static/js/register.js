@@ -280,9 +280,9 @@ function init() {
     var mou5 = document.getElementById("mou5");
     mou5.onclick = function () {
         if (this.checked == true) {
-            zc.style.background = "#3db9ec";
+            $("#register").removeClass("not_allow_send_code");
         } else {
-            zc.style.background = "#bbb";
+            $("#register").addClass("not_allow_send_code");
         }
     }
 }
