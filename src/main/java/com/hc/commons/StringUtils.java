@@ -31,7 +31,7 @@ public class StringUtils {
     /**
      * 用户歌单前缀
      */
-    public static final String PLAT_SONG_LIST_PRE = "playSongListPre";
+    public static final String PLAT_SONG_LIST_PRE = "indream_playSongListPre";
     /**
      * 编辑资料
      */
@@ -203,5 +203,14 @@ public class StringUtils {
      */
     public static boolean isEmpty(String targetString){
         return com.alibaba.druid.util.StringUtils.isEmpty(targetString);
+    }
+
+    /**
+     * 得到一个存储在redis中的播放列表的key
+     * @param userId    用户id
+     * @return  key
+     */
+    public static String getRedisMusicPlayListKey(Integer userId) {
+        return userId + "_" + PLAT_SONG_LIST_PRE;
     }
 }

@@ -151,17 +151,59 @@
 				<!--分享-->
 				<a href="" class="pb_share"></a>
 				<!--播放列表-->
-				<a href="" class="list">
+				<a href="javascript:void(0);" class="list" id="music_list_show_button">
 					<span class="list_count">1</span>
 				</a>
 			</div>
 			<!--播放列表 隐藏面板-->
 			<div class="mod-playlist">
 				<div class="song-box">
-					<div class="box-header"></div>
-					<div class="musicbox"></div>
+					<div class="box-header">
+						<div class="title">播放队列/<span>1</span></div>
+						<div class="action-box fr">
+							<span class="icon list-menu-icon-del clear" title="清空"></span>
+							<span class="line"></span><span id="close_musiclist_panel" class="icon list-menu-icon-close closePlayList" title="关闭播放队列"></span>
+						</div>
+					</div>
+					<div id="musicbox" class="musicbox ">
+						<div class="songjsAction" style="overflow: hidden; padding: 0px; width: 470px;">
+							<div class="jspContainer" style="width: 470px; height: 360px;">
+								<div class="jspPane" style="top: 0px; left: 0px; width: 470px;">
+									<div class="musiclist">
+
+										<li class="active" onmouseover="liMouserover(this)" onmouseout="liMouserout(this)">
+											<div class="musiclist-item clearfix">
+												<span class="musiclist-number">1</span>
+												<div class="musiclist-name">
+													<span class="musiclist-songname-txt" title="暗夜精灵">暗夜精灵</span>
+													<div class="mod-list-menu">
+														<a href="javascript:;" class="icon list-menu-item icon-playbar-download" title="下载">
+															<i class="icon list-menu-icon-down"></i>
+															<span class="icon_txt">下载</span>
+														</a>
+														<a href="javascript:;" class="icon list-menu-item icon-playbar-share" title="分享">
+															<i class="icon list-menn-icon-share"></i>
+															<span class="icon_txt">分享</span>
+														</a>
+														<a href="javascript:;" class="icon list-menu-item list-menu-icon-del" title="删除歌曲">
+															<i class="icon list-menu-icon-add"></i>
+															<span class="icon_txt">删除</span>
+														</a>
+													</div>
+												</div>
+												<div class="musiclist-artist" title="夏婉安">夏婉安</div>
+												<div class="musiclist-time">04:45</div>
+											</div>
+										</li>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
+			<!-- 播放列表框结束 -->
 		</div>
 		<div class="bot_bot">
 			<span class="bot1"></span>

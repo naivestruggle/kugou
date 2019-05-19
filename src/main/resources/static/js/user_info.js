@@ -1,4 +1,8 @@
  $(function () {
+ 	if($("#msg").val() != ""){
+ 		msgBoxOne($("#msg").val());
+	}
+
  	//菜单的li点击事件
     $(".tab>li").click(function () {
         $(this).addClass("active").siblings("li").removeClass("active");
@@ -118,7 +122,7 @@
 	 var data = {
 		 provinceId : provinceId
 	 };
-	 $.post(rootPath+"user.createCity.ajax",data,function (data) {
+	 $.post(rootPath+"/user.createCity.ajax",data,function (data) {
 	 	 var map = data.cityMap;
 	 	 for(var key in map){
 	 	 	var value = map[key];
@@ -146,7 +150,7 @@
 		 cityId : cityId
 	 };
 	 //市生成完毕  生成县
-	 $.post(rootPath+"user.createDistricts.ajax",data,function (data) {
+	 $.post(rootPath+"/user.createDistricts.ajax",data,function (data) {
 		 var map1 = data.districtsMap;
 		 for(var key1 in map1){
 			 var value1 = map1[key1];
@@ -184,7 +188,7 @@
      var data = {
          verifyType : verifyType
      };
-     $.post("verify.createVerifyImage.ajax",data,function (data) {
+     $.post(rootPath+"/verify.createVerifyImage.ajax",data,function (data) {
          var path = rootPath+data.verifyImage;
 		 path = path.replace("//","/");
         if(verifyType == 1){
@@ -249,7 +253,7 @@
  function readFile(){
 	 var file = this.files[0];//获取上传文件列表中第一个文件
 	 if(!/image\/\w+/.test(file.type)){
-		 alert("文件必须为图片！");
+		 msgBoxOne("文件必须为图片！");
 		 return false;
 	 }
 	 var reader = new FileReader();//实例一个文件对象
@@ -281,7 +285,7 @@
 		var nickname1 = $("#nickname").val();
 		var nickname2 = $("#nickname").attr("placeholder");
 		if(nickname1 == "" && nickname2 == ""){
-			alert("请输入昵称，让大家记住你");
+			msgBoxOne("请输入昵称，让大家记住你");
 			createVerify(1);
 			return;
 		}
@@ -320,25 +324,25 @@
 			});
 		}
 		if (addr == ""){
-			alert("请填写地区");
+			msgBoxOne("请填写地区");
 			createVerify(1);
 			return;
 		}
 		//个性签名
 		var intro = $("#intro").val();
 		if(intro.length > 500){
-			alert("个性签名不能超过500个字符");
+			msgBoxOne("个性签名不能超过500个字符");
 			createVerify(1);
 			return;
 		}
 		//验证码
 		var updateInfoVerifyCode = $("#updateInfoVerifyCode").val();
 		if(updateInfoVerifyCode == ""){
-			alert("请填写验证码");
+			msgBoxOne("请填写验证码");
 			createVerify(1);
 			return;
 		}else if (updateInfoVerifyCode.length != 4){
-			alert("验证码错误");
+			msgBoxOne("验证码错误");
 			createVerify(1);
 			return;
 		}
@@ -350,18 +354,18 @@
 			userSignature : intro,
 			verifyCode : updateInfoVerifyCode
 		};
-		$.post(rootPath+"user.updateInfo.ajax",data,function (data) {
+		$.post(rootPath+"/user.updateInfo.ajax",data,function (data) {
 			var code = data.code;
 			if(code == 0){
-				alert(data.errorMsg);
+				msgBoxOne(data.errorMsg);
 				createVerify(1);
 			}else if (code == -1){
-				alert("系统繁忙，请稍后再试")
+				msgBoxOne("系统繁忙，请稍后再试")
 				createVerify(1);
 			} else if(code == 1){
 				var bean = data.loginedUser;
 				//修改成功
-				alert("修改成功");
+				msgBoxOne("修改成功");
 				//更新头部用户名显示
 				var head_UserName = $("#head_UserName");
 				head_UserName.html(bean.userUsername);
@@ -445,22 +449,22 @@
 		var agaPwd = $("#pwd3").val();
 		var alterPwdVerifyCode = $("#alterPwdVerifyCode").val();
 		if(oldPwd.length > 18 || oldPwd.length < 6){
-			alert("请输入正确格式的原密码");
+			msgBoxOne("请输入正确格式的原密码");
 			createVerify(2);
 			return;
 		}
 		if(newPwd.length > 18 || newPwd.length < 6){
-			alert("请输入正确格式的新密码");
+			msgBoxOne("请输入正确格式的新密码");
 			createVerify(2);
 			return;
 		}
 		if(newPwd != agaPwd){
-			alert("两次输入的密码不一致");
+			msgBoxOne("两次输入的密码不一致");
 			createVerify(2);
 			return;
 		}
 		if(alterPwdVerifyCode.length != 4){
-			alert("请输入正确的验证码");
+			msgBoxOne("请输入正确的验证码");
 			createVerify(2);
 			return;
 		}
@@ -470,16 +474,16 @@
 			userPassword2 : agaPwd,
 			verifyCode : alterPwdVerifyCode
 		};
-		$.post(rootPath+"user.alterPwd.ajax",data,function (data) {
+		$.post(rootPath+"/user.alterPwd.ajax",data,function (data) {
 			var code = data.code;
 			if(code == -1){
-				alert("系统繁忙，请稍后再试")
+				msgBoxOne("系统繁忙，请稍后再试")
 				createVerify(2);
 			}else if (code == 0){
-				alert(data.errorMsg);
+				msgBoxOne(data.errorMsg);
 				createVerify(2);
 			} else if (code == 1){
-				alert("修改成功，请重新登录");
+				msgBoxOne("修改成功，请重新登录");
 				createVerify(2);
 				location.href = rootPath;
 			}
@@ -496,21 +500,21 @@
 		var new_email_box = $("#new_email_box").val();
 		var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
 		if(!reg.test(new_email_box)){
-			alert("邮箱格式不正确");
+			msgBoxOne("邮箱格式不正确");
 			return;
 		}
 		var data = {
 			account : new_email_box,
 			type : "4"
 		};
-		$.post(rootPath+"user.sendVerifyCode.ajax",data,function (data) {
+		$.post(rootPath+"/user.sendVerifyCode.ajax",data,function (data) {
 			var code = data.code;
 			if(code == -1){
-				alert("系统繁忙，请稍后再试");
+				msgBoxOne("系统繁忙，请稍后再试");
 			}else if (code == 0){
-				alert(data.msg);
+				msgBoxOne(data.msg);
 			} else if (code == 1){
-				alert("验证码发送成功，请注意查收");
+				msgBoxOne("验证码发送成功，请注意查收");
 				$("#sendAlterEmailAddrVerifyCode").addClass("not_send_email");
 				var i = 60;
 				alterTimeSendEmailCode(i);
@@ -542,15 +546,15 @@
 		var oldPwd = $("#pwd6").val();
 		var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
 		if(!reg.test(account)){
-			alert("邮箱格式不正确");
+			msgBoxOne("邮箱格式不正确");
 			return;
 		}
 		if(verifyCode.length != 6){
-			alert("请输入正确的验证码");
+			msgBoxOne("请输入正确的验证码");
 			return;
 		}
 		if(oldPwd.length > 18 || oldPwd.length < 6){
-			alert("请输入正确的密码");
+			msgBoxOne("请输入正确的密码");
 			return;
 		}
 		var data = {
@@ -558,15 +562,15 @@
 			verifyCode : verifyCode,
 			oldPwd : oldPwd
 		};
-		$.post(rootPath+"user.alterEmail.ajax",data,function (data) {
+		$.post(rootPath+"/user.alterEmail.ajax",data,function (data) {
 			var code = data.code;
 			if(code == -1){
-				alert("系统繁忙，请稍后再试");
+				msgBoxOne("系统繁忙，请稍后再试");
 			}else if(code == 0){
-				alert(data.msg);
+				msgBoxOne(data.msg);
 			}else if(code == 1){
 				//修改成功
-				alert("修改成功");
+				msgBoxOne("修改成功");
 				//修改邮箱显示
 				$("#userEmailShowSpan").html(data.loginedUser.userEmail);
 				//清空当前模版数据
@@ -587,14 +591,14 @@
  //原手机号的发送验证码按钮点击事件
  function onClickSendOldTelVerifyCodeButton(){
  	$("#sendBtn").bind("click",function () {
-		$.post(rootPath+"user.sendVerifyCode.ajax",{type:"5"},function (data) {
+		$.post(rootPath+"/user.sendVerifyCode.ajax",{type:"5"},function (data) {
 			var code = data.code;
 			if(code == -1){
-				alert("系统繁忙，请稍后再试");
+				msgBoxOne("系统繁忙，请稍后再试");
 			}else if(code == 0){
-				alert(data.msg);
+				msgBoxOne(data.msg);
 			}else if(code == 1){
-				alert("验证码发送成功，请注意查收");
+				msgBoxOne("验证码发送成功，请注意查收");
 				$("#sendBtn").addClass("not_send_tel");
 				sendVerifyAfter1(60);
 			}
@@ -621,13 +625,13 @@
  	$("#button5").bind("click",function () {
 		var verifyCode = $("#pwd7").val();
 		if(verifyCode.length != 6){
-			alert("请输入正确的验证码");
+			msgBoxOne("请输入正确的验证码");
 			return;
 		}
-		$.post(rootPath+"user.bindTelBeforeRegxVerifyCode.ajax",{verifyCode : verifyCode},function (data) {
+		$.post(rootPath+"/user.bindTelBeforeRegxVerifyCode.ajax",{verifyCode : verifyCode},function (data) {
 			var code = data.code;
 			if(code == 0){
-				alert(data.msg);
+				msgBoxOne(data.msg);
 			}else if(code == 1){
 				$("#pwd7").val("");
 				$(".item2").css("display","none");
@@ -642,23 +646,24 @@
  	$("#sendBtn_").click(function () {
 		var tel = $("#new_tel_box").val();
 		if(tel.length != 11){
-			alert("请输入正确格式的手机号");
+			msgBoxOne("请输入正确格式的手机号");
 			return;
 		}
-		$.post(rootPath+"user.sendVerifyCode.ajax",{account : tel,type : "6"},function (data) {
+		$.post(rootPath+"/user.sendVerifyCode.ajax",{account : tel,type : "6"},function (data) {
 			var code = data.code;
 			if(code == -1){
-				alert("系统繁忙，请稍后再试");
+				msgBoxOne("系统繁忙，请稍后再试");
 			}else if(code == 0){
-				alert(data.msg);
+				msgBoxOne(data.msg);
 			}else if(code == 1){
-				alert("验证码发送成功，请注意查收");
+				msgBoxOne("验证码发送成功，请注意查收");
 				$("#sendBtn_").addClass("not_send_tel");
 				sendVerifyAfter2(60);
 			}
 		});
 	});
  }
+
  //发送完验证码轮询倒计时
  function  sendVerifyAfter2(i) {
 	 $("#sendBtn_").html(i+" s");
@@ -679,22 +684,22 @@
 		var account =  $("#new_tel_box").val();
 		var verifyCode = $("#pwd7_").val();
 		if(account.length != 11){
-			alert("请输入正确的手机号");
+			msgBoxOne("请输入正确的手机号");
 			return;
 		}
 		if(verifyCode.length != 6){
-			alert("请输入正确的验证码");
+			msgBoxOne("请输入正确的验证码");
 			return;
 		}
-		$.post(rootPath+"user.bindTel.ajax",{account:account,verifyCode:verifyCode},function (data) {
+		$.post(rootPath+"/user.bindTel.ajax",{account:account,verifyCode:verifyCode},function (data) {
 			var code = data.code;
 			if(code == -1){
-				alert("系统繁忙，请稍后再试");
+				msgBoxOne("系统繁忙，请稍后再试");
 			}else if(code == 0){
-				alert(data.msg);
+				msgBoxOne(data.msg);
 			}else if(code == 1){
 				//修改成功
-				alert("更换成功");
+				msgBoxOne("更换成功");
 				//将第二个子页面的数据清空
 				$("#new_tel_box").val("");
 				$("#pwd7_").val("");
@@ -761,7 +766,7 @@
 		 var ans = $("#pwd9").val();
 		 var ver = $("#ensure_verify_code").val();
 		 if(ver.length != 4){
-		 	alert("请输入正确的验证码");
+		 	msgBoxOne("请输入正确的验证码");
 		 	createVerify(3);
 		 	return;
 		 }
@@ -794,16 +799,16 @@
 			 answer : ans,
 			 verifyCode : ver
 		 };
-		 $.post(rootPath+"user.addEnsurePwd.ajax",data,function (data) {
+		 $.post(rootPath+"/user.addEnsurePwd.ajax",data,function (data) {
 			var code = data.code;
 			if(code == -1){
-				alert("系统繁忙，请稍后再试");
+				msgBoxOne("系统繁忙，请稍后再试");
 				createVerify(3);
 			}else if(code == 0){
-				alert(data.msg);
+				msgBoxOne(data.msg);
 				createVerify(3);
 			}else if(code == 1){
-				alert("设置成功");
+				msgBoxOne("设置成功");
 				//刷新验证码
 				createVerify(3);
 				//刷新密保问题那里

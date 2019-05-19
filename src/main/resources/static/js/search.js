@@ -77,7 +77,7 @@ function onSearchBoxSubmit(){
 	}else if($.trim(inp.attr("placeholder")) != ''){
 		searchKey = $.trim(inp.attr("placeholder"));
 	}else{
-		alert("请输入搜索关键字");
+		msgBoxOne("请输入搜索关键字");
 		return;
 	}
 	searchKey = getRealSearchKey(searchKey);
@@ -227,7 +227,7 @@ function onSearchBoxSubmit(){
 	}else if($.trim(inp.attr("placeholder")) != ''){
 		searchKey = $.trim(inp.attr("placeholder"));
 	}else{
-		alert("请输入搜索关键字");
+		msgBoxOne("请输入搜索关键字");
 		return;
 	}
 	//保存历史搜索

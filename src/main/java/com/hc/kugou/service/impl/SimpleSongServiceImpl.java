@@ -41,10 +41,10 @@ public class SimpleSongServiceImpl implements SimpleSongService {
      * @return 播放对象
      */
     @Override
-    public SimpleSongBean play(Integer musicId, CustomUser loginedUser, CustomMusicPlayList sessionMusicPlayList) {
+    public SimpleSongBean play(Integer musicId, CustomUser loginedUser) {
         SimpleSongBean simpleSongBean = new SimpleSongBean();
-        //【添加播放列表对象】
-        addMusicPlayList(loginedUser, sessionMusicPlayList, simpleSongBean);
+//        //【添加播放列表对象】
+//        addMusicPlayList(loginedUser, sessionMusicPlayList, simpleSongBean);
 
         //【添加要播放的音乐对象】
         SolrBean<CustomMusic> solrBean =  musicSolr.selectMusicById(musicId);
@@ -75,35 +75,35 @@ public class SimpleSongServiceImpl implements SimpleSongService {
      * @param simpleSongBean    单曲页面对象
      */
     private void addMusicPlayList(CustomUser loginedUser, CustomMusicPlayList sessionMusicPlayList, SimpleSongBean simpleSongBean) {
-        if(loginedUser == null){
+//        if(loginedUser == null){
             //如果没有登录用户  播放列表对象就从session中获取
             if(sessionMusicPlayList == null){
                 //如果播放列表对象为null
                 sessionMusicPlayList = new CustomMusicPlayList();
-                //没有歌曲
-                sessionMusicPlayList.setMusicPlayListHasMusic(0);
-                //没有用户
-                sessionMusicPlayList.setMusicPlayListHasLoginedUser(0);
+//                //没有歌曲
+//                sessionMusicPlayList.setMusicPlayListHasMusic(0);
+//                //没有用户
+//                sessionMusicPlayList.setMusicPlayListHasLoginedUser(0);
             }
             simpleSongBean.setMusicPlayList(sessionMusicPlayList);
-        }else {
-            //如果有登录用户  就将播放列表从redis中取出
-            //取出用户id
-            Integer userId = loginedUser.getUserId();
-            //取出redis中的播放列表对象
-            MusicPlayList musicPlayList = (MusicPlayList) objectRedisTemplate.opsForValue().get(StringUtils.PLAT_SONG_LIST_PRE+userId);
-            if(musicPlayList == null){
-                //如果播放列表对象为null
-                musicPlayList = new MusicPlayList();
-                //没有歌曲
-                sessionMusicPlayList.setMusicPlayListHasMusic(0);
-                //有用户
-                sessionMusicPlayList.setMusicPlayListHasLoginedUser(1);
-                //设置用户id
-                musicPlayList.setMusicPlayListUserId(userId);
-            }
-            simpleSongBean.setMusicPlayList(musicPlayList);
-        }
+//        }else {
+//            //如果有登录用户  就将播放列表从redis中取出
+//            //取出用户id
+//            Integer userId = loginedUser.getUserId();
+//            //取出redis中的播放列表对象
+//            MusicPlayList musicPlayList = (MusicPlayList) objectRedisTemplate.opsForValue().get(StringUtils.PLAT_SONG_LIST_PRE+userId);
+//            if(musicPlayList == null){
+//                //如果播放列表对象为null
+//                musicPlayList = new MusicPlayList();
+//                //没有歌曲
+//                sessionMusicPlayList.setMusicPlayListHasMusic(0);
+//                //有用户
+//                sessionMusicPlayList.setMusicPlayListHasLoginedUser(1);
+//                //设置用户id
+//                musicPlayList.setMusicPlayListUserId(userId);
+//            }
+//            simpleSongBean.setMusicPlayList(musicPlayList);
+//        }
     }
 
 }

@@ -101,7 +101,6 @@ function regxRegistInputInfo() {
             $.post("user.regxRegistInputInfo.ajax", data, function (data) {
                 data = eval(data);
                 if (data.code == 0) {
-                    console.log(data.msg);
                     $("#mimax").css({
                         "display": "block"
                     }).html(data.msg);

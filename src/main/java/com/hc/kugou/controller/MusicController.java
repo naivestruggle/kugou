@@ -1,16 +1,21 @@
 package com.hc.kugou.controller;
 
+import com.alibaba.fastjson.JSONObject;
+import com.hc.commons.ResponseUtils;
 import com.hc.commons.StringUtils;
 import com.hc.kugou.bean.MusicPlayList;
 import com.hc.kugou.bean.custombean.CustomMusicPlayList;
 import com.hc.kugou.bean.custombean.CustomUser;
 import com.hc.kugou.bean.custombean.SimpleSongBean;
+import com.hc.kugou.service.MusicPlayListService;
 import com.hc.kugou.service.SimpleSongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
@@ -25,18 +30,43 @@ public class MusicController {
     @Autowired
     private SimpleSongService simpleSongService;
 
+    @Autowired
+    private MusicPlayListService musicPlayListService;
+
     @GetMapping("simpleSong.html/{musicId}")
     public String simpleSongHtml(@PathVariable("musicId") Integer musicId, Model model, HttpSession session){
         //得到当前登录对象
         CustomUser loginedUser = (CustomUser)session.getAttribute(StringUtils.LOGINED_USER);
         System.out.println("获取到的歌曲id："+musicId);
-        System.out.println("当前登录用户对象："+loginedUser);
 
-        //取出当前session中的播放列表对象
-        CustomMusicPlayList sessionMusicPlayList = (CustomMusicPlayList)session.getAttribute(StringUtils.PLAT_SONG_LIST_PRE);
         //得到单曲播放页面对象
-        SimpleSongBean simpleSongBean = simpleSongService.play(musicId,loginedUser,sessionMusicPlayList);
+        SimpleSongBean simpleSongBean = simpleSongService.play(musicId,loginedUser);
         model.addAttribute("simpleSongBean",simpleSongBean);
         return "playsong";
+    }
+
+    /**
+     * 加载播放列表
+     * @param session   会话对象
+     * @return  jsonobject对象
+     */
+    @ResponseBody
+    @PostMapping("music.loadMusicPlayList.ajax")
+    public JSONObject fun1(HttpSession session){
+        JSONObject jsonObject = new JSONObject();
+        //取出登录对象
+        CustomUser loginedUser = (CustomUser)session.getAttribute(StringUtils.LOGINED_USER);
+        //取出当前session中的播放列表对象
+        CustomMusicPlayList sessionMusicPlayList = (CustomMusicPlayList)session.getAttribute(StringUtils.PLAT_SONG_LIST_PRE);
+
+        try {
+            //得到播放列表对象
+            CustomMusicPlayList musicPlayList = musicPlayListService.loadMusicPlayList(loginedUser,sessionMusicPlayList);
+            jsonObject.put("code",1);
+            jsonObject.put("musicPlayList",musicPlayList);
+        } catch (Exception e) {
+            ResponseUtils.responseException(jsonObject,e);
+        }
+        return jsonObject;
     }
 }

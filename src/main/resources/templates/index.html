@@ -242,7 +242,7 @@
                     <ul id="tabT1" th:with="solrBeanList=${indexViewBean.newMusicCollect.get('china').solrBeanList}">
                         <ul class="m1" style="display: block;">
                             <li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 7}">
-                                <a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+                                <a th:href="@{simpleSong.html/}+${bean.musicId}">
                                     <span class="songName" th:text="${bean.musicAudioName}">李宇春 - 动物世界【动物世界电影主题曲】</span>
                                     <span class="songTips"></span>
                                     <span class="songTime" th:text="${bean.musicTimes}">03:43</span>
@@ -254,7 +254,7 @@
                         <ul class="m2" style="display: none;">
                             <li th:each="bean,beanStat:${solrBeanList}"
                                 th:if="${beanStat.index ge 8 &&  beanStat.index le 15}">
-                                <a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+                                <a th:href="@{simpleSong.html/}+${bean.musicId}">
                                     <span class="songName" th:text="${bean.musicAudioName}">印子月 - 可以的话</span>
                                     <span class="songTips"></span>
                                     <span class="songTime" th:text="${bean.musicTimes}">03:56</span>

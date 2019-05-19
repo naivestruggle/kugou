@@ -20,7 +20,7 @@ public interface SimpleSongService {
      * @param loginedUser   登录对象
      * @return  播放对象
      */
-    SimpleSongBean play(Integer musicId, CustomUser loginedUser, CustomMusicPlayList sessionMusicPlayList);
+    SimpleSongBean play(Integer musicId, CustomUser loginedUser);
 
     /**
      * 更新music的访问量   music访问量+1  对应歌手访问量+1  对应专辑访问量+1

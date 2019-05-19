@@ -9,6 +9,7 @@
 <!-- 引入头部 -->
 <div th:replace="commons/head::headbar"></div>
 
+	<input type="hidden" id="msg" th:value="${msg}"/>
 	<div class="information">
 		<div class="content">
 			<div class="info">
@@ -56,7 +57,7 @@
 										<canvas class="pic" id="pic"  width="200" height="200"></canvas>
 										<div class="pic_info">
 											<p>请选择图片文件，最佳尺寸为400×400，支持JPG,JPEG,GIF,PNG</p>
-											<form id="uploadForm" action="user.uploadImage" method="post" enctype="multipart/form-data">
+											<form id="uploadForm" th:action="@{/user.uploadImage}" method="post" enctype="multipart/form-data">
 												<input name="file" type="file" style="display: none" id="file">
 											</form>
 											<div id="read">浏览</div>

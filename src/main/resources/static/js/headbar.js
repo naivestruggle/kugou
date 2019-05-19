@@ -1,6 +1,103 @@
-////二级菜单  更多
 //全局的项目根路径
 var rootPath = $("#absoPath").val();
+
+////////////////////////////////弹窗开始////////////////////////////////////
+//单选框
+function msgBoxOne(msg){
+    var onlyChoseAlert = simpleAlert({
+        "content":msg,
+        "buttons":{
+            "确定":function () {
+                onlyChoseAlert.close();
+            }
+        }
+    })
+}
+//多选框
+function msgBoxTwo(msg){
+    var dblChoseAlert = simpleAlert({
+        "content":msg,
+        "buttons":{
+            "确定":function () {
+                msgBoxOne("你好");
+                dblChoseAlert.close();
+            },
+            "取消":function () {
+                dblChoseAlert.close();
+            }
+        }
+    })
+}
+//弹窗
+var simpleAlert = function (opts) {
+    //设置默认参数
+    var opt = {
+        "closeAll": false,
+        "content": "",
+        "buttons": {}
+    }
+    //合并参数
+    var option = $.extend(opt, opts);
+    //事件
+    var dialog = {}
+    var $simpleAlert = $('<div class="simpleAlert">');
+    var $shelter = $('<div class="simpleAlertShelter">');
+    var $simpleAlertBody = $('<div class="simpleAlertBody">');
+    var $simpleAlertBodyClose = $('<img class="simpleAlertBodyClose" src="'+rootPath+'img/images/close_msg_button.png" height="14" width="14"/>');
+    var $simpleAlertBodyContent = $('<p class="simpleAlertBodyContent">' + option.content + '</p>');
+    dialog.init = function () {
+        $simpleAlertBody.append($simpleAlertBodyClose).append($simpleAlertBodyContent);
+        var num = 0;
+        var only = false;
+        var onlyArr = [];
+        for (var i = 0; i < 2; i++) {
+            for (var key in option.buttons) {
+                switch (i) {
+                    case 0:
+                        onlyArr.push(key);
+                        break;
+                    case 1:
+                        if (onlyArr.length <= 1) {
+                            only = true;
+                        } else {
+                            only = false;
+                        }
+                        num++;
+                        var $btn = $('<button class="simpleAlertBtn simpleAlertBtn' + num + '">' + key + '</button>')
+                        $btn.bind("click", option.buttons[key]);
+                        if (only) {
+                            $btn.addClass("onlyOne")
+                        }
+                        $simpleAlertBody.append($btn);
+                        break;
+                }
+
+            }
+        }
+        $simpleAlert.append($shelter).append($simpleAlertBody);
+        $("body").append($simpleAlert);
+        $simpleAlertBody.show().animate({"marginTop":"-128px","opacity":"1"},300);
+    }
+    //右上角关闭按键事件
+    $simpleAlertBodyClose.bind("click", function () {
+        option.closeAll=false;
+        dialog.close();
+    })
+    dialog.close = function () {
+        if(option.closeAll){
+            $(".simpleAlert").remove()
+        }else {
+            $simpleAlertBody.animate({"marginTop": "-188px", "opacity": "0"}, 200, function () {
+                $(".simpleAlert").last().remove()
+            });
+        }
+    }
+    dialog.init();
+    return dialog;
+}
+/////////////////////////////弹窗结束///////////////////////////////////////
+
+//将字符串中所有的 "/" 符号替换成空串
 function getRealSearchKey(searchKey) {
     var re = new RegExp("/","g");
     return searchKey.replace(re,"");
@@ -115,7 +212,6 @@ $("#KgPopupUserPwd").on("blur", function () {
     loginInputInfoAjax($("#KgPopupUserPwd"))
 });
 
-
 //登录信息输入校验
 function loginInputInfoAjax(obj) {
     var userAccount = $("#KgPopupUserName").val();
@@ -126,7 +222,7 @@ function loginInputInfoAjax(obj) {
         password: userPassword
     };
 
-    $.post(rootPath+"user.regxLoginInputInfo.ajax", data, function (data) {
+    $.post(rootPath+"/user.regxLoginInputInfo.ajax", data, function (data) {
         if(data.code == 1){
             $("#KgPopupLoginBtn").removeClass("not_allow_login");
             $("#errorMsg").html("");
@@ -158,7 +254,7 @@ function login() {
         account: $("#KgPopupUserName").val(),
         password: $("#KgPopupUserPwd").val()
     };
-    $.post(rootPath+"user.login.ajax",data,function (data) {
+    $.post(rootPath+"/user.login.ajax",data,function (data) {
         if(data.code == 1){
             //将账号和密码保存起来
             if(isAutoLogin){
@@ -177,8 +273,19 @@ function login() {
 
 //退出登录
 function loginOut(){
-    $.cookie("indream_autoLogin",null);
-    location.href = "user.loginOut.ajax";
+    var dblChoseAlert = simpleAlert({
+        "content": "您确定要退出登录？",
+        "buttons":{
+            "确定":function () {
+                $.cookie("indream_autoLogin",null);
+                dblChoseAlert.close();
+                location.href = rootPath+"/user.loginOut.ajax";
+            },
+            "取消":function () {
+                dblChoseAlert.close();
+            }
+        }
+    });
 }
 
 ////////////////////////搜索框开始////////////////////////////
@@ -236,7 +343,7 @@ function onHeadSearchBoxSubmit(){
     }else if($.trim(inp.attr("placeholder")) != ''){
         searchKey = $.trim(inp.attr("placeholder"));
     }else{
-        alert("请输入搜索关键字");
+        msgBoxOne("请输入搜索关键字");
         return;
     }
     //保存历史搜索
@@ -294,7 +401,7 @@ function onHeadInputSearchBox(){
             var data = {
               searchKey : $("#searchAllBox1").val()
             };
-            $.post(rootPath+"search.getSearchInfo.ajax",data,function (data) {
+            $.post(rootPath+"/search.getSearchInfo.ajax",data,function (data) {
                 var str = "";
                 var musicList = data.musicList.solrBeanList;
                 for(var i=0;i<musicList.length;i++){

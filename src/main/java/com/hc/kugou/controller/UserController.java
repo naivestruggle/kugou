@@ -339,18 +339,18 @@ public class UserController {
     @PostMapping("user.uploadImage")
     public String fun5(@RequestParam("file") MultipartFile file,Model model,HttpSession session){
         CustomUser loginedUser = (CustomUser)session.getAttribute(StringUtils.LOGINED_USER);
-
         try {
             //上传头像
             userService.uploadUserHeadImage(loginedUser,file);
             //更新用户
             loginedUser = userService.updateLoginedUser(loginedUser);
             session.setAttribute(StringUtils.LOGINED_USER,loginedUser);
+            model.addAttribute("msg","设置成功");
         } catch (Exception e) {
             if(e instanceof CustomException){
-                model.addAttribute("errorMsg",e.getMessage());
+                model.addAttribute("msg",e.getMessage());
             }else {
-                model.addAttribute("errorMsg","系统繁忙，请稍后再试");
+                model.addAttribute("msg","系统繁忙，请稍后再试");
             }
         }
         return fun1(model,session);

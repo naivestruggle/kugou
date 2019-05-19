@@ -14,14 +14,6 @@ import java.util.List;
 @Data
 public class CustomMusicPlayList extends MusicPlayList {
     /**
-     * 是否有登录用户 1:是  0:否
-     */
-    private Integer musicPlayListHasLoginedUser;
-    /**
-     * 播放列表中是否有歌曲
-     */
-    private Integer musicPlayListHasMusic;
-    /**
      * 播放列表中的音乐集合
      */
     private List<CustomMusic> musicPlayList;
