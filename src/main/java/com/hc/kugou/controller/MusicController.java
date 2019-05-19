@@ -37,10 +37,9 @@ public class MusicController {
     public String simpleSongHtml(@PathVariable("musicId") Integer musicId, Model model, HttpSession session){
         //得到当前登录对象
         CustomUser loginedUser = (CustomUser)session.getAttribute(StringUtils.LOGINED_USER);
-        System.out.println("获取到的歌曲id："+musicId);
-
         //得到单曲播放页面对象
-        SimpleSongBean simpleSongBean = simpleSongService.play(musicId,loginedUser);
+        SimpleSongBean simpleSongBean = simpleSongService.play(musicId,loginedUser,session);
+
         model.addAttribute("simpleSongBean",simpleSongBean);
         return "playsong";
     }
@@ -64,6 +63,53 @@ public class MusicController {
             CustomMusicPlayList musicPlayList = musicPlayListService.loadMusicPlayList(loginedUser,sessionMusicPlayList);
             jsonObject.put("code",1);
             jsonObject.put("musicPlayList",musicPlayList);
+        } catch (Exception e) {
+            ResponseUtils.responseException(jsonObject,e);
+        }
+        return jsonObject;
+    }
+
+    /**
+     * 清空播放列表
+     * @param session 会话对象
+     * @return  jsonobject对象
+     */
+    @ResponseBody
+    @PostMapping("music.clearAllMusicPlayList.ajax")
+    public JSONObject fun2(HttpSession session){
+        JSONObject jsonObject = new JSONObject();
+        //取出当前登录对象
+        CustomUser loginedUser = (CustomUser)session.getAttribute(StringUtils.LOGINED_USER);
+        //清空
+        try {
+            musicPlayListService.clearAllMusicPlayList(loginedUser,session);
+            ResponseUtils.responseNoException(jsonObject);
+        } catch (Exception e) {
+            ResponseUtils.responseException(jsonObject,e);
+        }
+        return jsonObject;
+    }
+
+    /**
+     * 将当前播放歌曲添加至播放列表
+     * @param session   会话对象
+     * @param musicId   音乐ID
+     * @return  jsonobject对象
+     */
+    @ResponseBody
+    @PostMapping("music.addNowPlayMusicToMusicPlayList.ajax")
+    public JSONObject fun3(HttpSession session,Integer musicId){
+        JSONObject jsonObject = new JSONObject();
+        //取出当前登录对象
+        CustomUser loginedUser = (CustomUser)session.getAttribute(StringUtils.LOGINED_USER);
+        try {
+            //添加
+            simpleSongService.addNowPlayMusicToMusicPlayList(loginedUser,session,musicId);
+            //得到播放列表对象
+            CustomMusicPlayList sesionMusicPlayList = (CustomMusicPlayList)session.getAttribute(StringUtils.PLAT_SONG_LIST_PRE);
+            CustomMusicPlayList musicPlayList = musicPlayListService.loadMusicPlayList(loginedUser,sesionMusicPlayList);
+            jsonObject.put("musicPlayList",musicPlayList);
+            ResponseUtils.responseNoException(jsonObject);
         } catch (Exception e) {
             ResponseUtils.responseException(jsonObject,e);
         }

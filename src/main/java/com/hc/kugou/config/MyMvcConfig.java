@@ -1,6 +1,7 @@
 package com.hc.kugou.config;
 
 import com.hc.commons.MailUtils;
+import com.hc.kugou.component.CrossDomainHandlerInterceptor;
 import com.hc.kugou.solr.MusicSolr;
 import com.hc.kugou.solr.MvSolr;
 import com.hc.kugou.solr.SingerSolr;
@@ -8,6 +9,7 @@ import com.hc.kugou.solr.MusicListSolr;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -76,6 +78,20 @@ public class MyMvcConfig{
         return webMvcConfigurer;
     }
 
+    /**
+     * 拦截器
+     * @return
+     */
+    @Bean
+    public WebMvcConfigurer webMvcConfigurer(){
+        return new WebMvcConfigurer() {
+            @Override
+            public void addInterceptors(InterceptorRegistry registry) {
+                registry.addInterceptor(new CrossDomainHandlerInterceptor())
+                        .addPathPatterns("/**");
+            }
+        };
+    }
 
     @Bean
     public MusicSolr musicSolr(){

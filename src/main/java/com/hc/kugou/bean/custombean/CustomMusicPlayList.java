@@ -16,5 +16,5 @@ public class CustomMusicPlayList extends MusicPlayList {
     /**
      * 播放列表中的音乐集合
      */
-    private List<CustomMusic> musicPlayList;
+    private List<CustomMusic> musicPlayLists;
 }

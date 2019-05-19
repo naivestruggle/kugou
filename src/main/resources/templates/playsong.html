@@ -2,16 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8"/>
-	<title>Document</title>
+	<title th:text="${simpleSongBean.oneMusic.musicName}">Document</title>
 	<link rel="shortcut icon"  href="../static/favicon.ico" th:href="@{/favicon.ico}"/>
 	<link rel="stylesheet" href="../public/css/head.css" th:href="@{/css/playsong.css}"/>
-
-
 </head>
 <body>
     <!-- 引入头部 -->
     <div th:replace="commons/head::headbar(activeUri='index')"></div>
 
+	<!-- 单曲id -->
+	<input type="hidden" id="simpleMusicId" th:value="${simpleSongBean.oneMusic.musicId}"/>
     <div class="content">
     	<div class="sing_content">
     		<div class="album fl">
@@ -28,10 +28,10 @@
             <div class="song_info">
             	<!-- 歌曲名字 -->
             	<div class="songName clearfix" title="">
-            		<span class="audioName" title="一秒钟" th:title="${simpleSongBean.oneMusic.musicAlbumName}" th:text="${simpleSongBean.oneMusic.musicAlbumName}">一秒钟</span>
+            		<span class="audioName" th:title="${simpleSongBean.oneMusic.musicAlbumName}" th:text="${simpleSongBean.oneMusic.musicAlbumName}">一秒钟</span>
             		<!-- 如果歌曲有mv的话，这个按钮就显示 -->
 					<div th:if="${simpleSongBean.oneMusic.musicHaveMv eq 1}">
-                     	<a target="_blank" href="#" class="icon btnMv" th:href="@{/mvPlay.html/}+${simpleSongBean.oneMusic.musicVideoId}"></a>
+                     	<a target="_blank" href="#" class="btnMv" th:href="@{/mvPlay.html/}+${simpleSongBean.oneMusic.musicVideoId}"></a>
 					</div>
                 </div>
                 <!-- 专辑  歌手 -->
@@ -152,49 +152,49 @@
 				<a href="" class="pb_share"></a>
 				<!--播放列表-->
 				<a href="javascript:void(0);" class="list" id="music_list_show_button">
-					<span class="list_count">1</span>
+					<span class="list_count musicListSize">1</span>
 				</a>
 			</div>
 			<!--播放列表 隐藏面板-->
 			<div class="mod-playlist">
 				<div class="song-box">
 					<div class="box-header">
-						<div class="title">播放队列/<span>1</span></div>
+						<div class="title">播放队列/<span class="musicListSize">1</span></div>
 						<div class="action-box fr">
-							<span class="icon list-menu-icon-del clear" title="清空"></span>
+							<span id="clearAllMusicPlayList" class="icon list-menu-icon-del clear" title="清空"></span>
 							<span class="line"></span><span id="close_musiclist_panel" class="icon list-menu-icon-close closePlayList" title="关闭播放队列"></span>
 						</div>
 					</div>
-					<div id="musicbox" class="musicbox ">
+					<div id="musicbox" class="musicbox">
 						<div class="songjsAction" style="overflow: hidden; padding: 0px; width: 470px;">
 							<div class="jspContainer" style="width: 470px; height: 360px;">
 								<div class="jspPane" style="top: 0px; left: 0px; width: 470px;">
 									<div class="musiclist">
 
-										<li class="active" onmouseover="liMouserover(this)" onmouseout="liMouserout(this)">
-											<div class="musiclist-item clearfix">
-												<span class="musiclist-number">1</span>
-												<div class="musiclist-name">
-													<span class="musiclist-songname-txt" title="暗夜精灵">暗夜精灵</span>
-													<div class="mod-list-menu">
-														<a href="javascript:;" class="icon list-menu-item icon-playbar-download" title="下载">
-															<i class="icon list-menu-icon-down"></i>
-															<span class="icon_txt">下载</span>
-														</a>
-														<a href="javascript:;" class="icon list-menu-item icon-playbar-share" title="分享">
-															<i class="icon list-menn-icon-share"></i>
-															<span class="icon_txt">分享</span>
-														</a>
-														<a href="javascript:;" class="icon list-menu-item list-menu-icon-del" title="删除歌曲">
-															<i class="icon list-menu-icon-add"></i>
-															<span class="icon_txt">删除</span>
-														</a>
-													</div>
-												</div>
-												<div class="musiclist-artist" title="夏婉安">夏婉安</div>
-												<div class="musiclist-time">04:45</div>
-											</div>
-										</li>
+<!--										<li class="active" onmouseover="liMouserover(this)" onmouseout="liMouserout(this)">-->
+<!--											<div class="musiclist-item clearfix">-->
+<!--												<span class="musiclist-number">1</span>-->
+<!--												<div class="musiclist-name">-->
+<!--													<span class="musiclist-songname-txt" title="暗夜精灵">暗夜精灵</span>-->
+<!--													<div class="mod-list-menu">-->
+<!--														<a href="javascript:;" class="icon list-menu-item icon-playbar-download" title="下载">-->
+<!--															<i class="icon list-menu-icon-down"></i>-->
+<!--															<span class="icon_txt">下载</span>-->
+<!--														</a>-->
+<!--														<a href="javascript:;" class="icon list-menu-item icon-playbar-share" title="分享">-->
+<!--															<i class="icon list-menn-icon-share"></i>-->
+<!--															<span class="icon_txt">分享</span>-->
+<!--														</a>-->
+<!--														<a href="javascript:;" class="icon list-menu-item list-menu-icon-del" title="删除歌曲">-->
+<!--															<i class="icon list-menu-icon-add"></i>-->
+<!--															<span class="icon_txt">删除</span>-->
+<!--														</a>-->
+<!--													</div>-->
+<!--												</div>-->
+<!--												<div class="musiclist-artist" title="夏婉安">夏婉安</div>-->
+<!--												<div class="musiclist-time">04:45</div>-->
+<!--											</div>-->
+<!--										</li>-->
 
 									</div>
 								</div>

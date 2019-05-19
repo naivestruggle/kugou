@@ -86,6 +86,8 @@
     width: 25px;
     height: 13px;
     margin: 15px 0 0 10px;
+    cursor: pointer;
+    background: url(../img/playsing/btn.png);
     background-position: 0 -214px;
 }
 .icon {
@@ -93,7 +95,6 @@
     cursor: pointer;
     background: url(../img/playsing/btn.png);
     background-repeat: no-repeat;
-    /*background-position: 0px -213px;*/
     width: 12px;
     height: 14px;
 }
@@ -701,15 +702,28 @@
     display: block;
     color: #19b5f0;
 }
+
+.mod-playlist .musicbox .musiclist-item .musiclist-artist {
+    float: left;
+    width: 90px;
+    height: 39px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #77777e;
+}
+
+
 .mod-playlist .musicbox .musiclist-item .musiclist-name .musiclist-songname-txt {
     float: left;
-    max-width: 95%;
+    max-width: 58%;
     height: 39px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     color: #d3d3d3;
 }
+
 
 .mod-playlist .musicbox .musiclist-item .musiclist-name .mod-list-menu {
     visibility: hidden;
@@ -731,15 +745,7 @@
     margin-right: 15px;
 }
 
-.mod-playlist .musicbox .musiclist-item .musiclist-artist {
-    float: left;
-    width: 90px;
-    height: 39px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: #77777e;
-}
+
 .mod-playlist .musicbox .musiclist-item .musiclist-time {
     float: left;
     width: 60px;

@@ -25,6 +25,19 @@ public class CustomMusic extends Music implements Serializable {
      * mv对象
      */
     private CustomMv mv;
+
+    /**
+     * 音乐名  作者
+     */
+    private String musicName;
+    public String getMusicName(){
+        String str = this.getMusicAudioName();
+        String[] arr = str.split("-");
+        if(arr.length >= 2){
+            return arr[1];
+        }
+        return str;
+    }
     /**
      * 音乐的时间
      */
@@ -81,4 +94,13 @@ public class CustomMusic extends Music implements Serializable {
         return str.substring(0,str.length()-1);
     }
 
+    @Override
+    public String toString() {
+        return "music:"+super.toString()+" \nCustomMusic{" +
+                "highlight='" + highlight + '\'' +
+                ", mv=" + mv +
+                ", musicTimes='" + musicTimes + '\'' +
+                ", musicLyricsList=" + musicLyricsList +
+                '}';
+    }
 }

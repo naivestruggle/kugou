@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * @Author:
  * @Date:2019/5/19
@@ -39,6 +41,22 @@ public class MusicPlayListServiceImpl implements MusicPlayListService {
             //有用户登录
             CustomMusicPlayList redisMusicPlayList = getRedisMusicPlayList(loginedUser.getUserId());
             return redisMusicPlayList;
+        }
+    }
+
+    /**
+     * 清空播放列表
+     *
+     * @param loginedUser 登录用户对象
+     * @param session     会话对象
+     * @throws Exception 抛出异常
+     */
+    @Override
+    public void clearAllMusicPlayList(CustomUser loginedUser, HttpSession session) throws Exception {
+        session.removeAttribute(StringUtils.PLAT_SONG_LIST_PRE);
+        if(loginedUser != null){
+            String key = StringUtils.getRedisMusicPlayListKey(loginedUser.getUserId());
+            objectRedisTemplate.delete(key);
         }
     }
 
