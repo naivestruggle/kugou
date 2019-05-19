@@ -242,7 +242,7 @@
                     <ul id="tabT1" th:with="solrBeanList=${indexViewBean.newMusicCollect.get('china').solrBeanList}">
                         <ul class="m1" style="display: block;">
                             <li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 7}">
-                                <a th:href="@{simpleSong.html/}+${bean.musicId}">
+                                <a th:href="@{simpleSong.html}+'/'+${bean.musicId}" target="_blank">
                                     <span class="songName" th:text="${bean.musicAudioName}">李宇春 - 动物世界【动物世界电影主题曲】</span>
                                     <span class="songTips"></span>
                                     <span class="songTime" th:text="${bean.musicTimes}">03:43</span>
@@ -254,7 +254,7 @@
                         <ul class="m2" style="display: none;">
                             <li th:each="bean,beanStat:${solrBeanList}"
                                 th:if="${beanStat.index ge 8 &&  beanStat.index le 15}">
-                                <a th:href="@{simpleSong.html/}+${bean.musicId}">
+                                <a th:href="@{simpleSong.html}+'/'+${bean.musicId}" target="_blank">
                                     <span class="songName" th:text="${bean.musicAudioName}">印子月 - 可以的话</span>
                                     <span class="songTips"></span>
                                     <span class="songTime" th:text="${bean.musicTimes}">03:56</span>
@@ -265,7 +265,7 @@
                         </ul>
                         <ul class="m3" style="display: none;">
                             <li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 16}">
-                                <a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+                                <a th:href="@{simpleSong.html}+'/'+${bean.musicId}" target="_blank">
                                     <span class="songName" th:text="${bean.musicAudioName}">薛明媛 - 格林童话</span>
                                     <span class="songTips"></span>
                                     <span class="songTime" th:text="${bean.musicTimes}">03:56</span>
@@ -280,7 +280,7 @@
                     <ul id="tabT2" th:with="solrBeanList=${indexViewBean.newMusicCollect.get('korea').solrBeanList}">
                         <ul class="m1" style="display: block;">
                             <li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 7}">
-                                <a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+                                <a th:href="@{simpleSong.html}+'/'+${bean.musicId}" target="_blank">
                                     <span class="songName" th:text="${bean.musicAudioName}">李宇春 - 动物世界【动物世界电影主题曲】</span>
                                     <span class="songTips"></span>
                                     <span class="songTime" th:text="${bean.musicTimes}">03:43</span>
@@ -292,7 +292,7 @@
                         <ul class="m2" style="display: none;">
                             <li th:each="bean,beanStat:${solrBeanList}"
                                 th:if="${beanStat.index ge 8 &&  beanStat.index le 15}">
-                                <a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+                                <a th:href="@{simpleSong.html}+'/'+${bean.musicId}" target="_blank">
                                     <span class="songName" th:text="${bean.musicAudioName}">印子月 - 可以的话</span>
                                     <span class="songTips"></span>
                                     <span class="songTime" th:text="${bean.musicTimes}">03:56</span>
@@ -303,7 +303,7 @@
                         </ul>
                         <ul class="m3" style="display: none;">
                             <li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 16}">
-                                <a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+                                <a th:href="@{simpleSong.html}+'/'+${bean.musicId}" target="_blank">
                                     <span class="songName" th:text="${bean.musicAudioName}">薛明媛 - 格林童话</span>
                                     <span class="songTips"></span>
                                     <span class="songTime" th:text="${bean.musicTimes}">03:56</span>
@@ -318,7 +318,7 @@
                     <ul id="tabT3" th:with="solrBeanList=${indexViewBean.newMusicCollect.get('eaa').solrBeanList}">
                         <ul class="m1" style="display: block;">
                             <li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 7}">
-                                <a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+                                <a th:href="@{simpleSong.html}+'/'+${bean.musicId}" target="_blank">
                                     <span class="songName" th:text="${bean.musicAudioName}">李宇春 - 动物世界【动物世界电影主题曲】</span>
                                     <span class="songTips"></span>
                                     <span class="songTime" th:text="${bean.musicTimes}">03:43</span>
@@ -330,7 +330,7 @@
                         <ul class="m2" style="display: none;">
                             <li th:each="bean,beanStat:${solrBeanList}"
                                 th:if="${beanStat.index ge 8 &&  beanStat.index le 15}">
-                                <a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+                                <a th:href="@{simpleSong.html}+'/'+${bean.musicId}" target="_blank">
                                     <span class="songName" th:text="${bean.musicAudioName}">印子月 - 可以的话</span>
                                     <span class="songTips"></span>
                                     <span class="songTime" th:text="${bean.musicTimes}">03:56</span>
@@ -341,7 +341,7 @@
                         </ul>
                         <ul class="m3" style="display: none;">
                             <li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 16}">
-                                <a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+                                <a th:href="@{simpleSong.html}+'/'+${bean.musicId}" target="_blank">
                                     <span class="songName" th:text="${bean.musicAudioName}">薛明媛 - 格林童话</span>
                                     <span class="songTips"></span>
                                     <span class="songTime" th:text="${bean.musicTimes}">03:56</span>
@@ -356,7 +356,7 @@
                     <ul id="tabT4" th:with="solrBeanList=${indexViewBean.newMusicCollect.get('japan').solrBeanList}">
                         <ul class="m1" style="display: block;">
                             <li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index le 7}">
-                                <a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+                                <a th:href="@{simpleSong.html}+'/'+${bean.musicId}" target="_blank">
                                     <span class="songName" th:text="${bean.musicAudioName}">李宇春 - 动物世界【动物世界电影主题曲】</span>
                                     <span class="songTips"></span>
                                     <span class="songTime" th:text="${bean.musicTimes}">03:43</span>
@@ -368,7 +368,7 @@
                         <ul class="m2" style="display: none;">
                             <li th:each="bean,beanStat:${solrBeanList}"
                                 th:if="${beanStat.index ge 8 &&  beanStat.index le 15}">
-                                <a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+                                <a th:href="@{simpleSong.html}+'/'+${bean.musicId}" target="_blank">
                                     <span class="songName" th:text="${bean.musicAudioName}">印子月 - 可以的话</span>
                                     <span class="songTips"></span>
                                     <span class="songTime" th:text="${bean.musicTimes}">03:56</span>
@@ -379,7 +379,7 @@
                         </ul>
                         <ul class="m3" style="display: none;">
                             <li th:each="bean,beanStat:${solrBeanList}" th:if="${beanStat.index ge 16}">
-                                <a href="../歌曲播放/歌曲播放.html" th:href="@{simpleSong.html/}+${bean.musicId}">
+                                <a th:href="@{simpleSong.html}+'/'+${bean.musicId}" target="_blank">
                                     <span class="songName" th:text="${bean.musicAudioName}">薛明媛 - 格林童话</span>
                                     <span class="songTips"></span>
                                     <span class="songTime" th:text="${bean.musicTimes}">03:56</span>
@@ -428,13 +428,13 @@
                 <div th:each="bean,beanStat:${indexViewBean.recommendMvCollect.solrBeanList}">
                     <div th:if="${beanStat.index eq 0}">
                         <div class="mv_pic1 mvDiv">
-                            <a href="mvPlay.html" th:href="@{mvPlay.html/}+${bean.mvId}" target="_blank"><img
+                            <a href="mvPlay.html" th:href="@{mvPlay.html}+'/'+${bean.mvId}" target="_blank"><img
                                     th:src="${bean.mvHeadImage}" style="width: 320px;height: 175px;"/></a>
                             <div class="cover_mv" style="width:320px;height: 175px;">
-                                <a href="mvPlay.html" th:href="@{mvPlay.html/}+${bean.mvId}" target="_blank"
+                                <a href="mvPlay.html" th:href="@{mvPlay.html}+'/'+${bean.mvId}" target="_blank"
                                    style="width:320px;height: 175px;display:inline-block"></a>
                                 <div class="playBtn">
-                                    <a th:href="@{mvPlay.html/}+${bean.mvId}" target="_blank"/>
+                                    <a th:href="@{mvPlay.html}+'/'+${bean.mvId}" target="_blank"/>
                                 </div>
                             </div>
                             <div class="mv_cpt">
@@ -450,13 +450,13 @@
 
                     <div th:if="${beanStat.index eq 1}">
                         <div class="mv_pic2 mvDiv">
-                            <a href="mvPlay.html" th:href="@{mvPlay.html/}+${bean.mvId}" target="_blank"><img
+                            <a href="mvPlay.html" th:href="@{mvPlay.html}+'/'+${bean.mvId}" target="_blank"><img
                                     src="../public/img/index/20180527133722615334.jpg"
                                     th:src="${bean.mvHeadImage}" style="width: 154px;height: 84px;"/></a>
                             <div class="cover_mv">
-                                <a href="mvPlay.html" th:href="@{mvPlay.html/}+${bean.mvId}" target="_blank"></a>
+                                <a href="mvPlay.html" th:href="@{mvPlay.html}+'/'+${bean.mvId}" target="_blank"></a>
                                 <div class="playBtn">
-                                    <a th:href="@{mvPlay.html/}+${bean.mvId}" target="_blank"/>
+                                    <a th:href="@{mvPlay.html}+'/'+${bean.mvId}" target="_blank"/>
                                 </div>
                             </div>
                             <div class="mv_cpt">
@@ -472,13 +472,13 @@
 
                     <div th:if="${beanStat.index eq 2}">
                         <div class="mv_pic2 mvDiv">
-                            <a href="mvPlay.html" th:href="@{mvPlay.html/}+${bean.mvId}" target="_blank"><img
+                            <a href="mvPlay.html" th:href="@{mvPlay.html}+'/'+${bean.mvId}" target="_blank"><img
                                     src="../public/img/index/20180526100547724937.jpg"
                                     th:src="${bean.mvHeadImage}" style="width: 154px;height: 84px;"/></a>
                             <div class="cover_mv">
-                                <a href="mvPlay.html" th:href="@{mvPlay.html/}+${bean.mvId}" target="_blank"></a>
+                                <a href="mvPlay.html" th:href="@{mvPlay.html}+'/'+${bean.mvId}" target="_blank"></a>
                                 <div class="playBtn">
-                                    <a th:href="@{mvPlay.html/}+${bean.mvId}" target="_blank"/>
+                                    <a th:href="@{mvPlay.html}+'/'+${bean.mvId}" target="_blank"/>
                                 </div>
                             </div>
                             <div class="mv_cpt">
