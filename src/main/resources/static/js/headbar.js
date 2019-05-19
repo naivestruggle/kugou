@@ -361,3 +361,21 @@ function clearHeadHistory(){
 }
 /////////////////////////////搜索框结束///////////////////////////////
 
+
+
+/**
+ * qq分享
+ * @param url       链接地址
+ * @param desc      描述
+ * @param title     标题
+ * @param summary   内容
+ * @param pics      图片
+ */
+function qqShare(url,desc,title,summary,pics){
+    var urlPath = "https://connect.qq.com/widget/shareqq/index.html?url="+ encodeURI(url) +
+                  "&desc=" + desc +
+                  "&title=" + title +
+                  "&summary=" + summary +
+                  "&pics=" + pics;
+    window.open (urlPath, 'qq分享', 'height=637, width=1053, top=195,left=459, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no')
+}
