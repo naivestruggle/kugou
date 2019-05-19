@@ -2,6 +2,7 @@ package com.hc.commons;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @Author:
@@ -34,5 +35,16 @@ public class CookieUtils {
             }
         }
         return null;
+    }
+
+    /**
+     * 移除cookie
+     * @param cookieName cookie名
+     * @param response  响应对象
+     */
+    public static void removeCookieByName(String cookieName, HttpServletResponse response) {
+        Cookie cookie = new Cookie(cookieName,"");
+        cookie.setMaxAge(-1);
+        response.addCookie(cookie);
     }
 }

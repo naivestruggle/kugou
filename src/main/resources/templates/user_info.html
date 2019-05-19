@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Document</title>
+	<link rel="stylesheet" th:href="@{/css/user_info.css}"/>
+</head>
+<body>
+<!-- 引入头部 -->
+<div th:replace="commons/head::headbar"></div>
+
+	<div class="information">
+		<div class="content">
+			<div class="info">
+				<div class="left_div">
+					<div class="left">
+						<div class="user_info">
+							<div class="info_cover">
+								<img id="UserImage" width="165" height="165" th:src="@{${loginedUser.userImgpath}}"/>
+							</div>
+							<div class="info_txt">
+								<p align="center">
+									<a href="#" id="myucname" class="uname" th:text="${loginedUser.userUsername}"></a>
+		                        </p>
+		                        <p align="center">(帐号:[[${loginedUser.userAccount}]])</p>
+							</div>
+							<div class="info_vip">
+								<p align="center">
+									<a target="_blank" href="" title="开通酷狗豪华VIP">开通酷狗豪华 VIP&gt;&gt;</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="right">
+					<div class="title">
+                        <h4 class="title-c">我的音梦</h4>
+                        <div class="title-e">
+                        	<span class="notice">Personal information</span>
+                        </div>
+                    </div>
+					
+					<ul class="tab">
+						<li class="tab-item active"><a href="#">修改头像</a></li>
+				        <li class="tab-item"><a href="#">编辑资料</a></li>
+				        <li class="tab-item"><a href="#">修改密码</a></li>
+				        <li class="tab-item"><a href="#">账号安全</a></li>
+					</ul>
+					<div class="tab_content">
+						<div class="main clearfix selected">
+							<div class="change_pic">
+								<div class="change_info">
+									<span>设置一个您喜爱的头像：</span>
+									<div class="upload_pic">
+										<canvas class="pic" id="pic"  width="200" height="200"></canvas>
+										<div class="pic_info">
+											<p>请选择图片文件，最佳尺寸为400×400，支持JPG,JPEG,GIF,PNG</p>
+											<form id="uploadForm" action="user.uploadImage" method="post" enctype="multipart/form-data">
+												<input name="file" type="file" style="display: none" id="file">
+											</form>
+											<div id="read">浏览</div>
+											<button id="uploadButton">上传</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="main data">
+							<form action="">
+								<div class="info_item">
+									<label>帐号：</label>
+									<span th:text="${loginedUser.userAccount}"></span>
+								</div>
+								<div class="info_item">
+									<label>音梦ID：</label>
+									<span th:text="${loginedUser.userInmengId}"></span>
+								</div>
+								<div class="info_item">
+									<label><span style="color: red;">*</span>昵称：</label>
+									<div class="name_box">
+										<div class="name_textbox">
+											<input id="nickname" th:placeholder="${loginedUser.userUsername}" name="nickname" type="text" class="ipt" maxlength="20"/>
+										</div>
+									</div>
+								</div>
+								<div class="info_item">
+									<label>性别：</label>
+	                                    <input type="radio" name="UM_Sex" th:checked="${loginedUser.userSex eq 1?true:false}" value="1"> 男　
+	                                    <input type="radio" name="UM_Sex" th:checked="${loginedUser.userSex eq 0?true:false}" value="0"> 女
+	                                    <input type="radio" name="UM_Sex" th:checked="${loginedUser.userSex eq 2?true:false}" value="2"> 保密
+								</div>
+								<div class="info_item">
+									<label>生日：</label>
+									<input type="date" id="birthday" th:value="${loginedUser.userBirthday}"/>
+								</div>
+								<div class="info_item">
+									<label><span style="color: red;">*</span>地区：</label>
+									<div class="sel">
+										<select name="sel_Province" id="sel_Province">
+											<option value="-1">请选择</option>
+	                                        <option th:value="${bean.key}" th:selected="${bean.value eq loginedUser.province ? true:false}" th:text="${bean.value}" th:each="bean:${provinceMap}"></option>
+	                                    </select>
+	                                    <select name="sel_City" id="sel_City" th:attr="rel=${loginedUser.city}">
+	                                    </select>
+										<select name="sel_Districts" id="sel_Districts" th:attr="rel=${loginedUser.districts}">
+										</select>
+									</div>
+								</div>
+								<div class="info_item" style="height: 166px;position: relative;padding-bottom: 15px;">
+									<label style="position: absolute;top: 0;">个性签名：</label>
+									<textarea name="" id="intro" cols="30" rows="10" maxlength="160" th:text="${loginedUser.userSignature}"></textarea>
+									
+								</div>
+								<div class="info_item">
+									<label><span style="color: red;">*</span>验证码：</label>
+									<div class="confirm_box">
+										<div class="code">
+											<input id="updateInfoVerifyCode" class="verify_code" maxlength="4" name="code" type="text" >
+										</div>
+										<div class="confirm_pic">
+											<img id="uccheckimg_alterinfo"  onclick="createVerify(1)" title="看不清，换一张" class="uccheckimg"  src="">
+										</div>
+										<a class="changeone" href="javascript:void(0);"  onclick="createVerify(1)">换一张</a>
+									</div>
+								</div>
+								<input type="button" id="button1" class="save" value="保存修改">
+							</form>
+						</div>
+						<!-- ========修改密码===================================================================================== -->
+						<div class="main data">
+							<form action="">
+								<div class="info_item" style="padding-bottom:15px;">
+									<label><span style="color: red;">*</span>原密码：</label>
+									<div class="textbox">
+										<input id="pwd1" name="pwd" type="text" maxlength="18" class="pwd">
+										<span class="updateUserInfoError" id="old_pwd_errorMsg">密码长度必须在6-18位之间</span>
+                                    	<i href="javascript:void(0);" class="eye"></i>
+										<div class="forgetPassword" style="height:15px;">原密码记不清了？
+											<a href="">找回密码</a>
+										</div>
+                                    </div>
+								</div>
+
+								<div class="info_item" style="padding-bottom:15px;">
+									<label><span style="color: red;">*</span>新密码：</label>
+									<div class="textbox">
+										<input id="pwd2" name="pwd" type="password" maxlength="18" class="pwd">
+										<span class="updateUserInfoError" id="new_pwd_errorMsg">密码长度必须在6-18位之间</span>
+                                    	<!-- 密码强度的强弱看bg的left值 -->
+                                    	<div class="pwd_strong">
+	                                        <div class="pwd_strong_txt">密码强度:弱</div>
+	                                        <div class="pwd_strong_size">
+	                                        	<span class="bg"></span>
+	                                        	<span class="line1"></span>
+	                                        	<span class="line2"></span>
+	                                        </div>
+	                                        <div class="pwd_strong_txt">强</div>
+	                                    </div>
+                                    </div>
+								</div>
+								<div class="info_item">
+									<label><span style="color: red;">*</span>确认密码：</label>
+									<div class="textbox">
+                                    	<input id="pwd3" name="pwd" type="password" maxlength="18" class="pwd">
+										<span class="updateUserInfoError" id="aga_pwd_errorMsg">两次输入的密码不一致</span>
+                                    </div>									
+								</div>
+
+								<div class="info_item">
+									<label><span style="color: red;">*</span>验证码：</label>
+									<div class="confirm_box">
+										<div class="code">
+											<input id="alterPwdVerifyCode" class="verify_code" name="code" maxlength="4" type="text" />
+										</div>
+										<div class="confirm_pic">
+											<img id="uccheckimg_alterpwd" title="看不清，换一张" onclick="createVerify(2)" class="uccheckimg" src="">
+										</div>
+										<a class="changeone" href="javascript:void(0);"  onclick="createVerify(2)">换一张</a>
+									</div>
+								</div>
+								<input type="button" id="button2" class="save" value="保存修改">
+							</form>
+						</div>
+
+						<!-- =======账号安全==================================================================================== -->
+						<div class="main">
+							<div class="account">
+								<div class="security clearfix" id="security">
+									<div class="tips_error" th:if="${loginedUser.userEmail eq null}">
+										<i class="tips_icon"></i>
+										<span class="tips_txt">您还没有安全邮箱哦</span>
+									</div>
+									<!-- 安全邮箱 ----------------------------------------------------------------------------------------->
+									<div class="email_nocheck clearfix account_item" th:with="flag=${loginedUser.userEmail eq null},flag2=${loginedUser.userEmail ne null}">
+                                        <span th:class="${flag?'account_icon icon-email':'account_icon email_bright'}"></span>
+                                        <div th:class="${flag ? 'account_text single-item':'account_text'}">
+                                        	<p>安全邮箱
+                                        		<span class="gray9 f14">(可用于找回密码和登录帐户)</span>
+                                        	</p>
+											<p th:if="${flag2}"><span id="userEmailShowSpan" class="f14 gray9" th:text="${loginedUser.userEmail}"></span></p>
+										</div>
+                                        <p class="account_status">状态：
+                                        	<span class="gray6" th:if="${flag}">未设置</span>
+											<span class="gray6" th:if="${flag2}">已验证</span>
+                                        </p>
+                                        <p class="account_btn">
+                                        	<a class="setting-btn" href="#" th:if="${flag}" title="立即设置">立即设置</a>
+											<a class="setting-btn" href="#" th:if="${flag2}" title="更换绑定">更换绑定</a>
+                                        </p>
+                                    </div>
+
+                                    <!-- 安全手机 --------------------------------------------------------------------------------------------------->
+									<div class="mobile clearfix account_item" th:with="flag=${loginedUser.userTel eq null},flag2=${loginedUser.userTel ne null}">
+                                        <span th:class="${flag?'account_icon icon-mobile':'account_icon tel_bright'}">
+                                        </span>
+                                        <div th:class="${flag ? 'account_text single-item':'account_text'}">
+                                        	<p>安全手机
+                                        		<span class="gray9 f14">(可用于找回密码和登录帐户)</span>
+                                        	</p>
+                                        	<p th:if="${flag2}"><span class="f14 gray9" id="has_tel_show_main" th:text="${loginedUser.tel}">155****6290</span></p>
+                                    	</div>
+                                        <p class="account_status">状态：
+											<span class="gray6" th:if="${flag}">未设置</span>
+											<span class="gray6" th:if="${flag2}">已验证</span>
+                                        </p>
+                                        <p class="account_btn">
+											<a class="setting-btn" href="#" th:if="${flag}" title="立即设置">立即设置</a>
+											<a class="setting-btn" href="#" th:if="${flag2}" title="更换绑定">更换绑定</a>
+                                        </p>
+                                    </div>
+
+                                    <!-- 安全问题 ---------------------------------------------------------------------------------------------------->
+                                    <div class="question clearfix account_item" th:with="flag=${loginedUser.userSafeQuestion eq null},flag2=${loginedUser.userSafeQuestion ne null}">
+                                        <span th:class="${flag?'account_icon icon-question':'account_icon quertion_bright'}">
+                                        </span>
+                                        <div class="account_text single-item">
+                                        	<p>安全问题
+                                        		<span class="gray9 f14">(可用于找回密码)
+                                        	</span>
+                                        </p></div>
+                                        <p class="account_status" id="ensure_status">状态：
+                                        	<span class="gray6" th:if="${flag}">未设置</span>
+											<span class="gray6" th:if="${flag2}">已设置</span>
+                                        </p>
+                                        <p class="account_btn" id="ensure_add_button">
+                                        	<a class="setting-btn" href="#" th:if="${flag}" title="立即设置">立即设置</a>
+											<a class="setting-btn" href="#" th:if="${flag2}" title="修改密保">修改密保</a>
+                                        </p>
+                                    </div>
+
+                                    <!-- 安全qq ------------------------------------------------------------------------------------------------------------>
+                                    <div class="qq clearfix account_item" th:with="flag=${loginedUser.userQq eq null},flag2=${loginedUser.userQq ne null}">
+                                        <span th:class="${flag?'account_icon icon-qq':'account_icon qq_bright'}">
+                                        </span>
+                                        <div th:class="${flag ? 'account_text single-item':'account_text'}">
+                                        	<p>QQ
+                                        		<span class="gray9 f14">(可用于登录账号)
+                                        	</span>
+                                        </p>
+											<p th:if="${flag2}"><span class="f14 gray9" th:text="${loginedUser.userQq}"></span></p>
+										</div>
+                                        <p class="account_status">状态：
+											<span class="gray6" th:if="${flag}">未绑定</span>
+											<span class="gray6" th:if="${flag2}">已验证</span>
+                                        </p>
+                                        <p class="account_btn">
+											<a class="setting-btn" href="#" th:if="${flag}" title="立即设置">立即设置</a>
+											<a class="setting-btn" href="#" th:if="${flag2}" title="更换绑定">更换绑定</a>
+                                        </p>
+                                    </div>
+
+                                    <!-- 微信 ------------------------------------------------------------------------------------------->
+                                    <div class="weixin clearfix account_item" th:with="flag=${loginedUser.userWechat eq null},flag2=${loginedUser.userWechat ne null}">
+                                        <span th:class="${flag?'account_icon icon-weixin': 'account_icon wexin_bright'}">
+                                        </span>
+                                        <div th:class="${flag ? 'account_text single-item':'account_text'}">
+                                        	<p>微信
+                                        		<span class="gray9 f14">(可用于登录账号)
+                                        	</span>
+                                        </p>
+											<p th:if="${flag2}"><span class="f14 gray9" th:text="${loginedUser.userWechat}"></span></p>
+										</div>
+                                        <p class="account_status">状态：
+											<span class="gray6" th:if="${flag}">未绑定</span>
+											<span class="gray6" th:if="${flag2}">已验证</span>
+                                        </p>
+                                        <p class="account_btn">
+											<a class="setting-btn" href="#" th:if="${flag}" title="立即设置">立即设置</a>
+											<a class="setting-btn" href="#" th:if="${flag2}" title="更换绑定">更换绑定</a>
+                                        </p>
+                                    </div>
+								</div>
+								<!-- =====邮箱绑定=============================================================== -->
+								<div class="item1">
+									<div class="info_item">
+									<label><span style="color: red;">*</span>新邮箱地址：</label>
+									<div class="textbox">
+                                    	<input id="new_email_box" name="pwd" type="email" maxlength="50" class="pwd">
+                                    </div>		
+									</div>
+									<div class="info_item">
+										<label><span style="color: red;">*</span>验证码：</label>
+										<div class="textbox">
+	                                    	<input id="new_email_verifycode" name="pwd" type="text" maxlength="6" class="pwd" style="width: 150px;">
+	                                    </div>	
+                                    	<a href="javascript:;" id="sendAlterEmailAddrVerifyCode" hidefocus="true" class="send">发送验证码</a>
+                                    </div>
+									<div class="info_item" style="padding-bottom:15px;">
+										<label><span style="color: red;">*</span>密码：</label>
+										<div class="textbox">
+	                                    	<input id="pwd6" name="pwd" type="password" maxlength="18" class="pwd">
+	                               
+											<div class="forgetPassword" style="height:15px;">原密码记不清了？
+												<a href="">找回密码</a>
+											</div>
+	                                    </div>
+									</div>
+									<div class="info_item btns">
+										<input type="button" id="button3" class="ensure" value="确认">　
+										<a href="javascript:void(0);" class="back">返回</a>
+									</div>
+								</div>
+								<!-- 绑定手机号========第一个子页面================================================================ -->
+								<div class="item2">
+									<form>
+										<div class="info_item">
+											已绑定的安全手机号：
+											<div class="textbox">
+		                                    	<strong class="a_link" id="has_tel_show" style="font-size:14px" th:text="${loginedUser.tel}">
+		                                    	</strong> <a class="updatePhone" href="">手机不能接收验证码？</a>
+		                                    </div>	
+	                                    </div>
+										<div class="info_item">
+											<label>验证码：</label>
+											<div class="textbox">
+		                                    	<input id="pwd7" name="pwd" type="text" maxlength="6" class="pwd" style="width: 150px;">
+		                                    </div>
+											<span id="sendBtn" class="send">发送验证码</span>
+	                                    </div>
+										<div class="info_item btns">
+											<input type="button" id="button5" class="next" value="下一步">　
+											<a href="javascript:void(0);" class="back">返回</a>
+										</div>
+									</form>
+								</div>
+								<!-- =======绑定手机号==============第二个子页面========================================================= -->
+								<div class="item2_">
+									<form>
+										<div class="info_item">
+											<label><span style="color: red;">*</span>新手机号码：</label>
+											<div class="textbox">
+												<input id="new_tel_box" name="pwd" type="tel" maxlength="11" class="pwd">
+											</div>
+										</div>
+										<div class="info_item">
+											<label>验证码：</label>
+											<div class="textbox">
+												<input id="pwd7_" name="pwd" type="text" maxlength="6" class="pwd" style="width: 150px;">
+											</div>
+											<span id="sendBtn_" class="send">发送验证码</span>
+										</div>
+										<div class="info_item btns">
+											<input type="button" id="button5_" class="next" value="提交">　
+										</div>
+									</form>
+								</div>
+
+								<!-- 安全问题========================================================================================= -->
+								<div class="item3">
+									<form>
+										<h4 class="ensure_pwd">① 确认密码</h4>
+										<div class="info_item">
+											
+											<label>账号：</label>
+											<div class="textbox">
+		                                    	<strong class="a_link" style="font-size:14px;font-weight: normal;color: #000;line-height:37px;" th:text="${loginedUser.userAccount}">
+		                                    	</strong>
+		                                    </div>	
+	                                    	
+	                                    </div>
+
+	                                    <div class="info_item" style="padding-bottom:15px;">
+											<label>密码：</label>
+											<div class="textbox">
+		                                    	<input id="pwd8" name="pwd" type="password" maxlength="18" class="pwd">
+		                                    </div>
+											<div class="warning" id="ensure_pwd_warning">
+												<i class="tips_icon"></i>
+												<span class="tips_txt">请填写密码</span>
+											</div>
+										</div>
+									
+	                                    <div class="protect_pwd"></div>
+										<h4 class="ensure_pwd">② 填写密码保护</h4>
+										<div class="info_item" style="padding-bottom:15px;">
+											<label>问题：</label>
+											<div class="textbox">
+		                                    	<select id="ensure_pwd" class="select_question" name="">
+                                                   <option value="-1" selected="selected">-请选择密码保护问题-</option>
+                                                    <option value="0">你在哪所中学读高中？</option>
+                                                    <option value="1">你的宠物叫什么名字？</option>
+                                                    <option value="2">你最喜欢的音乐是？</option>
+                                                    <option value="3">你最喜欢的球队是？</option>
+                                                    <option value="4">你最喜欢的书是？</option>
+                                                    <option value="5">你最好的朋友是？</option>
+                                                    <option value="6">你的出生年月是？</option>
+                                                    <option value="7">你爱人的名字是？</option>
+                                                    <option value="8">你父亲的名字是？</option>
+                                                    <option value="9">你母亲的名字是？</option>
+                                                </select>	                              									
+		                                    </div>
+		                                    <div class="warning" id="ensure_question_warning">
+		                                    	<i class="tips_icon"></i>
+		                                    	<span class="tips_txt">请选择密保问题</span>
+		                                    </div>
+										</div>
+										<div class="info_item" style="padding-bottom:15px;">
+											<label>答案：</label>
+											<div class="textbox">
+		                                    	<input id="pwd9" name="pwd" type="text" maxlength="50" class="pwd">
+		                                    </div>
+		                                    <div class="warning" id="ensure_answer_warning">
+		                                    	<i class="tips_icon"></i>
+		                                    	<span class="tips_txt">请输入密保答案</span>
+		                                    </div>
+										</div>
+									
+										<div class="info_item">
+											<label><span style="color: red;">*</span>验证码：</label>
+											<div class="confirm_box">
+												<div class="code">
+													<input id="ensure_verify_code" class="verify_code" maxlength="4" name="code" type="text" >
+												</div>
+												<div class="confirm_pic">
+													<img id="uccheckimg_updatemail" onclick="createVerify(3)" class="uccheckimg" title="看不清，换一张" src="">
+												</div>
+												<a class="changeone" href="javascript:void(0);" onclick="createVerify(3)">换一张</a>
+											</div>
+										</div>
+										<div class="info_item btns">
+											<input type="button" id="button6" class="next" value="提交">　
+											<a href="javascript:void(0);" class="back">返回</a>
+										</div>
+									</form>
+								</div>
+							</div>			
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!-- 引入底部 -->
+<div th:replace="commons/foot::footbar"></div>
+
+</body>
+<script th:src="@{/js/user_info.js}"></script>
+</html>

@@ -3,19 +3,18 @@ package com.hc.kugou.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.hc.commons.CookieUtils;
 import com.hc.kugou.bean.custombean.CustomMusic;
+import com.hc.kugou.bean.custombean.CustomUser;
 import com.hc.kugou.bean.custombean.IndexViewBean;
 import com.hc.kugou.service.IndexService;
 import com.hc.kugou.service.MusicService;
+import com.hc.kugou.service.UserService;
 import com.hc.kugou.service.exception.CustomException;
 import com.hc.kugou.service.exception.music.NotFoundMusicException;
 import com.hc.kugou.solr.SolrBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.Cookie;
@@ -41,6 +40,9 @@ public class IndexController {
     @Autowired
     private MusicService musicService;
 
+    @Autowired
+    private UserService userService;
+
     private static final String COOKIE_HISTORY_SEARCH = "yinmeng_history_search_info";
 
     /**
@@ -49,16 +51,24 @@ public class IndexController {
      * @return
      */
     @GetMapping(path = {"index.html","/","index"})
-    public String fun1(Model model){
-        Long start = System.currentTimeMillis();
+    public String fun1(Model model,HttpSession session,HttpServletRequest request){
+        String loginedUserInfo = CookieUtils.getCookieValueByName("indream_autoLogin",request);
+        if(!StringUtils.isEmpty(loginedUserInfo) && !"null".equals(loginedUserInfo)){
+            String[] arr = loginedUserInfo.split("-");
+            String account = arr[0];
+            String password = arr[1];
+            //自动登录
+            CustomUser loginedUser = null;
+            try {
+                loginedUser = userService.loginService(account, password);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            //将用户信息存入session
+            session.setAttribute(com.hc.commons.StringUtils.LOGINED_USER,loginedUser);
+        }
         IndexViewBean indexViewBean = indexService.showService();
-        Long end = System.currentTimeMillis();
-
         model.addAttribute("indexViewBean",indexViewBean);
-
-
-        Long times = end - start;
-        System.out.println("查询所用时间："+times+"ms");
         return "index";
     }
 
@@ -67,7 +77,7 @@ public class IndexController {
      * @return
      */
     @ResponseBody
-    @PostMapping("index.searchBox.ajax")
+    @RequestMapping("index.searchBox.ajax")
     public JSONObject fun2(){
         JSONObject jsonObject = new JSONObject();
         String searchKey = indexService.getSearchBoxKey();

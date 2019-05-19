@@ -1,11 +1,14 @@
 package com.hc.kugou.config;
 
+import com.hc.commons.MailUtils;
 import com.hc.kugou.solr.MusicSolr;
 import com.hc.kugou.solr.MvSolr;
 import com.hc.kugou.solr.SingerSolr;
 import com.hc.kugou.solr.MusicListSolr;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -17,6 +20,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 public class MyMvcConfig{
+
+    @Value("${verify.real.path}")
+    private String verifyPath;
+
+    @Value("${headImage.real.path}")
+    private String headImagePath;
+
     @Bean
     public WebMvcConfigurer dispatcherHandler(){
         WebMvcConfigurer webMvcConfigurer = new WebMvcConfigurer(){
@@ -53,9 +63,19 @@ public class MyMvcConfig{
                 registry.addViewController("/songsheetlist.html").setViewName("songsheetlist");
                 registry.addViewController("/test01.html").setViewName("test01");
             }
+
+            /**
+             * @param registry
+             */
+            @Override
+            public void addResourceHandlers(ResourceHandlerRegistry registry) {
+                registry.addResourceHandler("/verifyImage/**").addResourceLocations(verifyPath);
+                registry.addResourceHandler("/userHeadImage/**").addResourceLocations(headImagePath);
+            }
         };
         return webMvcConfigurer;
     }
+
 
     @Bean
     public MusicSolr musicSolr(){
@@ -75,5 +95,14 @@ public class MyMvcConfig{
     @Bean
     public MusicListSolr musicListSolr(){
         return new MusicListSolr();
+    }
+
+    /**
+     * 注入邮件发送工具
+     * @return  邮件发送工具对象
+     */
+    @Bean
+    public MailUtils mailUtils(){
+        return new MailUtils();
     }
 }

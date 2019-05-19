@@ -1,6 +1,7 @@
 package com.hc.kugou;
 
 import com.hc.commons.Code;
+import com.hc.commons.MailUtils;
 import com.hc.commons.StringUtils;
 import com.hc.kugou.mapper.*;
 import com.hc.kugou.service.IndexService;
@@ -58,36 +59,28 @@ public class KugouApplicationTests {
 
     @Test
     public void updateMusicSongName(){
-        String str = "                            原创 - 仓央嘉措情歌 周;";
-        System.out.println(StringUtils.getRealSearchKey(str));
     }
 
     @Test
     public void fun2(){
-//        Long id = 78143l;
-//        for(int i=0;i<10;i++) {
-//            Music music = musicMapper.selectMusicById(id++);
-//            SolrManager<Music> solrManager = SolrManager.getInstance(Music.class,client);
-//            solrManager.add(music.getMusicHashCode(),music);
-//        }
     }
 
 
     @Test
     public void test02(){
-        List arr = new ArrayList();
-        Map<String,String> map = new HashMap<String, String>();
-        int count = 0;
-        for(int i = 0; i < 1000; i++){
-            String userAccount = Code.createUserAccount();
-            map.put(userAccount,"");
-//            if(arr.contains(userAccount)){
-//                count++;
-//            }
-//            arr.add(userAccount);
-        }
-
-        System.out.println(map.size());
+//        List arr = new ArrayList();
+//        Map<String,String> map = new HashMap<String, String>();
+//        int count = 0;
+//        for(int i = 0; i < 1000; i++){
+//            String userAccount = Code.createUserAccount();
+//            map.put(userAccount,"");
+////            if(arr.contains(userAccount)){
+////                count++;
+////            }
+////            arr.add(userAccount);
+//        }
+//
+//        System.out.println(map.size());
     }
 
 }
