@@ -90,7 +90,7 @@ public class QqServiceImpl implements QqService {
         CustomUser loginedUser = new CustomUser();
         loginedUser.setUserUsername((String)jsonObject.get(QQHttpClient.NICKNAME));
         loginedUser.setUserImgpath((String)jsonObject.get(QQHttpClient.FIGUREURL_QQ_2));
-        loginedUser.setUserPassword(MD5.parseMD5("123456"));
+        loginedUser.setUserPassword(MD5.parseMD5(Code.DEFAULT_PWD));
         loginedUser.setUserAccount(Code.createUserAccount());
         loginedUser.setUserQq(openid);
 
