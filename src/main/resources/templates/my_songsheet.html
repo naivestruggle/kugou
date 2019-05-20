@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="../public/css/my_songsheet.css">
+	<script src="../public/js/jquery-3.2.1.js"></script>
+	<script src="../public/js/my_songsheet.js"></script>
+</head>
+<body>
+	<div class="my_songsheet">
+		<div class="songsheet_info">
+			<!-- 左边 -->
+			<div class="left">
+				<div class="songsheet_list">
+					<div class="list create">
+						<h2 class="set">
+							<a href="javascript:void(0);" class="new_create btn"><i>新建</i></a>
+							<span class="create_songsheet">
+								<i class="songsheet_icon" id="icon"></i>创建的歌单
+								&nbsp;&nbsp;
+								(<span class="num">2</span>)
+							</span>
+						</h2>
+						
+
+						<ul>
+							<li class="songlist selected">
+								<div class="item">
+									<div class="pic">
+										<a href="#">
+											<img src="../public/img/my_songsheet/18963277044344180.jpg" alt="">
+										</a>
+									</div>
+									<p class="name text">
+										<a hidefocus="true" href="javascript:void(0);" class="s-fc0" title="我喜欢的音乐">我喜欢的音乐</a>
+									</p>
+									<p class="song_num text">6首</p>
+								</div>
+							</li>
+							<li class="songlist">
+								<div class="item">
+									<div class="pic">
+										<a href="#">
+											<img src="../public/img/my_songsheet/18963277044344180.jpg" alt="">
+										</a>
+									</div>
+									<p class="name text">
+										<a hidefocus="true" href="javascript:void(0);" class="s-fc0" title="我喜欢的音乐">我喜欢的音乐</a>
+									</p>
+									<p class="song_num text">6首</p>
+								</div>
+								<!-- 移上去显示编辑和删除 -->
+								<span class="handle">
+									<a title="编辑" href="javascript:void(0);" class="edit"></a>
+									<a title="删除" href="javascript:void(0);" class="delete"></a>
+								</span>
+							</li>
+						</ul>
+					</div>
+					<div class="list colleted">
+						<h2 class="set">
+							<span class="create_songsheet">
+								<i class="songsheet_icon" id="icon"></i>收藏的歌单
+								&nbsp;&nbsp;
+								(<span class="num">2</span>)
+							</span>
+						</h2>
+						
+
+						<ul>
+							<li class="songlist">
+								<div class="item">
+									<div class="pic">
+										<a href="#">
+											<img src="../public/img/my_songsheet/18963277044344180.jpg" alt="">
+										</a>
+									</div>
+									<p class="name text">
+										<a hidefocus="true" href="javascript:void(0);" class="s-fc0" title="我喜欢的音乐">日语｜无可救药的孤独症患者</a>
+									</p>
+									<p class="song_num text">181首 by PurionPurion</p>
+								</div>
+								<!-- 移上去显示编辑和删除 -->
+								<span class="handle">
+									<a title="删除" href="javascript:void(0);" class="delete"></a>
+								</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="right">
+				<div class="likesong" style="display: block;">
+					<!-- 上面的歌单信息 -->
+					<div class="top">
+						<div class="detail_info">
+							<div class="cover">
+								<img src="../public/img/my_songsheet/18963277044344180 (1).jpg" alt="">
+							</div>
+							<div class="cnt">
+								<div class="cnt_info">
+									<div class="hd">
+										<div class="hd_songsheet">歌单</div>
+										<h2>我喜欢的音乐</h2>
+									</div>
+									<div class="user">
+										<a href="" class="user_pic">
+											<img src="../public/img/my_songsheet/19088621370075048.jpg" alt="">
+										</a>
+										<span class="uname">
+											<a href="#">我是用户名</a>
+										</span>
+										<span class="create_time">2017-02-25 创建</span>
+									</div>
+									<div class="btns">
+										<a href="javascript:void(0);" class="btn_play">
+												播放
+										</a>
+										<a href="javascript:void(0);" class="add">+</a>
+										<a href="javascript:void(0);" class="u-btni collect">
+											<i>收藏</i>
+										</a>
+										<a href="javascript:void(0);" class="u-btni share">
+											<i>分享</i>
+										</a>
+										<a href="javascript:void(0);" class="u-btni download">
+											<i>下载</i>
+										</a>
+										<a href="#area" class="u-btni comment">
+											<i>评论</i>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="song_title">
+							<h3>歌曲列表</h3>
+							<span class="sub"><span class="count">6</span>首歌</span>
+							<div class="more">播放：<strong class="paly_count" style="color: #0c73c2;">2</strong>次</div>
+						</div>
+					</div>
+					<!-- 中间的歌曲 -->
+					<div class="middle">
+						<div class="list-table">
+							<table class="m-table">
+								<thead>
+									<tr>
+										<th class="first w1">
+											&nbsp;
+										</th>
+										<th style="width: 303px;">
+											歌曲标题
+										</th>
+										<th style="width:111px;">
+											时长
+										</th>
+										<th style="width: 103px;">
+											歌手
+										</th>
+										<th>专辑
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<span class="ply">&nbsp;</span>
+											<span class="num">1</span>
+										</td>
+										<td>
+											<span class="txt">
+												<a href="#" class="song_txt">外愈</a>
+											</span>
+										</td>
+										<td style="color: #666;">
+											<span class="total_time">03:33</span>
+											<div class="icons">
+												<a href="javascript:void(0);" class="u-icon"></a>
+												<span class="icon icon-collect"></span>
+												<span class="icon icon-share"></span>
+												<span class="icon icon-download"></span>
+												<span class="icon icon-delete"></span>
+											</div>
+										</td>
+										<td>
+											<span class="txt">
+												<a href="#" class="song_txt">任然</a>
+											</span>
+										</td>
+										<td>
+											<span class="txt">
+												<a href="#" class="song_txt">外愈</a>
+											</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="ply">&nbsp;</span>
+											<span class="num">2</span>
+										</td>
+										<td>
+											<span class="txt">
+												<a href="#" class="song_txt">云烟成雨</a>
+												<span title="动画《我是江小白》片尾曲" class="small_title"> - (动画《我是江小白》片尾曲)</span>
+												<span title="播放mv" class="mv">MV</span>
+											</span>
+										</td>
+										<td style="color: #666;">
+											<span class="total_time">03:33</span>
+											<div class="icons">
+												<a href="javascript:void(0);" class="u-icon"></a>
+												<span class="icon icon-collect"></span>
+												<span class="icon icon-share"></span>
+												<span class="icon icon-download"></span>
+												<span class="icon icon-delete"></span>
+											</div>
+										</td>
+										<td>
+											<span class="txt">
+												<a href="#" class="song_txt">房东的猫</a>
+											</span>
+										</td>
+										<td>
+											<span class="txt">
+												<a href="#" class="song_txt">云烟成语</a>
+											</span>
+										</td>
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- 下边的评论 -->
+					<div class="bottom">
+						<div class="comment_title">
+							<h3>评论</h3>
+							<span class="sub">共<span class="count">0</span>条评论</span>
+						</div>
+						<div class="m-cmmt">
+							<div class="comment_info">
+								<div class="head">
+									<img src="../public/img/my_songsheet/19088621370075048.jpg">
+								</div>
+								<div class="comment_content">
+									<div class="u-txtwrap" style="display: block;">	 
+										 <textarea class="u-txt area" placeholder="评论" id="area"></textarea>
+									</div>
+									<div class="btns">
+										<a href="javascript:void(0)" class="btn u-btn-1">评论</a>
+										<span class="zs">140</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 编辑内容 -->
+				<div class="edit_dialog" style="display: none;">
+					<div>
+						<div class="edit_title">
+							<a href="#" class="name">抖音&nbsp;快手&nbsp;各类超火歌曲&nbsp;持续更新中</a>
+							<span class="arr">&gt;</span>
+							<span style="font-weight: bold;">编辑歌单</span>
+						</div>
+						<div class="edit_content">
+							<div class="edit_left">
+								<div class="itm">
+									<span class="must">*</span>
+									<label class="lab">歌单名：</label>
+									<input type="text" class="u-txt" value="">
+									<div class="u-err f-vhide j-flag">
+										<i class="u-icn u-icn-25"></i>
+									</div>
+								</div>
+								<div class="itm">
+									<label class="lab">标签：</label>
+									<div class="tags">									
+										<a href="javascript:void(0)" class="choose">选择标签</a>
+									</div>
+									<div class="tagnote">选择适合的标签，最多选3个</div>
+								</div>
+								<div class="itm">
+									<label class="lab">介绍：</label>
+									<div class="u-txtwrap">
+										<textarea class="u-txt area"></textarea>
+										<span class="zs s-fc2 j-flag">1000</span>
+									</div>
+								</div>
+								<div class="itm" style="margin-top: 40px;padding-bottom: 20px;">
+									<a href="javascript:void(0)" class="u-btn btn1">
+										<i>保 存</i>
+									</a>
+									<a href="javascript:void(0)" class="u-btn btn2">
+										<i>取 消</i>
+									</a>
+								</div>
+							</div>
+							<div class="edit_right">
+								<input type="file" style="display: none;" id="edit_ipt"/>
+								<img src="../public/img/my_songsheet/1.jpg" alt="">
+								<span class="btm" onclick="$('#edit_ipt').click()">编辑封面</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 点新建弹出来的框 -->
+	<div class="create_list">
+		<div class="create_title">
+			<p>新建歌单</p>
+		</div>
+		<div class="create_body">
+			<div class="body_content">
+				<p>歌单名：<input type="text" class="list_txt"></p>
+				<!-- 错误提示 -->
+				<div class="error">
+					<i></i>错误提示
+				</div>
+				<p class="tip">可通过“收藏”将音乐添加到新歌单中</p>
+				<div class="btn">
+					<a href="javascript:;" class="create_btn btn1"><i>新 建</i></a>
+					<a href="javascript:;" class="create_btn btn2"><i>取 消</i></a>
+				</div>
+			</div>
+
+		</div>
+		<span class="close" title="关闭窗体">×</span>
+	</div>
+	<!-- 点删除弹出来的框 -->
+	<div class="delete_box">
+		<div class="delete_title">
+			<p>提示</p>
+		</div>
+		<div class="delete_body">
+			<div class="body_content">
+				<div style="text-align: center;">确定删除歌单?</div>
+				<div class="btn" style="margin-left: 130px;margin-top: 30px;">
+					<a href="javascript:;" class="delete_btn btn1"><i>确定</i></a>
+					<a href="javascript:;" class="delete_btn btn2"><i>取 消</i></a>
+				</div>
+			</div>
+
+		</div>
+		<span class="close" title="关闭窗体">×</span>
+	</div>
+	<!-- 分享框 -->
+	<div class="share_dialog" style="top: 75px;left: 418px;">
+		<div class="zbar">
+			<div class="title">分享</div>
+		</div>
+		<div class="zcnt">
+			<div style="padding: 0px;">
+				<div class="share_content" style="padding: 20px 40px 30px;">
+					<ul class="m-tabs">
+						<li class="z-slt">
+							<a href="#"><em>分享给大家</em></a>
+						</li>
+						<li>
+							<a href="#"><em>私信分享</em></a>
+						</li>
+					</ul>
+					<div class="u-txtwrap">
+						<textarea class="u-txt area" placeholder="说点什么吧"></textarea>
+						<div class="info">
+					<!-- 		<i class="highlight"></i> -->
+							<div class="text">
+								<p class="f-thide">歌单：我喜欢的音乐&nbsp;by&nbsp;昵称全被傻子取了</p>
+							</div>
+						</div>
+					</div>
+					<span class="word">140</span>
+					<div class="share_btn">
+						<div class="btnwrap">
+							<a href="" class="btn1"><i>分享</i></a>
+							<a href="javascript:void(0);" class="btn2"><i>取消</i></a>
+						</div>
+					</div>
+					<span class="close" title="关闭窗体">×</span>
+				</div>
+			</div>
+		</div>
+	</div>
+    <!-- 添加到歌单 -->
+    <div class="addToList" style="top: 125.5px;left: 443px;">
+    	<div class="zbar">
+			<div class="title">添加到歌单</div>
+		</div>
+		<div class="zcnt">
+			<div style="padding: 0px;">
+				<div class="share_content add_content">
+					<div class="new_songsheet">
+						<i class="u-icon"></i>新歌单
+					</div>
+					<div class="newlist">
+						<ul>
+							<li class="songlist">
+								<div class="item">
+									<div class="pic">
+										<a href="#">
+											<img src="../public/img/my_songsheet/18963277044344180.jpg" alt="">
+										</a>
+									</div>
+									<p class="name text">
+										<a hidefocus="true" href="javascript:void(0);" class="s-fc0" title="我喜欢的音乐">我喜欢的音乐</a>
+									</p>
+									<p class="song_num text">6首</p>
+								</div>
+							</li>
+							<li class="songlist">
+								<div class="item">
+									<div class="pic">
+										<a href="#">
+											<img src="../public/img/my_songsheet/18963277044344180.jpg" alt="">
+										</a>
+									</div>
+									<p class="name text">
+										<a hidefocus="true" href="javascript:void(0);" class="s-fc0" title="我喜欢的音乐">我喜欢的音乐</a>
+									</p>
+									<p class="song_num text">6首</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<span class="close" title="关闭窗体">×</span>
+				</div>
+			</div>
+		</div>
+    </div>
+
+	
+</body>
+</html>

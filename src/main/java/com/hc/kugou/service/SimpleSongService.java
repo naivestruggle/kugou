@@ -38,4 +38,12 @@ public interface SimpleSongService {
      * @param id 要更新的musicid对象
      */
     void updateLentenerCount(Integer id);
+
+    /**
+     * 根据音乐id  获取音乐对象
+     * @param musicId   音乐id
+     * @return  音乐对象
+     * @throws Exception    抛出异常
+     */
+    CustomMusic getOneMusicInfo(Integer musicId)throws Exception;
 }

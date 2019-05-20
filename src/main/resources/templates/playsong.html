@@ -17,7 +17,7 @@
     		<div class="album fl">
                 <div class="albumImg">
                     <a class="fl" target="_blank" href="" title="">
-                    	<img src="" th:src="${simpleSongBean.oneMusic.musicImg}">
+                    	<img class="simple_music_img" src="" th:src="${simpleSongBean.oneMusic.musicImg}">
                     </a>
                 </div>
                 <div class="btnArea2 clearfix">
@@ -28,7 +28,7 @@
             <div class="song_info">
             	<!-- 歌曲名字 -->
             	<div class="songName clearfix" title="">
-            		<span class="audioName" th:title="${simpleSongBean.oneMusic.musicAlbumName}" th:text="${simpleSongBean.oneMusic.musicAlbumName}">一秒钟</span>
+            		<span class="audioName simple_music_name" th:title="${simpleSongBean.oneMusic.musicName}" th:text="${simpleSongBean.oneMusic.musicAlbumName}">一秒钟</span>
             		<!-- 如果歌曲有mv的话，这个按钮就显示 -->
 					<div th:if="${simpleSongBean.oneMusic.musicHaveMv eq 1}">
                      	<a target="_blank" href="#" class="btnMv" th:href="@{/mvPlay.html/}+${simpleSongBean.oneMusic.musicVideoId}"></a>
@@ -38,22 +38,22 @@
                 <div class="songDetail clearfix">
                     <p class="albumName fl" style="">
                         <span class="fontColor">专辑：</span>
-                        <a target="_blank" href="" title="一秒钟" th:title="${simpleSongBean.oneMusic.musicAlbumName}" th:text="${simpleSongBean.oneMusic.musicAlbumName}">一秒钟</a>
+                        <a target="_blank" class="simple_music_albumName" href="" th:title="${simpleSongBean.oneMusic.musicAlbumName}" th:text="${simpleSongBean.oneMusic.musicAlbumName}">一秒钟</a>
                     </p>
                     <p class="singerName fl" style="" title="">
                     	<span class="fontColor">歌手：</span>
-                    	<a target="_blank" href="" title="林东" th:title="${simpleSongBean.oneMusic.musicAuthorName}" th:text="${simpleSongBean.oneMusic.musicAuthorName}">林东</a>
+                    	<a target="_blank" href="" class="simple_music_author" th:title="${simpleSongBean.oneMusic.musicAuthorName}" th:text="${simpleSongBean.oneMusic.musicAuthorName}">林东</a>
                     </p>
                 </div>
 				<!-- 播放器 -->
-				<audio id="myAudio" src="someaudio.wav" th:src="${simpleSongBean.oneMusic.musicPlayUrl}" >
+				<audio id="myAudio" th:src="${simpleSongBean.oneMusic.musicPlayUrl}" >
 					您的浏览器不支持 audio 标签。
 				</audio>
 
                 <!-- 歌词 -->
                 <div class="songWordContent songWordContentM jspScrollable" style="height: 235px; overflow: hidden; padding: 0px; width: 460px;" tabindex="0">
                 	<div class="jspContainer" style="width: 460px; height: 235px;">
-                		<div class="jspPane" style="padding: 0px; top: 0px; width: 448px;">
+                		<div class="jspPane simple_music_lyrics" style="padding: 0px; top: 0px; width: 448px;">
 							<!-- 循环生成歌词 -->
                 			<p class="ie8FontColor" th:attr="times=${arr[0]},rel=${arrStat.index+1}"  th:text="${arr[1]}" th:each="arr,arrStat:${simpleSongBean.oneMusic.musicLyricsList}">dasdasdas</p>
                 		</div>
@@ -78,17 +78,17 @@
     	<div id="bot">
 		<div class="bmid">
 			<div class="bot_left">
-				<a href="javascript:void(0);" class="prev" id="btn_pre"></a>
+				<a href="javascript:nextMusic(-1);" class="prev" id="btn_pre"></a>
 				<a href="javascript:audioStopStart();" class="play" id="btn_play"></a>
 				<a href="javascript:audioStopStart();" class="stop" id="btn_stop"></a>
-				<a href="javascript:void(0);" class="next" id="btn_next"></a>
+				<a href="javascript:nextMusic(1);" class="next" id="btn_next"></a>
 			</div>
 			<a href="" class="playImg">
-				<img src="../public/img/playsing/20150716004147248755.jpg" th:src="${simpleSongBean.oneMusic.musicImg}" alt="">
+				<img class="simple_music_img" th:src="${simpleSongBean.oneMusic.musicImg}" alt="">
 			</a>
 			<div class="bot_mid">
 				<div class="mid_up">
-					<span class="songName" th:text="${simpleSongBean.oneMusic.musicSongName}">边走边唱</span>
+					<span class="songName simple_music_name" th:text="${simpleSongBean.oneMusic.musicName}">边走边唱</span>
 					<span style="float: right">
 						<i class="change-time">00:00</i>
 						<a style="color: #fff;">/</a>
@@ -175,7 +175,7 @@
 <!--											<div class="musiclist-item clearfix">-->
 <!--												<span class="musiclist-number">1</span>-->
 <!--												<div class="musiclist-name">-->
-<!--													<span class="musiclist-songname-txt" title="暗夜精灵">暗夜精灵</span>-->
+<!--													<span class="music_list_name_high musiclist-songname-txt" title="暗夜精灵">暗夜精灵</span>-->
 <!--													<div class="mod-list-menu">-->
 <!--														<a href="javascript:;" class="icon list-menu-item icon-playbar-download" title="下载">-->
 <!--															<i class="icon list-menu-icon-down"></i>-->

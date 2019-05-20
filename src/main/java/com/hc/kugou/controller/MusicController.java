@@ -4,11 +4,13 @@ import com.alibaba.fastjson.JSONObject;
 import com.hc.commons.ResponseUtils;
 import com.hc.commons.StringUtils;
 import com.hc.kugou.bean.MusicPlayList;
+import com.hc.kugou.bean.custombean.CustomMusic;
 import com.hc.kugou.bean.custombean.CustomMusicPlayList;
 import com.hc.kugou.bean.custombean.CustomUser;
 import com.hc.kugou.bean.custombean.SimpleSongBean;
 import com.hc.kugou.service.MusicPlayListService;
 import com.hc.kugou.service.SimpleSongService;
+import com.hc.kugou.solr.SolrBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -109,6 +111,25 @@ public class MusicController {
             CustomMusicPlayList sesionMusicPlayList = (CustomMusicPlayList)session.getAttribute(StringUtils.PLAT_SONG_LIST_PRE);
             CustomMusicPlayList musicPlayList = musicPlayListService.loadMusicPlayList(loginedUser,sesionMusicPlayList);
             jsonObject.put("musicPlayList",musicPlayList);
+            ResponseUtils.responseNoException(jsonObject);
+        } catch (Exception e) {
+            ResponseUtils.responseException(jsonObject,e);
+        }
+        return jsonObject;
+    }
+
+    /**
+     * 根据歌曲id得到歌曲对象
+     * @param musicId  歌曲id
+     * @return  jsonobject对象
+     */
+    @ResponseBody
+    @PostMapping("music.getOneMusicInfo.ajax")
+    public JSONObject fun4(Integer musicId){
+        JSONObject jsonObject = new JSONObject();
+        try {
+            CustomMusic music = simpleSongService.getOneMusicInfo(musicId);
+            jsonObject.put("music",music);
             ResponseUtils.responseNoException(jsonObject);
         } catch (Exception e) {
             ResponseUtils.responseException(jsonObject,e);
