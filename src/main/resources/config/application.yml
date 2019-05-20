@@ -46,8 +46,8 @@ spring:
       #上传多个文件最大值  默认是10MB
       max-request-size: 100MB
 server:
-  servlet:
-    context-path: /indream
+#  servlet:
+#    context-path: /indream
   port: 80
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml

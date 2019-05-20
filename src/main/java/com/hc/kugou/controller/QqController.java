@@ -24,7 +24,7 @@ public class QqController {
      * @return
      */
     @GetMapping("/qq/oauth")
-    public String qq(HttpSession session){
+    public String qq(HttpSession session,HttpServletRequest request){
 
         String url = qqService.qqRequest(session);
 
@@ -38,9 +38,9 @@ public class QqController {
      */
     @GetMapping("/qq/callback")
     public String qqCallback(HttpServletRequest request) {
-
         try {
             qqService.qqCallback(request);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
