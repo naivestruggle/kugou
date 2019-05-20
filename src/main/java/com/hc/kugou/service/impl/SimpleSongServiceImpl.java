@@ -137,4 +137,19 @@ public class SimpleSongServiceImpl implements SimpleSongService {
     public void updateLentenerCount(Integer id) {
 
     }
+
+    /**
+     * 根据音乐id  获取音乐对象
+     *
+     * @param musicId 音乐id
+     * @return 音乐对象
+     * @throws Exception 抛出异常
+     */
+    @Override
+    public CustomMusic getOneMusicInfo(Integer musicId) throws Exception {
+        SolrBean<CustomMusic> solrBean = musicSolr.selectMusicById(musicId);
+        CustomMusic music = solrBean.getSolrBeanList().get(0);
+        music.setMusicPlayUrl(PythonUtils.getMusicPlayUrl(music.getHashCode()));
+        return music;
+    }
 }

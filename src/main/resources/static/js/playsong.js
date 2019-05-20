@@ -88,11 +88,11 @@ function flushMusicPlayList(list) {
         }else{
             j++;
         }
-        var thisStr = "<li class=\"active\" onmouseover=\"liMouserover(this)\" onmouseout=\"liMouserout(this)\">\n" +
+        var thisStr = "<li class=\"active\" rel='"+bean.musicId+"' onmouseover=\"liMouserover(this)\" onmouseout=\"liMouserout(this)\">\n" +
             "\t\t\t\t\t\t\t\t\t\t\t<div class=\"musiclist-item clearfix\">\n" +
             "\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"musiclist-number\">"+num+"</span>\n" +
             "\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"musiclist-name\">\n" +
-            "\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"";
+            "\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"music_list_name_high ";
         if(nowMusicId == bean.musicId){
             thisStr += "musiclist-songname-txt";
         }else {
@@ -111,7 +111,7 @@ function flushMusicPlayList(list) {
             "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>\n" +
             "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"javascript:;\" class=\"icon list-menu-item list-menu-icon-del\" title=\"删除歌曲\">\n" +
             "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"icon list-menu-icon-add\"></i>\n" +
-            "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"icon_txt\">删除</span>\n" +
+            "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"icon_txt\" rel='"+num+"' onclick='deleteMusicPlayList(this)'>删除</span>\n" +
             "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>\n" +
             "\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n" +
             "\t\t\t\t\t\t\t\t\t\t\t\t</div>\n" +
@@ -189,5 +189,118 @@ function liMouserout(obj) {
     $(obj).find(".mod-list-menu").css("visibility","hidden");
 }
 
+
+//单个的删除按钮点击事件
+function deleteMusicPlayList(obj) {
+    //删除的歌曲的序号
+    var num = $(obj).attr("rel");
+    if(num == 1){
+        //是当前播放歌曲
+    }else{
+        //不是当前播放歌曲
+    }
+    if(musicId == $("#simpleMusicId").val()){
+        //如果要删除的是当前播放歌曲，就将下一首也保存起来  准备播放下一首
+
+    }
+}
+
+//下一首
+function nextMusic(type){
+    //获取到当前播放歌曲的序号
+    var arr = $(".musiclist li");
+    var len = arr.length;
+    var num = 0;
+    arr.each(function () {
+        if($(this).attr("rel") == $("#simpleMusicId").val()){
+            $(this).find(".music_list_name_high").removeClass("musiclist-songname-txt");
+            $(this).find(".music_list_name_high").addClass("musiclist-artist");
+
+            num = $(this).find(".musiclist-number").html();
+        }
+    });
+    console.log("当前播放歌曲的序号："+num);
+    console.log("当前播放列表的长度："+len);
+    if(len <= 1){
+        if(type == -1){
+            msgBoxOne("没有上一首歌曲了");
+        }else {
+            msgBoxOne("没有下一首歌曲了");
+        }
+    }else{
+        //暂停当前播放音乐
+        againAudio();
+        //获得到下一首播放歌曲的序号
+        var nextNum = 0;
+        if(type == -1){
+            nextNum = parseInt(num) - 1;
+            if(nextNum < 1){
+                nextNum = len;
+            }
+        }else {
+            nextNum = parseInt(num) + 1;
+            if(nextNum > len){
+                nextNum = 1;
+            }
+        }
+        console.log("下一首播放音乐的序号："+nextNum);
+        //获得到下一首播放音乐的musicId
+        var nextMusicId = 0;
+        arr.each(function () {
+            if($(this).find(".musiclist-number").html() == nextNum){
+                $(this).find(".music_list_name_high").addClass("musiclist-songname-txt");
+                $(this).find(".music_list_name_high").removeClass("musiclist-artist");
+                nextMusicId = $(this).attr("rel");
+            }
+        });
+        console.log("下一首播放音乐的id："+nextMusicId);
+        $.post(rootPath+"/music.getOneMusicInfo.ajax",{musicId:nextMusicId},function (data) {
+            var code = data.code;
+            if(code == -1){
+                msgBoxOne("系统繁忙，请稍后再试");
+            }else if(code == 0){
+                msgBoxOne(data.msg);
+            }else if(code == 1){
+                var myAudio = $("#myAudio")[0];
+                var bean = data.music;
+                console.log("下一首要播放的音乐对象："+bean);
+                //修改标签名
+                $("title").html(bean.musicName);
+                //修改图片
+                $(".simple_music_img").attr("src",bean.musicImg);
+                //修改音乐名
+                $(".simple_music_name").html(bean.musicName);
+                $(".simple_music_name").attr("title",bean.musicName);
+                //修改专辑名
+                $(".simple_music_albumName").html(bean.musicAlbumName);
+                $(".simple_music_albumName").attr("title",bean.musicAlbumName);
+                //修改歌手
+                $(".simple_music_author").html(bean.musicAuthorName);
+                $(".simple_music_author").attr("title",bean.musicAuthorName);
+                //修改时间
+                $("#thisMusicAllTimes").html(bean.musicTimes);
+                $("#thisMusicAllTimes").attr("realTime",bean.musicTimelength);
+                //修改歌词
+                var lyrics = "";
+                var lyricsArr = bean.musicLyricsList;
+                if(lyricsArr != null){
+                    for(var i=0;i<lyricsArr.length;i++){
+                        var lyricsArr2 = lyricsArr[i];
+                        lyrics += "<p class=\"ie8FontColor\" rel="+(i+1)+" times="+lyricsArr2[0]+">"+lyricsArr2[1]+"</p>";
+                    }
+                    $(".simple_music_lyrics").html(lyrics);
+                }else{
+                    $(".simple_music_lyrics").html("");
+                }
+                //修改音频链接
+                $("#myAudio").attr("src",bean.musicPlayUrl);
+                //播放
+                myAudio.play();
+                //设置当前播放音乐的id
+                $("#simpleMusicId").val(bean.musicId);
+            }
+        });
+    }
+}
 ////////////////////////////////////播放列表模版结束///////////////////////////////////////////////////
 

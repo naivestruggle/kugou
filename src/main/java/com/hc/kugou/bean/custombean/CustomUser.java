@@ -34,6 +34,9 @@ public class CustomUser extends User implements Serializable {
     private String tel;
     public String getTel(){
         String str = this.getUserTel();
+        if(str == null){
+            return null;
+        }
         return str.substring(0,3) + "****" + str.substring(7);
     }
 

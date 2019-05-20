@@ -48,7 +48,7 @@ spring:
 server:
   servlet:
     context-path: /indream
-  port: 80
+  port: 8080
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/mapper/*.xml
