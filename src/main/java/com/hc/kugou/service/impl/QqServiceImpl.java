@@ -1,14 +1,18 @@
 package com.hc.kugou.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.hc.commons.Code;
+import com.hc.commons.MD5;
 import com.hc.commons.QQHttpClient;
 import com.hc.commons.StringUtils;
 import com.hc.kugou.bean.custombean.CustomUser;
+import com.hc.kugou.mapper.UserMapper;
 import com.hc.kugou.service.QqService;
 import com.hc.kugou.service.exception.qq.StateErrorException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.net.URLEncoder;
@@ -23,6 +27,9 @@ public class QqServiceImpl implements QqService {
 
     @Value("${qq.oauth.http}")
     private String http;
+
+    @Resource
+    private UserMapper userMapper;
 
     @Override
     public String qqRequest(HttpSession session) {
@@ -83,9 +90,17 @@ public class QqServiceImpl implements QqService {
         CustomUser loginedUser = new CustomUser();
         loginedUser.setUserUsername((String)jsonObject.get(QQHttpClient.NICKNAME));
         loginedUser.setUserImgpath((String)jsonObject.get(QQHttpClient.FIGUREURL_QQ_2));
+        loginedUser.setUserPassword(MD5.parseMD5("123456"));
+        loginedUser.setUserAccount(Code.createUserAccount());
+        loginedUser.setUserQq(openid);
+
+        //根据openid查数据库
+        Integer integer = userMapper.queryByOpenId(openid);
+        if(integer == 0){
+            //存入数据库
+            userMapper.insertUser(loginedUser);
+        }
 
         session.setAttribute(StringUtils.LOGINED_USER,loginedUser);
-        session.setAttribute(QQHttpClient.OPENID,openid);
-
     }
 }

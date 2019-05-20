@@ -115,4 +115,12 @@ public interface UserMapper {
      */
     @Update("update kugou_user set user_safe_question = #{userSafeQuestion} where user_id = #{userId} ")
     void updateEnsureQuestion(@Param("userId")Integer userId, @Param("userSafeQuestion")String userSafeQuestion)throws Exception;
+
+    /**
+     * 根据openid查询用户是否存在
+     * @param openid  qq用户的唯一标识
+     * @return
+     */
+    @Select("select count(1) from kugou_user where user_qq = #{openid}")
+    Integer queryByOpenId(@Param("openid") String openid);
 }
