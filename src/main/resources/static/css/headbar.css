@@ -631,7 +631,7 @@ a{
     border: 1px solid #d6d6d6;
     border-top: none;
     background-color: #fff;
-    z-index: 999;
+    z-index: 9999;
     cursor: pointer;
 }
 .history_head dd{

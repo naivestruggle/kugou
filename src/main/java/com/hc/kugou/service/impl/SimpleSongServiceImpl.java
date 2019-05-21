@@ -89,7 +89,11 @@ public class SimpleSongServiceImpl implements SimpleSongService {
             session.setAttribute(StringUtils.PLAT_SONG_LIST_PRE,sessionMusicPlayList);
         }else{
             //已登录
+            System.out.println("user:"+loginedUser);
+
             String key = StringUtils.getRedisMusicPlayListKey(loginedUser.getUserId());
+            System.out.println("key:"+key);
+
             //取出redis中的播放列表对象
             CustomMusicPlayList musicPlayList = (CustomMusicPlayList)objectRedisTemplate.opsForValue().get(key);
             musicPlayList = getNotNullMusicPlayList(music, musicPlayList);

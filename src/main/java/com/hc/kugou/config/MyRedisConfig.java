@@ -1,5 +1,6 @@
 package com.hc.kugou.config;
 
+import com.hc.kugou.bean.custombean.CustomMusicPlayList;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheManager;
@@ -21,12 +22,12 @@ public class MyRedisConfig {
      * 自定义Redis缓存模版 改变默认的序列化规则（序列化为json）
      */
     @Bean
-    public RedisTemplate<Object, Object> objectRedisTemplate
+    public RedisTemplate<Object, CustomMusicPlayList> objectRedisTemplate
     (RedisConnectionFactory redisConnectionFactory)throws UnknownHostException {
 
-        RedisTemplate<Object,Object> redisTemplate = new RedisTemplate<>();
+        RedisTemplate<Object,CustomMusicPlayList> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(redisConnectionFactory);
-        Jackson2JsonRedisSerializer<Object> ser = new Jackson2JsonRedisSerializer<Object>(Object.class);
+        Jackson2JsonRedisSerializer<CustomMusicPlayList> ser = new Jackson2JsonRedisSerializer<CustomMusicPlayList>(CustomMusicPlayList.class);
         redisTemplate.setDefaultSerializer(ser);
         return redisTemplate;
     }
