@@ -264,6 +264,13 @@ function nextMusic(type){
                 var myAudio = $("#myAudio")[0];
                 var bean = data.music;
                 console.log("下一首要播放的音乐对象："+bean);
+                //修改是否显示mv图标
+                if(bean.musicHaveMv == 1){
+                    $("#simple_music_mv_icon").html("<a target=\"_blank\" class=\"btnMv\" href=\""+rootPath+"/mvPlay.html/"+bean.musicVideoId+"\"></a>");
+                }else {
+                    $("#simple_music_mv_icon").html("");
+                }
+
                 //修改标签名
                 $("title").html(bean.musicName);
                 //修改图片
@@ -296,6 +303,8 @@ function nextMusic(type){
                 $("#myAudio").attr("src",bean.musicPlayUrl);
                 //播放
                 myAudio.play();
+                $("#btn_play").toggle();
+                $("#btn_stop").toggle();
                 //设置当前播放音乐的id
                 $("#simpleMusicId").val(bean.musicId);
             }
@@ -303,4 +312,3 @@ function nextMusic(type){
     }
 }
 ////////////////////////////////////播放列表模版结束///////////////////////////////////////////////////
-

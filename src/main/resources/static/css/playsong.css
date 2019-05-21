@@ -249,6 +249,11 @@
 .songName{
     color: #c4c3c3;
     font-size: 13px;
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 239px;
 }
 .change-time, .all-time{
     color: #fff;

@@ -28,10 +28,10 @@
             <div class="song_info">
             	<!-- 歌曲名字 -->
             	<div class="songName clearfix" title="">
-            		<span class="audioName simple_music_name" th:title="${simpleSongBean.oneMusic.musicName}" th:text="${simpleSongBean.oneMusic.musicAlbumName}">一秒钟</span>
+            		<span class="audioName simple_music_name" th:title="${simpleSongBean.oneMusic.musicName}" th:text="${simpleSongBean.oneMusic.musicName}">一秒钟</span>
             		<!-- 如果歌曲有mv的话，这个按钮就显示 -->
-					<div th:if="${simpleSongBean.oneMusic.musicHaveMv eq 1}">
-                     	<a target="_blank" href="#" class="btnMv" th:href="@{/mvPlay.html/}+${simpleSongBean.oneMusic.musicVideoId}"></a>
+					<div id="simple_music_mv_icon">
+                     	<a target="_blank" href="#" class="btnMv" th:href="@{/mvPlay.html/}+${simpleSongBean.oneMusic.musicVideoId}" th:if="${simpleSongBean.oneMusic.musicHaveMv eq 1}"></a>
 					</div>
                 </div>
                 <!-- 专辑  歌手 -->
@@ -105,7 +105,7 @@
 						<span class="bar_left"></span>
 						<span class="bar_mid" style="width: 0.32%;"></span>
 					</div>
-					<div class="drag_playhead" onmousedown="updateJinDuTiao1(this)" onmouseup="updateJinDuTiao2(this)">
+					<div class="drag_playhead" onclick="updateJinDuTiao()" onmousedown="updateJinDuTiao1(this)" onmouseup="updateJinDuTiao2(this)">
 						<div class="drag_playhead2"></div>
 							<span class="playhead"></span>
 					</div>
@@ -225,17 +225,34 @@
 			});
 		});
 
+
+
 		var myAudio = $("#myAudio")[0];
 
 		var num = $(".jspPane p").length;
 		var nDivHight = $(".jspContainer").height();
-		var rightScrollLenOne = nDivHight / num + 40;
+		var rightScrollLenOne = nDivHight / num + 44;
 		// var rightScrollLenOne = 200 / num;
 		var rightScrollLenTop = 0;
 		var rightScrollFlag = 0;
 		var i = 1;
 		//时间更新事件
 		myAudio.ontimeupdate = function () {
+			var arr = $(".musiclist li");
+			var len = arr.length;
+
+			//播放完毕跳转下一首
+			if(myAudio.currentTime >= (parseInt($("#thisMusicAllTimes").attr("realTime"))-100)/1000){
+				if(len <= 1){
+					myAudio.currentTime = 0;
+					myAudio.play();
+				}else{
+					nextMusic(1);
+				}
+				return;
+			}
+
+
 			//更新歌曲当前时间
 			var nowTimeBox = $(".change-time");
 			var nowTime = myAudio.currentTime;
@@ -281,7 +298,7 @@
 				if($(this).attr("rel") == i){
 					$(this).addClass("playOver");
 					if(i != rightScrollFlag && i>2){
-						rightScrollLenTop = (rightScrollLenOne * i) - 110;
+						rightScrollLenTop = (rightScrollLenOne * i) - 90;
 						document.getElementsByClassName('jspContainer')[0].scrollTop = rightScrollLenTop;
 						// console.log(rightScrollLenTop)
 						rightScrollFlag = i;
@@ -326,8 +343,19 @@
 			var objY = mouseY-objTop;
 			clickObjPosition = objX + "," + objY;
 
+			//歌曲的总时间
+			var times = parseInt($("#thisMusicAllTimes").attr("realTime"))/1000;
+			var lengthLine = $(".drag_playhead").css("width");
+			//得到一个像素所走的时间
+			var lineI =  times / lengthLine;
+			//现在所处的时间
+			var nowTimes = objX * lineI;
+			console.log(myAudio.currentTime);//myAudio.currentTime = nowTimes;
+			myAudio.currentTime = parseInt(nowTimes);
 			console.log(clickObjPosition)
+
 		}
+
 		function getOffsetTop(obj){
 			var tmp = obj.offsetTop;
 			var val = obj.offsetParent;

@@ -126,6 +126,7 @@ public class UserController {
     @GetMapping("user.loginOut.ajax")
     public String loginOutAjax(HttpSession session, HttpServletResponse response){
         session.removeAttribute(StringUtils.LOGINED_USER);
+        CookieUtils.removeCookieByName("indream_autoLogin",response);
         return "redirect:index.html";
     }
 
