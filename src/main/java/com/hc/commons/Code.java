@@ -28,7 +28,8 @@ public class Code {
 	 * 验证码过期时间，单位秒
 	 */
 	public static final int VERIFY_OUT_TIME = 600;
-	
+
+	public static final String DEFAULT_PWD = "123456";
 	/**
 	 * 生成一个长度为len的验证码文本
 	 * @param len 验证码长度
