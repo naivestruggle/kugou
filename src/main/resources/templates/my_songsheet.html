@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>我的音乐</title>
 	<link rel="stylesheet" href="../public/css/my_songsheet.css" th:href="@{/css/my_songsheet.css}">
 </head>
 <body>
@@ -162,38 +162,38 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>
-                                            <input type="hidden" id="musicId" value="8">
-											<span class="ply">&nbsp;</span>
-											<span class="num">1</span>
-										</td>
-										<td>
-											<span class="txt">
-												<a href="#" class="song_txt">外愈</a>
-											</span>
-										</td>
-										<td style="color: #666;">
-											<span class="total_time">03:33</span>
-											<div class="icons">
-												<a href="javascript:void(0);" class="u-icon"></a>
-												<span class="icon icon-collect" title=""></span>
-												<span class="icon icon-share"></span>
-												<span class="icon icon-download"></span>
-												<span class="icon icon-delete"></span>
-											</div>
-										</td>
-										<td>
-											<span class="txt">
-												<a href="#" class="song_txt">任然</a>
-											</span>
-										</td>
-										<td>
-											<span class="txt">
-												<a href="#" class="song_txt">外愈</a>
-											</span>
-										</td>
-									</tr>
+<!--									<tr>-->
+<!--										<td>-->
+<!--                                            <input type="hidden" id="musicId" value="8">-->
+<!--											<span class="ply">&nbsp;</span>-->
+<!--											<span class="num">1</span>-->
+<!--										</td>-->
+<!--										<td>-->
+<!--											<span class="txt">-->
+<!--												<a href="#" class="song_txt">外愈</a>-->
+<!--											</span>-->
+<!--										</td>-->
+<!--										<td style="color: #666;">-->
+<!--											<span class="total_time">03:33</span>-->
+<!--											<div class="icons">-->
+<!--												<a href="javascript:void(0);" class="u-icon"></a>-->
+<!--												<span class="icon icon-collect" title=""></span>-->
+<!--												<span class="icon icon-share"></span>-->
+<!--												<span class="icon icon-download"></span>-->
+<!--												<span class="icon icon-delete"></span>-->
+<!--											</div>-->
+<!--										</td>-->
+<!--										<td>-->
+<!--											<span class="txt">-->
+<!--												<a href="#" class="song_txt">任然</a>-->
+<!--											</span>-->
+<!--										</td>-->
+<!--										<td>-->
+<!--											<span class="txt">-->
+<!--												<a href="#" class="song_txt">外愈</a>-->
+<!--											</span>-->
+<!--										</td>-->
+<!--									</tr>-->
 <!--									<tr>-->
 <!--										<td>-->
 <!--											<span class="ply">&nbsp;</span>-->
@@ -332,7 +332,7 @@
 		</div>
 		<span class="close" title="关闭窗体">×</span>
 	</div>
-	<!-- 点删除弹出来的框 -->
+	<!-- 点删除歌单弹出来的框 -->
 	<div class="delete_box">
 		<div class="delete_title">
 			<p>提示</p>
@@ -340,6 +340,23 @@
 		<div class="delete_body">
 			<div class="body_content">
 				<div style="text-align: center;">确定删除歌单?</div>
+				<div class="btn" style="margin-left: 130px;margin-top: 30px;">
+					<a href="javascript:;" class="delete_btn btn1"><i>确定</i></a>
+					<a href="javascript:;" class="delete_btn btn2"><i>取 消</i></a>
+				</div>
+			</div>
+
+		</div>
+		<span class="close" title="关闭窗体">×</span>
+	</div>
+	<!-- 点删除歌曲弹出来的框 -->
+	<div class="delete_box2">
+		<div class="delete_title">
+			<p>提示</p>
+		</div>
+		<div class="delete_body">
+			<div class="body_content">
+				<div style="text-align: center;">确定删除歌曲?</div>
 				<div class="btn" style="margin-left: 130px;margin-top: 30px;">
 					<a href="javascript:;" class="delete_btn btn1"><i>确定</i></a>
 					<a href="javascript:;" class="delete_btn btn2"><i>取 消</i></a>
@@ -387,7 +404,7 @@
 		</div>
 	</div>
     <!-- 添加到歌单 -->
-    <div class="addToList" style="top: 125.5px;left: 443px;">
+    <div class="addToList" style="top: 299px;left: 720px;">
     	<div class="zbar">
 			<div class="title">添加到歌单</div>
 		</div>

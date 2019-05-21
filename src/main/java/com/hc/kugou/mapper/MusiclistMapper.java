@@ -106,8 +106,15 @@ public interface MusiclistMapper {
 
     /**
      * 歌单歌曲数+1
-     * @param musicListId
+     * @param musicListId 歌单id
      */
     @Update("update kugou_musiclist set music_list_music_count = music_list_music_count + 1 where music_list_id = #{musicListId}")
     void incrMusicCount(@Param("musicListId") Integer musicListId);
+
+    /**
+     * 歌单歌曲数-1
+     * @param musicListId 歌单id
+     */
+    @Update("update kugou_musiclist set music_list_music_count = music_list_music_count - 1 where music_list_id = #{musicListId}")
+    void decrMusicCount(Integer musicListId);
 }

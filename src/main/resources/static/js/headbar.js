@@ -519,10 +519,9 @@ function clearHeadHistory(){
  * @param summary   内容
  * @param pics      图片
  */
-function qqShare(url,desc,title,summary,pics){
+function qqShare(url,title,summary,pics){
     var urlPath = "https://connect.qq.com/widget/shareqq/index.html?url="+ encodeURI(url) +
-                  "&desc=" + desc +
-                  "&title=" + title +
+                  "&desc=&title=" + title +
                   "&summary=" + summary +
                   "&pics=" + pics;
     window.open (urlPath, 'qq分享', 'height=637, width=1053, top=195,left=459, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no')

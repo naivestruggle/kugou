@@ -140,7 +140,10 @@ public class SongSheetServiceImpl implements SongSheetService {
         if(session.getAttribute(StringUtils.LOGINED_USER) == null){
             throw new UserNotExistsException("请先登录");
         }
+        //将歌曲从歌单删除
         musiclistMapper.delMusicFromSongSheet(musicListId,musicId);
+        //将歌单的歌曲数-1
+        musiclistMapper.decrMusicCount(musicListId);
     }
 
 

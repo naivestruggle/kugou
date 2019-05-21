@@ -217,12 +217,26 @@
 		    box-shadow: 0 5px 16px rgba(0,0,0,0.8);
 		    border: none;
 		    background: #fff;
-		    top: 82.5px;
-   			left: 443px;
+			top: 165px;
+			left: 720px;
    			font-size: 12px;
    			display: none;
 		}
-		.create_list .create_title,.delete_box .delete_title{
+
+		.delete_box2{
+			position: absolute;
+			z-index: 9998;
+			width: 480px;
+			border-radius: 4px;
+			box-shadow: 0 5px 16px rgba(0,0,0,0.8);
+			border: none;
+			background: #fff;
+			top: 165px;
+			left: 720px;
+			font-size: 12px;
+			display: none;
+		}
+		.create_list .create_title,.delete_box .delete_title,.delete_box2 .delete_title{
 			position: relative;
 		    z-index: 10;
 		    border-bottom: 1px solid #191919;
@@ -959,6 +973,10 @@
 		.newlist ul li{
 			padding: 6px 0 6px 35px;
 	   		border-top: 1px solid #e0e0e0;
+			cursor: pointer;
+		}
+		.newlist ul li:hover{
+			background: rgba(225,225,225,0.4);
 		}
 		.newlist .songlist .item{
 			padding-left: 50px;
