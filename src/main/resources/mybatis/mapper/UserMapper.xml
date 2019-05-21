@@ -39,5 +39,9 @@
         and user_password = #{userPassword}
     </select>
 
+    <select id="queryByOpenId" resultType="com.hc.kugou.bean.custombean.CustomUser">
+        select <include refid="allKeys"></include> from kugou_user where user_qq = #{openid}
+    </select>
+
 
 </mapper>

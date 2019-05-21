@@ -29,7 +29,21 @@ public class Code {
 	 */
 	public static final int VERIFY_OUT_TIME = 600;
 
+	/**
+	 * 默认密码
+	 */
 	public static final String DEFAULT_PWD = "123456";
+
+	/**
+	 * 默认歌单名
+	 */
+	public static final String DEFAULT_MUSIC_LIST_NAME = "我喜欢的音乐";
+	/**
+	 * 默认歌单头像
+	 */
+	public static final String DEFAULT_MUSIC_HEAD_IMG = "/img/index/logo.png";
+
+
 	/**
 	 * 生成一个长度为len的验证码文本
 	 * @param len 验证码长度

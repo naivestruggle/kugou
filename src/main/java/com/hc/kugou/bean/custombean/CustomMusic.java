@@ -90,6 +90,9 @@ public class CustomMusic extends Music implements Serializable {
 
     @Override
     public String getMusicAuthorName(){
+        if(super.getMusicAuthorName() == null){
+            return null;
+        }
         String str = super.getMusicAuthorName();
         return str.substring(0,str.length()-1);
     }

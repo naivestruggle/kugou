@@ -16,24 +16,20 @@ public interface SongSheetService {
     /**
      * 根据id查询歌单对象
      * @param musicListId
+     * @throws Exception
      * @return
      */
     CustomMusicList selectMusicListById(Integer musicListId) throws Exception;
-//    /**
-//     * 根据歌单id查询
-//     * @param musicListId  歌单id
-//     * @throws Exception
-//     * @return
-//     */
-//    CustomMusicList selectMusicListById(Integer musicListId) throws Exception;
+
 
     /**
      * 添加歌单
-     * @param customMusicList 歌单对象
+     * @param musicListName 歌单名
      * @param session 里面存储着用户信息
      * @throws Exception
+     * @return 歌单对象
      */
-    void addSongSheet(CustomMusicList customMusicList,HttpSession session) throws Exception;
+    CustomMusicList addSongSheet(String musicListName,HttpSession session) throws Exception;
 
     /**
      * 根据关键字查询歌单集合
@@ -45,6 +41,7 @@ public interface SongSheetService {
      * 删除歌单
      * @param musicListId 歌单id
      * @param session
+     * @throws Exception
      */
     void delSongSheet(Integer musicListId, HttpSession session) throws Exception;
 
@@ -62,6 +59,7 @@ public interface SongSheetService {
      * @param musicId   歌曲id
      * @param musicListId  歌单id
      * @param session
+     * @throws Exception
      */
     void addMusicToSongSheet(Integer musicListId, Integer musicId, HttpSession session) throws Exception;
 
@@ -73,4 +71,22 @@ public interface SongSheetService {
      * @throws Exception
      */
     void delMusicFromSongSheet(Integer musicListId,Integer musicId, HttpSession session)throws Exception;
+
+    /**
+     * 根据用户id查询该用户下的所有歌单
+     * @param userId 用户id
+     * @param session
+     * @return
+     */
+    List<CustomMusicList> querySongSheet(Integer userId, HttpSession session) throws Exception;
+
+
+    /**
+     * 根据歌单id查询用户歌单信息
+     * @param musicListId 歌单id
+     * @return
+     * @throws Exception
+     */
+    CustomMusicList queryMySongSheetList(Integer musicListId)throws Exception;
+
 }

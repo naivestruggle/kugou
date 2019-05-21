@@ -561,7 +561,7 @@ a{
     top: 66px;
     right: 0px;
     width: 117px;
-    height: 59px;
+    height: 83px;
     padding: 4px;
     border: 1px solid #d6d6d6;
     z-index: 9999;
@@ -591,6 +591,10 @@ a{
 }
 .user_icon2{
     background: url("../img/head/user_icon2.png") no-repeat left top;
+}
+
+.user_icon3{
+    background: url("../img/head/user_icon3.png") no-repeat left top;
 }
 
 

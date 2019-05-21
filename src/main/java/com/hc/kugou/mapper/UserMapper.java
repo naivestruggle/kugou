@@ -117,10 +117,17 @@ public interface UserMapper {
     void updateEnsureQuestion(@Param("userId")Integer userId, @Param("userSafeQuestion")String userSafeQuestion)throws Exception;
 
     /**
-     * 根据openid查询用户是否存在
+     * 根据openid查询用户
      * @param openid  qq用户的唯一标识
      * @return
      */
+    CustomUser queryByOpenId(@Param("openid") String openid);
+
+    /**
+     * 根据openid查询用户是否存在
+     * @param openid
+     * @return
+     */
     @Select("select count(1) from kugou_user where user_qq = #{openid}")
-    Integer queryByOpenId(@Param("openid") String openid);
+    Integer queryByOpenIdCount(@Param("openid") String openid);
 }

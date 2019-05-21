@@ -67,10 +67,9 @@ public interface MusiclistMapper {
     /**
      * 查询该歌单是否存在
      * @param musicListId 歌单id
-     * @return
+     * @return 歌单对象
      */
-    @Select("select count(1) from kugou_musiclist where music_list_id = #{musicListId}")
-    Integer countMusicListById(@Param("musicListId") Integer musicListId);
+    CustomMusicList queryMusicListById(@Param("musicListId") Integer musicListId);
 
     /**
      * 将歌曲添加到歌单中
@@ -96,4 +95,19 @@ public interface MusiclistMapper {
      */
     @Select("select count(1) from kugou_musiclist_music where music_list_id = #{musicListId} and music_id = #{musicId}")
     Integer queryMusicIsExists(@Param("musicListId") Integer musicListId,@Param("musicId") Integer musicId);
+
+    /**
+     * 根据用户id查询该用户的歌单
+     * @param userId 用户id
+     * @return
+     */
+    @Select("select music_list_id,music_list_name,music_list_music_count,music_list_mood,music_list_describe,music_list_head_image from kugou_musiclist where music_list_user_id = ${userId}")
+    List<CustomMusicList> querySongSheet(@Param("userId") Integer userId);
+
+    /**
+     * 歌单歌曲数+1
+     * @param musicListId
+     */
+    @Update("update kugou_musiclist set music_list_music_count = music_list_music_count + 1 where music_list_id = #{musicListId}")
+    void incrMusicCount(@Param("musicListId") Integer musicListId);
 }

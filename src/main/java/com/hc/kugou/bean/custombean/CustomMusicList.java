@@ -22,4 +22,6 @@ public class CustomMusicList extends MusicList {
      * 歌曲集合
      */
     private List<CustomMusic> musicsList;
+
+
 }

@@ -20,6 +20,30 @@
         ml.music_list_status
     </sql>
 
+    <sql id="allKeysMusic">
+        m.music_id,
+        m.music_author_id,
+        m.music_author_name,
+        m.music_audio_id,
+        m.music_audio_name,
+        m.music_song_name,
+        m.music_hash_code,
+        m.music_filesize,
+        m.music_timelength,
+        m.music_have_album,
+        m.music_album_id,
+        m.music_album_name,
+        m.music_have_mv,
+        m.music_video_id,
+        m.music_privilege,
+        m.music_privilege2,
+        m.music_play_url,
+        m.music_img,
+        m.music_lyrics,
+        m.music_listener_count,
+        m.music_class_name
+    </sql>
+
     <sql id="allKeys">
         music_list_id,
         music_list_name,
@@ -36,6 +60,7 @@
         music_list_status
     </sql>
 
+
     <sql id="allValues">
      #{musicListId},#{musicListName},#{musicListUserId},#{musicListUserUsername},#{musicListMood},#{musicListUpdateTime},
      #{musicListDescribe},#{musicListHeadImage},#{musicListMusicCount},#{musicListListenerCount},#{musicListHashCode},#{musicListCollectCount},#{musicListStatus}
@@ -50,18 +75,20 @@
 
 
     <select id="selectMusicListById" resultMap="musicList">
-        select <include refid="allKeysMusicList"></include>,m.music_id,m.music_audio_name from kugou_musiclist ml left join kugou_musiclist_music mlm
+        select <include refid="allKeysMusicList"></include>,<include refid="allKeysMusic"></include> from kugou_musiclist ml left
+        join kugou_musiclist_music mlm
         on ml.music_list_id = mlm.music_list_id left join kugou_music m
         on m.music_id = mlm.music_id where ml.music_list_id = #{musicListId}
     </select>
 
 
     <insert id="addSongSheet" useGeneratedKeys="true" keyProperty="musicListId">
-        insert into kugou_musiclist(<include refid="allKeys"></include>) values (<include refid="allValues"></include>)
+        insert into kugou_musiclist(music_list_name,music_list_user_id,music_list_user_username,music_list_update_time,music_list_head_image)
+        values (#{musicListName},#{musicListUserId},#{musicListUserUsername},#{musicListUpdateTime},#{musicListHeadImage})
     </insert>
-    
+
     <update id="updateSongSheet">
-        update kugou_musiclist set 
+        update kugou_musiclist set
         <trim suffixOverrides=",">
             <if test="musicListName != null">
                 music_list_name = #{musicListName},
@@ -75,6 +102,10 @@
         </trim>
         where music_list_id = #{musicListId}
     </update>
+    
+    <select id="queryMusicListById" resultType="com.hc.kugou.bean.custombean.CustomMusicList">
+        select <include refid="allKeys"></include> from kugou_musiclist where music_list_id = #{musicListId}
+    </select>
 
 
 </mapper>

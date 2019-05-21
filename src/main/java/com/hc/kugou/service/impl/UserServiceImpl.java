@@ -1,7 +1,9 @@
 package com.hc.kugou.service.impl;
 
 import com.hc.commons.*;
+import com.hc.kugou.bean.custombean.CustomMusicList;
 import com.hc.kugou.bean.custombean.CustomUser;
+import com.hc.kugou.mapper.MusiclistMapper;
 import com.hc.kugou.mapper.UserMapper;
 import com.hc.kugou.service.UserService;
 import com.hc.kugou.service.exception.email.EmailException;
@@ -30,6 +32,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * @Author:
@@ -52,6 +55,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private MailUtils mailUtils;
+
+    @Autowired
+    private MusiclistMapper musiclistMapper;
 
     /**
      * 验证用户输入的登录信息
@@ -171,7 +177,17 @@ public class UserServiceImpl implements UserService {
             throw new RegisterErrorException("系统繁忙，注册失败，请稍后再试");
         }
 
+
+        //为用户创建一个默认歌单 《我喜欢的音乐》
+        CustomMusicList customMusicList = new CustomMusicList();
+        customMusicList.setMusicListName(Code.DEFAULT_MUSIC_LIST_NAME);
+        customMusicList.setMusicListUserId(customUser.getUserId());
+        customMusicList.setMusicListUserUsername(customUser.getUserUsername());
+        customMusicList.setMusicListUpdateTime(new java.sql.Date(System.currentTimeMillis()));
+        customMusicList.setMusicListHashCode(UUID.randomUUID().toString().replaceAll("-",""));
+        musiclistMapper.addSongSheet(customMusicList);
     }
+
 
     /**
      * 发送登录验证码
