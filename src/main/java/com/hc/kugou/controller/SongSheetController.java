@@ -231,4 +231,72 @@ public class SongSheetController {
         return jsonObject;
     }
 
+    /**
+     * 查询最热歌单
+     * @return
+     */
+    @ResponseBody
+    @PostMapping("song.queryHotListenerSongSheet.ajax")
+    public JSONObject queryHotListenerSongSheet(){
+        jsonObject = new JSONObject();
+
+        try {
+
+            List<CustomMusicList> customMusicLists = songSheetService.queryHotListenerSongSheet();
+
+            jsonObject.put("code",1);
+            jsonObject.put("customMusicLists",customMusicLists);
+        } catch (Exception e) {
+            e.printStackTrace();
+            ResponseUtils.responseException(jsonObject,e);
+        }
+
+        return jsonObject;
+    }
+
+    /**
+     * 查询热藏歌单
+     * @return
+     */
+    @ResponseBody
+    @PostMapping("song.queryHotCollectSongSheet.ajax")
+    public JSONObject queryHotCollectSongSheet(){
+        jsonObject = new JSONObject();
+
+        try {
+
+            List<CustomMusicList> customMusicLists = songSheetService.queryHotCollectSongSheet();
+
+            jsonObject.put("code",1);
+            jsonObject.put("customMusicLists",customMusicLists);
+        } catch (Exception e) {
+            e.printStackTrace();
+            ResponseUtils.responseException(jsonObject,e);
+        }
+
+        return jsonObject;
+    }
+
+    /**
+     * 收藏歌单
+     * @param musicListId  歌单id
+     * @param session
+     * @return
+     */
+    @ResponseBody
+    @PostMapping("song.collectSongSheet.ajax")
+    public JSONObject collectSongSheet(Integer musicListId,HttpSession session){
+        jsonObject = new JSONObject();
+        try {
+            songSheetService.collectSongSheet(musicListId,session);
+
+            ResponseUtils.responseNoException(jsonObject);
+        } catch (Exception e) {
+            e.printStackTrace();
+            ResponseUtils.responseException(jsonObject,e);
+        }
+
+        return jsonObject;
+    }
+
 }

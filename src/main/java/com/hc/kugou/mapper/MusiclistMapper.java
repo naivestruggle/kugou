@@ -117,4 +117,35 @@ public interface MusiclistMapper {
      */
     @Update("update kugou_musiclist set music_list_music_count = music_list_music_count - 1 where music_list_id = #{musicListId}")
     void decrMusicCount(Integer musicListId);
+
+    /**
+     * 查询热门歌单  根据歌单的播放数倒序
+     * @return 热门歌单集合
+     */
+    @Select("select music_list_id,music_list_name,music_list_user_username,music_list_describe,music_list_head_image from kugou_musiclist order by music_list_listener_count desc LIMIT 0,40")
+    List<CustomMusicList> queryHotListenerSongSheet();
+
+    /**
+     * 查询热藏歌单
+     * @return 热藏歌单集合
+     */
+    @Select("select music_list_id,music_list_name,music_list_user_username,music_list_describe,music_list_head_image from kugou_musiclist order by music_list_collect_count desc LIMIT 0,40")
+    List<CustomMusicList> queryHotCollectSongSheet();
+
+    /**
+     * 收藏歌单
+     * @param musicListId 歌单id
+     * @param userId 用户id
+     */
+    @Insert("insert into kugou_collect(music_list_id,user_id) values(#{musicListId},#{userId})")
+    void collectSongSheet(@Param("musicListId") Integer musicListId,@Param("userId") Integer userId);
+
+    /**
+     * 查询歌单是否已被收藏
+     * @param musicListId 歌单id
+     * @param userId 用户id
+     * @return
+     */
+    @Select("select count(1) from kugou_collect where music_list_id = #{musicListId} and user_id = #{userId}")
+    Integer querySongSheetIsCollected(@Param("musicListId") Integer musicListId,@Param("userId") Integer userId);
 }

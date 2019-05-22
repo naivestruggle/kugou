@@ -89,4 +89,25 @@ public interface SongSheetService {
      */
     CustomMusicList queryMySongSheetList(Integer musicListId)throws Exception;
 
+    /**
+     * 查询最热歌单
+     * @return
+     * @throws Exception
+     */
+    List<CustomMusicList> queryHotListenerSongSheet() throws Exception;
+
+    /**
+     * 查询热藏歌单
+     * @return
+     * @throws Exception
+     */
+    List<CustomMusicList> queryHotCollectSongSheet() throws Exception;
+
+    /**
+     * 将歌单收藏
+     * @param musicListId 歌单id
+     * @param session
+     * @throws Exception
+     */
+    void collectSongSheet(Integer musicListId, HttpSession session) throws Exception;
 }

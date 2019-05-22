@@ -83,8 +83,8 @@
 
 
     <insert id="addSongSheet" useGeneratedKeys="true" keyProperty="musicListId">
-        insert into kugou_musiclist(music_list_name,music_list_user_id,music_list_user_username,music_list_update_time,music_list_head_image)
-        values (#{musicListName},#{musicListUserId},#{musicListUserUsername},#{musicListUpdateTime},#{musicListHeadImage})
+        insert into kugou_musiclist(music_list_name,music_list_user_id,music_list_user_username,music_list_update_time,music_list_head_image,music_list_hash_code)
+        values (#{musicListName},#{musicListUserId},#{musicListUserUsername},#{musicListUpdateTime},#{musicListHeadImage},#{musicListHashCode})
     </insert>
 
     <update id="updateSongSheet">

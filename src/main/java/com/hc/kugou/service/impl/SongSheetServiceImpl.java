@@ -157,11 +157,42 @@ public class SongSheetServiceImpl implements SongSheetService {
 
     @Override
     public CustomMusicList queryMySongSheetList(Integer musicListId) throws Exception {
+        if(musicListId == null){
+            throw new SongSheetNotExistsException("歌单不存在");
+        }
         CustomMusicList customMusicList = musiclistMapper.selectMusicListById(musicListId);
         if(customMusicList == null){
             throw new SongSheetNotExistsException("歌单不存在");
         }
         return customMusicList;
+    }
+
+    @Override
+    public List<CustomMusicList> queryHotListenerSongSheet() throws Exception {
+        return musiclistMapper.queryHotListenerSongSheet();
+    }
+
+    @Override
+    public List<CustomMusicList> queryHotCollectSongSheet() throws Exception {
+        return musiclistMapper.queryHotCollectSongSheet();
+    }
+
+    @Override
+    public void collectSongSheet(Integer musicListId, HttpSession session) throws Exception {
+        if(session.getAttribute(StringUtils.LOGINED_USER) == null){
+            throw new UserNotExistsException("请先登录");
+        }
+        //得到用户id
+        Integer userId = ((CustomUser)session.getAttribute(StringUtils.LOGINED_USER)).getUserId();
+        //查询用户是否已经收藏
+        Integer count = musiclistMapper.querySongSheetIsCollected(musicListId,userId);
+        if(count > 0){
+            throw new SongSheetExistsException("歌单已收藏");
+        }
+        //收藏
+        musiclistMapper.collectSongSheet(musicListId,userId);
+
+        //将歌单收藏数+1 使用redis
     }
 
     /**
