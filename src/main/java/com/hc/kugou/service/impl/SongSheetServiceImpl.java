@@ -5,11 +5,13 @@ import com.hc.commons.StringUtils;
 import com.hc.kugou.bean.custombean.CustomMusicList;
 import com.hc.kugou.bean.custombean.CustomUser;
 import com.hc.kugou.mapper.MusiclistMapper;
+import com.hc.kugou.mapper.UserMapper;
 import com.hc.kugou.service.SongSheetService;
 import com.hc.kugou.service.exception.music.MusicException;
 import com.hc.kugou.service.exception.music.MusicExistsException;
 import com.hc.kugou.service.exception.music.NotFoundMusicException;
 import com.hc.kugou.service.exception.songsheet.*;
+import com.hc.kugou.service.exception.user.UserException;
 import com.hc.kugou.solr.SolrBean;
 import com.hc.kugou.solr.MusicListSolr;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.UUID;
 
@@ -29,7 +32,7 @@ import java.util.UUID;
  * @create 2019-05-14 19:30
  */
 @Service("songSheetService")
-@Transactional(rollbackFor = {SongSheetException.class, MusicException.class})
+@Transactional(rollbackFor = {SongSheetException.class, MusicException.class, UserException.class, SQLException.class})
 public class SongSheetServiceImpl implements SongSheetService {
 
     @Autowired
@@ -37,6 +40,9 @@ public class SongSheetServiceImpl implements SongSheetService {
 
     @Autowired
     private MusicListSolr musicListSolr;
+
+    @Autowired
+    private UserMapper userMapper;
 
 
     @Override
@@ -50,9 +56,8 @@ public class SongSheetServiceImpl implements SongSheetService {
 
     @Override
     public CustomMusicList addSongSheet(String musicListName,HttpSession session) throws Exception {
-        if(session.getAttribute(StringUtils.LOGINED_USER) == null){
-            throw new UserNotExistsException("请先登录");
-        }
+        isLogin(session);
+
         if(musicListName == null || "".equals(musicListName)){
             throw new NotFoundMusicException("歌单名不能为空");
         }
@@ -86,9 +91,8 @@ public class SongSheetServiceImpl implements SongSheetService {
 
     @Override
     public void delSongSheet(Integer musicListId, HttpSession session) throws Exception{
-        if(session.getAttribute(StringUtils.LOGINED_USER) == null){
-            throw new UserNotExistsException("请先登录");
-        }
+        isLogin(session);
+
         //得到用户id
         Integer userId = ((CustomUser)session.getAttribute(StringUtils.LOGINED_USER)).getUserId();
         //删除歌单
@@ -100,9 +104,8 @@ public class SongSheetServiceImpl implements SongSheetService {
 
     @Override
     public CustomMusicList updateSongSheet(CustomMusicList customMusicList, HttpSession session) throws Exception {
-        if(session.getAttribute(StringUtils.LOGINED_USER) == null){
-            throw new UserNotExistsException("请先登录");
-        }
+        isLogin(session);
+
         if(customMusicList == null){
             throw new SongSheetNotExistsException("歌单信息不能为空");
         }
@@ -121,9 +124,8 @@ public class SongSheetServiceImpl implements SongSheetService {
 
     @Override
     public void addMusicToSongSheet( Integer musicListId, Integer musicId, HttpSession session) throws Exception {
-        if(session.getAttribute(StringUtils.LOGINED_USER) == null){
-            throw new UserNotExistsException("请先登录");
-        }
+        isLogin(session);
+
         //查询歌单中是否存在该歌曲
         Integer count = musiclistMapper.queryMusicIsExists(musicListId,musicId);
         if(count > 0){
@@ -137,9 +139,8 @@ public class SongSheetServiceImpl implements SongSheetService {
 
     @Override
     public void delMusicFromSongSheet(Integer musicListId, Integer musicId,  HttpSession session) throws Exception {
-        if(session.getAttribute(StringUtils.LOGINED_USER) == null){
-            throw new UserNotExistsException("请先登录");
-        }
+        isLogin(session);
+
         //将歌曲从歌单删除
         musiclistMapper.delMusicFromSongSheet(musicListId,musicId);
         //将歌单的歌曲数-1
@@ -148,10 +149,11 @@ public class SongSheetServiceImpl implements SongSheetService {
 
 
     @Override
-    public List<CustomMusicList> querySongSheet(Integer userId, HttpSession session) throws Exception {
-        if(session.getAttribute(StringUtils.LOGINED_USER) == null){
-            throw new UserNotExistsException("请先登录");
-        }
+    public List<CustomMusicList> querySongSheet(HttpSession session) throws Exception {
+        isLogin(session);
+
+        //得到用户id
+        Integer userId = ((CustomUser)session.getAttribute(StringUtils.LOGINED_USER)).getUserId();
         return musiclistMapper.querySongSheet(userId);
     }
 
@@ -161,6 +163,12 @@ public class SongSheetServiceImpl implements SongSheetService {
             throw new SongSheetNotExistsException("歌单不存在");
         }
         CustomMusicList customMusicList = musiclistMapper.selectMusicListById(musicListId);
+
+        //查询创建者头像
+        CustomUser customUser = userMapper.queryById(customMusicList.getMusicListUserId());
+
+        customMusicList.setCreateUserImg(customUser.getUserImgpath());
+
         if(customMusicList == null){
             throw new SongSheetNotExistsException("歌单不存在");
         }
@@ -179,11 +187,8 @@ public class SongSheetServiceImpl implements SongSheetService {
 
     @Override
     public void collectSongSheet(Integer musicListId, HttpSession session) throws Exception {
-        if(session.getAttribute(StringUtils.LOGINED_USER) == null){
-            throw new UserNotExistsException("请先登录");
-        }
         //得到用户id
-        Integer userId = ((CustomUser)session.getAttribute(StringUtils.LOGINED_USER)).getUserId();
+        Integer userId = isLogin(session);
         //查询用户是否已经收藏
         Integer count = musiclistMapper.querySongSheetIsCollected(musicListId,userId);
         if(count > 0){
@@ -193,6 +198,44 @@ public class SongSheetServiceImpl implements SongSheetService {
         musiclistMapper.collectSongSheet(musicListId,userId);
 
         //将歌单收藏数+1 使用redis
+    }
+
+    @Override
+    public List<CustomMusicList> queryCollectSongSheet(HttpSession session) throws Exception {
+        //得到用户id
+        Integer userId = null;
+        if(session.getAttribute(StringUtils.LOGINED_USER) != null){
+            userId = ((CustomUser)session.getAttribute(StringUtils.LOGINED_USER)).getUserId();
+        }
+
+        return musiclistMapper.queryCollectSongSheet(userId);
+    }
+
+    @Override
+    public void cancelCollectSongSheet(Integer musicListId, HttpSession session) throws Exception {
+        //得到用户id
+        Integer userId = isLogin(session);
+
+        musiclistMapper.cancelCollectSongSheet(musicListId,userId);
+    }
+
+    @Override
+    public CustomMusicList createSongSheetAndAddMusic(String musicListName, Integer musicId, HttpSession session) throws Exception {
+
+        //新建歌单
+        CustomMusicList customMusicList = addSongSheet(musicListName, session);
+        //将歌曲添加到歌单中
+        addMusicToSongSheet(customMusicList.getMusicListId(),musicId,session);
+
+        return customMusicList;
+    }
+
+    @Override
+    public Integer isLogin(HttpSession session) throws UserNotExistsException {
+        if(session.getAttribute(StringUtils.LOGINED_USER) == null){
+            throw new UserNotExistsException("请先登录");
+        }
+        return ((CustomUser)session.getAttribute(StringUtils.LOGINED_USER)).getUserId();
     }
 
     /**
@@ -205,4 +248,6 @@ public class SongSheetServiceImpl implements SongSheetService {
     public SolrBean<CustomMusicList> selectMusicListSearchBySearchKey(String searchKey) {
         return musicListSolr.selectMusicListSearchBySearchKey(searchKey,50);
     }
+
+
 }

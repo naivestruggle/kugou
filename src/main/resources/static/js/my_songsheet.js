@@ -12,6 +12,8 @@ $(function () {
     delMusicFromSongSheet();
     shareMusic();
     downloadMusic();
+    cancelCollectSongSheet();
+    queryCollectSongSheet();
 
     //初始化
     function inti() {
@@ -36,34 +38,6 @@ $(function () {
         });
 
 
-        $(".new_create i").click(function () {
-            $(".create_list").show();
-        });
-        $(".create_list .close").click(function () {
-            $(".create_list").hide();
-        });
-
-
-        $(".delete_box .close").click(function () {
-            $(".delete_box").hide();
-        });
-        $(".addToList .close").click(function () {
-            $(".addToList").hide();
-        });
-        // $(".create_body .btn2").click(function () {
-        //     $(".create_list").hide();
-        // });
-        $(".delete_body .btn2").click(function () {
-            $(".delete_list").hide();
-        });
-        // $(".delete").click(function () {
-        //     $(".delete_box").show();
-        // });
-        // $(".delete_body .btn2").click(function () {
-        //     $(".delete_box").hide();
-        // });
-
-
         $("body").delegate(".m-table tbody tr", "mouseenter", function () {
             $(this).find(".icons").show();
             $(this).find(".total_time").hide();
@@ -72,6 +46,39 @@ $(function () {
             $(".icons").hide();
             $(".total_time").show();
         });
+
+
+        $(".share_content .close").click(function () {
+            $(".share_dialog").hide();
+        });
+        $(".share_content .btn2").click(function () {
+            $(".share_dialog").hide();
+        });
+        $(".btns .share").click(function () {
+            $(".share_dialog").show();
+        });
+
+        $("body").delegate(".create ul li", "click", function () {
+            $(".right .likesong").show();
+            $(".right .edit_dialog").hide();
+        });
+
+
+
+        // $(".delete_body .btn2").click(function () {
+        //     $(".delete_list").hide();
+        // });
+
+        // $(".create_body .btn2").click(function () {
+        //     $(".create_list").hide();
+        // });
+        // $(".delete").click(function () {
+        //     $(".delete_box").show();
+        // });
+        // $(".delete_body .btn2").click(function () {
+        //     $(".delete_box").hide();
+        // });
+
 
         // $(".m-table tbody tr").mouseenter(function () {
         //
@@ -85,16 +92,6 @@ $(function () {
         //     $(".total_time").show();
         // });
 
-        $(".share_content .close").click(function () {
-            $(".share_dialog").hide();
-        });
-        $(".share_content .btn2").click(function () {
-            $(".share_dialog").hide();
-        });
-        $(".btns .share").click(function () {
-            $(".share_dialog").show();
-        });
-
 
         // $(".icons .icon-share").click(function () {
         //     $(".share_dialog").show();
@@ -105,16 +102,11 @@ $(function () {
         // $(".icons .icon-collect").click(function () {
         //     $(".addToList").show();
         // });
-
         // $(".handle .edit").click(function (e) {
         //     e.stopPropagation();
         //     $(".right .likesong").hide();
         //     $(".right .edit_dialog").show();
         // });
-        $("body").delegate(".create ul li", "click", function () {
-            $(".right .likesong").show();
-            $(".right .edit_dialog").hide();
-        });
         // $(".create ul li").click(function () {
         //     $(".right .likesong").show();
         //     $(".right .edit_dialog").hide();
@@ -123,12 +115,8 @@ $(function () {
 
     //展示初始页面信息
     function showHtml() {
-        //获取用户id
-        var data = {
-            "userId": $("#userId").val()
-        };
         //查询当前用户的所有歌单
-        $.post("song.querySongSheet.ajax", data, function (data) {
+        $.post("song.querySongSheet.ajax", null, function (data) {
             // console.log(data);
             if (data.code == 1) {
                 $(".create .num").html(data.customMusicLists.length);
@@ -269,12 +257,12 @@ $(function () {
 
     //切换歌单
     function SwitchSongs() {
-        $("body").delegate(".create .songlist", "click", function () {
+        $("body").delegate(".songsheet_list .songlist", "click", function () {
             if (!$(this).hasClass("selected")) {
                 //将选中的歌单加上class
                 $(this).addClass("selected");
                 //未选中的去除
-                $(".create > ul > li").not($(this)).removeClass("selected");
+                $(".songsheet_list ul  li").not($(this)).removeClass("selected");
 
                 var data = {
                     //查询喜欢的歌单信息
@@ -288,7 +276,7 @@ $(function () {
                         $(".m-table > tbody > tr").remove();
 
                         $(".cover > img").attr("src", data.customMusicList.musicListHeadImage);
-                        $(".user_pic > img").attr("src", $("#headImage").attr("src"));
+                        $(".user_pic > img").attr("src", data.customMusicList.createUserImg);
                         $(".uname > a").html(data.customMusicList.musicListUserUsername);
                         $(".user > .create_time").html(data.customMusicList.musicListUpdateTime + "  修改");
                         $(".top .count").html(data.customMusicList.musicsList.length);
@@ -331,6 +319,10 @@ $(function () {
                                 "\t\t\t\t\t\t\t\t\t</tr>");
 
                             $(".m-table > tbody").append(point);
+
+                        }
+                        if (data.customMusicList.musicListUserId != $("#userId").val()) {
+                            $(".icon-delete").remove();
                         }
                     } else if (data.code == 0) {
                         msgBoxOne(data.msg);
@@ -344,22 +336,32 @@ $(function () {
 
     //删除歌单
     function delSongSheet() {
+
         //点击删除按钮，显示选择框
-        $("body").delegate(".delete", "click", function () {
+        $("body").delegate(".create .delete", "click", function () {
             $(".delete_box").show();
+            $(".baffle").show();
+            drag($(".delete_box"));
         });
         //取消删除
-        $("body").delegate(".delete_box .btn2", "click", function () {
+        $(".delete_box .btn2").click(function () {
             $(".delete_box").hide();
+            $(".baffle").hide();
+        });
+        $(".delete_box .close").click(function () {
+            $(".delete_box").hide();
+            $(".baffle").hide();
         });
         //确认删除
-        $("body").delegate(".delete_box .btn1", "click", function () {
+        $(".delete_box .btn1").click(function () {
             $(".delete_box").hide();
+            $(".baffle").hide();
             var data = {
                 "musicListId": $(".create ul .selected #musicListId").val()
             };
             $.post("song.delSongSheet.ajax", data, function (data) {
                 if (data.code == 1) {
+                    //将歌单移除
                     $(".create ul .selected").remove();
 
                     //将歌单数-1
@@ -373,25 +375,41 @@ $(function () {
                     msgBoxOne("系统繁忙，请稍后再试");
                 }
             });
-
         });
 
     }
 
     //新建歌单
     function addSongSheet() {
+        $(".new_create i").click(function () {
+            $(".create_list").show();
+            drag($(".create_list"));
+            //开启挡板
+            $(".baffle").show();
+        });
         //取消新建
-        $(".create_body .btn2").click(function () {
+        $(".create_list .btn2").click(function () {
             $(".create_list").hide();
             //清空歌单名
-            $(".body_content .list_txt").val("");
+            $(".create_list .list_txt").val("");
+
+            $(".baffle").hide();
+        });
+        //新建歌单弹窗的关闭按钮
+        $(".create_list .close").click(function () {
+            $(".create_list").hide();
+            //清除输入框中的内容
+            $(this).parents(".create_list").find(".list_txt").val("");
+            //关闭挡板
+            $(".baffle").hide();
         });
         //确定新建
-        $(".create_body .btn1").click(function () {
+        $(".create_list .btn1").click(function () {
             $(".create_list").hide();
+            $(".baffle").hide();
 
             var data = {
-                "musicListName": $(".body_content .list_txt").val()
+                "musicListName": $(".create_list .list_txt").val()
             };
 
             $.post("song.addSongSheet.ajax", data, function (data) {
@@ -429,7 +447,7 @@ $(function () {
             });
 
             //清空歌单名
-            $(".body_content .list_txt").val("");
+            $(".create_list .list_txt").val("");
         });
 
     }
@@ -555,62 +573,148 @@ $(function () {
 
     //将歌曲添加到歌单
     function addMusicToSongSheet() {
+
+        //音乐id
         var musicId;
-        $("body").delegate(".icons .icon-collect", "click", function () {
-            $(".addToList").show();
-            //获取歌曲id
-            musicId = $(this).parents("tr").find("#musicId").val();
 
-            //移除所有歌单
-            $(".newlist .songlist").remove();
-            //将所有歌单展示
-            var songList = $(".create .songlist");
-            for (var i = 0; i < songList.length; i++) {
-                var songListInfo = songList.eq(i);
-                var point = $("<li class=\"songlist\">\n" +
-                    "<input type=\"hidden\" id=\"musicListId\" value=\"" + songListInfo.find("#musicListId").val() + "\">\n" +
-                    "\t\t\t\t\t\t\t\t<div class=\"item\">\n" +
-                    "\t\t\t\t\t\t\t\t\t<div class=\"pic\">\n" +
-                    "\t\t\t\t\t\t\t\t\t\t<a href=\"#\">\n" +
-                    "\t\t\t\t\t\t\t\t\t\t\t<img src=\" " + songListInfo.find("img").attr("src") + " \">\n" +
-                    "\t\t\t\t\t\t\t\t\t\t</a>\n" +
-                    "\t\t\t\t\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t\t\t\t\t<p class=\"name text\">\n" +
-                    "\t\t\t\t\t\t\t\t\t\t<a hidefocus=\"true\" href=\"javascript:void(0);\" class=\"s-fc0\" title=\"" + songListInfo.find(".s-fc0").html() + "\">" + songListInfo.find(".s-fc0").html() + "</a>\n" +
-                    "\t\t\t\t\t\t\t\t\t</p>\n" +
-                    "\t\t\t\t\t\t\t\t\t<p class=\"song_num text\">" + songListInfo.find(".song_num").html() + "</p>\n" +
-                    "\t\t\t\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t\t\t</li>");
+        songSheetExists();
+        songSheetNotExists();
 
-                $(".newlist ul").append(point);
-            }
-        });
+        //歌单已存在，直接将歌曲添加到歌单
+        function songSheetExists(){
+            $("body").delegate(".icons .icon-collect", "click", function () {
+                $(".addToList").show();
+                drag($(".addToList"));
+                $(".baffle").show();
+                //获取歌曲id
+                musicId = $(this).parents("tr").find("#musicId").val();
 
-        //确定
-        $("body").delegate(".newlist .songlist", "click", function () {
-            //获取当前点击的歌单下标
-            var index = $(this).index(".newlist .songlist");
-            var data = {
-                "musicListId": $(this).find("#musicListId").val(),
-                "musicId": musicId
-            };
-            $.post("song.addMusicToSongSheet.ajax", data, function (data) {
-                // console.log(data);
-                if (data.code == 1) {
-                    msgBoxOne("收藏成功");
+                //移除所有歌单
+                $(".newlist .songlist").remove();
+                //将所有歌单展示
+                var songList = $(".create .songlist");
+                for (var i = 0; i < songList.length; i++) {
+                    var songListInfo = songList.eq(i);
+                    var point = $("<li class=\"songlist\">\n" +
+                        "<input type=\"hidden\" id=\"musicListId\" value=\"" + songListInfo.find("#musicListId").val() + "\">\n" +
+                        "\t\t\t\t\t\t\t\t<div class=\"item\">\n" +
+                        "\t\t\t\t\t\t\t\t\t<div class=\"pic\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<a href=\"#\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t<img src=\" " + songListInfo.find("img").attr("src") + " \">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t</a>\n" +
+                        "\t\t\t\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t\t\t\t<p class=\"name text\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<a hidefocus=\"true\" href=\"javascript:void(0);\" class=\"s-fc0\" title=\"" + songListInfo.find(".s-fc0").html() + "\">" + songListInfo.find(".s-fc0").html() + "</a>\n" +
+                        "\t\t\t\t\t\t\t\t\t</p>\n" +
+                        "\t\t\t\t\t\t\t\t\t<p class=\"song_num text\">" + songListInfo.find(".song_num").html() + "</p>\n" +
+                        "\t\t\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t\t</li>");
 
-                    //将对应的歌单数+1
-                    var song_num = parseInt($(".create .songlist").eq(index).find(".song_num").html());
-                    $(".create .songlist").eq(index).find(".song_num").html(song_num + 1 + "首");
-                } else if (data.code == 0) {
-                    msgBoxOne(data.msg);
-                } else if (data.code == -1) {
-                    msgBoxOne("系统繁忙，请稍后再试");
+                    $(".newlist ul").append(point);
                 }
             });
-            //将收藏框隐藏
-            $(".addToList").hide();
-        });
+
+            $(".addToList .close").click(function () {
+                $(".addToList").hide();
+                $(".baffle").hide();
+            });
+            //确定
+            $("body").delegate(".newlist .songlist", "click", function () {
+                //获取当前点击的歌单下标
+                var index = $(this).index(".newlist .songlist");
+                var data = {
+                    "musicListId": $(this).find("#musicListId").val(),
+                    "musicId": musicId
+                };
+                $.post("song.addMusicToSongSheet.ajax", data, function (data) {
+                    // console.log(data);
+                    if (data.code == 1) {
+                        msgBoxOne("收藏成功");
+
+                        //将对应的歌单数+1
+                        var song_num = parseInt($(".create .songlist").eq(index).find(".song_num").html());
+                        $(".create .songlist").eq(index).find(".song_num").html(song_num + 1 + "首");
+                    } else if (data.code == 0) {
+                        msgBoxOne(data.msg);
+                    } else if (data.code == -1) {
+                        msgBoxOne("系统繁忙，请稍后再试");
+                    }
+                });
+                //将收藏框隐藏
+                $(".addToList").hide();
+                $(".baffle").hide();
+            });
+        }
+
+        //歌单不存在，新建歌单并收藏歌曲
+        function songSheetNotExists(){
+            $(".new_songsheet").click(function () {
+                $(".create_list2").show();
+                $(".baffle").show();
+                drag($(".create_list2"));
+                $(".addToList").hide();
+            });
+            //取消新建
+            $(".create_list2 .close").click(function () {
+                $(".baffle").hide();
+                $(".create_list2").hide();
+                $(".create_list2 .list_txt").val("");
+            });
+
+            $(".create_list2 .btn2").click(function () {
+                $(".baffle").hide();
+                $(".create_list2").hide();
+                $(".create_list2 .list_txt").val("");
+            });
+
+            //确认新建
+            $(".create_list2 .btn1").click(function () {
+                var data = {
+                    "musicListName": $(".create_list2 .list_txt").val(),
+                    "musicId" : musicId
+                };
+
+                $.post("song.createSongSheetAndAddMusic.ajax",data,function (data) {
+                    console.log(data);
+                    if (data.code == 1) {
+                        msgBoxOne("收藏成功");
+                        var musicListData = data.customMusicList;
+                        var point = $("<li class=\"songlist\">\n" +
+                            "<input type=\"hidden\" id=\"musicListId\" value=\""+musicListData.musicListId+"\">\n" +
+                            "<input type=\"hidden\" id=\"musicListDescribe\" value=\""+musicListData.musicListDescribe+"\">\n" +
+                            "<input type=\"hidden\" id=\"musicListMood\" value=\""+musicListData.musicListMood+"\">\n" +
+                            "<div class=\"item\">\n" +
+                            "<div class=\"pic\">\n" +
+                            "<a href=\"#\">\n" +
+                            "<img src=\""+musicListData.musicListHeadImage+"\">\n" +
+                            "</a>\n" +
+                            "</div>\n" +
+                            "<p class=\"name text\">\n" +
+                            "<a hidefocus=\"true\" href=\"javascript:void(0);\" class=\"s-fc0\" title=\""+musicListData.musicListName+"\">"+musicListData.musicListName+"</a>\n" +
+                            "</p>\n" +
+                            "<p class=\"song_num text\">1首</p>\n" +
+                            "</div>\n" +
+                            "<span class=\"handle\" style=\"display: none;\">\n" +
+                            "<a title=\"编辑\" href=\"javascript:void(0);\" class=\"edit\"></a>\n" +
+                            "<a title=\"删除\" href=\"javascript:void(0);\" class=\"delete\"></a>\n" +
+                            "</span>\n" +
+                            "</li>");
+
+                        $(".create ul").append(point);
+                        //将歌单数+1
+                        $(".create .num").html(parseInt($(".create .num").html()) + 1);
+                    } else if (data.code == 0) {
+                        msgBoxOne(data.msg);
+                    } else if (data.code == -1) {
+                        msgBoxOne("系统繁忙，请稍后再试");
+                    }
+                });
+                //将收藏框隐藏
+                $(".create_list2").hide();
+                $(".baffle").hide();
+                $(".create_list2 .list_txt").val("");
+            });
+        }
     }
 
     //将歌曲从歌单中删除
@@ -623,14 +727,22 @@ $(function () {
             //获取选中歌曲的下标
             index = $(this).index(".middle tbody tr .icon-delete");
             $(".delete_box2").show();
+            drag($(".delete_box2"));
+            $(".baffle").show();
         });
         //取消删除
-        $("body").delegate(".delete_box2 .btn2", "click", function () {
+        $(".delete_box2 .btn2").click(function () {
             $(".delete_box2").hide();
+            $(".baffle").hide();
+        });
+        $(".delete_box2 .close").click(function () {
+            $(".delete_box2").hide();
+            $(".baffle").hide();
         });
         //确认删除
-        $("body").delegate(".delete_box2 .btn1", "click", function () {
+        $(".delete_box2 .btn1").click(function () {
             $(".delete_box2").hide();
+            $(".baffle").hide();
             var data = {
                 "musicListId": $(".create ul .selected #musicListId").val(),
                 "musicId": musicId
@@ -640,7 +752,7 @@ $(function () {
                     //将歌曲从页面删除
                     var musicList = $(".middle tbody tr");
                     musicList.eq(index).remove();
-                    for (var i = index+1; i < musicList.length; i++) {
+                    for (var i = index + 1; i < musicList.length; i++) {
                         musicList.eq(i).find(".num").html(parseInt(musicList.eq(i).find(".num").html()) - 1);
                     }
                     //将歌单的歌曲数-1
@@ -652,20 +764,18 @@ $(function () {
                     msgBoxOne("系统繁忙，请稍后再试");
                 }
             });
-
         });
-
     }
 
     //分享歌曲
-    function shareMusic(){
+    function shareMusic() {
         $("body").delegate(".icons .icon-share", "click", function () {
             var musicId = $(this).parents("tr").find("#musicId").val();
             var url = "http://www.sansheng2019.cn/simpleSong.html/" + musicId;
             var title = $(this).parents("tr").find(".song_txt").eq(1).html() + "-" + $(this).parents("tr").find(".song_txt").eq(0).html();
-            var summary = "我在音梦音乐常听的《"+title+"》，你也来听听吧！";
+            var summary = "我在音梦音乐常听的《" + title + "》，你也来听听吧！";
             var pics = $(this).parents("tr").find("#musicImage").val();
-            qqShare(url,title,summary,pics);
+            qqShare(url, title, summary, pics);
         });
     }
 
@@ -675,4 +785,89 @@ $(function () {
         //
         // });
     }
+
+    //查询收藏歌单
+    function queryCollectSongSheet() {
+        $.post("song.queryCollectSongSheet.ajax", null, function (data) {
+            // console.log(data);
+            if (data.code == 1) {
+                var musicListData = data.customMusicLists;
+                $(".colleted .num").html(musicListData.length);
+                for (var i = 0; i < musicListData.length; i++) {
+                    var point = $("<li class=\"songlist\">\n" +
+                        "\t\t\t\t\t\t\t\t<input type=\"hidden\" id=\"musicListId\" value=\" " + musicListData[i].musicListId + " \">\n" +
+                        "\t\t\t\t\t\t\t\t<div class=\"item\">\n" +
+                        "\t\t\t\t\t\t\t\t\t<div class=\"pic\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<a href=\"#\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t<img src=\"" + musicListData[i].musicListHeadImage + "\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t</a>\n" +
+                        "\t\t\t\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t\t\t\t<p class=\"name text\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<a hidefocus=\"true\" href=\"javascript:void(0);\" class=\"s-fc0\" title=\"" + musicListData[i].musicListName + "\">" + musicListData[i].musicListName + "</a>\n" +
+                        "\t\t\t\t\t\t\t\t\t</p>\n" +
+                        "\t\t\t\t\t\t\t\t\t<p class=\"song_num text\">" + musicListData[i].musicListMusicCount + "首 by " + musicListData[i].musicListUserUsername + "</p>\n" +
+                        "\t\t\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t\t\t<span class=\"handle\">\n" +
+                        "\t\t\t\t\t\t\t\t\t<a title=\"删除\" href=\"javascript:void(0);\" class=\"delete\"></a>\n" +
+                        "\t\t\t\t\t\t\t\t</span>\n" +
+                        "\t\t\t\t\t\t\t</li>");
+
+                    $(".colleted ul").append(point);
+                }
+            } else if (data.code == 0) {
+                msgBoxOne(data.msg);
+            } else if (data.code == -1) {
+                msgBoxOne("系统繁忙，请稍后再试");
+            }
+        });
+    }
+
+    //取消收藏歌单
+    function cancelCollectSongSheet() {
+        //点击删除按钮
+        $("body").delegate(".colleted .delete", "click", function () {
+            $(".delete_box3").show();
+            drag($(".delete_box3"));
+            $(".baffle").show();
+        });
+
+        //取消删除
+        $(".delete_box3 .btn2").click(function () {
+            $(".delete_box3").hide();
+            $(".baffle").hide();
+        });
+        $(".delete_box3 .close").click(function () {
+            $(".delete_box3").hide();
+            $(".baffle").hide();
+        });
+        //确认删除
+        $(".delete_box3 .btn1").click(function () {
+            $(".delete_box3").hide();
+            $(".baffle").hide();
+            //获得歌单id
+            var data = {
+                "musicListId": $(".selected #musicListId").val()
+            };
+
+            $.post("song.cancelCollectSongSheet,ajax", data, function (data) {
+                console.log(data);
+                if (data.code == 1) {
+                    //将歌单移除
+                    $(".colleted .selected").remove();
+                    //收藏歌单数-1
+                    $(".colleted .num").html(parseInt($(".colleted .num").html()) - 1);
+                    //将歌单列表切换到我喜欢
+                    $(".create .songlist").eq(0).click();
+                } else if (data.code == 0) {
+                    msgBoxOne(data.msg);
+                } else if (data.code == -1) {
+                    msgBoxOne("系统繁忙，请稍后再试");
+                }
+            });
+
+        });
+    }
+
+
+
 });

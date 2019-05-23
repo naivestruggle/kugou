@@ -1,6 +1,7 @@
 package com.hc.kugou.service;
 
 import com.hc.kugou.bean.custombean.CustomMusicList;
+import com.hc.kugou.service.exception.user.UserNotExistsException;
 import com.hc.kugou.solr.SolrBean;
 
 import java.util.List;
@@ -74,11 +75,10 @@ public interface SongSheetService {
 
     /**
      * 根据用户id查询该用户下的所有歌单
-     * @param userId 用户id
      * @param session
      * @return
      */
-    List<CustomMusicList> querySongSheet(Integer userId, HttpSession session) throws Exception;
+    List<CustomMusicList> querySongSheet(HttpSession session) throws Exception;
 
 
     /**
@@ -110,4 +110,41 @@ public interface SongSheetService {
      * @throws Exception
      */
     void collectSongSheet(Integer musicListId, HttpSession session) throws Exception;
+
+    /**
+     * 查询用户收藏歌单
+     * @param session
+     * @return
+     * @throws Exception
+     */
+    List<CustomMusicList> queryCollectSongSheet(HttpSession session) throws Exception;
+
+
+    /**
+     * 取消收藏歌单
+     * @param musicListId 歌单id
+     * @param session
+     * @throws Exception
+     */
+    void cancelCollectSongSheet(Integer musicListId, HttpSession session) throws Exception;
+
+
+    /**
+     * 新建歌单并将歌曲添加到新建歌单
+     * @param musicListName 歌单名
+     * @param musicId 歌曲id
+     * @param session
+     * @return
+     * @throws Exception
+     */
+    CustomMusicList createSongSheetAndAddMusic(String musicListName, Integer musicId, HttpSession session) throws Exception;
+
+
+    /**
+     * 判断用户是否登录
+     * @param session
+     * @return 返回用户id
+     */
+    Integer isLogin(HttpSession session) throws UserNotExistsException;
+
 }

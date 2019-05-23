@@ -68,23 +68,24 @@
 						
 
 						<ul>
-							<li class="songlist">
-								<div class="item">
-									<div class="pic">
-										<a href="#">
-											<img src="../public/img/my_songsheet/18963277044344180.jpg" th:src="@{/img/my_songsheet/18963277044344180.jpg}" alt="">
-										</a>
-									</div>
-									<p class="name text">
-										<a hidefocus="true" href="javascript:void(0);" class="s-fc0" title="我喜欢的音乐">日语｜无可救药的孤独症患者</a>
-									</p>
-									<p class="song_num text">181首 by PurionPurion</p>
-								</div>
-								<!-- 移上去显示编辑和删除 -->
-								<span class="handle">
-									<a title="删除" href="javascript:void(0);" class="delete"></a>
-								</span>
-							</li>
+<!--							<li class="songlist">-->
+<!--								<input type="hidden" id="collectMusicListId" value="">-->
+<!--								<div class="item">-->
+<!--									<div class="pic">-->
+<!--										<a href="#">-->
+<!--											<img src="../public/img/my_songsheet/18963277044344180.jpg" th:src="@{/img/my_songsheet/18963277044344180.jpg}" alt="">-->
+<!--										</a>-->
+<!--									</div>-->
+<!--									<p class="name text">-->
+<!--										<a hidefocus="true" href="javascript:void(0);" class="s-fc0" title="我喜欢的音乐">日语｜无可救药的孤独症患者</a>-->
+<!--									</p>-->
+<!--									<p class="song_num text">181首 by PurionPurion</p>-->
+<!--								</div>-->
+<!--								&lt;!&ndash; 移上去显示编辑和删除 &ndash;&gt;-->
+<!--								<span class="handle">-->
+<!--									<a title="删除" href="javascript:void(0);" class="delete"></a>-->
+<!--								</span>-->
+<!--							</li>-->
 						</ul>
 					</div>
 				</div>
@@ -349,6 +350,23 @@
 		</div>
 		<span class="close" title="关闭窗体">×</span>
 	</div>
+	<!--点删除收藏歌单弹出来的框-->
+	<div class="delete_box3">
+		<div class="delete_title">
+			<p>提示</p>
+		</div>
+		<div class="delete_body">
+			<div class="body_content">
+				<div style="text-align: center;">确定取消收藏歌单?</div>
+				<div class="btn" style="margin-left: 130px;margin-top: 30px;">
+					<a href="javascript:;" class="delete_btn btn1"><i>确定</i></a>
+					<a href="javascript:;" class="delete_btn btn2"><i>取 消</i></a>
+				</div>
+			</div>
+
+		</div>
+		<span class="close" title="关闭窗体">×</span>
+	</div>
 	<!-- 点删除歌曲弹出来的框 -->
 	<div class="delete_box2">
 		<div class="delete_title">
@@ -360,6 +378,28 @@
 				<div class="btn" style="margin-left: 130px;margin-top: 30px;">
 					<a href="javascript:;" class="delete_btn btn1"><i>确定</i></a>
 					<a href="javascript:;" class="delete_btn btn2"><i>取 消</i></a>
+				</div>
+			</div>
+
+		</div>
+		<span class="close" title="关闭窗体">×</span>
+	</div>
+	<!--点新歌单弹出来的框-->
+	<div class="create_list2">
+		<div class="create_title">
+			<p>新建歌单</p>
+		</div>
+		<div class="create_body">
+			<div class="body_content">
+				<p>歌单名：<input type="text" class="list_txt"></p>
+				<!-- 错误提示 -->
+				<div class="error">
+					<i></i>错误提示
+				</div>
+				<p class="tip">可通过“收藏”将音乐添加到新歌单中</p>
+				<div class="btn">
+					<a href="javascript:;" class="create_btn btn1"><i>新 建</i></a>
+					<a href="javascript:;" class="create_btn btn2"><i>取 消</i></a>
 				</div>
 			</div>
 
@@ -449,7 +489,8 @@
 			</div>
 		</div>
     </div>
-
+	<!--挡板-->
+	<div class="baffle"></div>
 	<!-- 引入底部 -->
 	<!--<div th:replace="commons/foot::footbar"></div>-->
 

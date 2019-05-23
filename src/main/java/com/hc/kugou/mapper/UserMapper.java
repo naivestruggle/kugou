@@ -130,4 +130,11 @@ public interface UserMapper {
      */
     @Select("select count(1) from kugou_user where user_qq = #{openid}")
     Integer queryByOpenIdCount(@Param("openid") String openid);
+
+    /**
+     * 查询用户信息
+     * @param userId
+     * @return
+     */
+    CustomUser queryById(@Param("userId") Integer userId);
 }

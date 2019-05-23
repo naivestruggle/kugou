@@ -4,46 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hc.kugou.mapper.MusiclistMapper">
 
-    <sql id="allKeysMusicList">
-        ml.music_list_id,
-        ml.music_list_name,
-        ml.music_list_user_id,
-        ml.music_list_user_username,
-        ml.music_list_mood,
-        ml.music_list_update_time,
-        ml.music_list_describe,
-        ml.music_list_head_image,
-        ml.music_list_music_count,
-        ml.music_list_listener_count,
-        ml.music_list_hash_code,
-        ml.music_list_collect_count,
-        ml.music_list_status
-    </sql>
-
-    <sql id="allKeysMusic">
-        m.music_id,
-        m.music_author_id,
-        m.music_author_name,
-        m.music_audio_id,
-        m.music_audio_name,
-        m.music_song_name,
-        m.music_hash_code,
-        m.music_filesize,
-        m.music_timelength,
-        m.music_have_album,
-        m.music_album_id,
-        m.music_album_name,
-        m.music_have_mv,
-        m.music_video_id,
-        m.music_privilege,
-        m.music_privilege2,
-        m.music_play_url,
-        m.music_img,
-        m.music_lyrics,
-        m.music_listener_count,
-        m.music_class_name
-    </sql>
-
     <sql id="allKeys">
         music_list_id,
         music_list_name,
@@ -75,7 +35,7 @@
 
 
     <select id="selectMusicListById" resultMap="musicList">
-        select <include refid="allKeysMusicList"></include>,<include refid="allKeysMusic"></include> from kugou_musiclist ml left
+        select ml.music_list_id, ml.music_list_name, ml.music_list_user_id, ml.music_list_user_username, ml.music_list_mood, ml.music_list_update_time, ml.music_list_describe, ml.music_list_head_image, ml.music_list_music_count, ml.music_list_listener_count , m.music_id, m.music_author_id,m.music_audio_name ,m.music_author_name, m.music_song_name, m.music_timelength, m.music_album_name, m.music_img, m.music_listener_count from kugou_musiclist ml left
         join kugou_musiclist_music mlm
         on ml.music_list_id = mlm.music_list_id left join kugou_music m
         on m.music_id = mlm.music_id where ml.music_list_id = #{musicListId}

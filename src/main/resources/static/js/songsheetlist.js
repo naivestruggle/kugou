@@ -67,6 +67,7 @@ $(function () {
         }
     }
 
+    //收藏歌单
     function collectSongSheet(){
         $(".dq .collect").click(function () {
             var data = {

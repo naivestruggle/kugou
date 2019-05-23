@@ -32,16 +32,15 @@ public class SongSheetController {
 
     /**
      * 根据用户id查询该用户所创建的歌单
-     * @param userId
      * @return
      */
     @ResponseBody
     @PostMapping("song.querySongSheet.ajax")
-    public JSONObject querySongSheet(Integer userId,HttpSession session){
+    public JSONObject querySongSheet(HttpSession session){
         jsonObject = new JSONObject();
 
         try {
-            List<CustomMusicList> customMusicLists = songSheetService.querySongSheet(userId,session);
+            List<CustomMusicList> customMusicLists = songSheetService.querySongSheet(session);
 
             jsonObject.put("code",1);
             jsonObject.put("customMusicLists",customMusicLists);
@@ -291,6 +290,77 @@ public class SongSheetController {
             songSheetService.collectSongSheet(musicListId,session);
 
             ResponseUtils.responseNoException(jsonObject);
+        } catch (Exception e) {
+            e.printStackTrace();
+            ResponseUtils.responseException(jsonObject,e);
+        }
+
+        return jsonObject;
+    }
+
+    /**
+     * 查询用户收藏歌单
+     * @param session
+     * @return
+     */
+    @ResponseBody
+    @PostMapping("song.queryCollectSongSheet.ajax")
+    public JSONObject queryCollectSongSheet(HttpSession session){
+        jsonObject = new JSONObject();
+
+        try {
+            List<CustomMusicList> customMusicLists = songSheetService.queryCollectSongSheet(session);
+
+            jsonObject.put("code",1);
+            jsonObject.put("customMusicLists",customMusicLists);
+        } catch (Exception e) {
+            e.printStackTrace();
+            ResponseUtils.responseException(jsonObject,e);
+        }
+
+        return jsonObject;
+    }
+
+    /**
+     * 取消收藏歌单
+     * @param musicListId 歌单id
+     * @param session
+     * @return
+     */
+    @ResponseBody
+    @PostMapping("song.cancelCollectSongSheet,ajax")
+    public JSONObject cancelCollectSongSheet(Integer musicListId,HttpSession session){
+        jsonObject = new JSONObject();
+
+        try {
+            songSheetService.cancelCollectSongSheet(musicListId,session);
+
+            ResponseUtils.responseNoException(jsonObject);
+        } catch (Exception e) {
+            e.printStackTrace();
+            ResponseUtils.responseException(jsonObject,e);
+        }
+
+        return jsonObject;
+    }
+
+    /**
+     * 新建歌单并将歌曲添加到歌单
+     * @param musicListName 歌单名
+     * @param musicId 歌曲id
+     * @param session
+     * @return
+     */
+    @ResponseBody
+    @PostMapping("song.createSongSheetAndAddMusic.ajax")
+    public JSONObject createSongSheetAndAddMusic(String musicListName,Integer musicId,HttpSession session){
+        jsonObject = new JSONObject();
+
+        try {
+            CustomMusicList customMusicList = songSheetService.createSongSheetAndAddMusic(musicListName, musicId, session);
+
+            jsonObject.put("code",1);
+            jsonObject.put("customMusicList",customMusicList);
         } catch (Exception e) {
             e.printStackTrace();
             ResponseUtils.responseException(jsonObject,e);

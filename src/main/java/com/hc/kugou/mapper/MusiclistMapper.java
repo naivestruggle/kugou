@@ -148,4 +148,21 @@ public interface MusiclistMapper {
      */
     @Select("select count(1) from kugou_collect where music_list_id = #{musicListId} and user_id = #{userId}")
     Integer querySongSheetIsCollected(@Param("musicListId") Integer musicListId,@Param("userId") Integer userId);
+
+    /**
+     * 查询用户收藏歌单
+     * @param userId 用户id
+     * @return
+     */
+    @Select("select music_list_id, music_list_name, music_list_user_id, music_list_user_username, music_list_mood,music_list_update_time, music_list_describe, music_list_head_image,music_list_music_count,music_list_listener_count" +
+            " from kugou_musiclist where music_list_id in(select music_list_id from kugou_collect where user_id = #{userId})")
+    List<CustomMusicList> queryCollectSongSheet(@Param("userId") Integer userId);
+
+    /**
+     * 取消收藏歌单
+     * @param musicListId 歌单id
+     * @param userId 用户id
+     */
+    @Delete("delete from kugou_collect where music_list_id = #{musicListId} and user_id = #{userId}")
+    void cancelCollectSongSheet(@Param("musicListId") Integer musicListId,@Param("userId") Integer userId);
 }
