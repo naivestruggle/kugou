@@ -65,6 +65,7 @@ public class MyMvcConfig{
                 registry.addViewController("/songsheetlist.html").setViewName("songsheetlist");
                 registry.addViewController("/test01.html").setViewName("test01");
                 registry.addViewController("/my_songsheet.html").setViewName("my_songsheet");
+                registry.addViewController("/houtai.html").setViewName("houtai");
             }
 
             /**

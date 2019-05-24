@@ -14,6 +14,7 @@ $(function () {
     downloadMusic();
     cancelCollectSongSheet();
     queryCollectSongSheet();
+    comment();
 
     //初始化
     function inti() {
@@ -869,5 +870,14 @@ $(function () {
     }
 
 
+    //显示评论
 
+    //评论
+    function comment(){
+        $("#area").on("input",function () {
+            $(".btns .zs").html(140 - $("#area").val().length);
+        });
+
+
+    }
 });

@@ -1,0 +1,726 @@
+
+	*{
+		margin:0;
+		padding: 0;
+	}
+	body {
+	    background-color: #f5f5f5;
+	    position: relative;
+	}
+	a,a:focus{
+		text-decoration: none;
+		outline: none;
+	}
+	.main{
+		display: none;
+	}
+	.selected{
+		display: block;
+	}
+	.clearfix{
+		zoom: 1;
+	}
+	.clearfix:after {
+	    display: block;
+	    clear: both;
+	    content: ".";
+	    visibility: hidden;
+	    height: 0;
+	    font-size: 0;
+	}
+	.header-wrapper {
+	    width: 100%;
+	    height: 100px;
+	    background: -webkit-linear-gradient(#0084DF, #00a5f5);
+	}
+	.header-wrapper .header {
+	    width: 1000px;
+	    margin: 0 auto;
+	    position: relative;
+	}
+	.header-wrapper .header .logo {
+	    width: 265px;
+	    height: 40px;
+	    padding-top: 32px;
+	}
+	.content{
+		position: relative;
+	    overflow: hidden;
+	    display: table;
+	    width: 1000px;
+	    height: 100%;
+	    border-top: 1px solid #ebebeb;
+	    border-right: 1px solid #ebebeb;
+	    border-bottom: 1px solid #ebebeb;
+	    margin: 0 auto;
+	    margin-top: 30px;
+	    background-color: #fff;
+	}
+	.left{
+		display: table-cell;
+	    float: left;
+	    width: 218px;
+	    border: 1px solid #ebebeb;
+	    border-top: none;
+	    border-bottom: none;
+	    height: 100%;
+	}
+	.tab{
+		list-style: none;
+	}
+	.tab li{
+		width: 218px;
+		height: 50px;
+	    line-height: 50px;
+	    text-align: left;
+	    text-indent: 45px;
+	    border-bottom: 1px solid #ebebeb;
+	    cursor: pointer;
+	}
+	.tab li.active{
+		color: #fff;
+		background: #169af3;
+	}
+	.right{
+		display: table-cell;
+	    width: 710px;
+	    height: 100%;
+	    float: left;
+	    padding: 20px;
+	}
+	.right .mv_upload{
+		position: relative;
+	    margin-bottom: 10px;
+	    border-bottom: 1px solid #dcdcdc;
+	    padding-bottom: 10px;
+	    text-align: center;
+	}
+	.mv_upload a {
+	    display: inline-block;
+	    width: 120px;
+	    height: 30px;
+	    line-height: 30px;
+	    border: 1px solid #c9c9c9;
+	    color: #000;
+	    text-align: center;
+	    vertical-align: middle;
+	    font-size: 13px;
+	}
+	.mv_upload a {
+	    display: inline-block;
+	    width: 120px;
+	    height: 30px;
+	    line-height: 30px;
+	    border: 1px solid #c9c9c9;
+	    color: #000;
+	    text-align: center;
+	    vertical-align: middle;
+	}
+	#uploadBtn{
+		position: relative;
+    	overflow: hidden;
+	}
+	.local_video{
+		position: relative;
+	    display: inline-block;
+	    cursor: pointer;
+	    color: #000;
+	    text-align: center;
+	    border-radius: 3px;
+	    overflow: hidden;
+	}
+	.upload_inp{
+		position: absolute !important;
+    	clip: rect(1px, 1px, 1px, 1px);
+    	z-index: 999;
+	}
+	.upload-tips{
+		vertical-align: middle;
+    	position: relative;
+	}
+	.upload-tips .upload-tips-btn{
+		vertical-align: middle;
+    	cursor: pointer;
+	}
+	.video-tips{
+		position: absolute;
+	    width: fit-content;
+	    z-index: 10;
+	    left: -147px;
+	    top: 31px;
+	    display: none;
+	}
+	.video-tips .arrow-up {
+	    width: 0;
+	    height: 0;
+	    border-left: 5px solid transparent;
+	    border-right: 5px solid transparent;
+	    border-bottom: 5px solid #169af3;
+	    font-size: 0;
+	    line-height: 0;
+	    position: absolute;
+	    top: -5px;
+	    left: 50%;
+	}
+	.video-tips .video-tips-content {
+	    box-sizing: border-box;
+	    background-color: #169af3;
+	    color: #fff;
+	    padding: 14px;
+	    line-height: 25px;
+	    font-size: 13px;
+	}
+	ul{
+		list-style: none;
+	}
+	.video-tips .video-tips-content li {
+	    background: none;
+	    height: auto;
+	    white-space: nowrap;
+	    margin: 0;
+	    padding: 0;
+	    text-align: left;
+	}
+	.video_info {
+	    min-height: 600px;
+	    padding-top: 10px;
+	}
+	.video_info .video-tilte {
+	    position: relative;
+	}
+	.video_info .video-item {
+	    position: relative;
+	    line-height: 30px;
+	    margin-bottom: 10px;
+	}
+
+	.video-item .video-label {
+	    width: 80px;
+	    height: 30px;
+	    line-height: 30px;
+	    float: left;
+	    margin-right: 10px;
+	    text-align: right;
+	    font-size: 14px;
+	}
+	.video-label .red-dot {
+	    color: #ff3a3a;
+	    margin-right: 5px;
+	    padding-left: 5px;
+	    background: url(../img/houtai/dot.png) no-repeat center center;
+	}
+	.video-input{
+		overflow: hidden;
+	    position: relative;
+	    width: 435px;
+	    padding-left: 5px;
+	    padding-right: 47px;
+	    float: left;
+	    height: 30px;
+	    line-height: 30px;
+	    padding: 0px 5px;
+	    border: 1px solid #dcdcdc;
+	}
+	.video-input .classify-icon{
+	    position: absolute;
+	    right: 11px;
+	    top: 8px;
+	    cursor: pointer;
+	    display: inline-block;
+	    vertical-align: middle;
+	    margin-left: -28px;
+	    width: 16px;
+	    height: 16px;
+	    background: url(../img/houtai/down1.png) no-repeat left top;
+	}
+	.video_info .video-title {
+	    position: relative;
+	}
+	.video-item .limitWord {
+	    position: absolute;
+	    right: 140px;
+	    top:1px;
+	    font-size: 13px;
+	}
+	.error {
+	    display: none;
+	    position: absolute;
+	    left: 588px;
+	    top: 2px;
+	    width: 150px;
+	    height: 30px;
+	    line-height: 30px;
+	    padding-left: 20px;
+	    color: #ff3a3a;
+	    font-size: 13px;
+	    text-align: left;
+	    background: url(../img/houtai/error_bg.png) no-repeat left center;
+	}
+	
+	.video_info .video-item .radioItem, .video_info .video-item .originalItem {
+	    padding: 0px 10px;
+	    font-size: 13px;
+	}
+	.originalItem label {
+	    padding-left: 5px;
+	}
+	input{
+		font-size: 13px;
+		outline: none;
+		border:0;
+	}
+	/*类型*/
+    /*封面*/
+     .video-item .preview {
+	    overflow: hidden;
+	    float: left;
+	    width: 175px;
+	    height: 98px;
+	    margin-right: 45px;
+	    background: url(../img/houtai/video_default.png) no-repeat left top;
+	    cursor: pointer;
+	}
+	.video-item .preview-des {
+	    float: left;
+	}
+	.preview-des ul {
+	    padding-bottom: 10px;
+	}
+	.video-item .preview-des ul li {
+	    list-style-type: square;
+	    font-size: 13px;
+	}
+	#video-singer-wrapper {
+	    white-space: nowrap;
+	    overflow: hidden;
+	    position: relative;
+	}
+	.video-item .video-input {
+	    float: left;
+	    width: 480px;
+	    height: 30px;
+	    line-height: 30px;
+	    padding: 0px 5px;
+	    border: 1px solid #dcdcdc;
+	}
+	#video-singer-input {
+	    display: inline-block;
+	    width: 100%;
+	    margin: 0px;
+	    border: none;
+	    padding: 0px;
+	    height: 100%;
+	}
+	.video_info .video-style{
+		position: relative;
+	}
+	.classify-input {
+	    position: absolute;
+	    top: 6px;
+	    left: 5px !important;
+	    display: inline-block;
+	    width: 327px;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	    border: none;
+	    padding: 0px;
+	    margin: 0px;
+	}
+	#video-intro {
+	    font: 12px/1.5 \5FAE\8F6F\96C5\9ED1, simsun, sans-serif;
+	}
+	.video-intro .video-input {
+	    height: 190px;
+	    font-size: 13px !important;
+	    outline: none;
+	}
+	#creat_selectTag {
+	    position: absolute;
+	    top: 30px;
+	    left: 0px;
+	    z-index: 99;
+	    display: none;
+	    margin-left: 90px;
+	    width: 490px;
+	    height: 255px;
+	    text-align: left;
+	    border: 1px solid #cccccc;
+	    background-color: #ffffff;
+	}
+	.creat_select_list {
+	    display: none;
+	    border-bottom: 1px solid #ebebeb;
+	    color: #888;
+	    padding: 20px 0 0 30px;
+	    height: 46px;
+	    overflow: hidden;
+	    margin-bottom: 0;
+	}
+	.has_select_singer {
+	    display: inline-block;
+	    margin-bottom: 0;
+	}
+	.select_box {
+	    height: 24px;
+	    z-index: 10000;
+	}
+	.select_box li{
+		position: relative;
+		display: inline-block;
+	    height: 24px;
+	    vertical-align: middle;
+	    border: 1px solid #ccc;
+	    border-radius: 2px;
+	    line-height: 24px;
+	    margin-top:2px;
+	    padding: 0 6px;
+	    background-color: #f9f9f9;
+	    cursor: pointer;
+	    margin-right: 8px;
+		float: left;
+		list-style: none;
+		z-index: 3;
+
+	}
+	/*.select_box i {
+	    display: inline-block;
+	    font-style: normal;
+	    font-size: 13px;
+	    height: 24px;
+	    line-height: 22px;
+	    max-width: 72px;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	    vertical-align: middle;
+	    color: #555;
+	}*/
+	.select_box li:after {
+		position: relative;
+	    content: "";
+	    vertical-align: middle;
+	    display: inline-block;
+	    height: 22px;
+	    width: 20px;
+	    background: url(../img/houtai/id_ico.png) no-repeat -80px -201px;
+	    z-index: 99;
+	}
+	.error_info {
+	    display: inline-block;
+	    margin-left: 52px;
+	    font-family: "宋体";
+	    text-align: left;
+	    color: #df1d1d;
+	    font-size: 12px;
+	    line-height: 14px;
+	}
+
+	
+	#creat_tag_list {
+	    width: 490px;
+	    height: 240px;
+	    margin-right: 2px;
+	    padding-top: 8px;
+	    overflow: auto;
+	    margin-bottom: 0;
+	    
+	}
+	#creat_tag_list ul {
+	    margin-left: 71px;
+	    margin-top: 10px;
+	    background-color: #ffffff;
+	}
+	#creat_tag_list ul:before {
+	    content: attr(data-title);
+	    font-size: 14px;
+	    display: inline-block;
+	    vertical-align: top;
+	    margin: 4px 0 0 -76px;
+	    width: 76px;
+	    text-align: right;
+	    color: #888888;
+	}
+	.win_select_ul li {
+	    position: relative;
+	    top: 5px;
+	    display: inline-block;
+	    padding: 0 18px;
+	    font: 13px/24px "Microsoft Yahei";
+	    color: #444;
+	    height: 24px;
+	    border: 1px solid #e0dede;
+	    margin: 2px 12px 0 0;
+	    cursor: pointer;
+	    max-width: 80px;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	}
+	.bt{
+		width:0px;
+		height:0px;
+		border-width:8px;
+		border-style:solid;
+    	border-color:#000 transparent transparent;
+		position: absolute;
+		right: 13px;
+    	top: 10px;
+    	cursor: pointer;
+
+	}
+	.btn-area {
+	    margin-top: 20px;
+	    height: 60px;
+	    line-height: 60px;
+	    text-align: center;
+	    background: #e4e4e4;
+	    font-size: 13px;
+	    position: fixed;
+	    bottom: 0;
+	    width: 100%;
+
+	}
+	.btn-area a {
+	    padding: 10px 30px;
+	    color: #333333;
+	    margin: 0px 10px;
+	}
+	.btn-area a.active {
+	    background: #3399cc;
+	    color: #fff;
+	}
+	.btn-area a.default {
+	    background: #fff;
+	}
+	.auto-save {
+	    margin-right: 5px;
+	}
+	.createlist{
+		margin-bottom: 30px;
+		font-size: 13px;
+		position: relative;
+	}
+	.createlist label{
+		width: 102px;
+	    float: left;
+	    text-align: right;
+	    line-height: 30px;
+	}
+	.createlist input,.createlist textarea{
+		width: 322px;
+	    height: 28px;
+	    line-height: 28px;
+	    border: 1px solid #ccc;
+	    text-indent: 10px;
+	    outline: 0;
+	}
+	.createlist textarea{
+		height: 98px;
+	    vertical-align: text-top;
+	    line-height: 24px;
+	    font-family: '\5FAE\8F6F\96C5\9ED1';
+	}
+
+	.createlist .upload_img {
+	    float: left;
+	    width: 600px;
+	    height: 360px;
+	}
+	.sel_img{
+		float: left;
+		width: 90px;
+		height: 25px;
+		line-height: 25px;
+		border: 1px solid #ccc;
+		text-align: center;
+		border-radius: 5px;
+		cursor: pointer;
+
+	}
+	.upload_img span{
+		font-size: 12px;
+		color: #999;
+		line-height: 25px;
+		padding-left: 20px;
+	}
+	.big_img{
+		width: 300px;
+		height: 300px;
+		border: 1px solid #ccc;
+	}
+	.small_img{
+		width: 180px;
+		height: 180px;
+		border: 1px solid #ccc;
+		margin-left: 50px;
+	}
+	.classify-ipt #classify {
+	    width: 544px;
+	}
+	.classify-ipt .classify-icon {
+	    cursor: pointer;
+	    display: inline-block;
+	    vertical-align: middle;
+	    margin-left: -28px;
+	    width: 16px;
+	    height: 16px;
+	    background: url(../img/houtai/down1.png) no-repeat left top;
+	}
+	#creat_selectTag {
+	    display: block;
+	    height: 250px;
+	    text-align: left;
+	    border: 1px solid #ccc;
+	    background-color: #fff;
+	}
+	#creat_selectTag.in{
+		display: none;
+	}
+
+	.creat_select_list {
+	    border-bottom: 1px solid #ebebeb;
+	    color: #888;
+	    padding: 20px 0 0 30px;
+	    height: 46px;
+	    overflow: hidden;
+	    margin-bottom: 0;
+	}
+		
+	#creat_selectTag .has_select_singer {
+	    display: inline-block;
+	    margin-bottom: 0;
+	    display: inline-block;
+	}
+	#creat_selectTag .has_select_singer:before {
+	    content: "已选：";
+	    display: inline-block;
+	    color: #888;
+	    font-size: 14px;
+	}
+	.error_info {
+	    display: inline-block;
+	    margin-left: 52px;
+	    font-family: "宋体";
+	    text-align: left;
+	    color: #df1d1d;
+	    font-size: 12px;
+	    line-height: 14px;
+	}
+	.createlist #creat_tag_list {
+	    width: 544px;
+	    height: 240px;
+	    margin-right: 2px;
+	    padding-top: 8px;
+	    overflow: auto;
+	    margin-bottom: 0;
+	    
+	}
+	.win_select_ul li {
+	    position: relative;
+	    padding: 0 18px;
+	    font: 13px/24px "Microsoft Yahei";
+	    color: #444;
+	    border: 1px solid #e0dede;
+	    margin: 2px 12px 0 0;
+	    cursor: pointer;
+	    max-width: 80px;
+	    display: inline-block;
+	    height: 24px;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	}
+	.createlist .search-song {
+	
+	    float: left;
+	    width: 565px;
+	    margin-top: 7px;
+	    margin-bottom: 40px;
+	}
+	.search-song .song-tips {
+	    font-size: 12px;
+	    line-height: 18px;
+	    margin-bottom: 16px;
+	    width: 100%;
+	}
+	.search-song .search-text {
+	    position: relative;
+	    margin-bottom: 0;
+	    float: left;
+	}
+	.search-song #search_song {
+	    width: 544px;
+	    height: 34px;
+	}
+	.search-text .search-icon {
+	    cursor: pointer;
+	    display: inline-block;
+	    vertical-align: middle;
+	    margin-left: -35px;
+	    width: 28px;
+	    height: 28px;
+	    background: url(../img/houtai/search.png) no-repeat center center;
+	}
+	.submit-btn {
+	    clear: both;
+	    margin-bottom: 100px;
+	    margin-left: 102px;
+	}
+	.submit-btn .creat-submit {
+	    width: 90px;
+	    height: 30px;
+	    color: #fff;
+	    background-color: #169af3;
+	    outline: 0;
+	    border-radius: 3px;
+	    border: none;
+	    cursor: pointer;
+	}
+	.submit-btn .creat-cancel {
+	    width: 90px;
+	    height: 30px;
+	    border: 1px solid #ccc;
+	    color: #333;
+	    background-color: #fff;
+	    margin-left: 6px;
+	    outline: 0;
+	    cursor: pointer;
+
+	}
+	.manage-songlist-header {
+	    height: 54px;
+	    line-height: 54px;
+	    background: #eff0f1;
+	    color: #999;
+	}
+	.song-list-head-action, .song-list-head-name, .song-list-head-status,.content_name,
+	.content_status,.content_action {
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	    font-size: 12px;
+	}
+	.song-list-head-name,.content_name {
+	    float: left;
+	    width: 446px;
+	    padding: 0 20px;
+	}
+	.song-list-head-status,.content_status {
+	    float: left;
+	    width: 160px;
+	}
+	.song-list-head-action,.content_action{
+	    width: 67px;
+	    padding-right: 25px;
+	    text-align: right;
+	}
+	.songlist_content li{
+	    height: 30px;
+	    line-height: 30px;
+	    padding: 5px 0;
+	    border-bottom: 1px solid #ccc;
+	}
+	.content_action {
+		padding-left: 30px;
+	}

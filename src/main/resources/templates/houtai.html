@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="../public/css/houtai.css" th:href="@{/css/houtai.css}">
+
+</head>
+<body>
+	<div class="header-wrapper">
+	    <div class="header">
+	        <div class="logo"><img src="../public/img/houtai/logo_top.png" th:src="@{/img/houtai/logo_top.png}" alt=""></div>
+	    </div>
+	</div>
+	<div class="content clearfix">
+		<div class="left">
+			<ul class="tab">
+				<li class="tab-item active">上传MV</li>
+		        <li class="tab-item">创建歌单</li>
+		        <li class="tab-item">管理歌单</li>
+			</ul>
+		</div>
+		<div class="right">
+			<div class="main selected">
+				<div class="edit_area">
+					<div class="mv_upload clearfix">
+						<a href="javascript:void(0);" id="uploadBtn">
+							<div class="local_video">上传本地视频</div>
+							
+						</a>
+						
+						<input type="file" capture="camera" name="file" class="upload_inp" accept="video/mp4,video/x-flv,video/quicktime,video/x-m4v,video/x-f4v,video/x-matroska,video/mp2ts" style="display: none;">
+							
+						<span class="upload-tips">
+	                        <img src="../public/img/houtai/question.png" th:src="@{/img/houtai/question.png}" class="upload-tips-btn">
+	                        <div class="video-tips">
+	                            <i class="arrow-up"></i>
+	                            <div class="video-tips-content">
+	                                <ul>
+	                                    <li>上传格式权限mp4/flv/mov/f4v/m4v/mkv/ts</li>
+	                                    <li>请选择比特率高清以上，大小在500M以内的视频</li>
+	                                    <li>视频时长不超过20分钟</li>
+	                                </ul>
+	                            </div>
+	                        </div>
+	                    </span>
+					</div>
+					<div class="video_info">
+						<div class="video-item clearfix video-title">
+	                        <label class="video-label" for="">
+	                            <span class="red-dot"></span>标题 </label>
+	                        <input class="video-input" id="video-title-input" name="video-tilte" type="text" placeholder="标题和视频内容相符合" autocomplete="off">
+	                        <span class="limitWord">0/40</span>
+	                        <div class="error"></div>
+                    	</div>
+                    	<div class="video-item original">
+	                        <label class="video-label" for="">
+	                            <span class="red-dot"></span>原创</label>
+	                        <span class="originalItem">
+	                            <input value="1" type="radio" name="originalType" autocomplete="off">
+	                            <label for=""> 是</label>
+	                        </span>
+	                        <span class="originalItem">
+	                            <input value="0" type="radio" name="originalType" autocomplete="off">
+	                            <label for=""> 否</label>
+	                        </span>
+                        	<div class="error"></div>
+                    	</div>
+                    	<!-- 类型 -->
+                    	<div class="video-item clearfix video-type">
+	                        <label class="video-label" for="">
+	                            <span class="red-dot"></span>类型</label>
+	                        <span class="radioItem">
+	                            <input value="1" type="radio" name="videoType" autocomplete="off">
+	                            <label for=""> 官方MV</label>
+	                        </span>
+	                        <span class="radioItem">
+	                            <input value="2" type="radio" name="videoType" autocomplete="off">
+	                            <label for=""> 演唱会</label>
+	                        </span>
+	                        <span class="radioItem">
+	                            <input value="3" type="radio" name="videoType" autocomplete="off">
+	                            <label for=""> 现场版</label>
+	                        </span>
+	                        <span class="radioItem">
+	                            <input value="4" type="radio" name="videoType" autocomplete="off">
+	                            <label for="">饭制版</label>
+	                        </span>
+	                        <span class="radioItem">
+	                            <input value="0" type="radio" name="videoType" autocomplete="off">
+	                            <label for=""> 其他</label>
+	                        </span>
+	                        <span class="radioItem">
+	                            <input value="6" type="radio" name="videoType" autocomplete="off">
+	                            <label for=""> 翻唱</label>
+	                        </span>
+	                        <div class="error"></div>
+	                    </div>
+	                    <!-- 封面 -->
+	                    <div class="video-item clearfix video-cover">
+	                        <label class="video-label" for="">
+	                            <span class="red-dot"></span>封面</label>
+	                        <div class="preview"></div>	            
+	                        <div class="preview-des">
+	                            <ul>
+	                                <li>上传文件仅限jpg/png</li>
+	                                <li>分辨率大于660*370像素，大小5M以内</li>
+	                                <li>上传图片需要与视频相关</li>
+	                            </ul>
+	                           
+	                        </div>
+	                        <div class="error"></div>
+                    	</div>
+                    	<!-- 相关明星 -->
+                    	<div class="video-item clearfix video-singer">
+	                        <label class="video-label" for="">相关明星</label>
+	                        <div class="video-input" id="video-singer-wrapper" type="text">
+	                            <input autocomplete="off" type="text" maxlength="20" placeholder="准确输入明星名字更容易获得推荐机会！（按回车键输入下一个，最多输入三个）" id="video-singer-input">
+	                        </div>
+                        	<div class="error"></div>
+                    	</div>
+                    	<!-- 标签 -->
+                    	<div class="video-item clearfix video-style" id="classifyCont">
+	                        <label class="video-label" for="">
+	                            <span class="red-dot"></span>标签</label>
+	                        <div class="video-input" id="video-style-wrapper" type="text">
+	                        	<div class="select_box"></div>
+	                            <input autocomplete="off" type="text" id="classify" class="classify-input" value="" readonly="readonly" placeholder="请准确选择视频标签，分类更准确" style="left: 68px;">
+	                          <i class="classify-icon" id="classifyIcon"></i>
+	                        </div>
+	                        <div id="creat_selectTag" class="in">
+	                      
+	                            <div id="creat_tag_list" style="background: none;">
+		                        	<ul class="win_select_ul" data-title="主题：">
+		                        		<li title="MV" value="40">
+		                        			<span>MV</span>
+		                        		</li>
+		                        		<li title="影视" value="41">
+		                        			<span>影视</span>
+		                        		</li>
+		                        		<li title="综艺" value="42">
+		                        			<span>综艺</span>
+		                        		</li>
+		                        		<li title="现场" value="43">
+		                        			<span>现场</span>
+		                        		</li>
+		                        		<li title="舞蹈" value="44">
+		                        			<span>舞蹈</span>
+		                        		</li>
+		                        		<li title="翻唱" value="45">
+		                        			<span>翻唱</span>
+		                        		</li>
+		                        		<li title="饭制" value="46">
+		                        			<span>饭制</span>
+		                        		</li>
+		                        		<li title="演奏" value="47">
+		                        			<span>演奏</span>
+		                        		</li>
+		                        		<li title="改编" value="48">
+		                        			<span>改编</span>
+		                        		</li>
+		                        		<li title="ACG" value="49">
+		                        			<span>ACG</span>
+		                        		</li>
+		                        		<li title="原创" value="51">
+		                        			<span>原创</span>
+		                        		</li>
+		                        		<li title="广场舞" value="52">
+		                        			<span>广场舞</span>
+		                        		</li>
+		                        		<li title="神曲" value="53">
+		                        			<span>神曲</span>
+		                        		</li>
+		                        		<li title="幕后" value="55">
+		                        			<span>幕后</span>
+		                        		</li>
+		                        		<li title="配音" value="57">
+		                        			<span>配音</span>
+		                        		</li>
+		                        		<li title="音乐教学" value="71">
+		                        			<span>音乐教学</span>
+		                        		</li>
+		                        		<li title="娱乐八卦" value="73">
+		                        			<span>娱乐八卦</span>
+		                        		</li>
+		                        		<li title="专访" value="93">
+		                        			<span>专访</span>
+		                        		</li>
+		                        		<li title="恶搞" value="95">
+		                        			<span>恶搞</span>
+		                        		</li>
+		                        		<li title="鬼畜" value="97">
+		                        			<span>鬼畜</span>
+		                        		</li>
+		                        	</ul>
+		                        	<ul class="win_select_ul" data-title="地区：">
+		                        		<li title="内地" value="59" class="">
+		                        			<span>内地</span>
+		                        		</li>
+		                        		<li title="港台" value="61">
+		                        			<span>港台</span>
+		                        		</li>
+		                        		<li title="韩国" value="63">
+		                        			<span>韩国</span>
+		                        		</li>
+		                        		<li title="日本" value="65">
+		                        			<span>日本</span>
+		                        		</li>
+		                        		<li title="欧美" value="67">
+		                        			<span>欧美</span>
+		                        		</li>
+		                        		<li title="其他" value="69">
+		                        			<span>其他</span>
+		                        		</li>
+		                        	</ul>
+		                        </div>
+	                        </div>
+	                        
+	                        <div class="error">最多可选3个标签</div>
+                   		</div>
+                   		<!-- 简介 -->
+                   		<div class="video-item clearfix video-intro">
+	                        <label class="video-label" for="">
+	                            <span class="red-dot"></span>简介</label>
+	                        <textarea class="video-input" name="" isok="false" id="video-intro" autocomplete="off" placeholder="请输入视频介绍至少十个文字，最多2000个文字" cols="30" rows="10"></textarea>
+	                        <div class="error"></div>
+                    	</div>
+					</div>
+				</div>
+			</div>
+			<div class="main create">
+				<form action="">
+					<div class="createlist">
+						<label for="name">标题&nbsp;:&nbsp;</label>
+						<input type="text" name="name" class="songlist-name" id="name" value="" tabindex="1" maxlength="40" placeholder="不超过40个字符">
+					</div>
+					<div class="createlist">
+						<label for="textarea">描述&nbsp;:&nbsp;</label>
+						<textarea cols="40" rows="8" name="textarea" id="textarea" maxlength="500"></textarea>
+					</div>
+					<div class="createlist clearfix">
+						<label >封面&nbsp;:&nbsp;</label>
+						<div class="upload_img">
+							<div class="sel_img">选择图片</div>
+							<input type="file" class="sel" style="display: none;" />
+							<span>支持jpg,png,bmp格式，且文件大于600*600的正方形图片</span>
+							<div style="width: 100%;display: flex;padding-top: 20px;">
+								<div class="big_img"></div>
+							<div class="small_img"></div>
+							</div>
+							
+						</div>
+					</div>
+					<div class="classify clearfix createlist" id="classifyCont">
+						<label for="classify">分类&nbsp;:&nbsp;</label>
+						<div class="classify-ipt">
+							<input type="text" class="songlist-tags" name="classify" id="classify" value="" readonly="readonly" placeholder="可以选择三个分类">
+							<i class="classify-icon" id="classifyIcon"></i>
+						</div>
+						<div id="creat_selectTag" class="in" style="width: 542px;left: 13px;">
+						   <!--  <div class="creat_select_list">
+						        <div class="has_select_singer">已选</div>
+						        <p class="error_info" id="error_info" style="display: none;">* 最多可选3个标签</p>
+						    </div> -->
+							<div id="creat_tag_list" style="background: none;">
+							    <ul class="win_select_ul" data-title="主题：">
+							    	<li title="经典" data-value="12"><span>经典</span></li>
+							    	<li title="网络" data-value="35"><span>网络</span></li>
+							    	<li title="DJ热碟" data-value="17"><span>DJ热碟</span></li>
+							    	<li title="情歌对唱" data-value="68"><span>情歌对唱</span></li>
+							    	<li title="游戏" data-value="74"><span>游戏</span></li>
+							    	<li title="舞曲" data-value="10"><span>舞曲</span></li>
+							    	<li title="KTV" data-value="72"><span>KTV</span></li>
+							    	<li title="轻音乐" data-value="34"><span>轻音乐</span></li>
+							    	<li title="影视" data-value="79"><span>影视</span></li>
+							    	<li title="励志" data-value="81"><span>励志</span></li>
+							    	<li title="草原风" data-value="605"><span>草原风</span></li>
+							    	<li title="广场舞" data-value="628"><span>广场舞</span></li>
+							    	<li title="佛教" data-value="641"><span>佛教</span></li>
+							    	<li title="儿歌" data-value="36"><span>儿歌</span></li>
+							    	<li title="ACG" data-value="77"><span>ACG</span></li>
+							    	<li title="减压" data-value="643"><span>减压</span></li>
+							    	<li title="现场" data-value="680"><span>现场</span></li>
+							    	<li title="器乐演奏" data-value="682"><span>器乐演奏</span></li>
+							    	<li title="失恋" data-value="684"><span>失恋</span></li>
+							    	<li title="粤剧" data-value="806"><span>粤剧</span></li>
+							    	<li title="儿童故事" data-value="700"><span>儿童故事</span></li>
+							    	<li title="高考" data-value="686"><span>高考</span></li>
+							    </ul>
+							    <ul class="win_select_ul" data-title="语种：">
+							    	<li title="英语" data-value="20"><span>英语</span></li>
+							    	<li title="国语" data-value="84"><span>国语</span></li>
+							    	<li title="粤语" data-value="19"><span>粤语</span></li>
+							    	<li title="日语" data-value="21"><span>日语</span></li>
+							    	<li title="韩语" data-value="23"><span>韩语</span></li>
+							    	<li title="闽南语" data-value="22"><span>闽南语</span></li>
+							    	<li title="小语种" data-value="24"><span>小语种</span></li>
+							    	<li title="法语" data-value="570"><span>法语</span></li>
+							    </ul>
+							    <ul class="win_select_ul" data-title="风格：">
+							    	<li title="古风" data-value="574"><span>古风</span></li>
+							    	<li title="流行" data-value="9"><span>流行</span></li>
+							    	<li title="电子" data-value="33"><span>电子</span></li>
+							    	<li title="民谣" data-value="83"><span>民谣</span></li>
+							    	<li title="摇滚" data-value="27"><span>摇滚</span></li>
+							    	<li title="嘻哈" data-value="31"><span>嘻哈</span></li>
+							    	<li title="后摇" data-value="1079"><span>后摇</span></li>
+							    	<li title="中国风" data-value="11"><span>中国风</span></li>
+							    	<li title="民歌" data-value="385"><span>民歌</span></li>
+							    	<li title="R&amp;B" data-value="30"><span>R&amp;B</span></li>
+							    	<li title="古典" data-value="28"><span>古典</span></li>
+							    	<li title="乡村" data-value="15"><span>乡村</span></li>
+							    	<li title="爵士" data-value="32"><span>爵士</span></li>
+							    	<li title="民乐" data-value="813"><span>民乐</span></li>
+							    	<li title="新世纪" data-value="650"><span>新世纪</span></li>
+							    	<li title="布鲁斯" data-value="94"><span>布鲁斯</span></li>
+							    	<li title="拉 丁" data-value="1057"><span>拉 丁</span></li>
+							    	<li title="戏曲" data-value="981"><span>戏曲</span></li>
+							    </ul>
+							    <ul class="win_select_ul" data-title="年代：">
+							    	<li title="70后" data-value="13"><span>70后</span></li>
+							    	<li title="80后" data-value="14"><span>80后</span></li>
+							    	<li title="90后" data-value="76"><span>90后</span></li>
+							    	<li title="00后" data-value="571"><span>00后</span></li>
+							    </ul>
+							    <ul class="win_select_ul" data-title="心情：">
+							    	<li title="伤感" data-value="578"><span>伤感</span></li>
+							    	<li title="安静" data-value="44"><span>安静</span></li>
+							    	<li title="兴奋" data-value="50"><span>兴奋</span></li>
+							    	<li title="轻松" data-value="577"><span>轻松</span></li>
+							    	<li title="治愈" data-value="780"><span>治愈</span></li>
+							    	<li title="快乐" data-value="49"><span>快乐</span></li>
+							    	<li title="甜蜜" data-value="47"><span>甜蜜</span></li>
+							    	<li title="寂寞" data-value="42"><span>寂寞</span></li>
+							    	<li title="感动" data-value="48"><span>感动</span></li>
+							    </ul>
+							    <ul class="win_select_ul" data-title="场景：">
+							    	<li title="学习" data-value="587"><span>学习</span></li>
+							    	<li title="车载" data-value="63"><span>车载</span></li>
+							    	<li title="运动" data-value="69"><span>运动</span></li>
+							    	<li title="夜店" data-value="64"><span>夜店</span></li>
+							    	<li title="校园" data-value="67"><span>校园</span></li>
+							    	<li title="旅途" data-value="585"><span>旅途</span></li>
+							    	<li title="咖啡厅" data-value="61"><span>咖啡厅</span></li>
+							    	<li title="工作" data-value="660"><span>工作</span></li>
+							    	<li title="店铺" data-value="581"><span>店铺</span></li>
+							    	<li title="编程" data-value="846"><span>编程</span></li>
+							    </ul>
+							    <ul class="win_select_ul" data-title="主题：">
+							    	<li title="经典" data-value="12"><span>经典</span></li>
+							    	<li title="网络" data-value="35"><span>网络</span></li>
+							    	<li title="DJ热碟" data-value="17"><span>DJ热碟</span></li>
+							    	<li title="情歌对唱" data-value="68"><span>情歌对唱</span></li>
+							    	<li title="游戏" data-value="74"><span>游戏</span></li>
+							    	<li title="舞曲" data-value="10"><span>舞曲</span></li>
+							    	<li title="KTV" data-value="72"><span>KTV</span></li>
+							    	<li title="轻音乐" data-value="34"><span>轻音乐</span></li>
+							    	<li title="影视" data-value="79"><span>影视</span></li>
+							    	<li title="励志" data-value="81"><span>励志</span></li>
+							    	<li title="草原风" data-value="605"><span>草原风</span></li>
+							    	<li title="广场舞" data-value="628"><span>广场舞</span></li>
+							    	<li title="佛教" data-value="641"><span>佛教</span></li>
+							    	<li title="儿歌" data-value="36"><span>儿歌</span></li>
+							    	<li title="ACG" data-value="77"><span>ACG</span></li>
+							    	<li title="减压" data-value="643"><span>减压</span></li>
+							    	<li title="现场" data-value="680"><span>现场</span></li>
+							    	<li title="器乐演奏" data-value="682"><span>器乐演奏</span></li>
+							    	<li title="失恋" data-value="684"><span>失恋</span></li>
+							    	<li title="粤剧" data-value="806"><span>粤剧</span></li>
+							    	<li title="儿童故事" data-value="700"><span>儿童故事</span></li>
+							    	<li title="高考" data-value="686"><span>高考</span></li>
+							    </ul>
+							    <ul class="win_select_ul" data-title="语种：">
+							    	<li title="英语" data-value="20"><span>英语</span></li>
+							    	<li title="国语" data-value="84"><span>国语</span></li>
+							    	<li title="粤语" data-value="19"><span>粤语</span></li>
+							    	<li title="日语" data-value="21"><span>日语</span></li>
+							    	<li title="韩语" data-value="23"><span>韩语</span></li>
+							    	<li title="闽南语" data-value="22"><span>闽南语</span></li>
+							    	<li title="小语种" data-value="24"><span>小语种</span></li>
+							    	<li title="法语" data-value="570"><span>法语</span></li>
+							    </ul>
+							    <ul class="win_select_ul" data-title="风格：">
+							    	<li title="古风" data-value="574"><span>古风</span></li>
+							    	<li title="流行" data-value="9"><span>流行</span></li>
+							    	<li title="电子" data-value="33"><span>电子</span></li>
+							    	<li title="民谣" data-value="83"><span>民谣</span></li>
+							    	<li title="摇滚" data-value="27"><span>摇滚</span></li>
+							    	<li title="嘻哈" data-value="31"><span>嘻哈</span></li>
+							    	<li title="后摇" data-value="1079"><span>后摇</span></li>
+							    	<li title="中国风" data-value="11"><span>中国风</span></li>
+							    	<li title="民歌" data-value="385"><span>民歌</span></li>
+							    	<li title="R&amp;B" data-value="30"><span>R&amp;B</span></li>
+							    	<li title="古典" data-value="28"><span>古典</span></li>
+							    	<li title="乡村" data-value="15"><span>乡村</span></li>
+							    	<li title="爵士" data-value="32"><span>爵士</span></li>
+							    	<li title="民乐" data-value="813"><span>民乐</span></li>
+							    	<li title="新世纪" data-value="650"><span>新世纪</span></li>
+							    	<li title="布鲁斯" data-value="94"><span>布鲁斯</span></li>
+							    	<li title="拉 丁" data-value="1057"><span>拉 丁</span></li>
+							    	<li title="戏曲" data-value="981"><span>戏曲</span></li>
+							    </ul>
+							    <ul class="win_select_ul" data-title="年代：">
+							    	<li title="70后" data-value="13"><span>70后</span></li>
+							    	<li title="80后" data-value="14"><span>80后</span></li>
+							    	<li title="90后" data-value="76"><span>90后</span></li>
+							    	<li title="00后" data-value="571"><span>00后</span></li>
+							    </ul>
+							    <ul class="win_select_ul" data-title="心情：">
+							    	<li title="伤感" data-value="578"><span>伤感</span></li>
+							    	<li title="安静" data-value="44"><span>安静</span></li>
+							    	<li title="兴奋" data-value="50"><span>兴奋</span></li>
+							    	<li title="轻松" data-value="577"><span>轻松</span></li>
+							    	<li title="治愈" data-value="780"><span>治愈</span></li>
+							    	<li title="快乐" data-value="49"><span>快乐</span></li>
+							    	<li title="甜蜜" data-value="47"><span>甜蜜</span></li>
+							    	<li title="寂寞" data-value="42"><span>寂寞</span></li>
+							    	<li title="感动" data-value="48"><span>感动</span></li>
+							    </ul>
+							    <ul class="win_select_ul" data-title="场景：">
+							    	<li title="学习" data-value="587"><span>学习</span></li>
+							    	<li title="车载" data-value="63"><span>车载</span></li>
+							    	<li title="运动" data-value="69"><span>运动</span></li>
+							    	<li title="夜店" data-value="64"><span>夜店</span></li>
+							    	<li title="校园" data-value="67"><span>校园</span></li>
+							    	<li title="旅途" data-value="585"><span>旅途</span></li>
+							    	<li title="咖啡厅" data-value="61"><span>咖啡厅</span></li>
+							    	<li title="工作" data-value="660"><span>工作</span></li>
+							    	<li title="店铺" data-value="581"><span>店铺</span></li>
+							    	<li title="编程" data-value="846"><span>编程</span></li>
+							    </ul>
+							    <ul class="win_select_ul" data-title="主题：">
+							    	<li title="经典" data-value="12"><span>经典</span></li>
+							    	<li title="网络" data-value="35"><span>网络</span></li>
+							    	<li title="DJ热碟" data-value="17"><span>DJ热碟</span></li>
+							    	<li title="情歌对唱" data-value="68"><span>情歌对唱</span></li>
+							    	<li title="游戏" data-value="74"><span>游戏</span></li>
+							    	<li title="舞曲" data-value="10"><span>舞曲</span></li>
+							    	<li title="KTV" data-value="72"><span>KTV</span></li>
+							    	<li title="轻音乐" data-value="34"><span>轻音乐</span></li>
+							    	<li title="影视" data-value="79"><span>影视</span></li>
+							    	<li title="励志" data-value="81"><span>励志</span></li>
+							    	<li title="草原风" data-value="605"><span>草原风</span></li>
+							    	<li title="广场舞" data-value="628"><span>广场舞</span></li>
+							    	<li title="佛教" data-value="641"><span>佛教</span></li>
+							    	<li title="儿歌" data-value="36"><span>儿歌</span></li>
+							    	<li title="ACG" data-value="77"><span>ACG</span></li>
+							    	<li title="减压" data-value="643"><span>减压</span></li>
+							    	<li title="现场" data-value="680"><span>现场</span></li>
+							    	<li title="器乐演奏" data-value="682"><span>器乐演奏</span></li>
+							    	<li title="失恋" data-value="684"><span>失恋</span></li>
+							    	<li title="粤剧" data-value="806"><span>粤剧</span></li>
+							    	<li title="儿童故事" data-value="700"><span>儿童故事</span></li>
+							    	<li title="高考" data-value="686"><span>高考</span></li>
+							    </ul>
+							    <ul class="win_select_ul" data-title="语种：">
+							    	<li title="英语" data-value="20"><span>英语</span></li>
+							    	<li title="国语" data-value="84"><span>国语</span></li>
+							    	<li title="粤语" data-value="19"><span>粤语</span></li>
+							    	<li title="日语" data-value="21"><span>日语</span></li>
+							    	<li title="韩语" data-value="23"><span>韩语</span></li>
+							    	<li title="闽南语" data-value="22"><span>闽南语</span></li>
+							    	<li title="小语种" data-value="24"><span>小语种</span></li>
+							    	<li title="法语" data-value="570"><span>法语</span></li>
+							    </ul>
+							    <ul class="win_select_ul" data-title="风格：">
+							    	<li title="古风" data-value="574"><span>古风</span></li>
+							    	<li title="流行" data-value="9"><span>流行</span></li>
+							    	<li title="电子" data-value="33"><span>电子</span></li>
+							    	<li title="民谣" data-value="83"><span>民谣</span></li>
+							    	<li title="摇滚" data-value="27"><span>摇滚</span></li>
+							    	<li title="嘻哈" data-value="31"><span>嘻哈</span></li>
+							    	<li title="后摇" data-value="1079"><span>后摇</span></li>
+							    	<li title="中国风" data-value="11"><span>中国风</span></li>
+							    	<li title="民歌" data-value="385"><span>民歌</span></li>
+							    	<li title="R&amp;B" data-value="30"><span>R&amp;B</span></li>
+							    	<li title="古典" data-value="28"><span>古典</span></li>
+							    	<li title="乡村" data-value="15"><span>乡村</span></li>
+							    	<li title="爵士" data-value="32"><span>爵士</span></li>
+							    	<li title="民乐" data-value="813"><span>民乐</span></li>
+							    	<li title="新世纪" data-value="650"><span>新世纪</span></li>
+							    	<li title="布鲁斯" data-value="94"><span>布鲁斯</span></li>
+							    	<li title="拉 丁" data-value="1057"><span>拉 丁</span></li>
+							    	<li title="戏曲" data-value="981"><span>戏曲</span></li>
+							    </ul>
+							    <ul class="win_select_ul" data-title="年代：">
+							    	<li title="70后" data-value="13"><span>70后</span></li>
+							    	<li title="80后" data-value="14"><span>80后</span></li>
+							    	<li title="90后" data-value="76"><span>90后</span></li>
+							    	<li title="00后" data-value="571"><span>00后</span></li>
+							    </ul>
+							    <ul class="win_select_ul" data-title="心情：">
+							    	<li title="伤感" data-value="578"><span>伤感</span></li>
+							    	<li title="安静" data-value="44"><span>安静</span></li>
+							    	<li title="兴奋" data-value="50"><span>兴奋</span></li>
+							    	<li title="轻松" data-value="577"><span>轻松</span></li>
+							    	<li title="治愈" data-value="780"><span>治愈</span></li>
+							    	<li title="快乐" data-value="49"><span>快乐</span></li>
+							    	<li title="甜蜜" data-value="47"><span>甜蜜</span></li>
+							    	<li title="寂寞" data-value="42"><span>寂寞</span></li>
+							    	<li title="感动" data-value="48"><span>感动</span></li>
+							    </ul>
+							    <ul class="win_select_ul" data-title="场景：">
+							    	<li title="学习" data-value="587"><span>学习</span></li>
+							    	<li title="车载" data-value="63"><span>车载</span></li>
+							    	<li title="运动" data-value="69"><span>运动</span></li>
+							    	<li title="夜店" data-value="64"><span>夜店</span></li>
+							    	<li title="校园" data-value="67"><span>校园</span></li>
+							    	<li title="旅途" data-value="585"><span>旅途</span></li>
+							    	<li title="咖啡厅" data-value="61"><span>咖啡厅</span></li>
+							    	<li title="工作" data-value="660"><span>工作</span></li>
+							    	<li title="店铺" data-value="581"><span>店铺</span></li>
+							    	<li title="编程" data-value="846"><span>编程</span></li>
+							    </ul>
+							    <ul class="win_select_ul" data-title="主题：">
+							    	<li title="经典" data-value="12"><span>经典</span></li>
+							    	<li title="网络" data-value="35"><span>网络</span></li>
+							    	<li title="DJ热碟" data-value="17"><span>DJ热碟</span></li>
+							    	<li title="情歌对唱" data-value="68"><span>情歌对唱</span></li>
+							    	<li title="游戏" data-value="74"><span>游戏</span></li>
+							    	<li title="舞曲" data-value="10"><span>舞曲</span></li>
+							    	<li title="KTV" data-value="72"><span>KTV</span></li>
+							    	<li title="轻音乐" data-value="34"><span>轻音乐</span></li>
+							    	<li title="影视" data-value="79"><span>影视</span></li>
+							    	<li title="励志" data-value="81"><span>励志</span></li>
+							    	<li title="草原风" data-value="605"><span>草原风</span></li>
+							    	<li title="广场舞" data-value="628"><span>广场舞</span></li>
+							    	<li title="佛教" data-value="641"><span>佛教</span></li>
+							    	<li title="儿歌" data-value="36"><span>儿歌</span></li>
+							    	<li title="ACG" data-value="77"><span>ACG</span></li>
+							    	<li title="减压" data-value="643"><span>减压</span></li>
+							    	<li title="现场" data-value="680"><span>现场</span></li>
+							    	<li title="器乐演奏" data-value="682"><span>器乐演奏</span></li>
+							    	<li title="失恋" data-value="684"><span>失恋</span></li>
+							    	<li title="粤剧" data-value="806"><span>粤剧</span></li>
+							    	<li title="儿童故事" data-value="700"><span>儿童故事</span></li>
+							    	<li title="高考" data-value="686"><span>高考</span></li>
+							    </ul>
+							    <ul class="win_select_ul" data-title="语种：">
+							    	<li title="英语" data-value="20"><span>英语</span></li>
+							    	<li title="国语" data-value="84"><span>国语</span></li>
+							    	<li title="粤语" data-value="19"><span>粤语</span></li>
+							    	<li title="日语" data-value="21"><span>日语</span></li>
+							    	<li title="韩语" data-value="23"><span>韩语</span></li>
+							    	<li title="闽南语" data-value="22"><span>闽南语</span></li>
+							    	<li title="小语种" data-value="24"><span>小语种</span></li>
+							    	<li title="法语" data-value="570"><span>法语</span></li>
+							    </ul>
+							    <ul class="win_select_ul" data-title="风格：">
+							    	<li title="古风" data-value="574"><span>古风</span></li>
+							    	<li title="流行" data-value="9"><span>流行</span></li>
+							    	<li title="电子" data-value="33"><span>电子</span></li>
+							    	<li title="民谣" data-value="83"><span>民谣</span></li>
+							    	<li title="摇滚" data-value="27"><span>摇滚</span></li>
+							    	<li title="嘻哈" data-value="31"><span>嘻哈</span></li>
+							    	<li title="后摇" data-value="1079"><span>后摇</span></li>
+							    	<li title="中国风" data-value="11"><span>中国风</span></li>
+							    	<li title="民歌" data-value="385"><span>民歌</span></li>
+							    	<li title="R&amp;B" data-value="30"><span>R&amp;B</span></li>
+							    	<li title="古典" data-value="28"><span>古典</span></li>
+							    	<li title="乡村" data-value="15"><span>乡村</span></li>
+							    	<li title="爵士" data-value="32"><span>爵士</span></li>
+							    	<li title="民乐" data-value="813"><span>民乐</span></li>
+							    	<li title="新世纪" data-value="650"><span>新世纪</span></li>
+							    	<li title="布鲁斯" data-value="94"><span>布鲁斯</span></li>
+							    	<li title="拉 丁" data-value="1057"><span>拉 丁</span></li>
+							    	<li title="戏曲" data-value="981"><span>戏曲</span></li>
+							    </ul>
+							    <ul class="win_select_ul" data-title="年代：">
+							    	<li title="70后" data-value="13"><span>70后</span></li>
+							    	<li title="80后" data-value="14"><span>80后</span></li>
+							    	<li title="90后" data-value="76"><span>90后</span></li>
+							    	<li title="00后" data-value="571"><span>00后</span></li>
+							    </ul>
+							    <ul class="win_select_ul" data-title="心情：">
+							    	<li title="伤感" data-value="578"><span>伤感</span></li>
+							    	<li title="安静" data-value="44"><span>安静</span></li>
+							    	<li title="兴奋" data-value="50"><span>兴奋</span></li>
+							    	<li title="轻松" data-value="577"><span>轻松</span></li>
+							    	<li title="治愈" data-value="780"><span>治愈</span></li>
+							    	<li title="快乐" data-value="49"><span>快乐</span></li>
+							    	<li title="甜蜜" data-value="47"><span>甜蜜</span></li>
+							    	<li title="寂寞" data-value="42"><span>寂寞</span></li>
+							    	<li title="感动" data-value="48"><span>感动</span></li>
+							    </ul>
+							    <ul class="win_select_ul" data-title="场景：">
+							    	<li title="学习" data-value="587"><span>学习</span></li>
+							    	<li title="车载" data-value="63"><span>车载</span></li>
+							    	<li title="运动" data-value="69"><span>运动</span></li>
+							    	<li title="夜店" data-value="64"><span>夜店</span></li>
+							    	<li title="校园" data-value="67"><span>校园</span></li>
+							    	<li title="旅途" data-value="585"><span>旅途</span></li>
+							    	<li title="咖啡厅" data-value="61"><span>咖啡厅</span></li>
+							    	<li title="工作" data-value="660"><span>工作</span></li>
+							    	<li title="店铺" data-value="581"><span>店铺</span></li>
+							    	<li title="编程" data-value="846"><span>编程</span></li>
+							    </ul>
+							</div>
+						</div>
+					</div>
+					<div class="createlist">
+						<label for="search_song" >小提示&nbsp;:&nbsp;</label>
+						<div class="search-song">
+							<p class="song-tips">当歌单加入付费歌曲时，只有已经购买了该歌曲的用户才能播放哦</p>
+							<div class="song-result" id="song_result">
+							</div>
+							<div class="search-text">
+								<input type="text" name="serch_song" id="search_song" maxlength="60" placeholder="搜索并选择歌曲">
+								<i class="search-icon"></i>
+								<!-- 搜索出来的结果列表 -->
+								<!-- <div class="search-result-list" style="display: none;">
+									<div class="search-result-content">
+										<ul></ul>
+									</div>
+									<div class="serach-action">
+										<div class="search-prev">上一頁</div>
+										<div class="search-next">下一頁</div>
+									</div>
+								</div> -->
+							</div>
+						</div>
+					</div>
+					<div class="submit-btn">
+						<button class="creat-submit" id="creat-submit" type="button">提交</button>
+						<button class="creat-cancel" id="creat-cancel" type="button">取消</button>
+					</div>
+				</form>
+			</div>
+			<div class="main" style="width: 740px;height: 450px;">
+				<ul class="manage-songlist-header clearfix">
+					<li class="song-list-head-name">歌单名</li>
+					<li class="song-list-head-status">发布状态</li>
+					<li class="song-list-head-action">操作</li>
+				</ul>
+				<ul class="songlist_content">
+					<li>
+						<span class="content_name">我是歌单名</span>
+						<span class="content_status">已发布</span>
+						<span class="content_action">
+							<a href="javascript:void(0);" class="songlist_edit">编辑</a>
+							<a href="">删除</a>
+						</span>
+					</li>
+				</ul>
+			</div>
+		</div>`
+	</div>
+	<div class="btn-area clearfix">
+        <a id="publish-video" class="active" href="#">发布</a>
+        <a id="save-video" class="default" href="#">保存</a>
+        <label for="auto-save">
+        	<input type="checkbox" class="auto-save" checked>自动保存
+        	<span class="auto-save-tips"></span>
+        </label>
+	</div>
+
+	<script src="../public/js/jquery-3.2.1.js" th:src="@{/js/jquery-3.2.1.js}"></script>
+	<script src="../public/js/houtai.js" th:src="@{/js/houtai.js}"></script>
+</body>
+</html>

@@ -338,7 +338,7 @@ $(function () {
 function addHeadSearchBoxDefaultValue(){
     var inp = $("#searchAllBox1");
     if($.trim(inp.val()) == "" && $.trim(inp.attr("placeholder")) == ""){
-        $.post(rootPath+"/index.searchBox.ajax",null,function (data) {
+        $.post(rootPath+"index.searchBox.ajax",null,function (data) {
             if(data.code == 1){
                 inp.attr("placeholder",data.searchString);
             }

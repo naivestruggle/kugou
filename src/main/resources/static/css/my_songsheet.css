@@ -53,7 +53,7 @@ input {
     float: left;
     width: 240px;
     position: fixed;
-    height: 400px;
+    height: 100%;
     border-left: 1px solid #d3d3d3;
 }
 
@@ -1266,3 +1266,69 @@ textarea {
     position: absolute;
     z-index: 996;
 }
+
+.cmmts{
+    width: 93%;
+    height: auto;
+    padding: 10px 26px 0;
+    font-size: 13px;
+}
+.u-hd4{
+    position: relative;
+    top: 1px;
+    height: 20px;
+    border-bottom: 1px solid #cfcfcf;
+    font-size: 12px;
+}
+.cmmts .cntwrap {
+    margin-left: 60px;
+}
+.cmmts .head img{
+    float: left;
+    width: 50px;
+    height: 50px;
+    margin-right: -100px;
+}
+.f-brk {
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+}
+.cmmts ul li{
+    padding: 15px 0;
+    border-top: 1px dotted #ccc;
+    height:53px;
+}
+.s-fc7{
+    color: #0c73c2;
+    line-height: 20px;
+    margin-right: 5px;
+}
+.rp{
+    width: 100%;
+    float: left;
+    margin-top: 15px;
+}
+.rp .time{
+    float: left;
+    color: #999;
+}
+.rp .zan-f1{
+    float: right;
+}
+.rp .zan-f1 a:hover{
+    color: blue;
+    text-decoration: underline;
+}
+.zan{
+    display: inline-block;
+    width: 15px;
+    height: 14px;
+    background: url(/img/my_songsheet/icon2.png) no-repeat -150px -20px;
+    position: relative;
+    top: 1px;
+    right: 3px;
+}
+
+
+
