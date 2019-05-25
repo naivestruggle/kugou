@@ -15,6 +15,7 @@ $(function () {
     cancelCollectSongSheet();
     queryCollectSongSheet();
     comment();
+    reply();
 
     //初始化
     function inti() {
@@ -875,9 +876,46 @@ $(function () {
     //评论
     function comment(){
         $("#area").on("input",function () {
-            $(".btns .zs").html(140 - $("#area").val().length);
+            $(".m-cmmt .btns .zs").html(140 - $("#area").val().length);
         });
+    }
 
+    //回复
+    function reply() {
+
+        var key = true;
+
+        $(".cmmts .reply").on("input",function () {
+            $(".cmmts .btns .zs").html(140 - $(".cmmts .reply").val().length);
+        });
+        var prIndex = -1;
+        $(".zan-f1 .s-fc3").click(function () {
+
+            var currIndex = $(this).index(".zan-f1 .s-fc3");
+
+            if(prIndex != currIndex){
+                var point = $("<div class=\"reply-div\" style=\"width: 100%;height: auto;\">\n" +
+                    "\t\t\t\t\t\t\t\t\t<div class=\"inner\">\n" +
+                    "\t\t\t\t\t\t\t\t\t\t<textarea class=\"reply\" maxlength=\"140\"></textarea>\n" +
+                    "\t\t\t\t\t\t\t\t\t\t<div class=\"btns\">\n" +
+                    "\t\t\t\t\t\t\t\t\t\t\t<a href=\"javascript:void(0)\" class=\"btn u-btn-1\">回复</a>\n" +
+                    "\t\t\t\t\t\t\t\t\t\t\t<span class=\"zs\">140</span>\n" +
+                    "\t\t\t\t\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t\t\t</div>");
+
+                //先移除之前的回复框
+                $(".reply-div").remove();
+                //添加新的回复框
+                $(this).parents("li").after(point);
+
+                $(".reply-div").stop().slideUp(1).stop().slideToggle(600);
+
+                prIndex = currIndex;
+            }else {
+                $(".reply-div").stop().slideToggle();
+            }
+        });
 
     }
 });

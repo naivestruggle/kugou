@@ -887,7 +887,7 @@ input {
     line-height: 25px;
 }
 
-.comment_content .btns .zs {
+.comment_content .btns .zs{
     float: right;
     margin-right: 10px;
     line-height: 25px;
@@ -1330,5 +1330,48 @@ textarea {
     right: 3px;
 }
 
+.inner{
+    width: 614px;
+    height: 60px;
+    padding: 15px;
+    background: #f8f8f8;
+    margin-left: 41px;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    margin-bottom: 15px;
+}
 
+.reply{
+    resize: none;
+    height: 20px;
+    width: 97%;
+    margin: 0;
+    padding: 5px 6px 6px;
+    border: 1px solid #cdcdcd;
+    border-radius: 2px;
+    line-height: 19px;
+    outline: none;
+}
 
+.cmmts .inner .btns .zs{
+    float: right;
+    margin-right: 10px;
+    line-height: 25px;
+    color: #999;
+    font-size: 10px;
+}
+
+.cmmts .inner .btns .u-btn-1 {
+    width: 46px;
+    height: 25px;
+    background-position: -84px -64px;
+    color: #fff;
+    text-align: center;
+    line-height: 25px;
+}
+.cmmts .btns .btn {
+    float: right;
+    display: inline-block;
+    font-size: 12px;
+    background: url(../img/my_songsheet/button.png) no-repeat 0 9999px;
+}
