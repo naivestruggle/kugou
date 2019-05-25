@@ -122,4 +122,9 @@ public class Music implements Serializable {
      * 语种
      */
     private String musicClassName;
+
+    /**
+     * 标记   看看这首歌的mv爬了没有
+     */
+    private Integer flag;
 }

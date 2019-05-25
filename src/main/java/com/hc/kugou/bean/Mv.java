@@ -27,11 +27,6 @@ public class Mv implements Serializable {
     private Long mvId;
 
     /**
-     * 哈希
-     */
-    private String mvHash;
-
-    /**
      * mv名字
      */
     private String mvName;

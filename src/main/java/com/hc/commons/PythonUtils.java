@@ -20,7 +20,6 @@ import java.util.UUID;
  * @Version:1.0
  */
 public class PythonUtils {
-    private PythonUtils(){}
 
     /**
      * 根据歌曲hashcode获取播放地址
@@ -66,9 +65,9 @@ public class PythonUtils {
      * @param audioName 音频名称
      * @return  Mv对象
      */
-    public static Mv getMv(String audioName){
+    public Mv getMv(String audioName){
         Mv mv = new Mv();
-        mv.setMvHash(UUID.randomUUID().toString().replace("-",""));
+        mv.setMvHashCode(UUID.randomUUID().toString().replace("-","").toUpperCase());
         String exe = "python";
         String command = PythonUtils.class.getResource("/python/mvSpider.py").toString().replace("file:/","").replace("/","\\");
         String[] cmdArr = new String[] { exe, command,audioName };
@@ -84,7 +83,6 @@ public class PythonUtils {
             }
             String result = sb.toString();
             if (StringUtils.isEmpty(result)){
-                System.out.println(audioName+"：这首音乐没有mv");
                 return null;
             }
             Map<String, Map<String,Object>> map = (Map<String, Map<String, Object>>) JSONObject.parse(result);

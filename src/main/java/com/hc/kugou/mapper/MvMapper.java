@@ -62,4 +62,11 @@ public interface MvMapper {
      */
     @Select("select count(1) from kugou_mv")
     Long selectMvCount();
+
+    /**
+     * 批量插入
+     *
+     * @param list
+     */
+    void insertList(@Param("list")List<Mv> list);
 }
