@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" href="../public/css/my_songsheet.css">
-	<script src="../public/js/jquery-3.2.1.js"></script>
-	<script src="../public/js/my_songsheet.js"></script>
+	<title>我的音乐</title>
+	<link rel="stylesheet" href="../public/css/my_songsheet.css" th:href="@{/css/my_songsheet.css}">
 </head>
 <body>
+	<!-- 引入头部 -->
+	<div th:replace="commons/head::headbar(activeUri='index')"></div>
+
 	<div class="my_songsheet">
 		<div class="songsheet_info">
 			<!-- 左边 -->
@@ -19,43 +20,41 @@
 							<span class="create_songsheet">
 								<i class="songsheet_icon" id="icon"></i>创建的歌单
 								&nbsp;&nbsp;
-								(<span class="num">2</span>)
+								(<span class="num">0</span>)
 							</span>
 						</h2>
-						
-
 						<ul>
-							<li class="songlist selected">
-								<div class="item">
-									<div class="pic">
-										<a href="#">
-											<img src="../public/img/my_songsheet/18963277044344180.jpg" alt="">
-										</a>
-									</div>
-									<p class="name text">
-										<a hidefocus="true" href="javascript:void(0);" class="s-fc0" title="我喜欢的音乐">我喜欢的音乐</a>
-									</p>
-									<p class="song_num text">6首</p>
-								</div>
-							</li>
-							<li class="songlist">
-								<div class="item">
-									<div class="pic">
-										<a href="#">
-											<img src="../public/img/my_songsheet/18963277044344180.jpg" alt="">
-										</a>
-									</div>
-									<p class="name text">
-										<a hidefocus="true" href="javascript:void(0);" class="s-fc0" title="我喜欢的音乐">我喜欢的音乐</a>
-									</p>
-									<p class="song_num text">6首</p>
-								</div>
-								<!-- 移上去显示编辑和删除 -->
-								<span class="handle">
-									<a title="编辑" href="javascript:void(0);" class="edit"></a>
-									<a title="删除" href="javascript:void(0);" class="delete"></a>
-								</span>
-							</li>
+<!--                            <li class="songlist selected">-->
+<!--                                <div class="item">-->
+<!--                                    <div class="pic">-->
+<!--                                        <a href="#">-->
+<!--                                            <img src="../public/img/my_songsheet/18963277044344180.jpg" alt="">-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+<!--                                    <p class="name text">-->
+<!--                                        <a hidefocus="true" href="javascript:void(0);" class="s-fc0" title="我喜欢的音乐">我喜欢的音乐</a>-->
+<!--                                    </p>-->
+<!--                                    <p class="song_num text">6首</p>-->
+<!--                                </div>-->
+<!--                            </li>-->
+<!--                            <li class="songlist">-->
+<!--                                <div class="item">-->
+<!--                                    <div class="pic">-->
+<!--                                        <a href="#">-->
+<!--                                            <img src="../public/img/my_songsheet/18963277044344180.jpg" alt="">-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+<!--                                    <p class="name text">-->
+<!--                                        <a hidefocus="true" href="javascript:void(0);" class="s-fc0" title="我喜欢的音乐">我喜欢的音乐</a>-->
+<!--                                    </p>-->
+<!--                                    <p class="song_num text">6首</p>-->
+<!--                                </div>-->
+<!--                                &lt;!&ndash; 移上去显示编辑和删除 &ndash;&gt;-->
+<!--                                <span class="handle">-->
+<!--									<a title="编辑" href="javascript:void(0);" class="edit"></a>-->
+<!--									<a title="删除" href="javascript:void(0);" class="delete"></a>-->
+<!--								</span>-->
+<!--                            </li>-->
 						</ul>
 					</div>
 					<div class="list colleted">
@@ -63,29 +62,30 @@
 							<span class="create_songsheet">
 								<i class="songsheet_icon" id="icon"></i>收藏的歌单
 								&nbsp;&nbsp;
-								(<span class="num">2</span>)
+								(<span class="num">0</span>)
 							</span>
 						</h2>
 						
 
 						<ul>
-							<li class="songlist">
-								<div class="item">
-									<div class="pic">
-										<a href="#">
-											<img src="../public/img/my_songsheet/18963277044344180.jpg" alt="">
-										</a>
-									</div>
-									<p class="name text">
-										<a hidefocus="true" href="javascript:void(0);" class="s-fc0" title="我喜欢的音乐">日语｜无可救药的孤独症患者</a>
-									</p>
-									<p class="song_num text">181首 by PurionPurion</p>
-								</div>
-								<!-- 移上去显示编辑和删除 -->
-								<span class="handle">
-									<a title="删除" href="javascript:void(0);" class="delete"></a>
-								</span>
-							</li>
+<!--							<li class="songlist">-->
+<!--								<input type="hidden" id="collectMusicListId" value="">-->
+<!--								<div class="item">-->
+<!--									<div class="pic">-->
+<!--										<a href="#">-->
+<!--											<img src="../public/img/my_songsheet/18963277044344180.jpg" th:src="@{/img/my_songsheet/18963277044344180.jpg}" alt="">-->
+<!--										</a>-->
+<!--									</div>-->
+<!--									<p class="name text">-->
+<!--										<a hidefocus="true" href="javascript:void(0);" class="s-fc0" title="我喜欢的音乐">日语｜无可救药的孤独症患者</a>-->
+<!--									</p>-->
+<!--									<p class="song_num text">181首 by PurionPurion</p>-->
+<!--								</div>-->
+<!--								&lt;!&ndash; 移上去显示编辑和删除 &ndash;&gt;-->
+<!--								<span class="handle">-->
+<!--									<a title="删除" href="javascript:void(0);" class="delete"></a>-->
+<!--								</span>-->
+<!--							</li>-->
 						</ul>
 					</div>
 				</div>
@@ -96,7 +96,7 @@
 					<div class="top">
 						<div class="detail_info">
 							<div class="cover">
-								<img src="../public/img/my_songsheet/18963277044344180 (1).jpg" alt="">
+								<img src="../public/img/my_songsheet/18963277044344180 (1).jpg" th:src="@{/img/my_songsheet/18963277044344180 (1).jpg}" alt="">
 							</div>
 							<div class="cnt">
 								<div class="cnt_info">
@@ -106,7 +106,7 @@
 									</div>
 									<div class="user">
 										<a href="" class="user_pic">
-											<img src="../public/img/my_songsheet/19088621370075048.jpg" alt="">
+											<img src="../public/img/my_songsheet/19088621370075048.jpg" th:src="@{/img/my_songsheet/19088621370075048.jpg}" alt="">
 										</a>
 										<span class="uname">
 											<a href="#">我是用户名</a>
@@ -136,8 +136,8 @@
 						</div>
 						<div class="song_title">
 							<h3>歌曲列表</h3>
-							<span class="sub"><span class="count">6</span>首歌</span>
-							<div class="more">播放：<strong class="paly_count" style="color: #0c73c2;">2</strong>次</div>
+							<span class="sub"><span class="count">0</span>首歌</span>
+							<div class="more">播放：<strong class="paly_count" style="color: #0c73c2;">0</strong>次</div>
 						</div>
 					</div>
 					<!-- 中间的歌曲 -->
@@ -163,70 +163,71 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>
-											<span class="ply">&nbsp;</span>
-											<span class="num">1</span>
-										</td>
-										<td>
-											<span class="txt">
-												<a href="#" class="song_txt">外愈</a>
-											</span>
-										</td>
-										<td style="color: #666;">
-											<span class="total_time">03:33</span>
-											<div class="icons">
-												<a href="javascript:void(0);" class="u-icon"></a>
-												<span class="icon icon-collect"></span>
-												<span class="icon icon-share"></span>
-												<span class="icon icon-download"></span>
-												<span class="icon icon-delete"></span>
-											</div>
-										</td>
-										<td>
-											<span class="txt">
-												<a href="#" class="song_txt">任然</a>
-											</span>
-										</td>
-										<td>
-											<span class="txt">
-												<a href="#" class="song_txt">外愈</a>
-											</span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<span class="ply">&nbsp;</span>
-											<span class="num">2</span>
-										</td>
-										<td>
-											<span class="txt">
-												<a href="#" class="song_txt">云烟成雨</a>
-												<span title="动画《我是江小白》片尾曲" class="small_title"> - (动画《我是江小白》片尾曲)</span>
-												<span title="播放mv" class="mv">MV</span>
-											</span>
-										</td>
-										<td style="color: #666;">
-											<span class="total_time">03:33</span>
-											<div class="icons">
-												<a href="javascript:void(0);" class="u-icon"></a>
-												<span class="icon icon-collect"></span>
-												<span class="icon icon-share"></span>
-												<span class="icon icon-download"></span>
-												<span class="icon icon-delete"></span>
-											</div>
-										</td>
-										<td>
-											<span class="txt">
-												<a href="#" class="song_txt">房东的猫</a>
-											</span>
-										</td>
-										<td>
-											<span class="txt">
-												<a href="#" class="song_txt">云烟成语</a>
-											</span>
-										</td>
-									</tr>
+<!--									<tr>-->
+<!--										<td>-->
+<!--                                            <input type="hidden" id="musicId" value="8">-->
+<!--											<span class="ply">&nbsp;</span>-->
+<!--											<span class="num">1</span>-->
+<!--										</td>-->
+<!--										<td>-->
+<!--											<span class="txt">-->
+<!--												<a href="#" class="song_txt">外愈</a>-->
+<!--											</span>-->
+<!--										</td>-->
+<!--										<td style="color: #666;">-->
+<!--											<span class="total_time">03:33</span>-->
+<!--											<div class="icons">-->
+<!--												<a href="javascript:void(0);" class="u-icon"></a>-->
+<!--												<span class="icon icon-collect" title=""></span>-->
+<!--												<span class="icon icon-share"></span>-->
+<!--												<span class="icon icon-download"></span>-->
+<!--												<span class="icon icon-delete"></span>-->
+<!--											</div>-->
+<!--										</td>-->
+<!--										<td>-->
+<!--											<span class="txt">-->
+<!--												<a href="#" class="song_txt">任然</a>-->
+<!--											</span>-->
+<!--										</td>-->
+<!--										<td>-->
+<!--											<span class="txt">-->
+<!--												<a href="#" class="song_txt">外愈</a>-->
+<!--											</span>-->
+<!--										</td>-->
+<!--									</tr>-->
+<!--									<tr>-->
+<!--										<td>-->
+<!--											<span class="ply">&nbsp;</span>-->
+<!--											<span class="num">2</span>-->
+<!--										</td>-->
+<!--										<td>-->
+<!--											<span class="txt">-->
+<!--												<a href="#" class="song_txt">云烟成雨</a>-->
+<!--												<span title="动画《我是江小白》片尾曲" class="small_title"> - (动画《我是江小白》片尾曲)</span>-->
+<!--												<span title="播放mv" class="mv">MV</span>-->
+<!--											</span>-->
+<!--										</td>-->
+<!--										<td style="color: #666;">-->
+<!--											<span class="total_time">03:33</span>-->
+<!--											<div class="icons">-->
+<!--												<a href="javascript:void(0);" class="u-icon"></a>-->
+<!--												<span class="icon icon-collect"></span>-->
+<!--												<span class="icon icon-share"></span>-->
+<!--												<span class="icon icon-download"></span>-->
+<!--												<span class="icon icon-delete"></span>-->
+<!--											</div>-->
+<!--										</td>-->
+<!--										<td>-->
+<!--											<span class="txt">-->
+<!--												<a href="#" class="song_txt">房东的猫</a>-->
+<!--											</span>-->
+<!--										</td>-->
+<!--										<td>-->
+<!--											<span class="txt">-->
+<!--												<a href="#" class="song_txt">云烟成语</a>-->
+<!--											</span>-->
+<!--										</td>-->
+<!--									</tr>-->
 
 								</tbody>
 							</table>
@@ -241,11 +242,11 @@
 						<div class="m-cmmt">
 							<div class="comment_info">
 								<div class="head">
-									<img src="../public/img/my_songsheet/19088621370075048.jpg">
+									<img src="../public/img/my_songsheet/19088621370075048.jpg" th:src="${session.loginedUser}!=null?${session.loginedUser.userImgpath}:@{/img/my_songsheet/19088621370075048.jpg}">
 								</div>
 								<div class="comment_content">
 									<div class="u-txtwrap" style="display: block;">	 
-										 <textarea class="u-txt area" placeholder="评论" id="area"></textarea>
+										 <textarea class="u-txt area" placeholder="评论" id="area" maxlength="140"></textarea>
 									</div>
 									<div class="btns">
 										<a href="javascript:void(0)" class="btn u-btn-1">评论</a>
@@ -254,9 +255,174 @@
 								</div>
 							</div>
 						</div>
+
+						<div class="cmmts">
+							<h3 class="u-hd4">精彩评论</h3>
+							<ul class="wonderful-commts">
+								<li>
+									<div class="head">
+										<a href="/user/home?id=333478490">
+											<img src="https://p1.music.126.net/nfoR19WIQXkZPYJSNR3eiA==/109951163325813626.jpg?param=50y50">
+										</a>
+									</div>
+									<div class="cntwrap">
+										<div class="cnt f-brk">
+											<a href="/user/home?id=333478490" class="s-fc7">郭正君</a>：相信奇迹的人&nbsp;本身就和奇迹一样了不起
+										</div>
+										<div class="rp">
+											<div class="time s-fc4">2017年8月16日</div>
+											<div class="zan-f1">
+												<a href="javascript:void(0)">
+													<i class="zan "></i> (297)
+												</a>
+												<span class="sep">|</span>
+												<a href="javascript:void(0)" class="s-fc3" >回复</a>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="head">
+										<a href="/user/home?id=333478490">
+											<img src="https://p1.music.126.net/nfoR19WIQXkZPYJSNR3eiA==/109951163325813626.jpg?param=50y50">
+										</a>
+									</div>
+									<div class="cntwrap">
+										<div class="cnt f-brk">
+											<a href="/user/home?id=333478490" class="s-fc7">郭正君</a>：相信奇迹的人&nbsp;本身就和奇迹一样了不起
+										</div>
+										<div class="rp">
+											<div class="time s-fc4">2017年8月16日</div>
+											<div class="zan-f1">
+												<a href="javascript:void(0)">
+													<i class="zan "></i> (297)
+												</a>
+												<span class="sep">|</span>
+												<a href="javascript:void(0)" class="s-fc3" >回复</a>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="head">
+										<a href="/user/home?id=333478490">
+											<img src="https://p1.music.126.net/nfoR19WIQXkZPYJSNR3eiA==/109951163325813626.jpg?param=50y50">
+										</a>
+									</div>
+									<div class="cntwrap">
+										<div class="cnt f-brk">
+											<a href="/user/home?id=333478490" class="s-fc7">郭正君</a>：相信奇迹的人&nbsp;本身就和奇迹一样了不起
+										</div>
+										<div class="rp">
+											<div class="time s-fc4">2017年8月16日</div>
+											<div class="zan-f1">
+												<a href="javascript:void(0)">
+													<i class="zan "></i> (297)
+												</a>
+												<span class="sep">|</span>
+												<a href="javascript:void(0)" class="s-fc3" >回复</a>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<br><br>
+							<h3 class="u-hd4">最新评论(215)</h3>
+							<ul class="latest-commts">
+								<li>
+									<div class="head">
+										<a href="/user/home?id=333478490">
+											<img src="https://p1.music.126.net/nfoR19WIQXkZPYJSNR3eiA==/109951163325813626.jpg?param=50y50">
+										</a>
+									</div>
+									<div class="cntwrap">
+										<div class="cnt f-brk">
+											<a href="/user/home?id=333478490" class="s-fc7">郭正君</a>：相信奇迹的人&nbsp;本身就和奇迹一样了不起
+										</div>
+										<div class="rp">
+											<div class="time s-fc4">2017年8月16日</div>
+											<div class="zan-f1">
+												<a href="javascript:void(0)">
+													<i class="zan "></i> (297)
+												</a>
+												<span class="sep">|</span>
+												<a href="javascript:void(0)" class="s-fc3" >回复</a>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="head">
+										<a href="/user/home?id=333478490">
+											<img src="https://p1.music.126.net/nfoR19WIQXkZPYJSNR3eiA==/109951163325813626.jpg?param=50y50">
+										</a>
+									</div>
+									<div class="cntwrap">
+										<div class="cnt f-brk">
+											<a href="/user/home?id=333478490" class="s-fc7">郭正君</a>：相信奇迹的人&nbsp;本身就和奇迹一样了不起
+										</div>
+										<div class="rp">
+											<div class="time s-fc4">2017年8月16日</div>
+											<div class="zan-f1">
+												<a href="javascript:void(0)">
+													<i class="zan "></i> (297)
+												</a>
+												<span class="sep">|</span>
+												<a href="javascript:void(0)" class="s-fc3" >回复</a>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="head">
+										<a href="/user/home?id=333478490">
+											<img src="https://p1.music.126.net/nfoR19WIQXkZPYJSNR3eiA==/109951163325813626.jpg?param=50y50">
+										</a>
+									</div>
+									<div class="cntwrap">
+										<div class="cnt f-brk">
+											<a href="/user/home?id=333478490" class="s-fc7">郭正君</a>：相信奇迹的人&nbsp;本身就和奇迹一样了不起
+										</div>
+										<div class="rp">
+											<div class="time s-fc4">2017年8月16日</div>
+											<div class="zan-f1">
+												<a href="javascript:void(0)">
+													<i class="zan "></i> (297)
+												</a>
+												<span class="sep">|</span>
+												<a href="javascript:void(0)" class="s-fc3" >回复</a>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="head">
+										<a href="/user/home?id=333478490">
+											<img src="https://p1.music.126.net/nfoR19WIQXkZPYJSNR3eiA==/109951163325813626.jpg?param=50y50">
+										</a>
+									</div>
+									<div class="cntwrap">
+										<div class="cnt f-brk">
+											<a href="/user/home?id=333478490" class="s-fc7">郭正君</a>：相信奇迹的人&nbsp;本身就和奇迹一样了不起
+										</div>
+										<div class="rp">
+											<div class="time s-fc4">2017年8月16日</div>
+											<div class="zan-f1">
+												<a href="javascript:void(0)">
+													<i class="zan "></i> (297)
+												</a>
+												<span class="sep">|</span>
+												<a href="javascript:void(0)" class="s-fc3" >回复</a>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+
 					</div>
 				</div>
-				<!-- 编辑内容 -->
+				<!-- 编辑歌单 -->
 				<div class="edit_dialog" style="display: none;">
 					<div>
 						<div class="edit_title">
@@ -269,15 +435,15 @@
 								<div class="itm">
 									<span class="must">*</span>
 									<label class="lab">歌单名：</label>
-									<input type="text" class="u-txt" value="">
+									<input type="text" class="u-txt songsheetName" value="">
 									<div class="u-err f-vhide j-flag">
 										<i class="u-icn u-icn-25"></i>
 									</div>
 								</div>
 								<div class="itm">
-									<label class="lab">标签：</label>
+									<label class="lab">心情：</label>
 									<div class="tags">									
-										<a href="javascript:void(0)" class="choose">选择标签</a>
+										<input type="text" class="u-txt mood" value="">
 									</div>
 									<div class="tagnote">选择适合的标签，最多选3个</div>
 								</div>
@@ -298,8 +464,10 @@
 								</div>
 							</div>
 							<div class="edit_right">
-								<input type="file" style="display: none;" id="edit_ipt"/>
-								<img src="../public/img/my_songsheet/1.jpg" alt="">
+								<form id="uploadForm" th:action="@{/song.uploadSongSheetImg.ajax}" method="post" enctype="multipart/form-data">
+									<input type="file" style="display: none;" id="edit_ipt"/>
+								</form>
+								<img src="../public/img/my_songsheet/1.jpg" th:src="@{/img/my_songsheet/1.jpg}" alt="">
 								<span class="btm" onclick="$('#edit_ipt').click()">编辑封面</span>
 							</div>
 						</div>
@@ -330,7 +498,7 @@
 		</div>
 		<span class="close" title="关闭窗体">×</span>
 	</div>
-	<!-- 点删除弹出来的框 -->
+	<!-- 点删除歌单弹出来的框 -->
 	<div class="delete_box">
 		<div class="delete_title">
 			<p>提示</p>
@@ -341,6 +509,62 @@
 				<div class="btn" style="margin-left: 130px;margin-top: 30px;">
 					<a href="javascript:;" class="delete_btn btn1"><i>确定</i></a>
 					<a href="javascript:;" class="delete_btn btn2"><i>取 消</i></a>
+				</div>
+			</div>
+
+		</div>
+		<span class="close" title="关闭窗体">×</span>
+	</div>
+	<!--点删除收藏歌单弹出来的框-->
+	<div class="delete_box3">
+		<div class="delete_title">
+			<p>提示</p>
+		</div>
+		<div class="delete_body">
+			<div class="body_content">
+				<div style="text-align: center;">确定取消收藏歌单?</div>
+				<div class="btn" style="margin-left: 130px;margin-top: 30px;">
+					<a href="javascript:;" class="delete_btn btn1"><i>确定</i></a>
+					<a href="javascript:;" class="delete_btn btn2"><i>取 消</i></a>
+				</div>
+			</div>
+
+		</div>
+		<span class="close" title="关闭窗体">×</span>
+	</div>
+	<!-- 点删除歌曲弹出来的框 -->
+	<div class="delete_box2">
+		<div class="delete_title">
+			<p>提示</p>
+		</div>
+		<div class="delete_body">
+			<div class="body_content">
+				<div style="text-align: center;">确定删除歌曲?</div>
+				<div class="btn" style="margin-left: 130px;margin-top: 30px;">
+					<a href="javascript:;" class="delete_btn btn1"><i>确定</i></a>
+					<a href="javascript:;" class="delete_btn btn2"><i>取 消</i></a>
+				</div>
+			</div>
+
+		</div>
+		<span class="close" title="关闭窗体">×</span>
+	</div>
+	<!--点新歌单弹出来的框-->
+	<div class="create_list2">
+		<div class="create_title">
+			<p>新建歌单</p>
+		</div>
+		<div class="create_body">
+			<div class="body_content">
+				<p>歌单名：<input type="text" class="list_txt"></p>
+				<!-- 错误提示 -->
+				<div class="error">
+					<i></i>错误提示
+				</div>
+				<p class="tip">可通过“收藏”将音乐添加到新歌单中</p>
+				<div class="btn">
+					<a href="javascript:;" class="create_btn btn1"><i>新 建</i></a>
+					<a href="javascript:;" class="create_btn btn2"><i>取 消</i></a>
 				</div>
 			</div>
 
@@ -385,7 +609,7 @@
 		</div>
 	</div>
     <!-- 添加到歌单 -->
-    <div class="addToList" style="top: 125.5px;left: 443px;">
+    <div class="addToList" style="top: 299px;left: 720px;">
     	<div class="zbar">
 			<div class="title">添加到歌单</div>
 		</div>
@@ -401,7 +625,7 @@
 								<div class="item">
 									<div class="pic">
 										<a href="#">
-											<img src="../public/img/my_songsheet/18963277044344180.jpg" alt="">
+											<img src="../public/img/my_songsheet/18963277044344180.jpg" th:src="@{/img/my_songsheet/18963277044344180.jpg}" alt="">
 										</a>
 									</div>
 									<p class="name text">
@@ -414,7 +638,7 @@
 								<div class="item">
 									<div class="pic">
 										<a href="#">
-											<img src="../public/img/my_songsheet/18963277044344180.jpg" alt="">
+											<img src="../public/img/my_songsheet/18963277044344180.jpg" th:src="@{/img/my_songsheet/18963277044344180.jpg}" alt="">
 										</a>
 									</div>
 									<p class="name text">
@@ -430,7 +654,12 @@
 			</div>
 		</div>
     </div>
+	<!--挡板-->
+	<div class="baffle"></div>
+	<!-- 引入底部 -->
+	<!--<div th:replace="commons/foot::footbar"></div>-->
 
-	
+	<script src="../public/js/jquery-3.2.1.js" th:src="@{/js/jquery-3.2.1.js}"></script>
+	<script src="../public/js/my_songsheet.js" th:src="@{/js/my_songsheet.js}"></script>
 </body>
 </html>

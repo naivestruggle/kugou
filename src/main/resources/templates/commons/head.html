@@ -40,6 +40,7 @@
                 </div>
 
                 <div class="logined_area" th:if="${session.loginedUser} != null">
+                    <input type="hidden" th:id="userId" th:value="${session.loginedUser.userId}">
                     <div class="logined">
                         <img id="headImage" th:src="${session.loginedUser.userImgpath}!=null?@{${session.loginedUser.userImgpath}}:@{/img/images/defaultHead.jpg}">
                         <span id="head_UserName" class="userName" th:text="${session.loginedUser.userUsername}" th:title="${session.loginedUser.userUsername}">音梦用户</span>
@@ -49,6 +50,8 @@
                         <ul>
                             <li><a target="_self" th:href="@{/user.showinfo}">
                                 <span class="user_icon1"></span>个人帐号</a></li>
+                            <li><a th:href="@{/my_songsheet.html}">
+                                <span class="user_icon3"></span>我的音乐</a></li>
                             <li><a href="javascript:loginOut();">
                                 <span class="user_icon2"></span>退出登录</a></li>
                         </ul>

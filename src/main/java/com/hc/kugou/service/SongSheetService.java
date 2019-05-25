@@ -1,6 +1,7 @@
 package com.hc.kugou.service;
 
 import com.hc.kugou.bean.custombean.CustomMusicList;
+import com.hc.kugou.service.exception.user.UserNotExistsException;
 import com.hc.kugou.solr.SolrBean;
 
 import java.util.List;
@@ -16,24 +17,20 @@ public interface SongSheetService {
     /**
      * 根据id查询歌单对象
      * @param musicListId
+     * @throws Exception
      * @return
      */
     CustomMusicList selectMusicListById(Integer musicListId) throws Exception;
-//    /**
-//     * 根据歌单id查询
-//     * @param musicListId  歌单id
-//     * @throws Exception
-//     * @return
-//     */
-//    CustomMusicList selectMusicListById(Integer musicListId) throws Exception;
+
 
     /**
      * 添加歌单
-     * @param customMusicList 歌单对象
+     * @param musicListName 歌单名
      * @param session 里面存储着用户信息
      * @throws Exception
+     * @return 歌单对象
      */
-    void addSongSheet(CustomMusicList customMusicList,HttpSession session) throws Exception;
+    CustomMusicList addSongSheet(String musicListName,HttpSession session) throws Exception;
 
     /**
      * 根据关键字查询歌单集合
@@ -45,6 +42,7 @@ public interface SongSheetService {
      * 删除歌单
      * @param musicListId 歌单id
      * @param session
+     * @throws Exception
      */
     void delSongSheet(Integer musicListId, HttpSession session) throws Exception;
 
@@ -62,6 +60,7 @@ public interface SongSheetService {
      * @param musicId   歌曲id
      * @param musicListId  歌单id
      * @param session
+     * @throws Exception
      */
     void addMusicToSongSheet(Integer musicListId, Integer musicId, HttpSession session) throws Exception;
 
@@ -73,4 +72,79 @@ public interface SongSheetService {
      * @throws Exception
      */
     void delMusicFromSongSheet(Integer musicListId,Integer musicId, HttpSession session)throws Exception;
+
+    /**
+     * 根据用户id查询该用户下的所有歌单
+     * @param session
+     * @return
+     */
+    List<CustomMusicList> querySongSheet(HttpSession session) throws Exception;
+
+
+    /**
+     * 根据歌单id查询用户歌单信息
+     * @param musicListId 歌单id
+     * @return
+     * @throws Exception
+     */
+    CustomMusicList queryMySongSheetList(Integer musicListId)throws Exception;
+
+    /**
+     * 查询最热歌单
+     * @return
+     * @throws Exception
+     */
+    List<CustomMusicList> queryHotListenerSongSheet() throws Exception;
+
+    /**
+     * 查询热藏歌单
+     * @return
+     * @throws Exception
+     */
+    List<CustomMusicList> queryHotCollectSongSheet() throws Exception;
+
+    /**
+     * 将歌单收藏
+     * @param musicListId 歌单id
+     * @param session
+     * @throws Exception
+     */
+    void collectSongSheet(Integer musicListId, HttpSession session) throws Exception;
+
+    /**
+     * 查询用户收藏歌单
+     * @param session
+     * @return
+     * @throws Exception
+     */
+    List<CustomMusicList> queryCollectSongSheet(HttpSession session) throws Exception;
+
+
+    /**
+     * 取消收藏歌单
+     * @param musicListId 歌单id
+     * @param session
+     * @throws Exception
+     */
+    void cancelCollectSongSheet(Integer musicListId, HttpSession session) throws Exception;
+
+
+    /**
+     * 新建歌单并将歌曲添加到新建歌单
+     * @param musicListName 歌单名
+     * @param musicId 歌曲id
+     * @param session
+     * @return
+     * @throws Exception
+     */
+    CustomMusicList createSongSheetAndAddMusic(String musicListName, Integer musicId, HttpSession session) throws Exception;
+
+
+    /**
+     * 判断用户是否登录
+     * @param session
+     * @return 返回用户id
+     */
+    Integer isLogin(HttpSession session) throws UserNotExistsException;
+
 }

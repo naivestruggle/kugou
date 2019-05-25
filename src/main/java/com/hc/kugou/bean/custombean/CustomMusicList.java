@@ -22,4 +22,9 @@ public class CustomMusicList extends MusicList {
      * 歌曲集合
      */
     private List<CustomMusic> musicsList;
+
+    /**
+     * 创建者头像
+     */
+    private String createUserImg;
 }

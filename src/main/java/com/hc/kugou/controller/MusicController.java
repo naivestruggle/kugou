@@ -110,6 +110,7 @@ public class MusicController {
             //得到播放列表对象
             CustomMusicPlayList sesionMusicPlayList = (CustomMusicPlayList)session.getAttribute(StringUtils.PLAT_SONG_LIST_PRE);
             CustomMusicPlayList musicPlayList = musicPlayListService.loadMusicPlayList(loginedUser,sesionMusicPlayList);
+
             jsonObject.put("musicPlayList",musicPlayList);
             ResponseUtils.responseNoException(jsonObject);
         } catch (Exception e) {
@@ -136,4 +137,5 @@ public class MusicController {
         }
         return jsonObject;
     }
+
 }

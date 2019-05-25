@@ -5,10 +5,13 @@ import com.hc.commons.Code;
 import com.hc.commons.MD5;
 import com.hc.commons.QQHttpClient;
 import com.hc.commons.StringUtils;
+import com.hc.kugou.bean.custombean.CustomMusicList;
 import com.hc.kugou.bean.custombean.CustomUser;
+import com.hc.kugou.mapper.MusiclistMapper;
 import com.hc.kugou.mapper.UserMapper;
 import com.hc.kugou.service.QqService;
 import com.hc.kugou.service.exception.qq.StateErrorException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +33,9 @@ public class QqServiceImpl implements QqService {
 
     @Resource
     private UserMapper userMapper;
+
+    @Autowired
+    private MusiclistMapper musiclistMapper;
 
     @Override
     public String qqRequest(HttpSession session) {
@@ -86,20 +92,33 @@ public class QqServiceImpl implements QqService {
 
         JSONObject jsonObject = QQHttpClient.getUserInfo(url);
 
-        //也可以放到Redis和mysql中
-        CustomUser loginedUser = new CustomUser();
-        loginedUser.setUserUsername((String)jsonObject.get(QQHttpClient.NICKNAME));
-        loginedUser.setUserImgpath((String)jsonObject.get(QQHttpClient.FIGUREURL_QQ_2));
-        loginedUser.setUserPassword(MD5.parseMD5(Code.DEFAULT_PWD));
-        loginedUser.setUserAccount(Code.createUserAccount());
-        loginedUser.setUserQq(openid);
 
         //根据openid查数据库
-        Integer integer = userMapper.queryByOpenId(openid);
+        Integer integer = userMapper.queryByOpenIdCount(openid);
+        CustomUser loginedUser = null;
         if(integer == 0){
+            //如果用户不存在
+            loginedUser.setUserUsername((String)jsonObject.get(QQHttpClient.NICKNAME));
+            loginedUser.setUserImgpath((String)jsonObject.get(QQHttpClient.FIGUREURL_QQ_2));
+            loginedUser.setUserPassword(MD5.parseMD5(Code.DEFAULT_PWD));
+            loginedUser.setUserAccount(Code.createUserAccount());
+            loginedUser.setUserQq(openid);
             //存入数据库
             userMapper.insertUser(loginedUser);
+
+            //为用户创建一个默认歌单 《我喜欢的音乐》
+            CustomMusicList customMusicList = new CustomMusicList();
+            customMusicList.setMusicListName(Code.DEFAULT_MUSIC_LIST_NAME);
+            customMusicList.setMusicListUserId(loginedUser.getUserId());
+            customMusicList.setMusicListUserUsername(loginedUser.getUserUsername());
+            customMusicList.setMusicListUpdateTime(new java.sql.Date(System.currentTimeMillis()));
+            customMusicList.setMusicListHashCode(UUID.randomUUID().toString().replaceAll("-",""));
+            musiclistMapper.addSongSheet(customMusicList);
+        }else{
+            //用户存在，查询用户id
+            loginedUser = userMapper.queryByOpenId(openid);
         }
+
 
         session.setAttribute(StringUtils.LOGINED_USER,loginedUser);
     }

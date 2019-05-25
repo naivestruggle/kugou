@@ -39,5 +39,13 @@
         and user_password = #{userPassword}
     </select>
 
+    <select id="queryByOpenId" resultType="com.hc.kugou.bean.custombean.CustomUser">
+        select <include refid="allKeys"></include> from kugou_user where user_qq = #{openid}
+    </select>
+
+    <select id="queryById" resultType="com.hc.kugou.bean.custombean.CustomUser">
+        select user_imgpath from kugou_user where user_id = #{userId}
+    </select>
+
 
 </mapper>

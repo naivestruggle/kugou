@@ -11,8 +11,8 @@
 <div th:replace="commons/head::headbar(activeUri='index')"></div>
 <div class="wrap">
     <div class="mysite">我的位置 &gt;
-        <a title="乐库" href="index.html">首页</a> &gt; <a title="精选辑" href="">精选辑</a> &gt;
-        <span>虐心：爱过你，却终究错过了你</span>
+        <a title="乐库" href="index.html" th:href="@{/index.html}">首页</a> &gt; <a title="精选辑" th:href="@{/songsheet.html}">精选辑</a> &gt;
+        <span>[[${customMusicList.musicListName}]]</span>
     </div>
     <!-- 左边的分享 -->
     <div class="left">
@@ -23,6 +23,8 @@
             <span><i class="t2"></i>分享</span>
         </a>
         <p class="detail">
+            <input type="hidden" id="musicListId" th:value="${customMusicList.getMusicListId()}">
+            <input type="hidden" id="musicListUserId" th:value="${customMusicList.getMusicListUserId()}">
             <span>名称：</span>[[${customMusicList.musicListName}]]<br>
             <span>创建人：</span>[[${customMusicList.musicListUserUsername}]]<br>
             <span>心情：</span>[[${customMusicList.musicListMood}]]<br>
@@ -41,6 +43,9 @@
         <div id="songs" class="list">
             <strong>&lt;[[${customMusicList.musicListName}]]&gt; - 歌曲列表</strong>
             <h4 class="dq">
+                <a href="javascript:void(0)" class="collect" title="收藏">
+                    <span><i class="t2"></i>收藏</span>
+                </a>
                 <a href="javascript:void(0)" class="play" title="播放">
                     <span><i class="t2"></i>播放</span>
                 </a>

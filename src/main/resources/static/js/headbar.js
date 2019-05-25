@@ -338,7 +338,7 @@ $(function () {
 function addHeadSearchBoxDefaultValue(){
     var inp = $("#searchAllBox1");
     if($.trim(inp.val()) == "" && $.trim(inp.attr("placeholder")) == ""){
-        $.post(rootPath+"/index.searchBox.ajax",null,function (data) {
+        $.post(rootPath+"index.searchBox.ajax",null,function (data) {
             if(data.code == 1){
                 inp.attr("placeholder",data.searchString);
             }
@@ -519,11 +519,40 @@ function clearHeadHistory(){
  * @param summary   内容
  * @param pics      图片
  */
-function qqShare(url,desc,title,summary,pics){
+function qqShare(url,title,summary,pics){
     var urlPath = "https://connect.qq.com/widget/shareqq/index.html?url="+ encodeURI(url) +
-                  "&desc=" + desc +
-                  "&title=" + title +
+                  "&desc=&title=" + title +
                   "&summary=" + summary +
                   "&pics=" + pics;
     window.open (urlPath, 'qq分享', 'height=637, width=1053, top=195,left=459, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no')
+}
+
+/**
+ * 鼠标拖拽功能
+ * @param elem jquery元素
+ */
+function drag(elem) {
+    var disX,
+        disY;
+
+    elem.mousedown(function(e){
+
+        //兼容性操作
+        var event = e || window.event;
+        //鼠标按下的时候,距离元素的左/上距离
+        disX = event.pageX - parseInt(elem.offset().left);     //elem.style.left  返回的是字符串 XXXpx,
+        disY = event.pageY - parseInt(elem.offset().top);		//用parseInt方法可以将数字提取出来
+
+
+        document.onmousemove = function (e) {
+
+            var event = e || window.event;
+            //鼠标按下的点(相对document) - 鼠标按下的点(相对当前点击的元素)
+            elem.offset({top: event.pageY - disY, left: event.pageX - disX});
+        }
+        //当鼠标按上时,使move事件失效,这样元素就不会再跟着移动了
+        document.onmouseup = function(e){
+            document.onmousemove = null;
+        }
+    });
 }
