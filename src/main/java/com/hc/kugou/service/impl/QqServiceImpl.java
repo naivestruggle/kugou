@@ -95,7 +95,7 @@ public class QqServiceImpl implements QqService {
 
         //根据openid查数据库
         Integer integer = userMapper.queryByOpenIdCount(openid);
-        CustomUser loginedUser = null;
+        CustomUser loginedUser = new CustomUser();
         if(integer == 0){
             //如果用户不存在
             loginedUser.setUserUsername((String)jsonObject.get(QQHttpClient.NICKNAME));

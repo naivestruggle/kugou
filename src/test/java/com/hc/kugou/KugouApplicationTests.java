@@ -2,6 +2,7 @@ package com.hc.kugou;
 
 import com.hc.commons.Code;
 import com.hc.commons.MailUtils;
+import com.hc.commons.MyRedis;
 import com.hc.commons.StringUtils;
 import com.hc.kugou.mapper.*;
 import com.hc.kugou.service.IndexService;
@@ -11,6 +12,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.*;
@@ -82,5 +85,20 @@ public class KugouApplicationTests {
 //
 //        System.out.println(map.size());
     }
+
+//    @Autowired
+//    private StringRedisTemplate stringRedisTemplate;
+//
+//    @Test
+//    public void test06(){
+//        //切换到1库
+//        MyRedis.select(stringRedisTemplate,1);
+//        stringRedisTemplate.opsForValue().set("k1","v1");
+//
+//        //切换到0库
+//        MyRedis.select(stringRedisTemplate,0);
+//        stringRedisTemplate.opsForValue().set("k0","v0");
+//
+//    }
 
 }

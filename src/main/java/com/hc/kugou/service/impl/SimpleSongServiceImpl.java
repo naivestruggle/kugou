@@ -1,9 +1,9 @@
 package com.hc.kugou.service.impl;
 
+import com.hc.commons.MyRedis;
 import com.hc.commons.PythonUtils;
 import com.hc.commons.StringUtils;
 import com.hc.kugou.bean.Music;
-import com.hc.kugou.bean.MusicPlayList;
 import com.hc.kugou.bean.custombean.CustomMusic;
 import com.hc.kugou.bean.custombean.CustomMusicPlayList;
 import com.hc.kugou.bean.custombean.CustomUser;
@@ -13,6 +13,7 @@ import com.hc.kugou.solr.MusicSolr;
 import com.hc.kugou.solr.SolrBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
@@ -38,6 +39,8 @@ public class SimpleSongServiceImpl implements SimpleSongService {
     @Autowired
     private MusicSolr musicSolr;
 
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
     /**
      * 单曲播放
      *
@@ -57,6 +60,20 @@ public class SimpleSongServiceImpl implements SimpleSongService {
             simpleSongBean.setOneMusic(music);
             //将单曲添加到播放列表中
             addMusicToMusicPlayList(loginedUser,music,session);
+
+            //切换到1号数据库
+            MyRedis.select(stringRedisTemplate,1);
+
+
+            //将歌曲的播放数+1
+            Boolean hasKey = stringRedisTemplate.hasKey(musicId+"");
+            if(hasKey){
+                //如果存在此值则+1
+                stringRedisTemplate.opsForValue().increment(musicId+"");
+            }else {
+                stringRedisTemplate.opsForValue().set(musicId+"","1");
+            }
+            MyRedis.select(stringRedisTemplate,0);
         }
         return simpleSongBean;
     }

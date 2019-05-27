@@ -35,6 +35,8 @@ public class MusicController {
     @Autowired
     private MusicPlayListService musicPlayListService;
 
+
+
     @GetMapping("simpleSong.html/{musicId}")
     public String simpleSongHtml(@PathVariable("musicId") Integer musicId, Model model, HttpSession session){
         //得到当前登录对象
