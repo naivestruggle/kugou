@@ -37,7 +37,7 @@ li{
     height: 36px;
     margin-left: 193px;
     padding-top: 20px;
-
+    z-index: 9999;
 }
 #head .search_input{
     width: 298px;
@@ -607,7 +607,7 @@ a{
     border: 1px solid #d6d6d6;
     border-top: none;
     background-color: #fff;
-    z-index: 999;
+    z-index: 9999;
 }
 .search_recommend_head dl,.history_head dl{
     padding: 5px;

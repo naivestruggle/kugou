@@ -154,7 +154,7 @@ function regxRegistInputInfo() {
 function sendVerifyCode() {
     $(".message").click(function () {
         if($("#phonenumber").html() == "手机号格式不正确"){
-            alert("请先输入手机号");
+            msgBoxOne("请先输入手机号");
         }else {
             var data = {
                 account: $("#mou1").val(),
@@ -167,11 +167,11 @@ function sendVerifyCode() {
                    var msg = $(".message");
                    in60ms(60,msg);
                    msg.addClass("not_allow_send_code");
-                   alert("验证码发送成功");
+                   msgBoxOne("验证码发送成功");
                } else if(data.code == 0){
-                   alert(data.msg);
+                   msgBoxOne(data.msg);
                } else if(data.code == -1){
-                   alert("系统繁忙，请稍后再试");
+                   msgBoxOne("系统繁忙，请稍后再试");
                }
             });
         }
@@ -222,15 +222,15 @@ function register() {
                             $("#errorMsg").html("系统繁忙请稍后再试");
                         }
                     })
-                    //alert("注册成功");
+                    //msgBoxOne("注册成功");
                 }else if(data.code == 0){
-                    alert(data.msg);
+                    msgBoxOne(data.msg);
                 }else if(data.code == -1){
-                    alert("系统繁忙，请稍后再试");
+                    msgBoxOne("系统繁忙，请稍后再试");
                 }
             });
         }else{
-            alert("用户信息不正确");
+            msgBoxOne("用户信息不正确");
         }
     });
 }

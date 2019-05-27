@@ -189,8 +189,9 @@
          verifyType : verifyType
      };
      $.post(rootPath+"/verify.createVerifyImage.ajax",data,function (data) {
-         var path = rootPath+data.verifyImage;
-		 path = path.replace("//","/");
+     	var url = data.verifyImage;
+     	url = url.replace("/","")
+         var path = rootPath+url;
         if(verifyType == 1){
             $("#uccheckimg_alterinfo").attr("src",path);
         }else if (verifyType == 2){
@@ -393,6 +394,9 @@
 
 				//更新个性签名
 				$("#intro").val(bean.userSignature);
+
+				//更新左侧昵称
+				$("#myucname").html(bean.userUsername);
 				createVerify(1);
 			}
 		});
@@ -474,7 +478,7 @@
 			userPassword2 : agaPwd,
 			verifyCode : alterPwdVerifyCode
 		};
-		$.post(rootPath+"/user.alterPwd.ajax",data,function (data) {
+		$.post(rootPath+"user.alterPwd.ajax",data,function (data) {
 			var code = data.code;
 			if(code == -1){
 				msgBoxOne("系统繁忙，请稍后再试")
@@ -483,8 +487,10 @@
 				msgBoxOne(data.errorMsg);
 				createVerify(2);
 			} else if (code == 1){
-				msgBoxOne("修改成功，请重新登录");
 				createVerify(2);
+				//清除cookie中的自动登录用户
+				clearCookie("indream_autoLogin");
+
 				location.href = rootPath;
 			}
 		});
@@ -572,7 +578,17 @@
 				//修改成功
 				msgBoxOne("修改成功");
 				//修改邮箱显示
-				$("#userEmailShowSpan").html(data.loginedUser.userEmail);
+				s1 = "<p>安全邮箱\n" +
+					"\t\t\t\t<span class=\"gray9 f14\">(可用于找回密码和登录帐户)</span>\n" +
+					"\t\t\t\t\t</p>\n" +
+					"\t\t\t\t\t<p ><span id=\"userEmailShowSpan\" class=\"f14 gray9\">"+data.loginedUser.userEmail+"</span></p>";
+				$("#user_email_has_").html(s1);
+				//立即设置 按钮 变为更换绑定
+				$("#email_account_update_").html("<a class=\"setting-btn\" title=\"更换绑定\">更换绑定</a>");
+				//去掉 您还没有邮箱哦
+				$(".tips_error").html("");
+				//去掉 simple的样式  使居中
+				$("#user_email_has_").addClass("single-item");
 				//清空当前模版数据
 				$("#new_email_box").val("");
 				$("#new_email_verifycode").val("");

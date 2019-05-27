@@ -1,27 +1,29 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu May  2 15:49:39 2019
-
-@author: PC-shujie
-"""
-import requests
-import json
+﻿#下载歌曲信息  参数hash与album_id
 import sys
-#'9E167AD621EF89EB2FAA0680D8F1598E'
+import requests
+import hashlib
+import random
 
-def getPlay_url(h):
-    url = 'https://wwwapi.kugou.com/yy/index.php?r=play/getdata&hash=%s'%h
-    headers = {
-            'accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
-            'accept-encoding':'gzip, deflate, br',
-            'accept-language':'zh-CN,zh;q=0.9',
-            'cache-control':'max-age=0',
-            'upgrade-insecure-requests':'1',
-            'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36'
-            }
-    response = requests.get( url, headers=headers )
-    result = json.loads( response.text )
-    return result['data']['play_url']
-
+def download_music(Hash):
+    tracker_url='https://wwwapi.kugou.com/yy/index.php?r=play/getdata&hash=%s'%Hash
+    #生成md5加密后的cookie
+    #创建md5对象
+    md5= hashlib.md5()
+    #随机生成4位随机的字符列表 范围为a-z 0-9
+    n=random.sample('abcdefghijklmnopqrstuvwxyz0123456789',4)
+    #将列表元素拼接为字符串
+    n=''.join(n)
+    #将字符串编码后更新到md5对象里面
+    md5.update(n.encode())
+    #调用hexdigest获取加密后的返回值
+    kg_mid=md5.hexdigest()
+    headers={
+        'Cookie':'kg_mid=%s;KuGoo=KugooID=1457232077&KugooPwd=A9E7210FE916EA5CCD18D3456C5FEA79&t=28569e0079123149a68c1d41805898ae8d8aa2121439dd88041d085ec346ae60'%kg_mid,
+    }
+    response=requests.get(tracker_url,headers=headers,timeout=5)
+    result=response.json()['data']
+    play_url=result['play_url']#音频地址
+    return play_url
 h = sys.argv[1]
-print( getPlay_url(h) )
+#download_music('A774A794184AF17469B27963E120B565')
+download_music(h)

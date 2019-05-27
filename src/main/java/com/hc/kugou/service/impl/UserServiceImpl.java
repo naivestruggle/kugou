@@ -168,6 +168,10 @@ public class UserServiceImpl implements UserService {
         user.setUserUsername(Code.createUserName("音梦人",""));
         //设置用户账号
         user.setUserAccount(Code.createUserAccount());
+        //设置音梦账号
+        user.setUserInmengId(StringUtils.getInMenAccount());
+        //设置默认头像
+        user.setUserImgpath("/img/images/defaultHead.jpg");
         userMapper.insertUser(user);
         //查询用户
         Integer userId = user.getUserId();
@@ -185,6 +189,7 @@ public class UserServiceImpl implements UserService {
         customMusicList.setMusicListUserUsername(customUser.getUserUsername());
         customMusicList.setMusicListUpdateTime(new java.sql.Date(System.currentTimeMillis()));
         customMusicList.setMusicListHashCode(UUID.randomUUID().toString().replaceAll("-",""));
+        customMusicList.setMusicListHeadImage("/img/my_songsheet/default.jpg");
         musiclistMapper.addSongSheet(customMusicList);
     }
 

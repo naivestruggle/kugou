@@ -1,8 +1,12 @@
 //全局的项目根路径
 // var rootPath = $("#absoPath").val();
-var rootPath = $("#absoPath").val();
+// var rootPath = $("#absoPath").val();
+var rootPath = localStorage.getItem("hongchuang_rootPath");
+if(rootPath == null || rootPath == ""){
+    rootPath = window.document.location.href;
+    localStorage.setItem("hongchuang_rootPath",rootPath);
+}
 // var rootPath = "";
-
 ////////////////////////////////弹窗开始////////////////////////////////////
 //单选框
 function msgBoxOne(msg){
@@ -123,7 +127,6 @@ secondMenu.mouseout(function () {
     $(this).css("display", "none");
 });
 
-
 //用户menu
 $(".logined_area").hover(
     function () {
@@ -224,7 +227,7 @@ function loginInputInfoAjax(obj) {
         password: userPassword
     };
 
-    $.post(rootPath+"/user.regxLoginInputInfo.ajax", data, function (data) {
+    $.post(rootPath+"user.regxLoginInputInfo.ajax", data, function (data) {
         if(data.code == 1){
             $("#KgPopupLoginBtn").removeClass("not_allow_login");
             $("#errorMsg").html("");
@@ -256,7 +259,7 @@ function login() {
         account: $("#KgPopupUserName").val(),
         password: $("#KgPopupUserPwd").val()
     };
-    $.post(rootPath+"/user.login.ajax",data,function (data) {
+    $.post(rootPath+"user.login.ajax",data,function (data) {
         if(data.code == 1){
             //将账号和密码保存起来
             if(isAutoLogin){
@@ -429,7 +432,8 @@ function onHeadInputSearchBox(){
             var data = {
               searchKey : $("#searchAllBox1").val()
             };
-            $.post(rootPath+"/search.getSearchInfo.ajax",data,function (data) {
+            console.log("头部搜索框输入事件中的根路径："+rootPath)
+            $.post(rootPath+"search.getSearchInfo.ajax",data,function (data) {
                 var str = "";
                 var musicList = data.musicList.solrBeanList;
                 for(var i=0;i<musicList.length;i++){

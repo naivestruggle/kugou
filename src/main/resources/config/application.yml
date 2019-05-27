@@ -1,11 +1,11 @@
 spring:
   datasource:
-#    username: mysql
-#    password: MyNewPass4!
-#    url: jdbc:mysql://119.29.229.221:3306/HGHC
-    username: yxh_mysql
-    password: a
-    url: jdbc:mysql://47.110.156.54:3306/kugou
+    username: mysql
+    password: MyNewPass4!
+    url: jdbc:mysql://119.29.229.221:3306/HGHC
+#    username: yxh_mysql
+#    password: a
+#    url: jdbc:mysql://47.110.156.54:3306/kugou
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     initialSize: 5

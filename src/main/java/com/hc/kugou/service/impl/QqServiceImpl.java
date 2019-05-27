@@ -103,6 +103,7 @@ public class QqServiceImpl implements QqService {
             loginedUser.setUserPassword(MD5.parseMD5(Code.DEFAULT_PWD));
             loginedUser.setUserAccount(Code.createUserAccount());
             loginedUser.setUserQq(openid);
+            loginedUser.setUserInmengId(StringUtils.getInMenAccount());
             //存入数据库
             userMapper.insertUser(loginedUser);
 
