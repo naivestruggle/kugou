@@ -406,15 +406,20 @@ public class UserController {
     @ResponseBody
     @PostMapping("user.alterPwd.ajax")
     public JSONObject fun7(CustomUser info,HttpSession session){
+        System.out.println("--------------------修改密码开始---------------------");
+        System.out.println("修改的信息："+info);
         JSONObject jsonObject = new JSONObject();
         CustomUser loginedUser = (CustomUser)session.getAttribute(StringUtils.LOGINED_USER);
+        System.out.println("当前登录用户："+loginedUser);
         if(loginedUser == null){
             //跳转404
         }
         //取出修改信息的验证码会话key
         String sessionKey = StringUtils.getVerifySessionKey(loginedUser,2);
+        System.out.println("修改密码的验证码的key："+sessionKey);
         //取出会话中的验证码
         String sessionVerifyCode = (String)session.getAttribute(sessionKey);
+        System.out.println("session会话中的验证码："+sessionVerifyCode);
         try {
             //修改密码
             userService.alterPwdVerifyByOldPwd(info,loginedUser.getUserId(),sessionVerifyCode);
@@ -422,6 +427,8 @@ public class UserController {
             session.removeAttribute(StringUtils.LOGINED_USER);
             //返回信息
             jsonObject.put("code",1);
+
+            //清除会话中的验证码
             session.removeAttribute(sessionKey);
         } catch (Exception e) {
             if(e instanceof CustomException){
@@ -432,7 +439,7 @@ public class UserController {
                 jsonObject.put("code",-1);
             }
         }
-
+        System.out.println("--------------------修改密码结束---------------------");
         return jsonObject;
     }
 

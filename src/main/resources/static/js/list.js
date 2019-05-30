@@ -1,5 +1,6 @@
 $(function () {
 	init();
+    showHtml();
 
 	function init() {
 		/*热门榜单点击隐藏事件*/
@@ -56,7 +57,10 @@ $(function () {
 		}
 	}
 
+	//展示初始页面
+    function showHtml() {
 
+    }
 
 });
 

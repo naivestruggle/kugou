@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hc.kugou.mapper.ListMapper">
+    <sql id="allKeys">
+        music_id,
+        music_author_id,
+        music_author_name,
+        music_audio_id,
+        music_audio_name,
+        music_song_name,
+        music_hash_code,
+        music_filesize,
+        music_timelength,
+        music_have_album,
+        music_album_id,
+        music_album_name,
+        music_have_mv,
+        music_video_id,
+        music_privilege,
+        music_privilege2,
+        music_play_url,
+        music_img,
+        music_lyrics,
+        music_listener_count,
+        music_class_name,
+        music_incr_listener
+    </sql>
+    <sql id="allValues">
+        private String musicHashCode;
+        private Integer musicId;
+        private Long musicAuthorId;
+        private String musicAuthorName;
+        private Long musicAudioId;
+        private String musicAudioName;
+        private String musicSongName;
+        private String hashCode;
+        private Long musicFilesize;
+        private Long musicTimelength;
+        private Integer musicHaveAlbum;
+        private Long musicAlbumId;
+        private String musicAlbumName;
+        private Integer musicHaveMv;
+        private Integer musicVideoId;
+        private Integer musicPrivilege;
+        private Integer musicPrivilege2;
+        private String musicPlayUrl;
+        private String musicImg;
+        private String musicLyrics;
+        private Long musicListenerCount;
+        private String musicClassName;
+        private Integer flag;
+        private Integer musicIncrListener;
+    </sql>
+
+</mapper>

@@ -29,6 +29,8 @@ import java.util.List;
 @Service("simpleSongService")
 
 public class SimpleSongServiceImpl implements SimpleSongService {
+    @Autowired
+    private PythonUtils pythonUtils;
 
     /**
      * 注入自定义的序列化redis模版对象
@@ -55,8 +57,9 @@ public class SimpleSongServiceImpl implements SimpleSongService {
         SolrBean<CustomMusic> solrBean =  musicSolr.selectMusicById(musicId);
         for(CustomMusic music : solrBean.getSolrBeanList()) {
             //获取到music的播放路径
-            System.out.println("hashcode:"+music.getHashCode()+":::=="+PythonUtils.getMusicPlayUrl(music.getHashCode()));
-            music.setMusicPlayUrl(PythonUtils.getMusicPlayUrl(music.getHashCode()));
+            String playUrl = pythonUtils.getMusicPlayUrl(music.getHashCode());
+            System.out.println("hashcode:"+music.getHashCode()+":::=="+playUrl);
+            music.setMusicPlayUrl(playUrl);
             simpleSongBean.setOneMusic(music);
             //将单曲添加到播放列表中
             addMusicToMusicPlayList(loginedUser,music,session);
@@ -170,7 +173,7 @@ public class SimpleSongServiceImpl implements SimpleSongService {
     public CustomMusic getOneMusicInfo(Integer musicId) throws Exception {
         SolrBean<CustomMusic> solrBean = musicSolr.selectMusicById(musicId);
         CustomMusic music = solrBean.getSolrBeanList().get(0);
-        music.setMusicPlayUrl(PythonUtils.getMusicPlayUrl(music.getHashCode()));
+        music.setMusicPlayUrl(pythonUtils.getMusicPlayUrl(music.getHashCode()));
         return music;
     }
 }

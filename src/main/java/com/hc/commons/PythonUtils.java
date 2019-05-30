@@ -2,6 +2,7 @@ package com.hc.commons;
 
 import com.alibaba.fastjson.JSONObject;
 import com.hc.kugou.bean.Mv;
+import org.springframework.beans.factory.annotation.Value;
 import org.thymeleaf.util.StringUtils;
 
 import java.io.File;
@@ -20,18 +21,28 @@ import java.util.UUID;
  * @Version:1.0
  */
 public class PythonUtils {
-    private PythonUtils(){}
+    @Value("${python.path.type}")
+    private String pythonPathType;
 
+    @Value("${python.path.linux}")
+    private String linuxPath;
     /**
      * 根据歌曲hashcode获取播放地址
      * @param musicHashCode 哈希值
      * @return  播放地址
      */
-    public static String getMusicPlayUrl(String musicHashCode){
+    public String getMusicPlayUrl(String musicHashCode){
+        System.out.println("----------------根据歌曲的哈希值获取播放地址开始---------------------");
+        System.out.println("python脚本的根路径:"+pythonPathType);
+        System.out.println("音乐的哈希值："+musicHashCode);
         String exe = "python";
-        String command = PythonUtils.class.getResource("/python/download_songUrl.py").toString().replace("file:/","").replace("/", File.separator);
-//        System.out.println("---------------------------"+command);
-//        String command = "/home/myTest/download_songUrl.py";
+        String command = "";
+        if("W".equals(pythonPathType)){
+            command = PythonUtils.class.getResource("/python/download_songUrl.py").toString().replace("file:/","").replace("/", File.separator);
+        }else if("L".equals(pythonPathType)){
+            command = linuxPath+"download_songUrl.py";
+        }
+        System.out.println("python脚本真实路径："+command);
         String[] cmdArr = new String[] { exe, command,musicHashCode };
         StringBuffer sb = new StringBuffer();
         Process process = null;
@@ -58,6 +69,7 @@ public class PythonUtils {
                 }
             }
         }
+        System.out.println("----------------根据歌曲的哈希值获取播放地址结束---------------------");
         return result;
     }
 
@@ -66,11 +78,16 @@ public class PythonUtils {
      * @param audioName 音频名称
      * @return  Mv对象
      */
-    public static Mv getMv(String audioName){
+    public Mv getMv(String audioName){
         Mv mv = new Mv();
-        mv.setMvHash(UUID.randomUUID().toString().replace("-",""));
+        mv.setMvHashCode(UUID.randomUUID().toString().replace("-","").toUpperCase());
         String exe = "python";
-        String command = PythonUtils.class.getResource("/python/mvSpider.py").toString().replace("file:/","").replace("/","\\");
+        String command = "";
+        if("W".equals(pythonPathType)){
+            command = PythonUtils.class.getResource("/python/mvSpider.py").toString().replace("file:/","").replace("/","\\");
+        }else if("L".equals(pythonPathType)){
+            command = linuxPath+"mvSpider.py";
+        }
         String[] cmdArr = new String[] { exe, command,audioName };
         StringBuffer sb = new StringBuffer();
         Process process = null;
@@ -84,7 +101,6 @@ public class PythonUtils {
             }
             String result = sb.toString();
             if (StringUtils.isEmpty(result)){
-                System.out.println(audioName+"：这首音乐没有mv");
                 return null;
             }
             Map<String, Map<String,Object>> map = (Map<String, Map<String, Object>>) JSONObject.parse(result);

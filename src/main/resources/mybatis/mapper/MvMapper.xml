@@ -4,28 +4,28 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hc.kugou.mapper.MvMapper">
     <sql id="allKeys">
-        kugou_mv.mv_id as mv_id,
-        kugou_mv.mv_name as mv_name,
-        kugou_mv.mv_hash as mv_hash,
-        kugou_mv.mv_hc_url as mv_hc_url,
-        kugou_mv.mv_hd_url as mv_hd_url,
-        kugou_mv.mv_bd_url as mv_bd_url,
-        kugou_mv.mv_head_image as mv_head_image,
-        kugou_mv.mv_update_time as mv_update_time,
-        kugou_mv.mv_class_name as mv_class_name,
-        kugou_mv.mv_listener_count as mv_listener_count
+        mv_id,
+        mv_name,
+        mv_hc_url,
+        mv_hd_url,
+        mv_bd_url,
+        mv_head_image,
+        mv_update_time,
+        mv_class_name,
+        mv_listener_count,
+        mv_hash_code
     </sql>
     <sql id="allValues">
-        #{mv.mvId},#{mv.mvHash},#{mv.mvName},#{mv.hcUrl},#{mv.mvHdUrl},#{mv.mvBdUrl},#{mv.mvHeadImage},#{mv.mvUpdateTime},#{mv.mvClassName},#{mv.mvListenerCount}
+        #{mv.mvId},#{mv.mvName},#{mv.mvHcUrl},#{mv.mvHdUrl},#{mv.mvBdUrl},#{mv.mvHeadImage},#{mv.mvUpdateTime},#{mv.mvClassName},#{mv.mvListenerCount},#{mv.mvHashCode}
     </sql>
     <select id="findMvByName" resultType="com.hc.kugou.bean.Mv">
         select <include refid="allKeys"/>
         from kugou_mv
         where kugou_mv.mv_name like concat(#{mvName},'%')
     </select>
-    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
-        insert into kugou_mv
-        values (<include refid="allValues"/>)
+    <insert id="insert" useGeneratedKeys="true" keyProperty="mvId">
+        insert into kugou_mv(<include refid="allKeys"/>)
+        values (<include refid="allValues"/>),(<include refid="allValues"/>)
     </insert>
     <update id="updateTime">
         update kugou_mv set mv_update_time=#{updateTime} where mv_id=#{id}
@@ -47,4 +47,11 @@
         from  kugou_mv
         limit #{start},#{end}
     </select>
+    <insert id="insertList">
+        insert into kugou_mv(<include refid="allKeys"/>)
+        values
+        <foreach collection="list" item="mv" separator =",">
+            (#{mv.mvId},#{mv.mvName},#{mv.mvHcUrl},#{mv.mvHdUrl},#{mv.mvBdUrl},#{mv.mvHeadImage},#{mv.mvUpdateTime},#{mv.mvClassName},#{mv.mvListenerCount},#{mv.mvHashCode})
+        </foreach>
+    </insert>
 </mapper>

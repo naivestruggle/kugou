@@ -92,6 +92,7 @@ function getMusicList(){
 	var data = {
 		searchKey : inp.val()
 	}
+	console.log("搜索页面的根路径："+rootPath)
 	$.post(rootPath+"musiclist.search.ajax",data,function (data) {
 		var list = data.lists.solrBeanList;
 		if(list.length == 0){
@@ -127,6 +128,7 @@ function getMvList() {
 	var data = {
 		searchKey : inp.val()
 	}
+	console.log("搜索页面获取mv的根路径："+rootPath)
 	$.post(rootPath+"mv.search.ajax",data,function (data) {
 		var list = data.mvSolrBean.solrBeanList;
 		if(list.length == 0){

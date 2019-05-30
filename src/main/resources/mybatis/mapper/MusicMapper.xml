@@ -9,21 +9,25 @@
         kugou_music.music_author_name as music_author_name,
         kugou_music.music_audio_id as music_audio_id,
         kugou_music.music_audio_name as music_audio_name,
+
         kugou_music.music_song_name as music_song_name,
         kugou_music.music_hash_code as music_hash_code,
         kugou_music.music_filesize as music_filesize,
         kugou_music.music_timelength as music_timelength,
         kugou_music.music_have_album as music_have_album,
+
         kugou_music.music_album_id as music_album_id,
         kugou_music.music_album_name as music_album_name,
         kugou_music.music_have_mv as music_have_mv,
         kugou_music.music_video_id as music_video_id,
         kugou_music.music_privilege as music_privilege,
+
         kugou_music.music_privilege2 as music_privilege2,
         kugou_music.music_play_url as music_play_url,
         kugou_music.music_img as music_img,
         kugou_music.music_lyrics as music_lyrics,
         kugou_music.music_listener_count as music_listener_count,
+
         kugou_music.music_class_name as music_class_name
     </sql>
     <select id="selectNewMusicByClassName" resultType="com.hc.kugou.bean.Music">
@@ -58,4 +62,12 @@
         from kugou_music
         limit #{start},#{end}
     </select>
+
+    <update id="updateBatchFlag">
+        update kugou_music set flag = 1
+        where music_id in
+        <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
+            #{item.musicId}
+        </foreach>
+    </update>
 </mapper>

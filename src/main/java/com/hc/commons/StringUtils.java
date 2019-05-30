@@ -196,8 +196,6 @@ public class StringUtils {
         return path;
     }
 
-
-
     /**
      * 判断字符串是否为null
      * @param targetString  目标字符串
@@ -214,5 +212,13 @@ public class StringUtils {
      */
     public static String getRedisMusicPlayListKey(Integer userId) {
         return userId + "_" + PLAT_SONG_LIST_PRE;
+    }
+
+    /**
+     * 得到一个音梦ID
+     * @return
+     */
+    public static String getInMenAccount() {
+        return "indream_"+Code.createUserAccount();
     }
 }

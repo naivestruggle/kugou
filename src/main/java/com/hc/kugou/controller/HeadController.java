@@ -160,7 +160,7 @@ public class HeadController {
             }
 
             mv.setMvId(Long.parseLong(solrDocument.get("id").toString()));
-            mv.setMvHash((String) solrDocument.get("mv_hash"));
+//            mv.setMvHash((String) solrDocument.get("mv_hash"));
             mv.setMvHcUrl((String) solrDocument.get("hc_url"));
             mv.setMvHdUrl((String) solrDocument.get("hd_url"));
             mv.setMvBdUrl((String) solrDocument.get("bd_url"));

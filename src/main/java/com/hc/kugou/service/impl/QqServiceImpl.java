@@ -103,6 +103,7 @@ public class QqServiceImpl implements QqService {
             loginedUser.setUserPassword(MD5.parseMD5(Code.DEFAULT_PWD));
             loginedUser.setUserAccount(Code.createUserAccount());
             loginedUser.setUserQq(openid);
+            loginedUser.setUserInmengId(StringUtils.getInMenAccount());
             //存入数据库
             userMapper.insertUser(loginedUser);
 
@@ -113,6 +114,7 @@ public class QqServiceImpl implements QqService {
             customMusicList.setMusicListUserUsername(loginedUser.getUserUsername());
             customMusicList.setMusicListUpdateTime(new java.sql.Date(System.currentTimeMillis()));
             customMusicList.setMusicListHashCode(UUID.randomUUID().toString().replaceAll("-",""));
+            customMusicList.setMusicListHeadImage(Code.MY_FAVORITE_MUSIC);
             musiclistMapper.addSongSheet(customMusicList);
         }else{
             //用户存在，查询用户id

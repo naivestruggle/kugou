@@ -16,9 +16,9 @@ import java.io.IOException;
  */
 public class QQHttpClient {
 
-    public static final String APPID = "101581466";
+    public static final String APPID = "101584982";
 
-    public static final String APPKEY = "6169bc6e4ed0704cdff86f3a4bad4549";
+    public static final String APPKEY = "3ae78d655f99c3f79abcc8f68f256aa0";
 
     public static final String CODE = "code";
 

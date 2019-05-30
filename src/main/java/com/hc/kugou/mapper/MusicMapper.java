@@ -82,4 +82,21 @@ public interface MusicMapper {
      * @return  播放列表对象
      */
     CustomMusicPlayList selectMusicPlayListByUserId(@Param("id")Integer id);
+
+    /**
+     * 查询歌曲名
+     *
+     * @param begin 从第多少条开始
+     * @param num   查多少条
+     * @return 返回对象集合
+     */
+    @Select("select flag,music_id,music_audio_name,music_class_name from kugou_music limit #{begin} , #{num}")
+    List<Music> selectAudioName(@Param("begin")int begin, @Param("num")int num);
+
+    /**
+     * 批量更新flag
+     *
+     * @param list
+     */
+    void updateBatchFlag(@Param("list")List<Music> list);
 }

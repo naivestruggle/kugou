@@ -43,6 +43,10 @@ public class Code {
 	 */
 	public static final String DEFAULT_MUSIC_HEAD_IMG = "/img/index/logo.png";
 
+	/**
+	 * 我喜欢的音乐 默认头像
+	 */
+	public static final String MY_FAVORITE_MUSIC = "/img/my_songsheet/default.jpg";
 
 	/**
 	 * 生成一个长度为len的验证码文本

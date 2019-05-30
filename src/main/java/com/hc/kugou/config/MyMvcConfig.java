@@ -1,6 +1,7 @@
 package com.hc.kugou.config;
 
 import com.hc.commons.MailUtils;
+import com.hc.commons.PythonUtils;
 import com.hc.kugou.component.CrossDomainHandlerInterceptor;
 import com.hc.kugou.solr.MusicSolr;
 import com.hc.kugou.solr.MvSolr;
@@ -115,6 +116,8 @@ public class MyMvcConfig{
         return new MusicListSolr();
     }
 
+    @Bean
+    public PythonUtils pythonUtils(){return new PythonUtils();}
     /**
      * 注入邮件发送工具
      * @return  邮件发送工具对象

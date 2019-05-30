@@ -5,13 +5,51 @@
 <mapper namespace="com.hc.kugou.mapper.UserMapper">
 
     <sql id="allKeys">
-        user_id,user_username,user_account,user_password,user_tel,user_email,user_qq,user_wechat,user_sex,user_birthday
-        ,user_addr,user_signature,user_imgpath,user_is_vip,user_status,user_hash_code,user_inmeng_id,user_safe_question
+        user_id,
+        user_username,
+        user_account,
+        user_password,
+        user_tel,
+
+        user_email,
+        user_qq,
+        user_wechat,
+        user_sex,
+        user_birthday,
+
+        user_addr,
+        user_signature,
+        user_imgpath,
+        user_is_vip,
+        user_status,
+
+        user_hash_code,
+        user_inmeng_id,
+        user_safe_question
     </sql>
 
     <sql id="allValues">
-        #{userId},#{userUsername},#{userAccount},#{userPassword},#{userTel},#{userEmail},#{userQq},#{userWechat},#{userSex}
-   ,#{userBirthday},#{userAddr},#{userSignature},#{userImgpath},#{userIsVip},#{userStatus},#{userHashCode},#{userInmengId},#{userSafeQuestion}
+        #{userId},
+        #{userUsername},
+        #{userAccount},
+        #{userPassword},
+        #{userTel},
+
+        #{userEmail},
+        #{userQq},
+        #{userWechat},
+        #{userSex},
+        #{userBirthday},
+
+        #{userAddr},
+        #{userSignature},
+        #{userImgpath},
+        #{userIsVip},
+        #{userStatus},
+
+        #{userHashCode},
+        #{userInmengId},
+        #{userSafeQuestion}
     </sql>
 
 

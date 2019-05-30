@@ -134,7 +134,7 @@
 								<div class="info_item" style="padding-bottom:15px;">
 									<label><span style="color: red;">*</span>原密码：</label>
 									<div class="textbox">
-										<input id="pwd1" name="pwd" type="text" maxlength="18" class="pwd">
+										<input id="pwd1" name="pwd" type="password" maxlength="18" class="pwd">
 										<span class="updateUserInfoError" id="old_pwd_errorMsg">密码长度必须在6-18位之间</span>
                                     	<i href="javascript:void(0);" class="eye"></i>
 										<div class="forgetPassword" style="height:15px;">原密码记不清了？
@@ -188,26 +188,26 @@
 						<div class="main">
 							<div class="account">
 								<div class="security clearfix" id="security">
-									<div class="tips_error" th:if="${loginedUser.userEmail eq null}">
+									<div class="tips_error" th:if="${loginedUser.userEmail eq null or loginedUser.userEmail eq ''}">
 										<i class="tips_icon"></i>
 										<span class="tips_txt">您还没有安全邮箱哦</span>
 									</div>
 									<!-- 安全邮箱 ----------------------------------------------------------------------------------------->
-									<div class="email_nocheck clearfix account_item" th:with="flag=${loginedUser.userEmail eq null},flag2=${loginedUser.userEmail ne null}">
+									<div class="email_nocheck clearfix account_item" th:with="flag=${loginedUser.userEmail eq null or loginedUser.userEmail eq ''}">
                                         <span th:class="${flag?'account_icon icon-email':'account_icon email_bright'}"></span>
-                                        <div th:class="${flag ? 'account_text single-item':'account_text'}">
+                                        <div th:class="${flag ? 'account_text single-item':'account_text'}" id="user_email_has_">
                                         	<p>安全邮箱
                                         		<span class="gray9 f14">(可用于找回密码和登录帐户)</span>
                                         	</p>
-											<p th:if="${flag2}"><span id="userEmailShowSpan" class="f14 gray9" th:text="${loginedUser.userEmail}"></span></p>
+											<p th:if="${!flag}"><span id="userEmailShowSpan" class="f14 gray9" th:text="${loginedUser.userEmail}"></span></p>
 										</div>
                                         <p class="account_status">状态：
                                         	<span class="gray6" th:if="${flag}">未设置</span>
-											<span class="gray6" th:if="${flag2}">已验证</span>
+											<span class="gray6" th:if="${!flag}">已验证</span>
                                         </p>
-                                        <p class="account_btn">
+                                        <p class="account_btn" id="email_account_update_">
                                         	<a class="setting-btn" href="#" th:if="${flag}" title="立即设置">立即设置</a>
-											<a class="setting-btn" href="#" th:if="${flag2}" title="更换绑定">更换绑定</a>
+											<a class="setting-btn" href="#" th:if="${!flag}" title="更换绑定">更换绑定</a>
                                         </p>
                                     </div>
 

@@ -119,7 +119,7 @@ $(function () {
     function showHtml() {
         //查询当前用户的所有歌单
         $.post("song.querySongSheet.ajax", null, function (data) {
-            // console.log(data);
+            console.log(data);
             if (data.code == 1) {
                 $(".create .num").html(data.customMusicLists.length);
                 for (var i = 0; i < data.customMusicLists.length; i++) {
@@ -130,7 +130,7 @@ $(function () {
                             "\t\t\t\t\t\t\t\t<div class=\"item\">\n" +
                             "\t\t\t\t\t\t\t\t\t<div class=\"pic\">\n" +
                             "\t\t\t\t\t\t\t\t\t\t<a href=\"#\">\n" +
-                            "\t\t\t\t\t\t\t\t\t\t\t<img src=\"" + data.customMusicLists[i].musicListHeadImage + "\">\n" +
+                            "\t\t\t\t\t\t\t\t\t\t\t<img src=\"" +data.customMusicLists[i].musicListHeadImage + "\">\n" +
                             "\t\t\t\t\t\t\t\t\t\t</a>\n" +
                             "\t\t\t\t\t\t\t\t\t</div>\n" +
                             "\t\t\t\t\t\t\t\t\t<p class=\"name text\">\n" +
@@ -256,7 +256,6 @@ $(function () {
             });
         });
     }
-
     //切换歌单
     function SwitchSongs() {
         $("body").delegate(".songsheet_list .songlist", "click", function () {
